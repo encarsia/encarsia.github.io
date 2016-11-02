@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1478096280.9160671
+_modified_time = 1478100675.8298516
 _enable_loop = True
 _template_filename = 'themes/zen/templates/post.tmpl'
 _template_uri = 'post.tmpl'
@@ -39,16 +39,16 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         arusahni = _mako_get_namespace(context, 'arusahni')
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
-        date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
-        comments = _mako_get_namespace(context, 'comments')
         helper = _mako_get_namespace(context, 'helper')
-        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
+        comments = _mako_get_namespace(context, 'comments')
+        date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
+        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         def extra_head():
             return render_extra_head(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -75,13 +75,13 @@ def render_content(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         arusahni = _mako_get_namespace(context, 'arusahni')
+        helper = _mako_get_namespace(context, 'helper')
+        comments = _mako_get_namespace(context, 'comments')
+        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         def content():
             return render_content(context)
-        comments = _mako_get_namespace(context, 'comments')
         post = _import_ns.get('post', context.get('post', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n    <div class="post">\n    ')
         __M_writer(str(arusahni.html_title()))
@@ -119,11 +119,11 @@ def render_extra_head(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
-        helper = _mako_get_namespace(context, 'helper')
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         def extra_head():
             return render_extra_head(context)
+        helper = _mako_get_namespace(context, 'helper')
         __M_writer = context.writer()
         __M_writer('\n    ')
         __M_writer(str(parent.extra_head()))
@@ -148,6 +148,6 @@ def render_extra_head(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "post.tmpl", "line_map": {"128": 7, "129": 8, "130": 8, "131": 9, "132": 10, "133": 10, "134": 10, "135": 12, "136": 12, "137": 12, "138": 13, "139": 13, "140": 14, "141": 14, "142": 15, "143": 15, "149": 143, "23": 2, "26": 3, "29": 4, "35": 0, "53": 2, "54": 3, "55": 4, "56": 5, "61": 16, "66": 39, "72": 18, "86": 18, "87": 20, "88": 20, "89": 23, "90": 23, "91": 23, "92": 23, "93": 24, "94": 24, "95": 25, "96": 25, "97": 27, "98": 27, "99": 30, "100": 30, "101": 32, "102": 32, "103": 33, "104": 34, "105": 34, "106": 34, "107": 36, "108": 36, "109": 36, "110": 38, "111": 38, "117": 7}, "filename": "themes/zen/templates/post.tmpl", "source_encoding": "utf-8"}
+{"source_encoding": "utf-8", "uri": "post.tmpl", "line_map": {"128": 7, "129": 8, "130": 8, "131": 9, "132": 10, "133": 10, "134": 10, "135": 12, "136": 12, "137": 12, "138": 13, "139": 13, "140": 14, "141": 14, "142": 15, "143": 15, "149": 143, "23": 2, "26": 3, "29": 4, "35": 0, "53": 2, "54": 3, "55": 4, "56": 5, "61": 16, "66": 39, "72": 18, "86": 18, "87": 20, "88": 20, "89": 23, "90": 23, "91": 23, "92": 23, "93": 24, "94": 24, "95": 25, "96": 25, "97": 27, "98": 27, "99": 30, "100": 30, "101": 32, "102": 32, "103": 33, "104": 34, "105": 34, "106": 34, "107": 36, "108": 36, "109": 36, "110": 38, "111": 38, "117": 7}, "filename": "themes/zen/templates/post.tmpl"}
 __M_END_METADATA
 """
