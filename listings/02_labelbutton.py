@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import random
 import gi
 gi.require_version('Gtk','3.0')
