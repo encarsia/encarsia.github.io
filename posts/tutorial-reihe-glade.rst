@@ -50,6 +50,3 @@ Themen
     - CSS
     - Lokalisation mit locale und gettext
     - Medien abspielen mit GStreamer
-
-
-In Arbeit:
