@@ -14,7 +14,7 @@ Glade
 
 Mit Glade lassen sich verschiedene Fensterarten und Dialoge erstellen. Im Beispiel hat das Hauptfenster zwei Buttons, ein Button öffnet ein Info-Fenster, der andere schließt es und öffnet ein anderes Fenster, das jeweils das gleiche tut.
 
-.. thumnail:: /images/03_changewindow.png
+.. thumbnail:: /images/03_changewindow.png
 
 .. listing:: 03_changewindow.glade xml
 
