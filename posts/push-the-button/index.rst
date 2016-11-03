@@ -36,7 +36,7 @@ Alle GtkBuilder-Objekte können über die Funktion ``get_object`` angesprochen w
     #Beispiel GtkLabel
     Gtk.Builder.get_object("label_name").set_text("neuer Text")
 
-Der Togglebutton soll die Labelanzeige leeren und Button inaktivieren.
+Der Togglebutton soll die Labelanzeige leeren und Button inaktivieren und bei erneutem Klick wieder freigeben.
 
 Der Zustand des Togglebuttons kann mit der Funktion ``get_active()`` abgerufen werden (gibt True/False zurück).
 
