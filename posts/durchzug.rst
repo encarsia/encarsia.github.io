@@ -1,6 +1,6 @@
-.. title: Durchzug oder Mehr als ein Fenster
-.. slug: durchzug-oder-mehr-als-ein-fenster
-.. date: 2016-11-03 13:40:03 UTC+01:00
+.. title: Durchzug
+.. slug: durchzug
+.. date: 2016-11-03 23:40:03 UTC+01:00
 .. tags: glade,python
 .. category: tutorial
 .. link: 
