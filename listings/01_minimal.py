@@ -15,10 +15,8 @@ class Example:
     
     def __init__(self):
         
-        self.gladefile = "01_minimal.glade"
-
         self.builder = Gtk.Builder()
-        self.builder.add_from_file(self.gladefile)
+        self.builder.add_from_file("01_minimal.glade")
         self.builder.connect_signals(Handler())
 
         window = self.builder.get_object("window")
