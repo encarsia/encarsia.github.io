@@ -42,9 +42,10 @@ Themen
     - `Minimalbeispiel <link://slug/fenster-mit-aussicht>`_
     - `Buttons und Labels <link://slug/push-the-button>`_
     - `Fenster und Dialoge <link://slug/durchzug>`_
+    - `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
+
 
 - In Arbeit:
-    - Schalter, Checkbox und Radiobutton
     - Menü und Toolbar
     - Statusbar und Levelbar
     - Combobox und Spinbutton
@@ -52,3 +53,4 @@ Themen
     - CSS
     - Lokalisation mit locale und gettext
     - Medien abspielen mit GStreamer
+    - Textfelder mit GtkTextView und GtkSourceView
