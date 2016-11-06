@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1478469244.283656
+_modified_time = 1478470372.986658
 _enable_loop = True
 _template_filename = '/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_muut.tmpl'
 _template_uri = 'comments_helper_muut.tmpl'
@@ -66,6 +66,6 @@ def render_comment_link_script(context):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"48": 4, "34": 7, "67": 61, "40": 3, "45": 3, "46": 4, "47": 4, "16": 0, "49": 4, "50": 4, "51": 4, "21": 2, "22": 5, "23": 8, "24": 13, "57": 11, "61": 11, "30": 7}, "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_muut.tmpl", "uri": "comments_helper_muut.tmpl", "source_encoding": "utf-8"}
+{"source_encoding": "utf-8", "uri": "comments_helper_muut.tmpl", "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_muut.tmpl", "line_map": {"48": 4, "34": 7, "67": 61, "40": 3, "45": 3, "46": 4, "47": 4, "16": 0, "49": 4, "50": 4, "51": 4, "21": 2, "22": 5, "23": 8, "24": 13, "57": 11, "61": 11, "30": 7}}
 __M_END_METADATA
 """

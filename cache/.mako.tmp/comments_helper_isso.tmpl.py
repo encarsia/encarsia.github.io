@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1478469244.2978675
+_modified_time = 1478470373.003174
 _enable_loop = True
 _template_filename = '/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_isso.tmpl'
 _template_uri = 'comments_helper_isso.tmpl'
@@ -80,6 +80,6 @@ def render_comment_link_script(context):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"69": 16, "70": 17, "71": 18, "72": 18, "73": 18, "74": 18, "75": 18, "16": 0, "81": 75, "21": 7, "22": 13, "23": 20, "29": 9, "34": 9, "35": 10, "36": 11, "37": 11, "38": 11, "44": 2, "49": 2, "50": 3, "51": 4, "52": 4, "53": 4, "54": 5, "55": 5, "56": 5, "57": 5, "63": 16}, "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_isso.tmpl", "uri": "comments_helper_isso.tmpl", "source_encoding": "utf-8"}
+{"source_encoding": "utf-8", "uri": "comments_helper_isso.tmpl", "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/comments_helper_isso.tmpl", "line_map": {"69": 16, "70": 17, "71": 18, "72": 18, "73": 18, "74": 18, "75": 18, "16": 0, "81": 75, "21": 7, "22": 13, "23": 20, "29": 9, "34": 9, "35": 10, "36": 11, "37": 11, "38": 11, "44": 2, "49": 2, "50": 3, "51": 4, "52": 4, "53": 4, "54": 5, "55": 5, "56": 5, "57": 5, "63": 16}}
 __M_END_METADATA
 """
