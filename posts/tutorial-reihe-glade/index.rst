@@ -24,7 +24,7 @@ An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und G
 Nicht exklusiv
 --------------
 
-GTK+-Elemente können natürlich auch ohne Glade direkt in den Quellcode des Programms geschrieben werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Verlauf das eine gegen das andere zu ersetzen.
+GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Verlauf das eine gegen das andere zu ersetzen.
 
 Links
 -----

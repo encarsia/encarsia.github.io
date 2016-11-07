@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-**GUI-Objekte, die immer benötigt werden: Buttons und Labels**
+**Buttons und Labels**
 
 Glade
 -----

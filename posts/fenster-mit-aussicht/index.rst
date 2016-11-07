@@ -1,4 +1,4 @@
-.. title: Fenster mit Aussicht - ein Minimalbeispiel
+.. title: Fenster mit Aussicht
 .. slug: fenster-mit-aussicht
 .. date: 2016-11-02 17:14:04 UTC+01:00
 .. tags: glade,python
@@ -6,6 +6,8 @@
 .. link: 
 .. description: 
 .. type: text
+
+**Minimalbeispiel**
 
 Glade
 -----
