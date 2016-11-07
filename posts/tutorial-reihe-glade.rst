@@ -43,11 +43,10 @@ Themen
     - `Buttons und Labels <link://slug/push-the-button>`_
     - `Fenster und Dialoge <link://slug/durchzug>`_
     - `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
-
+    - `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
 
 - In Arbeit:
-    - Menü und Toolbar
-    - Statusbar und Levelbar
+    - Levelbar und Fortschrittsbalken
     - Combobox und Spinbutton
     - ListView und TreeView
     - CSS
