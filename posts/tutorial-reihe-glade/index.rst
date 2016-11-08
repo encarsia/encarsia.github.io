@@ -44,12 +44,12 @@ Themen
     - `Fenster und Dialoge <link://slug/durchzug>`_
     - `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
     - `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
+    - `Fortschrittsbalken und Levelbar <link://slug/bars>`_
+    - `CSS <link://slug/css>`_
 
 - In Arbeit:
-    - Levelbar und Fortschrittsbalken
     - Combobox und Spinbutton
     - ListView und TreeView
-    - CSS
     - Lokalisation mit locale und gettext
-    - Medien abspielen mit GStreamer
+    - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
