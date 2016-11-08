@@ -38,7 +38,7 @@ Levelbars werden normalerweise als Füllstandsanzeiger genutzt. Der Füllstand w
 
     2. Festlegen von Minimal-/Maximalwert möglich, Standardwert ist 0 bzw. 1; beim Anzeigenmodus *discrete* entspricht der Maximalwert der Anzahl der Blöcke
 
-    3. Farbliche Änderungen des Balkens bei Überschreiten bestimmter Werte (siehe CSS-Artikel (Link wird nachgereicht, wenn Artikel fertig))
+    3. Farbliche Änderungen des Balkens bei Überschreiten bestimmter Werte (siehe `CSS-Artikel <link://slug/css>`_)
 
 .. listing:: 06_progresslevel.glade xml
 
@@ -64,6 +64,6 @@ Levelbar
 
 Was ``set_fraction`` für Progressbar, ist ``set_value`` für Levelbar. Im *continuous*-Modus ist dies selbsterklärend, im *discrete*-Modus muss man bedenken, wie viele Blöcke definiert wurden.
 
-Auf die Funktion ``add_offset_value`` und Farbänderung des Balkens beim Überschreiten definierter Werte wird im CSS-Artikel eingegangen.
+Auf die Funktion ``add_offset_value`` und Farbänderung des Balkens beim Überschreiten definierter Werte wird im `CSS-Artikel <link://slug/css>`_ eingegangen.
 
 .. listing:: 06_progresslevel.py python
