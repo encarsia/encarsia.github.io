@@ -46,9 +46,9 @@ Themen
     - `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
     - `Fortschrittsbalken und Levelbar <link://slug/bars>`_
     - `CSS <link://slug/css>`_
+    - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
 
 - In Arbeit:
-    - Combobox und Spinbutton
     - ListView und TreeView
     - Lokalisation mit locale und gettext
     - Medien und GStreamer
