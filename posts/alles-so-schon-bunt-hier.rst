@@ -49,7 +49,7 @@ innerhalb einer String-Variblen, die von der Klasse ``Gtk.CssProvider()`` gelade
 Levelbar
 ********
 
-Levelbars können, wie bereits im Artikel `"Bars" <link://slug/bars>`_  angedeutet, in definierten Wertebereichen unterschiedliche Farben annehmen (um zum Beispiel einen kritischen Ladezustand zu visualisieren. Die vordefinierten Offset-Marker dafür sind:
+Levelbars können, wie bereits im Artikel `"Bars" <link://slug/bars>`_  angedeutet, in definierten Wertebereichen unterschiedliche Farben annehmen (um zum Beispiel einen kritischen Ladezustand zu visualisieren). Die vordefinierten Offset-Marker dafür sind:
 
         * ``low`` (<=.25)
         * ``high`` (<=.75)

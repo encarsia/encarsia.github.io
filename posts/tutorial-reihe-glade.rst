@@ -53,3 +53,4 @@ Themen
     - Lokalisation mit locale und gettext
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
+    - Interaktion mit anderen Anwendungen mit und ohne Threading

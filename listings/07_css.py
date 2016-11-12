@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import gi
 gi.require_version('Gtk','3.0')
-
 from gi.repository import Gtk,Gdk
 
 class Handler:
@@ -37,7 +35,6 @@ levelbar trough block.filled.full {
     background-color: red;
 }
 """
-
         #load css stylesheet
         style_provider = Gtk.CssProvider()
         style_provider.load_from_data(css)
