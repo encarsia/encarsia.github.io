@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import gi
 gi.require_version('Gtk','3.0')
-
 from gi.repository import Gtk
 
 class Handler:
@@ -25,7 +23,6 @@ class Handler:
     def on_close_button_clicked(self,widget):
         x.about.hide_on_delete()
 
-
 class Example:
     
     def __init__(self):
@@ -44,7 +41,6 @@ class Example:
 
     def main(self):
         Gtk.main()
-
 
 x = Example()
 x.main()
