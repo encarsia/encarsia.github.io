@@ -32,7 +32,7 @@ GtkComboboxText
     Die Auswahlliste des Dropdown-Menüs sind Strings und werden direkt im Widget erstellt.
 
 GtkCombobox
-    Die Daten für die Auswahlliste stammen aus einem Listen- oder Baumspeicher (ListStore oder TreeStore). In diesen können Datensätze mit verschiedenen Informationen gespeichert werden. Auf diese Datenspeicherwidgets wird in einem folgenen Artikel eingegangen.
+    Die Daten für die Auswahlliste stammen aus einem Listen- oder Baumspeicher (ListStore oder TreeStore). In diesen können Datensätze mit verschiedenen Informationen gespeichert werden. Auf diese Datenspeicherwidgets wird im Artikel `"Überlistet" <link://slug/uberlistet>`_ eingegangen.
 
 Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss "Allgemein > Hat Eintrag" aktiviert sein. Dies legt das interne Widget *GtkEntry* an. Wichtig ist, dass dieses unter "Gemeinsam > Widget Flags" fokussierbar gemacht wird.
 
