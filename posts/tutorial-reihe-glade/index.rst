@@ -47,9 +47,10 @@ Themen
     - `Fortschrittsbalken und Levelbar <link://slug/bars>`_
     - `CSS <link://slug/css>`_
     - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
+    - `ListStore und TreeView <link://slug/uberlistet>`_
 
 - In Arbeit:
-    - ListView und TreeView
+    - TreeStore
     - Lokalisation mit locale und gettext
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
