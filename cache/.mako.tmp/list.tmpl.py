@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1480027893.0503216
+_modified_time = 1480028045.6321864
 _enable_loop = True
 _template_filename = '/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/list.tmpl'
 _template_uri = 'list.tmpl'
@@ -82,6 +82,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "list.tmpl", "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/list.tmpl", "line_map": {"64": 12, "65": 12, "66": 12, "67": 12, "68": 13, "69": 14, "70": 14, "71": 14, "72": 17, "73": 18, "74": 19, "75": 19, "76": 19, "77": 21, "83": 77, "27": 0, "37": 2, "42": 22, "48": 4, "57": 4, "58": 7, "59": 7, "60": 9, "61": 10, "62": 11, "63": 12}}
+{"uri": "list.tmpl", "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/list.tmpl", "source_encoding": "utf-8", "line_map": {"64": 12, "65": 12, "66": 12, "67": 12, "68": 13, "69": 14, "70": 14, "71": 14, "72": 17, "73": 18, "74": 19, "75": 19, "76": 19, "77": 21, "83": 77, "27": 0, "37": 2, "42": 22, "48": 4, "57": 4, "58": 7, "59": 7, "60": 9, "61": 10, "62": 11, "63": 12}}
 __M_END_METADATA
 """
