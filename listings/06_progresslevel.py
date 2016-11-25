@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import time
 import gi
 gi.require_version('Gtk','3.0')

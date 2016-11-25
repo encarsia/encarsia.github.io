@@ -49,7 +49,6 @@ TreeView #1
 
 TreeView #2
     Das zweite TreeView-Widget wird innerhalb eines Sichtfeldes (*GtkViewport*) erstellt. Dieser Container bietet keine Scrollbalken, das Widget vergrößert automatisch, so dass alle Zeilen sichtbar sind. Bei größeren Tabellen ist ein ScrolledWindow also praktikabler.
-
     Es werden die gleichen Daten angezeigt wie zuvor, allerdings ohne Sortierungsanzeiger, dafür wird die mittlere Spalte ("Description") editierbar gemacht und erhält eine Funktion für das Signal *edited*.
 
 Button
