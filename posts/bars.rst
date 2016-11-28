@@ -40,6 +40,8 @@ Levelbars werden normalerweise als Füllstandsanzeiger genutzt. Der Füllstand w
 
     3. Farbliche Änderungen des Balkens bei Überschreiten bestimmter Werte (siehe `CSS-Artikel <link://slug/css>`_)
 
+.. TEASER_END
+
 .. listing:: 06_progresslevel.glade xml
 
 Python

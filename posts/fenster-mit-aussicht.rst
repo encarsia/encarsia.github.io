@@ -18,6 +18,8 @@ Nun erstellt man ein Fenster und gibt ihm eine Kennung. Mit dieser Kennung wird 
 
 .. thumbnail:: /images/01_glade.png
 
+.. TEASER_END
+
 Um die Ausführung von Funktionen zu initiieren, müssen sie mit Signalen gekoppelt werden. Signale können je nach Objektart verschieden ausgelöst werden, durch Anklicken, Markieren, Editieren, Schalten etc.
 
 Um in diesem Beispiel das Programmfenster mit dem Schließen-Button zu schließen, wird das Signal *destroy* benötigt. Beim Funktionsnamen hilft die Vorschlagsfunktion nach dem Schema ``on_kennung_signal``.

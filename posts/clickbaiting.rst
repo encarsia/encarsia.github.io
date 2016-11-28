@@ -27,6 +27,8 @@ Alle verfügbaren Gtk-Klassen und ihre Funktionen findet man unter `Python GI AP
 
 .. thumbnail:: /images/04_clickableelements.png
 
+.. TEASER_END
+
 Glade
 -----
 

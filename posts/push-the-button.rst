@@ -20,6 +20,8 @@ In der Vorschauansicht kann man testen, ob die korrekte Reaktion ausgelöst wird
 
 .. thumbnail:: /images/02_gladepreview.png
 
+.. TEASER_END
+
 .. listing:: 02_labelbutton.glade xml
 
 Python

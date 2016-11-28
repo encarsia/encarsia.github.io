@@ -30,6 +30,8 @@ Statusbar
 
 In der Statusbar können kurze Meldungen/Nachrichten eingeblendet werden. Die Meldungen werden analog zu einer Liste behandelt, das Widget bietet die Funktionen ``push`` und ``pop``.
 
+.. TEASER_END
+
 .. listing:: 05_menutoolbar.glade xml
 
 Python

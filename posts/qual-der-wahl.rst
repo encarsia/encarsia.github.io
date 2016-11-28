@@ -16,6 +16,8 @@ Glade
 
 .. thumbnail:: /images/08_combospin.png
 
+.. TEASER_END
+
 Spinbutton
 **********
 
