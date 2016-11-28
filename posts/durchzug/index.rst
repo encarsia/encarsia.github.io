@@ -16,6 +16,8 @@ Mit Glade lassen sich verschiedene Fensterarten und Dialoge erstellen. Im Beispi
 
 .. thumbnail:: /images/03_changewindow.png
 
+.. TEASER_END
+
 .. listing:: 03_changewindow.glade xml
 
 Es werden insgesamt 7 Signale angelegt:

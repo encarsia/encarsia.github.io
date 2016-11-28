@@ -24,6 +24,8 @@ Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötig
 
 .. thumbnail:: /images/09_treestore2.png
 
+.. TEASER_END
+
 Glade
 -----
 

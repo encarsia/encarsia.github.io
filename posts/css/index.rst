@@ -25,6 +25,8 @@ Glade
 
 Mit Glade werden nur die Fenster/Widgets angelegt, in diesem Beispiel vier Levelbars mit Werten, die CSS-Layout-Anweisungen erfolgen dann im Code.
 
+.. TEASER_END
+
 .. listing:: 07_css.glade xml
 
 Python

@@ -11,6 +11,8 @@
 
 .. thumbnail:: /images/10_lokalisation.png
 
+.. TEASER_END
+
 Glade
 -----
 
@@ -24,7 +26,7 @@ Python
 Übersetzbare Strings
 ********************
 
-Zur Übersetzung freigegebene Strings werden durch eine Einklammerung mit vorausgehendem Unterstrich markiert und beim Aufruf von `xgettext` erkannt:
+Zur Übersetzung freigegebene Strings werden durch eine Einklammerung mit vorausgehendem Unterstrich markiert und beim Aufruf von ``xgettext`` erkannt:
 
 .. code:: python
 
@@ -44,7 +46,7 @@ Nun muss man Python noch zeigen, unter welchem Namen und Pfad die MO-Dateien (si
         gettext.textdomain(appname)
         builder.set_translation_domain(appname)
 
-`set_translation_domain` muss vor dem Laden der Glade-Datei(en) aufgerufen werden.
+``set_translation_domain`` muss vor dem Laden der Glade-Datei(en) aufgerufen werden.
 
 .. listing:: 10_lokalisation.py python
 
@@ -55,7 +57,7 @@ GetText
 POT
 ***
 
-POT steht für Portable Object Template und ist dem Namen zufolge die Vorlage für Übersetzungen. Diese Datei enthält alle übersetzbaren Strings. Nachdem eine leere POT-Datei erstellt wurde, ruft man nun `xgettext` nach folgendem Muster für alle Quelldateien auf:
+POT steht für Portable Object Template und ist dem Namen zufolge die Vorlage für Übersetzungen. Diese Datei enthält alle übersetzbaren Strings. Nachdem eine leere POT-Datei erstellt wurde, ruft man nun ``xgettext`` nach folgendem Muster für alle Quelldateien auf:
 
 .. code::
 
@@ -78,7 +80,7 @@ Für das Beispiel wird also je ein Aufruf für die Glade- und Python-Datei benö
     xgettext --sort-output --keyword=translatable --language=Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
     xgettext --language=Python -j -o 10_localization/TUT.pot 10_lokalisation.py 
 
-Mit der Option `-j` (`--join-existing`) wird eine bestehende Datei um zusätzliche Strings ergänzt und funktioniert deshalb sowohl bei der Initiierung (vorher einfach mit `touch template.pot` die leere Datei erstellen) als auch bei erneutem Aufruf zum Aktualisieren neuer Strings.
+Mit der Option ``-j`` (``--join-existing``) wird eine bestehende Datei um zusätzliche Strings ergänzt und funktioniert deshalb sowohl bei der Initiierung (vorher einfach mit ``touch template.pot`` die leere Datei erstellen) als auch bei erneutem Aufruf zum Aktualisieren neuer Strings.
 
 .. listing:: 10_localization/TUT.pot bash
 
@@ -98,7 +100,7 @@ an, das eine PO-Datei mit dem Namen xx.po (z.B. de.po) anlegt. Diese kann direkt
 
     msginit --input=TUT.pot --locale=de
 
-Wird die POT-Datei verändert, kann man die PO-Dateien mit `msgmerge` abgleichen und anschließend die neuen Strings übesetzen:
+Wird die POT-Datei verändert, kann man die PO-Dateien mit ``msgmerge`` abgleichen und anschließend die neuen Strings übesetzen:
 
 .. code:: bash
 
@@ -107,9 +109,9 @@ Wird die POT-Datei verändert, kann man die PO-Dateien mit `msgmerge` abgleichen
 MO
 **
 
-MO-Dateien sind auf Maschinenlesbarkeit optimierte PO-Dateien und letztlich die, die vom Programm benutzt werden. Unterhalb der angegebenen *bindtextdomain* liegen die Lokalisationsdateien nach der Verzeichnisstruktur `(path/to/bindtextdomain)/locale/language code/LC_MESSAGES/appname.po`
+MO-Dateien sind auf Maschinenlesbarkeit optimierte PO-Dateien und letztlich die, die vom Programm benutzt werden. Unterhalb der angegebenen *bindtextdomain* liegen die Lokalisationsdateien nach der Verzeichnisstruktur ``(path/to/bindtextdomain)/locale/language code/LC_MESSAGES/appname.po``
 
-Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die erzeugte `de.po` wird mit `msgfmt` in die MO-Datei überführt:
+Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die erzeugte `de.po` wird mit ``msgfmt`` in die MO-Datei überführt:
 
 .. code:: bash
 
