@@ -48,10 +48,10 @@ Themen
     - `CSS <link://slug/css>`_
     - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
     - `ListStore und TreeView <link://slug/uberlistet>`_
+    - 'Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
 
 - In Arbeit:
     - TreeStore
-    - Lokalisation mit locale und gettext
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
     - Interaktion mit anderen Anwendungen mit und ohne Threading
