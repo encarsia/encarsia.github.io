@@ -48,7 +48,7 @@ Themen
     - `CSS <link://slug/css>`_
     - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
     - `ListStore und TreeView <link://slug/uberlistet>`_
-    - 'Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
+    - `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
 
 - In Arbeit:
     - TreeStore
