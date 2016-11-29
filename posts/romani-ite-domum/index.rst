@@ -7,13 +7,15 @@
 .. description: 
 .. type: text
 
+.. class:: warning pull-right
+
+.. contents::
+
 **Lokalisation mit gettext und locale**
 
 .. thumbnail:: /images/10_lokalisation.png
 
 .. TEASER_END
-
-
 
 Glade
 -----
@@ -61,13 +63,13 @@ POT
 
 POT steht für Portable Object Template und ist dem Namen zufolge die Vorlage für Übersetzungen. Diese Datei enthält alle übersetzbaren Strings. Nachdem eine leere POT-Datei erstellt wurde, ruft man nun ``xgettext`` nach folgendem Muster für alle Quelldateien auf:
 
-.. code::
+.. code:: console
 
-    xgettext --options -o output.pot sourcefile.ext
+    $ xgettext --options -o output.pot sourcefile.ext
 
 Die erkannten Strings werden nach dem Schema
 
-.. code-block:: bash
+.. code-block:: console
 
     #: sourcefile.ext:line number
     msgid "translatable string"
@@ -77,10 +79,10 @@ der angegebenen POT-Datei hinzugefügt. Die Markierung der Fundstelle(n) des Str
 
 Für das Beispiel wird also je ein Aufruf für die Glade- und Python-Datei benötgt:
 
-.. code::
+.. code:: console
 
-    xgettext --sort-output --keyword=translatable --language=Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
-    xgettext --language=Python -j -o 10_localization/TUT.pot 10_lokalisation.py 
+    $ xgettext --sort-output --keyword=translatable --language=Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
+    $ xgettext --language=Python -j -o 10_localization/TUT.pot 10_lokalisation.py 
 
 Mit der Option ``-j`` (``--join-existing``) wird eine bestehende Datei um zusätzliche Strings ergänzt und funktioniert deshalb sowohl bei der Initiierung (vorher einfach mit ``touch template.pot`` die leere Datei erstellen) als auch bei erneutem Aufruf zum Aktualisieren neuer Strings.
 
@@ -91,22 +93,22 @@ PO
 
 Die übersetzten Strings werden in jeweils einer PO-Datei gespeichert. Eine neue Übersetzung legt man mit 
 
-.. code:: bash
+.. code:: console
 
-    msginit --input=source.pot --locale=xx
+    $ msginit --input=source.pot --locale=xx
     # xx=language code
 
 an, das eine PO-Datei mit dem Namen xx.po (z.B. de.po) anlegt. Diese kann direkt im Texteditor oder mittels Tools wie `PoEdit <https://poedit.net/>`_ bearbeitet werden. Die deutschsprachige Lokalisation wird also angelegt mit
 
-.. code:: bash
+.. code:: console
 
-    msginit --input=TUT.pot --locale=de
+    $ msginit --input=TUT.pot --locale=de
 
 Wird die POT-Datei verändert, kann man die PO-Dateien mit ``msgmerge`` abgleichen und anschließend die neuen Strings übesetzen:
 
-.. code:: bash
+.. code:: console
 
-    msgmerge lang.po template.pot > new_lang.po
+    $ msgmerge lang.po template.pot > new_lang.po
 
 MO
 **
@@ -115,8 +117,8 @@ MO-Dateien sind auf Maschinenlesbarkeit optimierte PO-Dateien und letztlich die,
 
 Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die erzeugte `de.po` wird mit ``msgfmt`` in die MO-Datei überführt:
 
-.. code:: bash
+.. code:: console
 
-    msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
+    $ msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 
 

@@ -7,6 +7,10 @@
 .. description: 
 .. type: text
 
+.. class:: warning pull-right
+
+.. contents::
+
 **Fenster und Dialoge**
 
 Glade
