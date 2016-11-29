@@ -7,6 +7,10 @@
 .. description: 
 .. type: text
 
+.. class:: warning pull-right
+
+.. contents::
+
 **Switch, Checkbox, Radiobutton - mehr Elemente zum Anklicken**
 
 In diesem Artikel wird exemplarisch die Verwendung von Switches, Checkboxen und Radiobuttons vorgestellt. Folgend werden weitere Steuerungs- und Anzeigenelemente verwendet, es wird aber kein Anspruch auf Vollständigkeit erhoben, da die Verwendungsprozedur praktisch nach folgendem Schema funktioniert:

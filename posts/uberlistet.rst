@@ -7,6 +7,10 @@
 .. description: 
 .. type: text
 
+.. class:: warning pull-right
+
+.. contents::
+
 **Daten in ListStore speichern und mit ComboBox und TreeView anzeigen**
 
 Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötigt man in GTK+-Anwendungen verschiedene Elemente:

@@ -7,6 +7,10 @@
 .. description: 
 .. type: text
 
+.. class:: warning pull-right
+
+.. contents::
+
 **Spinbutton und Combobox**
 
 Die Widgets erleichtern die Eingabe bestimmer Werte, indem eine Listenauswahl oder ein Wertebereich und ggf. Standardwerte dazu vorgegeben werden. Die Eingabe ist normalerweise rein intuitiv über Mausklicks machbar, Tastatureingaben sind optional.
