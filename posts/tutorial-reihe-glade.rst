@@ -38,19 +38,19 @@ Links
 Themen
 ------
 
-- Fertig:
-    - `Minimalbeispiel <link://slug/fenster-mit-aussicht>`_
-    - `Buttons und Labels <link://slug/push-the-button>`_
-    - `Fenster und Dialoge <link://slug/durchzug>`_
-    - `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
-    - `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
-    - `Fortschrittsbalken und Levelbar <link://slug/bars>`_
-    - `CSS <link://slug/css>`_
-    - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
-    - `ListStore und TreeView <link://slug/uberlistet>`_
-    - `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
+- `Minimalbeispiel <link://slug/fenster-mit-aussicht>`_
+- `Buttons und Labels <link://slug/push-the-button>`_
+- `Fenster und Dialoge <link://slug/durchzug>`_
+- `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
+- `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
+- `Fortschrittsbalken und Levelbar <link://slug/bars>`_
+- `CSS <link://slug/css>`_
+- `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
+- `ListStore und TreeView <link://slug/uberlistet>`_
+- `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
+- `VTE-Terminal <link://slug/exterminate>`_
 
-- In Arbeit:
+- Geplant:
     - TreeStore
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
