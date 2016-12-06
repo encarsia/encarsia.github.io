@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481059529.4725544
+_modified_time = 1481059643.2567828
 _enable_loop = True
 _template_filename = '/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/listing.tmpl'
 _template_uri = 'listing.tmpl'
@@ -32,16 +32,16 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
-        code = _import_ns.get('code', context.get('code', UNDEFINED))
-        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
         source_link = _import_ns.get('source_link', context.get('source_link', UNDEFINED))
         title = _import_ns.get('title', context.get('title', UNDEFINED))
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
-        files = _import_ns.get('files', context.get('files', UNDEFINED))
         ui = _mako_get_namespace(context, 'ui')
+        def content():
+            return render_content(context._locals(__M_locals))
+        code = _import_ns.get('code', context.get('code', UNDEFINED))
+        files = _import_ns.get('files', context.get('files', UNDEFINED))
+        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -60,16 +60,16 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
-        code = _import_ns.get('code', context.get('code', UNDEFINED))
-        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        def content():
-            return render_content(context)
         source_link = _import_ns.get('source_link', context.get('source_link', UNDEFINED))
         title = _import_ns.get('title', context.get('title', UNDEFINED))
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
-        files = _import_ns.get('files', context.get('files', UNDEFINED))
         ui = _mako_get_namespace(context, 'ui')
+        def content():
+            return render_content(context)
+        code = _import_ns.get('code', context.get('code', UNDEFINED))
+        files = _import_ns.get('files', context.get('files', UNDEFINED))
+        crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer(str(ui.bar(crumbs)))
@@ -109,6 +109,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"74": 4, "75": 5, "76": 5, "77": 6, "78": 7, "79": 8, "80": 9, "81": 9, "82": 9, "83": 9, "84": 9, "85": 11, "86": 12, "87": 12, "88": 12, "89": 12, "90": 12, "91": 14, "92": 16, "29": 0, "94": 17, "95": 17, "96": 18, "97": 19, "98": 19, "99": 19, "100": 19, "101": 19, "102": 21, "93": 17, "104": 22, "103": 22, "110": 104, "46": 2, "47": 3, "52": 24, "23": 3, "58": 4}, "source_encoding": "utf-8", "uri": "listing.tmpl", "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/listing.tmpl"}
+{"line_map": {"74": 4, "75": 5, "76": 5, "77": 6, "78": 7, "79": 8, "80": 9, "81": 9, "82": 9, "83": 9, "84": 9, "85": 11, "86": 12, "87": 12, "88": 12, "89": 12, "90": 12, "91": 14, "92": 16, "29": 0, "94": 17, "95": 17, "96": 18, "97": 19, "98": 19, "99": 19, "100": 19, "101": 19, "102": 21, "93": 17, "104": 22, "103": 22, "110": 104, "46": 2, "47": 3, "52": 24, "23": 3, "58": 4}, "filename": "/usr/lib/python3.5/site-packages/nikola/data/themes/base/templates/listing.tmpl", "source_encoding": "utf-8", "uri": "listing.tmpl"}
 __M_END_METADATA
 """
