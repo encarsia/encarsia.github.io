@@ -52,6 +52,8 @@ Themen
 
 - Geplant:
     - TreeStore
+    - Notebook
+    - FileChooserDialog
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
     - Interaktion mit anderen Anwendungen mit und ohne Threading
