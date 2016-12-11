@@ -53,6 +53,7 @@ Themen
 - Geplant:
     - TreeStore
     - Notebook
+    - Dialoge
     - FileChooserDialog
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
