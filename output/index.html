@@ -24,6 +24,85 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/ansichtssache/">Ansichtssache</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-12-22T00:02:20+01:00">2016-12-22 00:02</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/ansichtssache/#disqus_thread" data-disqus-identifier="cache/posts/ansichtssache.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/ansichtssache/#treestore-vs-liststore" id="id5">TreeStore vs. ListStore</a></li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#glade" id="id6">Glade</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#treemodelsort" id="id7">TreeModelSort</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#treemodelfilter" id="id8">TreeModelFilter</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#formatierung-aus-dem-modell-laden" id="id9">Formatierung aus dem Modell laden</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#python" id="id10">Python</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#id1" id="id11">TreeModelSort</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#id2" id="id12">TreeModelFilter</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#listings" id="id13">Listings</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#id3" id="id14">Glade</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#id4" id="id15">Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Daten anzeigen mit TreeStore</strong></p>
+<p>(Fortsetzung zum <a class="reference external" href="posts/uberlistet">ListStore-Artikel</a>)</p>
+<a class="reference external image-reference" href="images/12_treestore.png"><img alt="/images/12_treestore.thumbnail.png" src="images/12_treestore.thumbnail.png" style="width: 480px;"></a>
+<div class="section" id="treestore-vs-liststore">
+<h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
+<p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
+<pre class="code python"><a name="rest_code_bd5d72b7cb9f424781f11454fdb7f7f1-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_bd5d72b7cb9f424781f11454fdb7f7f1-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_bd5d72b7cb9f424781f11454fdb7f7f1-3"></a>
+<a name="rest_code_bd5d72b7cb9f424781f11454fdb7f7f1-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_bd5d72b7cb9f424781f11454fdb7f7f1-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+</pre>
+<p>Der Wert der Variable <em>parent</em> ist entweder</p>
+<ul class="simple">
+<li>
+<strong>None</strong>, wenn die Zeile keine übergeordnete Zeile besitzt, oder</li>
+<li>
+<strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
+</ul>
+<p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
+<pre class="code python"><a name="rest_code_b8d37d9ceae84c25b3b9d979297d172f-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_b8d37d9ceae84c25b3b9d979297d172f-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+</pre>
+<p>Man erhält den TreeIter-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
+<p class="more"><a href="posts/ansichtssache/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/neues-projekt-knights-of-ni/">Neues Projekt: Knights of Ni</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -203,16 +282,16 @@
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
 <li>
-<a class="reference internal" href="posts/uberlistet/#glade" id="id1">Glade</a><ul>
-<li><a class="reference internal" href="posts/uberlistet/#liststore" id="id2">ListStore</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#widgets" id="id3">Widgets</a></li>
+<a class="reference internal" href="posts/uberlistet/#glade" id="id2">Glade</a><ul>
+<li><a class="reference internal" href="posts/uberlistet/#liststore" id="id3">ListStore</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#widgets" id="id4">Widgets</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="posts/uberlistet/#python" id="id4">Python</a><ul>
-<li><a class="reference internal" href="posts/uberlistet/#treestore" id="id5">TreeStore</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#combobox" id="id6">ComboBox</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#zellen-bearbeiten" id="id7">Zellen bearbeiten</a></li>
+<a class="reference internal" href="posts/uberlistet/#python" id="id5">Python</a><ul>
+<li><a class="reference internal" href="posts/uberlistet/#treestore" id="id6">TreeStore</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#combobox" id="id7">ComboBox</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#zellen-bearbeiten" id="id8">Zellen bearbeiten</a></li>
 </ul>
 </li>
 </ul>
@@ -227,7 +306,7 @@
 <li>
 <em>ListStore:</em> flache Liste, die Spalten können neben Text-, Zahlenwerten auch GTK+-Elemente (z.B. Buttons, Checkboxen) enthalten</li>
 <li>
-<em>TreeStore:</em> funktioniert prinzipiell wie ListStore, Zeilen können ihrerseits Kind-Einträge besitzen, Daten können im Gegensatz zu ListStore nicht in Glade angegeben werden (Eigenheiten von TreeStore erhalten einen separaten Artikel)</li>
+<em>TreeStore:</em> funktioniert prinzipiell wie ListStore, Zeilen können ihrerseits Kind-Einträge besitzen, Daten können im Gegensatz zu ListStore nicht in Glade angegeben werden (<a class="reference external" href="posts/ansichtssache">TreeStore-Artikel</a>)</li>
 </ul>
 </blockquote>
 </li>
@@ -250,10 +329,268 @@
 </div>
             </div>
         </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/qual-der-wahl/">Qual der Wahl</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-11-11T15:28:18+01:00">2016-11-11 15:28</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/qual-der-wahl/#disqus_thread" data-disqus-identifier="cache/posts/qual-der-wahl.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/qual-der-wahl/#glade" id="id3">Glade</a><ul>
+<li><a class="reference internal" href="posts/qual-der-wahl/#spinbutton" id="id4">Spinbutton</a></li>
+<li><a class="reference internal" href="posts/qual-der-wahl/#combobox" id="id5">Combobox</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/qual-der-wahl/#python" id="id6">Python</a><ul>
+<li><a class="reference internal" href="posts/qual-der-wahl/#id1" id="id7">Spinbutton</a></li>
+<li><a class="reference internal" href="posts/qual-der-wahl/#id2" id="id8">Combobox</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Spinbutton und Combobox</strong></p>
+<p>Die Widgets erleichtern die Eingabe bestimmer Werte, indem eine Listenauswahl oder ein Wertebereich und ggf. Standardwerte dazu vorgegeben werden. Die Eingabe ist normalerweise rein intuitiv über Mausklicks machbar, Tastatureingaben sind optional.</p>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/qual-der-wahl/#id3">Glade</a></h2>
+<a class="reference external image-reference" href="images/08_combospin.png"><img alt="/images/08_combospin.thumbnail.png" src="images/08_combospin.thumbnail.png"></a>
+<p class="more"><a href="posts/qual-der-wahl/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/css/">Alles so schön bunt hier</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-11-08T16:22:40+01:00">2016-11-08 16:22</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/css/#disqus_thread" data-disqus-identifier="cache/posts/alles-so-schon-bunt-hier.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/css/#css" id="id2">CSS</a></li>
+<li><a class="reference internal" href="posts/css/#glade" id="id3">Glade</a></li>
+<li>
+<a class="reference internal" href="posts/css/#python" id="id4">Python</a><ul>
+<li><a class="reference internal" href="posts/css/#id1" id="id5">CSS</a></li>
+<li><a class="reference internal" href="posts/css/#levelbar" id="id6">Levelbar</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Schöner klicken mit Cascading Stylesheets</strong></p>
+<div class="section" id="css">
+<h2><a class="toc-backref" href="posts/css/#id2">CSS</a></h2>
+<p>GTK+-Objekte lassen sich mit Hilfe von CSS im Layout verändern. Meiner unmaßgeblichen Ansicht nach sollte man es damit allerdings nicht übertreiben und das grundlegende Erscheinungsbild dem eingestellten Theme überlassen. Links:</p>
+<ul class="simple">
+<li>
+<a class="reference external" href="http://wolfvollprecht.de/blog/gtk-python-and-css-are-an-awesome-combo/">GTK, Python and CSS are an awesome combo</a> - Grundlagen mit Beispiel</li>
+<li>
+<a class="reference external" href="https://developer.gnome.org/gtk3/stable/chap-css-overview.html">Overview of CSS in GTK+</a> - ausführliche Übersicht mit vielen Beispielen</li>
+<li>
+<a class="reference external" href="https://blogs.gnome.org/mclasen/2015/11/20/a-gtk-update/">A GTK+ update</a> - Neuerungen seit GTK+ 3.20</li>
+</ul>
+</div>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/css/#id3">Glade</a></h2>
+<a class="reference external image-reference" href="images/07_css.png"><img alt="/images/07_css.thumbnail.png" src="images/07_css.thumbnail.png"></a>
+<p>Mit Glade werden nur die Fenster/Widgets angelegt, in diesem Beispiel vier Levelbars mit Werten, die CSS-Layout-Anweisungen erfolgen dann im Code.</p>
+<p class="more"><a href="posts/css/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/bars/">Bars</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-11-08T14:20:08+01:00">2016-11-08 14:20</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/bars/#disqus_thread" data-disqus-identifier="cache/posts/bars.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/bars/#glade" id="id4">Glade</a><ul>
+<li><a class="reference internal" href="posts/bars/#progressbar" id="id5">Progressbar</a></li>
+<li><a class="reference internal" href="posts/bars/#levelbar" id="id6">Levelbar</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/bars/#python" id="id7">Python</a><ul>
+<li><a class="reference internal" href="posts/bars/#id1" id="id8">Progressbar</a></li>
+<li><a class="reference internal" href="posts/bars/#id2" id="id9">Levelbar</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Progressbar und Levelbar</strong></p>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/bars/#id4">Glade</a></h2>
+<a class="reference external image-reference" href="images/06_progresslevel.png"><img alt="/images/06_progresslevel.thumbnail.png" src="images/06_progresslevel.thumbnail.png"></a>
+<div class="section" id="progressbar">
+<h3><a class="toc-backref" href="posts/bars/#id5">Progressbar</a></h3>
+<p>Fortschrittsbalken zeigen für gewöhnlich den Status eines länger dauernden Prozesses an. Es gibt dabei zwei Modi:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>verhältnismäßige Anzeige, der Fortschritt wird mit einem Wert zwischen 0 und 1 ausgedrückt</li>
+<li>Aktivitätsmodus, ein beweglicher Block läuft nach zugewiesener Schrittweite hin und her</li>
+</ol>
+</blockquote>
+<p>Zusätzlich hat das Widget eine optionale Textanzeige. Wird der Inhalt nicht spezifiziert, wird der Fortschritt in Prozent angezeigt.</p>
+</div>
+<div class="section" id="levelbar">
+<h3><a class="toc-backref" href="posts/bars/#id6">Levelbar</a></h3>
+<p>Levelbars werden normalerweise als Füllstandsanzeiger genutzt. Der Füllstand wird dabei wie beim Fortschrittsbalken angezeigt, weitere Widget-Eigenschaften sind:</p>
+<blockquote>
+<ol class="arabic">
+<li>
+<p class="first">Zwei Anzeigenmodi:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>
+<em>continuous</em>: ein einzelner Block repräsentiert den gegebenen Wert</li>
+<li>
+<em>discrete</em>: Levelbar wird in eine festgelegte Anzahl von Blöcken geteilt, ein Block steht für einen Wertebereich</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p class="first">Festlegen von Minimal-/Maximalwert möglich, Standardwert ist 0 bzw. 1; beim Anzeigenmodus <em>discrete</em> entspricht der Maximalwert der Anzahl der Blöcke</p>
+</li>
+<li>
+<p class="first">Farbliche Änderungen des Balkens bei Überschreiten bestimmter Werte (siehe <a class="reference external" href="posts/css">CSS-Artikel</a>)</p>
+</li>
+</ol>
+</blockquote>
+<p class="more"><a href="posts/bars/">Weiterlesen…</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/drei-gange-menu/">Drei-Gänge-Menü</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-11-07T22:10:09+01:00">2016-11-07 22:10</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/drei-gange-menu/#disqus_thread" data-disqus-identifier="cache/posts/drei-gange-menu.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/drei-gange-menu/#glade" id="id1">Glade</a><ul>
+<li><a class="reference internal" href="posts/drei-gange-menu/#menu" id="id2">Menü</a></li>
+<li><a class="reference internal" href="posts/drei-gange-menu/#toolbar" id="id3">Toolbar</a></li>
+<li><a class="reference internal" href="posts/drei-gange-menu/#statusbar" id="id4">Statusbar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/drei-gange-menu/#python" id="id5">Python</a></li>
+</ul>
+</div>
+<p><strong>Menüs, Toolbars und Statusbar</strong></p>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/drei-gange-menu/#id1">Glade</a></h2>
+<a class="reference external image-reference" href="images/05_menutoolbar.png"><img alt="/images/05_menutoolbar.thumbnail.png" src="images/05_menutoolbar.thumbnail.png"></a>
+<div class="section" id="menu">
+<h3><a class="toc-backref" href="posts/drei-gange-menu/#id2">Menü</a></h3>
+<p>Das Menü-Element findet man unter den Containerelementen, es benötigt aber selbst eine leere Box. Es wird zunächst ein Standard-Menü angelegt, das sich bequem über "Edit..." in einem separaten Fenster bearbeiten lässt. Sehr simpel erfolgt das Anlegen von Shortcuts im "Edit..."-Fenster unter "Hierarchie &gt; Eigenschaften &gt; Tastenkürzel". Dort weist man der Tastenkombination ein Signal zu (im Falle von Menüeinträgen <em>activate</em>). Die Information erscheint im Menü automatisch, aber nicht in der Glade-Vorschau. Examplarisch wurden Shortcuts zum Beenden (Strg+Q) und zum Einblenden des About-Dialogs (Strg+I) angelegt.</p>
+</div>
+<div class="section" id="toolbar">
+<h3><a class="toc-backref" href="posts/drei-gange-menu/#id3">Toolbar</a></h3>
+<p>Toolbars können verschiedene Widgets wie Buttons, Togglebuttons, Radiobuttons oder (Unter-)Menüs enthalten. Die Erstellung und Bearbeitung erfolgt analog zum Menü über "Edit...".</p>
+</div>
+<div class="section" id="statusbar">
+<h3><a class="toc-backref" href="posts/drei-gange-menu/#id4">Statusbar</a></h3>
+<p>In der Statusbar können kurze Meldungen/Nachrichten eingeblendet werden. Die Meldungen werden analog zu einer Liste behandelt, das Widget bietet die Funktionen <tt class="docutils literal">push</tt> und <tt class="docutils literal">pop</tt>.</p>
+<p class="more"><a href="posts/drei-gange-menu/">Weiterlesen…</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
     
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-2.html" rel="next">Ältere Einträge</a>
+                <a href="index-1.html" rel="next">Ältere Einträge</a>
             </li>
         </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2016 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
 Powered by <a href="http://getnikola.com">Nikola</a> - 

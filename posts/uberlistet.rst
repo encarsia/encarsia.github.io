@@ -18,7 +18,7 @@ Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötig
 1. Im Modell werden die Daten verwaltet, es gibt zwei Typen:
     
     * *ListStore:* flache Liste, die Spalten können neben Text-, Zahlenwerten auch GTK+-Elemente (z.B. Buttons, Checkboxen) enthalten
-    * *TreeStore:* funktioniert prinzipiell wie ListStore, Zeilen können ihrerseits Kind-Einträge besitzen, Daten können im Gegensatz zu ListStore nicht in Glade angegeben werden (Eigenheiten von TreeStore erhalten einen separaten Artikel)
+    * *TreeStore:* funktioniert prinzipiell wie ListStore, Zeilen können ihrerseits Kind-Einträge besitzen, Daten können im Gegensatz zu ListStore nicht in Glade angegeben werden (`TreeStore-Artikel <link://slug/ansichtssache>`_)
 
 2. Widgets:
 
@@ -40,7 +40,7 @@ Um die Vielseitigkeit von ListStore zu skizzieren, wird im Beispiel ein *GtkList
 
 Zunächst werden ein paar Spalten erstellt. ListStore-Daten lassen sich direkt in Glade eingeben. Dies ist allerdings nur für wenige Zeilen und Spalten praktikabel und übersichtlich. Selbst wenige Daten würde ich immer direkt im Python-Code einlesen.
 
-Wie man sieht, werden Änderungen im ListStore (Sortierung, Inhalt) sofort in allen Widgets aktualisiert, die auf dieses Objekt zugreifen.
+Wie man sieht, werden Änderungen im ListStore (Sortierung, Inhalt) sofort in allen Widgets aktualisiert, die auf dieses Objekt zugreifen. Für verschiedene Sortierungen des selben List-/TreeStores muss man *GtkTreeModelSort* anwenden (Beispiel siehe `TreeStore-Artikel <link://slug/ansichtssache>`_)
 
 .. thumbnail:: /images/09_treestore1.png
 
@@ -68,12 +68,12 @@ Python
 TreeStore
 *********
 
-Die in TreeStore vorhandenen Zeilen lassen sich einfach über `for row in store` abrufen. Neue Zeilen lassen sich mit `append` hinzufügen, andere Optionen wären `insert` oder `remove`, um Zeilen an bestimmten Positionen einzufügen oder zu entfernen.
+Die in TreeStore vorhandenen Zeilen lassen sich einfach über ``for row in store`` abrufen. Neue Zeilen lassen sich mit ``append`` hinzufügen, andere Optionen wären ``insert`` oder ``remove``, um Zeilen an bestimmten Positionen einzufügen oder zu entfernen.
 
 ComboBox
 ********
 
-Normalerweise (Ausnahme folgt) benötigt man für den Zugang zu einer Datenzeile einen *TreeIter*, das Objekt, das auf den Pfad im Modell zeigt.
+Normalerweise benötigt man für den Zugang zu einer Datenzeile einen *TreeIter*, das Objekt, das auf den Pfad im Modell zeigt (alternativ kann man diese auch über *TreePath* ansprechen).
 
 .. code-block:: python
 
@@ -84,7 +84,7 @@ Normalerweise (Ausnahme folgt) benötigt man für den Zugang zu einer Datenzeile
 Zellen bearbeiten
 *****************
 
-Das *edited*-Signal übergibt als Parameter die bearbeitete Zeile und den neuen Zelleninhalt. Dieser muss allerdings explizit als neuer Zelleninhalt übergeben werden, sonst zeigt die Zelle nach der Bearbeitung wieder den alten Inhalt an. Dafür kann man einfach die vom Widget übergebene Position statt des TreeIters verwenden.
+Das *edited*-Signal übergibt als Parameter die bearbeitete Zeile und den neuen Zelleninhalt. Dieser muss allerdings explizit als neuer Zelleninhalt übergeben werden, sonst zeigt die Zelle nach der Bearbeitung wieder den alten Inhalt an. Dafür kann man einfach die vom Widget übergebene Position (TreePath) statt des TreeIters verwenden.
 
 .. code-block:: python
 
