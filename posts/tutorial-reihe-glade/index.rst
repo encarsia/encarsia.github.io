@@ -47,11 +47,11 @@ Themen
 - `CSS <link://slug/css>`_
 - `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
 - `ListStore und TreeView <link://slug/uberlistet>`_
+- `TreeStore mit Sortierung und Filterung <link://slug/ansichtssache>`_
 - `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
 - `VTE-Terminal <link://slug/exterminate>`_
 
 - Geplant:
-    - TreeStore
     - Notebook
     - Dialoge
     - FileChooserDialog
