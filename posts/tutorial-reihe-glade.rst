@@ -50,10 +50,10 @@ Themen
 - `TreeStore mit Sortierung und Filterung <link://slug/ansichtssache>`_
 - `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
 - `VTE-Terminal <link://slug/exterminate>`_
+- `Dialoge <link://slug/dialoge>`_
 
 - Geplant:
     - Notebook
-    - Dialoge
     - FileChooserDialog
     - Medien und GStreamer
     - Textfelder mit GtkTextView und GtkSourceView
