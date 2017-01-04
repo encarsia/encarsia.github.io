@@ -1,7 +1,7 @@
 .. title: Exterminate!
 .. slug: exterminate
 .. date: 2016-11-30 15:48:06 UTC+01:00
-.. tags: python,glade
+.. tags: glade,python
 .. category: tutorial
 .. link: 
 .. description: 
