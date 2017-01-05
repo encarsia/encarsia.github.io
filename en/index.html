@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width">
 <title>Merge and Destroy | Merge and Destroy</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/en/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
 </head>
@@ -196,11 +196,11 @@
 <div class="section" id="treestore-vs-liststore">
 <h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
 <p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
-<pre class="code python"><a name="rest_code_1262c241744c4d448128c0328a255beb-1"></a><span class="c1">#append row to liststore</span>
-<a name="rest_code_1262c241744c4d448128c0328a255beb-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_1262c241744c4d448128c0328a255beb-3"></a>
-<a name="rest_code_1262c241744c4d448128c0328a255beb-4"></a><span class="c1">#append row to treestore</span>
-<a name="rest_code_1262c241744c4d448128c0328a255beb-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_5ad8dee7b8b1482c9160ab01fa959a18-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_5ad8dee7b8b1482c9160ab01fa959a18-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_5ad8dee7b8b1482c9160ab01fa959a18-3"></a>
+<a name="rest_code_5ad8dee7b8b1482c9160ab01fa959a18-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_5ad8dee7b8b1482c9160ab01fa959a18-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Der Wert der Variable <em>parent</em> ist entweder</p>
 <ul class="simple">
@@ -210,8 +210,8 @@
 <strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
 </ul>
 <p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
-<pre class="code python"><a name="rest_code_f01b2dd084aa47179faed2e96b7f1a9c-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_f01b2dd084aa47179faed2e96b7f1a9c-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_d499a8222b6a4084a2fbd8a5b31116fa-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_d499a8222b6a4084a2fbd8a5b31116fa-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Man erhält den TreeIter-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
 <p class="more"><a href="posts/ansichtssache/">Read more…</a></p>

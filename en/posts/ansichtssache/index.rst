@@ -105,6 +105,7 @@ Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von 
 Die Funktion wird zunächst nach dem Schema
 
 .. code-block:: python
+
     treefilter.set_visible_func(filter_func)
 
 zugewiesen, jede Filterung wird dann per ``refilter()`` ausgelöst, also wenn das Button-Signal ausgelöst wird:
