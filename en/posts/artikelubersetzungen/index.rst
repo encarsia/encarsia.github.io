@@ -1,8 +1,8 @@
 .. title: Translating articles
 .. slug: artikelubersetzungen
 .. date: 2017-01-04 21:54:21 UTC+01:00
-.. tags: 
-.. category: 
+.. tags: nikola
+.. category: tutorial
 .. link: 
 .. description: 
 .. type: micro

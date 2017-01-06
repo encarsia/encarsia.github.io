@@ -53,6 +53,7 @@ Themen
 - `Dialoge <link://slug/dialoge>`_
 
 - Geplant:
+    - Headerbar
     - Notebook
     - FileChooserDialog
     - Medien und GStreamer
