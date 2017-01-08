@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1483727857.5352192
+_modified_time = 1483913224.0226073
 _enable_loop = True
 _template_filename = 'themes/zen/templates/index.tmpl'
 _template_uri = 'index.tmpl'
@@ -39,13 +39,13 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
         def content():
             return render_content(context._locals(__M_locals))
+        comments = _mako_get_namespace(context, 'comments')
+        helper = _mako_get_namespace(context, 'helper')
         arusahni = _mako_get_namespace(context, 'arusahni')
+        index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -67,13 +67,13 @@ def render_content(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
         def content():
             return render_content(context)
+        comments = _mako_get_namespace(context, 'comments')
+        helper = _mako_get_namespace(context, 'helper')
         arusahni = _mako_get_namespace(context, 'arusahni')
+        index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         for post in posts:
@@ -116,6 +116,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "index.tmpl", "line_map": {"23": 3, "26": 2, "29": 4, "35": 0, "50": 2, "51": 3, "52": 4, "53": 5, "58": 34, "64": 7, "78": 7, "79": 8, "80": 9, "81": 10, "82": 10, "83": 10, "84": 10, "85": 13, "86": 13, "87": 13, "88": 13, "89": 16, "90": 17, "91": 17, "92": 17, "93": 19, "94": 20, "95": 20, "96": 23, "97": 24, "98": 24, "99": 24, "100": 25, "101": 26, "102": 26, "103": 26, "104": 28, "105": 31, "106": 31, "107": 31, "108": 32, "109": 32, "110": 33, "111": 33, "117": 111}, "filename": "themes/zen/templates/index.tmpl"}
+{"source_encoding": "utf-8", "filename": "themes/zen/templates/index.tmpl", "uri": "index.tmpl", "line_map": {"23": 3, "26": 2, "29": 4, "35": 0, "50": 2, "51": 3, "52": 4, "53": 5, "58": 34, "64": 7, "78": 7, "79": 8, "80": 9, "81": 10, "82": 10, "83": 10, "84": 10, "85": 13, "86": 13, "87": 13, "88": 13, "89": 16, "90": 17, "91": 17, "92": 17, "93": 19, "94": 20, "95": 20, "96": 23, "97": 24, "98": 24, "99": 24, "100": 25, "101": 26, "102": 26, "103": 26, "104": 28, "105": 31, "106": 31, "107": 31, "108": 32, "109": 32, "110": 33, "111": 33, "117": 111}}
 __M_END_METADATA
 """
