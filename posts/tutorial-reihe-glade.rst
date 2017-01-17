@@ -51,9 +51,10 @@ Themen
 - `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
 - `VTE-Terminal <link://slug/exterminate>`_
 - `Dialoge <link://slug/dialoge>`_
+- `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
+- `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
 
 - Geplant:
-    - Headerbar
     - Notebook
     - FileChooserDialog
     - Medien und GStreamer
