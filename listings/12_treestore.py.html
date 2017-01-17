@@ -5,7 +5,10 @@
 <meta name="description" content="12_treestore.py">
 <meta name="viewport" content="width=device-width">
 <title>12_treestore.py | Merge and Destroy</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bitter.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../en/rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/listings/12_treestore.py.html">
@@ -111,87 +114,93 @@
 <a href="#listings12_treestorepy-77">77</a>
 <a href="#listings12_treestorepy-78">78</a>
 <a href="#listings12_treestorepy-79">79</a>
-<a href="#listings12_treestorepy-80">80</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listings12_treestorepy-1"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings12_treestorepy-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="listings12_treestorepy-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
-<a name="listings12_treestorepy-4"></a>
-<a name="listings12_treestorepy-5"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings12_treestorepy-6"></a>
-<a name="listings12_treestorepy-7"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings12_treestorepy-8"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a href="#listings12_treestorepy-80">80</a>
+<a href="#listings12_treestorepy-81">81</a>
+<a href="#listings12_treestorepy-82">82</a>
+<a href="#listings12_treestorepy-83">83</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listings12_treestorepy-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="listings12_treestorepy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="listings12_treestorepy-3"></a>
+<a name="listings12_treestorepy-4"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="listings12_treestorepy-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="listings12_treestorepy-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="listings12_treestorepy-7"></a>
+<a name="listings12_treestorepy-8"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
 <a name="listings12_treestorepy-9"></a>
-<a name="listings12_treestorepy-10"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings12_treestorepy-11"></a>        <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
-<a name="listings12_treestorepy-12"></a>        <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
-<a name="listings12_treestorepy-13"></a>
-<a name="listings12_treestorepy-14"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_note_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="listings12_treestorepy-15"></a>        <span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"selection"</span><span class="p">)</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
-<a name="listings12_treestorepy-16"></a>        <span class="n">conv_iter</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treesort"</span><span class="p">)</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-<a name="listings12_treestorepy-17"></a>        <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">conv_iter</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">edit</span><span class="p">)</span>
-<a name="listings12_treestorepy-18"></a>
-<a name="listings12_treestorepy-19"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings12_treestorepy-20"></a>    
-<a name="listings12_treestorepy-21"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings12_treestorepy-22"></a>        
-<a name="listings12_treestorepy-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings12_treestorepy-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"12_treestore.glade"</span><span class="p">)</span>
-<a name="listings12_treestorepy-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings12_treestorepy-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
-<a name="listings12_treestorepy-27"></a>
-<a name="listings12_treestorepy-28"></a>        <span class="c1">#read data from text file</span>
-<a name="listings12_treestorepy-29"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"12_capsicum.txt"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a name="listings12_treestorepy-30"></a>            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
-<a name="listings12_treestorepy-31"></a>
-<a name="listings12_treestorepy-32"></a>        <span class="n">colors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<a name="listings12_treestorepy-33"></a>        <span class="n">species</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<a name="listings12_treestorepy-34"></a>        <span class="n">varieties</span> <span class="o">=</span> <span class="p">[]</span>
-<a name="listings12_treestorepy-35"></a>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-<a name="listings12_treestorepy-36"></a>            <span class="n">variety</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">)</span>
-<a name="listings12_treestorepy-37"></a>            <span class="n">colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">variety</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<a name="listings12_treestorepy-38"></a>            <span class="n">species</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">variety</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<a name="listings12_treestorepy-39"></a>            <span class="k">try</span><span class="p">:</span>
-<a name="listings12_treestorepy-40"></a>                <span class="n">variety</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<a name="listings12_treestorepy-41"></a>            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-<a name="listings12_treestorepy-42"></a>                <span class="n">variety</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
-<a name="listings12_treestorepy-43"></a>            <span class="n">varieties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variety</span><span class="p">)</span>
-<a name="listings12_treestorepy-44"></a>
-<a name="listings12_treestorepy-45"></a>        <span class="c1">#append lines to 1st treestore</span>
-<a name="listings12_treestorepy-46"></a>        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">species</span><span class="p">:</span>
-<a name="listings12_treestorepy-47"></a>            <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="listings12_treestorepy-48"></a>            <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
-<a name="listings12_treestorepy-49"></a>            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varieties</span><span class="p">:</span>
-<a name="listings12_treestorepy-50"></a>                <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
-<a name="listings12_treestorepy-51"></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">,[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="mi">400</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
-<a name="listings12_treestorepy-52"></a>                    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-<a name="listings12_treestorepy-53"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> (</span><span class="si">%d</span><span class="s2">)"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">counter</span><span class="p">))</span>
-<a name="listings12_treestorepy-54"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">counter</span><span class="p">)</span>
-<a name="listings12_treestorepy-55"></a>
-<a name="listings12_treestorepy-56"></a>        <span class="c1">#append lines to 2nd treestore</span>
-<a name="listings12_treestorepy-57"></a>        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filterstore"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varieties</span><span class="p">]</span>
-<a name="listings12_treestorepy-58"></a>        
-<a name="listings12_treestorepy-59"></a>        <span class="c1">#create buttons in buttonbox</span>
-<a name="listings12_treestorepy-60"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
-<a name="listings12_treestorepy-61"></a>            <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_label</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<a name="listings12_treestorepy-62"></a>            <span class="n">button</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"clicked"</span><span class="p">,</span><span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_button_clicked</span><span class="p">)</span>
-<a name="listings12_treestorepy-63"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"buttonbox"</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
-<a name="listings12_treestorepy-64"></a>
-<a name="listings12_treestorepy-65"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"view"</span><span class="p">)</span><span class="o">.</span><span class="n">expand_all</span><span class="p">()</span>
-<a name="listings12_treestorepy-66"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treesort"</span><span class="p">)</span><span class="o">.</span><span class="n">set_sort_column_id</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">SortType</span><span class="o">.</span><span class="n">DESCENDING</span><span class="p">)</span>
-<a name="listings12_treestorepy-67"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color_filter_func</span><span class="p">)</span>
-<a name="listings12_treestorepy-68"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings12_treestorepy-69"></a>
-<a name="listings12_treestorepy-70"></a>    <span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<a name="listings12_treestorepy-71"></a>        <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-<a name="listings12_treestorepy-72"></a>            <span class="k">return</span> <span class="bp">True</span>
-<a name="listings12_treestorepy-73"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="listings12_treestorepy-74"></a>            <span class="k">return</span> <span class="bp">False</span>
-<a name="listings12_treestorepy-75"></a>
-<a name="listings12_treestorepy-76"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings12_treestorepy-77"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings12_treestorepy-10"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="listings12_treestorepy-11"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="listings12_treestorepy-12"></a>
+<a name="listings12_treestorepy-13"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings12_treestorepy-14"></a>        <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
+<a name="listings12_treestorepy-15"></a>        <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
+<a name="listings12_treestorepy-16"></a>
+<a name="listings12_treestorepy-17"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_note_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
+<a name="listings12_treestorepy-18"></a>        <span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"selection"</span><span class="p">)</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<a name="listings12_treestorepy-19"></a>        <span class="n">conv_iter</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treesort"</span><span class="p">)</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<a name="listings12_treestorepy-20"></a>        <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">conv_iter</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">edit</span><span class="p">)</span>
+<a name="listings12_treestorepy-21"></a>
+<a name="listings12_treestorepy-22"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="listings12_treestorepy-23"></a>    
+<a name="listings12_treestorepy-24"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings12_treestorepy-25"></a>        
+<a name="listings12_treestorepy-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings12_treestorepy-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"12_treestore.glade"</span><span class="p">)</span>
+<a name="listings12_treestorepy-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings12_treestorepy-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
+<a name="listings12_treestorepy-30"></a>
+<a name="listings12_treestorepy-31"></a>        <span class="c1">#read data from text file</span>
+<a name="listings12_treestorepy-32"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"12_capsicum.txt"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="listings12_treestorepy-33"></a>            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<a name="listings12_treestorepy-34"></a>
+<a name="listings12_treestorepy-35"></a>        <span class="n">colors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a name="listings12_treestorepy-36"></a>        <span class="n">species</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a name="listings12_treestorepy-37"></a>        <span class="n">varieties</span> <span class="o">=</span> <span class="p">[]</span>
+<a name="listings12_treestorepy-38"></a>        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<a name="listings12_treestorepy-39"></a>            <span class="n">variety</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">)</span>
+<a name="listings12_treestorepy-40"></a>            <span class="n">colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">variety</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<a name="listings12_treestorepy-41"></a>            <span class="n">species</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">variety</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a name="listings12_treestorepy-42"></a>            <span class="k">try</span><span class="p">:</span>
+<a name="listings12_treestorepy-43"></a>                <span class="n">variety</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<a name="listings12_treestorepy-44"></a>            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+<a name="listings12_treestorepy-45"></a>                <span class="n">variety</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<a name="listings12_treestorepy-46"></a>            <span class="n">varieties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variety</span><span class="p">)</span>
+<a name="listings12_treestorepy-47"></a>
+<a name="listings12_treestorepy-48"></a>        <span class="c1">#append lines to 1st treestore</span>
+<a name="listings12_treestorepy-49"></a>        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">species</span><span class="p">:</span>
+<a name="listings12_treestorepy-50"></a>            <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="listings12_treestorepy-51"></a>            <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
+<a name="listings12_treestorepy-52"></a>            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varieties</span><span class="p">:</span>
+<a name="listings12_treestorepy-53"></a>                <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
+<a name="listings12_treestorepy-54"></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">,[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="mi">400</span><span class="p">,</span><span class="bp">None</span><span class="p">])</span>
+<a name="listings12_treestorepy-55"></a>                    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<a name="listings12_treestorepy-56"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> (</span><span class="si">%d</span><span class="s2">)"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">counter</span><span class="p">))</span>
+<a name="listings12_treestorepy-57"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"store"</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">counter</span><span class="p">)</span>
+<a name="listings12_treestorepy-58"></a>
+<a name="listings12_treestorepy-59"></a>        <span class="c1">#append lines to 2nd treestore</span>
+<a name="listings12_treestorepy-60"></a>        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filterstore"</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varieties</span><span class="p">]</span>
+<a name="listings12_treestorepy-61"></a>        
+<a name="listings12_treestorepy-62"></a>        <span class="c1">#create buttons in buttonbox</span>
+<a name="listings12_treestorepy-63"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+<a name="listings12_treestorepy-64"></a>            <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_label</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<a name="listings12_treestorepy-65"></a>            <span class="n">button</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"clicked"</span><span class="p">,</span><span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_button_clicked</span><span class="p">)</span>
+<a name="listings12_treestorepy-66"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"buttonbox"</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<a name="listings12_treestorepy-67"></a>
+<a name="listings12_treestorepy-68"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"view"</span><span class="p">)</span><span class="o">.</span><span class="n">expand_all</span><span class="p">()</span>
+<a name="listings12_treestorepy-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treesort"</span><span class="p">)</span><span class="o">.</span><span class="n">set_sort_column_id</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">SortType</span><span class="o">.</span><span class="n">DESCENDING</span><span class="p">)</span>
+<a name="listings12_treestorepy-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color_filter_func</span><span class="p">)</span>
+<a name="listings12_treestorepy-71"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings12_treestorepy-72"></a>
+<a name="listings12_treestorepy-73"></a>    <span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+<a name="listings12_treestorepy-74"></a>        <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+<a name="listings12_treestorepy-75"></a>            <span class="k">return</span> <span class="bp">True</span>
+<a name="listings12_treestorepy-76"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="listings12_treestorepy-77"></a>            <span class="k">return</span> <span class="bp">False</span>
 <a name="listings12_treestorepy-78"></a>
-<a name="listings12_treestorepy-79"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings12_treestorepy-80"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings12_treestorepy-79"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings12_treestorepy-80"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings12_treestorepy-81"></a>
+<a name="listings12_treestorepy-82"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="listings12_treestorepy-83"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2017 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
@@ -200,7 +209,7 @@ Zen theme based in <a href="https://github.com/arusahni/website-template">Arusah
             
         </footer>
 </div>
-    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+    </section><script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="../assets/js/jquery.timeago.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

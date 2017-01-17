@@ -5,7 +5,10 @@
 <meta name="description" content="04_clickableelements.py">
 <meta name="viewport" content="width=device-width">
 <title>04_clickableelements.py | Merge and Destroy</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bitter.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../en/rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/listings/04_clickableelements.py.html">
@@ -81,57 +84,63 @@
 <a href="#listings04_clickableelementspy-47">47</a>
 <a href="#listings04_clickableelementspy-48">48</a>
 <a href="#listings04_clickableelementspy-49">49</a>
-<a href="#listings04_clickableelementspy-50">50</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listings04_clickableelementspy-1"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings04_clickableelementspy-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
-<a name="listings04_clickableelementspy-4"></a>
-<a name="listings04_clickableelementspy-5"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings04_clickableelementspy-6"></a>
-<a name="listings04_clickableelementspy-7"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-8"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a href="#listings04_clickableelementspy-50">50</a>
+<a href="#listings04_clickableelementspy-51">51</a>
+<a href="#listings04_clickableelementspy-52">52</a>
+<a href="#listings04_clickableelementspy-53">53</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listings04_clickableelementspy-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="listings04_clickableelementspy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="listings04_clickableelementspy-3"></a>
+<a name="listings04_clickableelementspy-4"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="listings04_clickableelementspy-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="listings04_clickableelementspy-7"></a>
+<a name="listings04_clickableelementspy-8"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
 <a name="listings04_clickableelementspy-9"></a>
-<a name="listings04_clickableelementspy-10"></a>    <span class="k">def</span> <span class="nf">on_switch_state_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-11"></a>        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-<a name="listings04_clickableelementspy-12"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"switch is on"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-13"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="listings04_clickableelementspy-14"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"switch is off"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-15"></a>
-<a name="listings04_clickableelementspy-16"></a>    <span class="k">def</span> <span class="nf">on_cbutton_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-17"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
-<a name="listings04_clickableelementspy-18"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"checkbox checked"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-19"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="listings04_clickableelementspy-20"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"checkbox unchecked"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-21"></a>
-<a name="listings04_clickableelementspy-22"></a>    <span class="k">def</span> <span class="nf">on_rbutton1_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-23"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
-<a name="listings04_clickableelementspy-24"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 1"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-25"></a>
-<a name="listings04_clickableelementspy-26"></a>    <span class="k">def</span> <span class="nf">on_rbutton2_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-27"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
-<a name="listings04_clickableelementspy-28"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 2"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-29"></a>
-<a name="listings04_clickableelementspy-30"></a>    <span class="k">def</span> <span class="nf">on_rbutton3_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-31"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
-<a name="listings04_clickableelementspy-32"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 3"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-33"></a>
-<a name="listings04_clickableelementspy-34"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings04_clickableelementspy-35"></a>    
-<a name="listings04_clickableelementspy-36"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-37"></a>        
-<a name="listings04_clickableelementspy-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span> <span class="o">=</span> <span class="s2">"04_clickableelements.glade"</span>
-<a name="listings04_clickableelementspy-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings04_clickableelementspy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings04_clickableelementspy-42"></a>
-<a name="listings04_clickableelementspy-43"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="listings04_clickableelementspy-44"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-10"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-11"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-12"></a>
+<a name="listings04_clickableelementspy-13"></a>    <span class="k">def</span> <span class="nf">on_switch_state_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-14"></a>        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+<a name="listings04_clickableelementspy-15"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"switch is on"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-16"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="listings04_clickableelementspy-17"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"switch is off"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-18"></a>
+<a name="listings04_clickableelementspy-19"></a>    <span class="k">def</span> <span class="nf">on_cbutton_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-20"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="listings04_clickableelementspy-21"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"checkbox checked"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-22"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="listings04_clickableelementspy-23"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"checkbox unchecked"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-24"></a>
+<a name="listings04_clickableelementspy-25"></a>    <span class="k">def</span> <span class="nf">on_rbutton1_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-26"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="listings04_clickableelementspy-27"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 1"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-28"></a>
+<a name="listings04_clickableelementspy-29"></a>    <span class="k">def</span> <span class="nf">on_rbutton2_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-30"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="listings04_clickableelementspy-31"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 2"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-32"></a>
+<a name="listings04_clickableelementspy-33"></a>    <span class="k">def</span> <span class="nf">on_rbutton3_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-34"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="listings04_clickableelementspy-35"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"radiobutton selection changed to 3"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-36"></a>
+<a name="listings04_clickableelementspy-37"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="listings04_clickableelementspy-38"></a>    
+<a name="listings04_clickableelementspy-39"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-40"></a>        
+<a name="listings04_clickableelementspy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span> <span class="o">=</span> <span class="s2">"04_clickableelements.glade"</span>
+<a name="listings04_clickableelementspy-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-43"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
 <a name="listings04_clickableelementspy-45"></a>
-<a name="listings04_clickableelementspy-46"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings04_clickableelementspy-47"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-46"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="listings04_clickableelementspy-47"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
 <a name="listings04_clickableelementspy-48"></a>
-<a name="listings04_clickableelementspy-49"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings04_clickableelementspy-50"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-49"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings04_clickableelementspy-50"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-51"></a>
+<a name="listings04_clickableelementspy-52"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="listings04_clickableelementspy-53"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2017 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
@@ -140,7 +149,7 @@ Zen theme based in <a href="https://github.com/arusahni/website-template">Arusah
             
         </footer>
 </div>
-    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+    </section><script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="../assets/js/jquery.timeago.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

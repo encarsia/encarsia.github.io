@@ -5,7 +5,10 @@
 <meta name="description" content="07_css.py">
 <meta name="viewport" content="width=device-width">
 <title>07_css.py | Merge and Destroy</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bitter.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../en/rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/listings/07_css.py.html">
@@ -92,68 +95,74 @@
 <a href="#listings07_csspy-58">58</a>
 <a href="#listings07_csspy-59">59</a>
 <a href="#listings07_csspy-60">60</a>
-<a href="#listings07_csspy-61">61</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listings07_csspy-1"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings07_csspy-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="listings07_csspy-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span><span class="n">Gdk</span>
-<a name="listings07_csspy-4"></a>
-<a name="listings07_csspy-5"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings07_csspy-6"></a>
-<a name="listings07_csspy-7"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings07_csspy-8"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a href="#listings07_csspy-61">61</a>
+<a href="#listings07_csspy-62">62</a>
+<a href="#listings07_csspy-63">63</a>
+<a href="#listings07_csspy-64">64</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listings07_csspy-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="listings07_csspy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="listings07_csspy-3"></a>
+<a name="listings07_csspy-4"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="listings07_csspy-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="listings07_csspy-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span><span class="n">Gdk</span>
+<a name="listings07_csspy-7"></a>
+<a name="listings07_csspy-8"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
 <a name="listings07_csspy-9"></a>
-<a name="listings07_csspy-10"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings07_csspy-11"></a>    
-<a name="listings07_csspy-12"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings07_csspy-13"></a>        
-<a name="listings07_csspy-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings07_csspy-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"07_css.glade"</span><span class="p">)</span>
-<a name="listings07_csspy-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings07_csspy-17"></a>
-<a name="listings07_csspy-18"></a>        <span class="n">css</span> <span class="o">=</span> <span class="n">b</span><span class="s2">"""</span>
-<a name="listings07_csspy-19"></a>
-<a name="listings07_csspy-20"></a><span class="s2">levelbar trough block.filled.low {</span>
-<a name="listings07_csspy-21"></a><span class="s2">    background-color: green;</span>
-<a name="listings07_csspy-22"></a><span class="s2">}</span>
-<a name="listings07_csspy-23"></a>
-<a name="listings07_csspy-24"></a><span class="s2">levelbar trough block.filled.high {</span>
-<a name="listings07_csspy-25"></a><span class="s2">    background-color: yellow;</span>
-<a name="listings07_csspy-26"></a><span class="s2">}</span>
-<a name="listings07_csspy-27"></a><span class="s2">   </span>
-<a name="listings07_csspy-28"></a><span class="s2">levelbar trough block.filled.alert {</span>
-<a name="listings07_csspy-29"></a><span class="s2">    background-color: orange;</span>
-<a name="listings07_csspy-30"></a><span class="s2">}</span>
-<a name="listings07_csspy-31"></a>
-<a name="listings07_csspy-32"></a><span class="s2">levelbar trough block.filled.full {</span>
-<a name="listings07_csspy-33"></a><span class="s2">    background-color: red;</span>
-<a name="listings07_csspy-34"></a><span class="s2">}</span>
-<a name="listings07_csspy-35"></a><span class="s2">"""</span>
-<a name="listings07_csspy-36"></a>        <span class="c1">#load css stylesheet</span>
-<a name="listings07_csspy-37"></a>        <span class="n">style_provider</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">CssProvider</span><span class="p">()</span>
-<a name="listings07_csspy-38"></a>        <span class="n">style_provider</span><span class="o">.</span><span class="n">load_from_data</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
-<a name="listings07_csspy-39"></a>        
-<a name="listings07_csspy-40"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">StyleContext</span><span class="o">.</span><span class="n">add_provider_for_screen</span><span class="p">(</span>
-<a name="listings07_csspy-41"></a>            <span class="n">Gdk</span><span class="o">.</span><span class="n">Screen</span><span class="o">.</span><span class="n">get_default</span><span class="p">(),</span>
-<a name="listings07_csspy-42"></a>            <span class="n">style_provider</span><span class="p">,</span>
-<a name="listings07_csspy-43"></a>            <span class="n">Gtk</span><span class="o">.</span><span class="n">STYLE_PROVIDER_PRIORITY_APPLICATION</span>
-<a name="listings07_csspy-44"></a>        <span class="p">)</span>
-<a name="listings07_csspy-45"></a>
-<a name="listings07_csspy-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"lev4"</span><span class="p">)</span>
-<a name="listings07_csspy-47"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">add_offset_value</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">)</span>
+<a name="listings07_csspy-10"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="listings07_csspy-11"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="listings07_csspy-12"></a>
+<a name="listings07_csspy-13"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="listings07_csspy-14"></a>    
+<a name="listings07_csspy-15"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings07_csspy-16"></a>        
+<a name="listings07_csspy-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings07_csspy-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"07_css.glade"</span><span class="p">)</span>
+<a name="listings07_csspy-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings07_csspy-20"></a>
+<a name="listings07_csspy-21"></a>        <span class="n">css</span> <span class="o">=</span> <span class="n">b</span><span class="s2">"""</span>
+<a name="listings07_csspy-22"></a>
+<a name="listings07_csspy-23"></a><span class="s2">levelbar trough block.filled.low {</span>
+<a name="listings07_csspy-24"></a><span class="s2">    background-color: green;</span>
+<a name="listings07_csspy-25"></a><span class="s2">}</span>
+<a name="listings07_csspy-26"></a>
+<a name="listings07_csspy-27"></a><span class="s2">levelbar trough block.filled.high {</span>
+<a name="listings07_csspy-28"></a><span class="s2">    background-color: yellow;</span>
+<a name="listings07_csspy-29"></a><span class="s2">}</span>
+<a name="listings07_csspy-30"></a><span class="s2">   </span>
+<a name="listings07_csspy-31"></a><span class="s2">levelbar trough block.filled.alert {</span>
+<a name="listings07_csspy-32"></a><span class="s2">    background-color: orange;</span>
+<a name="listings07_csspy-33"></a><span class="s2">}</span>
+<a name="listings07_csspy-34"></a>
+<a name="listings07_csspy-35"></a><span class="s2">levelbar trough block.filled.full {</span>
+<a name="listings07_csspy-36"></a><span class="s2">    background-color: red;</span>
+<a name="listings07_csspy-37"></a><span class="s2">}</span>
+<a name="listings07_csspy-38"></a><span class="s2">"""</span>
+<a name="listings07_csspy-39"></a>        <span class="c1">#load css stylesheet</span>
+<a name="listings07_csspy-40"></a>        <span class="n">style_provider</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">CssProvider</span><span class="p">()</span>
+<a name="listings07_csspy-41"></a>        <span class="n">style_provider</span><span class="o">.</span><span class="n">load_from_data</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
+<a name="listings07_csspy-42"></a>        
+<a name="listings07_csspy-43"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">StyleContext</span><span class="o">.</span><span class="n">add_provider_for_screen</span><span class="p">(</span>
+<a name="listings07_csspy-44"></a>            <span class="n">Gdk</span><span class="o">.</span><span class="n">Screen</span><span class="o">.</span><span class="n">get_default</span><span class="p">(),</span>
+<a name="listings07_csspy-45"></a>            <span class="n">style_provider</span><span class="p">,</span>
+<a name="listings07_csspy-46"></a>            <span class="n">Gtk</span><span class="o">.</span><span class="n">STYLE_PROVIDER_PRIORITY_APPLICATION</span>
+<a name="listings07_csspy-47"></a>        <span class="p">)</span>
 <a name="listings07_csspy-48"></a>
-<a name="listings07_csspy-49"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"low:  "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"low"</span><span class="p">))</span>
-<a name="listings07_csspy-50"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"high: "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"high"</span><span class="p">))</span>
-<a name="listings07_csspy-51"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"alert:"</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">))</span>
-<a name="listings07_csspy-52"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"full: "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"full"</span><span class="p">))</span>
-<a name="listings07_csspy-53"></a>
-<a name="listings07_csspy-54"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="listings07_csspy-55"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings07_csspy-49"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"lev4"</span><span class="p">)</span>
+<a name="listings07_csspy-50"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">add_offset_value</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">)</span>
+<a name="listings07_csspy-51"></a>
+<a name="listings07_csspy-52"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"low:  "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"low"</span><span class="p">))</span>
+<a name="listings07_csspy-53"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"high: "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"high"</span><span class="p">))</span>
+<a name="listings07_csspy-54"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"alert:"</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"alert"</span><span class="p">))</span>
+<a name="listings07_csspy-55"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"full: "</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">get_offset_value</span><span class="p">(</span><span class="s2">"full"</span><span class="p">))</span>
 <a name="listings07_csspy-56"></a>
-<a name="listings07_csspy-57"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings07_csspy-58"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings07_csspy-57"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="listings07_csspy-58"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
 <a name="listings07_csspy-59"></a>
-<a name="listings07_csspy-60"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings07_csspy-61"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings07_csspy-60"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings07_csspy-61"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings07_csspy-62"></a>
+<a name="listings07_csspy-63"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="listings07_csspy-64"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2017 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
@@ -162,7 +171,7 @@ Zen theme based in <a href="https://github.com/arusahni/website-template">Arusah
             
         </footer>
 </div>
-    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+    </section><script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script><script src="../assets/js/jquery.timeago.js" type="text/javascript"></script><script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });

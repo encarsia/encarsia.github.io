@@ -22,7 +22,9 @@ Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit de
 Glade
 -----
 
-Dialog-Widgets findet man unter "Oberste Ebene" neben den Fenster-Widgets. 
+Dialog-Widgets findet man unter "Oberste Ebene" neben den Fenster-Widgets.
+
+Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter *"Allgemein > Fensterattribute > Vorübergehend für:"* einem Eltern-Fenster zugeordnet werden.
 
 AboutDialog
 ***********
