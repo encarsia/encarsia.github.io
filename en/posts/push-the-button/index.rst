@@ -11,42 +11,38 @@
 
 .. contents::
 
-**Buttons und Labels**
+**Buttons and labels**
 
 Glade
 -----
 
-Ausgehend vom `letzten Beispiel <link://slug/fenster-mit-aussicht>`_ werden nun ein paar Elemente hinzugefügt, ein Label, ein Button und ein Togglebutton. Jedes Anzeigen- oder Steuerungselement benötigt je ein Container. In diesem Beispiel werden vertikale Boxen angelegt, diese lassen sic hjederzeit erweitern, es ist auch möglich, Container ineinander zu verschachteln.
+Based on the `first example <link://slug/fenster-mit-aussicht>`_ some elements are added, a label, a button and a togglebutton. Any control or display widget requires a container. In this example a vertically arranged container box is created. Boxes can be extended, downsized, rearranged and contain further container widgets.
 
-Den Elementen Button und Togglebutton wird auf *clicked* bzw. *toggled* ein Signal zugewiesen. Label dient nur der Anzeige von Text, hier wird kein Signal benötigt.
+Now the *clicked* and *toggled* signal are assigned to the button and togglebutton element. The label widget's purpose ist to display text so there is no signal assignment required.
 
-In der Vorschauansicht kann man testen, ob die korrekte Reaktion ausgelöst wird.
+Glade provides a preview function to test if the correct reaction is triggered.
 
 .. thumbnail:: /images/02_gladepreview.png
-
-.. TEASER_END
-
-.. listing:: 02_labelbutton.glade xml
 
 Python
 ------
 
-Ein Klick auf den Button soll in der Labelanzeige einen anderen Text anzeigen, hier wird zufällig ein Element aus einer Liste ausgewählt.
+On a button click the label widget should change the diplayed text randomly chosen from a given list.
 
-Alle GtkBuilder-Objekte können über die Funktion ``get_object`` angesprochen werden:
+All *GtkBuilder* elements can be addressed by the ``get_object`` function.
 
 .. code-block:: python
 
-    Gtk.Builder.get_object("name").funktion("zustand")
+    Gtk.Builder.get_object("name").function(options)
 
     #Beispiel GtkLabel
-    Gtk.Builder.get_object("label_name").set_text("neuer Text")
+    Gtk.Builder.get_object("label_name").set_text("new text")
 
-Der Togglebutton soll die Labelanzeige leeren und Button inaktivieren und bei erneutem Klick wieder freigeben.
+The task of the togglebutton is to clear the label widget display and deactivate the button which can be reactivated on the next click.
 
-Der Zustand des Togglebuttons kann mit der Funktion ``get_active()`` abgerufen werden (gibt True/False zurück).
+The status of togglebuttons can be retrieved by the ``get_active()`` function returning True or False.
 
-Abhängig vom verwendeten Widget erfordert die Signal-Funktion mindestens einen Parameter.
+Depending on the widget the corresponding signal function expects at least one parameter
 
 .. code-block:: python
 
@@ -56,8 +52,15 @@ Abhängig vom verwendeten Widget erfordert die Signal-Funktion mindestens einen 
         else:
             #do something different
 
-Die vollständige Dokumentation findet man im `GTK+ 3 Reference Manual <https://developer.gnome.org/gtk3/stable/>`_. Das komplette funktionierende Beispiel sieht dann so aus:
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 02_labelbutton.glade xml
+
+Python
+******
 
 .. listing:: 02_labelbutton.py python
-
-

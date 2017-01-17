@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Tutorial-Reihe zu Glade | Merge and Destroy</title>
+<title>Glade tutorial series | Merge and Destroy</title>
 <link href="../../../assets/css/bitter.css" rel="stylesheet" type="text/css">
 <link href="../../../assets/css/main.css" rel="stylesheet" type="text/css">
 <link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
@@ -13,11 +13,11 @@
 <link rel="canonical" href="https://encarsia.github.io/en/posts/tutorial-reihe-glade/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Anke (encarsia)">
 <meta property="og:site_name" content="Merge and Destroy">
-<meta property="og:title" content="Tutorial-Reihe zu Glade">
+<meta property="og:title" content="Glade tutorial series">
 <meta property="og:url" content="https://encarsia.github.io/en/posts/tutorial-reihe-glade/">
 <meta property="og:description" content="Intro
-Bei der Erstellung der grafischen Oberfläche für gpt habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach GTK+-Oberflächen erstellen kann.
-Mit Glade erstell">
+Glade was my weapon of choice when I started creating the graphical interface for gpt. It itself is a GUI for creating GTK+ &lt;http://www.gtk.org/&gt; GUIs.
+Glade project files are XML formatted GtkB">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2016-11-02T15:23:57+01:00">
 <meta property="article:tag" content="glade">
@@ -39,7 +39,7 @@ Mit Glade erstell">
             
     <div class="post">
     
-    <h1 class="p-name entry-title" itemprop="headline name">Tutorial-Reihe zu Glade</h1>
+    <h1 class="p-name entry-title" itemprop="headline name">Glade tutorial series</h1>
 
         <div class="meta">
             <div class="authordate">
@@ -65,56 +65,58 @@ Mit Glade erstell">
             <div>
 <div class="section" id="intro">
 <h2>Intro</h2>
-<p>Bei der Erstellung der grafischen Oberfläche für <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a> habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach <a class="reference external" href="http://www.gtk.org/">GTK+</a>-Oberflächen erstellen kann.</p>
-<p>Mit Glade erstellte Projektdateien sind <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a>-XML-Dateien, die Verbindung zum eigentlichen Programm erfolgt über Signale, dabei werden zahlreiche Programmiersprachen unterstützt. Hier werde ich Python verwenden.</p>
-<p>Da es in den letzten Jahren Versionssprünge sowohl bei Python als auch GTK+ gegeben hat (jeweils von 2.x auf 3.x), gibt es viele Dokumentationen und Tutorials, die nicht 1:1 anwendbar sind, d.h. die Funktionen sind meist gleich, nur die Syntax unterscheidet sich minimal (siehe Links).</p>
-<p>An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und Glade 3.20.0.</p>
+<p>Glade was my weapon of choice when I started creating the graphical interface for <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a>. It itself is a GUI for creating <cite>GTK+ &lt;http://www.gtk.org/&gt;</cite> GUIs.</p>
+<p>Glade project files are XML formatted <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a> files. The connection to the source code is established by signals. Numerous languages are supported, I will use Python here.</p>
+<p>There are plenty of tutorials and docs around that are not or only partly working or valid due to recent development progress (GTK+ and Python from 2.x to 3.x) but for the most part they are a good start (see links below).</p>
+<p>I attempt to keep this basic tutorial up to date (Python 3.5.2 (3.6 just hit my machine and there aren't any problems so far but I will have a closer look on the examples) and Glade 3.20.0).</p>
 </div>
-<div class="section" id="nicht-exklusiv">
-<h2>Nicht exklusiv</h2>
-<p>GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Verlauf das eine gegen das andere zu ersetzen.</p>
+<div class="section" id="non-exclusive">
+<h2>Non-exclusive</h2>
+<p>Of course GTK+ elements can be directly constructed in the source code. It is also possible to use both ways simultaneously or replace one with the other during development process.</p>
 </div>
 <div class="section" id="links">
 <h2>Links</h2>
 <ul class="simple">
 <li>
-<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Grundlagen der Programmierung von GTK+-GUI mit Python</li>
+<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Introduction to GTK+ with Python</li>
 <li>
-<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Grundlagentutorial für PyGTK (Python 2.x)</li>
+<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Basic tutorial to PyGTK (Python 2.x)</li>
 <li>
-<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - umfangreiches Tutorial auf Deutsch</li>
+<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - extensive tutorial in German</li>
 <li>
-<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - vollständige Dokumentation des GI-Moduls</li>
+<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - complete reference of the GI module (bookmark this!)</li>
 </ul>
 </div>
 <div class="section" id="themen">
 <h2>Themen</h2>
 <ul class="simple">
-<li><a class="reference external" href="../fenster-mit-aussicht">Minimalbeispiel</a></li>
-<li><a class="reference external" href="../push-the-button">Buttons und Labels</a></li>
-<li><a class="reference external" href="../durchzug">Fenster und Dialoge</a></li>
-<li><a class="reference external" href="../clickbaiting">Schalter, Checkbox und Radiobutton</a></li>
-<li><a class="reference external" href="../drei-gange-menu">Menü, Toolbar und Statusbar</a></li>
-<li><a class="reference external" href="../bars">Fortschrittsbalken und Levelbar</a></li>
+<li><a class="reference external" href="../fenster-mit-aussicht">Minimal example</a></li>
+<li><a class="reference external" href="../push-the-button">Buttons and labels</a></li>
+<li><a class="reference external" href="../durchzug">Windows and dialogs</a></li>
+<li><a class="reference external" href="../clickbaiting">Switch, checkbox and radiobutton</a></li>
+<li><a class="reference external" href="../drei-gange-menu">Menu, toolbar and statusbar</a></li>
+<li><a class="reference external" href="../bars">Progressbar and levelbar</a></li>
 <li><a class="reference external" href="../css">CSS</a></li>
-<li><a class="reference external" href="../qual-der-wahl">Spinbutton und Combobox</a></li>
-<li><a class="reference external" href="../uberlistet">ListStore und TreeView</a></li>
-<li><a class="reference external" href="../ansichtssache">TreeStore mit Sortierung und Filterung</a></li>
-<li><a class="reference external" href="../romani-ite-domum">Lokalisation mit locale und gettext</a></li>
-<li><a class="reference external" href="../exterminate">VTE-Terminal</a></li>
-<li><a class="reference external" href="../dialoge">Dialoge</a></li>
-<li><a class="reference external" href="../application">Programm als eigenständige GTK+-Anwendung</a></li>
-<li><a class="reference external" href="../application-fortsetzung">Icon, Headerbar und Kommandozeilenoptionen</a></li>
+<li><a class="reference external" href="../qual-der-wahl">Spinbutton and combobox</a></li>
+<li><a class="reference external" href="../uberlistet">ListStore and TreeView</a></li>
+<li><a class="reference external" href="../ansichtssache">TreeStore with sorting and filtering</a></li>
+<li><a class="reference external" href="../romani-ite-domum">Localization using locale and gettext</a></li>
+<li><a class="reference external" href="../exterminate">VTE terminal</a></li>
+<li><a class="reference external" href="../dialoge">Dialogs</a></li>
+<li><a class="reference external" href="../application">Run program as GTK+ application</a></li>
+<li><a class="reference external" href="../application-fortsetzung">Icon, headerbar and commandline options</a></li>
 <li><dl class="first docutils">
-<dt>Geplant:</dt>
+<dt>planned:</dt>
 <dd><ul class="first last">
 <li>Notebook</li>
 <li>FileChooserDialog</li>
-<li>Medien und GStreamer</li>
-<li>Textfelder mit GtkTextView und GtkSourceView</li>
-<li>Interaktion mit anderen Anwendungen mit und ohne Threading</li>
+<li>Media and GStreamer</li>
+<li>Text widgets with GtkTextView and GtkSourceView</li>
+<li>Interaction between other applications</li>
 </ul></dd>
 </dl></li>
+<li>directory of example files: <a class="reference external" href="https://encarsia.github.io/listings/">encarsia.github.io/listings</a>
+</li>
 </ul>
 </div>
 </div>
@@ -132,7 +134,7 @@ Mit Glade erstell">
         <script>
         var disqus_shortname ="bahnfreikartoffelbrei",
             disqus_url="https://encarsia.github.io/en/posts/tutorial-reihe-glade/",
-        disqus_title="Tutorial-Reihe zu Glade",
+        disqus_title="Glade tutorial series",
         disqus_identifier="cache/posts/tutorial-reihe-glade.html",
         disqus_config = function () {
             this.language = "en";

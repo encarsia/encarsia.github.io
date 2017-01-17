@@ -406,21 +406,178 @@
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="inhalt">
-<p class="topic-title first">Inhalt</p>
+<div class="contents warning pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="posts/push-the-button/#glade" id="id1">Glade</a></li>
-<li><a class="reference internal" href="posts/push-the-button/#python" id="id2">Python</a></li>
+<li><a class="reference internal" href="posts/push-the-button/#glade" id="id3">Glade</a></li>
+<li><a class="reference internal" href="posts/push-the-button/#python" id="id4">Python</a></li>
+<li>
+<a class="reference internal" href="posts/push-the-button/#listings" id="id5">Listings</a><ul>
+<li><a class="reference internal" href="posts/push-the-button/#id1" id="id6">Glade</a></li>
+<li><a class="reference internal" href="posts/push-the-button/#id2" id="id7">Python</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<p><strong>Buttons und Labels</strong></p>
+<p><strong>Buttons and labels</strong></p>
 <div class="section" id="glade">
-<h2><a class="toc-backref" href="posts/push-the-button/#id1">Glade</a></h2>
-<p>Ausgehend vom <a class="reference external" href="posts/fenster-mit-aussicht">letzten Beispiel</a> werden nun ein paar Elemente hinzugefügt, ein Label, ein Button und ein Togglebutton. Jedes Anzeigen- oder Steuerungselement benötigt je ein Container. In diesem Beispiel werden vertikale Boxen angelegt, diese lassen sic hjederzeit erweitern, es ist auch möglich, Container ineinander zu verschachteln.</p>
-<p>Den Elementen Button und Togglebutton wird auf <em>clicked</em> bzw. <em>toggled</em> ein Signal zugewiesen. Label dient nur der Anzeige von Text, hier wird kein Signal benötigt.</p>
-<p>In der Vorschauansicht kann man testen, ob die korrekte Reaktion ausgelöst wird.</p>
+<h2><a class="toc-backref" href="posts/push-the-button/#id3">Glade</a></h2>
+<p>Based on the <a class="reference external" href="posts/fenster-mit-aussicht">first example</a> some elements are added, a label, a button and a togglebutton. Any control or display widget requires a container. In this example a vertically arranged container box is created. Boxes can be extended, downsized, rearranged and contain further container widgets.</p>
+<p>Now the <em>clicked</em> and <em>toggled</em> signal are assigned to the button and togglebutton element. The label widget's purpose ist to display text so there is no signal assignment required.</p>
+<p>Glade provides a preview function to test if the correct reaction is triggered.</p>
 <a class="reference external image-reference" href="../images/02_gladepreview.png"><img alt="/images/02_gladepreview.thumbnail.png" src="../images/02_gladepreview.thumbnail.png"></a>
-<p class="more"><a href="posts/push-the-button/">Read more…</a></p>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/push-the-button/#id4">Python</a></h2>
+<p>On a button click the label widget should change the diplayed text randomly chosen from a given list.</p>
+<p>All <em>GtkBuilder</em> elements can be addressed by the <tt class="docutils literal">get_object</tt> function.</p>
+<pre class="code python"><a name="rest_code_b77ec8d7bf974af5b529d22dfa911da7-1"></a><span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+<a name="rest_code_b77ec8d7bf974af5b529d22dfa911da7-2"></a>
+<a name="rest_code_b77ec8d7bf974af5b529d22dfa911da7-3"></a><span class="c1">#Beispiel GtkLabel</span>
+<a name="rest_code_b77ec8d7bf974af5b529d22dfa911da7-4"></a><span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"label_name"</span><span class="p">)</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">"new text"</span><span class="p">)</span>
+</pre>
+<p>The task of the togglebutton is to clear the label widget display and deactivate the button which can be reactivated on the next click.</p>
+<p>The status of togglebuttons can be retrieved by the <tt class="docutils literal">get_active()</tt> function returning True or False.</p>
+<p>Depending on the widget the corresponding signal function expects at least one parameter</p>
+<pre class="code python"><a name="rest_code_57e5c5ad29f5495c9095c3a4df91c25c-1"></a><span class="k">def</span> <span class="nf">on_t_button_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_57e5c5ad29f5495c9095c3a4df91c25c-2"></a>    <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="rest_code_57e5c5ad29f5495c9095c3a4df91c25c-3"></a>        <span class="c1">#do something</span>
+<a name="rest_code_57e5c5ad29f5495c9095c3a4df91c25c-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_57e5c5ad29f5495c9095c3a4df91c25c-5"></a>        <span class="c1">#do something different</span>
+</pre>
+</div>
+<div class="section" id="listings">
+<h2><a class="toc-backref" href="posts/push-the-button/#id5">Listings</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="posts/push-the-button/#id6">Glade</a></h3>
+<p><a class="reference external" href="../listings/02_labelbutton.glade.html">02_labelbutton.glade</a>  <a class="reference external" href="../listings/02_labelbutton.glade">(Source)</a></p>
+<pre class="code xml"><a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"image1"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-6"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-7"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-8"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"stock"</span><span class="nt">&gt;</span>gtk-dialog-error<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-9"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-10"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-11"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>500<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-12"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-13"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Titel<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-14"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"resizable"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-15"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-16"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-17"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-18"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-19"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-20"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-21"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-22"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"homogeneous"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-23"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-24"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkLabel"</span> <span class="na">id=</span><span class="s">"label"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-25"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-26"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-27"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Label-Text kann in Glade unter "Beschriftung" eingegeben werden<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-28"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-29"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-30"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-31"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-32"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-33"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-34"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-35"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-36"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-37"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Label-Text ändern<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-38"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-39"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-40"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-41"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-42"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-43"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-44"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-45"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-47"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-48"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-49"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-50"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkToggleButton"</span> <span class="na">id=</span><span class="s">"t_button"</span><span class="nt">&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-51"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Oberen Button sperren<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-52"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-53"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-54"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-55"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"image"</span><span class="nt">&gt;</span>image1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-56"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"image_position"</span><span class="nt">&gt;</span>top<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-57"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"always_show_image"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-58"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"toggled"</span> <span class="na">handler=</span><span class="s">"on_t_button_toggled"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-59"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-60"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-61"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-62"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-63"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-64"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-65"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-66"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-67"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-68"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-69"></a>      <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-70"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-71"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_4acfb2a76026467789b6efd5370bb6f1-72"></a><span class="nt">&lt;/interface&gt;</span>
+</pre>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="posts/push-the-button/#id7">Python</a></h3>
+<p><a class="reference external" href="../listings/02_labelbutton.py.html">02_labelbutton.py</a>  <a class="reference external" href="../listings/02_labelbutton.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_793caddddc3643329306d333a7c45a43-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-3"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-4"></a><span class="kn">import</span> <span class="nn">random</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-5"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-6"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-7"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-8"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-9"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-10"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-11"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-12"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-13"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-14"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-15"></a>        <span class="n">new_text</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">label_texts</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-16"></a>        <span class="n">x</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">new_text</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-17"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-18"></a>    <span class="k">def</span> <span class="nf">on_t_button_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-19"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-20"></a>            <span class="n">x</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-21"></a>            <span class="n">x</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-22"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-23"></a>            <span class="n">x</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-24"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-25"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-26"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-27"></a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-28"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span> <span class="o">=</span> <span class="s2">"02_labelbutton.glade"</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-30"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">label_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"The things you used to own, now they own you."</span><span class="p">,</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-32"></a>                            <span class="s2">"I am Jack's complete lack of surprise. I am Jack's Broken Heart."</span><span class="p">,</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-33"></a>                            <span class="s2">"On a long enough time line, the survival rate for everyone drops to zero."</span><span class="p">,</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-34"></a>                            <span class="s2">"Sticking feathers up your butt does not make you a chicken!"</span><span class="p">,</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-35"></a>                            <span class="s2">"I am Jack's smirking revenge."</span><span class="p">]</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-36"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gladefile</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-40"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-41"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-42"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-43"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-44"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-45"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-46"></a>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-47"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="rest_code_793caddddc3643329306d333a7c45a43-48"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre>
+</div>
 </div>
 </div>
             </div>
@@ -450,8 +607,8 @@
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="inhalt">
-<p class="topic-title first">Inhalt</p>
+<div class="contents warning pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="posts/fenster-mit-aussicht/#glade" id="id1">Glade</a></li>
 <li><a class="reference internal" href="posts/fenster-mit-aussicht/#python" id="id2">Python</a></li>
@@ -470,7 +627,7 @@
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/tutorial-reihe-glade/">Tutorial-Reihe zu Glade</a></h1>
+            <h1 class="title"><a href="posts/tutorial-reihe-glade/">Glade tutorial series</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2016-11-02T15:23:57+01:00">2016-11-02 15:23</time>
@@ -496,56 +653,58 @@
                 <div>
 <div class="section" id="intro">
 <h2>Intro</h2>
-<p>Bei der Erstellung der grafischen Oberfläche für <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a> habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach <a class="reference external" href="http://www.gtk.org/">GTK+</a>-Oberflächen erstellen kann.</p>
-<p>Mit Glade erstellte Projektdateien sind <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a>-XML-Dateien, die Verbindung zum eigentlichen Programm erfolgt über Signale, dabei werden zahlreiche Programmiersprachen unterstützt. Hier werde ich Python verwenden.</p>
-<p>Da es in den letzten Jahren Versionssprünge sowohl bei Python als auch GTK+ gegeben hat (jeweils von 2.x auf 3.x), gibt es viele Dokumentationen und Tutorials, die nicht 1:1 anwendbar sind, d.h. die Funktionen sind meist gleich, nur die Syntax unterscheidet sich minimal (siehe Links).</p>
-<p>An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und Glade 3.20.0.</p>
+<p>Glade was my weapon of choice when I started creating the graphical interface for <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a>. It itself is a GUI for creating <cite>GTK+ &lt;http://www.gtk.org/&gt;</cite> GUIs.</p>
+<p>Glade project files are XML formatted <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a> files. The connection to the source code is established by signals. Numerous languages are supported, I will use Python here.</p>
+<p>There are plenty of tutorials and docs around that are not or only partly working or valid due to recent development progress (GTK+ and Python from 2.x to 3.x) but for the most part they are a good start (see links below).</p>
+<p>I attempt to keep this basic tutorial up to date (Python 3.5.2 (3.6 just hit my machine and there aren't any problems so far but I will have a closer look on the examples) and Glade 3.20.0).</p>
 </div>
-<div class="section" id="nicht-exklusiv">
-<h2>Nicht exklusiv</h2>
-<p>GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Verlauf das eine gegen das andere zu ersetzen.</p>
+<div class="section" id="non-exclusive">
+<h2>Non-exclusive</h2>
+<p>Of course GTK+ elements can be directly constructed in the source code. It is also possible to use both ways simultaneously or replace one with the other during development process.</p>
 </div>
 <div class="section" id="links">
 <h2>Links</h2>
 <ul class="simple">
 <li>
-<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Grundlagen der Programmierung von GTK+-GUI mit Python</li>
+<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Introduction to GTK+ with Python</li>
 <li>
-<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Grundlagentutorial für PyGTK (Python 2.x)</li>
+<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Basic tutorial to PyGTK (Python 2.x)</li>
 <li>
-<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - umfangreiches Tutorial auf Deutsch</li>
+<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - extensive tutorial in German</li>
 <li>
-<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - vollständige Dokumentation des GI-Moduls</li>
+<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - complete reference of the GI module (bookmark this!)</li>
 </ul>
 </div>
 <div class="section" id="themen">
 <h2>Themen</h2>
 <ul class="simple">
-<li><a class="reference external" href="posts/fenster-mit-aussicht">Minimalbeispiel</a></li>
-<li><a class="reference external" href="posts/push-the-button">Buttons und Labels</a></li>
-<li><a class="reference external" href="posts/durchzug">Fenster und Dialoge</a></li>
-<li><a class="reference external" href="posts/clickbaiting">Schalter, Checkbox und Radiobutton</a></li>
-<li><a class="reference external" href="posts/drei-gange-menu">Menü, Toolbar und Statusbar</a></li>
-<li><a class="reference external" href="posts/bars">Fortschrittsbalken und Levelbar</a></li>
+<li><a class="reference external" href="posts/fenster-mit-aussicht">Minimal example</a></li>
+<li><a class="reference external" href="posts/push-the-button">Buttons and labels</a></li>
+<li><a class="reference external" href="posts/durchzug">Windows and dialogs</a></li>
+<li><a class="reference external" href="posts/clickbaiting">Switch, checkbox and radiobutton</a></li>
+<li><a class="reference external" href="posts/drei-gange-menu">Menu, toolbar and statusbar</a></li>
+<li><a class="reference external" href="posts/bars">Progressbar and levelbar</a></li>
 <li><a class="reference external" href="posts/css">CSS</a></li>
-<li><a class="reference external" href="posts/qual-der-wahl">Spinbutton und Combobox</a></li>
-<li><a class="reference external" href="posts/uberlistet">ListStore und TreeView</a></li>
-<li><a class="reference external" href="posts/ansichtssache">TreeStore mit Sortierung und Filterung</a></li>
-<li><a class="reference external" href="posts/romani-ite-domum">Lokalisation mit locale und gettext</a></li>
-<li><a class="reference external" href="posts/exterminate">VTE-Terminal</a></li>
-<li><a class="reference external" href="posts/dialoge">Dialoge</a></li>
-<li><a class="reference external" href="posts/application">Programm als eigenständige GTK+-Anwendung</a></li>
-<li><a class="reference external" href="posts/application-fortsetzung">Icon, Headerbar und Kommandozeilenoptionen</a></li>
+<li><a class="reference external" href="posts/qual-der-wahl">Spinbutton and combobox</a></li>
+<li><a class="reference external" href="posts/uberlistet">ListStore and TreeView</a></li>
+<li><a class="reference external" href="posts/ansichtssache">TreeStore with sorting and filtering</a></li>
+<li><a class="reference external" href="posts/romani-ite-domum">Localization using locale and gettext</a></li>
+<li><a class="reference external" href="posts/exterminate">VTE terminal</a></li>
+<li><a class="reference external" href="posts/dialoge">Dialogs</a></li>
+<li><a class="reference external" href="posts/application">Run program as GTK+ application</a></li>
+<li><a class="reference external" href="posts/application-fortsetzung">Icon, headerbar and commandline options</a></li>
 <li><dl class="first docutils">
-<dt>Geplant:</dt>
+<dt>planned:</dt>
 <dd><ul class="first last">
 <li>Notebook</li>
 <li>FileChooserDialog</li>
-<li>Medien und GStreamer</li>
-<li>Textfelder mit GtkTextView und GtkSourceView</li>
-<li>Interaktion mit anderen Anwendungen mit und ohne Threading</li>
+<li>Media and GStreamer</li>
+<li>Text widgets with GtkTextView and GtkSourceView</li>
+<li>Interaction between other applications</li>
 </ul></dd>
 </dl></li>
+<li>directory of example files: <a class="reference external" href="https://encarsia.github.io/listings/">encarsia.github.io/listings</a>
+</li>
 </ul>
 </div>
 </div>
