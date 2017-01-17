@@ -30,7 +30,7 @@ In Glade verändert sich im Prinzip nichts. Als Fenster sollten *GtkApplicationW
 GMenu
 *****
 
-Die GNOME Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als *Gio.Menu* erkannt wird:
+Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als *Gio.Menu* erkannt wird:
 
 .. code-block:: xml
 
@@ -84,7 +84,7 @@ Wie oben bereits erwähnt, lässt sich die GMenu-XML von *GtkBuilder* laden, dan
     builder.add_from_file("menu.ui")
     app.set_app_menu(builder.get_object("appmenu"))
 
-Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, genauer *GioSimpleActions* erstellt und analog zur herkömmlichen Signalverknüpfung bei über ``connect`` verbunden werden.
+Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, genauer *GioSimpleActions*, erstellt und analog zur herkömmlichen Signalverknüpfung über ``connect`` verbunden werden.
 
 .. code-block:: python
 
@@ -98,7 +98,7 @@ Im Beispiel werden Actions zum Aufrufen der Dialoge erstellt.
 Starten und Beenden
 *******************
 
-*GtkApplication* übernimmt die Handhabung des GTK+-Mainloops, das heißt, es nicht notwendig, GTK+ manuell zu starten oder zu beenden. Stattdessen werden ``run()`` und ``quit()`` verwendet:
+*GtkApplication* übernimmt die Handhabung des GTK+-Mainloops, das heißt, es nicht mehr notwendig GTK+ manuell zu starten oder zu beenden. Stattdessen werden ``run()`` und ``quit()`` verwendet:
 
 .. code::
 
