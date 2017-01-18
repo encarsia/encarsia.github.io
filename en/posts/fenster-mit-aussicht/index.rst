@@ -1,4 +1,4 @@
-.. title: Fenster mit Aussicht
+.. title: View from the window
 .. slug: fenster-mit-aussicht
 .. date: 2016-11-02 17:14:04 UTC+01:00
 .. tags: glade,python
@@ -11,34 +11,31 @@
 
 .. contents::
 
-**Minimalbeispiel**
+**Minimal example**
 
 Glade
 -----
 
-Nach dem Start präsentiert sich Glade dreigeteilt, links ist die Fenster-/Widget-Auswahl, in der Mitte die Projektansicht und rechts eine Baumansicht des Projekts, im unteren Bereich können Eigenschaften und Signale editiert werden.
+After launching Glade the application view is divided in 3 areas: window/widget selection on the left, the project view in the centre and a tree/property (including signal) view of project elements on the right.
 
-Nun erstellt man ein Fenster und gibt ihm eine Kennung. Mit dieser Kennung wird das Objekt im Programmcode angesprochen.
+Now a window is created and an ID assigned to be able to address the element in the source code.
 
 .. thumbnail:: /images/01_glade.png
 
 .. TEASER_END
 
-Um die Ausführung von Funktionen zu initiieren, müssen sie mit Signalen gekoppelt werden. Signale können je nach Objektart verschieden ausgelöst werden, durch Anklicken, Markieren, Editieren, Schalten etc.
+To call functions from widgets they have to be connected to signals. Depending on the kind of graphical object signals can be emitted by clicking, marking, editing, switching etc.
 
-Um in diesem Beispiel das Programmfenster mit dem Schließen-Button zu schließen, wird das Signal *destroy* benötigt. Beim Funktionsnamen hilft die Vorschlagsfunktion nach dem Schema ``on_kennung_signal``.
-Ich empfehle, diesen Vorschlägen im allgemeinen zu folgen, sie erleichtern die Tipparbeit.
+If the example window should be able to be closed on clicking the [X] button the signal *destroy* is required. The entry field to specify the function provides a convenient suggestion function to reduce key input following the pattern ``on_id_signal``.
 
 .. thumbnail:: /images/01_destroysignal.png
 
-Mit Glade wird kein Programmcode, sondern eine XML-Datei des Typs GtkBuilder erstellt. Diese sieht hier wie folgt aus:
-
-.. listing:: 01_minimal.glade xml
+Glade does not generate GTK+ source code but a XML formatted file accessible to *GtkBuilder* (see listing below).
 
 Python
 ------
 
-First things first. Die GtkBuilder-Funktionen stehen im Gtk-Modul aus den Python GObject Introspection-Bindings zur Verfügung:
+First things first. *GtkBuilder* is provided by the *Gtk* module from the Python GObject Introspection bindings:
 
 .. code-block:: python
 
@@ -46,18 +43,26 @@ First things first. Die GtkBuilder-Funktionen stehen im Gtk-Modul aus den Python
     gi.require_version('Gtk','3.0')
     from gi.repository import Gtk
 
-Nach dem Aufruf von ``Gtk.Builder()`` wird die Glade-Datei geladen. Um die Übersicht zu bewahren, können dies auch mehrere Dateien sein, es sollte allerdings auf eine eindeutige Kennung geachtet werden. Bei doppelten Kennungen ist die zuletzt geladene aktiv.
+After initing ``Gtk.Builder()`` the Glade file(s) are added.
 
-Anschließend werden die Signale verbunden. Meine Empfehlung ist hier, die dazugehörigen Funktionen der Übersicht wegen in eine eigene Klasse auszulagern.
+.. code-block:: python
 
-.. listing:: 01_minimal.py python
+        builder.add_from_file(gladefile)
 
-Dieses Skript öffnet ein leeres Fenster, das per Schließen-Button beendet werden kann.
+It may be convenient to work with multiple files in one project. In this case you have to bear in mind that if there are elements with the same identifier name only the element of the last loaded file can be addressed by ``get_object(id)``.
+
+Second step is connecting the signals. It comes in handy to store these functions in an own class:
+
+.. code-block:: python
+
+    self.builder.connect_signals(Handler())
+
+So this basic example script opens an empty window hat can be closed on clicking the close button.
 
 Ohne Glade
 ----------
 
-Das oben konstruierte Beispiel entspricht dem Basisbeispiel im `Python GTK+ 3 Tutorial <http://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html>`_:
+This example corresponds to the basic example of the `Python GTK+ 3 tutorial <http://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html>`_:
 
 .. code-block:: python
 
@@ -70,4 +75,23 @@ Das oben konstruierte Beispiel entspricht dem Basisbeispiel im `Python GTK+ 3 Tu
     win.show_all()
     Gtk.main()
 
-Man sollte sich von der Kürze dieses Beispiels nicht täuschen lassen. Die eigentlichen Elemente, Boxen, Widget, Buttons, Leisten etc. fehlen hier komplett.
+The definded window does not contain any elements like boxes, buttons, bars, menus and other widgets.
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 01_minimal.glade xml
+
+Python
+******
+
+.. listing:: 01_minimal.py python
+
+
+
+
+
+

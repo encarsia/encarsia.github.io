@@ -1,4 +1,4 @@
-.. title: Durchzug
+.. title: Open and close windows
 .. slug: durchzug
 .. date: 2016-11-03 23:40:03 UTC+01:00
 .. tags: glade,python
@@ -11,44 +11,44 @@
 
 .. contents::
 
-**Fenster und Dialoge**
+**Open and close windows and dialogs**
 
 Glade
 -----
 
-Mit Glade lassen sich verschiedene Fensterarten und Dialoge erstellen. Im Beispiel hat das Hauptfenster zwei Buttons, ein Button öffnet ein Info-Fenster, der andere schließt es und öffnet ein anderes Fenster, das jeweils das gleiche tut.
+There can be created different types of windows and dialogs (which are subclasses of windows). In this example the main window has two buttons. The first one opens an info dialog, the second one closes the main window and opens another window instead.
 
 .. thumbnail:: /images/03_changewindow.png
 
-.. TEASER_END
+7 Signals are assigned:
+
+- (per) window
+    * "info" button (headerbar left): *clicked*
+    * "ok" button (headerbar right): *clicked*
+    * close/quit: *destroy*
+- info dialog
+    * close/quit: *destroy*
 
 .. listing:: 03_changewindow.glade xml
-
-Es werden insgesamt 7 Signale angelegt:
-
-- Fenster, jeweils
-    * Info-Button (Headerbar links)
-    * Wechsel-/"Ok"-Button (Headerbar rechts)
-    * Schließen/Beenden (*destroy*)
-- Info-Dialog
-    * Schließen-Button
 
 Python
 ------
 
-Die entscheidenden Funktionen in der Handhabung von Fenstern sind
+The most important functions needed for handling windows are
 
 .. code-block:: python
 
-    #Fenster anzeigen
+    # open window
     Gtk.Builder.get_object("name").show_all()
-    #Fenster ausblenden, kann mit show_all() reaktiviert werden
+    # close window temporarily, can be retrieved by show_all()
     Gtk.Builder.get_object("name").hide_on_delete()
-    #Fenster schließen, Gtk wird dabei beendet
+    # close window, quit Gtk
     Gtk.main_quit()
 
-Die Buttons zum Öffnen des Info-Dialogs und zum Beenden des Programms führen die jeweils identische Funktion aus; es werden demzufolge nur 5 Funktionen in der Handler-Klasse benötigt.
+Functions within the Handler() class of course can be assigned to multiple signals. So there are only 5 handler functions required in this example file.
 
-Das vollständige Beispiel ist dann:
+The complete example code is:
 
 .. listing:: 03_changewindow.py python
+
+See also the `sequel article to dialogs <link://slug/dialoge>`_.

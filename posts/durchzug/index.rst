@@ -11,27 +11,27 @@
 
 .. contents::
 
-**Fenster und Dialoge**
+**Fenster und Dialoge öffnen und schließen**
 
 Glade
 -----
 
-Mit Glade lassen sich verschiedene Fensterarten und Dialoge erstellen. Im Beispiel hat das Hauptfenster zwei Buttons, ein Button öffnet ein Info-Fenster, der andere schließt es und öffnet ein anderes Fenster, das jeweils das gleiche tut.
+Mit Glade lassen sich verschiedene Fensterarten und Dialoge erstellen. Im Beispiel hat das Hauptfenster zwei Buttons, ein Button öffnet ein Info-Fenster, der andere schließt das Hauptfenster und öffnet ein anderes Fenster, das jeweils das gleiche tut.
 
 .. thumbnail:: /images/03_changewindow.png
 
 .. TEASER_END
 
-.. listing:: 03_changewindow.glade xml
-
 Es werden insgesamt 7 Signale angelegt:
 
 - Fenster, jeweils
-    * Info-Button (Headerbar links)
-    * Wechsel-/"Ok"-Button (Headerbar rechts)
-    * Schließen/Beenden (*destroy*)
+    * Info-Button (Headerbar links): *clicked*
+    * Wechsel-/"Ok"-Button (Headerbar rechts): *clicked*
+    * Schließen/Beenden: *destroy*
 - Info-Dialog
-    * Schließen-Button
+    * Schließen-Button: *destroy*
+
+.. listing:: 03_changewindow.glade xml
 
 Python
 ------
@@ -52,3 +52,5 @@ Die Buttons zum Öffnen des Info-Dialogs und zum Beenden des Programms führen d
 Das vollständige Beispiel ist dann:
 
 .. listing:: 03_changewindow.py python
+
+Siehe auch `Fortsetzung-Artikel zu Dialogen <link://slug/dialoge>`_.
