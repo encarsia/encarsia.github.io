@@ -27,7 +27,7 @@ In diesem Artikel wird exemplarisch die Verwendung von Switches, Checkboxen und 
 
 6. Funktion im Programmcode schreiben
 
-Alle verfügbaren Gtk-Klassen und ihre Funktionen findet man unter `Python GI API Reference >> Gtk 3.0 >> Classes <http://lazka.github.io/pgi-docs/#Gtk-3.0/classes>`_.
+Alle verfügbaren GTK+-Klassen und ihre Funktionen findet man unter `Python GI API Reference >> Gtk 3.0 >> Classes <http://lazka.github.io/pgi-docs/#Gtk-3.0/classes>`_.
 
 .. thumbnail:: /images/04_clickableelements.png
 
@@ -39,7 +39,7 @@ Glade
 Switch oder Schalter
 ********************
 
-Ein Switch ist ein einfacher Ein-/Aus-Schalter mit, Überraschung!, zwei Zuständen. Die Zustandsänderung lässt sich über das Signal *state_set* abrufen.
+Ein Switch ist ein einfacher Ein-/Aus-Schalter mit, Überraschung!, zwei Zuständen. Der Zustand lässt sich über das Signal *state_set* abrufen.
 
 Checkbox
 ********
@@ -53,11 +53,31 @@ Radiobuttons dienen der Auswahl _eines_ Listenpunktes aus einer gegebenen Liste.
 
 Zusätzlich werden die zusammengehörigen Listenpunkte zu einer Gruppe zugeordet. Dies bewerkstelligt man einfach, indem man alle Radiobuttons unter "Allgemein > Knopfattribute > Gruppe" an einem "führenden Radiobutton" ausrichtet.
 
-.. listing:: 04_clickableelements.glade xml
 
 Python
 ------
 
-Da Checkbox und Radiobutton Togglebuttons sind, wird hier der Status über die Funktion ``widget.get_active()`` abgerufen. Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False ausgibt.
+Da Checkbox und Radiobutton Togglebuttons sind, wird hier der Status über die Funktion ``widget.get_active()`` abgerufen.
+
+Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False ausgibt:
+
+.. code-block:: python
+
+    def on_switch_state_set(self,widget,state):
+        if state is True:
+            print("switch is on")
+        else:
+            print("switch is off")
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 04_clickableelements.glade xml
+
+Python
+******
 
 .. listing:: 04_clickableelements.py python

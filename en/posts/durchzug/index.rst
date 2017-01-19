@@ -11,7 +11,7 @@
 
 .. contents::
 
-**Open and close windows and dialogs**
+**Open and close windows and dialogues**
 
 Glade
 -----
@@ -51,4 +51,4 @@ The complete example code is:
 
 .. listing:: 03_changewindow.py python
 
-See also the `sequel article to dialogs <link://slug/dialoge>`_.
+See also the `sequel article to dialogues <link://slug/dialoge>`_.

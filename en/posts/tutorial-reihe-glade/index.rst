@@ -41,7 +41,7 @@ Themen
 
 - `Minimal example <link://slug/fenster-mit-aussicht>`_
 - `Buttons and labels <link://slug/push-the-button>`_
-- `Windows and dialogs <link://slug/durchzug>`_
+- `Windows and dialogues <link://slug/durchzug>`_
 - `Switch, checkbox and radiobutton <link://slug/clickbaiting>`_
 - `Menu, toolbar and statusbar <link://slug/drei-gange-menu>`_
 - `Progressbar and levelbar <link://slug/bars>`_
@@ -51,7 +51,7 @@ Themen
 - `TreeStore with sorting and filtering <link://slug/ansichtssache>`_
 - `Localization using locale and gettext <link://slug/romani-ite-domum>`_
 - `VTE terminal <link://slug/exterminate>`_
-- `Dialogs <link://slug/dialoge>`_
+- `Dialogues <link://slug/dialoge>`_
 - `Run program as GTK+ application <link://slug/application>`_
 - `Icon, headerbar and commandline options <link://slug/application-fortsetzung>`_
 

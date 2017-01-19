@@ -11,23 +11,18 @@
 
 .. contents::
 
-**Switch checkbox, radiobutton - more elements to click on**
+**Switch, checkbox, radiobutton - more elements to click on**
 
-In diesem Artikel wird exemplarisch die Verwendung von Switches, Checkboxen und Radiobuttons vorgestellt. Folgend werden weitere Steuerungs- und Anzeigenelemente verwendet, es wird aber kein Anspruch auf Vollständigkeit erhoben, da die Verwendungsprozedur praktisch nach folgendem Schema funktioniert:
+This article explains the usage of control and display widgets on the basis of these selected elements. The usage follows the pattern:
 
-1. Container (Box, Leiste etc.) für Element anlegen
+1) create container (box, toolbar etc.) for widget
+2) add element
+3) add an identifier to the element (that step canbe skipped for elements that do not need to be addressed in the source code like boxes or separators)
+4) assign a function to a signal
+5) (optional) test signal emission in Glade preview window
+6) code funtion
 
-2. Element hinzufügen
-
-3. Element mit einer Bezeichnung versehen (bei Elementen ohne Interaktion wie Boxen oder Trennlinien kann darauf verzichtet werden)
-
-4. gewünschtem Signal eine Funktion zuweisen
-
-5. (optional) Signal-/Funktionsaufruf in der Vorschaufunktion testen
-
-6. Funktion im Programmcode schreiben
-
-Alle verfügbaren Gtk-Klassen und ihre Funktionen findet man unter `Python GI API Reference >> Gtk 3.0 >> Classes <http://lazka.github.io/pgi-docs/#Gtk-3.0/classes>`_.
+All available GTK+ classes and their functions are documented in the `Python GI API Reference >> Gtk 3.0 >> Classes <http://lazka.github.io/pgi-docs/#Gtk-3.0/classes>`_.
 
 .. thumbnail:: /images/04_clickableelements.png
 
@@ -36,28 +31,48 @@ Alle verfügbaren Gtk-Klassen und ihre Funktionen findet man unter `Python GI AP
 Glade
 -----
 
-Switch oder Schalter
-********************
+Switch
+******
 
-Ein Switch ist ein einfacher Ein-/Aus-Schalter mit, Überraschung!, zwei Zuständen. Die Zustandsänderung lässt sich über das Signal *state_set* abrufen.
+A switch is a widget that posseses two states, on and off. The current status can be retrieved by the *state_set* signal which is emitted on turning the switch on or off.
 
 Checkbox
 ********
 
-Checkboxen sind Togglebuttons in anderem Outfit, hier wird demnach das Signal *toggled* belegt.
+Checkboxes are basically just togglebuttons therefore the *toggled* signal is allocated.
 
 Radiobutton
 ***********
 
-Radiobuttons dienen der Auswahl _eines_ Listenpunktes aus einer gegebenen Liste. Das Element selbst funktioniert ebenfalls wie ein Togglebutton (das Signal *toggled* zuweisen).
+The purpose of radiobuttons is the selection of _one_ list item. The widget is also a sub class of *GtkToggleButton* (allocate *toggled* signal).
 
-Zusätzlich werden die zusammengehörigen Listenpunkte zu einer Gruppe zugeordet. Dies bewerkstelligt man einfach, indem man alle Radiobuttons unter "Allgemein > Knopfattribute > Gruppe" an einem "führenden Radiobutton" ausrichtet.
-
-.. listing:: 04_clickableelements.glade xml
+Every radio button is a member of a group. This is done via *"General > Button Attributes > Group"*. There is one 'leading' radiobutton that are all other radiobuttons bound to.
 
 Python
 ------
 
-Da Checkbox und Radiobutton Togglebuttons sind, wird hier der Status über die Funktion ``widget.get_active()`` abgerufen. Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False ausgibt.
+Given that checkboxes and radiobuttons are togglebuttons the status is retrieved by the ``widget.get_active()`` function.
+
+When the *state_set* signal is emitted on the switch a parameter is passed containing the status as boolean (True/False).
+
+
+.. code-block:: python
+
+    def on_switch_state_set(self,widget,state):
+        if state is True:
+            print("switch is on")
+        else:
+            print("switch is off")
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 04_clickableelements.glade xml
+
+Python
+******
 
 .. listing:: 04_clickableelements.py python
