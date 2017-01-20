@@ -11,7 +11,7 @@
 
 .. contents::
 
-**Progressbar und Levelbar**
+**Progressbars and levelbars**
 
 Glade
 -----
@@ -21,32 +21,26 @@ Glade
 Progressbar
 ***********
 
-Fortschrittsbalken zeigen für gewöhnlich den Status eines länger dauernden Prozesses an. Es gibt dabei zwei Modi:
+Progressbars usually show the current state of a longer lasting process. The widget offers two operation modes:
 
-    1. verhältnismäßige Anzeige, der Fortschritt wird mit einem Wert zwischen 0 und 1 ausgedrückt 
-    
-    2. Aktivitätsmodus, ein beweglicher Block läuft nach zugewiesener Schrittweite hin und her
+1. proportional mode, the progress is expressed by a value between 0 and 1
+2. activity mode, a block moves back and forth 
 
-Zusätzlich hat das Widget eine optionale Textanzeige. Wird der Inhalt nicht spezifiziert, wird der Fortschritt in Prozent angezeigt.
+The widget posseses an optional text field. It shows the progress in percent if the field content is not specified otherwise.
 
 Levelbar
 ********
 
-Levelbars werden normalerweise als Füllstandsanzeiger genutzt. Der Füllstand wird dabei wie beim Fortschrittsbalken angezeigt, weitere Widget-Eigenschaften sind:
+Levelbar widgets are used as level indicators. The level is visualized like in a progressbar but it has some more properties:
 
-    1. Zwei Anzeigenmodi:
+1. Two operation modes:
 
-        1. *continuous*: ein einzelner Block repräsentiert den gegebenen Wert
-        
-        2. *discrete*: Levelbar wird in eine festgelegte Anzahl von Blöcken geteilt, ein Block steht für einen Wertebereich
+    1. *continous*: one single block represents the value
+    2. *discrete*: the levelbar is split into a defined number of blocks, each block represents a value range
 
-    2. Festlegen von Minimal-/Maximalwert möglich, Standardwert ist 0 bzw. 1; beim Anzeigenmodus *discrete* entspricht der Maximalwert der Anzahl der Blöcke
+2. Define minimum/maximum value, default is 0/1; the default number of blocks in discrete mode corresponds to the maximum value
 
-    3. Farbliche Änderungen des Balkens bei Überschreiten bestimmter Werte (siehe `CSS-Artikel <link://slug/css>`_)
-
-.. TEASER_END
-
-.. listing:: 06_progresslevel.glade xml
+3. Change colours when exceeding predefined values (see also `CSS article <link://slug/css>`_)
 
 Python
 ------
@@ -54,13 +48,10 @@ Python
 Progressbar
 ***********
 
-Im Beispiel repräsentiert der erste Balken den Wert, der zweite befindet sich im Aktivitätsmodus. Möchte man bei letzterem trotzdem eine Prozentangabe im Textfeld darstellen, muss man diesen manuell einsetzen:
+In the example the first progressbar operates in proportional mode, the second in activity mode. The latter does not show the progress in the text field, this has to be accomplished manually:
 
 .. code-block:: python
 
-    #verhältnismäßige Anzeige
-    widget.set_fraction(value)
-    #Aktivitätsanzeige mit Prozentangabe im Tetxfeld
     widget.pulse()
     widget.set_text("%d %%" % perc_value)
 
@@ -68,8 +59,25 @@ Im Beispiel repräsentiert der erste Balken den Wert, der zweite befindet sich i
 Levelbar
 ********
 
-Was ``set_fraction`` für Progressbar, ist ``set_value`` für Levelbar. Im *continuous*-Modus ist dies selbsterklärend, im *discrete*-Modus muss man bedenken, wie viele Blöcke definiert wurden.
+What ``set_fraction`` is for progressbar is ``set_value`` for levelbar. This is self-explanatory for the continous mode. In discrete mode the number of blocks have to be factored in:
 
-Auf die Funktion ``add_offset_value`` und Farbänderung des Balkens beim Überschreiten definierter Werte wird im `CSS-Artikel <link://slug/css>`_ eingegangen.
+.. code-block:: python
+
+    widget.set_value(fraction*blocks)
+
+For the ``add_offset_value`` function and colour schemes read the `CSS article <link://slug/css>`_.
+
+.. TEASER_END
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 06_progresslevel.glade xml
+
+Python
+******
 
 .. listing:: 06_progresslevel.py python

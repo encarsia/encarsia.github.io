@@ -22,8 +22,6 @@ Now a window is created and an ID assigned to be able to address the element in 
 
 .. thumbnail:: /images/01_glade.png
 
-.. TEASER_END
-
 To call functions from widgets they have to be connected to signals. Depending on the kind of graphical object signals can be emitted by clicking, marking, editing, switching etc.
 
 If the example window should be able to be closed on clicking the [X] button the signal *destroy* is required. The entry field to specify the function provides a convenient suggestion function to reduce key input following the pattern ``on_id_signal``.
@@ -77,6 +75,8 @@ This example corresponds to the basic example of the `Python GTK+ 3 tutorial <ht
 
 The definded window does not contain any elements like boxes, buttons, bars, menus and other widgets.
 
+.. TEASER_END
+
 Listings
 --------
 
@@ -89,9 +89,3 @@ Python
 ******
 
 .. listing:: 01_minimal.py python
-
-
-
-
-
-

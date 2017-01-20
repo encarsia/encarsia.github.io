@@ -20,8 +20,6 @@ Glade
 
 .. thumbnail:: /images/08_combospin.png
 
-.. TEASER_END
-
 Spinbutton
 **********
 
@@ -44,7 +42,6 @@ Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem
 
 Im Beispiel gibt es zwei ComboboxText-Widgets. Das erste besitzt kein Eingabefeld, es ist also ausschließlich eine Auswahl unter den gegebenen Listenpunkten möglich, die Auswahlliste ist direkt in Glade eingegeben. Die zweite Combobox hat ein Eingabefeld, zu demonstrativen Zwecken werden die Listenpunkte direkt im Programm erstellt. Bei beiden wird das Signal *changed* abgefangen.
 
-.. listing:: 08_combospin.glade xml
 
 Python
 ------
@@ -64,6 +61,19 @@ Listeneinträge einer Combobox können einfach mit der Funktion ``append`` angef
     [self.builder.get_object("comboboxtext2").append(None,entry) for entry in ("bla","blubb","ja","nein")]
 
 Der aktuell angewählte Eintrag wird mit der Funktion ``widget.set_active_text()`` ermittelt, diese gibt auch den Text des optionalen Texteintragfeldes aus.
+
+.. TEASER_END
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 08_combospin.glade xml
+
+Python
+******
 
 .. listing:: 08_combospin.py python
 

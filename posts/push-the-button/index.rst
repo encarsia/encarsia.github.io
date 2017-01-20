@@ -52,6 +52,8 @@ Abhängig vom verwendeten Widget erfordert die Signal-Funktion mindestens einen 
         else:
             #do something different
 
+.. TEASER_END
+
 Listings
 --------
 

@@ -31,8 +31,6 @@ Alle verfügbaren GTK+-Klassen und ihre Funktionen findet man unter `Python GI A
 
 .. thumbnail:: /images/04_clickableelements.png
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -68,6 +66,8 @@ Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False
             print("switch is on")
         else:
             print("switch is off")
+
+.. TEASER_END
 
 Listings
 --------

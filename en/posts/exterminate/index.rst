@@ -15,16 +15,12 @@
 
 .. thumbnail:: /images/11_terminal.png
 
-.. TEASER_END
-
 Glade
 -----
 
 Das Widget findet man in der Widget-Seitenleiste ganz unten und stellt ein fertiges Terminal bereit. Um das Terminal auf ``exit`` zu schließen, muss das Signal *child-exited* abgefangen werden.
 
 Ein Klick auf den Button soll innerhalb dieses Terminals eine Python-Konsole starten, hier wird also das *clicked*-Signal belegt.
-
-.. listing:: 11_terminal.glade xml
 
 Python
 ------
@@ -56,6 +52,17 @@ Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion ``feed_child`
        command = "python\n"
        x.terminal.feed_child(command,len(command))
 
+.. TEASER_END
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 11_terminal.glade xml
+
+Python
+******
+
 .. listing:: 11_terminal.py python
-
-

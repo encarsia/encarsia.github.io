@@ -28,8 +28,6 @@ Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötig
 
 .. thumbnail:: /images/09_treestore2.png
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -60,7 +58,6 @@ TreeView #2
 Button
     Ein Klick auf den Button soll jeweils eine weitere Zeile zum ListStore hinzufügen, es wird also das *clicked*-Signal belegt.
 
-.. listing:: 09_liststore.glade xml
 
 Python
 ------
@@ -90,5 +87,16 @@ Das *edited*-Signal übergibt als Parameter die bearbeitete Zeile und den neuen 
 
     def on_cellrenderer_descr_edited(self,widget,pos,edit):
         x.store[int(pos)][1] = edit
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 09_liststore.glade xml
+
+Python
+******
 
 .. listing:: 09_liststore.py python

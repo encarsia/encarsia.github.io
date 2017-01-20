@@ -17,8 +17,6 @@
 
 .. thumbnail:: /images/15_application.png
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -134,6 +132,7 @@ oder mit ``--setlabel`` einen String an *GtkLabel* übergeben:
 
     $ python script.py --setlabel "I can haz options!"
 
+.. TEASER_END
 
 Listings
 --------

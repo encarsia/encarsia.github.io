@@ -47,6 +47,8 @@ To send a message to the statusbar you will just need the function
 
 If messages are exclusively shown "on top" the content_id can be a random number, like ``0``.
 
+.. TEASER_END
+
 Listings
 --------
 
