@@ -11,7 +11,7 @@
 
 .. contents::
 
-**Schöner klicken mit Cascading Stylesheets**
+**Schöner klicken mit Cascading Style Sheets**
 
 CSS
 ---
@@ -29,9 +29,6 @@ Glade
 
 Mit Glade werden nur die Fenster/Widgets angelegt, in diesem Beispiel vier Levelbars mit Werten, die CSS-Layout-Anweisungen erfolgen dann im Code.
 
-.. TEASER_END
-
-.. listing:: 07_css.glade xml
 
 Python
 ------
@@ -64,5 +61,22 @@ Levelbars können, wie bereits im Artikel `"Bars" <link://slug/bars>`_  angedeut
 Die Werte können mit den Funktionen ``get_offset_value`` abgefragt bzw. mit ``add_offset_value`` angelegt oder verändert werden.
 
 Im Beispiel wird der unteren Levelbar ein zusätzlicher Offsetmarker zwischen ``high`` und ``full`` angelegt, deshalb wird beim Wert von 0.8 dort im Gegensatz zur dritten Levelbar nicht der Marker für ``full`` ereicht.
+
+.. code-block:: python
+
+        self.bar.add_offset_value("alert",.9)
+
+.. TEASER_END
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 07_css.glade xml
+
+Python
+******
 
 .. listing:: 07_css.py python

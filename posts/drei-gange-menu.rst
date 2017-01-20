@@ -18,7 +18,6 @@ Glade
 
 .. thumbnail:: /images/05_menutoolbar.png
 
-
 Menü
 ****
 
@@ -46,6 +45,8 @@ Um Nachrichten an die Statusbar zu senden, bedient man sich einfach der Funktion
     widget.push(content_id,message)
 
 Wenn man Meldungen ausschließlich "obendrauf" einblendet, kann man als content_id eine beliebige Zahl angeben, zum Beispiel ``0``.
+
+.. TEASER_END
 
 Listings
 --------

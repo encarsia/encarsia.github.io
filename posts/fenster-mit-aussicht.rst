@@ -22,8 +22,6 @@ Nun erstellt man ein Fenster und gibt ihm eine Kennung. Mit dieser Kennung wird 
 
 .. thumbnail:: /images/01_glade.png
 
-.. TEASER_END
-
 Um die Ausführung von Funktionen durch ein Widget zu initiieren, müssen sie mit Signalen gekoppelt werden. Signale können je nach Objektart verschieden ausgelöst werden, durch Anklicken, Markieren, Editieren, Schalten etc.
 
 Um in diesem Beispiel das Programmfenster mit dem Schließen-Button zu schließen, wird das Signal *destroy* benötigt. Beim Funktionsnamen hilft die Vorschlagsfunktion nach dem Schema ``on_kennung_signal``.
@@ -78,7 +76,7 @@ Das oben konstruierte Beispiel entspricht dem Basisbeispiel im `Python GTK+ 3 Tu
 
 Man sollte sich von der Kürze dieses Beispiels nicht täuschen lassen. Die eigentlichen Elemente, Boxen, Widget, Buttons, Leisten etc. fehlen hier komplett.
 
-
+.. TEASER_END
 
 Listings
 --------
@@ -92,7 +90,3 @@ Python
 ******
 
 .. listing:: 01_minimal.py python
-
-
-
-

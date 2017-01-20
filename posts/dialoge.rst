@@ -17,8 +17,6 @@ Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit de
 
 .. thumbnail:: /images/13_dialoge.png
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -89,9 +87,10 @@ Mit der Funktion ``hide_on_delete()`` ausgeblendete Dialoge oder reguläre Fenst
         widget.hide_on_delete()
         return True
 
+.. TEASER_END
+
 Listings
 --------
-
 
 Glade
 *****
@@ -102,5 +101,3 @@ Python
 ******
 
 .. listing:: 13_dialoge.py python
-
-

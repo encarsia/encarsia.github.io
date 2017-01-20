@@ -44,7 +44,7 @@ Themen
 - `Windows and dialogues <link://slug/durchzug>`_
 - `Switch, checkbox and radiobutton <link://slug/clickbaiting>`_
 - `Menu, toolbar and statusbar <link://slug/drei-gange-menu>`_
-- `Progressbar and levelbar <link://slug/bars>`_
+- `Progressbars and levelbars <link://slug/bars>`_
 - `CSS <link://slug/css>`_
 - `Spinbutton and combobox <link://slug/qual-der-wahl>`_
 - `ListStore and TreeView <link://slug/uberlistet>`_
@@ -63,7 +63,3 @@ Themen
     - Interaction between other applications
 
 - directory of example files: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
-
-
-
-

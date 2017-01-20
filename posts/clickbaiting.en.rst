@@ -26,8 +26,6 @@ All available GTK+ classes and their functions are documented in the `Python GI 
 
 .. thumbnail:: /images/04_clickableelements.png
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -63,6 +61,8 @@ When the *state_set* signal is emitted on the switch a parameter is passed conta
             print("switch is on")
         else:
             print("switch is off")
+
+.. TEASER_END
 
 Listings
 --------

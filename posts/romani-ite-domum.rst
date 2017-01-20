@@ -15,14 +15,10 @@
 
 .. thumbnail:: /images/10_lokalisation.png
 
-.. TEASER_END
-
 Glade
 -----
 
 Strings von Labels oder Menüs sind standardmäßig als übersetzbar konfiguriert (Checkbox unter "Beschriftung"), insofern muss hier nichts weiter beachtet werden. Glade-Projektdateien werden direkt von GetText verarbeitet.
-
-.. listing:: 10_lokalisation.glade xml
 
 Python
 ------
@@ -51,9 +47,6 @@ Nun muss man Python noch zeigen, unter welchem Namen und Pfad die MO-Dateien (si
         builder.set_translation_domain(appname)
 
 ``set_translation_domain`` muss vor dem Laden der Glade-Datei(en) aufgerufen werden.
-
-.. listing:: 10_lokalisation.py python
-
 
 GetText
 -------
@@ -86,7 +79,6 @@ Für das Beispiel wird also je ein Aufruf für die Glade- und Python-Datei benö
 
 Mit der Option ``-j`` (``--join-existing``) wird eine bestehende Datei um zusätzliche Strings ergänzt und funktioniert deshalb sowohl bei der Initiierung (vorher einfach mit ``touch template.pot`` die leere Datei erstellen) als auch bei erneutem Aufruf zum Aktualisieren neuer Strings.
 
-.. listing:: 10_localization/TUT.pot bash
 
 PO
 **
@@ -122,3 +114,22 @@ Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die
     $ msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 
 
+.. TEASER_END
+
+Listings
+--------
+
+Glade
+*****
+
+.. listing:: 10_lokalisation.glade xml
+
+Python
+******
+
+.. listing:: 10_lokalisation.py python
+
+POT
+***
+
+.. listing:: 10_localization/TUT.pot bash

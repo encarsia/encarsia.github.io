@@ -45,8 +45,6 @@ Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werd
 
 Man erhält den TreeIter-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
 
-.. TEASER_END
-
 Glade
 -----
 
@@ -115,6 +113,8 @@ zugewiesen, jede Filterung wird dann per ``refilter()`` ausgelöst, also wenn da
     def on_button_clicked(self,widget):
         x.color = widget.get_label()
         x.obj("treefilter").refilter()
+
+.. TEASER_END
 
 Listings
 --------

@@ -52,6 +52,8 @@ Depending on the widget the corresponding signal function expects at least one p
         else:
             #do something different
 
+.. TEASER_END
+
 Listings
 --------
 
