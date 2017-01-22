@@ -58,7 +58,7 @@ Themen
     - Notebook
     - FileChooserDialog
     - Medien und GStreamer
-    - Textfelder mit GtkTextView und GtkSourceView
+    - Textfelder mit Gtk.TextView und GtkSource.View
     - Interaktion mit anderen Anwendungen mit und ohne Threading
 
 - Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_

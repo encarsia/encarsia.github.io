@@ -29,7 +29,7 @@ Python
 
 On a button click the label widget should change the diplayed text randomly chosen from a given list.
 
-All *GtkBuilder* elements can be addressed by the ``get_object`` function.
+All *Gtk.Builder* elements can be addressed by the ``get_object`` function.
 
 .. code-block:: python
 

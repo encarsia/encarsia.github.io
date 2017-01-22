@@ -34,11 +34,11 @@ Glade
 ListStore
 *********
 
-Um die Vielseitigkeit von ListStore zu skizzieren, wird im Beispiel ein *GtkListStore* (zu finden in der Elementauswahl links unter "Sonstiges > Listenverwahrung") erstellt und von drei Widgets verwendet.
+Um die Vielseitigkeit von ListStore zu skizzieren, wird im Beispiel ein *Gtk.ListStore* (zu finden in der Elementauswahl links unter *"Sonstiges > Listenverwahrung"*) erstellt und von drei Widgets verwendet.
 
 Zunächst werden ein paar Spalten erstellt. ListStore-Daten lassen sich direkt in Glade eingeben. Dies ist allerdings nur für wenige Zeilen und Spalten praktikabel und übersichtlich. Selbst wenige Daten würde ich immer direkt im Python-Code einlesen.
 
-Wie man sieht, werden Änderungen im ListStore (Sortierung, Inhalt) sofort in allen Widgets aktualisiert, die auf dieses Objekt zugreifen. Für verschiedene Sortierungen des selben List-/TreeStores muss man *GtkTreeModelSort* anwenden (Beispiel siehe `TreeStore-Artikel <link://slug/ansichtssache>`_)
+Wie man sieht, werden Änderungen im ListStore (Sortierung, Inhalt) sofort in allen Widgets aktualisiert, die auf dieses Objekt zugreifen. Für verschiedene Sortierungen des selben List-/TreeStores muss man *Gtk.TreeModelSort* anwenden (Beispiel siehe `TreeStore-Artikel <link://slug/ansichtssache>`_).
 
 .. thumbnail:: /images/09_treestore1.png
 
@@ -46,13 +46,13 @@ Widgets
 *******
 
 ComboBox
-    Als "Baumansichtsmodell" wird wie auch bei den folgenden Widgets der ListStore ausgewählt. Über "Edit > Hierarchie" ein CellRendererText hinzugefügt. Im ersten Feld ("Text") stellt man ein, aus welcher Spalte das Dropdown-Menü angezeigt werden soll. Um die Auswahl zu verarbeiten, wird das Signal *changed* belegt.
+    Als "Baumansichtsmodell" wird wie auch bei den folgenden Widgets der ListStore ausgewählt. Über *"Edit > Hierarchie"* ein CellRendererText hinzugefügt. Im ersten Feld ("Text") stellt man ein, aus welcher Spalte das Dropdown-Menü angezeigt werden soll. Um die Auswahl zu verarbeiten, wird das Signal *changed* belegt.
 
 TreeView #1
-    Das erste TreeView-Widget wird innerhalb eines *GtkScrolledWindow*-Containers angelegt. Wie bei ComboBox werden nun beliebige CellRenderer angelegt. Wird der Sortierungsanzeiger aktiviert, können die Spalten mit Klick auf den Spaltenkopf sortiert werden. In der Sortierspaltenkennung wird die Spalte angegeben, nach der sortiert werden soll, auf diese Weise kann man eine Spalte auch gemäß einer anderen Spalte sortieren (hier im Beispiel wird die mittlere Spalte nach der letzten sortiert, die Sortierung der beiden hinteren Spalten liefert also das gleiche Ergebnis.
+    Das erste TreeView-Widget wird innerhalb eines *Gtk.ScrolledWindow*-Containers angelegt. Wie bei ComboBox werden nun beliebige CellRenderer angelegt. Wird der Sortierungsanzeiger aktiviert, können die Spalten mit Klick auf den Spaltenkopf sortiert werden. In der Sortierspaltenkennung wird die Spalte angegeben, nach der sortiert werden soll, auf diese Weise kann man eine Spalte auch gemäß einer anderen Spalte sortieren (hier im Beispiel wird die mittlere Spalte nach der letzten sortiert, die Sortierung der beiden hinteren Spalten liefert also das gleiche Ergebnis.
 
 TreeView #2
-    Das zweite TreeView-Widget wird innerhalb eines Sichtfeldes (*GtkViewport*) erstellt. Dieser Container bietet keine Scrollbalken, das Widget vergrößert automatisch, so dass alle Zeilen sichtbar sind. Bei größeren Tabellen ist ein ScrolledWindow also praktikabler.
+    Das zweite TreeView-Widget wird innerhalb eines Sichtfeldes (*Gtk.Viewport*) erstellt. Dieser Container bietet keine Scrollbalken, das Widget vergrößert automatisch, so dass alle Zeilen sichtbar sind. Bei größeren Tabellen ist ein ScrolledWindow also praktikabler.
     Es werden die gleichen Daten angezeigt wie zuvor, allerdings ohne Sortierungsanzeiger, dafür wird die mittlere Spalte ("Description") editierbar gemacht und erhält eine Funktion für das Signal *edited*.
 
 Button

@@ -29,7 +29,7 @@ Python
 
 Ein Klick auf den Button soll in der Labelanzeige einen anderen Text anzeigen, hier wird zufällig ein Element aus einer Liste ausgewählt.
 
-Alle *GtkBuilder*-Objekte können über die Funktion ``get_object`` angesprochen werden:
+Alle *Gtk.Builder*-Objekte können über die Funktion ``get_object`` angesprochen werden:
 
 .. code-block:: python
 

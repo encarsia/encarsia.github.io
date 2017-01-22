@@ -23,7 +23,8 @@ Glade
 Spinbutton
 **********
 
-Spinbuttons haben zahlreiche, per Glade festlegbare Eigenschaften wie Mindest-/Höchst-/Standardwert. Zum Spinbutton gehört zwingend das Widget *adjustment*, das unter "Allgemein > Attribute des Einstellknopfs > Stellgröße" ausgewählt oder angelegt werden kann.
+
+Spinbuttons verfügen über zahlreiche, per Glade festlegbare Eigenschaften wie Mindest-/Höchst-/Standardwert. Zum Spinbutton gehört zwingend das Widget *adjustment*, das unter *"Allgemein > Attribute des Einstellknopfs > Stellgröße"* ausgewählt oder angelegt werden kann.
 
 Im Beispiel repräsentieren die beiden Spinbuttons Monat und Jahr, wobei der Spinbutton für den Monat zyklisch angelegt wird, das heißt, nach dem Erreichen des Maximalwertes springt er auf den Mindestwert um. Dieses Verhalten löst das Signal *wrapped* aus und wird angelegt, um die Jahreszahl im zweiten Spinbutton passend umzuschalten.
 
@@ -38,7 +39,7 @@ GtkComboboxText
 GtkCombobox
     Die Daten für die Auswahlliste stammen aus einem Listen- oder Baumspeicher (ListStore oder TreeStore). In diesen können Datensätze mit verschiedenen Informationen gespeichert werden (siehe auch Artikel `"Überlistet" <link://slug/uberlistet>`_)
 
-Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss "Allgemein > Hat Eintrag" aktiviert sein. Dies legt das interne Widget *GtkEntry* an. Wichtig ist, dass dieses unter "Gemeinsam > Widget Flags" fokussierbar gemacht wird.
+Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss *"Allgemein > Hat Eintrag"* aktiviert sein. Dies legt das interne Widget *GtkEntry* an. Wichtig ist, dass dieses unter "Gemeinsam > Widget Flags" fokussierbar gemacht wird.
 
 Im Beispiel gibt es zwei ComboboxText-Widgets. Das erste besitzt kein Eingabefeld, es ist also ausschließlich eine Auswahl unter den gegebenen Listenpunkten möglich, die Auswahlliste ist direkt in Glade eingegeben. Die zweite Combobox hat ein Eingabefeld, zu demonstrativen Zwecken werden die Listenpunkte direkt im Programm erstellt. Bei beiden wird das Signal *changed* abgefangen.
 

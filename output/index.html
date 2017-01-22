@@ -66,7 +66,7 @@
 <li><a class="reference internal" href="posts/application-fortsetzung/#optionen-anlegen" id="id7">Optionen anlegen</a></li>
 <li><a class="reference internal" href="posts/application-fortsetzung/#signal-verbinden" id="id8">Signal verbinden</a></li>
 <li><a class="reference internal" href="posts/application-fortsetzung/#optionen-verarbeiten" id="id9">Optionen verarbeiten</a></li>
-<li><a class="reference internal" href="posts/application-fortsetzung/#optionen-nutzen" id="id10">Optionen nutzen</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#optionen-ubergeben" id="id10">Optionen übergeben</a></li>
 </ul>
 </li>
 <li>
@@ -86,11 +86,11 @@
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id4">Icon</a></h3>
 <p>Einem Fenster lässt sich direkt in Glade unter <em>"Allgemein &gt; Darstellung &gt; Symboldatei"</em> ein Icon auswählen. Das Problem dabei ist, dass Glade Bilddateien nur anzeigt, wenn sie sich im selben Verzeichnis wie die Gladedatei selbst befinden, auch wenn man ein anderes Verzeichnis auswählt.</p>
 <p>Am einfachsten behebt man dies, indem man die Gladedatei in einem Texteditor bearbeitet und den (relativen) Pfad zum <a class="reference external" href="https://openclipart.org/detail/22535/ducky-icon">Icon</a> angibt. Diese Einstellung bleibt auch erhalten, wenn die Datei später mit Glade bearbeitet und gespeichert wird:</p>
-<pre class="code xml"><a name="rest_code_c52eb8d120b5420a936e1a3de5b0edaa-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_c52eb8d120b5420a936e1a3de5b0edaa-2"></a>  ...
-<a name="rest_code_c52eb8d120b5420a936e1a3de5b0edaa-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
-<a name="rest_code_c52eb8d120b5420a936e1a3de5b0edaa-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_c52eb8d120b5420a936e1a3de5b0edaa-5"></a>  ...
+<pre class="code xml"><a name="rest_code_b9af2ace714741058c583bd8f2146d6b-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_b9af2ace714741058c583bd8f2146d6b-2"></a>  ...
+<a name="rest_code_b9af2ace714741058c583bd8f2146d6b-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
+<a name="rest_code_b9af2ace714741058c583bd8f2146d6b-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_b9af2ace714741058c583bd8f2146d6b-5"></a>  ...
 </pre>
 </div>
 <div class="section" id="headerbar">
@@ -106,49 +106,49 @@
 <div class="section" id="optionen-anlegen">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id7">Optionen anlegen</a></h3>
 <p>Verfügbare Optionen werden mit der Funktion <tt class="docutils literal">add_main_option_entries(entrylist)</tt> hinzugefügt. Diese Einträge haben das Format <em>GLib.OptionEntry</em>, welches allerlei Parameter besitzt.</p>
-<pre class="code python"><a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-1"></a><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span><span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-7"></a>    <span class="p">])</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-8"></a>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">long_name</span><span class="p">,</span> <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-10"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-11"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-12"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-13"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-14"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-15"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-16"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-17"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
-<a name="rest_code_d069b285092f4e2ea5b7cde434ca3c84-18"></a>    <span class="k">return</span> <span class="n">option</span>
+<pre class="code python"><a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-1"></a><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span><span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-7"></a>    <span class="p">])</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-8"></a>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">long_name</span><span class="p">,</span> <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-10"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-11"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-12"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-13"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-14"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-15"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-16"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-17"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
+<a name="rest_code_00145f124f004dfa9fa60f81b35f5f29-18"></a>    <span class="k">return</span> <span class="n">option</span>
 </pre>
 </div>
 <div class="section" id="signal-verbinden">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id8">Signal verbinden</a></h3>
-<p>Der "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst</p>
-<pre class="code python"><a name="rest_code_48bd4a240bd34b1c8b35a38c3a03a4cb-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
+<p>Der <em>GtkApplication</em>-eigene "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst</p>
+<pre class="code python"><a name="rest_code_9ceb2fe5608a47f29422a074a57bf0ed-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="optionen-verarbeiten">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id9">Optionen verarbeiten</a></h3>
 <p>Die an die Handler-Funktion übergebene <tt class="docutils literal">option</tt> ist ein Element der Klasse <em>GLib.VariantDict</em>. Mit <tt class="docutils literal"><span class="pre">contains("option")</span></tt> lässt sich nach der übergebenen Option suchen.</p>
-<pre class="code python"><a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-3"></a>        <span class="c1">#do something and exit normally</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-4"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-6"></a>        <span class="c1">#do something different and exit</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-7"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-9"></a>        <span class="c1">#do more and continue</span>
-<a name="rest_code_d5a499fd4a9147579d7dfdc2354e6a0e-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+<pre class="code python"><a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-3"></a>        <span class="c1">#do something and exit normally</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-4"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-6"></a>        <span class="c1">#do something different and exit</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-7"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-9"></a>        <span class="c1">#do more and continue</span>
+<a name="rest_code_5e02c3813d7e4a5d90084ba8832f4dc6-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre>
-<p>Ein übergebener String kann extrahiert werden, indem <em>GLibVariantDict</em> mit <tt class="docutils literal">end()</tt> in <em>GLibVariant</em> konvertiert wird, das sich wiederum mit <tt class="docutils literal">keys()</tt> auslesen lässt:</p>
-<pre class="code python"><a name="rest_code_3e1f97610ac14ca385098f8256368e82-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-<a name="rest_code_3e1f97610ac14ca385098f8256368e82-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<p>Ein übergebener String kann extrahiert werden, indem <em>GLib.VariantDict</em> mit <tt class="docutils literal">end()</tt> in <em>GLib.Variant</em> konvertiert wird, das sich wiederum mit <tt class="docutils literal">keys()</tt> auslesen lässt:</p>
+<pre class="code python"><a name="rest_code_8570f92e074140dd89a95caa746b4810-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<a name="rest_code_8570f92e074140dd89a95caa746b4810-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
 </pre>
 <dl class="docutils">
 <dt>Ein Return-Wert ist zwingend erforderlich, er entspricht dabei dem Exit-Status:</dt>
@@ -162,15 +162,15 @@
 </ul></dd>
 </dl>
 </div>
-<div class="section" id="optionen-nutzen">
-<h3><a class="toc-backref" href="posts/application-fortsetzung/#id10">Optionen nutzen</a></h3>
+<div class="section" id="optionen-ubergeben">
+<h3><a class="toc-backref" href="posts/application-fortsetzung/#id10">Optionen übergeben</a></h3>
 <p>Die Option, die immer verfügbar ist, ist <tt class="docutils literal"><span class="pre">--help</span></tt>. Hier werden unter "Anwendungsoptionen" die angelegten Optionen samt Beschreibung aufgeführt. Die Optionen können wie definiert angegeben werden:</p>
-<pre class="code console"><a name="rest_code_dc39b1e89c4f4a2abda6f784ca22666a-1"></a><span class="gp">$</span> python script.py --version
-<a name="rest_code_dc39b1e89c4f4a2abda6f784ca22666a-2"></a><span class="go">Python: 3.6.0</span>
-<a name="rest_code_dc39b1e89c4f4a2abda6f784ca22666a-3"></a><span class="go">GTK+:   3.22.6</span>
+<pre class="code console"><a name="rest_code_d9bbf99da4d14248aa20a617639ccb45-1"></a><span class="gp">$</span> python script.py --version
+<a name="rest_code_d9bbf99da4d14248aa20a617639ccb45-2"></a><span class="go">Python: 3.6.0</span>
+<a name="rest_code_d9bbf99da4d14248aa20a617639ccb45-3"></a><span class="go">GTK+:   3.22.6</span>
 </pre>
-<p>oder mit <tt class="docutils literal"><span class="pre">--setlabel</span></tt> einen String an <em>GtkLabel</em> übergeben:</p>
-<pre class="code console"><a name="rest_code_1930ee46ee1a49ab976f0e46515807c0-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
+<p>oder mit <tt class="docutils literal"><span class="pre">--setlabel</span></tt> einen String an <em>Gtk.Label</em> übergeben:</p>
+<pre class="code console"><a name="rest_code_59f96d814d454228861fbc672a1dca07-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
 </pre>
 <p class="more"><a href="posts/application-fortsetzung/">Weiterlesen…</a></p>
 </div>
@@ -230,9 +230,86 @@
 </ul>
 </div>
 <p><strong>Programm als GtkApplication laufen lassen</strong></p>
-<p><em>GtkApplication</em> handhabt verschiedene wichtige Aspekte einer Gtk+-Anwendung, wie etwa der Gtk+-Initialisierung, dem Sessionmanagement und der Desktopintegration.</p>
+<p><em>GtkApplication</em> handhabt verschiedene wichtige Aspekte einer GTK+-Anwendung, wie etwa der GTK+-Initialisierung, dem Sessionmanagement und der Desktopintegration.</p>
 <a class="reference external image-reference" href="images/14_application.png"><img alt="/images/14_application.thumbnail.png" src="images/14_application.thumbnail.png"></a>
+<div class="section" id="xml-dateien">
+<h2><a class="toc-backref" href="posts/application/#id4">XML-Dateien</a></h2>
+<div class="section" id="glade">
+<h3><a class="toc-backref" href="posts/application/#id5">Glade</a></h3>
+<p>In Glade verändert sich im Prinzip nichts. Als Hauptfenster sollten <em>GtkApplicationWindows</em> zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem <a class="reference external" href="posts/dialoge">Artikel zu Dialogen</a> wieder verwendet.</p>
+</div>
+<div class="section" id="gmenu">
+<h3><a class="toc-backref" href="posts/application/#id6">GMenu</a></h3>
+<p>Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als <em>GioMenu</em> erkannt wird:</p>
+<pre class="code xml"><a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-2"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-3"></a> <span class="nt">&lt;menu</span> <span class="na">id=</span><span class="s">"appmenu"</span><span class="nt">&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-4"></a>    <span class="nt">&lt;section&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-5"></a>      <span class="nt">&lt;item&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-6"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Menu Item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-7"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"action"</span><span class="nt">&gt;</span>app.item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-8"></a>      <span class="nt">&lt;/item&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-9"></a>    <span class="nt">&lt;/section&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-10"></a>  <span class="nt">&lt;/menu&gt;</span>
+<a name="rest_code_32034b8ef2f446e996c9f6f4013a95a5-11"></a><span class="nt">&lt;/interface&gt;</span>
+</pre>
+<p>Von Glade selbst würde diese XML-Datei als veraltetes Format erkannt, aber sie lässt sich trotzdem von <em>GtkBuilder</em> laden und anschließend kann man die Identifier nutzen.</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/application/#id7">Python</a></h2>
+<div class="section" id="initialisierung-von-gtkapplication">
+<h3><a class="toc-backref" href="posts/application/#id8">Initialisierung von <em>GtkApplication</em></a></h3>
+<p>Bei der Initialisierung wird eine <em>application_id</em>- und <em>flags</em>-Angabe benötigt. Letztere können in der Regel bei 0 bzw. FLAGS_NONE belassen werden (siehe <a class="reference external" href="https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags">Gio.ApplicationFlags</a>), die Konventionen für die application_id sind <a class="reference external" href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.Application.id_is_valid.html">hier dokumentiert</a>.</p>
+<p>Die Application kann nun mit verschiedenen Signalen verbunden werden, die zu bestimmten Ereignissen ausgelöst werden, aber es muss mindestens <tt class="docutils literal">activate</tt> verbunden werden:</p>
+<pre class="code python"><a name="rest_code_b69a215f39664464a1ac67a465f89bfa-1"></a><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-2"></a>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-4"></a>    <span class="c1">#self.app.connect("startup", self.on_app_startup) #optional</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-6"></a>    <span class="c1">#self.app.connect("shutdown", self.on_app_shutdown) #optional</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-7"></a>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-8"></a><span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-9"></a>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-10"></a>    <span class="c1">#setting up GtkBuilder etc.</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-11"></a>    <span class="o">...</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-12"></a>    <span class="o">...</span>
+<a name="rest_code_b69a215f39664464a1ac67a465f89bfa-13"></a>    <span class="o">...</span>
+</pre>
+</div>
+<div class="section" id="appmenu">
+<h3><a class="toc-backref" href="posts/application/#id9">Appmenu</a></h3>
+<p>Wie oben bereits erwähnt, lässt sich die GMenu-XML von <em>GtkBuilder</em> laden, dann wird das Menü der Application zugewiesen:</p>
+<pre class="code python"><a name="rest_code_533154470eaa4a069b9e9a6f9d7d4f96-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"menu.ui"</span><span class="p">)</span>
+<a name="rest_code_533154470eaa4a069b9e9a6f9d7d4f96-2"></a><span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
+</pre>
+<p>Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, genauer <em>GioSimpleActions</em>, erstellt und analog zur herkömmlichen Signalverknüpfung über <tt class="docutils literal">connect</tt> verbunden werden.</p>
+<pre class="code python"><a name="rest_code_66ef8e7a59e34d8eb28d1d01e4bb23a7-1"></a><span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+<a name="rest_code_66ef8e7a59e34d8eb28d1d01e4bb23a7-2"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a name="rest_code_66ef8e7a59e34d8eb28d1d01e4bb23a7-3"></a>    <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<a name="rest_code_66ef8e7a59e34d8eb28d1d01e4bb23a7-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre>
+<p>Im Beispiel werden Actions zum Aufrufen der Dialoge erstellt.</p>
+</div>
+<div class="section" id="starten-und-beenden">
+<h3><a class="toc-backref" href="posts/application/#id10">Starten und Beenden</a></h3>
+<p><em>GtkApplication</em> übernimmt die Handhabung des GTK+-Mainloops, das heißt, es nicht mehr notwendig GTK+ manuell zu starten oder zu beenden. Stattdessen werden <tt class="docutils literal">run()</tt> und <tt class="docutils literal">quit()</tt> verwendet:</p>
+<pre class="code text"><a name="rest_code_40d9da515ee34d02b0ed9fb0d483a370-1"></a>Gtk.main()      -&gt;  app.run(argv)
+<a name="rest_code_40d9da515ee34d02b0ed9fb0d483a370-2"></a>Gtk.main_quit() -&gt;  app.quit()
+</pre>
+</div>
+</div>
+<div class="section" id="links">
+<h2><a class="toc-backref" href="posts/application/#id11">Links</a></h2>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkApplication.html">GNOME Developer: GtkApplication</a></li>
+<li><a class="reference external" href="http://www.bachsau.com/2015/07/13/how-to-use-gtk-3-in-python-to-manage-your-whole-application/">How to use GTK+ 3 in Python to manage your whole application</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/19481439/how-to-create-a-complete-menu-using-gio-actions-in-pygi-gtk">Stackoverflow: How to create a complete menu using GIO Actions in PyGI GTK?</a></li>
+</ul>
+</blockquote>
 <p class="more"><a href="posts/application/">Weiterlesen…</a></p>
+</div>
 </div>
             </div>
         </div>
@@ -403,11 +480,11 @@
 </ul>
 </div>
 <p><strong>Anzeige von Dialogfenstern</strong></p>
-<p>Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die <em>Gtk.Dialog</em>-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten <em>About</em>- und <em>MessageDialog</em>.</p>
+<p>Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die <em>GtkDialog</em>-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten <em>About</em>- und <em>MessageDialog</em>.</p>
 <a class="reference external image-reference" href="images/13_dialoge.png"><img alt="/images/13_dialoge.thumbnail.png" src="images/13_dialoge.thumbnail.png"></a>
 <div class="section" id="glade">
 <h2><a class="toc-backref" href="posts/dialoge/#id3">Glade</a></h2>
-<p>Dialog-Widgets findet man unter "Oberste Ebene" neben den Fenster-Widgets.</p>
+<p>Dialog-Widgets findet man unter <em>"Oberste Ebene"</em> neben den Fenster-Widgets.</p>
 <p>Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter <em>"Allgemein &gt; Fensterattribute &gt; Vorübergehend für:"</em> einem Eltern-Fenster zugeordnet werden.</p>
 <div class="section" id="aboutdialog">
 <h3><a class="toc-backref" href="posts/dialoge/#id4">AboutDialog</a></h3>
@@ -420,7 +497,7 @@
 <div class="section" id="buttons-und-responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id6">Buttons und Responses</a></h3>
 <p>Dialoge besitzen bereits intern über eine <em>GtkButtonBox</em>, die mit beliebigen Buttons befüllt werden kann.</p>
-<p>Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf <em>clicked</em> angelegt werden, sondern man legt in den Button-Eigenschaften unter "Allgemein" eine Antwortkennung (Response) fest (int) und belegt das Signal <em>response</em> des GtkDialog.</p>
+<p>Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf <em>clicked</em> angelegt werden, sondern man legt in den Button-Eigenschaften unter <em>"Allgemein"</em> eine Antwortkennung (Response) fest (int) und belegt das Signal <em>response</em> des <em>GtkDialog</em>.</p>
 <p>Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response:</p>
 <blockquote>
 <ul class="simple">
@@ -450,21 +527,21 @@
 <div class="section" id="responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id9">Responses</a></h3>
 <p>Beim Auslösen des <em>response</em>-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt jede innerhalb einer einzelnen Funktion verarbeitet werden:</p>
-<pre class="code python"><a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
-<a name="rest_code_5c93db6ee65140c49d31d979ab8257fd-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
+<a name="rest_code_ad44bdbc21104fb9bd2000d67f46dc1d-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="delete-event">
 <h3><a class="toc-backref" href="posts/dialoge/#id10">Delete-event</a></h3>
 <p>Mit der Funktion <tt class="docutils literal">hide_on_delete()</tt> ausgeblendete Dialoge oder reguläre Fenster lassen sich mit <tt class="docutils literal">show_all()</tt> wieder anzeigen:</p>
-<pre class="code python"><a name="rest_code_9f849fc325d34756971133336030c03a-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-<a name="rest_code_9f849fc325d34756971133336030c03a-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_9f849fc325d34756971133336030c03a-3"></a>    <span class="k">return</span> <span class="bp">True</span>
+<pre class="code python"><a name="rest_code_f19e6a8dd3624fc8b34bbf4541fcdd5b-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+<a name="rest_code_f19e6a8dd3624fc8b34bbf4541fcdd5b-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_f19e6a8dd3624fc8b34bbf4541fcdd5b-3"></a>    <span class="k">return</span> <span class="bp">True</span>
 </pre>
 <p class="more"><a href="posts/dialoge/">Weiterlesen…</a></p>
 </div>
@@ -528,11 +605,11 @@
 <div class="section" id="treestore-vs-liststore">
 <h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
 <p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
-<pre class="code python"><a name="rest_code_9ff7cfb770544905b05217d24019acaf-1"></a><span class="c1">#append row to liststore</span>
-<a name="rest_code_9ff7cfb770544905b05217d24019acaf-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_9ff7cfb770544905b05217d24019acaf-3"></a>
-<a name="rest_code_9ff7cfb770544905b05217d24019acaf-4"></a><span class="c1">#append row to treestore</span>
-<a name="rest_code_9ff7cfb770544905b05217d24019acaf-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_7791c47c68794774ab99a0fdc67b8614-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-3"></a>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Der Wert der Variable <em>parent</em> ist entweder</p>
 <ul class="simple">
@@ -542,10 +619,10 @@
 <strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
 </ul>
 <p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
-<pre class="code python"><a name="rest_code_cad26b77527c42b3ad889417f58a4e22-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_cad26b77527c42b3ad889417f58a4e22-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_b1115020e75d4c2dbc93a5d1a2253f32-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_b1115020e75d4c2dbc93a5d1a2253f32-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
-<p>Man erhält den TreeIter-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
+<p>Man erhält den <em>TreeIter</em>-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
 </div>
 <div class="section" id="glade">
 <h2><a class="toc-backref" href="posts/ansichtssache/#id6">Glade</a></h2>
@@ -553,7 +630,7 @@
 <div class="section" id="treemodelsort">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id7">TreeModelSort</a></h3>
 <p>Spalten lassen sich mit der Funktion <tt class="docutils literal">set_sort_column_id</tt> einfach sortieren. Wendet man diese Funktion direkt auf TreeStore an, werden logischerweise alle TreeView-Widgets, die darauf zurückgreifen, sortiert.</p>
-<p>Für diese Fälle muss man <em>TreeModelSort</em>-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter "Sonstiges &gt; Sortierung für Baumansichtsmodell" (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.</p>
+<p>Für diese Fälle muss man <em>TreeModelSort</em>-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter <em>"Sonstiges &gt; Sortierung für Baumansichtsmodell"</em> (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.</p>
 <p>Die Sortierungsfunktion führt man wie zuvor, nur auf das TreeModelSort-Objekt, aus.</p>
 </div>
 <div class="section" id="treemodelfilter">
@@ -571,27 +648,27 @@
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id11">TreeModelSort</a></h3>
 <p>Durch die Positionsabfrage von <tt class="docutils literal">GtkTreeSelection.get_selected()</tt> erhält man ein Tupel (model,pos), <em>pos</em> von <em>model</em> zeigt dabei auf TreeModelSort (bzw. analog auf TreeModelFilter), nicht auf TreeStore und erfordert eine Konvertierung:</p>
-<pre class="code python"><a name="rest_code_2a2d1001a1c540128f559f959459e040-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
-<a name="rest_code_2a2d1001a1c540128f559f959459e040-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-<a name="rest_code_2a2d1001a1c540128f559f959459e040-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_921807b9c3504f54a57b822930d6b14c-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<a name="rest_code_921807b9c3504f54a57b822930d6b14c-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<a name="rest_code_921807b9c3504f54a57b822930d6b14c-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id12">TreeModelFilter</a></h3>
 <p>Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von Zeilen definiert wird, im Beispiel also die Variable <em>self.color</em>:</p>
-<pre class="code python"><a name="rest_code_0772e36b75c64fa08bebebd1edb7d554-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<a name="rest_code_0772e36b75c64fa08bebebd1edb7d554-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-<a name="rest_code_0772e36b75c64fa08bebebd1edb7d554-3"></a>        <span class="k">return</span> <span class="bp">True</span>
-<a name="rest_code_0772e36b75c64fa08bebebd1edb7d554-4"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_0772e36b75c64fa08bebebd1edb7d554-5"></a>        <span class="k">return</span> <span class="bp">False</span>
+<pre class="code python"><a name="rest_code_6b03e8794a7c4119a16d83debf341610-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-3"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-5"></a>        <span class="k">return</span> <span class="bp">False</span>
 </pre>
 <p>Die Funktion wird zunächst nach dem Schema</p>
-<pre class="code python"><a name="rest_code_74d955fa81f44c57aaedf2423e1d67d2-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_6f0e2252f4f74822868ea1efd7ad3d79-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
 </pre>
 <p>zugewiesen, jede Filterung wird dann per <tt class="docutils literal">refilter()</tt> ausgelöst, also wenn das Button-Signal ausgelöst wird:</p>
-<pre class="code python"><a name="rest_code_57a7cd3e4fd7431fbf3b5b0bd04f5c66-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_57a7cd3e4fd7431fbf3b5b0bd04f5c66-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
-<a name="rest_code_57a7cd3e4fd7431fbf3b5b0bd04f5c66-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
+<a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/ansichtssache/">Weiterlesen…</a></p>
 </div>
@@ -679,23 +756,23 @@
 </div>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="posts/exterminate/#id4">Python</a></h2>
-<p>Elemente außerhalb des Gtk-Moduls, die Glade verwendet werden, müssen als GObject-Typ registriert werden (dies betrifft beispielsweise auch das GtkSourceView-Widget (Modul GtkSource):</p>
-<pre class="code python"><a name="rest_code_2dbbae616ada4e31a12e9d0220fbd734-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+<p>Elemente außerhalb des <em>Gtk</em>-Moduls, die Glade verwendet werden, müssen als <em>GObject</em>-Typ registriert werden (dies betrifft beispielsweise auch das <em>GtkSourceView</em>-Widget (Modul <em>GtkSource</em>):</p>
+<pre class="code python"><a name="rest_code_1605d6ee1d554822b2b5790242d31633-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
 </pre>
 <p>Das Terminal wird mit der Funktion <tt class="docutils literal">spawn_sync</tt> initiiert, die ganze 7 Parameter erwartet. Die <a class="reference external" href="https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync">Dokumentation</a> liefert Details, für eine einfache Bash kommt man mit viel Defaults und Nones aus:</p>
-<pre class="code python"><a name="rest_code_6eb94ae6778647d1a0977689c877ad87-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-3"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-5"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-7"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-8"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_6eb94ae6778647d1a0977689c877ad87-9"></a>        <span class="p">)</span>
+<pre class="code python"><a name="rest_code_5428a094863842108c748df5071be457-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
+<a name="rest_code_5428a094863842108c748df5071be457-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-3"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
+<a name="rest_code_5428a094863842108c748df5071be457-5"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-7"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-8"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_5428a094863842108c748df5071be457-9"></a>        <span class="p">)</span>
 </pre>
 <p>Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion <tt class="docutils literal">feed_child</tt>. Als Parameter müssen übergeben werden zum einen der String (inklusive <em>newline</em>, um einen Befehl auszuführen) und die Länge des Strings:</p>
-<pre class="code python"><a name="rest_code_c625d3a6fdb14171869a9d9dda832163-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
-<a name="rest_code_c625d3a6fdb14171869a9d9dda832163-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_d3f48d4147b348e1899ef1e74effc5b3-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
+<a name="rest_code_d3f48d4147b348e1899ef1e74effc5b3-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
 </pre>
 <p class="more"><a href="posts/exterminate/">Weiterlesen…</a></p>
 </div>
