@@ -13,11 +13,10 @@
 
 **Programm als GtkApplication laufen lassen**
 
-*GtkApplication* handhabt verschiedene wichtige Aspekte einer Gtk+-Anwendung, wie etwa der Gtk+-Initialisierung, dem Sessionmanagement und der Desktopintegration.
+*GtkApplication* handhabt verschiedene wichtige Aspekte einer GTK+-Anwendung, wie etwa der GTK+-Initialisierung, dem Sessionmanagement und der Desktopintegration.
 
 .. thumbnail:: /images/14_application.png
 
-.. TEASER_END
 
 XML-Dateien
 -----------
@@ -25,12 +24,12 @@ XML-Dateien
 Glade
 *****
 
-In Glade verändert sich im Prinzip nichts. Als Fenster sollten *GtkApplicationWindows* zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem `Artikel zu Dialogen <link://slug/dialoge>`_ wieder verwendet.
+In Glade verändert sich im Prinzip nichts. Als Hauptfenster sollten *GtkApplicationWindows* zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem `Artikel zu Dialogen <link://slug/dialoge>`_ wieder verwendet.
 
 GMenu
 *****
 
-Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als *Gio.Menu* erkannt wird:
+Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als *GioMenu* erkannt wird:
 
 .. code-block:: xml
 
@@ -54,7 +53,7 @@ Python
 Initialisierung von *GtkApplication*
 ************************************
 
-Bei der Initialisierung wird eine *application_id*- und *flags*-Angabe benötigt, letztere können in der Regel bei 0 bzw. FLAGS_NONE belassen werden (siehe `Gio.ApplicationFlags <https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags>`_).
+Bei der Initialisierung wird eine *application_id*- und *flags*-Angabe benötigt. Letztere können in der Regel bei 0 bzw. FLAGS_NONE belassen werden (siehe `Gio.ApplicationFlags <https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags>`_), die Konventionen für die application_id sind `hier dokumentiert <https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.Application.id_is_valid.html>`_.
 
 Die Application kann nun mit verschiedenen Signalen verbunden werden, die zu bestimmten Ereignissen ausgelöst werden, aber es muss mindestens ``activate`` verbunden werden:
 
@@ -111,6 +110,8 @@ Links
  * `GNOME Developer: GtkApplication <https://developer.gnome.org/gtk3/stable/GtkApplication.html>`_
  * `How to use GTK+ 3 in Python to manage your whole application <http://www.bachsau.com/2015/07/13/how-to-use-gtk-3-in-python-to-manage-your-whole-application/>`_
  * `Stackoverflow: How to create a complete menu using GIO Actions in PyGI GTK? <http://stackoverflow.com/questions/19481439/how-to-create-a-complete-menu-using-gio-actions-in-pygi-gtk>`_
+
+.. TEASER_END
 
 Listings
 --------

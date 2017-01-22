@@ -13,14 +13,14 @@
 
 **Anzeige von Dialogfenstern**
 
-Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *Gtk.Dialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog*.
+Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog*.
 
 .. thumbnail:: /images/13_dialoge.png
 
 Glade
 -----
 
-Dialog-Widgets findet man unter "Oberste Ebene" neben den Fenster-Widgets.
+Dialog-Widgets findet man unter *"Oberste Ebene"* neben den Fenster-Widgets.
 
 Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter *"Allgemein > Fensterattribute > Vorübergehend für:"* einem Eltern-Fenster zugeordnet werden.
 
@@ -39,7 +39,7 @@ Buttons und Responses
 
 Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann.
 
-Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter "Allgemein" eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des GtkDialog.
+Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter *"Allgemein"* eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des *GtkDialog*.
 
 Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response:
 

@@ -11,27 +11,27 @@
 
 .. contents::
 
-**Das VTE-Terminal-Widget**
+**The VTE terminal widget**
 
 .. thumbnail:: /images/11_terminal.png
 
 Glade
 -----
 
-Das Widget findet man in der Widget-Seitenleiste ganz unten und stellt ein fertiges Terminal bereit. Um das Terminal auf ``exit`` zu schließen, muss das Signal *child-exited* abgefangen werden.
+The widget can be found in the lower part of the widget side bar and provides a complete terminal emulator. To close the window on the ``exit`` command the *child-exited* signal has to be assigned.
 
-Ein Klick auf den Button soll innerhalb dieses Terminals eine Python-Konsole starten, hier wird also das *clicked*-Signal belegt.
+A button click shall open a Python prompt within the terminal window, so we need the familiar *clicked* signal.
 
 Python
 ------
 
-Elemente außerhalb des Gtk-Moduls, die Glade verwendet werden, müssen als GObject-Typ registriert werden (dies betrifft beispielsweise auch das GtkSourceView-Widget (Modul GtkSource):
+Elements used in Glade that are not part of the *Gtk* module have to be registered as a *GObject* object (this is also required when using a *GtkSourceView* widget as the functionality is provided by the *GtkSource module):
 
 .. code:: python
 
     GObject.type_register(Vte.Terminal)
 
-Das Terminal wird mit der Funktion ``spawn_sync`` initiiert, die ganze 7 Parameter erwartet. Die `Dokumentation <https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync>`_ liefert Details, für eine einfache Bash kommt man mit viel Defaults und Nones aus:
+The terminal emulator is initiated by calling ``spawn_sync`` expecting 7 parameters. Detailed information on the parameters are available in the `documentation <https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync>`_ but for a common start a lot of defaults and Nones will do:
 
 .. code-block:: python
 
@@ -45,7 +45,7 @@ Das Terminal wird mit der Funktion ``spawn_sync`` initiiert, die ganze 7 Paramet
             None,
             )
 
-Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion ``feed_child``. Als Parameter müssen übergeben werden zum einen der String (inklusive *newline*, um einen Befehl auszuführen) und die Länge des Strings:
+The ``feed_child`` function must be called to send a command to the console. The expected parameters are the string including a newline and the length of the string:
 
 .. code:: python
 

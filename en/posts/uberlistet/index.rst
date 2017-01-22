@@ -1,4 +1,4 @@
-.. title: Überlistet
+.. title: ListStore
 .. slug: uberlistet
 .. date: 2016-11-24 17:55:14 UTC+01:00
 .. tags: glade,python
@@ -11,20 +11,18 @@
 
 .. contents::
 
-**Daten in ListStore speichern und mit ComboBox und TreeView anzeigen**
+**Store data sets in ListStores and use ComboBox and TreeView to display the data**
 
-Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötigt man in GTK+-Anwendungen verschiedene Elemente:
+There are a bunch of elements required to store and display tables of data in GTK+ applications:
 
-1. Im Modell werden die Daten verwaltet, es gibt zwei Typen:
-    
-    * *ListStore:* flache Liste, die Spalten können neben Text-, Zahlenwerten auch GTK+-Elemente (z.B. Buttons, Checkboxen) enthalten
-    * *TreeStore:* funktioniert prinzipiell wie ListStore, Zeilen können ihrerseits Kind-Einträge besitzen, Daten können im Gegensatz zu ListStore nicht in Glade angegeben werden (`TreeStore-Artikel <link://slug/ansichtssache>`_)
+1. The model to administrate data. There are two types:
+    * *ListStore:* flat table, besides string and numerical values the rows also can be of GTK+ element type (like buttons or checkboxes), input of data sets in Glade possible
+    * *TreeStore:* just like ListStore but rows can possess child rows, input of data sets in Glade is not possible (see also `TreeStore article <link://slug/ansichtssache>`_)
 
 2. Widgets:
-
-    * *TreeView:* dieses Widget eignet sich zum Anzeigen, Sortieren, Bearbeiten von Daten, wird von beiden Modelltypen verwendet; es können parallel mehrere TreeView-Widgets angelegt werden, die auf die selbe Datenbasis (Modell) zurückgreifen, aber zum Beispiel verschiedene Spalten anzeigen
-    * *ComboBox:* Comboboxen dienen der Auswahl aus einer gegebenen Liste, deren Datenbasis ein List- oder TreeStore sein kann (siehe Artikel zu `Spinbutton und Combobox <link://slug/qual-der-wahl>`_)
-    * *CellRenderers:* Unterwidgets, in denen die anzuzeigenden Daten, deren Layout und weitere Optionen wie Bearbeitbarkeit festgelegt werden
+    * *TreeView:* show, sort and edit data; used by both store model types; a data store can be used my multiple TreeView widgets
+    * *ComboBox:* comboboxes are used to limit input to given list items, this list can be stored in a List/TreeStore (see also `spinbutton and combobox article <link://slug/qual-der-wahl>`_)
+    * *CellRenderers:* Subwidgets to specify source, layout and other properties (like being editable) of displayed data rows
 
 .. thumbnail:: /images/09_treestore2.png
 
@@ -34,11 +32,11 @@ Glade
 ListStore
 *********
 
-Um die Vielseitigkeit von ListStore zu skizzieren, wird im Beispiel ein *GtkListStore* (zu finden in der Elementauswahl links unter "Sonstiges > Listenverwahrung") erstellt und von drei Widgets verwendet.
+In the example there is one ListStore created via *"Miscellaneous > List Store"* which will be later used by three Widgets.
 
-Zunächst werden ein paar Spalten erstellt. ListStore-Daten lassen sich direkt in Glade eingeben. Dies ist allerdings nur für wenige Zeilen und Spalten praktikabel und übersichtlich. Selbst wenige Daten würde ich immer direkt im Python-Code einlesen.
+First there are some rows created. ListStore data sets can be inserted in Glade but this in practise is only convenient for typing in few data sets.
 
-Wie man sieht, werden Änderungen im ListStore (Sortierung, Inhalt) sofort in allen Widgets aktualisiert, die auf dieses Objekt zugreifen. Für verschiedene Sortierungen des selben List-/TreeStores muss man *GtkTreeModelSort* anwenden (Beispiel siehe `TreeStore-Artikel <link://slug/ansichtssache>`_)
+Content changes in the ListStore are simultaneously updated in the Widgets using the ListStore. For individual sorting of the same List/TreeStore it is needed to create *Gtk.TreeModelSort* elements (this element is used in the example of the `TreeStore article <link://slug/ansichtssache>`_).
 
 .. thumbnail:: /images/09_treestore1.png
 
@@ -46,18 +44,18 @@ Widgets
 *******
 
 ComboBox
-    Als "Baumansichtsmodell" wird wie auch bei den folgenden Widgets der ListStore ausgewählt. Über "Edit > Hierarchie" ein CellRendererText hinzugefügt. Im ersten Feld ("Text") stellt man ein, aus welcher Spalte das Dropdown-Menü angezeigt werden soll. Um die Auswahl zu verarbeiten, wird das Signal *changed* belegt.
+    Creating the widget you are prompted to choose as "TreeView Model". In the edit mode accessible via *"Edit > Hierarchy"* there is created a CellRendererText. In the first field ("Text") the column to load the items of the dropdown menu from is set. To process the selection you will need the *changed* signal.
 
 TreeView #1
-    Das erste TreeView-Widget wird innerhalb eines *GtkScrolledWindow*-Containers angelegt. Wie bei ComboBox werden nun beliebige CellRenderer angelegt. Wird der Sortierungsanzeiger aktiviert, können die Spalten mit Klick auf den Spaltenkopf sortiert werden. In der Sortierspaltenkennung wird die Spalte angegeben, nach der sortiert werden soll, auf diese Weise kann man eine Spalte auch gemäß einer anderen Spalte sortieren (hier im Beispiel wird die mittlere Spalte nach der letzten sortiert, die Sortierung der beiden hinteren Spalten liefert also das gleiche Ergebnis.
+    The first TreeView widget is placed within a *Gtk.ScrolledWindow* container. Like in a ComboBox there are created CellRenderer representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
+    Columns do not have to be sorted according to the columns they show.
 
 TreeView #2
-    Das zweite TreeView-Widget wird innerhalb eines Sichtfeldes (*GtkViewport*) erstellt. Dieser Container bietet keine Scrollbalken, das Widget vergrößert automatisch, so dass alle Zeilen sichtbar sind. Bei größeren Tabellen ist ein ScrolledWindow also praktikabler.
-    Es werden die gleichen Daten angezeigt wie zuvor, allerdings ohne Sortierungsanzeiger, dafür wird die mittlere Spalte ("Description") editierbar gemacht und erhält eine Funktion für das Signal *edited*.
+    The second TreeView widget is created within a *Gtk.ViewPort*. This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the *Gtk.ScrolledWindow*.
+    The sort indicator is deactivated and the middle column ("Description") is made editible with the signal *edited" allocated.
 
 Button
-    Ein Klick auf den Button soll jeweils eine weitere Zeile zum ListStore hinzufügen, es wird also das *clicked*-Signal belegt.
-
+    The button's function is appending a row to the ListStore, so the *clicked* signal is required.
 
 Python
 ------
@@ -65,12 +63,12 @@ Python
 TreeStore
 *********
 
-Die in TreeStore vorhandenen Zeilen lassen sich einfach über ``for row in store`` abrufen. Neue Zeilen lassen sich mit ``append`` hinzufügen, andere Optionen wären ``insert`` oder ``remove``, um Zeilen an bestimmten Positionen einzufügen oder zu entfernen.
+The ListStore's row can be iterated over via ``for row in store``. New rows are added by ``append``, other options are ``insert`` or ``remove`` to add or delete rows at specific positions.
 
 ComboBox
 ********
 
-Normalerweise benötigt man für den Zugang zu einer Datenzeile einen *TreeIter*, das Objekt, das auf den Pfad im Modell zeigt (alternativ kann man diese auch über *TreePath* ansprechen).
+For accessing a data row you need a *Gtk.TreeIter* object which points to the position in the model (this can also be achieved by a *Gtk.TreePath* object).
 
 .. code-block:: python
 
@@ -78,15 +76,17 @@ Normalerweise benötigt man für den Zugang zu einer Datenzeile einen *TreeIter*
     row = model[iter]
     print("Selection:",row[0])
 
-Zellen bearbeiten
-*****************
+Edit cells
+**********
 
-Das *edited*-Signal übergibt als Parameter die bearbeitete Zeile und den neuen Zelleninhalt. Dieser muss allerdings explizit als neuer Zelleninhalt übergeben werden, sonst zeigt die Zelle nach der Bearbeitung wieder den alten Inhalt an. Dafür kann man einfach die vom Widget übergebene Position (TreePath) statt des TreeIters verwenden.
+The *edited* signal passes the position and content of the edited cell. The new content of the *CellRendererText* has to explicitly be committed to the data store otherwise the content will return to the pre edit state. This can be accomplished by using the passed *TreePath* position.
 
 .. code-block:: python
 
     def on_cellrenderer_descr_edited(self,widget,pos,edit):
         x.store[int(pos)][1] = edit
+
+.. TEASER_END
 
 Listings
 --------

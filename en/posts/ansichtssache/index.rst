@@ -1,4 +1,4 @@
-.. title: Ansichtssache
+.. title: Data view
 .. slug: ansichtssache
 .. date: 2016-12-22 00:02:20 UTC+01:00
 .. tags: glade,python
@@ -11,9 +11,9 @@
 
 .. contents::
 
-**Daten anzeigen mit TreeStore**
+**Display TreeStore data**
 
-(Fortsetzung zum `ListStore-Artikel <link://slug/uberlistet>`_)
+(Continuation of the `ListStore article <link://slug/uberlistet>`_)
 
 .. thumbnail:: /images/12_treestore.png
     :width: 480
@@ -21,7 +21,7 @@
 TreeStore vs. ListStore
 -----------------------
 
-Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die ``append``-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:
+In contrast to ListStores TreeStore rows can possess child rows. That's why the ``append`` function requires another parameter that specifies the parent row reference:
 
 .. code-block:: python
 
@@ -31,46 +31,45 @@ Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Eleme
     #append row to treestore
     store.append(parent,[value1,value2,value3])
 
-Der Wert der Variable *parent* ist entweder
+The *parent* value is either
 
-* **None**, wenn die Zeile keine übergeordnete Zeile besitzt, oder
-* **TreeIter**, der zur übergeordneten Zeile zeigt
+* **None** if the current row is not a child row of another, or
+* **TreeIter** pointing to the superordinate row.
 
-Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:
+The *TreeIter* value is generated when creating a row, subordinate rows are created by
 
 .. code-block:: python
 
     row1 = store.append(None,[value1,value2,value3])
     row2 = store.append(row1,[value1,value2,value3])
 
-Man erhält den TreeIter-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
+The TreeIter of a cell is obtained by calling the ``get_selection`` function of the automatically generated *GtkTreeSelection* widget.
 
 Glade
 -----
 
-Im Beispiel werden zwei TreeStores und die jeweils enthaltenen Spalten angelegt, dazu die TreeView-Widgets zur Anzeige.
+In the example there are two TreeStores with some columns and the coresponding TreeView widgets to display the data columns.
 
 TreeModelSort
 *************
 
-Spalten lassen sich mit der Funktion ``set_sort_column_id`` einfach sortieren. Wendet man diese Funktion direkt auf TreeStore an, werden logischerweise alle TreeView-Widgets, die darauf zurückgreifen, sortiert.
+Sorting a column is set by calling ``set_sort_column_id``. If this is applied to the TreeStore all TreeView widgets using this store are equally sorted.
 
-Für diese Fälle muss man *TreeModelSort*-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter "Sonstiges > Sortierung für Baumansichtsmodell" (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.
+If this behaviour is not diesired *TreeModelSort* elements come into play and which are "interposed" between store and view widgets. First the TreeModelSort is created via *"Miscellaneous > Tree Model Sort"* from the widget sidebar. Then you choose a source TreeView to use data from. After that the model in the TreeView widget is replaced by the newly created TreeModelSort.
 
-Die Sortierungsfunktion führt man wie zuvor, nur auf das TreeModelSort-Objekt, aus.
+The sort function is now simply applied to the TreeModelSort object instead to the TreeView object.
 
 TreeModelFilter
 ***************
 
-*TreeModelFilter* ermöglicht die Darstellung bestimmter Zeilen, in Glade wird wie bei TreeModelSort verfahren, zuerst das Element anlegen (3. Eintrag unter "Sonstige"), anschließend erfolgen die Zuweisungen zum Modell und TreeView.
+*TreeModelFilter* allows to only show data that matches the specified filter criteria. Handling this object is analogue to TreeModelSort.
 
-Im gewählten Beispiel sollen Sorten nach der Fruchtfarbe sortiert werden, es wird also noch ein Container für Buttons benötigt, also eine *GtkButtonBox*.
+In the example the varieties can be filtered according to fruit colour so there is a *GtkButtonBox* required to put the corresponding buttons into.
 
+Load formatting values from the model
+*************************************
 
-Formatierung aus dem Modell laden
-*********************************
-
-Neben den anzuzeigenden Spalten gibt es im ersten TreeStore eine Spalte "weight". Der Wert in dieser Spalte wird dazu verwendet, die Zelle in Fettschrift darzustellen. Dazu wird in den Eigenschaften des CellRenderers unter *Schriftgewicht* die entsprechende Spalte angegeben (der Wert für normale Schrift ist 400). Analog dazu können beispielsweise auch Zellen eingefärbt oder weitere Schriftformatierungen vorgenommen werden.
+Besides the columns containing displayed data there is a "weight" column in the first TreeStore. This value is used to show the cell in bold text. It is realized by setting the CellRenderer's property of *"Font weight"* to the column containing the corresponding value (normal font is 400). In this way the appearance of cells can be defined, for example colours or font formating.
 
 Python
 ------
@@ -78,7 +77,7 @@ Python
 TreeModelSort
 *************
 
-Durch die Positionsabfrage von ``GtkTreeSelection.get_selected()`` erhält man ein Tupel (model,pos), *pos* von *model* zeigt dabei auf TreeModelSort (bzw. analog auf TreeModelFilter), nicht auf TreeStore und erfordert eine Konvertierung:
+Requesting a position by calling ``GtkTreeSelection.get_selected()`` returns a tuple (model, pos), *pos* of *model* points to TreeModelSort (or TreeModelFilter) and requires conversion to the TreeStore position:
 
 .. code-block:: python
 
@@ -86,11 +85,10 @@ Durch die Positionsabfrage von ``GtkTreeSelection.get_selected()`` erhält man e
     converted_iter = treesort.convert_iter_to_child_iter(pos)
     store.set_value(converted_iter,column,value)
 
-
 TreeModelFilter
 ***************
 
-Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von Zeilen definiert wird, im Beispiel also die Variable *self.color*:
+First of all a filter function is required defining the visibility of cells, in the example it's the variable *self.color*:
 
 .. code-block:: python
 
@@ -100,13 +98,13 @@ Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von 
         else:
             return False
 
-Die Funktion wird zunächst nach dem Schema
+This function has to be assigned to TreeFilter
 
 .. code-block:: python
 
     treefilter.set_visible_func(filter_func)
 
-zugewiesen, jede Filterung wird dann per ``refilter()`` ausgelöst, also wenn das Button-Signal ausgelöst wird:
+A filter process is then executed by calling the ``refilter()`` function on the TreeFilter object:
 
 .. code-block:: python
 

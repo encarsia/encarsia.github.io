@@ -1,4 +1,4 @@
-.. title: Dialoge
+.. title: Dialogues
 .. slug: dialoge
 .. date: 2016-12-31 17:51:29 UTC+01:00
 .. tags: glade,python
@@ -11,52 +11,51 @@
 
 .. contents::
 
-**Anzeige von Dialogfenstern**
+**Handle dialogue windows**
 
-Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *Gtk.Dialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog*.
+Dialogues are complementary windows which are useful in interaction with the user, to show some relevant information or demand input. The *GtkDialog* class provides subclasses for common dialogue use cases like the *AboutDialog* and *MessageDialog* used in the example file.
 
 .. thumbnail:: /images/13_dialoge.png
 
 Glade
 -----
 
-Dialog-Widgets findet man unter "Oberste Ebene" neben den Fenster-Widgets.
+In the widget sidebar dialog widgets are integrated to the *"Toplevel*" section next to window widgets.
 
-Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter *"Allgemein > Fensterattribute > Vorübergehend für:"* einem Eltern-Fenster zugeordnet werden.
+Dialogs are complementary windows to grab the user's focus. They can fixed to a superordinated window but at least be configured transient to a parent window via *General > Window Attributes Transient For:"*.
 
 AboutDialog
 ***********
 
-Das "About"-Dialogfenster bietet in der Regel Informationen zum Projekt, darunter Version, Lizenz, beteiligte Programmierer, Übersetzer etc. Dies alles lässt sich sehr einfach direkt in Glade angeben.
+The "About" dialog window in general gives information about the project, its version, license, participating programmers, translators etc. All this can be directly typed into Glade.
 
 MessageDialog
 *************
 
-Der MessageDialog ist ein Standarddialog zum Anzeigen oder Abfragen von Informationen. Er ist so konfiguriert, dass er keine eigene Fensterdekoration besitzt und nicht als Fenster in der Taskbar erscheint. Außerdem bietet er die Möglichkeit, Standardbuttons einzurichten.
+The MessageDialog is a standard dialog to show information or call for input. It is configurated to be drawn without window decoration or showing up seperately in the taskbar. Furthermore there is the possibility to add standard buttons.
 
-Buttons und Responses
+Buttons and responses
 *********************
 
-Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann.
+Dialogs already own an intern *GtkButtonBox* to place any buttons in.
 
-Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter "Allgemein" eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des GtkDialog.
+In constrast to regular windows the *clicked* signals of the buttons do not have to be assigned in these Buttonboxes (it's still possible to do so, of course). Instead in the *"General"* button properties you define a response answer (int) and assign the *response* signal of the *GtkDialog*.
 
-Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response:
+Standard buttons available for example in MessageDialogs have a fixed response:
 
  * **Ok** -5
- * **Abbrechen** -6
- * **Schließen** -7
- * **Ja** -8
- * **Nein** -9
+ * **Abort** -6
+ * **Close** -7
+ * **Yes** -8
+ * **No** -9
  * **[X]** -4
 
-Der große Vorteil der Responses besteht darin, dass sie sich direkt auf das Dialog-Objekt beziehen; man kann die Responses in einer Funktion verarbeiten und muss dies nicht für jeden einzelnen Button vornehmen.
+The huge advantage of that procedure is that the response refers to the dialog object so the responses can be processed by a single function. 
 
-Wiederherstellbare Dialoge
-**************************
+Reestablish dialogues
+*********************
 
-Das Problem von per *destroy*-Signal geschlossenen Fenstern besteht darin, dass sie sich nicht wieder aufrufen lassen. Deshalb wird stattdessen das Signal *delete-event* belegt.
-
+The problem of windows closed via *destroy* signal is that they cannot be reactivated therefore the *delete-event* signal is used here.
 
 Python
 ------
@@ -64,7 +63,7 @@ Python
 Responses
 *********
 
-Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt jede innerhalb einer einzelnen Funktion verarbeitet werden:
+When emitting the *response* signal the response is passed as parameter. As said before this offers the option to process all responses in one function:
 
 .. code-block:: python
 
@@ -79,7 +78,7 @@ Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übe
 Delete-event
 ************
 
-Mit der Funktion ``hide_on_delete()`` ausgeblendete Dialoge oder reguläre Fenster lassen sich mit ``show_all()`` wieder anzeigen:
+The ``hide_on_delete()`` function removes a window but can be reestablished by ``show_all()``:
 
 .. code-block:: python
 

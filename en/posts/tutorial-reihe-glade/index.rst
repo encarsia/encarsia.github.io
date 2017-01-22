@@ -59,7 +59,7 @@ Themen
     - Notebook
     - FileChooserDialog
     - Media and GStreamer
-    - Text widgets with GtkTextView and GtkSourceView
+    - Text widgets with Gtk.TextView and GtkSource.View
     - Interaction between other applications
 
 - directory of example files: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_

@@ -43,7 +43,7 @@ Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werd
     row1 = store.append(None,[value1,value2,value3])
     row2 = store.append(row1,[value1,value2,value3])
 
-Man erhält den TreeIter-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
+Man erhält den *TreeIter*-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
 
 Glade
 -----
@@ -55,7 +55,7 @@ TreeModelSort
 
 Spalten lassen sich mit der Funktion ``set_sort_column_id`` einfach sortieren. Wendet man diese Funktion direkt auf TreeStore an, werden logischerweise alle TreeView-Widgets, die darauf zurückgreifen, sortiert.
 
-Für diese Fälle muss man *TreeModelSort*-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter "Sonstiges > Sortierung für Baumansichtsmodell" (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.
+Für diese Fälle muss man *TreeModelSort*-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter *"Sonstiges > Sortierung für Baumansichtsmodell"* (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.
 
 Die Sortierungsfunktion führt man wie zuvor, nur auf das TreeModelSort-Objekt, aus.
 

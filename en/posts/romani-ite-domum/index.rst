@@ -11,32 +11,32 @@
 
 .. contents::
 
-**Lokalisation mit gettext und locale**
+**Localization with gettext and locale**
 
 .. thumbnail:: /images/10_lokalisation.png
 
 Glade
 -----
 
-Strings von Labels oder Menüs sind standardmäßig als übersetzbar konfiguriert (Checkbox unter "Beschriftung"), insofern muss hier nichts weiter beachtet werden. Glade-Projektdateien werden direkt von GetText verarbeitet.
+Strings in widgets are by default configurated as translatable so there are no preparations required. GetText directly provercesses Glade project files.
 
 Python
 ------
 
-Übersetzbare Strings
+Translatable strings
 ********************
 
-Zur Übersetzung freigegebene Strings werden durch eine Einklammerung mit vorausgehendem Unterstrich markiert und beim Aufruf von ``xgettext`` erkannt:
+Approved translatable strings are recognized by ``xgettext`` by brackets with a leading underscore:
 
 .. code:: python
 
     _ = gettext.gettext
     translatable_string = _("translate me")
 
-(bind)textdomain einrichten
-***************************
+configure (bind)textdomain
+**************************
 
-Nun muss man Python noch zeigen, unter welchem Namen und Pfad die MO-Dateien (siehe unten) zu finden sind:
+Now name and location of the MO files have to be configured in the source code:
 
 .. code:: python
 
@@ -46,7 +46,7 @@ Nun muss man Python noch zeigen, unter welchem Namen und Pfad die MO-Dateien (si
         gettext.textdomain(appname)
         builder.set_translation_domain(appname)
 
-``set_translation_domain`` muss vor dem Laden der Glade-Datei(en) aufgerufen werden.
+``set_translation_domain`` has to be called before loading Glade files.
 
 GetText
 -------
@@ -54,13 +54,13 @@ GetText
 POT
 ***
 
-POT steht für Portable Object Template und ist dem Namen zufolge die Vorlage für Übersetzungen. Diese Datei enthält alle übersetzbaren Strings. Nachdem eine leere POT-Datei erstellt wurde, ruft man nun ``xgettext`` nach folgendem Muster für alle Quelldateien auf:
+POT is the abbrevation for Portable Object Template. This file contains all original translatable strings. After generating an empty POT file, ``xgettext`` is executed for all source files containing translatable strings:
 
 .. code:: console
 
     $ xgettext --options -o output.pot sourcefile.ext
 
-Die erkannten Strings werden nach dem Schema
+The identified strings are added to the POT file.
 
 .. code-block:: console
 
@@ -68,35 +68,32 @@ Die erkannten Strings werden nach dem Schema
     msgid "translatable string"
     msgstr ""
 
-der angegebenen POT-Datei hinzugefügt. Die Markierung der Fundstelle(n) des Strings kann mit der Option ``--no-location`` verhindert werden.
+The file number reference comment can be avoided by passting the option ``--no-location``.
 
-Für das Beispiel wird also je ein Aufruf für die Glade- und Python-Datei benötgt:
+In this article's example it is required to run xgettext once for the Glade file and once for the Python source code; the ``-j`` (``--join-existing``) option adds new found strings to an existing file:
 
 .. code:: console
 
     $ xgettext --sort-output --keyword=translatable --language=Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
     $ xgettext --language=Python -j -o 10_localization/TUT.pot 10_lokalisation.py 
 
-Mit der Option ``-j`` (``--join-existing``) wird eine bestehende Datei um zusätzliche Strings ergänzt und funktioniert deshalb sowohl bei der Initiierung (vorher einfach mit ``touch template.pot`` die leere Datei erstellen) als auch bei erneutem Aufruf zum Aktualisieren neuer Strings.
-
-
 PO
 **
 
-Die übersetzten Strings werden in jeweils einer PO-Datei gespeichert. Eine neue Übersetzung legt man mit 
+Translated strings are stored in a PO file per language. A new translation ist invoked by
 
 .. code:: console
 
     $ msginit --input=source.pot --locale=xx
     # xx=language code
 
-an, das eine PO-Datei mit dem Namen xx.po (z.B. de.po) anlegt. Diese kann direkt im Texteditor oder mittels Tools wie `PoEdit <https://poedit.net/>`_ bearbeitet werden. Die deutschsprachige Lokalisation wird also angelegt mit
+that generates a file after the pattern xx.po (p.e. de.po). This file can be edited in any text editor or dedicated tools such like `PoEdit <https://poedit.net/>`_. A German localization for example is created by the command
 
 .. code:: console
 
     $ msginit --input=TUT.pot --locale=de
 
-Wird die POT-Datei verändert, kann man die PO-Dateien mit ``msgmerge`` abgleichen und anschließend die neuen Strings übesetzen:
+If the POT file is altered the PO files are updated with the new strings by executing ``msgmerge``:
 
 .. code:: console
 
@@ -105,14 +102,13 @@ Wird die POT-Datei verändert, kann man die PO-Dateien mit ``msgmerge`` abgleich
 MO
 **
 
-MO-Dateien sind auf Maschinenlesbarkeit optimierte PO-Dateien und letztlich die, die vom Programm benutzt werden. Unterhalb der angegebenen *bindtextdomain* liegen die Lokalisationsdateien nach der Verzeichnisstruktur ``(path/to/bindtextdomain)/locale/language code/LC_MESSAGES/appname.po``
+MO files are (machine readable) binary files and mandatory for gettext to work. Localization files are located below the *bindtextdomain* following the file structure ``path/to/bindtextdomain)/locale/language code/LC_MESSAGES/appname.po``.
 
-Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die erzeugte `de.po` wird mit ``msgfmt`` in die MO-Datei überführt:
+In the example the bindtextdomain is created in the local directory, the generated `de.po` translation text file then transformed into the  corresponding MO file:
 
 .. code:: console
 
     $ msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
-
 
 .. TEASER_END
 

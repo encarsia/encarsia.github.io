@@ -1,4 +1,4 @@
-.. title: Qual der Wahl
+.. title: Spoilt for choice
 .. slug: qual-der-wahl
 .. date: 2016-11-11 15:28:18 UTC+01:00
 .. tags: glade,python
@@ -11,9 +11,10 @@
 
 .. contents::
 
-**Spinbutton und Combobox**
+**Spinbutton and Combobox**
 
-Die Widgets erleichtern die Eingabe bestimmer Werte, indem eine Listenauswahl oder ein Wertebereich und ggf. Standardwerte dazu vorgegeben werden. Die Eingabe ist normalerweise rein intuitiv über Mausklicks machbar, Tastatureingaben sind optional.
+Named widgets simplify input of values by providing a value list or range. Value input is normally done via mouseclicks, key input is optional.
+
 
 Glade
 -----
@@ -23,25 +24,24 @@ Glade
 Spinbutton
 **********
 
-Spinbuttons haben zahlreiche, per Glade festlegbare Eigenschaften wie Mindest-/Höchst-/Standardwert. Zum Spinbutton gehört zwingend das Widget *adjustment*, das unter "Allgemein > Attribute des Einstellknopfs > Stellgröße" ausgewählt oder angelegt werden kann.
+In Glade some properties of spinbutton widgets can be set like the minimum/maximum/default value. It is required to tie a *adjustment* widget to the spinbutton. To do so select *"General > Spin Button Attributes > Adjustment"* and assign or create an adjustment.
 
-Im Beispiel repräsentieren die beiden Spinbuttons Monat und Jahr, wobei der Spinbutton für den Monat zyklisch angelegt wird, das heißt, nach dem Erreichen des Maximalwertes springt er auf den Mindestwert um. Dieses Verhalten löst das Signal *wrapped* aus und wird angelegt, um die Jahreszahl im zweiten Spinbutton passend umzuschalten.
+Looking at the example file the two spinbuttons represent month and year dates. The month spinbutton is set to be circular, the minimum value follows after passing the maximum value. This act emits the *wrapped* signal which is assigned to then adjust the year date of the second spinbutton.
 
 Combobox
 ********
 
-Es gibt in GTK+ zwei verschiedene Combobox-Widgets:
+There are two different combobox widgets in GTK+:
 
 GtkComboboxText
-    Die Auswahlliste des Dropdown-Menüs sind Strings und werden direkt im Widget erstellt.
+    The list items of the dropdown menu are strings directly that are directly set in the Glade widget properties
 
 GtkCombobox
-    Die Daten für die Auswahlliste stammen aus einem Listen- oder Baumspeicher (ListStore oder TreeStore). In diesen können Datensätze mit verschiedenen Informationen gespeichert werden (siehe auch Artikel `"Überlistet" <link://slug/uberlistet>`_)
+    The list items are stored in a ListStore or TreeStore element that can hold data sets instead of a plain list. These data stores are accessible to different widgets (see the `"List article" <link://slug/uberlistet>`_).
 
-Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss "Allgemein > Hat Eintrag" aktiviert sein. Dies legt das interne Widget *GtkEntry* an. Wichtig ist, dass dieses unter "Gemeinsam > Widget Flags" fokussierbar gemacht wird.
+Both widgets can include an optional entry widget which has to be activated in *"General > Has Entry"*. By activating an internal *GtkEntry* widget is created. It is important to set *"Common > Widget Flags > Can focus*".
 
-Im Beispiel gibt es zwei ComboboxText-Widgets. Das erste besitzt kein Eingabefeld, es ist also ausschließlich eine Auswahl unter den gegebenen Listenpunkten möglich, die Auswahlliste ist direkt in Glade eingegeben. Die zweite Combobox hat ein Eingabefeld, zu demonstrativen Zwecken werden die Listenpunkte direkt im Programm erstellt. Bei beiden wird das Signal *changed* abgefangen.
-
+The first ComboboxText widget in the exampe does not possess an entry field, the user can only select an item from the list. In both widgets the *changed* signal is assigned to retrieve the selection.
 
 Python
 ------
@@ -49,18 +49,20 @@ Python
 Spinbutton
 **********
 
-Der Wert eines Spinbutton lässt sich einfach per ``get_value`` bzw. ``set_value`` ermitteln bzw. festlegen. So werden im Beispiel zu Beginn die aktuellen Monats- und Jahreszahlen eingetragen und in der Funktion ``on_spin_m_wrapped`` beim Umschalten von 12 auf 1 die Jahreszahl um 1 erhöht und umgekehrt.
+The value of a spinbutton can be easily retrieved and set via ``get_value`` and ``set_value``.
+
+In the example the values for the month and year date are set with the current dates. The ``on_spin_m_wrapped`` function changes the year date up or down according to the value set in month date.
 
 Combobox
 ********
 
-Listeneinträge einer Combobox können einfach mit der Funktion ``append`` angefügt werden, wie in diesem Beispiel etwa
+Combobox lists can be extended by using the ``append`` function, p.e.
 
 .. code-block:: python
 
-    [self.builder.get_object("comboboxtext2").append(None,entry) for entry in ("bla","blubb","ja","nein")]
+    [self.builder.get_object("comboboxtext2").append(None,entry) for entry in ("foo","bar","yes","no")]
 
-Der aktuell angewählte Eintrag wird mit der Funktion ``widget.set_active_text()`` ermittelt, diese gibt auch den Text des optionalen Texteintragfeldes aus.
+You get the selected item by calling ``widget.set_active_text()`` which also passes the text of the optional text entry widget.
 
 .. TEASER_END
 

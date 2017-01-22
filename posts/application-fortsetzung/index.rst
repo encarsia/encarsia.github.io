@@ -78,7 +78,7 @@ Verfügbare Optionen werden mit der Funktion ``add_main_option_entries(entrylist
 Signal verbinden
 ****************
 
-Der "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst
+Der *GtkApplication*-eigene "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst
 
 .. code:: python
 
@@ -102,7 +102,7 @@ Die an die Handler-Funktion übergebene ``option`` ist ein Element der Klasse *G
             #do more and continue
         return -1
 
-Ein übergebener String kann extrahiert werden, indem *GLibVariantDict* mit ``end()`` in *GLibVariant* konvertiert wird, das sich wiederum mit ``keys()`` auslesen lässt:
+Ein übergebener String kann extrahiert werden, indem *GLib.VariantDict* mit ``end()`` in *GLib.Variant* konvertiert wird, das sich wiederum mit ``keys()`` auslesen lässt:
 
 .. code-block:: python
 
@@ -115,8 +115,8 @@ Ein Return-Wert ist zwingend erforderlich, er entspricht dabei dem Exit-Status:
     * **1** bzw. positiver Wert: nicht erfolgreiche Ausführung, Anwendung wird beendet
 
 
-Optionen nutzen
-***************
+Optionen übergeben
+******************
 
 Die Option, die immer verfügbar ist, ist ``--help``. Hier werden unter "Anwendungsoptionen" die angelegten Optionen samt Beschreibung aufgeführt. Die Optionen können wie definiert angegeben werden:
 
@@ -126,7 +126,7 @@ Die Option, die immer verfügbar ist, ist ``--help``. Hier werden unter "Anwendu
     Python: 3.6.0
     GTK+:   3.22.6
 
-oder mit ``--setlabel`` einen String an *GtkLabel* übergeben:
+oder mit ``--setlabel`` einen String an *Gtk.Label* übergeben:
 
 .. code:: console
 

@@ -1,4 +1,4 @@
-.. title: Selbständig
+.. title: Stand-alone
 .. slug: application
 .. date: 2017-01-14 13:51:29 UTC+01:00
 .. tags: glade,python
@@ -11,26 +11,24 @@
 
 .. contents::
 
-**Programm als GtkApplication laufen lassen**
+**Run program as GtkApplication**
 
-*GtkApplication* handhabt verschiedene wichtige Aspekte einer Gtk+-Anwendung, wie etwa der Gtk+-Initialisierung, dem Sessionmanagement und der Desktopintegration.
+*GtkApplication* handles different important aspects of a GTK+ application like GTK+ initialization, session management and desktop integration.
 
 .. thumbnail:: /images/14_application.png
 
-.. TEASER_END
-
-XML-Dateien
------------
+XML files
+---------
 
 Glade
 *****
 
-In Glade verändert sich im Prinzip nichts. Als Fenster sollten *GtkApplicationWindows* zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem `Artikel zu Dialogen <link://slug/dialoge>`_ wieder verwendet.
+Glade is used as usual, main windows should be **GtkApplicationWindows*. As example the file from the `dialogue article <link://slug/dialoge>`_ is reused.
 
 GMenu
 *****
 
-Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als *Gio.Menu* erkannt wird:
+The GNOME Shell supports appmenus residing in the (top) panel. The Gmenu XML file must be formatted to be recognized as *GioMenu*:
 
 .. code-block:: xml
 
@@ -46,17 +44,17 @@ Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XM
    </menu>
  </interface>
 
-Von Glade selbst würde diese XML-Datei als veraltetes Format erkannt, aber sie lässt sich trotzdem von *GtkBuilder* laden und anschließend kann man die Identifier nutzen.
+Glade identifies this file format as an outdated Glade file and refuses to open it. Apart from that *GtkBuilder* can handle the menu and address identifiers.
 
 Python
 ------
 
-Initialisierung von *GtkApplication*
-************************************
+Initialize *GtkApplication*
+***************************
 
-Bei der Initialisierung wird eine *application_id*- und *flags*-Angabe benötigt, letztere können in der Regel bei 0 bzw. FLAGS_NONE belassen werden (siehe `Gio.ApplicationFlags <https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags>`_).
+The initialization process requires the parameters *application_id* and *flags*. Flags can normally set to 0 being the same as FLAGS_NONE (see `Gio.ApplicationFlags <https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags>`_), naming conventions for application_id are `listed here <https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.Application.id_is_valid.html>`_.
 
-Die Application kann nun mit verschiedenen Signalen verbunden werden, die zu bestimmten Ereignissen ausgelöst werden, aber es muss mindestens ``activate`` verbunden werden:
+The application can be connected to different signals being emitted on preassigned events. It is mandatory to at least define an ``activate`` signal:
 
 .. code-block:: python
 
@@ -77,14 +75,14 @@ Die Application kann nun mit verschiedenen Signalen verbunden werden, die zu bes
 Appmenu
 *******
 
-Wie oben bereits erwähnt, lässt sich die GMenu-XML von *GtkBuilder* laden, dann wird das Menü der Application zugewiesen:
+GMenu XML files are loaded by *GtkBuilder*:
 
 .. code-block:: python
 
     builder.add_from_file("menu.ui")
     app.set_app_menu(builder.get_object("appmenu"))
 
-Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, genauer *GioSimpleActions*, erstellt und analog zur herkömmlichen Signalverknüpfung über ``connect`` verbunden werden.
+Menu entries now have to be connected to actions which are created as *GioSimpleActions*:
 
 .. code-block:: python
 
@@ -93,12 +91,12 @@ Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, gena
         action.connect("activate", callback)
         self.app.add_action(action)
 
-Im Beispiel werden Actions zum Aufrufen der Dialoge erstellt.
+In the example file actions invokes dialog windows.
 
-Starten und Beenden
-*******************
+Start and quit
+**************
 
-*GtkApplication* übernimmt die Handhabung des GTK+-Mainloops, das heißt, es nicht mehr notwendig GTK+ manuell zu starten oder zu beenden. Stattdessen werden ``run()`` und ``quit()`` verwendet:
+*GtkApplication* takes over the handling of the GTK+ mainloop so there is no need of starting and quitting GTK+ manually and ``run()`` and ``quit()`` called instead:
 
 .. code::
 
@@ -111,6 +109,8 @@ Links
  * `GNOME Developer: GtkApplication <https://developer.gnome.org/gtk3/stable/GtkApplication.html>`_
  * `How to use GTK+ 3 in Python to manage your whole application <http://www.bachsau.com/2015/07/13/how-to-use-gtk-3-in-python-to-manage-your-whole-application/>`_
  * `Stackoverflow: How to create a complete menu using GIO Actions in PyGI GTK? <http://stackoverflow.com/questions/19481439/how-to-create-a-complete-menu-using-gio-actions-in-pygi-gtk>`_
+
+.. TEASER_END
 
 Listings
 --------
