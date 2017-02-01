@@ -136,13 +136,13 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ('/index.html', 'Home', 'icon-home'),
-        ('/archive.html', 'Archives', 'icon-folder-open-alt'),
         ('/categories/index.html', 'Tags', 'icon-tags'),
         ('/rss.xml', 'RSS', 'icon-rss'),
         ('https://plus.google.com/105146352752269764996/posts', 'Google+', 'icon-google-plus'),
         ('https://github.com/encarsia', 'Github', 'icon-github'),
         ('https://twitter.com/encarsia_', 'Twitter', 'icon-twitter'),
         ('/pages/about/index.html', 'About me', 'icon-user'),
+        ('/archive.html', 'Archives', 'icon-folder-open-alt'),
     )
 }
 

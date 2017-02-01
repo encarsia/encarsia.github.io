@@ -13,7 +13,7 @@
 
 **Handle dialogue windows**
 
-Dialogues are complementary windows which are useful in interaction with the user, to show some relevant information or demand input. The *GtkDialog* class provides subclasses for common dialogue use cases like the *AboutDialog* and *MessageDialog* used in the example file.
+Dialogues are complementary windows which are useful in interaction with the user, to show some relevant information or demand input. The *GtkDialog* class provides subclasses for common dialogue use cases like the *AboutDialog* and *MessageDialog* used in the example file. (`FileChooserDialog article <link://slug/fcdialog>`_).
 
 .. thumbnail:: /images/13_dialoge.png
 
@@ -41,7 +41,7 @@ Dialogs already own an intern *GtkButtonBox* to place any buttons in.
 
 In constrast to regular windows the *clicked* signals of the buttons do not have to be assigned in these Buttonboxes (it's still possible to do so, of course). Instead in the *"General"* button properties you define a response answer (int) and assign the *response* signal of the *GtkDialog*.
 
-Standard buttons available for example in MessageDialogs have a fixed response:
+Standard buttons available for example in MessageDialogs have a fixed response (see also `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType>`_):
 
  * **Ok** -5
  * **Abort** -6
