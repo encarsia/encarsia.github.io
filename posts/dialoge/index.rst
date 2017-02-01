@@ -13,7 +13,7 @@
 
 **Anzeige von Dialogfenstern**
 
-Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog*.
+Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog* (`Artikel zum FileChooserDialog <link://slug/fcdialog>`_).
 
 .. thumbnail:: /images/13_dialoge.png
 
@@ -37,11 +37,11 @@ Der MessageDialog ist ein Standarddialog zum Anzeigen oder Abfragen von Informat
 Buttons und Responses
 *********************
 
-Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann.
+Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekenntzeichnet.
 
 Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter *"Allgemein"* eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des *GtkDialog*.
 
-Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response:
+Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType>`_):
 
  * **Ok** -5
  * **Abbrechen** -6
@@ -57,14 +57,13 @@ Wiederherstellbare Dialoge
 
 Das Problem von per *destroy*-Signal geschlossenen Fenstern besteht darin, dass sie sich nicht wieder aufrufen lassen. Deshalb wird stattdessen das Signal *delete-event* belegt.
 
-
 Python
 ------
 
 Responses
 *********
 
-Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt jede innerhalb einer einzelnen Funktion verarbeitet werden:
+Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt, jede innerhalb einer einzelnen Funktion verarbeitet werden:
 
 .. code-block:: python
 
