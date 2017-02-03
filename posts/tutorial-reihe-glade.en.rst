@@ -54,10 +54,10 @@ Themen
 - `Dialogues <link://slug/dialoge>`_
 - `Run program as GTK+ application <link://slug/application>`_
 - `Icon, headerbar and commandline options <link://slug/application-fortsetzung>`_
+- `File chooser dialog <link://slug/fcdialog>`_
 
 - planned:
     - Notebook
-    - FileChooserDialog
     - Media and GStreamer
     - Text widgets with Gtk.TextView and GtkSource.View
     - Interaction between other applications
