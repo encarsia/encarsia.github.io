@@ -53,10 +53,10 @@ Themen
 - `Dialoge <link://slug/dialoge>`_
 - `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
 - `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
+- `Dateiauswahldialog <link://slug/fcdialog>`_
 
 - Geplant:
     - Notebook
-    - FileChooserDialog
     - Medien und GStreamer
     - Textfelder mit Gtk.TextView und GtkSource.View
     - Interaktion mit anderen Anwendungen mit und ohne Threading

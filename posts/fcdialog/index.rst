@@ -20,7 +20,7 @@ Der *GtkFileChooserDialog* ist eine Subclass von *GtkDialog* (siehe `Artikel zu 
 Glade
 -----
 
-Den Dialog findet man in der Widget-Seitenleiste oben unter *"Oberste Ebene"*. Neben dem Dateibrowser besitzt er eine erwiterbare interne *GtkBox* für weitere Widgets sowie eine *GtkButtonBox* als interne "action area" für Buttons.
+Den Dialog findet man in der Widget-Seitenleiste oben unter *"Oberste Ebene"*. Neben dem Dateibrowser besitzt er eine erweiterbare interne *GtkBox* für weitere Widgets sowie eine *GtkButtonBox* als interne "action area" für Buttons.
 
 Es ist erforderlich anzugeben, für welche Aktion der Dialog gedacht ist, was *Gtk.FileChooserAction* entspricht (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.FileChooserAction>`_): Datei öffnen oder speichern, Ordner auswählen oder anlegen.
 
@@ -111,7 +111,7 @@ FileFilter
 
 *FileFilter* dienen dazu, Dateien bestimmten Musters anzuzeigen. Pro Filter können mehrere (shell style glob) Patterns oder MIME-Types angegeben werden.
 
-Den Filter findet man in Glade unter *"Sonstiges"*. Im Dialog kann man in den allgemeinen Widget-Einstellungen den gwünschten Filter auswählen. Dies entspricht der ``set_filter``-Funktion.
+Den Filter findet man in Glade unter *"Sonstiges"*. Im Dialog kann man in den allgemeinen Widget-Einstellungen den gewünschten Filter auswählen. Dies entspricht der ``set_filter``-Funktion.
 
 Python
 ------

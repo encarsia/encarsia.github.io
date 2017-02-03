@@ -1,4 +1,4 @@
-.. title: Dateiauswahldialog
+.. title: File chooser dialog
 .. slug: fcdialog
 .. date: 2017-02-01 23:22:02 UTC+01:00
 .. tags: glade,python
@@ -13,43 +13,42 @@
 
 **FileChooserDialog**
 
-Der *GtkFileChooserDialog* ist eine Subclass von *GtkDialog* (siehe `Artikel zu Dialogen <link://slug/dialoge>`_) und ermöglicht das Auswählen und Speichern von Dateien oder Ordnern.
+The *GtkFileChooserDialog* is a subclass of *GtkDialog* (see `diaogue article <link://slug/dialoge>`_) and provides opening and saving of files and folders.
 
 .. thumbnail:: /images/16_fcd.png
 
 Glade
 -----
 
-Den Dialog findet man in der Widget-Seitenleiste oben unter *"Oberste Ebene"*. Neben dem Dateibrowser besitzt er eine erwiterbare interne *GtkBox* für weitere Widgets sowie eine *GtkButtonBox* als interne "action area" für Buttons.
+The dialog can be added from the *"Toplevel*" section of the widget sidebar. In addition to the file browser itself the widget has an intern *GtkBox* for additional widgets and a *GtkButtonBox* as "action area" for buttons.
 
-Es ist erforderlich anzugeben, für welche Aktion der Dialog gedacht ist, was *Gtk.FileChooserAction* entspricht (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.FileChooserAction>`_): Datei öffnen oder speichern, Ordner auswählen oder anlegen.
+First the *Gtk.FileChooserAction* mode must be defined (see `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.FileChooserAction>`_): open or save file, choose or create a folder.
 
-Action area und Responses
+Action area and Responses
 *************************
 
-Responses sind Antwortkennungen, die beim Auslösen des Signals *response* übergeben werden. Buttons in der "action area" werden jeweils Response-Werte zugewiesen anstatt das *clicked*-Signal der Buttons zu nutzen.
+The *response* signal is emitted on widget interaction in the action area which also passes the response value. So for these widgets there is no need to activate the *clicked* signal of buttons.
 
-Standardmäßig wird die "action area" unter dem Dateibrowserbereich angelegt.
+By default the "action area" is generated beneath the file browser area.
 
 .. thumbnail:: /images/16_fcd_glade.png
 
-Verwendet man den *FileChooserDialog* ohne Glade (siehe unten), werden die Buttons in der Headerbar angezeigt. Letzteres sollte aber vermutlich der Standard sein, da es eine Warnung ausgegeben wird, die die Funktionalität des Dialogs allerdings nicht beeinträchtigt:
+If the *FileChooserDialog* is used without Glade (see below) the buttons are created in the headerbar. This seems to be standard procedure because Glade generated dialogs induce the warning
 
 .. code::
 
  Gtk-WARNING **: Content added to the action area of a dialog using header bars
 
-Diese Meldung wird nicht angezeigt, wenn man darauf verzichtet, in Glade Buttons zur intern action area hinzuzufügen. Dies betrifft auch andere Dialogarten.
+This message is not shown if buttons are not added to the intern action area.
 
-Legt man nun in Glade eine Headerbar mit Buttons an, ist es standardmäßig nicht möglich, diesen Buttons Response-Werte zuzuweisen.
+If a headerbar with buttons is created in Glade the buttons cannot be assigned to a response value.
 
-Dafür gibt es (mindestens) zwei Lösungsmöglichkeiten:
+There may be several solutions to the problem:
 
-XML-Datei
-=========
+XML file
+========
 
-Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Datei in einem Texteditor und fügt dem Element ``<action-widgets>`` die entsprechenden Zeilen hinzu:
-
+After creating a headerbar with button(s) the Glade file is opened in a text editor and add line(s) to the ``<action-widgets>`` element:
 .. code-block:: xml
 
   <object class="GtkFileChooserDialog" id="filechooser_dialog">
@@ -66,26 +65,26 @@ Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Dat
     ...
   </object>
 
-Dies funktioniert zwar, ist aber ganz sicher nicht so gedacht, weil diese Änderung beim erneuten Bearbeiten der Glade-Datei wieder rückgängig gemacht wird.
+This works but this procedure is surely not the intended way to deal with the problem because after altering the Glade file the edit is retracted.
 
-add_action_widget-Funktion
+add_action_widget function
 ==========================
 
-Mit der Funktion ``add_action_widget`` können aktivierbare Widgets zur action area hinzugefügt und damit ebenfalls per *response*-Signal verarbeitet werden. Dies sind Widgets der *Gtk.Activatable*-Klasse und beinhaltet die Widgets *Buttons*, *MenuItem*, *RecentChooserMenu*, *Switch* und *ToolItem*.
+The ``add_action_widget`` adds activatable widgets to the action area and hold a response value. This includes widgets of the *Gtk.Activatable* class: *Buttons*, *MenuItem*, *RecentChooserMenu*, *Switch* and *ToolItem*.
 
-Ein Button wird nach dem Schema
+The scheme for creating a button is
 
 .. code:: python
 
  widget.add_action_widget(button,response)
 
-hinzugefügt. Wichtig ist es, beim Button die Widget-Eigenschaft "can-default" zu aktivieren:
+The widget property "can-default" of the button must be activated:
 
 .. code:: python
 
  button.set_property("can-default",True)
 
-Im Beispiel erhält der Dialog die beiden Standardbuttons "Anwenden"/"Abbrechen":
+In the example the standard buttons "apply/cancel" are added to the file dialog:
 
 .. code-block:: python
 
@@ -97,29 +96,29 @@ Im Beispiel erhält der Dialog die beiden Standardbuttons "Anwenden"/"Abbrechen"
     self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
     self.obj("filechooser_dialog").add_action_widget(Gtk.Button.new(), Gtk.ResponseType.OK)
 
-Um die Dateiauswahl auch auf Doppelklick zu ermöglichen, wird neben des *response*-Signals noch das Signal *file-activated* benötigt.
+To apply file selection on doubleclick the *file-activated* is also required in addition to the *response* signal.
 
-Vorschau-Widget
-***************
+Preview widget
+**************
 
-Der Dialog besitzt die Option ein Vorschau-Widget einzubinden. Dafür aktiviert man in den Dialog-Eigenschaften *"Vorschau-Widget aktiv"* und wählt unter *"Vorschau-Widget"* ein freies Widget (z.B. ein *GtkImage*). Möglicherweise muss man dieses Widget zunächst in ein leeres Container-Widget erstellen und dort in einen freien Bereich ziehen.
+The dialogue can contain an optional preview widget. To use it activate *"Preview Widget Active"* and choose a free widget (p.e. a *GtkImage*). It may be necessary to create the preview widget in an empty container widget and pull it into a free area.
 
-Wenn eine Aktualisierung der Vorschau angefordert wird, wird das Signal *update-preview* ausgelöst.
+If the preview requires a refresh the *update-preview* signal is emitted.
 
 FileFilter
 **********
 
-*FileFilter* dienen dazu, Dateien bestimmten Musters anzuzeigen. Pro Filter können mehrere (shell style glob) Patterns oder MIME-Types angegeben werden.
+Files can be filtered according to certain criteria by using *FileFilter*. There can be defined several (shell style glob) patterns or MIME-types for each filter.
 
-Den Filter findet man in Glade unter *"Sonstiges"*. Im Dialog kann man in den allgemeinen Widget-Einstellungen den gwünschten Filter auswählen. Dies entspricht der ``set_filter``-Funktion.
+In Glade filters can be found in the widget sidebar in the *"Miscellaneous"* group. A filter for a dialog can be selected in the general widget properties. This corresponds to the ``set_filter`` function.
 
 Python
 ------
 
-Dialog ohne Glade
-*****************
+Dialog without Glade
+********************
 
-Der *FileChooserDialog* lässt sich auch ziemlich einfach ohne Glade realisieren, zudem lassen sich die oben genannten Probleme mit Buttons in der Headerbar vermeiden. Der Dialog wird nach folgendem Schema erstellt:
+The *FileChooserDialog* is a complex but also easy to use graphic interface item. Realizing the dialog without Glade also avoids the headerbar problem discussed above. Creating a dialog follows the scheme
 
 .. code-block:: python
 
@@ -129,7 +128,7 @@ Der *FileChooserDialog* lässt sich auch ziemlich einfach ohne Glade realisieren
                                 (button1,response1,
                                 button2,response2))
 
-Der Dialog wird dann direkt aufgerufen und verarbeitet:
+The dialog then can be directly run and processed:
 
 .. code-block:: python
 
@@ -144,15 +143,15 @@ Der Dialog wird dann direkt aufgerufen und verarbeitet:
 FileFilter
 **********
 
-Es gibt zwei Möglichkeiten, einen *Filefilter* anzuwenden:
+There are two possibilities to apply a *FileFilter*:
 
-1. Ohne Wahl. Der anzuwendende Filter ist voreingestellt:
+1. No user choice. The applied filter is preset:
 
 .. code:: python
 
  dialog.set_filter(filter)
 
-2. Wahl per Dropdown-Menü: Der Nutzer kann zwischen mehreren vorgegebenen Filtern wählen:
+2. Selection per dropdown menu. The user can choose between different defined filters:
 
 .. code:: python
 
