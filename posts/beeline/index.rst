@@ -12,6 +12,8 @@ Navigationskompass
 
 .. thumbnail:: /images/BeeLine/beeline.jpg
 
+    BeeLine im Betrieb, Richtungs- und Entfernungsanzeige
+
 BeeLine ist im weitesten Sinne ein Fahrradnavi. Das Konzept des BeeLine ist, dass es keine Route, sondern wie eine Kompassnadel die Richtung des Ziels bzw. eines Wegpunktes und dessen Entfernung anzeigt. Ist das BeeLine gerade nicht mit dem Telefon gekoppelt, zeigt die "Nadel" auch tatsächlich nach Norden.
 Dieser Prämisse folgend wird dem Nutzer die Streckenwahl komplett überlassen und so wird es auch beworben:
 
@@ -34,6 +36,8 @@ App
 
 .. thumbnail:: /images/BeeLine/app_main.png
 
+    App: Zielauswahl
+
 Nach der BeeLine-Anmeldung und dem Pairen des Gerätes per Bluetooth geht es los.
 Unter *"Where to?"* tippt man auf der Karte auf das Ziel und drückt den gelben "BeeLine"-Button. Alternativ wählt man unter *"Destinations"* ein Ziel aus, das sich auch speichern und wieder aufrufen lässt. Ziele mit dazwischenliegenden Wegpunkten kann man als Route speichern.
 
@@ -41,12 +45,16 @@ Die App verfügt auch über die Kompass-Ansicht des BeeLine, könnte also theore
 
 .. thumbnail:: /images/BeeLine/app_compass.png
 
+    App: Kompassansicht
+
 Fahrrad
 *******
 
-BeeLine lässt sich duch das flexible Gummiband an diversen Stellen am Fahrrad befestigen. Die Ausrichtung lässt sich in der App um 90° drehen, so dass sowohl der Lenker als auch der Vorbau oder das Oberrohr als Befestigungspunkt in Frage kommen.
+BeeLine lässt sich durch das flexible Gummiband an diversen Stellen am Fahrrad befestigen. Die Ausrichtung lässt sich in der App um 90° drehen, so dass sowohl der Lenker als auch der Vorbau oder das Oberrohr als Befestigungspunkte in Frage kommen.
 
 .. thumbnail:: /images/BeeLine/mount.jpg
+
+    Befestigung am Vorbau
 
 Die Befestigung erweist sich als wesentlich flexibler, stabiler und vertrauenswürdiger als etwa die Bike Citizens-Halterung, die ich für ziemlich ungelungen halte.
 
@@ -57,16 +65,21 @@ BeeLine visiert nun das Ziel an, die angezeigte Entfernung entspricht der Luftli
 
 .. thumbnail:: /images/BeeLine/app_map.jpg
 
+    App: aktueller Standort und Ziel
+
 Da ich meist ohne E.T. unterwegs bin, gebietet es die Neugier, über unbekannte Wege zum Ziel abkürzen zu wollen. Das hat spontan bei mir nicht geklappt, ich musste wieder umkehren, aber immerhin weiß ich nun, dass es in Treptow das hier gibt:
 
 .. thumbnail:: /images/BeeLine/unicorn.jpg
 
+    Get hype
 
 Blöderweise bin ich kein Einhornfan und finde den Hype darum inzwischen nur noch unkreativ bis peinlich (gilt nicht für Leute, die schon immer ein Herz für Einhörner hatten und nicht auf den fahrenden Zug aufgesprungen sind). Aber das Potential, beim Sichverfahren etwas Neues zu entdecken, ist definitiv gegeben.
 
 Wird die Fahrt beendet, was nicht automatisch beim Erreichen des Zieles ist, wird diese in der App gespeichert.
 
 .. thumbnail:: /images/BeeLine/app_route.png
+
+    App: beendete Routen werden gespeichert
 
 
 Verbesserungspotential
