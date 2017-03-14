@@ -36,7 +36,7 @@ Links
 - `Python GObject Introspection API Reference <https://lazka.github.io/pgi-docs/>`_ - complete reference of the GI module (bookmark this!)
 
 
-Themen
+Topics
 ------
 
 - `Minimal example <link://slug/fenster-mit-aussicht>`_
