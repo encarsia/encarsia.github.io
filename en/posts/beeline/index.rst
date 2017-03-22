@@ -1,4 +1,4 @@
-.. title: BeeLine - erster Eindruck
+.. title: BeeLine - first impressions
 .. slug: beeline
 .. date: 2017-03-14 13:45:52 UTC+01:00
 .. tags: beeline
@@ -7,15 +7,14 @@
 .. description: 
 .. type: text
 
-Navigationskompass
+Navigation compass
 ------------------
 
 .. thumbnail:: /images/BeeLine/beeline.jpg
 
-    BeeLine im Betrieb, Richtungs- und Entfernungsanzeige
+    BeeLine in use showing directions and distance
 
-BeeLine ist im weitesten Sinne ein Fahrradnavi. Das Konzept des BeeLine ist, dass es keine Route, sondern wie eine Kompassnadel die Richtung des Ziels bzw. eines Wegpunktes und dessen Entfernung anzeigt. Ist das BeeLine gerade nicht mit dem Telefon gekoppelt, zeigt die "Nadel" auch tatsächlich nach Norden.
-Dieser Prämisse folgend wird dem Nutzer die Streckenwahl komplett überlassen und so wird es auch beworben:
+BeeLine in the broader sense is a route guidance system for bicycles. Instead of navigating a given route the concept of BeeLine is to show only the destination or waypoint direction (like a compass needle) and its distance. If the device is not connected to the phone the needle actually points to north. The user is completely free in choosing the route:
 
 ::
 
@@ -23,87 +22,86 @@ Dieser Prämisse folgend wird dem Nutzer die Streckenwahl komplett überlassen u
 
     Take back control of your ride and explore your city with BeeLine.
 
-Technikgeraffel
----------------
+Tech stuff
+----------
 
 BeeLine
 *******
 
-Das Gerät verfügt über einen internen Akku, der etwa 30 Stunden im Betrieb halten soll. Das E-Ink-Display ist energiesparend, wetterfest und sonnenlichtverträglich, für den Nachtbetrieb gibt es eine zuschaltbare Beleuchtung, die Bedienung erfolgt über die vier äußeren Tasten und die zugehörige App.
+The intern battery is supposed to last at least 30 hours of usage. The E-Ink display is weather resistant, energy saving and readable at sunlight, with a shiftable LED for riding the dark.
+The device has four touch buttons to access some functionalities, everything else is done via app.
 
 App
 ***
 
 .. thumbnail:: /images/BeeLine/app_main.png
 
-    App: Zielauswahl
+    App: Select destination
 
-Nach der BeeLine-Anmeldung und dem Pairen des Gerätes per Bluetooth geht es los.
-Unter *"Where to?"* tippt man auf der Karte auf das Ziel und drückt den gelben "BeeLine"-Button. Alternativ wählt man unter *"Destinations"* ein Ziel aus, das sich auch speichern und wieder aufrufen lässt. Ziele mit dazwischenliegenden Wegpunkten kann man als Route speichern.
+After logging into the BeeLine account and pairing the device via Bluetooth you are ready to start.
+Choose *"Where to?"* and point on a destination on the map. Then press the yellow "BeeLine" button. Another option is choosing a destination (*"Destinations"*) which can be saved and retrieved again. Destinations with additional waypoints can be saved as route.
 
-Die App verfügt auch über die Kompass-Ansicht des BeeLine, könnte also theoretisch auch ohne Gerät mit einer Lenkerhaltung genau so genutzt werden.
+The app also possesses the BeeLine compass view so it ia also possible to navigate without the dedicated device.
 
 .. thumbnail:: /images/BeeLine/app_compass.png
 
-    App: Kompassansicht
+    App: Compass view
 
-Fahrrad
-*******
+Bike
+****
 
-BeeLine lässt sich durch das flexible Gummiband an diversen Stellen am Fahrrad befestigen. Die Ausrichtung lässt sich in der App um 90° drehen, so dass sowohl der Lenker als auch der Vorbau oder das Oberrohr als Befestigungspunkte in Frage kommen.
+The device is mounted to the various parts of the bicycle by the rubber band being part of the BeeLine case. The orientation can be turned by 90° by the app so mount points could be the handlebar, stem or top tube.
 
 .. thumbnail:: /images/BeeLine/mount.jpg
 
-    Befestigung am Vorbau
+    BeeLine mounted to stem
 
-Die Befestigung erweist sich als wesentlich flexibler, stabiler und vertrauenswürdiger als etwa die Bike Citizens-Halterung, die ich für ziemlich ungelungen halte.
+The mounting using the rubber band appears quite flexible, stable and trustworthy.
 
-Sind wir schon da?
-------------------
 
-BeeLine visiert nun das Ziel an, die angezeigte Entfernung entspricht der Luftlinie.
+Are we there yet?
+-----------------
+
+BeeLine now points to the destination, the shown distance just being linear distance or, well...beeline.
 
 .. thumbnail:: /images/BeeLine/app_map.jpg
 
-    App: aktueller Standort und Ziel
+    App: current location and destination
 
-Da ich meist ohne E.T. unterwegs bin, gebietet es die Neugier, über unbekannte Wege zum Ziel abkürzen zu wollen. Das hat spontan bei mir nicht geklappt, ich musste wieder umkehren, aber immerhin weiß ich nun, dass es in Treptow das hier gibt:
+Watching the compass needle pointing the destination actually piqued my curiosity to shorten my ride. That didn't work out for me on the first try but at least I know now this exists in Berlin Treptow:
 
 .. thumbnail:: /images/BeeLine/unicorn.jpg
 
-    Get hype
+    Unicorn street
 
-Blöderweise bin ich kein Einhornfan und finde den Hype darum inzwischen nur noch unkreativ bis peinlich (gilt nicht für Leute, die schon immer ein Herz für Einhörner hatten und nicht auf den fahrenden Zug aufgesprungen sind). Aber das Potential, beim Sichverfahren etwas Neues zu entdecken, ist definitiv gegeben.
-
-Wird die Fahrt beendet, was nicht automatisch beim Erreichen des Zieles ist, wird diese in der App gespeichert.
+The navigation is ended via app and not by reaching the destination. The ride is saved.
 
 .. thumbnail:: /images/BeeLine/app_route.png
 
-    App: beendete Routen werden gespeichert
+    App: saved routes
 
+Room for improvement
+--------------------
 
-Verbesserungspotential
-----------------------
-
-Wegpunkte
+Waypoints
 *********
 
-Man kann irgendwie zwischen Wegpunkten switchen, man sieht auf dem Display aber nicht, bei welchem man gerade ist und offenbar kann man nur vorwärts "durchblättern". Das muss ich nochmal testen.
+It is possible to switch between waypoints but it is not obvious which one is currently displayed. Also it seems waypoints can be scrolled through forward. (need to figure out more on this)
 
-Fahrt versehentlich beenden
+Accidentally finishing ride
 ***************************
 
-Mir ist es jetzt zweimal passiert, dass die Fahrt versehentlich beendet wurde und die Strecke auch nicht hinterher in der App unter *"Rides"* aufgeführt war. Ich glaube, da steckt mehr als nur ein Bedienungsfehler hinter, das muss ich ebenfalls nochmal genauer untersuchen.
+This happened to me twice now. The ride was ended and the route wasn't saved. This possibly is more than just a handling error. (need to figure out more on this)
 
-Bedienung
-*********
+Handling
+********
 
-Das Gerät verfügt über vier Buttons (N/S/E/W), die man aber eher so durchklickt. Es ist nicht ersichtlich, welche Funktionen dahinter stecken.
+There are four touch buttons on the device but the functions bound to the buttons are not apparent.
 
-Routen importieren
-******************
+Import routes
+*************
 
-Die App speichert die Route, es wäre also auch möglich, Routen zu importieren. Genial fände ich einen alternativen Navigationsmodus, der nach Strecke navigiert, dann hätte man gleichzeitig einen optisch ansprechenden Garmin-Ersatz, eine eierlegende Navi-Sau sozusagen.
+The app is able to save routes so it might be feasable to also import routes. A killer feature for me was an alternatve navigation mode guiding by given routes. That would make the BeeLine a good looking Garmin replacement, a Swiss navi knife.
 
 Pros and Cons
 -------------
@@ -111,20 +109,19 @@ Pros and Cons
 =================================== ====================================
 **Pro**                             **Contra**
 =================================== ====================================
-einfache Befestigung                Halterung birgt Gefahr der                                                                                         
-                                    Materialermüdung, Ersatzhalterungen 
-                                    sollen zukünftig erhältlich sein
-lange Akkulaufzeit                  funktioniert nicht ohne App
-minimalistische Navigation          minimalistische Navigation
-optisch ansprechend                 Preis-Leistungs-Verhältnis (115 Euro)
-Display gut lesbar
-lenkt beim Fahren nicht ab
-verleitet dazu, neue Wege zu testen
+easy mounting                       material fatigue of the rubber of
+                                    the mounting case, spare parts shall
+                                    be available in the future
+long lasting battery                does not work without app
+minimalistic navigation             minimalistic navigation
+pleasant design                     value for money (115 Euro)
+legible display
+not distracting while riding
+explore new ways
 =================================== ====================================
 
 Links
 -----
 
 - `BeeLine <https://BeeLine.co>`_
-- `BeeLine Kickstarter-Projekt <https://www.kickstarter.com/projects/1411369083/BeeLine-smart-navigation-for-bicycles-made-simple>`_
-- `Bike Citizens <http://www.bikecitizens.net/>`_
+- `BeeLine Kickstarter Project <https://www.kickstarter.com/projects/1411369083/BeeLine-smart-navigation-for-bicycles-made-simple>`_
