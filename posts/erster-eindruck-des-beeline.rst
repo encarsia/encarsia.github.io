@@ -12,9 +12,9 @@ Navigationskompass
 
 .. thumbnail:: /images/BeeLine/beeline.jpg
 
-    BeeLine im Betrieb, Richtungs- und Entfernungsanzeige
+    BeeLine in Betrieb mit Richtungs- und Entfernungsanzeige
 
-BeeLine ist im weitesten Sinne ein Fahrradnavi. Das Konzept des BeeLine ist, dass es keine Route, sondern wie eine Kompassnadel die Richtung des Ziels bzw. eines Wegpunktes und dessen Entfernung anzeigt. Ist das BeeLine gerade nicht mit dem Telefon gekoppelt, zeigt die "Nadel" auch tatsächlich nach Norden.
+BeeLine ist im weitesten Sinne ein Fahrradnavi. Das Konzept des BeeLine ist, dass es keine Route, sondern wie eine Kompassnadel die Richtung des Ziels bzw. eines Wegpunktes und dessen Entfernung (engl. beeline) anzeigt. Ist das BeeLine gerade nicht mit dem Telefon gekoppelt, zeigt die "Nadel" auch tatsächlich nach Norden.
 Dieser Prämisse folgend wird dem Nutzer die Streckenwahl komplett überlassen und so wird es auch beworben:
 
 ::
@@ -29,7 +29,7 @@ Technikgeraffel
 BeeLine
 *******
 
-Das Gerät verfügt über einen internen Akku, der etwa 30 Stunden im Betrieb halten soll. Das E-Ink-Display ist energiesparend, wetterfest und sonnenlichtverträglich, für den Nachtbetrieb gibt es eine zuschaltbare Beleuchtung, die Bedienung erfolgt über die vier äußeren Tasten und die zugehörige App.
+Das Gerät verfügt über einen internen Akku, der etwa 30 Stunden im Betrieb halten soll. Das E-Ink-Display ist energiesparend, wetterfest und sonnenlichtverträglich, für den Nachtbetrieb gibt es eine zuschaltbare Beleuchtung, die Bedienung erfolgt über die vier äußeren Touch-Tasten und die zugehörige App.
 
 App
 ***
@@ -98,7 +98,7 @@ Mir ist es jetzt zweimal passiert, dass die Fahrt versehentlich beendet wurde un
 Bedienung
 *********
 
-Das Gerät verfügt über vier Buttons (N/S/E/W), die man aber eher so durchklickt. Es ist nicht ersichtlich, welche Funktionen dahinter stecken.
+Das Gerät verfügt über vier Touch-Buttons (N/S/E/W), die man aber eher so durchklickt. Es ist nicht ersichtlich, welche Funktionen dahinter stecken.
 
 Routen importieren
 ******************
