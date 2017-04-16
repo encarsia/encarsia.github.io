@@ -64,8 +64,7 @@ Wenn man also nicht genau eine Instanz favorisiert, weil sie thematisch passt od
 .. admonition:: **Wichtiger Hinweis**
 
     Accounts können zur Zeit nicht gelöscht werden. Auch können Accounts nicht in andere Instanzen migriert werden.
-    Es ist zwar möglich, eine Liste der Accounts, denen man selbst folgt, zu exportieren und in neue Accounts zu importieren, dies geht aber nicht für Folower. Alte Accounts bleiben weiterhin (vorerst) bestehen.
-
+    Es ist zwar möglich, eine Liste der Accounts, denen man selbst folgt, zu exportieren und in neue Accounts zu importieren, dies funktioniert aber nicht für Follower.
 
 * `Liste mit Instanzen <https://instances.mastodon.xyz/list>`_
 * `Mashable: There's an instance for everyone in the rapidly expanding Mastodon fediverse <http://mashable.com/2017/04/15/mastodon-has-instance-for-everyone/>`_
