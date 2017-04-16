@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1490219853.8838906
+_modified_time = 1492349749.5812843
 _enable_loop = True
 _template_filename = 'themes/zen/templates/base.tmpl'
 _template_uri = 'base.tmpl'
@@ -37,21 +37,21 @@ def render_body(context,**pageargs):
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         _mako_get_namespace(context, 'footer')._populate(_import_ns, ['*'])
         template_hooks = _import_ns.get('template_hooks', context.get('template_hooks', UNDEFINED))
+        logo_url = _import_ns.get('logo_url', context.get('logo_url', UNDEFINED))
+        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
+        footer = _mako_get_namespace(context, 'footer')
+        abs_link = _import_ns.get('abs_link', context.get('abs_link', UNDEFINED))
+        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
         def extra_head():
             return render_extra_head(context._locals(__M_locals))
-        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
-        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
         lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
-        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
-        arusahni = _mako_get_namespace(context, 'arusahni')
-        def content():
-            return render_content(context._locals(__M_locals))
-        abs_link = _import_ns.get('abs_link', context.get('abs_link', UNDEFINED))
-        footer = _mako_get_namespace(context, 'footer')
+        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
         def extra_js():
             return render_extra_js(context._locals(__M_locals))
-        logo_url = _import_ns.get('logo_url', context.get('logo_url', UNDEFINED))
-        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
+        def content():
+            return render_content(context._locals(__M_locals))
+        arusahni = _mako_get_namespace(context, 'arusahni')
+        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
