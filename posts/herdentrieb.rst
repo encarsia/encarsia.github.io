@@ -106,3 +106,6 @@ Find mich auf Mastodon
 
 * `encarsia@octodon.social <https://octodon.social/@encarsia>`_
 
+.. admonition:: **Google+**
+
+    Diskussion und Kommentare? `Folgen Sie mir unauffällig <https://plus.google.com/105146352752269764996/posts/PJFYx2MT2W1>`_.

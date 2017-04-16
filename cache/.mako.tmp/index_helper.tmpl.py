@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1492352102.320691
+_modified_time = 1492358423.058501
 _enable_loop = True
 _template_filename = '/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/index_helper.tmpl'
 _template_uri = 'index_helper.tmpl'
@@ -29,8 +29,8 @@ def render_html_pager(context):
     __M_caller = context.caller_stack._push_frame()
     try:
         messages = context.get('messages', UNDEFINED)
-        prevlink = context.get('prevlink', UNDEFINED)
         nextlink = context.get('nextlink', UNDEFINED)
+        prevlink = context.get('prevlink', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if prevlink or nextlink:
@@ -57,8 +57,8 @@ def render_mathjax_script(context,posts):
     __M_caller = context.caller_stack._push_frame()
     try:
         any = context.get('any', UNDEFINED)
-        use_katex = context.get('use_katex', UNDEFINED)
         katex_auto_render = context.get('katex_auto_render', UNDEFINED)
+        use_katex = context.get('use_katex', UNDEFINED)
         mathjax_config = context.get('mathjax_config', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
