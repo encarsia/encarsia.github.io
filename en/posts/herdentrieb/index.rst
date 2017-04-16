@@ -11,7 +11,7 @@
 
 .. Warning::
 
-    Dieser Beitrag wird bedarfs- und kapazitätsabhängig aktualisiert. Da sich Mastodon in massiver, aktiver Entwicklung befindet, können Teile des Inhaltes veraltet sein.)
+    Dieser Beitrag wird bedarfs- und kapazitätsabhängig aktualisiert. Da sich Mastodon in massiver, aktiver Entwicklung befindet, können Teile des Inhaltes veraltet sein.
 
 .. class:: warning pull-right
 
@@ -40,9 +40,9 @@ Welche Instanz ist die richtige für mich?
 
     `@mastodonusercount@social.lou.lt <https://social.lou.lt/@mastodonusercount>`_
 
-Da prinzipbedingt jeder einen Mastodon-Server betreiben kann, tun dies auch viele. So explodiert aktuell die Zahl der Instanzen. Aber es ist eben auch damit zu rechnen, dass die Mehrheit nur kurzfristig aus Experimentierfreude existieren. Verschwindet eine Instanz, verschwinden auch alle Accounts in dieser.
+Da prinzipbedingt jeder einen Mastodon-Server betreiben kann, tun dies auch viele. So explodiert aktuell die Zahl der Instanzen. Aber es ist eben auch damit zu rechnen, dass die Mehrheit nur kurzfristig aus Experimentierfreude existieren wird. Verschwindet eine Instanz, verschwinden auch alle Accounts (und deren Inhalte) in dieser.
 
-Ein weiteres Punkt ist die Ausrichtung der Instanz, sei es themenbezogen (Spaß/Memes/Aktivismus/Tech) oder lokal/landessprachlich oder der Grad an Moderation.
+Ein weiterer Punkt ist die Ausrichtung der Instanz, sei sie themenbezogen (Spaß/Memes/Aktivismus/Tech) oder lokal/landessprachlich oder der Grad an Moderation.
 
 Hier zeichnet sich gerade eine Art Sortierungsbewegung ab: Benutzer migrieren zu Instanzen, die eher ihren Interessen bzw. ihrem Umfeld entsprechen.
 
