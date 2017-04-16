@@ -85,7 +85,7 @@ Sonstiges
 ---------
 
 * `Apps <https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/Apps.md>`_
-* `blinrys <https://chaos.social/@blinry`>_ `Mastodon-Notizen <https://pad.stratum0.org/p/mastodon>`_
+* `blinrys <https://chaos.social/@blinry>`_ `Mastodon-Notizen <https://pad.stratum0.org/p/mastodon>`_
 
 
 Klingt irgendwie nicht nach dem großen Twitter-Killer
