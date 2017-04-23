@@ -28,6 +28,133 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/ansichtssache/">Ansichtssache</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2016-12-22T00:02:20+01:00">2016-12-22 00:02</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/ansichtssache/#disqus_thread" data-disqus-identifier="cache/posts/ansichtssache.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/ansichtssache/#treestore-vs-liststore" id="id5">TreeStore vs. ListStore</a></li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#glade" id="id6">Glade</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#treemodelsort" id="id7">TreeModelSort</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#treemodelfilter" id="id8">TreeModelFilter</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#formatierung-aus-dem-modell-laden" id="id9">Formatierung aus dem Modell laden</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#python" id="id10">Python</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#id1" id="id11">TreeModelSort</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#id2" id="id12">TreeModelFilter</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/ansichtssache/#listings" id="id13">Listings</a><ul>
+<li><a class="reference internal" href="posts/ansichtssache/#id3" id="id14">Glade</a></li>
+<li><a class="reference internal" href="posts/ansichtssache/#id4" id="id15">Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Daten anzeigen mit TreeStore</strong></p>
+<p>(Fortsetzung zum <a class="reference external" href="posts/uberlistet">ListStore-Artikel</a>)</p>
+<a class="reference external image-reference" href="images/12_treestore.png"><img alt="/images/12_treestore.thumbnail.png" src="images/12_treestore.thumbnail.png" style="width: 480px;"></a>
+<div class="section" id="treestore-vs-liststore">
+<h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
+<p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
+<pre class="code python"><a name="rest_code_7791c47c68794774ab99a0fdc67b8614-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-3"></a>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_7791c47c68794774ab99a0fdc67b8614-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+</pre>
+<p>Der Wert der Variable <em>parent</em> ist entweder</p>
+<ul class="simple">
+<li>
+<strong>None</strong>, wenn die Zeile keine übergeordnete Zeile besitzt, oder</li>
+<li>
+<strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
+</ul>
+<p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
+<pre class="code python"><a name="rest_code_b1115020e75d4c2dbc93a5d1a2253f32-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_b1115020e75d4c2dbc93a5d1a2253f32-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+</pre>
+<p>Man erhält den <em>TreeIter</em>-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
+</div>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/ansichtssache/#id6">Glade</a></h2>
+<p>Im Beispiel werden zwei TreeStores und die jeweils enthaltenen Spalten angelegt, dazu die TreeView-Widgets zur Anzeige.</p>
+<div class="section" id="treemodelsort">
+<h3><a class="toc-backref" href="posts/ansichtssache/#id7">TreeModelSort</a></h3>
+<p>Spalten lassen sich mit der Funktion <tt class="docutils literal">set_sort_column_id</tt> einfach sortieren. Wendet man diese Funktion direkt auf TreeStore an, werden logischerweise alle TreeView-Widgets, die darauf zurückgreifen, sortiert.</p>
+<p>Für diese Fälle muss man <em>TreeModelSort</em>-Elemente "zwischenschalten", d.h. man erstellt aus der Widget-Seitenleiste unter <em>"Sonstiges &gt; Sortierung für Baumansichtsmodell"</em> (4. Eintrag) ein Widget und weist ihm den gewünschten TreeStore zu (einzige Option unter "Allgemein"). Anschließend ersetzt man im TreeView das Modell mit dem eben erstellten TreeModelSort.</p>
+<p>Die Sortierungsfunktion führt man wie zuvor, nur auf das TreeModelSort-Objekt, aus.</p>
+</div>
+<div class="section" id="treemodelfilter">
+<h3><a class="toc-backref" href="posts/ansichtssache/#id8">TreeModelFilter</a></h3>
+<p><em>TreeModelFilter</em> ermöglicht die Darstellung bestimmter Zeilen, in Glade wird wie bei TreeModelSort verfahren, zuerst das Element anlegen (3. Eintrag unter "Sonstige"), anschließend erfolgen die Zuweisungen zum Modell und TreeView.</p>
+<p>Im gewählten Beispiel sollen Sorten nach der Fruchtfarbe sortiert werden, es wird also noch ein Container für Buttons benötigt, also eine <em>GtkButtonBox</em>.</p>
+</div>
+<div class="section" id="formatierung-aus-dem-modell-laden">
+<h3><a class="toc-backref" href="posts/ansichtssache/#id9">Formatierung aus dem Modell laden</a></h3>
+<p>Neben den anzuzeigenden Spalten gibt es im ersten TreeStore eine Spalte "weight". Der Wert in dieser Spalte wird dazu verwendet, die Zelle in Fettschrift darzustellen. Dazu wird in den Eigenschaften des CellRenderers unter <em>Schriftgewicht</em> die entsprechende Spalte angegeben (der Wert für normale Schrift ist 400). Analog dazu können beispielsweise auch Zellen eingefärbt oder weitere Schriftformatierungen vorgenommen werden.</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/ansichtssache/#id10">Python</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="posts/ansichtssache/#id11">TreeModelSort</a></h3>
+<p>Durch die Positionsabfrage von <tt class="docutils literal">GtkTreeSelection.get_selected()</tt> erhält man ein Tupel (model,pos), <em>pos</em> von <em>model</em> zeigt dabei auf TreeModelSort (bzw. analog auf TreeModelFilter), nicht auf TreeStore und erfordert eine Konvertierung:</p>
+<pre class="code python"><a name="rest_code_921807b9c3504f54a57b822930d6b14c-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<a name="rest_code_921807b9c3504f54a57b822930d6b14c-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<a name="rest_code_921807b9c3504f54a57b822930d6b14c-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="posts/ansichtssache/#id12">TreeModelFilter</a></h3>
+<p>Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von Zeilen definiert wird, im Beispiel also die Variable <em>self.color</em>:</p>
+<pre class="code python"><a name="rest_code_6b03e8794a7c4119a16d83debf341610-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-3"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_6b03e8794a7c4119a16d83debf341610-5"></a>        <span class="k">return</span> <span class="bp">False</span>
+</pre>
+<p>Die Funktion wird zunächst nach dem Schema</p>
+<pre class="code python"><a name="rest_code_6f0e2252f4f74822868ea1efd7ad3d79-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
+</pre>
+<p>zugewiesen, jede Filterung wird dann per <tt class="docutils literal">refilter()</tt> ausgelöst, also wenn das Button-Signal ausgelöst wird:</p>
+<pre class="code python"><a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
+<a name="rest_code_7f2a24f78e2f42beb686a1e54cb29e1a-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
+</pre>
+<p class="more"><a href="posts/ansichtssache/">Weiterlesen…</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/neues-projekt-knights-of-ni/">Neues Projekt: Knights of Ni</a></h1>
             <div class="meta">
                 <div class="authordate">
