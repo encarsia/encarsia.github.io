@@ -108,6 +108,8 @@ Im Beispiel wäre dies also
 
     self.bg_setting.bind("show-desktop-icons", self.obj("switch"), "active", Gio.SettingsBindFlags.DEFAULT)
 
+Der Schalter zeigt beim Start die aktuelle Einstellung an. Eine Änderung des Status ist sofort wirksam.
+
 Werte abrufen und festlegen
 ***************************
 
