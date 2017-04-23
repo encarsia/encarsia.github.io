@@ -16,10 +16,6 @@ class Handler:
         widget.hide_on_delete()
         return True
 
-    def on_filechooser_dialog_delete_event(self,widget,event):
-        widget.hide_on_delete()
-        return True
-
     def on_filechooser_dialog_response(self,widget,response):
         if response == 1:
             self.on_dialog_close(widget)
