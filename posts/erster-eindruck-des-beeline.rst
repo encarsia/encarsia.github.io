@@ -7,6 +7,11 @@
 .. description: 
 .. type: text
 
+
+.. class:: warning pull-right
+
+.. contents::
+
 Navigationskompass
 ------------------
 

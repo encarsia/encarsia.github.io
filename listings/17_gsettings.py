@@ -5,7 +5,7 @@ import sys
 import os
 import gi
 gi.require_version('Gtk','3.0')
-from gi.repository import Gtk, Gio, GdkPixbuf
+from gi.repository import Gtk, Gio, GLib, GdkPixbuf
 
 class Handler:
 
@@ -21,26 +21,14 @@ class Handler:
         return True
 
     def on_filechooser_dialog_response(self,widget,response):
-        if response == -6:
+        if response == 1:
             self.on_dialog_close(widget)
-        elif response == -5:
+        elif response == 0:
             app.uri = widget.get_filename()
             app.draw_pixbuf(app.uri)
+            app.handle_fav(app.uri)
             self.on_dialog_close(widget)
-            #check if file is already fav
-            app.obj("fav_button").set_active(False)
-            for item in app.obj("fav_store"):
-                if item[0] == app.uri:
-                    app.obj("fav_button").set_active(True)
-                    break
-            #for item in app.obj("fav_store"):
-                #if item[0] == app.uri:
-                    #app.obj("fav_button").set_active(True)
-                    #break
-                #else:
-                    #app.obj("fav_button").set_active(False)
-                    #app.obj("fav_combo").set_active_iter(None)
-            
+
     def on_filechooser_dialog_file_activated(self,widget):
         self.on_filechooser_dialog_response(widget,0)
 
@@ -48,38 +36,44 @@ class Handler:
         app.obj("filechooser_dialog").show_all()
 
     def on_setwp_button_clicked(self,widget):
-        app.setting.set_string("picture-uri","file://%s" % app.uri)
+        app.bg_setting.set_string("picture-uri","file://%s" % app.uri)
 
     def on_window_size_allocate(self,widget,size):
         app.draw_pixbuf(app.uri)
     
     def on_filechooser_dialog_update_preview(self,widget):
-        app.uri = widget.get_filename()
-        if app.uri != None and os.path.isfile(app.uri):
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(app.uri,200,200,True)
+        if widget.get_filename() != None and os.path.isfile(widget.get_filename()):
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(widget.get_filename(),200,200,True)
             app.obj("preview").set_from_pixbuf(pixbuf)
 
     def on_fav_button_toggled(self,widget):
         if widget.get_active():
-            print("fav")
+            #add file to fav_list if not in list
+            if app.uri not in app.fav_list:
+                app.fav_list.append(app.uri)
         else:
-            print("unfav")
-        #generate treestore from gsettings
-        #if widget.get_active():
-            ##add to combobox, avoid duplicate
-            #for item in app.obj("fav_store"):
-                #if item[0] != app.uri:
-                    #row = app.obj("fav_store").append([app.uri,os.path.split(app.uri)[1]])
-                    #app.obj("fav_combo").set_active_iter(row)
-                    #break
-        #else:
-            ##remove from combobox
-            #pass
+            #remove file from fav_list if in list
+            if app.uri in app.fav_list:
+                app.fav_list.remove(app.uri)
+        #update GSettings entry for favourites
+        app.app_setting.set_value("favourites", GLib.Variant('as', app.fav_list))
+        #update fav list in popup menu
+        popup = app.obj("menu")
+        #remove all items
+        for i in popup.get_children():
+            popup.remove(i)
+        #reload all items from fav_list
+        for fav in app.fav_list:
+            #only label menuitem with filename instead of path 
+            item=Gtk.MenuItem(os.path.split(fav)[1])
+            item.connect("activate",self.on_choose_fav_from_menu,fav)
+            popup.append(item)
+        popup.show_all()
 
-    def on_fav_combo_changed(self,widget):
-        if widget.get_active() > -1:
-            app.uri = app.obj("fav_store").get_value(widget.get_active_iter(),0)
-            app.obj("fav_button").set_active(True)
+    def on_choose_fav_from_menu(self,widget,file):
+        app.uri = file
+        app.draw_pixbuf(file)
+        app.handle_fav(file)
 
 class ExampleApp:
 
@@ -93,30 +87,43 @@ class ExampleApp:
         builder = Gtk.Builder()
         builder.add_from_file("17_gsettings.glade")
         builder.connect_signals(Handler())
-
-        #read configuration from gsetting
-        self.setting = Gio.Settings.new("org.gnome.desktop.background")
-        file = self.setting.get_value("picture-uri")
-        self.uri = file.get_string()[7:]
-
         self.obj = builder.get_object
+
+        #load existing GSettings application config
+        self.bg_setting = Gio.Settings.new("org.gnome.desktop.background")
+        #get_value returns Gio formatted file path
+        file = self.bg_setting.get_value("picture-uri")
+        #convert path into string
+        self.uri = file.get_string()[7:]
+        #bind GSettings key to GTK+ object 
+        self.bg_setting.bind("show-desktop-icons", self.obj("switch"), "active", Gio.SettingsBindFlags.DEFAULT)
+
+        #add GSettings schema from compiled XML file located in current directory (only recommended for test use, standard location: /usr/share/glib-2.0/schemas/)
+        schema_source = Gio.SettingsSchemaSource.new_from_directory(os.getcwd(), 
+                Gio.SettingsSchemaSource.get_default(), False)
+        schema = Gio.SettingsSchemaSource.lookup(schema_source,"org.example.wallpaper-changer",False)
+        self.app_setting = Gio.Settings.new_full(schema, None, None)
+        #convert value (GLib.Variant) into native list
+        self.fav_list = self.app_setting.get_value("favourites").unpack()
+
         self.obj("window").set_application(app)
         self.obj("window").set_wmclass("Wallpaper changer","Wallpaper changer")
         self.obj("window").show_all()
-        self.draw_pixbuf(self.uri)
 
-        #add buttons to headerbar of Glade generated dialog
-        button = Gtk.Button.new_from_stock(Gtk.STOCK_CANCEL)
-        button.set_property("can-default",True)
-        self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.CANCEL)
-        button = Gtk.Button.new_from_stock(Gtk.STOCK_APPLY)
-        button.set_property("can-default",True)
-        self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
+        self.draw_pixbuf(self.uri)
+        self.handle_fav(self.uri)
 
     def draw_pixbuf(self,file):
         size=self.obj("image_area").get_allocation()
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(file,size.width,size.height,True)
-        self.obj("image_area").set_from_pixbuf(pixbuf)
+        app.obj("image_area").set_from_pixbuf(pixbuf)
+
+    def handle_fav(self,uri):
+        #set toggle button to correct state
+        if uri in self.fav_list:
+            self.obj("fav_button").set_active(True)
+        else:
+            self.obj("fav_button").set_active(False)
 
     def on_app_shutdown(self, app):
         self.app.quit()

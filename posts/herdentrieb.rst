@@ -2,7 +2,7 @@
 .. slug: herdentrieb
 .. date: 2017-04-16 12:45:25 UTC+02:00
 .. tags: mastodon
-.. category: link
+.. category: socialmedia
 .. link: 
 .. description: 
 .. type: text

@@ -2,14 +2,6 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkListStore" id="fav_store">
-    <columns>
-      <!-- column-name path -->
-      <column type="gchararray"/>
-      <!-- column-name file -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="GtkFileFilter" id="filefilter">
     <mime-types>
       <mime-type>image/*</mime-type>
@@ -20,14 +12,18 @@
     <property name="can_focus">False</property>
     <property name="icon_name">emblem-favorite</property>
   </object>
+  <object class="GtkMenu" id="menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+  </object>
   <object class="GtkApplicationWindow" id="window">
     <property name="can_focus">False</property>
     <signal name="destroy" handler="on_window_destroy" swapped="no"/>
     <signal name="size-allocate" handler="on_window_size_allocate" swapped="no"/>
     <child>
       <object class="GtkImage" id="image_area">
-        <property name="width_request">800</property>
-        <property name="height_request">500</property>
+        <property name="width_request">400</property>
+        <property name="height_request">300</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="stock">gtk-missing-image</property>
@@ -42,12 +38,60 @@
         <property name="show_close_button">True</property>
         <child>
           <object class="GtkButton" id="open_button">
-            <property name="label" translatable="yes">Open ...</property>
+            <property name="label" translatable="yes">Open file...</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="on_open_button_clicked" swapped="no"/>
           </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Desktop icons</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="switch">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="fav_menu">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="popup">menu</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
         </child>
         <child>
           <object class="GtkButton" id="setwp_button">
@@ -58,7 +102,8 @@
             <signal name="clicked" handler="on_setwp_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="pack_type">end</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -69,25 +114,6 @@
             <property name="image">image1</property>
             <property name="always_show_image">True</property>
             <signal name="toggled" handler="on_fav_button_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkComboBox" id="fav_combo">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="model">fav_store</property>
-            <property name="id_column">1</property>
-            <property name="active_id">favs</property>
-            <signal name="changed" handler="on_fav_combo_changed" swapped="no"/>
-            <child>
-              <object class="GtkCellRendererText"/>
-              <attributes>
-                <attribute name="text">1</attribute>
-              </attributes>
-            </child>
           </object>
           <packing>
             <property name="pack_type">end</property>
