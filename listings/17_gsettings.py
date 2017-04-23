@@ -116,7 +116,7 @@ class ExampleApp:
     def draw_pixbuf(self,file):
         size=self.obj("image_area").get_allocation()
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(file,size.width,size.height,True)
-        app.obj("image_area").set_from_pixbuf(pixbuf)
+        self.obj("image_area").set_from_pixbuf(pixbuf)
 
     def handle_fav(self,uri):
         #set toggle button to correct state
