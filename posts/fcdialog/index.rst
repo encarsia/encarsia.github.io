@@ -95,7 +95,6 @@ Im Beispiel erhält der Dialog die beiden Standardbuttons "Anwenden"/"Abbrechen"
     button = Gtk.Button.new_from_stock(Gtk.STOCK_APPLY)
     button.set_property("can-default",True)
     self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
-    self.obj("filechooser_dialog").add_action_widget(Gtk.Button.new(), Gtk.ResponseType.OK)
 
 Um die Dateiauswahl auch auf Doppelklick zu ermöglichen, wird neben des *response*-Signals noch das Signal *file-activated* benötigt.
 

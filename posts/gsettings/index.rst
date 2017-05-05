@@ -150,6 +150,7 @@ Links
  * `Short Example of GSettings Bindings with Python using a Gtk Switch <https://marianochavero.wordpress.com/2012/04/03/short-example-of-gsettings-bindings-in-python/>`_
  * `GSettings - flexible configuration system <http://zderadicka.eu/gsettings-flexible-configuration-system/>`_
  * `dconf (ubuntuusers-Wiki) <https://wiki.ubuntuusers.de/GNOME_Konfiguration/dconf/>`_
+ * `First steps with GSettings <https://blog.gtk.org/2017/05/01/first-steps-with-gsettings/>`_
 
 Listings
 --------
