@@ -94,7 +94,6 @@ In the example the standard buttons "apply/cancel" are added to the file dialog:
     button = Gtk.Button.new_from_stock(Gtk.STOCK_APPLY)
     button.set_property("can-default",True)
     self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
-    self.obj("filechooser_dialog").add_action_widget(Gtk.Button.new(), Gtk.ResponseType.OK)
 
 To apply file selection on doubleclick the *file-activated* is also required in addition to the *response* signal.
 
