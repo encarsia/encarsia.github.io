@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1493992048.8243563
+_modified_time = 1503739690.600466
 _enable_loop = True
 _template_filename = '/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/listing.tmpl'
 _template_uri = 'listing.tmpl'
@@ -32,16 +32,16 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
+        ui = _mako_get_namespace(context, 'ui')
+        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
+        files = _import_ns.get('files', context.get('files', UNDEFINED))
         def content():
             return render_content(context._locals(__M_locals))
-        code = _import_ns.get('code', context.get('code', UNDEFINED))
-        title = _import_ns.get('title', context.get('title', UNDEFINED))
-        files = _import_ns.get('files', context.get('files', UNDEFINED))
-        ui = _mako_get_namespace(context, 'ui')
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         source_link = _import_ns.get('source_link', context.get('source_link', UNDEFINED))
         crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
-        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
+        code = _import_ns.get('code', context.get('code', UNDEFINED))
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -49,7 +49,7 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
-        __M_writer('\n\n\n')
+        __M_writer('\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -60,16 +60,16 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'ui')._populate(_import_ns, ['bar'])
+        ui = _mako_get_namespace(context, 'ui')
+        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
+        files = _import_ns.get('files', context.get('files', UNDEFINED))
         def content():
             return render_content(context)
-        code = _import_ns.get('code', context.get('code', UNDEFINED))
-        title = _import_ns.get('title', context.get('title', UNDEFINED))
-        files = _import_ns.get('files', context.get('files', UNDEFINED))
-        ui = _mako_get_namespace(context, 'ui')
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         source_link = _import_ns.get('source_link', context.get('source_link', UNDEFINED))
         crumbs = _import_ns.get('crumbs', context.get('crumbs', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
-        folders = _import_ns.get('folders', context.get('folders', UNDEFINED))
+        code = _import_ns.get('code', context.get('code', UNDEFINED))
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer(str(ui.bar(crumbs)))
@@ -79,13 +79,13 @@ def render_content(context,**pageargs):
             for name in folders:
                 __M_writer('    <li><a href="')
                 __M_writer(filters.url_escape(str(name)))
-                __M_writer('"><i class="icon-folder-open"></i> ')
+                __M_writer('" class="listing-folder">')
                 __M_writer(filters.html_escape(str(name)))
                 __M_writer('</a>\n')
             for name in files:
                 __M_writer('    <li><a href="')
                 __M_writer(filters.url_escape(str(name)))
-                __M_writer('.html"><i class="icon-file"></i> ')
+                __M_writer('.html" class="listing-file">')
                 __M_writer(filters.html_escape(str(name)))
                 __M_writer('</a>\n')
             __M_writer('</ul>\n')
