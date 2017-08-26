@@ -1446,12 +1446,13 @@ Unknown target name: "said before&lt;link://slug/neues-projekt-knights-of-ni&gt;
 <a class="reference internal" href="posts/dialoge/#python" id="id8">Python</a><ul>
 <li><a class="reference internal" href="posts/dialoge/#responses" id="id9">Responses</a></li>
 <li><a class="reference internal" href="posts/dialoge/#delete-event" id="id10">Delete-event</a></li>
+<li><a class="reference internal" href="posts/dialoge/#several-glade-files" id="id11">Several Glade files</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="posts/dialoge/#listings" id="id11">Listings</a><ul>
-<li><a class="reference internal" href="posts/dialoge/#id1" id="id12">Glade</a></li>
-<li><a class="reference internal" href="posts/dialoge/#id2" id="id13">Python</a></li>
+<a class="reference internal" href="posts/dialoge/#listings" id="id12">Listings</a><ul>
+<li><a class="reference internal" href="posts/dialoge/#id1" id="id13">Glade</a></li>
+<li><a class="reference internal" href="posts/dialoge/#id2" id="id14">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -1504,21 +1505,27 @@ Unknown target name: "said before&lt;link://slug/neues-projekt-knights-of-ni&gt;
 <div class="section" id="responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id9">Responses</a></h3>
 <p>When emitting the <em>response</em> signal the response is passed as parameter. As said before this offers the option to process all responses in one function:</p>
-<pre class="code python"><a name="rest_code_f7fab80d027d4857805161d8d39024db-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
-<a name="rest_code_f7fab80d027d4857805161d8d39024db-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_dce0535dc39543328c884ce4a45a3989-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
+<a name="rest_code_dce0535dc39543328c884ce4a45a3989-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="delete-event">
 <h3><a class="toc-backref" href="posts/dialoge/#id10">Delete-event</a></h3>
 <p>The <tt class="docutils literal">hide_on_delete()</tt> function removes a window but can be reestablished by <tt class="docutils literal">show_all()</tt>:</p>
-<pre class="code python"><a name="rest_code_73b24a71e63a4e368ef0e25273eda9f8-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-<a name="rest_code_73b24a71e63a4e368ef0e25273eda9f8-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_73b24a71e63a4e368ef0e25273eda9f8-3"></a>    <span class="k">return</span> <span class="bp">True</span>
+<pre class="code python"><a name="rest_code_7691b25e94af469e8e031f471f0dcf02-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+<a name="rest_code_7691b25e94af469e8e031f471f0dcf02-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_7691b25e94af469e8e031f471f0dcf02-3"></a>    <span class="k">return</span> <span class="bp">True</span>
+</pre>
+</div>
+<div class="section" id="several-glade-files">
+<h3><a class="toc-backref" href="posts/dialoge/#id11">Several Glade files</a></h3>
+<p>As <a class="reference external" href="posts/fenster-mit-aussicht">mentioned before</a> several Glade files can be used within a project. It is not possible though to associate dialogs with their parent window if separated into different files. So the <tt class="docutils literal">set_transient_for</tt> function of <em>GtkWindow</em> is required:</p>
+<pre class="code python"><a name="rest_code_1276f6de6acb4efd926712893cd9cd20-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_transient_for</span><span class="p">(</span><span class="n">mainwindow</span><span class="p">)</span>
 </pre>
 <p class="more"><a href="posts/dialoge/">Read more…</a></p>
 </div>
