@@ -86,6 +86,15 @@ The ``hide_on_delete()`` function removes a window but can be reestablished by `
         widget.hide_on_delete()
         return True
 
+Several Glade files
+*******************
+
+As `mentioned before <link://slug/fenster-mit-aussicht>`_ several Glade files can be used within a project. It is not possible though to associate dialogs with their parent window if separated into different files. So the ``set_transient_for`` function of *GtkWindow* is required:
+
+.. code-block:: python
+
+    dialog.set_transient_for(mainwindow) 
+
 .. TEASER_END
 
 Listings
