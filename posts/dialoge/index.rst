@@ -22,7 +22,7 @@ Glade
 
 Dialog-Widgets findet man unter *"Oberste Ebene"* neben den Fenster-Widgets.
 
-Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter *"Allgemein > Fensterattribute > Vorübergehend für:"* einem Eltern-Fenster zugeordnet werden.
+Dialoge sind ergänzende Fenster, um den Fokus des Nutzers zu lenken. Sie können direkt an ein übergeordnetes Fenster angeheftet werden, mindestens aber müssen sie unter *"Allgemein > Fensterattribute > Vorübergehend für:"* einem Eltern-Fenster zugeordnet werden. Sie erscheinen dadurch nicht als separates Fenster in der Übersicht und erben ein vorhandenes Icon.
 
 AboutDialog
 ***********
@@ -37,7 +37,7 @@ Der MessageDialog ist ein Standarddialog zum Anzeigen oder Abfragen von Informat
 Buttons und Responses
 *********************
 
-Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekenntzeichnet.
+Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.
 
 Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter *"Allgemein"* eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des *GtkDialog*.
 
@@ -85,6 +85,16 @@ Mit der Funktion ``hide_on_delete()`` ausgeblendete Dialoge oder reguläre Fenst
     def on_dialog_delete_event(self,widget,event):
         widget.hide_on_delete()
         return True
+
+Mehrere Glade-Dateien
+*********************
+
+Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden, es wird die ``set_transient_for``-Funktion von *GtkWindow* benötigt:
+
+.. code-block:: python
+
+    dialog.set_transient_for(mainwindow) 
+
 
 .. TEASER_END
 
