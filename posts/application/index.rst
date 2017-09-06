@@ -104,6 +104,8 @@ Starten und Beenden
     Gtk.main()      ->  app.run(argv)
     Gtk.main_quit() ->  app.quit()
 
+Beendet man das Programm über den [X]-Button oder den "Schließen"-Eintrag des Appmenus (immer vorhanden), wird automatisch das "shutdown"-Signal ausgelöst (siehe oben). Das heißt, es müssen keine entsprechenden Signale definiert werden. "Shutdown" wird auch ausgelöst, wenn bei der Initialisierung nicht mit einer Funktion verbunden wird.
+
 Links
 -----
 
