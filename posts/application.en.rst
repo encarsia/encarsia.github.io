@@ -103,6 +103,8 @@ Start and quit
     Gtk.main()      ->  app.run(argv)
     Gtk.main_quit() ->  app.quit()
 
+If the application is quit by the [X] button or the "Quit" appmenu entry the "shutdown" signal is emitted (see above) and the program is terminated. That means there is no need to define these signals like in previous examples using *GtkWindow*. The "shutdown" also works even if the signal is not explicitly connected to a function during the initialization process.
+
 Links
 -----
 

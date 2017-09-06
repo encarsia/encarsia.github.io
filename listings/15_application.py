@@ -6,11 +6,6 @@ import gi
 gi.require_version('Gtk','3.0')
 from gi.repository import Gtk, Gio, GLib
 
-class Handler:
-
-    def on_window_destroy(self,window):
-        window.close()
-
 class ExampleApp:
 
     def __init__(self):
@@ -54,7 +49,6 @@ class ExampleApp:
     def on_app_activate(self, app):
         builder = Gtk.Builder()
         builder.add_from_file("15_application.glade")
-        builder.connect_signals(Handler())
 
         self.obj = builder.get_object
         self.obj("window").set_application(app)

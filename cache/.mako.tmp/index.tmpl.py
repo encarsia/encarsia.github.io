@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1503937016.4620156
+_modified_time = 1504729174.987816
 _enable_loop = True
 _template_filename = 'themes/zen/templates/index.tmpl'
 _template_uri = 'index.tmpl'
@@ -39,13 +39,13 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
-        arusahni = _mako_get_namespace(context, 'arusahni')
+        comments = _mako_get_namespace(context, 'comments')
         helper = _mako_get_namespace(context, 'helper')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
+        def content():
+            return render_content(context._locals(__M_locals))
         index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
+        arusahni = _mako_get_namespace(context, 'arusahni')
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -67,13 +67,13 @@ def render_content(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        def content():
-            return render_content(context)
-        arusahni = _mako_get_namespace(context, 'arusahni')
+        comments = _mako_get_namespace(context, 'comments')
         helper = _mako_get_namespace(context, 'helper')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
+        def content():
+            return render_content(context)
         index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
+        arusahni = _mako_get_namespace(context, 'arusahni')
         __M_writer = context.writer()
         __M_writer('\n')
         for post in posts:
