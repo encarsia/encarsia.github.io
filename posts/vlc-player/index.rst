@@ -90,7 +90,7 @@ Links
  * `LibVLC Python bindings documentation <https://www.olivieraubert.net/vlc/python-ctypes/doc/>`__
  * `How to Build a Python Media Player using LibVLC and GTK+ <https://www.codementor.io/princerapa/python-media-player-vlc-gtk-favehuy2b>`__
  * `How to get video duration in seconds? <https://superuser.com/questions/650291/how-to-get-video-duration-in-seconds>`__
- * `Mediaplayer mit GStreamer <slug://gst-player>`__
+ * `Mediaplayer mit GStreamer <link://slug/gst-player>`__
 
 .. TEASER_END
 
