@@ -122,7 +122,7 @@ Links
  * `GStreamer List of Elements and Plugins <https://gstreamer.freedesktop.org/documentation/plugins.html>`__
  * `GStreamer documentation <https://gstreamer.freedesktop.org/documentation/index.html>`__
  * `Using GStreamer 1.0 with Python <https://adnanalamkhan.wordpress.com/2015/03/01/using-gstreamer-1-0-with-python/>`__
- * `Mediaplayer mit VLC <slug://vlc-player>`__
+ * `Mediaplayer mit VLC <link://slug/vlc-player>`__
 
 .. TEASER_END
 
