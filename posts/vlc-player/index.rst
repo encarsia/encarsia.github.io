@@ -13,7 +13,7 @@
 
 **Mediaplayer mit LibVLC realisieren**
 
-VLC ist nicht nur ein Multimediaplayer, sondern auch ein Framework, zu dem Python-Bindings verfügbar sind. In diesem Beispiel wird analog zum `GStreamer-Artikel <slug://gst-player>`__ ein einfacher Mediaplayer mittels LibVLC umgesetzt.
+VLC ist nicht nur ein Multimediaplayer, sondern auch ein Framework, zu dem Python-Bindings verfügbar sind. In diesem Beispiel wird analog zum `GStreamer-Artikel <link://slug/gst-player>`__ ein einfacher Mediaplayer mittels LibVLC umgesetzt.
 
 .. thumbnail:: /images/20_vlc_player.png
 
