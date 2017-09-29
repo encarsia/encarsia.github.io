@@ -54,10 +54,12 @@ Themen
 - `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
 - `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
 - `Dateiauswahldialog <link://slug/fcdialog>`_
+- `GSettings-Konfigurationssystem <link://slug/gsettings>`__
+- `Mediaplayer mit GStreamer <link://slug/gst-player>`__
+- `Mediaplayer mit LibVLC <link://slug/vlc-player>`__
 
 - Geplant:
     - Notebook
-    - Medien und GStreamer
     - Textfelder mit Gtk.TextView und GtkSource.View
     - Interaktion mit anderen Anwendungen mit und ohne Threading
 
