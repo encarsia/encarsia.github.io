@@ -7,21 +7,26 @@
 .. description: 
 .. type: text
 
-**JFTR: v0.4 des GoProTools veröffentlicht**
+**JFTR: GoProTool v0.4 release**
 
-Das `GoProTool <https://github.com/encarsia/gpt>`_ hat ein wenig Zuneigung bekommen. In diesem Zuge habe ich aus dem aktuellen Stand den `Release v0.4 "scarlatina" <https://github.com/encarsia/gpt/releases/tag/v0.4>`_ erstellt.
+Some minor changes/fixes for the `project <https://github.com/encarsia/gpt>`_. Recent development status is available as a (pre-)release: `Release v0.4 "scarlatina" <https://github.com/encarsia/gpt/releases/tag/v0.4>`_.
 
-NEU:
+NEW:
 
-- Import von jedem Verzeichnis aus (vorher nur von erkannten Speicherkarten) mit praktischen Buttons in der Toolbar
+- import files from any directory (and not just from detected SD cards) with corresponding button added to the toolbar
 
-REPARIERT:
+FIXED:
 
-- Ordnerauswahl beim Import
-- Fortschrittsanzeige bei Videoimport
+- folder selection on import
+- progress status on video import
 
-"REPARIERT":
+"FIXED":
 
-- Headerbar in der Vorschau-Version entfernt, weil Bild bei Playback nur funktioniert, wenn das Fenster keine Headerbar enthält (fragt nicht - isso, weil isso)
+- headerbar removed from the media preview version because no images on playback
+
+.. note::
+
+    This issue will probably be fixed by switching to LibVLC instead of GStreamer, see also `LibVLC tutorial article <link://slug/vlc-player>`__.
+
 
 .. thumbnail:: /images/window_player_v0.4.png
