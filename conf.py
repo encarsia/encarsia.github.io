@@ -148,6 +148,8 @@ NAVIGATION_LINKS = {
 
 # Name of the theme to use.
 #THEME = "zen"
+
+# zen theme with upgraded fonts to 4.7.0 (v3 is depreciated) and some minor changes
 THEME = "zen_fa4"
 
 # Primary color of your theme. This will be used to customize your theme and

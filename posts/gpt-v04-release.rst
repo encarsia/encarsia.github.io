@@ -24,4 +24,7 @@ REPARIERT:
 
 - Headerbar in der Vorschau-Version entfernt, weil Bild bei Playback nur funktioniert, wenn das Fenster keine Headerbar enthält (fragt nicht - isso, weil isso)
 
+.. note::
+    Dies wird voraussichtlich beim Wechsel von GStreamer zu LibVLC behoben, siehe auch `LibVLC-Artikel <link://slug/vlc-player>`__.
+
 .. thumbnail:: /images/window_player_v0.4.png
