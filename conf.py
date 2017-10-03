@@ -144,7 +144,7 @@ NAVIGATION_LINKS = {
         ('/rss.xml', 'RSS', 'fa-rss'),
 
         ('/pages/about/index.html', 'About me', 'fa-user'),
-        ('/archive.html', 'Archives', 'fa-folder-open-alt'),
+        ('/archive.html', 'Archives', 'fa-folder-open'),
     )
 }
 
