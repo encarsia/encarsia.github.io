@@ -55,10 +55,12 @@ Topics
 - `Run program as GTK+ application <link://slug/application>`_
 - `Icon, headerbar and commandline options <link://slug/application-fortsetzung>`_
 - `File chooser dialog <link://slug/fcdialog>`_
+- `Media player with GStreamer <link://slug/gst-player>`__
+- `Media player with LibVLC <link://slug/vlc-player>`__
 
 - planned:
     - Notebook
-    - Media and GStreamer
+    - Stack
     - Text widgets with Gtk.TextView and GtkSource.View
     - Interaction between other applications
 
