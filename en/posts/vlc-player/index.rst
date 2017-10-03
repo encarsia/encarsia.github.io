@@ -1,4 +1,4 @@
-.. title: Mediaplayer mit VLC
+.. title: Media player with VLC
 .. slug: vlc-player
 .. date: 2017-09-22 19:28:18 UTC+02:00
 .. tags: glade,python
@@ -11,32 +11,32 @@
 
 .. contents::
 
-**Mediaplayer mit LibVLC realisieren**
+**Creating a media player with LibVLC**
 
-VLC ist nicht nur ein Multimediaplayer, sondern auch ein Framework, zu dem Python-Bindings verfügbar sind. In diesem Beispiel wird analog zum `GStreamer-Artikel <link://slug/gst-player>`__ ein einfacher Mediaplayer mittels LibVLC umgesetzt.
+VLC is not just a multimedia player but also a framework  with Python bindings available. In this example app a simple media player will be set up via LibVLC (see also the `GStreamer mediaplayer article <link://slug/gst-player>`__).
 
 .. thumbnail:: /images/20_vlc_player.png
 
 LibVLC
 ------
 
-Voraussetzung für die Verwendung ist die Installation der Python-Bindings. Diese sind unter der Paketbezeichnung ``python-vlc`` zu finden.
+The installation of the VLC Python bindings are mandatory. The package is coomonly found under the name ``python-vlc``.
 
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.Button*), Pause (*Gtk.Togglebutton*)
- * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
- * **Playback manipulieren:** Buttons zum Stummschalten und Drehen des Videos
+ * **display area of the media file:** *Gtk.DrawingArea* widget
+ * **control elements:** skip for-/backward (*Gtk.Button*), pause/resume playback (*Gtk.Togglebutton*)
+ * **select media:** buttons to show video or image file
+ * **manipulate playback:** buttons to mute and rotate video
 
 Python
 ------
 
-Player einrichten
-*****************
+Set up player
+*************
 
-Der VLC-Player wir initiiert, sobald das dazugehörige Widget, in diesem Fall also *Gtk.DrawingArea* gezeichnet wird. Dazu wird das Signal ``realize`` genutzt, das grundsätzlich für die Klasse der Widgets verfügbar ist.
+The VLC player is initiated when the corresponding widget (*Gtk.DrawingArea*) is drawn. The ``realize`` is required for that task. This signal in general is available for the widget class.
 
 .. code-block:: python
 
@@ -47,42 +47,43 @@ Der VLC-Player wir initiiert, sobald das dazugehörige Widget, in diesem Fall al
     player = vlcInstance.media_player_new()
     player.set_xwindow(win_id)
 
-Als Optionen können Kommandozeilenoptionen von VLC übergeben werden. Im Beispiel wird beim Klick auf den "Rotate"-Button das Bild um 180° gedreht. Der Player wird erneut initiiert und die zusätzliche Option ``--video-filter=transform{type=180}`` übergeben.
+Given options can be regular VLC commandline options. In the example app a click on the "rotate" button turns the video 180 degrees. Therefore the player must be initiated again with the option ``--video-filter=transform{type=180}`` given.
 
-Medium abspielen
-****************
+Media playback
+**************
 
-Wie auch der GStreamer-Player kann der VLC-Player viele Video-/Audio- oder Bild-Formate anzeigen bzw. abspielen.
+Just like the GStreamer player VLC is capable of showing various video, audio and image formats.
 
 .. code-block:: python
 
     player.set_mrl(file_url)
-    #Datei abspielen
+    #start playback
     player.play()
-    #Pause/Play-Schalter
+    #pause/resume playback
     player.pause()
 
-Positionsanzeige
-****************
+Position scale
+**************
 
-Die Umsetzung des Fortschrittsbalkens und die Nutzung als Schiebereglers gestaltet sich ziemlich einfach.
+The implementation of the progress bar using a slide control is pretty simple.
 
 .. code-block:: python
 
-    #Position abfragen
+    #retrieve position
     player.get_position()
-    #Position bestimmen
+    #define positition
     player.set_position(val)
 
-Der Wertebereich liegt dabei zwischen 0 und 1. Das Problem bei diesen Funktionen ist, dass sie relativ ressourcenintensiv arbeiten und das Playback mitunter verruckelt ist.
-Die Lösung im hiesigen Beispiel besteht darin, ``get_position``-Abfragen zu umgehen, indem die Regler-Position herangezogen wird.
+Possible values are float numbers between 0 and 1. These functions are quite resource demanding resulting into stuttering playback. In this example the ``get_position`` is avoided by retrieving the slider position instead of the video.
 
-Möglichkeiten und Limitierungen
--------------------------------
+Possibilities and limitations
+-----------------------------
 
-Die Nutzung der LibVLC-Python-Bindings erweist sich als einfach und angesichts der GStreamer-Umsetzung als geradezu intuitiv. Auch das `"Headerbar-Problem" <https://plus.google.com/105146352752269764996/posts/jDcBAztBxM9>`__ besteht nicht.
+Working with LibVLC Python bindings is easy and intuitive in contrast to GStreamer. In addition the `"headerbar problem" <https://plus.google.com/105146352752269764996/posts/jDcBAztBxM9>`__ is non-existent.
 
-Auf der anderen Seite greift man hier auf großes Projekt zurück, man muss VLC und die Python-Bindings installiert haben anstatt einfach das GStreamer-Modul aus dem GObject Introspection-Repository zu verwenden. Auch ist im Test der Ressourcenverbrauch von VLC gegenüber GStreamer größer.
+On the other hand it is not quite minimalistic to resort to a huge and indepentant project. You will have to install VLC and Python bindings instead of just importing the GStreamer module from the GObject Introspection repository.
+
+The overall consumption of resources is bigger.
 
 Links
 -----

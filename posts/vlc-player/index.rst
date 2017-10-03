@@ -36,7 +36,7 @@ Python
 Player einrichten
 *****************
 
-Der VLC-Player wir initiiert, sobald das dazugehörige Widget, in diesem Fall also *Gtk.DrawingArea* gezeichnet wird. Dazu wird das Signal ``realize`` genutzt, das grundsätzlich für die Klasse der Widgets verfügbar ist.
+Der VLC-Player wird initiiert, sobald das dazugehörige Widget, in diesem Fall also *Gtk.DrawingArea* gezeichnet wird. Dazu wird das Signal ``realize`` genutzt, das grundsätzlich für die Klasse der Widgets verfügbar ist.
 
 .. code-block:: python
 

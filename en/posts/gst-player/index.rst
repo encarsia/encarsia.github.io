@@ -1,4 +1,4 @@
-.. title: Mediaplayer mit GStreamer
+.. title: Media player with GStreamer
 .. slug: gst-player
 .. date: 2017-09-21 15:19:40 UTC+02:00
 .. tags: glade,python
@@ -11,43 +11,43 @@
 
 .. contents::
 
-**Mediaplayer mit GStreamer 1.x realisieren**
+**Creating a media player with GStreamer 1.x**
 
-`GStreamer <https://gstreamer.freedesktop.org/>`__ ist ein Multimedia-Framework, das zum Anzeigen und (De-)Kodieren von Mediendateien verwendet werden kann.
+`GStreamer <https://gstreamer.freedesktop.org/>`__ is a multimedia framework that can be used ti show (de)code and otherwise alter media files.
 
 .. thumbnail:: /images/19_gst_player.png
 
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.Button*), Pause (*Gtk.Togglebutton*)
- * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
+ * **display area of the media file:** *Gtk.DrawingArea* widget
+ * **control elements:** skip for-/backward (*Gtk.Button*), pause/resume playback (*Gtk.Togglebutton*)
+ * **select media:** buttons to show video or image file
 
 Python
 ------
 
-Player einrichten
-*****************
+Set up player
+*************
 
-Elemente und Pipelines
+Elements and pipelines
 ======================
 
-GStreamer handhabt alle möglichen Arten von Medienflüssen. Jeder Schritt in dieser Verarbeitungskette wird per *Element* definiert und in *Pipelines* verbunden. Eine solche Pipeline besteht typischerweise aus "source"-, "filter"-/"decode" und "sink"-Elementen.
+GStreamer manages all kinds of media data streams. Every step in the procession chain is defined as an *element* connected to *pipelines*. A common pipeline consists of "source", "filter"/"decode" and "sink" elements.
 
 .. code::
 
     ------------------------------------------------------
-    |  Pipeline                                          |
+    |  pipeline                                          |
     |                                                    |
     |  -------------   ----------------   -------------- |
     |  | source    |   | filter       |   | sink       | |
     |  |           |->>| decoder      |->>|            | |
-    |  | Quelle    |   | Verarbeitung |   | Ausgabe    | |
+    |  | input     |   | processing   |   | output     | |
     |  -------------   ----------------   -------------- |
     ------------------------------------------------------
 
-Nach diesem Prinzip wird dies mittels *Gst*-Modul umgesetzt:
+This is done by the *Gst* module:
 
 .. code-block:: python
 
@@ -72,11 +72,11 @@ Nach diesem Prinzip wird dies mittels *Gst*-Modul umgesetzt:
     src.link(decode)
     decode.link(sink)
 
-Fertige Pipelines
-=================
+Predefined pipelines
+====================
 
-Es besteht auch beispielsweise die Möglichkeit, Audio- und Videosignale voneinander getrennt werden, indem jeweils ein "videosink" und ein "audiosink" erstellt usw. Auf der anderen Seite gibt es vorgefertigte Pipelines für Standardaufgaben wie etwa das Abspielen von Medien.
-Ein solches Element ist "playbin", das den Code signifikant vereinfacht:
+There are plenty of possibilities such like handling audio and video signals separated from each other by assigning a "videosink" and an "audiosink" and so on. On the other hand there are given pipelines for standard tasks like media playback.
+In this case there can be made use of the "playbin" element which also significantly reduces the code:
 
 .. code-block:: python
 
@@ -86,33 +86,31 @@ Ein solches Element ist "playbin", das den Code signifikant vereinfacht:
     player.set_property("uri",uri_of_file)
     player.set_property("video-sink", sink)
 
-Und los!
-********
+And action!
+***********
 
-Eine Pipeline oder ein "playbin"-Element können nun über *Gst.STATE* gesteuert werden:
-
+A pipeline or playbin element can now be controled by *Gst.STATE*:
 .. code-block:: python
 
     player.set_state(Gst.State.PLAYING)
     player.set_state(Gst.State.PAUSED)
 
-Fortschrittsanzeige
-*******************
+Progress bar
+************
 
-Die Fortschrittsanzeige ist an dieser Stelle keine *Gtk.ProgressBar* sondern eine horizontale *Gtk.Scale*. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal *value-changed* benötigt. Streng genommen ist das Signal *change-value* an dieser Stelle die sauberere Lösung, die im nachfolgenden Beitrag zur Umsetzung des Mediaplayers mit VLC verwendet wird.
+The video progress in this example will not be visualized by a *Gtk.ProgressBar* but by a horizontal *Gtk.Scale*. This widget allows to manually set a position with the mouse instead of just showing a value using the *value-changed* signal. Strictly speaking the *change-value* signal is a much cleaner solution here which will be used in the `follow-up article <link://slug/vlc-player>`__ on relizing the media player with LibVLC.
 
-Möglichkeiten und Limitierungen
--------------------------------
+Possibilities and limitations
+-----------------------------
 
-Bei der Einarbeitung in GStreamer stolpert man (an dieser Stelle generalisiert die Autorin weitgehend und möglicherweise unbegründet) über diverse Hürden:
+Getting to know how to utilize GStreamer there appear a bunch of obstacles (read as: the incompetent author of this article tend to widely generalize based on her experiences):
 
-Es gibt eine Reihe von Tutorials. Die Umsetzung wird durch zwei Umstände erschwert:
+There are plenty of tutorials but two circumstances make them difficult to comply with:
 
-1. Die primäre Sprache von und mit GStreamer ist C. Mit Python steht man eher auf experimentellem Boden.
-2. Durch die Versionssprünge sowohl bei GStreamer (von 0.10 auf 1.x) als auch Python (2.x auf 3.x) funktionieren viele ältere Anleitungen nicht mehr ohne weiteres.
+1. The primary language in GStreamer is C. Good luck with your Python stuff.
+2. Many older tutorials and manuals do not work out of the box because of major version leap of both GStreamer (0.10 to 1.x) and Python (2.x auf 3.x).
 
-Es gibt weiterhin Effekte, die sich mir nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Gtk-Fenster eine Headerbar enthält. Es sollte mit der Verwendung von "gtksink" lösbar sein, aber dies wiederum verweigert das Abspielen in einem zugewiesenen Widget.
-Die Komplexität und Mächtigkeit von GStreamer ist massiv verwirrend.
+In addition there are effects that are hard to understand. The example given in this article does not work if the Gtk window contains a headerbar. In theory this should be solved by using the "gtksink" but I haven't figured out yet how to assign that sink to a specific widget.
 
 Links
 -----
