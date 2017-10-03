@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1507042123.8340378
+_modified_time = 1507051994.448826
 _enable_loop = True
 _template_filename = 'themes/zen_fa4/templates/arusahni_helper.tmpl'
 _template_uri = 'arusahni_helper.tmpl'
@@ -35,26 +35,26 @@ def render_body(context,**pageargs):
 def render_html_headstart(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        twitter_card = context.get('twitter_card', UNDEFINED)
-        comment_system_id = context.get('comment_system_id', UNDEFINED)
-        striphtml = context.get('striphtml', UNDEFINED)
-        mathjax_config = context.get('mathjax_config', UNDEFINED)
-        favicons = context.get('favicons', UNDEFINED)
-        permalink = context.get('permalink', UNDEFINED)
-        description = context.get('description', UNDEFINED)
         def html_feedlinks():
             return render_html_feedlinks(context)
+        mathjax_config = context.get('mathjax_config', UNDEFINED)
+        title = context.get('title', UNDEFINED)
         blog_title = context.get('blog_title', UNDEFINED)
-        use_open_graph = context.get('use_open_graph', UNDEFINED)
-        is_rtl = context.get('is_rtl', UNDEFINED)
-        extra_head_data = context.get('extra_head_data', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
-        use_cdn = context.get('use_cdn', UNDEFINED)
-        comment_system = context.get('comment_system', UNDEFINED)
         def html_stylesheets():
             return render_html_stylesheets(context)
+        lang = context.get('lang', UNDEFINED)
+        permalink = context.get('permalink', UNDEFINED)
+        comment_system_id = context.get('comment_system_id', UNDEFINED)
+        is_rtl = context.get('is_rtl', UNDEFINED)
+        extra_head_data = context.get('extra_head_data', UNDEFINED)
+        striphtml = context.get('striphtml', UNDEFINED)
+        use_open_graph = context.get('use_open_graph', UNDEFINED)
+        favicons = context.get('favicons', UNDEFINED)
+        description = context.get('description', UNDEFINED)
         abs_link = context.get('abs_link', UNDEFINED)
-        title = context.get('title', UNDEFINED)
+        comment_system = context.get('comment_system', UNDEFINED)
+        use_cdn = context.get('use_cdn', UNDEFINED)
+        twitter_card = context.get('twitter_card', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<!DOCTYPE html>\n<html\n')
         if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']) or (comment_system == 'facebook'):
@@ -121,12 +121,12 @@ def render_html_headstart(context):
 def render_html_stylesheets(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        use_bundles = context.get('use_bundles', UNDEFINED)
-        notes = context.get('notes', UNDEFINED)
         annotations = context.get('annotations', UNDEFINED)
+        notes = context.get('notes', UNDEFINED)
+        use_bundles = context.get('use_bundles', UNDEFINED)
+        post = context.get('post', UNDEFINED)
         has_custom_css = context.get('has_custom_css', UNDEFINED)
         use_cdn = context.get('use_cdn', UNDEFINED)
-        post = context.get('post', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if use_bundles:
@@ -158,9 +158,9 @@ def render_html_stylesheets(context):
 def render_late_load_js(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        use_bundles = context.get('use_bundles', UNDEFINED)
-        social_buttons_code = context.get('social_buttons_code', UNDEFINED)
         use_cdn = context.get('use_cdn', UNDEFINED)
+        social_buttons_code = context.get('social_buttons_code', UNDEFINED)
+        use_bundles = context.get('use_bundles', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if use_bundles:
@@ -184,11 +184,11 @@ def render_late_load_js(context):
 def render_html_feedlinks(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        _link = context.get('_link', UNDEFINED)
-        generate_rss = context.get('generate_rss', UNDEFINED)
         translations = context.get('translations', UNDEFINED)
         len = context.get('len', UNDEFINED)
         rss_link = context.get('rss_link', UNDEFINED)
+        _link = context.get('_link', UNDEFINED)
+        generate_rss = context.get('generate_rss', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if rss_link:
@@ -215,10 +215,10 @@ def render_html_feedlinks(context):
 def render_html_navigation_links(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        navigation_links = context.get('navigation_links', UNDEFINED)
-        permalink = context.get('permalink', UNDEFINED)
         lang = context.get('lang', UNDEFINED)
         rel_link = context.get('rel_link', UNDEFINED)
+        permalink = context.get('permalink', UNDEFINED)
+        navigation_links = context.get('navigation_links', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         for url, text, icon in navigation_links[lang]:
@@ -269,8 +269,8 @@ def render_html_tags(context,post):
 def render_html_title(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        post = context.get('post', UNDEFINED)
         title = context.get('title', UNDEFINED)
+        post = context.get('post', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if title and not post.meta('hidetitle'):
@@ -285,10 +285,10 @@ def render_html_title(context):
 def render_html_translations(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        translations = context.get('translations', UNDEFINED)
         lang = context.get('lang', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
+        translations = context.get('translations', UNDEFINED)
         len = context.get('len', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if len(translations) > 1:
@@ -309,9 +309,9 @@ def render_html_translations(context,post):
 def render_html_sourcelink(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        show_sourcelink = context.get('show_sourcelink', UNDEFINED)
         post = context.get('post', UNDEFINED)
         messages = context.get('messages', UNDEFINED)
+        show_sourcelink = context.get('show_sourcelink', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if show_sourcelink:
