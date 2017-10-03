@@ -135,16 +135,16 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ('/index.html', 'Home', 'icon-home'),
-        ('/posts/tutorial-reihe-glade/index.html', 'Tutorials', 'icon-lightbulb'),
+        ('/index.html', 'Home', 'fa-home'),
+        ('/posts/tutorial-reihe-glade/index.html', 'Tutorials', 'fa-lightbulb-o'),
         ('https://plus.google.com/105146352752269764996/posts', 'Google+', 'fa-google-plus-official'),
-        ('https://github.com/encarsia', 'Github', 'icon-github'),
-        ('https://twitter.com/encarsia_', 'Twitter', 'icon-twitter'),
-        ('/categories/index.html', 'Tags', 'icon-tags'),
-        ('/rss.xml', 'RSS', 'icon-rss'),
+        ('https://github.com/encarsia', 'Github', 'fa-github'),
+        ('https://twitter.com/encarsia_', 'Twitter', 'fa-twitter'),
+        ('/categories/index.html', 'Tags', 'fa-tags'),
+        ('/rss.xml', 'RSS', 'fa-rss'),
 
-        ('/pages/about/index.html', 'About me', 'icon-user'),
-        ('/archive.html', 'Archives', 'icon-folder-open-alt'),
+        ('/pages/about/index.html', 'About me', 'fa-user'),
+        ('/archive.html', 'Archives', 'fa-folder-open-alt'),
     )
 }
 
