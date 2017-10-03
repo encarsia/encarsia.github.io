@@ -108,8 +108,8 @@ Python
 
 .. listing:: 20_vlc_simpleplayer.py python
 
-Beispieldateien
-***************
+Example files
+*************
 
  * `Video (13,7 MB)`__
  * `Image (553 kB)`__

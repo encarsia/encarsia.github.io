@@ -137,8 +137,8 @@ Python
 
 .. listing:: 19_gst_simpleplayer.py python
 
-Beispieldateien
-***************
+Example files
+*************
 
  * `Video (13,7 MB)`__
  * `Image (553 kB)`__
