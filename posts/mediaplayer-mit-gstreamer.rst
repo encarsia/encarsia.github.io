@@ -33,7 +33,7 @@ Player einrichten
 Elemente und Pipelines
 ======================
 
-GStreamer handhabt alle möglichen Arten von Medienflüssen. Jeder Schritt in dieser Verarbeitungskette wird per *Element* definiert und in *Pipelines* verbunden. Eine solche Pipeline besteht typischerweise aus "source"-, "filter"-/"decode" und "sink"-Elementen.
+GStreamer handhabt alle möglichen Arten von Medienflüssen. Jeder Schritt in dieser Verarbeitungskette wird per *Element* definiert und in *Pipelines* verbunden. Eine solche Pipeline besteht typischerweise aus "source"-, "filter"-/"decode"- und "sink"-Elementen.
 
 .. code::
 
@@ -99,7 +99,7 @@ Eine Pipeline oder ein "playbin"-Element können nun über *Gst.STATE* gesteuert
 Fortschrittsanzeige
 *******************
 
-Die Fortschrittsanzeige ist an dieser Stelle keine *Gtk.ProgressBar* sondern eine horizontale *Gtk.Scale*. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal *value-changed* benötigt. Streng genommen ist das Signal *change-value* an dieser Stelle die sauberere Lösung, die im nachfolgenden Beitrag zur Umsetzung des Mediaplayers mit VLC verwendet wird.
+Die Fortschrittsanzeige ist an dieser Stelle keine *Gtk.ProgressBar* sondern eine horizontale *Gtk.Scale*. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal *value-changed* benötigt. Streng genommen ist das Signal *change-value* an dieser Stelle die sauberere Lösung, die `im nachfolgenden Beitrag <link://slug/vlc-player>`__ zur Umsetzung des Mediaplayers mit LibVLC verwendet wird.
 
 Möglichkeiten und Limitierungen
 -------------------------------
