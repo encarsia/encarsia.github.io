@@ -243,7 +243,7 @@ TIMEZONE = "Europe/Berlin"
 
 LOCALES = {
   'de':'de_DE.utf8',
-  'en':'en_GB.utf8',
+  'en':'en_US.utf8',
 }
 # LOCALE_FALLBACK = None
 # LOCALE_DEFAULT = None
