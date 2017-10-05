@@ -56,7 +56,7 @@ Die Ausgabe ins Terminal kann mit der Funktion ``get_text()`` abgefangen werden.
 
 .. code:: python
 
-    widget..get_text()[0].rstrip()
+    widget.get_text()[0].rstrip()
 
 .. TEASER_END
 
