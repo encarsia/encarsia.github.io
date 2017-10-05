@@ -25,7 +25,7 @@ Ein Klick auf den Button soll innerhalb dieses Terminals eine Python-Konsole sta
 Python
 ------
 
-Elemente außerhalb des *Gtk*-Moduls, die Glade verwendet werden, müssen als *GObject*-Typ registriert werden (dies betrifft beispielsweise auch das *GtkSourceView*-Widget (Modul *GtkSource*):
+Elemente außerhalb des *Gtk*-Moduls, die mit Glade verwendet werden, müssen als *GObject*-Typ registriert werden (dies betrifft beispielsweise auch das *GtkSourceView*-Widget (Modul *GtkSource*):
 
 .. code:: python
 
@@ -51,6 +51,12 @@ Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion ``feed_child`
 
        command = "python\n"
        x.terminal.feed_child(command,len(command))
+
+Die Ausgabe ins Terminal kann mit der Funktion ``get_text()`` abgefangen werden. Die Funktion gibt ein Tupel zurück, dessen erstes Element der Ausgabestring ist. Dieser enthält allerdings den gesamten Terminalinhalt, also auch viele Leerzeilen, die sich mit herkömmlichen String-Operationen beseitigen lassen.
+
+.. code:: python
+
+    widget.get_text()[0].rstrip()
 
 .. TEASER_END
 
