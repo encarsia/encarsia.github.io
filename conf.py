@@ -241,7 +241,10 @@ TIMEZONE = "Europe/Berlin"
 # LOCALE_DEFAULT = locale to use for languages not mentioned in LOCALES; if
 # not set the default Nikola mapping is used.
 
-# LOCALES = {}
+LOCALES = {
+  'de':'de_DE.utf8',
+  'en':'en_GB.utf8',
+}
 # LOCALE_FALLBACK = None
 # LOCALE_DEFAULT = None
 
