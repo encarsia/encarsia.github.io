@@ -10,7 +10,7 @@
 Intro
 -----
 
-Bei der Erstellung der grafischen Oberfläche für gpt_ habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach `GTK+ <http://www.gtk.org/>`_-Oberflächen erstellen kann.
+Bei der Erstellung der grafischen Oberfläche sowohl für gpt_ als auch NoN_ habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach `GTK+ <http://www.gtk.org/>`_-Oberflächen erstellen kann.
 
 Mit Glade erstellte Projektdateien sind GtkBuilder_-XML-Dateien, die Verbindung zum eigentlichen Programm erfolgt über Signale, dabei werden zahlreiche Programmiersprachen unterstützt. Hier werde ich Python verwenden.
 
@@ -20,11 +20,12 @@ An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und G
 
 .. _gpt: https://github.com/encarsia/gpt
 .. _GtkBuilder: https://developer.gnome.org/gtk3/stable/GtkBuilder.html
+.. _NoN: https://github.com/encarsia/non
 
 Nicht exklusiv
 --------------
 
-GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Verlauf das eine gegen das andere zu ersetzen.
+GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Entwicklungs-Verlauf das eine gegen das andere zu ersetzen.
 
 Links
 -----
