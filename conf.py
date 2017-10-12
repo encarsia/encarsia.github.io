@@ -907,6 +907,10 @@ COMMENT_SYSTEM = "disqus"
 # is in the manual.
 COMMENT_SYSTEM_ID = "bahnfreikartoffelbrei"
 
+# Enable G+ comment system
+#COMMENT_SYSTEM = "googleplus"
+
+
 # Enable annotations using annotateit.org?
 # If set to False, you can still enable them for individual posts and pages
 # setting the "annotations" metadata.

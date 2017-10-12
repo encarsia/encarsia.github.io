@@ -47,3 +47,12 @@ Chronik
  * `NoN: Fortschritte <link://slug/non-fortschritte>`__
  * `Neues Projekt: Knights of Ni <link://slug/neues-projekt-knights-of-ni>`__
 
+
+.. raw:: html
+
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/6ER8kNNkCx9">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+
+
+
+
+
