@@ -7,8 +7,35 @@
 .. description: 
 .. type: text
 
-Intro
------
+
+Themen
+------
+
+- `Minimalbeispiel <link://slug/fenster-mit-aussicht>`_
+- `Buttons und Labels <link://slug/push-the-button>`_
+- `Fenster und Dialoge <link://slug/durchzug>`_
+- `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
+- `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
+- `Fortschrittsbalken und Levelbar <link://slug/bars>`_
+- `CSS <link://slug/css>`_
+- `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
+- `ListStore und TreeView <link://slug/uberlistet>`_
+- `TreeStore mit Sortierung und Filterung <link://slug/ansichtssache>`_
+- `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
+- `VTE-Terminal <link://slug/exterminate>`_
+- `Dialoge <link://slug/dialoge>`_
+- `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
+- `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
+- `Dateiauswahldialog <link://slug/fcdialog>`_
+- `GSettings-Konfigurationssystem <link://slug/gsettings>`__
+- `Mediaplayer mit GStreamer <link://slug/gst-player>`__
+- `Mediaplayer mit LibVLC <link://slug/vlc-player>`__
+- `Stack und Notebook <link://slug/stacksnotebooks>`__ 
+
+Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
+
+Motivation
+----------
 
 Bei der Erstellung der grafischen Oberfläche sowohl für gpt_ als auch NoN_ habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach `GTK+ <http://www.gtk.org/>`_-Oberflächen erstellen kann.
 
@@ -35,34 +62,9 @@ Links
 - `Programmieren mit Python und Glade <https://www.florian-diesch.de/doc/python-und-glade/online/index.html>`_ - umfangreiches Tutorial auf Deutsch
 - `Python GObject Introspection API Reference <https://lazka.github.io/pgi-docs/>`_ - vollständige Dokumentation des GI-Moduls (bookmark this!)
 
+Todo
+----
 
-Themen
-------
-
-- `Minimalbeispiel <link://slug/fenster-mit-aussicht>`_
-- `Buttons und Labels <link://slug/push-the-button>`_
-- `Fenster und Dialoge <link://slug/durchzug>`_
-- `Schalter, Checkbox und Radiobutton <link://slug/clickbaiting>`_
-- `Menü, Toolbar und Statusbar <link://slug/drei-gange-menu>`_
-- `Fortschrittsbalken und Levelbar <link://slug/bars>`_
-- `CSS <link://slug/css>`_
-- `Spinbutton und Combobox <link://slug/qual-der-wahl>`_
-- `ListStore und TreeView <link://slug/uberlistet>`_
-- `TreeStore mit Sortierung und Filterung <link://slug/ansichtssache>`_
-- `Lokalisation mit locale und gettext <link://slug/romani-ite-domum>`_
-- `VTE-Terminal <link://slug/exterminate>`_
-- `Dialoge <link://slug/dialoge>`_
-- `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
-- `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
-- `Dateiauswahldialog <link://slug/fcdialog>`_
-- `GSettings-Konfigurationssystem <link://slug/gsettings>`__
-- `Mediaplayer mit GStreamer <link://slug/gst-player>`__
-- `Mediaplayer mit LibVLC <link://slug/vlc-player>`__
-
-- Geplant:
-    - Notebook
-    - Stack
+Geplant:
     - Textfelder mit Gtk.TextView und GtkSource.View
     - Interaktion mit anderen Anwendungen mit und ohne Threading
-
-- Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_

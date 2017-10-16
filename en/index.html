@@ -26,6 +26,97 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/stacksnotebooks/">Stacks und Notebooks</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2017-10-16T11:05:37+02:00">2017-10-16 11:05</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/stacksnotebooks/#disqus_thread" data-disqus-identifier="cache/posts/stacks-und-notebooks.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#glade" id="id3">Glade</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#stack" id="id4">Stack</a></li>
+<li><a class="reference internal" href="posts/stacksnotebooks/#notebook" id="id5">Notebook</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#python" id="id6">Python</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#webkit2" id="id7">WebKit2</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#listings" id="id8">Listings</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#id1" id="id9">Python</a></li>
+<li><a class="reference internal" href="posts/stacksnotebooks/#id2" id="id10">Glade</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Inhalte organisiert anzeigen</strong></p>
+<p><em>Gtk.Stack</em> und <em>Gtk.Notebook</em> sind Layout-Container, die ihrerseits beliebige Widgets enthalten können.</p>
+<p>Ein Notebook stellt ein mehrseitiges Layout mit klassischer Tab-Funktionalität zur Verfügung. Stacks bieten die gleiche Grundfunktionalität, nämlich mehrere Container innerhalb eines Widgets zu enthalten, zwischen denen man hin- und herschalten kann.</p>
+<p>Der Hauptunterschied besteht darin, dass das Bedienelement des Stacks als separates Widget verwendet werden muss (<em>Gtk.StackSwitcher</em>). Verschiedene StackSwitcher können dabei auf den selben Stack zugreifen. Weiterhin lassen sich StackSwitcher in Headerbars platzieren, außerdem werden animierte Überblenden zwischen den Stack-Seiten unterstützt.</p>
+<p>Stacks passen sich subjektiv besser in die GNOME-Umgebung ein, bieten aber nicht ganz so große Funktionalität wie Notebooks.</p>
+<p>Das Beispiel enhält ein Fenster mit Stack, in dessen dritter Seite ein Notebook enthalten ist, das verschiedene Webseiten anzeigt.</p>
+<a class="reference external image-reference" href="../images/21_stacknotebook.png"><img alt="/images/21_stacknotebook.thumbnail.png" src="../images/21_stacknotebook.thumbnail.png"></a>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/stacksnotebooks/#id3">Glade</a></h2>
+<div class="section" id="stack">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id4">Stack</a></h3>
+<p>Ein Stack, zu finden in der Sidebar unter "Container", und dessen Unterseiten lassen sich einfach in Glade erstellen und bearbeiten. Als Unterwidgets kommen im Beispiel <em>Gtk.Image</em>, <a class="reference external" href="posts/exterminate">Vte.Terminal</a> und <em>Gtk.Notebook</em> zum Einsatz.</p>
+<p>Das StackSwitcher-Widget befindet sich unter "Steuerung und Anzeige" und wird der Headerbar hinzugefügt. Es kann aber auch in reguläre Container-Widgets wie einer Box platziert und die Unterseiten horizontal oder vertikal angezeigt werden. Unter "Allgemein &gt; Stapel" wird der Stack ausgewählt, auf den sich das Widget beziehen soll. Die anzuzeigende Seitenbezeichnung wird im jeweiligen Stack-Unterwidget unter "Packen &gt; Titel" festgelegt.</p>
+</div>
+<div class="section" id="notebook">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id5">Notebook</a></h3>
+<p>Das Notebook findet sich ebenfalls unter "Container". Die Steuerungseinheit des Tabs ist ein bei Erstellung einer Seite generiertes Label-Child-Widget. Als Container-Widgets der Unterseiten werden hier <em>Gtk.ScrolledWindows</em> verwendet. Diese benötigt man auch z.B. für die Anzeige von (längeren) Tabellen (siehe auch Artikel zu List-/TreeStores <a class="reference external" href="posts/uberlistet">Nr. 1</a> und <a class="reference external" href="posts/ansichtssache">Nr. 2</a>).</p>
+<p>Die Tab-Leiste des Notebooks bietet die Möglichkeit, sowohl am Anfang als auch am Ende ein Container-Widget bereitzustellen (unter "Allgemein &gt; Start-Aktion/End-Aktion"), in dem zum Beispiel feste Buttons untergebracht werden können. Im Beispiel wird am Anfang ein "Home"-Button eingerichtet.</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/stacksnotebooks/#id6">Python</a></h2>
+<p>Für das Umherschalten zwischen Stack-Unterseiten und Notebook-Tabs werden keine Signale benötigt. Im Beispiel werden nur zwei Signale benötigt, einmal für das Abfangen des "exit"-Kommandos innerhalb des Terminals und für den Button in der Notebook-Tableiste.</p>
+<div class="section" id="webkit2">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
+<p>Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist <tt class="docutils literal">WebKit2.WebView</tt>. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk-Widget in einem <em>Gtk.Viewport</em>, muss also laut <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API-Referenz</a> nicht mehr in ein <em>Gtk.ScrolledWindow</em> platziert werden. Dies funktionierte im Test zwar für <em>Gtk.Stack</em>, nicht aber für <em>Gtk.Notebook</em>, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.</p>
+<p>Das WebView-Widget wird nach folgendem Muster erstellt:</p>
+<pre class="code python"><a name="rest_code_216cc278a73244c5845f1a65a523966c-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-9"></a>
+<a name="rest_code_216cc278a73244c5845f1a65a523966c-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre>
+<p class="more"><a href="posts/stacksnotebooks/">Read more…</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/non-konsole/">NoN: Konsoledierung</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -451,54 +542,6 @@ player.set_state(Gst.State.PAUSED)</blockquote>
 </blockquote>
 <p class="more"><a href="posts/gst-player/">Read more…</a></p>
 </div>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/gpt-v04-release/">GPT: v0.4 Release</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2017-08-28T18:03:37+02:00">2017-08-28 18:03</time>
-</div>
-                <div class="stats">
-                    
-        
-    <a href="posts/gpt-v04-release/#disqus_thread" data-disqus-identifier="cache/posts/gpt-v04-release.html">Comments</a>
-
-
-                </div>
-            
-        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/goprotool/" rel="tag">goprotool</a></li>
-           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p><strong>JFTR: GoProTool v0.4 release</strong></p>
-<p>Some minor changes/fixes for the <a class="reference external" href="https://github.com/encarsia/gpt">project</a>. Recent development status is available as a (pre-)release: <a class="reference external" href="https://github.com/encarsia/gpt/releases/tag/v0.4">Release v0.4 "scarlatina"</a>.</p>
-<p>NEW:</p>
-<ul class="simple">
-<li>import files from any directory (and not just from detected SD cards) with corresponding button added to the toolbar</li>
-</ul>
-<p>FIXED:</p>
-<ul class="simple">
-<li>folder selection on import</li>
-<li>progress status on video import</li>
-</ul>
-<p>"FIXED":</p>
-<ul class="simple">
-<li>headerbar removed from the media preview version because no images on playback</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This issue will probably be fixed by switching to LibVLC instead of GStreamer, see also <a class="reference external" href="posts/vlc-player">LibVLC tutorial article</a>.</p>
-</div>
-<a class="reference external image-reference" href="../images/window_player_v0.4.png"><img alt="/images/window_player_v0.4.thumbnail.png" src="../images/window_player_v0.4.thumbnail.png"></a>
 </div>
             </div>
         </div>
