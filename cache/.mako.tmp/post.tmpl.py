@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1508143837.326689
+_modified_time = 1508164793.8511775
 _enable_loop = True
 _template_filename = 'themes/zen_fa4/templates/post.tmpl'
 _template_uri = 'post.tmpl'
@@ -39,16 +39,16 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
-        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
-        def extra_head():
-            return render_extra_head(context._locals(__M_locals))
-        comments = _mako_get_namespace(context, 'comments')
         def content():
             return render_content(context._locals(__M_locals))
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
-        arusahni = _mako_get_namespace(context, 'arusahni')
         helper = _mako_get_namespace(context, 'helper')
+        def extra_head():
+            return render_extra_head(context._locals(__M_locals))
+        site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
+        arusahni = _mako_get_namespace(context, 'arusahni')
+        comments = _mako_get_namespace(context, 'comments')
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -76,9 +76,9 @@ def render_extra_head(context,**pageargs):
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
         post = _import_ns.get('post', context.get('post', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
         def extra_head():
             return render_extra_head(context)
+        helper = _mako_get_namespace(context, 'helper')
         __M_writer = context.writer()
         __M_writer('\n    ')
         __M_writer(str(parent.extra_head()))
@@ -106,14 +106,14 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
-        def content():
-            return render_content(context)
         site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         arusahni = _mako_get_namespace(context, 'arusahni')
-        comments = _mako_get_namespace(context, 'comments')
+        def content():
+            return render_content(context)
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
         helper = _mako_get_namespace(context, 'helper')
+        comments = _mako_get_namespace(context, 'comments')
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         __M_writer = context.writer()
         __M_writer('\n    <div class="post">\n    ')
         __M_writer(str(arusahni.html_title()))
