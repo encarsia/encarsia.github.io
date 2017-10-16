@@ -56,7 +56,7 @@ class ExampleApp:
         img_end = source.find("alt=")
         img = source[img_start+10:img_end-2]
         IMGURL = "https://apod.nasa.gov/apod/"+img
-        #urllib.request.urlretrieve(IMGURL, "apod.jpg")
+        urllib.request.urlretrieve(IMGURL, "apod.jpg")
         self.obj("image").set_from_file("apod.jpg")
 
     def stack_console(self):
