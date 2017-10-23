@@ -11,7 +11,7 @@
 
 .. contents::
 
-**Further testing the navigation compass BeeLine**
+**Further testing of the navigation compass BeeLine**
 
 See also `my introductory BeeLine article <link://slug/beeline>`__.
 
