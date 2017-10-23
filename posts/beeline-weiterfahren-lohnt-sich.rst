@@ -128,3 +128,9 @@ Fazit
 BeeLine hat sich sehr postitiv entwickelt und ich werde es wieder häufiger benutzen. Die Ausweitung der Funktionalität rund um Routen - erstellen, importieren, speichern, Wegpunkteführung - macht das Gerät inzwischen zu einem interessanten Tool und mehr als einem bloßem Spielzeug.
 
 Da BeeLine aber auf die Verbindung mit einem Smartphone angewiesen ist, das Standortfunktion und Bluetooth bereitstellt, ist es kein Ersatz für ein Standalone-Navigationsgerät. Bei längeren Fahrten muss man auf jeden Fall den Akkuverbrauch berücksichtigen. Powerbanks existieren.
+
+.. raw:: html
+
+    <br>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/2uqmRnmpGgT">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+
