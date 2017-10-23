@@ -125,3 +125,9 @@ Conclusion
 BeeLine has developed great and I will use it more frequently now. By expanding route functionalities (create, import, save, automatic routing) the device has become a really interesting and useful tool rather than just being a gadget.
 
 Of course BeeLine still depends on a smartphone connection providing location service and Bluetooth. It cannot replace a standalone navigation system. Therefore battery consumption of the phone has to be considered on long tours. Power banks exist.
+
+.. raw:: html
+
+    <br>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/2uqmRnmpGgT">Comment on <i class="fa fa-google-plus"></i></a>
+
