@@ -26,6 +26,167 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/gst-player/">Mediaplayer mit GStreamer</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2017-09-21T15:19:40+02:00">2017-09-21 15:19</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/gst-player/#disqus_thread" data-disqus-identifier="cache/posts/mediaplayer-mit-gstreamer.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/gst-player/#glade" id="id5">Glade</a></li>
+<li>
+<a class="reference internal" href="posts/gst-player/#python" id="id6">Python</a><ul>
+<li>
+<a class="reference internal" href="posts/gst-player/#player-einrichten" id="id7">Player einrichten</a><ul>
+<li><a class="reference internal" href="posts/gst-player/#elemente-und-pipelines" id="id8">Elemente und Pipelines</a></li>
+<li><a class="reference internal" href="posts/gst-player/#fertige-pipelines" id="id9">Fertige Pipelines</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/gst-player/#und-los" id="id10">Und los!</a></li>
+<li><a class="reference internal" href="posts/gst-player/#fortschrittsanzeige" id="id11">Fortschrittsanzeige</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/gst-player/#moglichkeiten-und-limitierungen" id="id12">Möglichkeiten und Limitierungen</a></li>
+<li><a class="reference internal" href="posts/gst-player/#links" id="id13">Links</a></li>
+<li>
+<a class="reference internal" href="posts/gst-player/#listings" id="id14">Listings</a><ul>
+<li><a class="reference internal" href="posts/gst-player/#id1" id="id15">Glade</a></li>
+<li><a class="reference internal" href="posts/gst-player/#id2" id="id16">Python</a></li>
+<li><a class="reference internal" href="posts/gst-player/#beispieldateien" id="id17">Beispieldateien</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Mediaplayer mit GStreamer 1.x realisieren</strong></p>
+<p><a class="reference external" href="https://gstreamer.freedesktop.org/">GStreamer</a> ist ein Multimedia-Framework, das zum Anzeigen und (De-)Kodieren von Mediendateien verwendet werden kann.</p>
+<a class="reference external image-reference" href="images/19_gst_player.png"><img alt="/images/19_gst_player.thumbnail.png" src="images/19_gst_player.thumbnail.png"></a>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/gst-player/#id5">Glade</a></h2>
+<blockquote>
+<ul class="simple">
+<li>
+<strong>Darstellungsbereich der Mediendatei:</strong> Widget <em>Gtk.DrawingArea</em>
+</li>
+<li>
+<strong>Steuerungselemente:</strong> Vor-/Zurückspulen (<em>Gtk.Button</em>), Pause (<em>Gtk.Togglebutton</em>)</li>
+<li>
+<strong>Medienauswahl:</strong> Buttons, um Video- oder Bilddatei anzuzeigen</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/gst-player/#id6">Python</a></h2>
+<div class="section" id="player-einrichten">
+<h3><a class="toc-backref" href="posts/gst-player/#id7">Player einrichten</a></h3>
+<div class="section" id="elemente-und-pipelines">
+<h4><a class="toc-backref" href="posts/gst-player/#id8">Elemente und Pipelines</a></h4>
+<p>GStreamer handhabt alle möglichen Arten von Medienflüssen. Jeder Schritt in dieser Verarbeitungskette wird per <em>Element</em> definiert und in <em>Pipelines</em> verbunden. Eine solche Pipeline besteht typischerweise aus "source"-, "filter"-/"decode"- und "sink"-Elementen.</p>
+<pre class="code text"><a name="rest_code_4349303db40244f89c492eada9b5bee8-1"></a>------------------------------------------------------
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-2"></a>|  Pipeline                                          |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-3"></a>|                                                    |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-4"></a>|  -------------   ----------------   -------------- |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-5"></a>|  | source    |   | filter       |   | sink       | |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-6"></a>|  |           |-&gt;&gt;| decoder      |-&gt;&gt;|            | |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-7"></a>|  | Quelle    |   | Verarbeitung |   | Ausgabe    | |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-8"></a>|  -------------   ----------------   -------------- |
+<a name="rest_code_4349303db40244f89c492eada9b5bee8-9"></a>------------------------------------------------------
+</pre>
+<p>Nach diesem Prinzip wird dies mittels <em>Gst</em>-Modul umgesetzt:</p>
+<pre class="code python"><a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-1"></a><span class="c1">#init Gst and create pipeline</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-2"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-4"></a>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-5"></a><span class="c1">#create elements</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-6"></a><span class="n">src</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"filesrc"</span><span class="p">,</span><span class="s2">"source"</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-7"></a><span class="n">decode</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"decodebin"</span><span class="p">,</span><span class="s2">"decode"</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-8"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-9"></a>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-10"></a><span class="c1">#configure elements</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-11"></a><span class="n">src</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span><span class="n">file_location</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-12"></a>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-13"></a><span class="c1">#add elements to pipeline</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-14"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-15"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-16"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-17"></a>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-18"></a><span class="c1">#link elements together</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-19"></a><span class="n">src</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
+<a name="rest_code_ccd9eb92b7b744f386b7f5e42aa9234e-20"></a><span class="n">decode</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="fertige-pipelines">
+<h4><a class="toc-backref" href="posts/gst-player/#id9">Fertige Pipelines</a></h4>
+<p>Es besteht auch beispielsweise die Möglichkeit, Audio- und Videosignale voneinander getrennt werden, indem jeweils ein "videosink" und ein "audiosink" erstellt usw. Auf der anderen Seite gibt es vorgefertigte Pipelines für Standardaufgaben wie etwa das Abspielen von Medien.
+Ein solches Element ist "playbin", das den Code signifikant vereinfacht:</p>
+<pre class="code python"><a name="rest_code_ec6ec0b7f9b34cb5b8f28c4cb0195615-1"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<a name="rest_code_ec6ec0b7f9b34cb5b8f28c4cb0195615-2"></a><span class="n">player</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"playbin"</span><span class="p">,</span><span class="s2">"player"</span><span class="p">)</span>
+<a name="rest_code_ec6ec0b7f9b34cb5b8f28c4cb0195615-3"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
+<a name="rest_code_ec6ec0b7f9b34cb5b8f28c4cb0195615-4"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"uri"</span><span class="p">,</span><span class="n">uri_of_file</span><span class="p">)</span>
+<a name="rest_code_ec6ec0b7f9b34cb5b8f28c4cb0195615-5"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"video-sink"</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+<div class="section" id="und-los">
+<h3><a class="toc-backref" href="posts/gst-player/#id10">Und los!</a></h3>
+<p>Eine Pipeline oder ein "playbin"-Element können nun über <em>Gst.STATE</em> gesteuert werden:</p>
+<pre class="code python"><a name="rest_code_77d5b60159d646068937d47fe2567be4-1"></a><span class="n">player</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">PLAYING</span><span class="p">)</span>
+<a name="rest_code_77d5b60159d646068937d47fe2567be4-2"></a><span class="n">player</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">PAUSED</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="fortschrittsanzeige">
+<h3><a class="toc-backref" href="posts/gst-player/#id11">Fortschrittsanzeige</a></h3>
+<p>Die Fortschrittsanzeige ist an dieser Stelle keine <em>Gtk.ProgressBar</em> sondern eine horizontale <em>Gtk.Scale</em>. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal <em>value-changed</em> benötigt. Streng genommen ist das Signal <em>change-value</em> an dieser Stelle die sauberere Lösung, die <a class="reference external" href="posts/vlc-player">im nachfolgenden Beitrag</a> zur Umsetzung des Mediaplayers mit LibVLC verwendet wird.</p>
+</div>
+</div>
+<div class="section" id="moglichkeiten-und-limitierungen">
+<h2><a class="toc-backref" href="posts/gst-player/#id12">Möglichkeiten und Limitierungen</a></h2>
+<p>Bei der Einarbeitung in GStreamer stolpert man (an dieser Stelle generalisiert die Autorin weitgehend und möglicherweise unbegründet) über diverse Hürden:</p>
+<p>Es gibt eine Reihe von Tutorials. Die Umsetzung wird durch zwei Umstände erschwert:</p>
+<ol class="arabic simple">
+<li>Die primäre Sprache von und mit GStreamer ist C. Mit Python steht man eher auf experimentellem Boden.</li>
+<li>Durch die Versionssprünge sowohl bei GStreamer (von 0.10 auf 1.x) als auch Python (2.x auf 3.x) funktionieren viele ältere Anleitungen nicht mehr ohne weiteres.</li>
+</ol>
+<p>Es gibt weiterhin Effekte, die sich mir nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Gtk-Fenster eine Headerbar enthält. Es sollte mit der Verwendung von "gtksink" lösbar sein, aber dies wiederum verweigert das Abspielen in einem zugewiesenen Widget.
+Die Komplexität und Mächtigkeit von GStreamer ist massiv verwirrend.</p>
+</div>
+<div class="section" id="links">
+<h2><a class="toc-backref" href="posts/gst-player/#id13">Links</a></h2>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="http://brettviren.github.io/pygst-tutorial-org/">Tutorial on using GStreamer Python Bindings in org-mode</a></li>
+<li><a class="reference external" href="https://github.com/hadware/gstreamer-python-player/blob/master/seek.py">gstreamer-python-player/seek.py example</a></li>
+<li><a class="reference external" href="https://gstreamer.freedesktop.org/documentation/plugins.html">GStreamer List of Elements and Plugins</a></li>
+<li><a class="reference external" href="https://gstreamer.freedesktop.org/documentation/index.html">GStreamer documentation</a></li>
+<li><a class="reference external" href="https://adnanalamkhan.wordpress.com/2015/03/01/using-gstreamer-1-0-with-python/">Using GStreamer 1.0 with Python</a></li>
+<li><a class="reference external" href="posts/vlc-player">Mediaplayer mit VLC</a></li>
+</ul>
+</blockquote>
+<p class="more"><a href="posts/gst-player/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/gpt-v04-release/">GPT: v0.4 Release</a></h1>
             <div class="meta">
                 <div class="authordate">
