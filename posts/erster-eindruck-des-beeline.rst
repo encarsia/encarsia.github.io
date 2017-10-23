@@ -22,11 +22,9 @@ Navigationskompass
 BeeLine ist im weitesten Sinne ein Fahrradnavi. Das Konzept des BeeLine ist, dass es keine Route, sondern wie eine Kompassnadel die Richtung des Ziels bzw. eines Wegpunktes und dessen Entfernung (engl. beeline) anzeigt. Ist das BeeLine gerade nicht mit dem Telefon gekoppelt, zeigt die "Nadel" auch tatsächlich nach Norden.
 Dieser Prämisse folgend wird dem Nutzer die Streckenwahl komplett überlassen und so wird es auch beworben:
 
-::
+    *"BeeLine is built for everyday adventuring. After all, where’s the fun in being told exactly what to do?*
 
-    BeeLine is built for everyday adventuring. After all, where’s the fun in being told exactly what to do?
-
-    Take back control of your ride and explore your city with BeeLine.
+    *Take back control of your ride and explore your city with BeeLine."*
 
 Technikgeraffel
 ---------------
