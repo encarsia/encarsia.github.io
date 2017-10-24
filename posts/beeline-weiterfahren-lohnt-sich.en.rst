@@ -28,7 +28,7 @@ Improvements
 My four points of criticism were:
 
     1. lack of practicality on waypoint handling
-    #. accidentally finishing rides
+    #. accidentally finish rides
     #. unclear button assignments
     #. wish for better route functionalities (import)
 
@@ -60,7 +60,7 @@ I regard this to be a real killer feature which makes routing simple and precise
 Button assignment
 *****************
 
-As already said skipping through waypoints is done by pressing the upper or lower button. Pressing the lower button longer switches the integrated lamp on and off. The right and left buttons let you flip through 
+As already said skipping through waypoints is done by pressing the top or bottom button. Pressing and holding the bottom button switches the integrated lamp on and off. The right and left buttons let you flip through 
 
     **Compass <-> Speed <-> Time <-> Battery status (phone and BeeLine) <-> Compass**
 
