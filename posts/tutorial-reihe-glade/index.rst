@@ -54,6 +54,8 @@ Nicht exklusiv
 
 GTK+-Elemente können natürlich auch ohne Glade direkt im Quellcode des Programms erstellt werden. Es ist möglich, beide Optionen parallel zu verwenden oder auch im Entwicklungs-Verlauf das eine gegen das andere zu ersetzen.
 
+Da Glade in verschiedenen Programmiersprachen eingesetzt werden kann, ist es ebenso denkbar, Programme in verschiedenen Sprachen mit derselben Oberfläche zu erstellen (migrieren).
+
 Links
 -----
 
