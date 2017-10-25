@@ -68,7 +68,7 @@ Wie bereits erwähnt, blättert man mit der oberen und unteren Taste durch die W
 
     **Kompass <-> Geschwindigkeit <-> Uhrzeit <-> Akkuladezustand (Phone und BeeLine) <-> Kompass**
 
-Es ist mir auch nicht mehr passiert, Fahrten unbeabsichtigt beendet zu haben. Dieses Problem (Punkt 2), ob nun Bedienfehler oder tatsächlich Bug, scheint sich also auch erledigt zuhaben.
+Es ist mir auch nicht mehr passiert, Fahrten unbeabsichtigt beendet zu haben. Dieses Problem (Punkt 2), ob nun Bedienfehler oder tatsächlich Bug, scheint sich also auch erledigt zu haben.
 
 Routenimport (whoop, whoop)
 ***************************
