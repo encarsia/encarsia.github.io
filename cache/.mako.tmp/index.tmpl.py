@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1509014456.970782
+_modified_time = 1509014641.6115391
 _enable_loop = True
 _template_filename = 'themes/zen_fa4/templates/index.tmpl'
 _template_uri = 'index.tmpl'
@@ -38,13 +38,13 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
+        helper = _mako_get_namespace(context, 'helper')
+        def content():
+            return render_content(context._locals(__M_locals))
+        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
         arusahni = _mako_get_namespace(context, 'arusahni')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
         index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
-        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        def content():
-            return render_content(context._locals(__M_locals))
         comments = _mako_get_namespace(context, 'comments')
         __M_writer = context.writer()
         __M_writer('\n')
@@ -66,13 +66,13 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
+        helper = _mako_get_namespace(context, 'helper')
+        def content():
+            return render_content(context)
+        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
         arusahni = _mako_get_namespace(context, 'arusahni')
         date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
         index_teasers = _import_ns.get('index_teasers', context.get('index_teasers', UNDEFINED))
-        helper = _mako_get_namespace(context, 'helper')
-        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        def content():
-            return render_content(context)
         comments = _mako_get_namespace(context, 'comments')
         __M_writer = context.writer()
         __M_writer('\n')

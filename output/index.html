@@ -55,11 +55,11 @@
 <p>Per Tooltip wird dann zum Beispiel angezeigt:</p>
 <a class="reference external image-reference" href="images/glade_widgetsinactive_tooltip.png"><img alt="/images/glade_widgetsinactive_tooltip.thumbnail.png" src="images/glade_widgetsinactive_tooltip.thumbnail.png"></a>
 <p>Die Ursache liegt in der angegebenen Gtk+-Version gleich am Anfang der Glade-Datei:</p>
-<pre class="code xml"><a name="rest_code_bc117029ec0a464da9ea353d8419301b-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-5"></a>  ...
+<pre class="code xml"><a name="rest_code_f398d9c9cb284c3d821a2063a804b306-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_f398d9c9cb284c3d821a2063a804b306-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
+<a name="rest_code_f398d9c9cb284c3d821a2063a804b306-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_f398d9c9cb284c3d821a2063a804b306-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
+<a name="rest_code_f398d9c9cb284c3d821a2063a804b306-5"></a>  ...
 </pre>
 <p>Dieses Zeile wird auch beim neuerlichen Speichern mit einer aktuellen Glade-Version nicht verändert. Abhilfe kann hier ganz simpel geschaffen werden, indem <tt class="docutils literal">"3.0"</tt> durch eine aktuellere Version ersetzt wird (derzeit <tt class="docutils literal">"3.20"</tt>).</p>
 </div>
@@ -287,16 +287,16 @@ Rechts: Anzeige des GPS-Tracks in Locus-App</p>
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
 <p>Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist <tt class="docutils literal">WebKit2.WebView</tt>. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk+-Widget in einem <em>Gtk.Viewport</em>, muss also laut <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API-Referenz</a> nicht mehr in ein <em>Gtk.ScrolledWindow</em> platziert werden. Dies funktionierte im Test zwar für <em>Gtk.Stack</em>, nicht aber für <em>Gtk.Notebook</em>, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.</p>
 <p>Das WebView-Widget wird nach folgendem Muster erstellt:</p>
-<pre class="code python"><a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-1"></a><span class="c1">#create new WebView widget</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-3"></a><span class="c1">#send URL to widget</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-5"></a><span class="c1">#add webview to notebook</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-7"></a><span class="c1">#add webview to stack</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-9"></a>
-<a name="rest_code_29cd91e1efb941c2b03d69c05d39278c-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_5a33bcd220da45de9bcd757232645af3-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-9"></a>
+<a name="rest_code_5a33bcd220da45de9bcd757232645af3-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/stacksnotebooks/">Weiterlesen…</a></p>
 </div>

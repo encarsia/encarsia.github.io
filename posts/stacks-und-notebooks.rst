@@ -2,7 +2,7 @@
 .. slug: stacksnotebooks
 .. date: 2017-10-16 11:05:37 UTC+02:00
 .. tags: glade,python
-.. category: tipps&tricks
+.. category: tutorial
 .. link: 
 .. description: 
 .. type: text

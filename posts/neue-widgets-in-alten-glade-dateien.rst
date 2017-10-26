@@ -2,7 +2,7 @@
 .. slug: neue-widgets-in-alten-glade-dateien
 .. date: 2017-10-25 10:12:09 UTC+02:00
 .. tags: glade
-.. category: tutorial
+.. category: tipps&tricks
 .. link: 
 .. description: 
 .. type: text
