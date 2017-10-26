@@ -67,6 +67,5 @@ Links
 Todo
 ----
 
-Geplant:
-    - Textfelder mit Gtk.TextView und GtkSource.View
-    - Interaktion mit anderen Anwendungen mit und ohne Threading
+- Textfelder mit Gtk.TextView und GtkSource.View
+- Interaktion mit anderen Anwendungen mit und ohne Threading
