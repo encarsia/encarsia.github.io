@@ -26,7 +26,7 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
-            <h1 class="title"><a href="posts/neue-widgets-in-alten-glade-dateien/">Neue Widgets in alten Glade-Dateien</a></h1>
+            <h1 class="title"><a href="posts/neue-widgets-in-alten-glade-dateien/">New widgets in old Glade files</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2017-10-25T10:12:09+02:00">2017-10-25 10:12</time>
@@ -49,19 +49,20 @@
             </div>
             <div class="body">
                 <div>
-<p><strong>Problem: deaktivierte Widgets in älteren Glade-Dateien</strong></p>
-<p>Es kann vorkommen, dass nach dem Öffnen einer Datei in Glade Widgets ausgegraut sind.</p>
+<p><strong>Problem: disabled widgets in older Glade files</strong></p>
+<p>It may occur that certain widgets in Glade are greyed out after opened in Glade.</p>
 <a class="reference external image-reference" href="../images/glade_widgetsinactive.png"><img alt="/images/glade_widgetsinactive.thumbnail.png" src="../images/glade_widgetsinactive.thumbnail.png"></a>
-<p>Per Tooltip wird dann zum Beispiel angezeigt:</p>
+<p>A hint is hown in tooltips like</p>
 <a class="reference external image-reference" href="../images/glade_widgetsinactive_tooltip.png"><img alt="/images/glade_widgetsinactive_tooltip.thumbnail.png" src="../images/glade_widgetsinactive_tooltip.thumbnail.png"></a>
-<p>Die Ursache liegt in der angegebenen Gtk+-Version gleich am Anfang der Glade-Datei:</p>
-<pre class="code xml"><a name="rest_code_bc117029ec0a464da9ea353d8419301b-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
-<a name="rest_code_bc117029ec0a464da9ea353d8419301b-5"></a>  ...
+<p>The cause for this behaviour is the Gtk+ version given at the beginning of the file:</p>
+<pre class="code xml"><a name="rest_code_71e75e730b3149a79042c5fed82e3627-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_71e75e730b3149a79042c5fed82e3627-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
+<a name="rest_code_71e75e730b3149a79042c5fed82e3627-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_71e75e730b3149a79042c5fed82e3627-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
+<a name="rest_code_71e75e730b3149a79042c5fed82e3627-5"></a>  ...
 </pre>
-<p>Dieses Zeile wird auch beim neuerlichen Speichern mit einer aktuellen Glade-Version nicht verändert. Abhilfe kann hier ganz simpel geschaffen werden, indem <tt class="docutils literal">"3.0"</tt> durch eine aktuellere Version ersetzt wird (derzeit <tt class="docutils literal">"3.20"</tt>).</p>
+<p>This line will not be altered even if the file is saved by a more recent Glade version.
+So you just manually replace <tt class="docutils literal">"3.0"</tt> by a current version (<tt class="docutils literal">"3.20"</tt> at present).</p>
 </div>
             </div>
         </div>
@@ -212,7 +213,7 @@ Right: original GPS track in Locus app</p>
             </div>
         </div>
         <div class="post">
-            <h1 class="title"><a href="posts/stacksnotebooks/">Stacks und Notebooks</a></h1>
+            <h1 class="title"><a href="posts/stacksnotebooks/">Stacks and notebooks</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2017-10-16T11:05:37+02:00">2017-10-16 11:05</time>
@@ -236,8 +237,8 @@ Right: original GPS track in Locus app</p>
             </div>
             <div class="body">
                 <div>
-<div class="contents pull-right topic" id="inhalt">
-<p class="topic-title first">Inhalt</p>
+<div class="contents pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
 <li>
 <a class="reference internal" href="posts/stacksnotebooks/#glade" id="id3">Glade</a><ul>
@@ -258,43 +259,43 @@ Right: original GPS track in Locus app</p>
 </li>
 </ul>
 </div>
-<p><strong>Inhalte organisiert anzeigen</strong></p>
-<p><em>Gtk.Stack</em> und <em>Gtk.Notebook</em> sind Layout-Container, die ihrerseits beliebige Widgets enthalten können.</p>
-<p>Ein Notebook stellt ein mehrseitiges Layout mit klassischer Tab-Funktionalität zur Verfügung. Stacks bieten die gleiche Grundfunktionalität, nämlich mehrere Container innerhalb eines Widgets zu enthalten, zwischen denen man hin- und herschalten kann.</p>
-<p>Der Hauptunterschied besteht darin, dass das Bedienelement des Stacks als separates Widget verwendet werden muss (<em>Gtk.StackSwitcher</em>). Verschiedene StackSwitcher können dabei auf den selben Stack zugreifen. Weiterhin lassen sich StackSwitcher in Headerbars platzieren, außerdem werden animierte Überblenden zwischen den Stack-Seiten unterstützt.</p>
-<p>Stacks passen sich subjektiv besser in die GNOME-Umgebung ein, bieten aber nicht ganz so große Funktionalität wie Notebooks.</p>
-<p>Das Beispiel enhält ein Fenster mit Stack, in dessen dritter Seite ein Notebook enthalten ist, das verschiedene Webseiten anzeigt.</p>
+<p><strong>Organize contents on screen</strong></p>
+<p><em>Gtk.Stack</em> and <em>Gtk.Notebook</em> are layout containers that can hold any widgets.</p>
+<p>A notebook provides a multipage layout including a classic tab functionality. A stack also provides this basic functionality and you will able to switch between different layout pages.</p>
+<p>The main difference is the control widget of the stack is a separate widget (<em>Gtk.StackSwitcher</em>). Several stack switcher widgets can be assigned to one stack. A stack switcher can be placed into the headerbar and animated transitions between stack pages are supported.</p>
+<p>Stack subjectively fit better into the GNOME environment but notebooks provide more customization/functionality options.</p>
+<p>In the example there is a window containing a stack including a notebook on the third page showing different websites.</p>
 <a class="reference external image-reference" href="../images/21_stacknotebook.png"><img alt="/images/21_stacknotebook.thumbnail.png" src="../images/21_stacknotebook.thumbnail.png"></a>
 <div class="section" id="glade">
 <h2><a class="toc-backref" href="posts/stacksnotebooks/#id3">Glade</a></h2>
 <div class="section" id="stack">
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id4">Stack</a></h3>
-<p>Ein Stack, zu finden in der Sidebar unter "Container", und dessen Unterseiten lassen sich einfach in Glade erstellen und bearbeiten. Als Unterwidgets kommen im Beispiel <em>Gtk.Image</em>, <a class="reference external" href="posts/exterminate">Vte.Terminal</a> und <em>Gtk.Notebook</em> zum Einsatz.</p>
-<p>Das StackSwitcher-Widget befindet sich unter "Steuerung und Anzeige" und wird der Headerbar hinzugefügt. Es kann aber auch in reguläre Container-Widgets wie einer Box platziert und die Unterseiten horizontal oder vertikal angezeigt werden. Unter "Allgemein &gt; Stapel" wird der Stack ausgewählt, auf den sich das Widget beziehen soll. Die anzuzeigende Seitenbezeichnung wird im jeweiligen Stack-Unterwidget unter "Packen &gt; Titel" festgelegt.</p>
+<p>Stacks can be found in the sidebar's 'Container' section. Pages are easily created and edited via Glade. Sub-widgets in the example file are <em>Gtk.Image</em>, <a class="reference external" href="posts/exterminate">Vte.Terminal</a> and <em>Gtk.Notebook</em>.</p>
+<p>The stack switcher widget can be obtained from 'Controls and Display' and is placed to the headerbar. It's also possible to put it into a regular container widget like boxes. Pages can be shown in vertical or horizontal order. In <em>"General &gt; Stack"</em> a stack element must be assigned to the widget. The page name shown by the stack switcher widget can be edited via <em>"Packing &gt; Title"</em> of the sub-widget. This sub-widget has to be created in the first place, a new created stack has empty pages.</p>
 </div>
 <div class="section" id="notebook">
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id5">Notebook</a></h3>
-<p>Das Notebook findet sich ebenfalls unter "Container". Die Steuerungseinheit des Tabs ist ein bei Erstellung einer Seite generiertes Label-Child-Widget. Als Container-Widgets der Unterseiten werden hier <em>Gtk.ScrolledWindows</em> verwendet. Diese benötigt man auch z.B. für die Anzeige von (längeren) Tabellen (siehe auch Artikel zu List-/TreeStores <a class="reference external" href="posts/uberlistet">Nr. 1</a> und <a class="reference external" href="posts/ansichtssache">Nr. 2</a>).</p>
-<p>Die Tab-Leiste des Notebooks bietet die Möglichkeit, sowohl am Anfang als auch am Ende ein Container-Widget bereitzustellen (unter "Allgemein &gt; Start-Aktion/End-Aktion"), in dem zum Beispiel feste Buttons untergebracht werden können. Im Beispiel wird am Anfang ein "Home"-Button eingerichtet.</p>
+<p>Notebook can also be found in the 'Container' section. The tab's control unit is an integrated label child widget automatically generated on page creation. <em>Gtk.ScrolledWindows</em> are used here as the pages' container widgets. These are also required for displaying (long) tables (see also List-/TreeStore articles <a class="reference external" href="posts/uberlistet">No. 1</a> und <a class="reference external" href="posts/ansichtssache">No. 2</a>).</p>
+<p>The tab bar of a notebook provides reserved space for additional widgets like fixed buttons (<em>"General &gt; Start/End Action"</em>). In the example there will be created a "Home" button in the start area.</p>
 </div>
 </div>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="posts/stacksnotebooks/#id6">Python</a></h2>
-<p>Für das Umherschalten zwischen Stack-Unterseiten und Notebook-Tabs werden keine Signale benötigt. Im Beispiel werden nur zwei Signale benötigt, einmal für das Abfangen des "exit"-Kommandos innerhalb des Terminals und für den Button in der Notebook-Tableiste.</p>
+<p>There are no signals required for switching between stack pages and notebook tabs. In the example only two signals are assigned, one for catching the "exit" command within the terminal and one for the button in the notebook tab bar.</p>
 <div class="section" id="webkit2">
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
-<p>Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist <tt class="docutils literal">WebKit2.WebView</tt>. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk-Widget in einem <em>Gtk.Viewport</em>, muss also laut <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API-Referenz</a> nicht mehr in ein <em>Gtk.ScrolledWindow</em> platziert werden. Dies funktionierte im Test zwar für <em>Gtk.Stack</em>, nicht aber für <em>Gtk.Notebook</em>, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.</p>
-<p>Das WebView-Widget wird nach folgendem Muster erstellt:</p>
-<pre class="code python"><a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-1"></a><span class="c1">#create new WebView widget</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-3"></a><span class="c1">#send URL to widget</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-5"></a><span class="c1">#add webview to notebook</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-7"></a><span class="c1">#add webview to stack</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-9"></a>
-<a name="rest_code_d3d17d9182fb447e9d26afddef6f06bd-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p>The webpages in the example are rendered by WebKit2. The essential module to use is <tt class="docutils literal">WebKit2.WebView</tt>. A new WebView object itself already is a scrollable Gtk+ widget within a <em>Gtk.Viewport</em> element. According to the <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API reference</a> it does not have to be placed in a <em>Gtk.ScrolledWindow</em> container widget. Having tested this that works for <em>Gtk.Stack</em> but not for <em>Gtk.Notebook</em>. That's why in the example there is used a ScrolledWindow as underlying container widget.</p>
+<p>The following pattern is used to create a WebView widget:</p>
+<pre class="code python"><a name="rest_code_46780266615c4c3ba12a22e3479915b1-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-9"></a>
+<a name="rest_code_46780266615c4c3ba12a22e3479915b1-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/stacksnotebooks/">Read more…</a></p>
 </div>

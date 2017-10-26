@@ -12,9 +12,17 @@
 <meta property="og:site_name" content="Merge and Destroy">
 <meta property="og:title" content="Glade tutorial series">
 <meta property="og:url" content="https://encarsia.github.io/en/posts/tutorial-reihe-glade/">
-<meta property="og:description" content="Intro
-Glade was my weapon of choice when I started creating the graphical interface for gpt. It itself is a GUI for creating GTK+ &lt;http://www.gtk.org/&gt; GUIs.
-Glade project files are XML formatted GtkB">
+<meta property="og:description" content="Topics
+
+Minimal example
+Buttons and labels
+Windows and dialogues
+Switch, checkbox and radiobutton
+Menu, toolbar and statusbar
+Progressbars and levelbars
+CSS
+Spinbutton and combobox
+ListStore and TreeV">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2016-11-02T15:23:57+01:00">
 <meta property="article:tag" content="glade">
@@ -61,30 +69,6 @@ Glade project files are XML formatted GtkB">
         </div>
         <div class="body">
             <div>
-<div class="section" id="intro">
-<h2>Intro</h2>
-<p>Glade was my weapon of choice when I started creating the graphical interface for <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a>. It itself is a GUI for creating <cite>GTK+ &lt;http://www.gtk.org/&gt;</cite> GUIs.</p>
-<p>Glade project files are XML formatted <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a> files. The connection to the source code is established by signals. Numerous languages are supported, I will use Python here.</p>
-<p>There are plenty of tutorials and docs around that are not or only partly working or valid due to recent development progress (GTK+ and Python from 2.x to 3.x) but for the most part they are a good start (see links below).</p>
-<p>I attempt to keep this basic tutorial up to date (Python 3.5.2 (3.6 just hit my machine and there aren't any problems so far but I will have a closer look on the examples) and Glade 3.20.0).</p>
-</div>
-<div class="section" id="non-exclusive">
-<h2>Non-exclusive</h2>
-<p>Of course GTK+ elements can be directly constructed in the source code. It is also possible to use both ways simultaneously or replace one with the other during development process.</p>
-</div>
-<div class="section" id="links">
-<h2>Links</h2>
-<ul class="simple">
-<li>
-<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Introduction to GTK+ with Python</li>
-<li>
-<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Basic tutorial to PyGTK (Python 2.x)</li>
-<li>
-<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - extensive tutorial in German</li>
-<li>
-<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - complete reference of the GI module (bookmark this!)</li>
-</ul>
-</div>
 <div class="section" id="topics">
 <h2>Topics</h2>
 <ul class="simple">
@@ -106,17 +90,40 @@ Glade project files are XML formatted GtkB">
 <li><a class="reference external" href="../fcdialog">File chooser dialog</a></li>
 <li><a class="reference external" href="../gst-player">Media player with GStreamer</a></li>
 <li><a class="reference external" href="../vlc-player">Media player with LibVLC</a></li>
-<li><dl class="first docutils">
-<dt>planned:</dt>
-<dd><ul class="first last">
-<li>Notebook</li>
-<li>Stack</li>
+<li><a class="reference external" href="../stacksnotebooks">Stack and Notebook</a></li>
+</ul>
+<p>Directory of example files: <a class="reference external" href="https://encarsia.github.io/listings/">encarsia.github.io/listings</a></p>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation</h2>
+<p>Glade was my weapon of choice when I started creating the graphical interface for <a class="reference external" href="https://github.com/encarsia/gpt">gpt</a>. It itself is a GUI for creating <cite>GTK+ &lt;http://www.gtk.org/&gt;</cite> GUIs.</p>
+<p>Glade project files are XML formatted <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">GtkBuilder</a> files. The connection to the source code is established by signals. Numerous languages are supported, I will use Python here.</p>
+<p>There are plenty of tutorials and docs around that are not or only partly working or valid due to recent development progress (GTK+ and Python from 2.x to 3.x) but for the most part they are a good start (see links below).</p>
+<p>I attempt to keep this basic tutorial up to date (Python 3.5.2 (3.6 just hit my machine and there aren't any problems so far but I will have a closer look on the examples) and Glade 3.20.0).</p>
+</div>
+<div class="section" id="non-exclusive">
+<h2>Non-exclusive</h2>
+<p>Of course GTK+ elements can be directly constructed in the source code. It is also possible to use both ways simultaneously or replace one with the other during development process.</p>
+<p>The fact that Glade supports various programming languages it may also be possible to create applications in different programming languages using the same graphical interface.</p>
+</div>
+<div class="section" id="links">
+<h2>Links</h2>
+<ul class="simple">
+<li>
+<a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/">The Python GTK+ 3 Tutorial</a> - Introduction to GTK+ with Python</li>
+<li>
+<a class="reference external" href="http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/">Creating a GUI using PyGTK and Glade</a> - Basic tutorial to PyGTK (Python 2.x)</li>
+<li>
+<a class="reference external" href="https://www.florian-diesch.de/doc/python-und-glade/online/index.html">Programmieren mit Python und Glade</a> - extensive tutorial in German</li>
+<li>
+<a class="reference external" href="https://lazka.github.io/pgi-docs/">Python GObject Introspection API Reference</a> - complete reference of the GI module (bookmark this!)</li>
+</ul>
+</div>
+<div class="section" id="todo">
+<h2>Todo</h2>
+<ul class="simple">
 <li>Text widgets with Gtk.TextView and GtkSource.View</li>
 <li>Interaction between other applications</li>
-</ul></dd>
-</dl></li>
-<li>directory of example files: <a class="reference external" href="https://encarsia.github.io/listings/">encarsia.github.io/listings</a>
-</li>
 </ul>
 </div>
 </div>

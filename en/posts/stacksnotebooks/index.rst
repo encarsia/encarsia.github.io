@@ -1,8 +1,8 @@
-.. title: Stacks und Notebooks
+.. title: Stacks and notebooks
 .. slug: stacksnotebooks
 .. date: 2017-10-16 11:05:37 UTC+02:00
 .. tags: glade,python
-.. category: tutorial
+.. category: tipps&tricks
 .. link: 
 .. description: 
 .. type: text
@@ -11,17 +11,17 @@
 
 .. contents::
 
-**Inhalte organisiert anzeigen**
+**Organize contents on screen**
 
-*Gtk.Stack* und *Gtk.Notebook* sind Layout-Container, die ihrerseits beliebige Widgets enthalten können.
+*Gtk.Stack* and *Gtk.Notebook* are layout containers that can hold any widgets.
 
-Ein Notebook stellt ein mehrseitiges Layout mit klassischer Tab-Funktionalität zur Verfügung. Stacks bieten die gleiche Grundfunktionalität, nämlich mehrere Container innerhalb eines Widgets zu enthalten, zwischen denen man hin- und herschalten kann.
+A notebook provides a multipage layout including a classic tab functionality. A stack also provides this basic functionality and you will able to switch between different layout pages.
 
-Der Hauptunterschied besteht darin, dass das Bedienelement des Stacks als separates Widget verwendet werden muss (*Gtk.StackSwitcher*). Verschiedene StackSwitcher können dabei auf den selben Stack zugreifen. Weiterhin lassen sich StackSwitcher in Headerbars platzieren, außerdem werden animierte Überblenden zwischen den Stack-Seiten unterstützt.
+The main difference is the control widget of the stack is a separate widget (*Gtk.StackSwitcher*). Several stack switcher widgets can be assigned to one stack. A stack switcher can be placed into the headerbar and animated transitions between stack pages are supported.
 
-Stacks passen sich subjektiv besser in die GNOME-Umgebung ein, bieten aber nicht ganz so große Funktionalität wie Notebooks.
+Stack subjectively fit better into the GNOME environment but notebooks provide more customization/functionality options.
 
-Das Beispiel enhält ein Fenster mit Stack, in dessen dritter Seite ein Notebook enthalten ist, das verschiedene Webseiten anzeigt.
+In the example there is a window containing a stack including a notebook on the third page showing different websites.
 
 .. thumbnail:: /images/21_stacknotebook.png
 
@@ -31,28 +31,28 @@ Glade
 Stack
 *****
 
-Ein Stack, zu finden in der Sidebar unter "Container", und dessen Unterseiten lassen sich einfach in Glade erstellen und bearbeiten. Als Unterwidgets kommen im Beispiel *Gtk.Image*, `Vte.Terminal <link://slug/exterminate>`__ und *Gtk.Notebook* zum Einsatz.
+Stacks can be found in the sidebar's 'Container' section. Pages are easily created and edited via Glade. Sub-widgets in the example file are *Gtk.Image*, `Vte.Terminal <link://slug/exterminate>`__ and *Gtk.Notebook*.
 
-Das StackSwitcher-Widget befindet sich unter "Steuerung und Anzeige" und wird der Headerbar hinzugefügt. Es kann aber auch in reguläre Container-Widgets wie einer Box platziert und die Unterseiten horizontal oder vertikal angezeigt werden. Unter "Allgemein > Stapel" wird der Stack ausgewählt, auf den sich das Widget beziehen soll. Die anzuzeigende Seitenbezeichnung wird im jeweiligen Stack-Unterwidget unter "Packen > Titel" festgelegt.
+The stack switcher widget can be obtained from 'Controls and Display' and is placed to the headerbar. It's also possible to put it into a regular container widget like boxes. Pages can be shown in vertical or horizontal order. In *"General > Stack"* a stack element must be assigned to the widget. The page name shown by the stack switcher widget can be edited via *"Packing > Title"* of the sub-widget. This sub-widget has to be created in the first place, a new created stack has empty pages.
 
 Notebook
 ********
 
-Das Notebook findet sich ebenfalls unter "Container". Die Steuerungseinheit des Tabs ist ein bei Erstellung einer Seite generiertes Label-Child-Widget. Als Container-Widgets der Unterseiten werden hier *Gtk.ScrolledWindows* verwendet. Diese benötigt man auch z.B. für die Anzeige von (längeren) Tabellen (siehe auch Artikel zu List-/TreeStores `Nr. 1 <link://slug/uberlistet>`__ und `Nr. 2 <link://slug/ansichtssache>`__).
+Notebook can also be found in the 'Container' section. The tab's control unit is an integrated label child widget automatically generated on page creation. *Gtk.ScrolledWindows* are used here as the pages' container widgets. These are also required for displaying (long) tables (see also List-/TreeStore articles `No. 1 <link://slug/uberlistet>`__ und `No. 2 <link://slug/ansichtssache>`__).
 
-Die Tab-Leiste des Notebooks bietet die Möglichkeit, sowohl am Anfang als auch am Ende ein Container-Widget bereitzustellen (unter "Allgemein > Start-Aktion/End-Aktion"), in dem zum Beispiel feste Buttons untergebracht werden können. Im Beispiel wird am Anfang ein "Home"-Button eingerichtet.
+The tab bar of a notebook provides reserved space for additional widgets like fixed buttons (*"General > Start/End Action"*). In the example there will be created a "Home" button in the start area.
 
 Python
 ------
 
-Für das Umherschalten zwischen Stack-Unterseiten und Notebook-Tabs werden keine Signale benötigt. Im Beispiel werden nur zwei Signale benötigt, einmal für das Abfangen des "exit"-Kommandos innerhalb des Terminals und für den Button in der Notebook-Tableiste.
+There are no signals required for switching between stack pages and notebook tabs. In the example only two signals are assigned, one for catching the "exit" command within the terminal and one for the button in the notebook tab bar.
 
 WebKit2
 *******
 
-Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist ``WebKit2.WebView``. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk-Widget in einem *Gtk.Viewport*, muss also laut `API-Referenz <https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html>`__ nicht mehr in ein *Gtk.ScrolledWindow* platziert werden. Dies funktionierte im Test zwar für *Gtk.Stack*, nicht aber für *Gtk.Notebook*, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.
+The webpages in the example are rendered by WebKit2. The essential module to use is ``WebKit2.WebView``. A new WebView object itself already is a scrollable Gtk+ widget within a *Gtk.Viewport* element. According to the `API reference <https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html>`__ it does not have to be placed in a *Gtk.ScrolledWindow* container widget. Having tested this that works for *Gtk.Stack* but not for *Gtk.Notebook*. That's why in the example there is used a ScrolledWindow as underlying container widget.
 
-Das WebView-Widget wird nach folgendem Muster erstellt:
+The following pattern is used to create a WebView widget:
 
 .. code:: python
 
@@ -85,4 +85,4 @@ Glade
 .. raw:: html
 
     <br>
-    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/hMeC12mMhKJ">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/hMeC12mMhKJ">Comment on <i class="fa fa-google-plus"></i></a>
