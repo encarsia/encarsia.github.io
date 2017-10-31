@@ -121,10 +121,9 @@ Automat">
 <li><a class="reference internal" href="#fazit" id="id25">Fazit</a></li>
 </ul>
 </div>
-<a class="reference external image-reference" href="../../../images/sph_cover.jpeg"><img alt="/images/sph_cover.thumbnail.jpeg" src="../../../images/sph_cover.thumbnail.jpeg"></a>
 <p><strong>Ob ich die Tutorial-Artikel nicht als E-Book zusammenfassen könnte, wurde ich gefragt. Ich kann.</strong></p>
 <p>Folgt mir auf meiner abenteuerlichen und actiongeladenen Reise, in dem mit Kanonen auf Spatzen geschossen wird und ich den Geheimnissen der rätselhaften Sphinx auf die Spur komme.</p>
-<!-- meme, ebooks everywhere -->
+<a class="reference external image-reference" href="../../../images/sph_cover.jpeg"><img alt="/images/sph_cover.thumbnail.jpeg" src="../../../images/sph_cover.thumbnail.jpeg"></a>
 <div class="section" id="voruberlegungen">
 <h2><a class="toc-backref" href="#id8">Vorüberlegungen</a></h2>
 <p>Die GitHub Page läuft mit dem statischen Seitengenerator <a class="reference external" href="https://getnikola.com/">Nikola</a>, die standardmäßig RestructuredText-Quelldateien parst. Da kommt ein Dokumentationstool, das diese ebenso verarbeiten kann und die Ausgabe in verschiedene Formate ermöglicht, absolut gelegen. All das bietet <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>.</p>
@@ -144,46 +143,46 @@ Automat">
 <div class="section" id="initialisierung">
 <h3><a class="toc-backref" href="#id10">Initialisierung</a></h3>
 <p>Nach der Installation erstellt man das Projektverzeichnis und initialisiert mit</p>
-<pre class="code console"><a name="rest_code_1b36d398d783473d9806f25b20108aab-1"></a><span class="gp">$</span> sphinx-quickstart
+<pre class="code console"><a name="rest_code_1888a617efc64d5d93bb992b691553e2-1"></a><span class="gp">$</span> sphinx-quickstart
 </pre>
 <p>das Grundgerüst. Fast alle Fragen können auf der Voreinstellung belassen werden. Im Projektverzeichnis befindet sich nun die Konfigurationsdatei <tt class="docutils literal">conf.py</tt> sowie das Root-Dokument <tt class="docutils literal">index.rst</tt>.</p>
 <p>Die Dateien lassen sich nun nach dem Muster <tt class="docutils literal">make Builder</tt> erzeugen, die in den Unterverzeichnissen <tt class="docutils literal">_build/builder</tt> befinden:</p>
-<pre class="code console"><a name="rest_code_b0f16a9c90bc4d448e47b89cb1fb2888-1"></a><span class="gp">$</span> make epub
-<a name="rest_code_b0f16a9c90bc4d448e47b89cb1fb2888-2"></a><span class="gp">$</span> make latexpdf
+<pre class="code console"><a name="rest_code_cc51269141a44f3e87792c605771771b-1"></a><span class="gp">$</span> make epub
+<a name="rest_code_cc51269141a44f3e87792c605771771b-2"></a><span class="gp">$</span> make latexpdf
 </pre>
 </div>
 <div class="section" id="conf-py">
 <h3><a class="toc-backref" href="#id11">conf.py</a></h3>
 <div class="section" id="epub">
 <h4><a class="toc-backref" href="#id12">Epub</a></h4>
-<pre class="code python"><a name="rest_code_bf029d0f195041a4a123d514454b3baa-1"></a><span class="c1">#HTML-Dateien vor dem Inhalt der index.rst einfügen</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-2"></a><span class="n">epub_pre_files</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'info.xhtml'</span><span class="p">,</span> <span class="s1">'Info'</span><span class="p">)]</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-3"></a><span class="n">html_additional_pages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'info'</span><span class="p">:</span> <span class="s1">'info.html'</span><span class="p">}</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-4"></a>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-5"></a><span class="c1">#Titel erzeugen</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-6"></a><span class="n">epub_cover</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_static/cover.png'</span><span class="p">,</span> <span class="s1">'epub-cover.html'</span><span class="p">)</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-7"></a>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-8"></a><span class="c1">#Stichwortverzeichnis auslassen</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-9"></a><span class="n">epub_use_index</span> <span class="o">=</span> <span class="bp">False</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-10"></a>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-11"></a><span class="c1">#Bezeichnung der Ausgabedatei</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-12"></a><span class="n">epub_basename</span> <span class="o">=</span> <span class="n">output_basename</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-13"></a>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-14"></a><span class="c1">#für die Generierung der info.xhtml benötigt, da sonst None</span>
-<a name="rest_code_bf029d0f195041a4a123d514454b3baa-15"></a><span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%d</span><span class="s1">. %B %Y'</span>
+<pre class="code python"><a name="rest_code_dff7b5b671674f03a8e9945a4a981771-1"></a><span class="c1">#HTML-Dateien vor dem Inhalt der index.rst einfügen</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-2"></a><span class="n">epub_pre_files</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'info.xhtml'</span><span class="p">,</span> <span class="s1">'Info'</span><span class="p">)]</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-3"></a><span class="n">html_additional_pages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'info'</span><span class="p">:</span> <span class="s1">'info.html'</span><span class="p">}</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-4"></a>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-5"></a><span class="c1">#Titel erzeugen</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-6"></a><span class="n">epub_cover</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_static/cover.png'</span><span class="p">,</span> <span class="s1">'epub-cover.html'</span><span class="p">)</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-7"></a>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-8"></a><span class="c1">#Stichwortverzeichnis auslassen</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-9"></a><span class="n">epub_use_index</span> <span class="o">=</span> <span class="bp">False</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-10"></a>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-11"></a><span class="c1">#Bezeichnung der Ausgabedatei</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-12"></a><span class="n">epub_basename</span> <span class="o">=</span> <span class="n">output_basename</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-13"></a>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-14"></a><span class="c1">#für die Generierung der info.xhtml benötigt, da sonst None</span>
+<a name="rest_code_dff7b5b671674f03a8e9945a4a981771-15"></a><span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%d</span><span class="s1">. %B %Y'</span>
 </pre>
 </div>
 <div class="section" id="latex">
 <h4><a class="toc-backref" href="#id13">LaTeX</a></h4>
 <p>Für die PDF-Ausgabe müssen eine Reihe von TeXLive-Paketen installiert sein (siehe <a class="reference external" href="http://www.sphinx-doc.org/en/stable/builders.html#sphinx.builders.latex.LaTeXBuilder">Dokumentation</a>). Als Alternativen seien an dieser Stelle das in <a class="reference external" href="https://calibre-ebook.com/">Calibre</a> integrierte Konvertierungstool <tt class="docutils literal"><span class="pre">ebook-convert</span></tt> und <a class="reference external" href="http://www.epub2pdf.com/">epub2pdf</a> genannt.</p>
-<pre class="code python"><a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-1"></a><span class="c1">#Papierformat (Standard ist US-Letter), leere Seiten vermeiden</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-2"></a><span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-3"></a>    <span class="s1">'papersize'</span><span class="p">:</span> <span class="s1">'a4paper'</span><span class="p">,</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-4"></a>    <span class="s1">'classoptions'</span><span class="p">:</span> <span class="s1">'oneside,openany'</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-5"></a><span class="p">}</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-6"></a>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-7"></a><span class="c1">#Logo auf der Titelseite</span>
-<a name="rest_code_03fc6887500b46eaabc960eb53d40ea7-8"></a><span class="n">latex_logo</span> <span class="o">=</span> <span class="s1">'_static/logo.png'</span>
+<pre class="code python"><a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-1"></a><span class="c1">#Papierformat (Standard ist US-Letter), leere Seiten vermeiden</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-2"></a><span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-3"></a>    <span class="s1">'papersize'</span><span class="p">:</span> <span class="s1">'a4paper'</span><span class="p">,</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-4"></a>    <span class="s1">'classoptions'</span><span class="p">:</span> <span class="s1">'oneside,openany'</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-5"></a><span class="p">}</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-6"></a>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-7"></a><span class="c1">#Logo auf der Titelseite</span>
+<a name="rest_code_bdaa3156cd3f4cfa80021dffe0d96c77-8"></a><span class="n">latex_logo</span> <span class="o">=</span> <span class="s1">'_static/logo.png'</span>
 </pre>
 </div>
 <div class="section" id="sonstiges">
@@ -194,8 +193,8 @@ Automat">
 <dt>Bezeichnung der Ausgabedatei</dt>
 <dd>Der Dateiname lässt sich für die verschiedenen Builder jeweils festlegen. Um für alle verwendeten Builder jeweils die gleiche Bezeichnung zu nutzen, verwende ich hier die eigene Variable <tt class="docutils literal">output_basename</tt>. Diese wird demzufolge nicht von Sphinx unterstützt und nur innerhalb der <tt class="docutils literal">conf.py</tt> verwendet (in den Variablen htmlhelp_basename, latex_documents, texinfo_documents, epub_basename).</dd>
 </dl>
-<pre class="code python"><a name="rest_code_5d9661ba21114444a9db3cc2652269a1-1"></a><span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">'borland'</span>
-<a name="rest_code_5d9661ba21114444a9db3cc2652269a1-2"></a><span class="n">output_basename</span> <span class="o">=</span> <span class="s1">'gladepytutorial'</span>
+<pre class="code python"><a name="rest_code_63e06f72df7040d6b11743002afd1842-1"></a><span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">'borland'</span>
+<a name="rest_code_63e06f72df7040d6b11743002afd1842-2"></a><span class="n">output_basename</span> <span class="o">=</span> <span class="s1">'gladepytutorial'</span>
 </pre>
 </div>
 </div>
@@ -224,19 +223,19 @@ Automat">
 <div class="section" id="index-rst">
 <h3><a class="toc-backref" href="#id18">index.rst</a></h3>
 <p>Dies ist das Hauptdokument, das von jedem Sphinx-Builder geparst wird. Als reguläre reST-Datei kann sie beliebig viel Inhalt aufnehmen. Es ist allerdings zu empfehlen und im Normalfall vermutlich sowieso bereits der Fall, das Dokument in mehrere Dateien aufzuteilen. Sphinx stellt dafür die eigene <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html">toctree</a>-Directive zur Verfügung.</p>
-<pre class="code rest"><a name="rest_code_a769b25925834fbf863f31dd204d87e8-1"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-2"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-3"></a>    <span class="nc">:numbered:</span>
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-4"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-5"></a>
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-6"></a>    tutorial-reihe-glade
-<a name="rest_code_a769b25925834fbf863f31dd204d87e8-7"></a><span class="cp">    ...</span>
+<pre class="code rest"><a name="rest_code_b902b9bd062145dbab0602f262e2630d-1"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-2"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-3"></a>    <span class="nc">:numbered:</span>
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-4"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-5"></a>
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-6"></a>    tutorial-reihe-glade
+<a name="rest_code_b902b9bd062145dbab0602f262e2630d-7"></a><span class="cp">    ...</span>
 </pre>
 <p>Dateien außerhalb von <em>toctree</em> werden mit der include-Directive hinzugefügt.</p>
 <p>Es ist auch möglich, Inhalte nur von bestimmten Builder berücksichtigen zu lassen:</p>
-<pre class="code rest"><a name="rest_code_ae0f2ac46da34202a6e26dffd6ab8e3a-1"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
-<a name="rest_code_ae0f2ac46da34202a6e26dffd6ab8e3a-2"></a>
-<a name="rest_code_ae0f2ac46da34202a6e26dffd6ab8e3a-3"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
+<pre class="code rest"><a name="rest_code_a99b00ef1f034f268f39a63fdf431510-1"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
+<a name="rest_code_a99b00ef1f034f268f39a63fdf431510-2"></a>
+<a name="rest_code_a99b00ef1f034f268f39a63fdf431510-3"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
 </pre>
 </div>
 </div>
@@ -248,7 +247,7 @@ Automat">
 <h3><a class="toc-backref" href="#id20">KindleGen</a></h3>
 <p>Amazon möchte zwar keine Epubs <a class="footnote-reference" href="#id6" id="id4">[2]</a> unterstützen, aber sie bieten mit <a class="reference external" href="https://www.amazon.com/gp/feature.html?docId=1000765211">KindleGen</a> ein Tool an, welches diese in die eigenen Formate (KF8, Mobi) überführt.</p>
 <p>Auf diese Weise lässt sich mit</p>
-<pre class="code console"><a name="rest_code_3296fd328f284f6e94d9cedfbf863134-1"></a><span class="gp">$</span> kindlegen input.epub
+<pre class="code console"><a name="rest_code_aae1387e98b64d5faf75b05704868d25-1"></a><span class="gp">$</span> kindlegen input.epub
 </pre>
 <p>eine Mobi-Datei erzeugen.</p>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
@@ -266,14 +265,14 @@ Automat">
 <h3><a class="toc-backref" href="#id21">Problem: Encoding</a></h3>
 <p>Das aus dem Epub erstellte E-Book im Mobi-Format hat ein Darstellungsproblem mit einigen (Sonder-)Zeichen.</p>
 <p>Abhilfe schafft hier die Zeile</p>
-<pre class="code xml"><a name="rest_code_9d89b8aaa1e248dfa0a367e7c107c125-1"></a><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="nt">/&gt;</span>
+<pre class="code xml"><a name="rest_code_fbe5c99fd7fb463592d9738c345d6a4e-1"></a><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="nt">/&gt;</span>
 </pre>
 <p>an Stelle von</p>
-<pre class="code xml"><a name="rest_code_bbb81de8aadd42ae98787f0703cf93d7-1"></a><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+<pre class="code xml"><a name="rest_code_b69c5883592b46ffae7019535076b20c-1"></a><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
 </pre>
 <p>innerhalb des HTML-Heads. Sphinx bietet dafür die <em>meta</em>-Directive, die allerdings für jede Datei gesetzt werden muss:</p>
-<pre class="code rest"><a name="rest_code_df240686607140458321b0c29b1c5bcc-1"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
-<a name="rest_code_df240686607140458321b0c29b1c5bcc-2"></a>    <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
+<pre class="code rest"><a name="rest_code_435015aaf06a4a759d82fc07c4e12108-1"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
+<a name="rest_code_435015aaf06a4a759d82fc07c4e12108-2"></a>    <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
 </pre>
 </div>
 </div>
@@ -321,40 +320,40 @@ Automat">
 <li>
 <strong>index.lst</strong>: Liste von Dateinamen (ohne Endung), die im Dokument enthalten sein sollen</li>
 </ol>
-<pre class="code text"><a name="rest_code_3b9b1e15002d4a1f9b18469969064bd1-1"></a>übersicht
-<a name="rest_code_3b9b1e15002d4a1f9b18469969064bd1-2"></a>artikel1
-<a name="rest_code_3b9b1e15002d4a1f9b18469969064bd1-3"></a>artikel2
-<a name="rest_code_3b9b1e15002d4a1f9b18469969064bd1-4"></a>artikel5
+<pre class="code text"><a name="rest_code_dd329d2eae7e4834bae54dc90a3bf9fd-1"></a>übersicht
+<a name="rest_code_dd329d2eae7e4834bae54dc90a3bf9fd-2"></a>artikel1
+<a name="rest_code_dd329d2eae7e4834bae54dc90a3bf9fd-3"></a>artikel2
+<a name="rest_code_dd329d2eae7e4834bae54dc90a3bf9fd-4"></a>artikel5
 </pre>
 <ol class="arabic simple" start="3">
 <li>
 <strong>index.tmpl</strong>: aus dieser und der index.lst wird die <tt class="docutils literal">index.rst</tt> generiert</li>
 </ol>
-<pre class="code rst"><a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-1"></a><span class="cp">.. generated by nibook, posts will be inserted after ".. include-start"</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-2"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-3"></a><span class="cp">.. some text documentation master file, created by</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-4"></a><span class="cp">   sphinx-quickstart on Thu Oct 26 20:26:54 2017.</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-5"></a><span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-6"></a><span class="cp">   contain the root `toctree` directive.</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-7"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-8"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-9"></a>   <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-10"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-11"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-12"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-13"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-14"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-15"></a><span class="gh">****************************</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-16"></a><span class="gh">Glade-Tutorial mit PyGObject</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-17"></a><span class="gh">****************************</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-18"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-19"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-20"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-21"></a>    <span class="nc">:numbered:</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-22"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-23"></a>    <span class="nc">:name:</span> <span class="nf">mastertoc</span>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-24"></a>
-<a name="rest_code_cc5fdad0b851412a895ea33a9f3f52d2-25"></a><span class="cp">    .. include-start</span>
+<pre class="code rst"><a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-1"></a><span class="cp">.. generated by nibook, posts will be inserted after ".. include-start"</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-2"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-3"></a><span class="cp">.. some text documentation master file, created by</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-4"></a><span class="cp">   sphinx-quickstart on Thu Oct 26 20:26:54 2017.</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-5"></a><span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-6"></a><span class="cp">   contain the root `toctree` directive.</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-7"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-8"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-9"></a>   <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-10"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-11"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-12"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-13"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-14"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-15"></a><span class="gh">****************************</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-16"></a><span class="gh">Glade-Tutorial mit PyGObject</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-17"></a><span class="gh">****************************</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-18"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-19"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-20"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-21"></a>    <span class="nc">:numbered:</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-22"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-23"></a>    <span class="nc">:name:</span> <span class="nf">mastertoc</span>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-24"></a>
+<a name="rest_code_ade743f9d16147abb3d03a4cd9102b5e-25"></a><span class="cp">    .. include-start</span>
 </pre>
 </div>
 </div>
