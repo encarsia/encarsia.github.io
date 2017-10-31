@@ -13,6 +13,7 @@ POSTS = []
 SPHDIR = os.getcwd()
 META = '''.. meta::
    :http-equiv=Content-Type: text/html; charset=UTF-8
+
 '''
 
 def collect_posts():
@@ -60,13 +61,13 @@ def sph_title(src):
 
 def sph_edit(src):
     #delete unwanted content like table of contents
-    #convert custom Nikola directives
-    #Sphinx demands relative paths
+    #convert custom Nikola directives thumbnail and listing to image and literalinclude
+    #use original files and images with Sphinx, demands relative paths
     #delete custom G+ link, this won't work if you use the raw directive in any other way
     for pos, line in enumerate(src):
         if line.startswith(del_lines):
             del src[pos]
-        elif line.startswith('.. thumbnail::'):
+        elif line.startswith('.. thumbnail::') or line.startswith('.. image::'):
             del src[pos]
             new_line = '.. image:: ../{}{}\n'.format(os.path.relpath(GHP), line.split()[2])
             src.insert(pos, new_line)
@@ -102,14 +103,14 @@ def sph_deslug(src):
                     Sentence with a `slugified link <link://slug/thisisit>`_.
             1)'>`_' [0]                                                  |  |[1] post
             2)' <'  [0]                            ||[1]                 |-----------
-            3)' `'  [0] pre        ||[1] descr     ||--------------------|-----------
+            3)'`'   [0] pre        ||[1] descr      |--------------------|-----------
             4)'/'   -------------------------------||[0]  ||[2] |[3] ref |-----------
     '''
     for pos, line in enumerate(src):
         while '<link://slug/' in line:
             split1 = line.split('>`_', 1)   #always process first link
             split2 = split1[0].split(' <')
-            split3 = split2[0].split(' `')
+            split3 = split2[0].split('`')
             split4 = split2[1].split('/')
             pre = split3[0]
             descr = split3[1]
@@ -179,11 +180,19 @@ if __name__ == "__main__":
         else:
             print("Invalid input. Try again...")
 
-    print('Copy output to download directory...')
-    shutil.copy2(glob.glob('*.epub')[0], GHP+DL_DIR)
-    shutil.copy2(glob.glob('*.mobi')[0], GHP+DL_DIR)
-    os.chdir('../latex')
-    shutil.copy2(glob.glob('*.pdf')[0], GHP+DL_DIR)
+    while 1:
+        print()
+        cmd = input("Copy files to download directory? (Y/n) ")
+        if cmd == 'n':
+            break
+        elif cmd == 'y' or cmd == 'j' or cmd == '':
+            shutil.copy2(glob.glob('*.epub')[0], GHP+DL_DIR)
+            shutil.copy2(glob.glob('*.mobi')[0], GHP+DL_DIR)
+            os.chdir('../latex')
+            shutil.copy2(glob.glob('*.pdf')[0], GHP+DL_DIR)
+            break
+        else:
+            print("Invalid input. Try again...")
 
     while 1:
         print()
@@ -198,4 +207,4 @@ if __name__ == "__main__":
         else:
             print("Invalid input. Try again...")
 
-    print('This is the end.')
+    print('\nThis is the end.')
