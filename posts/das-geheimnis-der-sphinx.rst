@@ -1,8 +1,8 @@
 .. title: Das Geheimnis der Sphinx
 .. slug: das-geheimnis-der-sphinx
 .. date: 2017-10-29 11:07:05 UTC+01:00
-.. tags: draft,glade,python,nikola,sphinx
-.. category: tutorial
+.. tags: glade,python,nikola,sphinx
+.. category: tutorial,ebook
 .. link: 
 .. description: 
 .. type: text
@@ -214,8 +214,11 @@ Das Resultat des ersten Durchlaufs von Sphinx mit der Übersichtsseite und drei 
 #. Die Artikelüberschrift ist kein Gliederungselement und fehlt demzufolge im Inhaltsverzeichnis
 
 #. Nikola-eigene Directives verursachen Fehler. Konvertierung von
+
     * *thumbnail* -> image
     * *listings* -> literalinclude
+
+#. relative Pfade in *image*-Directives anpassen
 
 #. Inhaltsverzeichnisse in den Artikel überflüssig
 
