@@ -44,11 +44,11 @@ Möchte man bei LESS bleiben, steht dafür aber auch ein Nikola-Plugin bereit.
 Links
 *****
 
- * `Nikola static site generator <https://getnikola.com/>`__
- * `Themes for Nikola <https://themes.getnikola.com/>`__
- * `zen <https://themes.getnikola.com/v7/zen/>`__
- * `LESS stylesheet framework <http://lesscss.org/>`__
- * `LESS-Plugin für Nikola <https://plugins.getnikola.com/v7/less/>`__
+ * `Nikola static site generator <https://getnikola.com/>`_
+ * `Themes for Nikola <https://themes.getnikola.com/>`_
+ * `zen <https://themes.getnikola.com/v7/zen/>`_
+ * `LESS stylesheet framework <http://lesscss.org/>`_
+ * `LESS-Plugin für Nikola <https://plugins.getnikola.com/v7/less/>`_
 
 Download
 ********

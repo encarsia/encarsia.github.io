@@ -38,7 +38,7 @@ CSS
 
 Layout-Anweisungen erfolgen nach dem Muster
 
-.. code-block::
+.. code-block:: python
 
     widget [element] {
       font...
