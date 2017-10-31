@@ -11,13 +11,11 @@
 
 .. contents::
 
-.. thumbnail:: /images/sph_cover.jpeg
-
 **Ob ich die Tutorial-Artikel nicht als E-Book zusammenfassen könnte, wurde ich gefragt. Ich kann.**
 
 Folgt mir auf meiner abenteuerlichen und actiongeladenen Reise, in dem mit Kanonen auf Spatzen geschossen wird und ich den Geheimnissen der rätselhaften Sphinx auf die Spur komme.
 
-.. meme, ebooks everywhere
+.. thumbnail:: /images/sph_cover.jpeg
 
 Vorüberlegungen
 ===============
@@ -287,7 +285,6 @@ Die größte Arbeit ist bereits erledigt: die Einrichtung von Sphinx und die Pro
         :name: mastertoc
 
         .. include-start
-
 
 Fazit
 =====

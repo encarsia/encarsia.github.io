@@ -10,16 +10,15 @@
 Tutorial-Artikel (Zusammenfassung)
 ==================================
 
-* `EPUB`__
+* `EPUB (ca. 1,9 MB)`__
 
 __ /files/tut_ebook/gladepytorial.epub
 
-* `MOBI`__
+* `MOBI (ca. 4,1 MB)`__
 
 __ /files/tut_ebook/gladepytorial.mobi
 
-* `PDF`__
+* `PDF (ca. 2,2 MB)`__
 
 __ /files/tut_ebook/gladepytorial.pdf
-
 
