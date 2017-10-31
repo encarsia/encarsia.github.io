@@ -7,6 +7,20 @@
 .. description: 
 .. type: text
 
+Motivation
+----------
+
+Bei der Erstellung der grafischen Oberfläche sowohl für gpt_ als auch NoN_ habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach `GTK+ <http://www.gtk.org/>`_-Oberflächen erstellen kann.
+
+Mit Glade erstellte Projektdateien sind GtkBuilder_-XML-Dateien, die Verbindung zum eigentlichen Programm erfolgt über Signale, dabei werden zahlreiche Programmiersprachen unterstützt. Hier werde ich Python verwenden.
+
+Da es in den letzten Jahren Versionssprünge sowohl bei Python als auch GTK+ gegeben hat (jeweils von 2.x auf 3.x), gibt es viele Dokumentationen und Tutorials, die nicht 1:1 anwendbar sind, d.h. die Funktionen sind meist gleich, nur die Syntax unterscheidet sich minimal (siehe Links).
+
+An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und Glade 3.20.0.
+
+.. _gpt: https://github.com/encarsia/gpt
+.. _GtkBuilder: https://developer.gnome.org/gtk3/stable/GtkBuilder.html
+.. _NoN: https://github.com/encarsia/non
 
 Themen
 ------
@@ -27,27 +41,16 @@ Themen
 - `Programm als eigenständige GTK+-Anwendung <link://slug/application>`_
 - `Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
 - `Dateiauswahldialog <link://slug/fcdialog>`_
-- `GSettings-Konfigurationssystem <link://slug/gsettings>`__
-- `Mediaplayer mit GStreamer <link://slug/gst-player>`__
-- `Mediaplayer mit LibVLC <link://slug/vlc-player>`__
-- `Stack und Notebook <link://slug/stacksnotebooks>`__ 
+- `GSettings-Konfigurationssystem <link://slug/gsettings>`_
+- `Mediaplayer mit GStreamer <link://slug/gst-player>`_
+- `Mediaplayer mit LibVLC <link://slug/vlc-player>`_
+- `Stack und Notebook <link://slug/stacksnotebooks>`_
 
-Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
+Dateien
+-------
 
-Motivation
-----------
-
-Bei der Erstellung der grafischen Oberfläche sowohl für gpt_ als auch NoN_ habe ich auf Glade zurückgegriffen, einem grafischen Werkzeug, mit dem man relativ einfach `GTK+ <http://www.gtk.org/>`_-Oberflächen erstellen kann.
-
-Mit Glade erstellte Projektdateien sind GtkBuilder_-XML-Dateien, die Verbindung zum eigentlichen Programm erfolgt über Signale, dabei werden zahlreiche Programmiersprachen unterstützt. Hier werde ich Python verwenden.
-
-Da es in den letzten Jahren Versionssprünge sowohl bei Python als auch GTK+ gegeben hat (jeweils von 2.x auf 3.x), gibt es viele Dokumentationen und Tutorials, die nicht 1:1 anwendbar sind, d.h. die Funktionen sind meist gleich, nur die Syntax unterscheidet sich minimal (siehe Links).
-
-An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und Glade 3.20.0.
-
-.. _gpt: https://github.com/encarsia/gpt
-.. _GtkBuilder: https://developer.gnome.org/gtk3/stable/GtkBuilder.html
-.. _NoN: https://github.com/encarsia/non
+- Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
+- `E-Book <https://encarsia.github.io/pages/downloads>`_
 
 Nicht exklusiv
 --------------

@@ -26,9 +26,9 @@ Topics
 - `Run program as GTK+ application <link://slug/application>`_
 - `Icon, headerbar and commandline options <link://slug/application-fortsetzung>`_
 - `File chooser dialog <link://slug/fcdialog>`_
-- `Media player with GStreamer <link://slug/gst-player>`__
-- `Media player with LibVLC <link://slug/vlc-player>`__
-- `Stack and Notebook <link://slug/stacksnotebooks>`__ 
+- `Media player with GStreamer <link://slug/gst-player>`_
+- `Media player with LibVLC <link://slug/vlc-player>`_
+- `Stack and Notebook <link://slug/stacksnotebooks>`_
 
 Directory of example files: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
 

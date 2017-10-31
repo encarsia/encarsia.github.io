@@ -50,12 +50,12 @@ XML-Datei
 
 Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Datei in einem Texteditor und fügt dem Element ``<action-widgets>`` die entsprechenden Zeilen hinzu:
 
-.. code-block:: xml
+.. code-block:: html
 
   <object class="GtkFileChooserDialog" id="filechooser_dialog">
-    <property ... ></property>
-    <property ... ></property>
-    ...
+    <property abc ></property>
+    <property xyz ></property>
+    <!-- usw. -->
     <action-widgets>
       <!-- Buttons innerhalb der action area -->
       <action-widget response="0">button1</action-widget>
@@ -63,7 +63,7 @@ Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Dat
       <!-- Button in Headerbar -->
       <action-widget response="-1">hb_button</action-widget>
     </action-widgets>
-    ...
+    <!-- usw. -->
   </object>
 
 Dies funktioniert zwar, ist aber ganz sicher nicht so gedacht, weil diese Änderung beim erneuten Bearbeiten der Glade-Datei wieder rückgängig gemacht wird.
@@ -122,7 +122,7 @@ Der *FileChooserDialog* lässt sich auch ziemlich einfach ohne Glade realisieren
 
 .. code-block:: python
 
- dialog = Gtk.FileChooserDialog("window title",
+    dialog = Gtk.FileChooserDialog("window title",
                                 parent_window,
                                 file_chooser_action,
                                 (button1,response1,

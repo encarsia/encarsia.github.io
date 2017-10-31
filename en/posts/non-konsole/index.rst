@@ -24,8 +24,11 @@ Die per Button aufgerufenen Nikola-Kommandos wurden bisher folgendermaßen verar
 Und das soll jetzt alles vorbei sein?
 *************************************
 
-    *"Neu ist immer besser."*
-        -- Barney Stinson
+.. epigraph::
+
+    Neu ist immer besser.
+    
+    -- Barney Stinson
 
 Die Oberfläche ist nun per `Gtk.Stack <https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Stack.html>`__ zweigeteilt. Per Gtk.StackSwitcher in der Headerbar lässt sich zwischen der normalen Oberfläche und einem Terminal hin- und herwechseln.
 
