@@ -20,7 +20,7 @@ Folgt mir auf meiner abenteuerlichen und actiongeladenen Reise, in dem mit Kanon
 Vorüberlegungen
 ===============
 
-Die GitHub Page läuft mit dem statischen Seitengenerator Nikola_, die standardmäßig RestructuredText-Quelldateien parst. Da kommt ein Dokumentationstool, das diese ebenso verarbeiten kann und die Ausgabe in verschiedene Formate ermöglicht, absolut gelegen. All das bietet Sphinx_.
+Die GitHub-Page läuft mit dem statischen Seitengenerator Nikola_, die standardmäßig reStructuredText-Quelldateien parst. Da kommt ein Dokumentationstool, das diese ebenso verarbeiten kann und die Ausgabe in verschiedene Formate ermöglicht, absolut gelegen. All das bietet Sphinx_.
 
 .. _Nikola: https://getnikola.com/
 .. _Sphinx: http://www.sphinx-doc.org
@@ -45,7 +45,7 @@ Nach der Installation erstellt man das Projektverzeichnis und initialisiert mit
 
 das Grundgerüst. Fast alle Fragen können auf der Voreinstellung belassen werden. Im Projektverzeichnis befindet sich nun die Konfigurationsdatei ``conf.py`` sowie das Root-Dokument ``index.rst``.
 
-Die Dateien lassen sich nun nach dem Muster ``make Builder`` erzeugen, die in den Unterverzeichnissen ``_build/builder`` befinden:
+Die Dateien lassen sich nach dem Muster ``make Builder`` erzeugen, die in den Unterverzeichnissen ``_build/builder`` befinden:
 
 .. code:: console
 
@@ -100,7 +100,7 @@ Sonstiges
 ---------
 
 Pygments
-    Syntax-Highlighting, ebenfalls von Nikola unterstützt, hier wie dort wähle ich das Theme "borland"
+    Syntax-Highlighting, ebenfalls von Nikola unterstützt, hier wie dort bevorzuge ich das Theme "borland".
 
 Bezeichnung der Ausgabedatei
     Der Dateiname lässt sich für die verschiedenen Builder jeweils festlegen. Um für alle verwendeten Builder jeweils die gleiche Bezeichnung zu nutzen, verwende ich hier die eigene Variable ``output_basename``. Diese wird demzufolge nicht von Sphinx unterstützt und nur innerhalb der ``conf.py`` verwendet (in den Variablen htmlhelp_basename, latex_documents, texinfo_documents, epub_basename).
@@ -113,7 +113,7 @@ Bezeichnung der Ausgabedatei
 _static
 *******
 
-In diesem Ordner befinden sich Stylesheets, Bilder und Skripte, die nach den vorgegebenen Dateien geladen werden. So kann man lokale individuelle Stylesheet-Anpassungen vornehmen, ohne Themes selbst zu modifizieren. Hier befinden sich eine angepasste ``pygments.css``, ``cover.png`` (Epub) und ``logo.png`` (PDF).
+In diesem Ordner befinden sich Stylesheets, Bilder und Skripte, die nach den vorgegebenen Dateien geladen werden. So kann man lokale individuelle Stylesheet-Anpassungen vornehmen, ohne das Theme selbst zu modifizieren. Hier befinden sich eine angepasste ``pygments.css``, ``cover.png`` (Epub) und ``logo.png`` (PDF).
 
 _templates
 **********
@@ -132,7 +132,9 @@ Sphinx bietet mit ``epub_pre_files`` (und analog ``epub_post_files``) die Option
 index.rst
 *********
 
-Dies ist das Hauptdokument, das von jedem Sphinx-Builder geparst wird. Als reguläre reST-Datei kann sie beliebig viel Inhalt aufnehmen. Es ist allerdings zu empfehlen und im Normalfall vermutlich sowieso bereits der Fall, das Dokument in mehrere Dateien aufzuteilen. Sphinx stellt dafür die eigene toctree_-Directive zur Verfügung.
+Dies ist das Hauptdokument, das von jedem Sphinx-Builder geparst wird. Die Bezeichnung wird in der ``conf.py`` in der Variable ``master_doc`` festgelegt.
+
+Als reguläre reST-Datei kann sie beliebig viel Inhalt aufnehmen. Es ist allerdings zu empfehlen und im Normalfall vermutlich sowieso bereits der Fall, das Dokument in mehrere Dateien aufzuteilen. Sphinx stellt dafür die eigene toctree_-Directive zur Verfügung.
 
 .. code:: rest
 
@@ -141,12 +143,13 @@ Dies ist das Hauptdokument, das von jedem Sphinx-Builder geparst wird. Als regul
         :numbered:
         :caption: Inhalt
 
-        tutorial-reihe-glade    
+        teildokument1
+        teildokument2
         ...
 
-Dateien außerhalb von *toctree* werden mit der include-Directive hinzugefügt.
+Dateien außerhalb von *toctree* werden per *include*-Directive hinzugefügt.
 
-Es ist auch möglich, Inhalte nur von bestimmten Builder berücksichtigen zu lassen:
+Es ist auch möglich, Inhalte nur von bestimmten Buildern berücksichtigen zu lassen:
 
 .. code:: rest
 
@@ -224,7 +227,7 @@ Das Resultat des ersten Durchlaufs von Sphinx mit der Übersichtsseite und drei 
 
 #. "Kommentieren auf G+"-Button entfernen
 
-#. Für die Generierung der Mobi-Datei muss jede Datei eine Meta- Anweisung erhalten
+#. Für die Generierung der Mobi-Datei muss jede Datei eine Meta-Anweisung erhalten
 
 Für eine zufriedenstellende Ausgabe ist es also erforderlich, die Ausgangsdateien hinsichtlich dieser Punkte per Skript zu modifizieren.
 
@@ -235,7 +238,7 @@ Das ist er, der Elefant im Raum.
 
 Sphinx läuft und die ``index.rst`` ist eingerichtet. Die Mission  besteht nun aus folgenden Teilaufgaben:
 
-#. Sphinx soll sich der aktuellen Dateien der GitHub Page bedienen.
+#. Sphinx soll sich der aktuellen Dateien der GitHub-Page bedienen.
 #. Diese Dateien sollen gemäß der oben genannten Punkte bearbeitet werden.
 #. Sphinx soll ein Epub und ein PDF erzeugen.
 #. KindleGen soll ein Mobi erzeugen.
@@ -246,7 +249,7 @@ Let's do this.
 Skript
 ******
 
-Die größte Arbeit ist bereits erledigt: die Einrichtung von Sphinx und die Problemerfassung. Das Skript selbst arbeitet nun die oben genannten Punkte ab. Weiterhin gibt es der Übersichtlichkeit halber zwei weitere Dateien. Es befinden sich nun im Sphinx-Projektverzeichnis folgende neue Dateien:
+Die diffizile Arbeit ist bereits erledigt: die Einrichtung von Sphinx und die Problemerfassung. Das Skript selbst arbeitet nun die oben genannten Punkte ab. Weiterhin gibt es der Übersichtlichkeit halber zwei weitere Dateien. Es befinden sich nun im Sphinx-Projektverzeichnis folgende neue Dateien:
 
 #. **nibook.py**: sammelt, kopiert, bearbeitet die Quelldateien, erstellt die E-Books und füttert die GitHub-Page (`Code <link://listing/nibook.py>`_)
 
