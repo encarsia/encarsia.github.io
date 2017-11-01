@@ -246,9 +246,6 @@ Sphinx läuft und die ``index.rst`` ist eingerichtet. Die Mission  besteht nun a
 
 Let's do this.
 
-Skript
-******
-
 Die diffizile Arbeit ist bereits erledigt: die Einrichtung von Sphinx und die Problemerfassung. Das Skript selbst arbeitet nun die oben genannten Punkte ab. Weiterhin gibt es der Übersichtlichkeit halber zwei weitere Dateien. Es befinden sich nun im Sphinx-Projektverzeichnis folgende neue Dateien:
 
 #. **nibook.py**: sammelt, kopiert, bearbeitet die Quelldateien, erstellt die E-Books und füttert die GitHub-Page (`Code <link://listing/nibook.py>`_)
