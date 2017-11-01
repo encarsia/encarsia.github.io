@@ -27,7 +27,8 @@ Die GitHub-Page läuft mit dem statischen Seitengenerator Nikola_, die standardm
 
 Die naheliegende, sich aber möglicherweise als naiv herausstellende, Überlegung war nun, die bestehenden Blogartikelquelldateien so vorzubereiten, dass sich mit wenig Aufwand gewünschte Ausgabeformate immer wieder neu generieren lassen.
 
-Sphinx bietet die Builder für 
+Sphinx bietet Builder für
+
     * **EPUB**, dem offenen E-Book-Standard, nativ von allen E-Reader-Fabrikaten außer den Kindles unterstützt
     * **PDF**, das per LaTeX (verschiedene Engines verfügbar) erzeugt wird
 
