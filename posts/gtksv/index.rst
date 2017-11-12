@@ -19,8 +19,8 @@ GtkSourceView_ ist eine Erweiterung und Unterklasse von TextView, die Syntaxhigh
 
 Im Beispiel wird ein Editor ergestellt, der bestimmte Dateien laden und speichern kann, sowie eine rudimentäre Suchfunktion und ein Widget zum Farbschemawechseln bereitstellt.
 
-.. image:: /images/22_editor_gtksv.gif
-
+.. thumbnail:: /images/22_editor_gtksv.png
+    :width: 600px
 
 Glade
 -----
@@ -163,6 +163,8 @@ Der angewählte Style lässt sich dann einfach auf den gewünschten Buffer anwen
 
     def on_signal_emitted(self, widget, event):
         buffer.set_style_scheme(widget.get_style_scheme())
+
+.. image:: /images/22_editor_gtksv.gif
 
 Links
 -----
