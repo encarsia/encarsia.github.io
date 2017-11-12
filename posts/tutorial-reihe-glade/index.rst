@@ -64,7 +64,7 @@ Links
 -----
 
 - `The Python GTK+ 3 Tutorial <http://python-gtk-3-tutorial.readthedocs.io/>`_ - Grundlagen der Programmierung von GTK+-GUI mit Python
-- `PyGObject Tutorial <https://pygobject.readthedocs.io> - PyGObject-Dokumentation
+- `PyGObject Tutorial <https://pygobject.readthedocs.io>`_ - PyGObject-Dokumentation
 - `Creating a GUI using PyGTK and Glade <http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/>`_ - Grundlagentutorial für PyGTK (Python 2.x)
 - `Programmieren mit Python und Glade <https://www.florian-diesch.de/doc/python-und-glade/online/index.html>`_ - umfangreiches Tutorial auf Deutsch
 - `Python GObject Introspection API Reference <https://lazka.github.io/pgi-docs/>`_ - vollständige Dokumentation des GI-Moduls (bookmark this!)
