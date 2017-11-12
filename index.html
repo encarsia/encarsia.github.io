@@ -26,6 +26,195 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/gtksv/">Texteditor mit GtkSourceView</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2017-11-11T18:27:40-01:00">2017-11-11 18:27</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/gtksv/#disqus_thread" data-disqus-identifier="cache/posts/texteditor-mit-gtksourceview.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/gtksv/#glade" id="id4">Glade</a><ul>
+<li><a class="reference internal" href="posts/gtksv/#gtksourceview" id="id5">GtkSourceView</a></li>
+<li><a class="reference internal" href="posts/gtksv/#sourcemap" id="id6">SourceMap</a></li>
+<li><a class="reference internal" href="posts/gtksv/#headerbar" id="id7">Headerbar</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/gtksv/#python" id="id8">Python</a><ul>
+<li>
+<a class="reference internal" href="posts/gtksv/#sourceview" id="id9">SourceView</a><ul>
+<li><a class="reference internal" href="posts/gtksv/#initialisierung" id="id10">Initialisierung</a></li>
+<li><a class="reference internal" href="posts/gtksv/#datei-laden" id="id11">Datei laden</a></li>
+<li><a class="reference internal" href="posts/gtksv/#datei-speichern" id="id12">Datei speichern</a></li>
+<li><a class="reference internal" href="posts/gtksv/#text-hervorheben" id="id13">Text hervorheben</a></li>
+<li><a class="reference internal" href="posts/gtksv/#text-markieren" id="id14">Text markieren</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/gtksv/#stylechooser" id="id15">StyleChooser</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/gtksv/#links" id="id16">Links</a></li>
+<li>
+<a class="reference internal" href="posts/gtksv/#listings" id="id17">Listings</a><ul>
+<li><a class="reference internal" href="posts/gtksv/#id2" id="id18">Python</a></li>
+<li><a class="reference internal" href="posts/gtksv/#id3" id="id19">Glade</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Text-Widget mit GtkSourceView</strong></p>
+<p>Gtk+ bietet mit <em>Gtk.TextView</em> ein Widget zum Anzeigen und Bearbeiten von Text/-dateien an. Wie beim <a class="reference external" href="posts/uberlistet">TreeView-Widget</a> werden die Daten (model) und die Anzeige (view) getrennt voneinander gehandhabt. Das datentragende Modell zu <em>TextView</em> ist <em>TextBuffer</em>.</p>
+<p><a class="reference external" href="https://wiki.gnome.org/Projects/GtkSourceView">GtkSourceView</a> ist eine Erweiterung und Unterklasse von TextView, die Syntaxhighlighting, Farbschemata, Laden/Speichern, Vervollständigung und andere Funktionen unterstützt.</p>
+<p>Im Beispiel wird ein Editor ergestellt, der bestimmte Dateien laden und speichern kann, sowie eine rudimentäre Suchfunktion und ein Widget zum Farbschemawechseln bereitstellt.</p>
+<img alt="/images/22_editor_gtksv.gif" src="images/22_editor_gtksv.gif"><div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/gtksv/#id4">Glade</a></h2>
+<div class="section" id="gtksourceview">
+<h3><a class="toc-backref" href="posts/gtksv/#id5">GtkSourceView</a></h3>
+<p>Die SourceView-Widgets befinden sich unterhalb einer eigenen gleichnamigen Hauptkategorie in der Seitenleiste.</p>
+<ul class="simple">
+<li>
+<strong>GtkSourceView</strong>: das eigentliche Editorwidget, das in einem <em>ScrolledWindow</em> platziert wird</li>
+<li>
+<strong>GtkSourceMap</strong>: Miniaturansicht und Unterklasse von SourceView</li>
+<li>
+<strong>GtkSourceStyleSchemeChooserWidget</strong>: Widget zur Auswahl eines StyleSchemes</li>
+</ul>
+<p>In Glade lassen sich bereits viele Eigenschaften des Editorbereichs festlegen wie die Anzeige der Zeilennummern, Einrückung, Umbruchverhalten usw., die sich natürlich auch über <tt class="docutils literal">set_property</tt> festlegen oder ändern lassen.</p>
+<p>Beim StyleChooser-Widget wird das Signal <tt class="docutils literal"><span class="pre">button-release-event</span></tt> belegt, um das ausgewählte StyleScheme auf die SourceView-Widgets anzuwenden.</p>
+</div>
+<div class="section" id="sourcemap">
+<h3><a class="toc-backref" href="posts/gtksv/#id6">SourceMap</a></h3>
+<p>Das Widget muss mit der anzuzeigenden Quelle, einem SourceView-Widget, verknüpft werden (über <em>"Allgemein &gt; View"</em>). Es wird dann der Inhalt des SourceView-Widgets verkleinert (standardmäßig mit Schriftgröße in 1pt) angezeigt. Durch scrollen in SourceMap verändert man gleichzeitig die Anzeige in SourceView.</p>
+</div>
+<div class="section" id="headerbar">
+<h3><a class="toc-backref" href="posts/gtksv/#id7">Headerbar</a></h3>
+<p>Die Headerbar enthält verschiedene Buttons zum Laden, Suchen und Speichern:</p>
+<ul class="simple">
+<li>"Python file" und "Glade file" laden die entsprechenden Dateien dieses Beispieles in den Editor (Signal <tt class="docutils literal">clicked</tt>)</li>
+<li>Die Sucheingabe ist ein <em>Gtk.SearchEntry</em>-Widget (Signale <tt class="docutils literal"><span class="pre">search-changed</span></tt> und <tt class="docutils literal">activate</tt>)</li>
+<li>"Save .bak" und "Save" speichern die Dateien (Signal <tt class="docutils literal">clicked</tt>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/gtksv/#id8">Python</a></h2>
+<div class="section" id="sourceview">
+<h3><a class="toc-backref" href="posts/gtksv/#id9">SourceView</a></h3>
+<div class="section" id="initialisierung">
+<h4><a class="toc-backref" href="posts/gtksv/#id10">Initialisierung</a></h4>
+<p>Widgets, die nicht zum <em>Gtk</em>-Modul gehören, müssen zunächst als initialisiert werden (siehe auch <a class="reference external" href="posts/exterminate">Vte-Terminal</a>):</p>
+<pre class="code python"><a name="rest_code_411bdfc03e6143fb85290d632dc68165-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">GtkSource</span><span class="o">.</span><span class="n">View</span><span class="p">)</span>
+</pre>
+<p>Das SourceView-Widget besitzt bereits einen integrierten Textbuffer, welcher mit <tt class="docutils literal">get_buffer</tt> abgefragt werden kann:</p>
+<pre class="code python"><a name="rest_code_15d0452b411f4d7ea35e513e9d32ae9b-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">()</span>
+</pre>
+<p>Desweiteren werden noch Objekte zum Laden und Speichern von Dateien sowie fürs Syntaxhighlighting benötigt:</p>
+<pre class="code python"><a name="rest_code_3cd89be6be434f199800489f42b1777b-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">sourcefile</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">File</span><span class="p">()</span>
+<a name="rest_code_3cd89be6be434f199800489f42b1777b-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">LanguageManager</span><span class="p">()</span>
+</pre>
+</div>
+<div class="section" id="datei-laden">
+<h4><a class="toc-backref" href="posts/gtksv/#id11">Datei laden</a></h4>
+<p>Die zu öffnende Datei muss dem <em>GtkSource.File</em>-Objekt im <em>Gio.File</em>-Format und anschließend an <em>GtkSource.FileLoader</em> übergeben werden. Die Information zum Syntaxhighlighting erhält der Buffer:</p>
+<pre class="code python"><a name="rest_code_c371b9f7af034f9aa43b56e2850fef3d-1"></a><span class="n">sourcefile</span><span class="o">.</span><span class="n">set_location</span><span class="p">(</span><span class="n">Gio</span><span class="o">.</span><span class="n">File</span><span class="o">.</span><span class="n">new_for_path</span><span class="p">(</span><span class="s2">"file"</span><span class="p">))</span>
+<a name="rest_code_c371b9f7af034f9aa43b56e2850fef3d-2"></a><span class="nb">buffer</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span><span class="o">.</span><span class="n">get_language</span><span class="p">(</span><span class="s2">"language"</span><span class="p">))</span>
+<a name="rest_code_c371b9f7af034f9aa43b56e2850fef3d-3"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileLoader</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
+<a name="rest_code_c371b9f7af034f9aa43b56e2850fef3d-4"></a><span class="n">loader</span><span class="o">.</span><span class="n">load_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="datei-speichern">
+<h4><a class="toc-backref" href="posts/gtksv/#id12">Datei speichern</a></h4>
+<p>Analog zum Laden erfolgt das Speichern mit <em>GtkSource.FileSaver</em>. Im Beispiel speichert der "Save"-Button die bestehende Datei (es erfolgt keine "Überschreiben?"-Sicherheitsabfrage) und der "Save .bak"-Button speichert den Inhalt als neue Datei mit genannter Endung ab. Die Übergabe der Dateien erfolgt wie beim Laden <em>Gio.File</em>-formatiert:</p>
+<pre class="code python"><a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-1"></a><span class="c1">#bestehende Datei überschreiben</span>
+<a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-2"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
+<a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-3"></a><span class="c1">#Datei unter anderem Namen speichern</span>
+<a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-4"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new_with_target</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">,</span> <span class="n">targetfile</span><span class="p">)</span>
+<a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-5"></a><span class="c1">#Speichern ausführen</span>
+<a name="rest_code_6cb693718f7d4a048bfe681286cbfc03-6"></a><span class="n">saver</span><span class="o">.</span><span class="n">save_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="text-hervorheben">
+<h4><a class="toc-backref" href="posts/gtksv/#id13">Text hervorheben</a></h4>
+<p>Zunächst ist festzustellen, dass es sich bei den Funktionen suchen(/ersetzen)/markieren und Texthervorhebungen um zwei getrennt voneinander auszuführenden Mechanismen handelt, für die <em>GtkSource.Settings</em> eingerichtet werden müssen:</p>
+<pre class="code python"><a name="rest_code_1a61405703fa480a8aed4cff4e2725e3-1"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchSettings</span><span class="p">()</span>
+<a name="rest_code_1a61405703fa480a8aed4cff4e2725e3-2"></a><span class="n">search_context</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchContext</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+</pre>
+<p>Alle Vorkommen eines Strings im TextView lassen sich auf zwei Arten visualisieren, einer naheliegenden und einer eleganten.</p>
+<p>Die naheliegende Lösung ist die Ausführung von <tt class="docutils literal">settings.get_search_text</tt> bei der Eingabe von Text in das Suchfeld (Signal <tt class="docutils literal"><span class="pre">search-changed</span></tt>):</p>
+<p>Die andere Möglichkeit, bei der kein Signal benötigt wird, ist die direkte Anbindung der SearchSettings-Eigenschaft "search-text" an das Sucheingabefeld:</p>
+<pre class="code python"><a name="rest_code_b843ce8c1fe44a8a912102900995e890-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"search_entry"</span><span class="p">)</span><span class="o">.</span><span class="n">bind_property</span><span class="p">(</span><span class="s1">'text'</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s1">'search-text'</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="text-markieren">
+<h4><a class="toc-backref" href="posts/gtksv/#id14">Text markieren</a></h4>
+<p><em>GtkSource.SearchContext</em> wird für die Suchen-/Ersetzen-Funktion innerhalb eines <em>GtkSource.Buffer</em> verwendet. Dieser wurde bereits mit den SearchSettings initialisiert.</p>
+<p>Die Markierungsfunktionen und Cursorplatzierung erbt <em>GtkSource.Buffer</em> von <em>Gtk.TextBuffer</em>, die Suche wird mit SeachContexts <tt class="docutils literal">forward2</tt> ausgeführt.</p>
+<pre class="code python"><a name="rest_code_34235d1786a947a988a907db4607220e-1"></a><span class="k">def</span> <span class="nf">find_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-2"></a>    <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-3"></a>    <span class="n">insert</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">())</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-4"></a>    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_bounds</span><span class="p">()</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-5"></a>    <span class="n">insert</span><span class="o">.</span><span class="n">forward_chars</span><span class="p">(</span><span class="n">start_offset</span><span class="p">)</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-6"></a>    <span class="n">match</span><span class="p">,</span> <span class="n">start_iter</span><span class="p">,</span> <span class="n">end_iter</span><span class="p">,</span> <span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_context</span><span class="o">.</span><span class="n">forward2</span><span class="p">(</span><span class="n">insert</span><span class="p">)</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-7"></a>
+<a name="rest_code_34235d1786a947a988a907db4607220e-8"></a>    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-9"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">start_iter</span><span class="p">)</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-10"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">move_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_selection_bound</span><span class="p">(),</span> <span class="n">end_iter</span><span class="p">)</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scroll_to_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">(),</span> <span class="mf">0.25</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-12"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-13"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_34235d1786a947a988a907db4607220e-14"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">()))</span>
+</pre>
+<p>Durch die Signalbindung von <tt class="docutils literal">activate</tt> im Suchfeld wird die Suche durch Drücken der Eingabetaste an der letzten Position fortgeführt. Für eine Rückwärtssuche muss analog zu <tt class="docutils literal">forward2</tt> oder <tt class="docutils literal">forward_async</tt> <tt class="docutils literal">backward2</tt> oder <tt class="docutils literal">backward_async</tt> verwendet werden.</p>
+</div>
+</div>
+<div class="section" id="stylechooser">
+<h3><a class="toc-backref" href="posts/gtksv/#id15">StyleChooser</a></h3>
+<p>Das Widget zeigt die verfügbaren Stile an. Es ist nicht möglich, lokale Stile anzugeben oder sie zu verändern.</p>
+<p>Der angewählte Style lässt sich dann einfach auf den gewünschten Buffer anwenden:</p>
+<pre class="code python"><a name="rest_code_aa54c43c16b74ea6b558a4585d4cceb6-1"></a><span class="k">def</span> <span class="nf">on_signal_emitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a name="rest_code_aa54c43c16b74ea6b558a4585d4cceb6-2"></a>    <span class="nb">buffer</span><span class="o">.</span><span class="n">set_style_scheme</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_style_scheme</span><span class="p">())</span>
+</pre>
+</div>
+</div>
+<div class="section" id="links">
+<h2><a class="toc-backref" href="posts/gtksv/#id16">Links</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.gnome.org/Projects/GtkSourceView">GtkSourceView</a></li>
+<li><a class="reference external" href="https://developer.gnome.org/gtksourceview/stable/">GtkSourceView 3 Reference Manual</a></li>
+<li><a class="reference external" href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">GtkSourceView style schemes</a></li>
+<li><a class="reference external" href="https://developer.gnome.org/gtk3/stable/TextWidget.html">Text Widget Overview</a></li>
+<li><a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/en/latest/textview.html">Multiline Text Editor-Tutorial</a></li>
+<li>
+<a class="reference external" href="http://meldmerge.org/">meld</a>, <a class="reference external" href="https://github.com/GNOME/meld">Repository auf GitHub</a>
+</li>
+</ul>
+<p class="more"><a href="posts/gtksv/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/das-geheimnis-der-sphinx/">Das Geheimnis der Sphinx</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -557,7 +746,7 @@ Rechts: Anzeige des GPS-Tracks in Locus-App</p>
             </div>
             <div class="body">
                 <div>
-<div class="contents pull-right topic" id="inhalt">
+<div class="contents warning pull-right topic" id="inhalt">
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
 <li>
@@ -606,16 +795,16 @@ Rechts: Anzeige des GPS-Tracks in Locus-App</p>
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
 <p>Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist <tt class="docutils literal">WebKit2.WebView</tt>. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk+-Widget in einem <em>Gtk.Viewport</em>, muss also laut <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API-Referenz</a> nicht mehr in ein <em>Gtk.ScrolledWindow</em> platziert werden. Dies funktionierte im Test zwar für <em>Gtk.Stack</em>, nicht aber für <em>Gtk.Notebook</em>, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.</p>
 <p>Das WebView-Widget wird nach folgendem Muster erstellt:</p>
-<pre class="code python"><a name="rest_code_5a33bcd220da45de9bcd757232645af3-1"></a><span class="c1">#create new WebView widget</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-3"></a><span class="c1">#send URL to widget</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-5"></a><span class="c1">#add webview to notebook</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-7"></a><span class="c1">#add webview to stack</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-9"></a>
-<a name="rest_code_5a33bcd220da45de9bcd757232645af3-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-9"></a>
+<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/stacksnotebooks/">Weiterlesen…</a></p>
 </div>
@@ -623,84 +812,10 @@ Rechts: Anzeige des GPS-Tracks in Locus-App</p>
 </div>
             </div>
         </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/non-konsole/">NoN: Konsoledierung</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2017-10-05T22:45:19+02:00">2017-10-05 22:45</time>
-</div>
-                <div class="stats">
-                    
-        
-    <a href="posts/non-konsole/#disqus_thread" data-disqus-identifier="cache/posts/non-konsoledierung.html">Comments</a>
-
-
-                </div>
-            
-        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
-           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p><strong>Knights of Ni - jetzt wird's schick</strong></p>
-<p>Einmal eingerichtet, benötigt man für das Befeuern einer Nikola-angetriebenen Seite nur einen Dateimanager, einen Editor, ein Terminal und normalerweise zwei Kommandos.</p>
-<p>Und weil ich es gern bequem habe, habe ich mir <a class="reference external" href="https://github.com/encarsia/non">etwas Unterstützung</a> dafür gebastelt.</p>
-<div class="section" id="was-bisher-geschah">
-<h2>Was bisher geschah</h2>
-<p>Die per Button aufgerufenen Nikola-Kommandos wurden bisher folgendermaßen verarbeitet:</p>
-<blockquote>
-<ul class="simple">
-<li>
-<tt class="docutils literal">nikola build</tt> lief im Hintergrund als subprocess.run(cmd)</li>
-<li>
-<tt class="docutils literal">nikola github_deploy</tt> wurde im separaten Terminalfenster ausgeführt; dieses wurde nach der erfolgreichen Ausführung wieder geschlossen</li>
-</ul>
-</blockquote>
-</div>
-<div class="section" id="und-das-soll-jetzt-alles-vorbei-sein">
-<h2>Und das soll jetzt alles vorbei sein?</h2>
-<blockquote class="epigraph">
-<p>Neu ist immer besser.</p>
-<p class="attribution">—Barney Stinson</p>
-</blockquote>
-<p>Die Oberfläche ist nun per <a class="reference external" href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Stack.html">Gtk.Stack</a> zweigeteilt. Per Gtk.StackSwitcher in der Headerbar lässt sich zwischen der normalen Oberfläche und einem Terminal hin- und herwechseln.</p>
-<p>Dies hat mehrere Eigenschaften und Vorteile:</p>
-<blockquote>
-<ul class="simple">
-<li>Das Teminal öffnet sich im aktuellen Verzeichnis der Nikola-Instanz.</li>
-<li>Das Terminal kann beliebig verwendet werden.</li>
-<li>Beim <tt class="docutils literal">exit</tt> wird es nur resettet.</li>
-<li>
-<tt class="docutils literal">build</tt> und <tt class="docutils literal">github_deploy</tt> werden in diesem Terminal ausgeführt, wenn sie über die Oberfläche (Buttons) gestartet werden.</li>
-<li>Beim Ausführen über die Buttons wechselt der Focus auf das Terminal und nach Beenden des Tasks wieder zurück zur Oberfläche. Mit super Überblende (aktivierte Animationen erforderlich)!</li>
-<li>Optisch aufgeräumter, da kein separates Fenster mehr benötigt wird.</li>
-</ul>
-</blockquote>
-<img alt="/images/non_term.gif" src="images/non_term.gif">
-</div>
-<div class="section" id="chronik">
-<h2>Chronik</h2>
-<blockquote>
-<ul class="simple">
-<li><a class="reference external" href="posts/non-fortschritte">NoN: Fortschritte</a></li>
-<li><a class="reference external" href="posts/neues-projekt-knights-of-ni">Neues Projekt: Knights of Ni</a></li>
-</ul>
-</blockquote>
-<a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/6ER8kNNkCx9">Kommentieren auf <i class="fa fa-google-plus"></i></a>
-</div>
-</div>
-            </div>
-        </div>
     
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-6.html" rel="next">Ältere Einträge</a>
+                <a href="index-7.html" rel="next">Ältere Einträge</a>
             </li>
         </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2017 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
 Powered by <a href="http://getnikola.com">Nikola</a> - 

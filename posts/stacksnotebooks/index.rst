@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: pull-right
+.. class:: warning pull-right
 
 .. contents::
 

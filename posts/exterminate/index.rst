@@ -25,7 +25,7 @@ Ein Klick auf den Button soll innerhalb dieses Terminals eine Python-Konsole sta
 Python
 ------
 
-Elemente außerhalb des *Gtk*-Moduls, die mit Glade verwendet werden, müssen als *GObject*-Typ registriert werden (dies betrifft beispielsweise auch das *GtkSourceView*-Widget (Modul *GtkSource*):
+Elemente außerhalb des *Gtk*-Moduls, die mit Glade verwendet werden, müssen als *GObject*-Typ registriert werden (dies betrifft beispielsweise auch das `GtkSource.View-Widget <link://slug/gtksv>`_ (Modul *GtkSource*):
 
 .. code:: python
 
