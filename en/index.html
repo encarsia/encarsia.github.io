@@ -125,66 +125,66 @@
 <div class="section" id="initialisierung">
 <h4><a class="toc-backref" href="posts/gtksv/#id10">Initialisierung</a></h4>
 <p>Widgets, die nicht zum <em>Gtk</em>-Modul gehören, müssen zunächst als initialisiert werden (siehe auch <a class="reference external" href="posts/exterminate">Vte-Terminal</a>):</p>
-<pre class="code python"><a name="rest_code_5d6ce11f8fa34967bbf9b1b235bc2b0d-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">GtkSource</span><span class="o">.</span><span class="n">View</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_a8d78083c31c4e789dad9b2742b3dc1f-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">GtkSource</span><span class="o">.</span><span class="n">View</span><span class="p">)</span>
 </pre>
 <p>Das SourceView-Widget besitzt bereits einen integrierten Textbuffer, welcher mit <tt class="docutils literal">get_buffer</tt> abgefragt werden kann:</p>
-<pre class="code python"><a name="rest_code_04a34d2c7b2c40d3ad82723319d9f89f-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_15bec8b56deb494da506435a0b349379-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">()</span>
 </pre>
 <p>Desweiteren werden noch Objekte zum Laden und Speichern von Dateien sowie fürs Syntaxhighlighting benötigt:</p>
-<pre class="code python"><a name="rest_code_eb962ad869ae4e5e99ea795b08c0e5df-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">sourcefile</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">File</span><span class="p">()</span>
-<a name="rest_code_eb962ad869ae4e5e99ea795b08c0e5df-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">LanguageManager</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_d183c03eb3f24ea4bb2e7d7ed05ba849-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">sourcefile</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">File</span><span class="p">()</span>
+<a name="rest_code_d183c03eb3f24ea4bb2e7d7ed05ba849-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">LanguageManager</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="datei-laden">
 <h4><a class="toc-backref" href="posts/gtksv/#id11">Datei laden</a></h4>
 <p>Die zu öffnende Datei muss dem <em>GtkSource.File</em>-Objekt im <em>Gio.File</em>-Format und anschließend an <em>GtkSource.FileLoader</em> übergeben werden. Die Information zum Syntaxhighlighting erhält der Buffer:</p>
-<pre class="code python"><a name="rest_code_14445d6166bb4ad5a2039330902c4cae-1"></a><span class="n">sourcefile</span><span class="o">.</span><span class="n">set_location</span><span class="p">(</span><span class="n">Gio</span><span class="o">.</span><span class="n">File</span><span class="o">.</span><span class="n">new_for_path</span><span class="p">(</span><span class="s2">"file"</span><span class="p">))</span>
-<a name="rest_code_14445d6166bb4ad5a2039330902c4cae-2"></a><span class="nb">buffer</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span><span class="o">.</span><span class="n">get_language</span><span class="p">(</span><span class="s2">"language"</span><span class="p">))</span>
-<a name="rest_code_14445d6166bb4ad5a2039330902c4cae-3"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileLoader</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
-<a name="rest_code_14445d6166bb4ad5a2039330902c4cae-4"></a><span class="n">loader</span><span class="o">.</span><span class="n">load_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_32d7d73b518448469aebb444a61af11b-1"></a><span class="n">sourcefile</span><span class="o">.</span><span class="n">set_location</span><span class="p">(</span><span class="n">Gio</span><span class="o">.</span><span class="n">File</span><span class="o">.</span><span class="n">new_for_path</span><span class="p">(</span><span class="s2">"file"</span><span class="p">))</span>
+<a name="rest_code_32d7d73b518448469aebb444a61af11b-2"></a><span class="nb">buffer</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lang_manager</span><span class="o">.</span><span class="n">get_language</span><span class="p">(</span><span class="s2">"language"</span><span class="p">))</span>
+<a name="rest_code_32d7d73b518448469aebb444a61af11b-3"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileLoader</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
+<a name="rest_code_32d7d73b518448469aebb444a61af11b-4"></a><span class="n">loader</span><span class="o">.</span><span class="n">load_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="datei-speichern">
 <h4><a class="toc-backref" href="posts/gtksv/#id12">Datei speichern</a></h4>
 <p>Analog zum Laden erfolgt das Speichern mit <em>GtkSource.FileSaver</em>. Im Beispiel speichert der "Save"-Button die bestehende Datei (es erfolgt keine "Überschreiben?"-Sicherheitsabfrage) und der "Save .bak"-Button speichert den Inhalt als neue Datei mit genannter Endung ab. Die Übergabe der Dateien erfolgt wie beim Laden <em>Gio.File</em>-formatiert:</p>
-<pre class="code python"><a name="rest_code_502efc7522134d1a8174c6ea367741c0-1"></a><span class="c1">#bestehende Datei überschreiben</span>
-<a name="rest_code_502efc7522134d1a8174c6ea367741c0-2"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
-<a name="rest_code_502efc7522134d1a8174c6ea367741c0-3"></a><span class="c1">#Datei unter anderem Namen speichern</span>
-<a name="rest_code_502efc7522134d1a8174c6ea367741c0-4"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new_with_target</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">,</span> <span class="n">targetfile</span><span class="p">)</span>
-<a name="rest_code_502efc7522134d1a8174c6ea367741c0-5"></a><span class="c1">#Speichern ausführen</span>
-<a name="rest_code_502efc7522134d1a8174c6ea367741c0-6"></a><span class="n">saver</span><span class="o">.</span><span class="n">save_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-1"></a><span class="c1">#bestehende Datei überschreiben</span>
+<a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-2"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">)</span>
+<a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-3"></a><span class="c1">#Datei unter anderem Namen speichern</span>
+<a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-4"></a><span class="n">saver</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">FileSaver</span><span class="o">.</span><span class="n">new_with_target</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">sourcefile</span><span class="p">,</span> <span class="n">targetfile</span><span class="p">)</span>
+<a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-5"></a><span class="c1">#Speichern ausführen</span>
+<a name="rest_code_1c773cbdd73f4cf8a76418e0aedc3000-6"></a><span class="n">saver</span><span class="o">.</span><span class="n">save_async</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="text-hervorheben">
 <h4><a class="toc-backref" href="posts/gtksv/#id13">Text hervorheben</a></h4>
 <p>Zunächst ist festzustellen, dass es sich bei den Funktionen suchen(/ersetzen)/markieren und Texthervorhebungen um zwei getrennt voneinander auszuführenden Mechanismen handelt, für die <em>GtkSource.Settings</em> eingerichtet werden müssen:</p>
-<pre class="code python"><a name="rest_code_f72be166b61e4edc888ed209c7db2af2-1"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchSettings</span><span class="p">()</span>
-<a name="rest_code_f72be166b61e4edc888ed209c7db2af2-2"></a><span class="n">search_context</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchContext</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_0dd631a7b0eb4598b6df2da6906f6b66-1"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchSettings</span><span class="p">()</span>
+<a name="rest_code_0dd631a7b0eb4598b6df2da6906f6b66-2"></a><span class="n">search_context</span> <span class="o">=</span> <span class="n">GtkSource</span><span class="o">.</span><span class="n">SearchContext</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
 </pre>
 <p>Alle Vorkommen eines Strings im TextView lassen sich auf zwei Arten visualisieren, einer naheliegenden und einer eleganten.</p>
 <p>Die naheliegende Lösung ist die Ausführung von <tt class="docutils literal">settings.get_search_text</tt> bei der Eingabe von Text in das Suchfeld (Signal <tt class="docutils literal"><span class="pre">search-changed</span></tt>):</p>
 <p>Die andere Möglichkeit, bei der kein Signal benötigt wird, ist die direkte Anbindung der SearchSettings-Eigenschaft "search-text" an das Sucheingabefeld:</p>
-<pre class="code python"><a name="rest_code_18868b792807472fb41e59bb119750d9-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"search_entry"</span><span class="p">)</span><span class="o">.</span><span class="n">bind_property</span><span class="p">(</span><span class="s1">'text'</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s1">'search-text'</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_fbde495f4e6848318850d2605728b97b-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"search_entry"</span><span class="p">)</span><span class="o">.</span><span class="n">bind_property</span><span class="p">(</span><span class="s1">'text'</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s1">'search-text'</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="text-markieren">
 <h4><a class="toc-backref" href="posts/gtksv/#id14">Text markieren</a></h4>
 <p><em>GtkSource.SearchContext</em> wird für die Suchen-/Ersetzen-Funktion innerhalb eines <em>GtkSource.Buffer</em> verwendet. Dieser wurde bereits mit den SearchSettings initialisiert.</p>
 <p>Die Markierungsfunktionen und Cursorplatzierung erbt <em>GtkSource.Buffer</em> von <em>Gtk.TextBuffer</em>, die Suche wird mit SeachContexts <tt class="docutils literal">forward2</tt> ausgeführt.</p>
-<pre class="code python"><a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-1"></a><span class="k">def</span> <span class="nf">find_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-2"></a>    <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-3"></a>    <span class="n">insert</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">())</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-4"></a>    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_bounds</span><span class="p">()</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-5"></a>    <span class="n">insert</span><span class="o">.</span><span class="n">forward_chars</span><span class="p">(</span><span class="n">start_offset</span><span class="p">)</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-6"></a>    <span class="n">match</span><span class="p">,</span> <span class="n">start_iter</span><span class="p">,</span> <span class="n">end_iter</span><span class="p">,</span> <span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_context</span><span class="o">.</span><span class="n">forward2</span><span class="p">(</span><span class="n">insert</span><span class="p">)</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-7"></a>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-8"></a>    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-9"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">start_iter</span><span class="p">)</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-10"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">move_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_selection_bound</span><span class="p">(),</span> <span class="n">end_iter</span><span class="p">)</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scroll_to_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">(),</span> <span class="mf">0.25</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-12"></a>        <span class="k">return</span> <span class="bp">True</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-13"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_fca6ec7cc3d6428d9c5a196814e50c49-14"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">()))</span>
+<pre class="code python"><a name="rest_code_ac2df3094337476286f3f52c603daa2b-1"></a><span class="k">def</span> <span class="nf">find_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-2"></a>    <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-3"></a>    <span class="n">insert</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">())</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-4"></a>    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get_bounds</span><span class="p">()</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-5"></a>    <span class="n">insert</span><span class="o">.</span><span class="n">forward_chars</span><span class="p">(</span><span class="n">start_offset</span><span class="p">)</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-6"></a>    <span class="n">match</span><span class="p">,</span> <span class="n">start_iter</span><span class="p">,</span> <span class="n">end_iter</span><span class="p">,</span> <span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_context</span><span class="o">.</span><span class="n">forward2</span><span class="p">(</span><span class="n">insert</span><span class="p">)</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-7"></a>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-8"></a>    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-9"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">start_iter</span><span class="p">)</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-10"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">move_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_selection_bound</span><span class="p">(),</span> <span class="n">end_iter</span><span class="p">)</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scroll_to_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">(),</span> <span class="mf">0.25</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-12"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-13"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_ac2df3094337476286f3f52c603daa2b-14"></a>        <span class="n">buf</span><span class="o">.</span><span class="n">place_cursor</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_iter_at_mark</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">get_insert</span><span class="p">()))</span>
 </pre>
 <p>Durch die Signalbindung von <tt class="docutils literal">activate</tt> im Suchfeld wird die Suche durch Drücken der Eingabetaste an der letzten Position fortgeführt. Für eine Rückwärtssuche muss analog zu <tt class="docutils literal">forward2</tt> oder <tt class="docutils literal">forward_async</tt> <tt class="docutils literal">backward2</tt> oder <tt class="docutils literal">backward_async</tt> verwendet werden.</p>
 </div>
@@ -193,8 +193,8 @@
 <h3><a class="toc-backref" href="posts/gtksv/#id15">StyleChooser</a></h3>
 <p>Das Widget zeigt die verfügbaren Stile an. Es ist nicht möglich, lokale Stile anzugeben oder sie zu verändern.</p>
 <p>Der angewählte Style lässt sich dann einfach auf den gewünschten Buffer anwenden:</p>
-<pre class="code python"><a name="rest_code_04c1b15f59f54c13b2b6a1a0c67f7921-1"></a><span class="k">def</span> <span class="nf">on_signal_emitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a name="rest_code_04c1b15f59f54c13b2b6a1a0c67f7921-2"></a>    <span class="nb">buffer</span><span class="o">.</span><span class="n">set_style_scheme</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_style_scheme</span><span class="p">())</span>
+<pre class="code python"><a name="rest_code_cc9d8e667f554046971415f73bb9f3d3-1"></a><span class="k">def</span> <span class="nf">on_signal_emitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a name="rest_code_cc9d8e667f554046971415f73bb9f3d3-2"></a>    <span class="nb">buffer</span><span class="o">.</span><span class="n">set_style_scheme</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_style_scheme</span><span class="p">())</span>
 </pre>
 <img alt="/images/22_editor_gtksv.gif" src="../images/22_editor_gtksv.gif">
 </div>
@@ -296,46 +296,46 @@
 <div class="section" id="initialisierung">
 <h3><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id10">Initialisierung</a></h3>
 <p>Nach der Installation erstellt man das Projektverzeichnis und initialisiert mit</p>
-<pre class="code console"><a name="rest_code_3a5c867ca99e473caf808031f17b0d9a-1"></a><span class="gp">$</span> sphinx-quickstart
+<pre class="code console"><a name="rest_code_4b99d929c7bf42d0a40e34da3afc0707-1"></a><span class="gp">$</span> sphinx-quickstart
 </pre>
 <p>das Grundgerüst. Fast alle Fragen können auf der Voreinstellung belassen werden. Im Projektverzeichnis befindet sich nun die Konfigurationsdatei <tt class="docutils literal">conf.py</tt> sowie das Root-Dokument <tt class="docutils literal">index.rst</tt>.</p>
 <p>Die Dateien lassen sich nach dem Muster <tt class="docutils literal">make Builder</tt> erzeugen, die in den Unterverzeichnissen <tt class="docutils literal">_build/builder</tt> befinden:</p>
-<pre class="code console"><a name="rest_code_69ea2cc6f4db49e4b641fe38274239a2-1"></a><span class="gp">$</span> make epub
-<a name="rest_code_69ea2cc6f4db49e4b641fe38274239a2-2"></a><span class="gp">$</span> make latexpdf
+<pre class="code console"><a name="rest_code_b4005a5cdfaa4773a06b0ecfaaf4a068-1"></a><span class="gp">$</span> make epub
+<a name="rest_code_b4005a5cdfaa4773a06b0ecfaaf4a068-2"></a><span class="gp">$</span> make latexpdf
 </pre>
 </div>
 <div class="section" id="conf-py">
 <h3><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id11">conf.py</a></h3>
 <div class="section" id="epub">
 <h4><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id12">Epub</a></h4>
-<pre class="code python"><a name="rest_code_acb3c6ccb0a346d7859726375291e56b-1"></a><span class="c1">#HTML-Dateien vor dem Inhalt der index.rst einfügen</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-2"></a><span class="n">epub_pre_files</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'info.xhtml'</span><span class="p">,</span> <span class="s1">'Info'</span><span class="p">)]</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-3"></a><span class="n">html_additional_pages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'info'</span><span class="p">:</span> <span class="s1">'info.html'</span><span class="p">}</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-4"></a>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-5"></a><span class="c1">#Titel erzeugen</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-6"></a><span class="n">epub_cover</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_static/cover.png'</span><span class="p">,</span> <span class="s1">'epub-cover.html'</span><span class="p">)</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-7"></a>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-8"></a><span class="c1">#Stichwortverzeichnis auslassen</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-9"></a><span class="n">epub_use_index</span> <span class="o">=</span> <span class="bp">False</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-10"></a>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-11"></a><span class="c1">#Bezeichnung der Ausgabedatei</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-12"></a><span class="n">epub_basename</span> <span class="o">=</span> <span class="n">output_basename</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-13"></a>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-14"></a><span class="c1">#für die Generierung der info.xhtml benötigt, da sonst None</span>
-<a name="rest_code_acb3c6ccb0a346d7859726375291e56b-15"></a><span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%d</span><span class="s1">. %B %Y'</span>
+<pre class="code python"><a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-1"></a><span class="c1">#HTML-Dateien vor dem Inhalt der index.rst einfügen</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-2"></a><span class="n">epub_pre_files</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'info.xhtml'</span><span class="p">,</span> <span class="s1">'Info'</span><span class="p">)]</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-3"></a><span class="n">html_additional_pages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'info'</span><span class="p">:</span> <span class="s1">'info.html'</span><span class="p">}</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-4"></a>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-5"></a><span class="c1">#Titel erzeugen</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-6"></a><span class="n">epub_cover</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'_static/cover.png'</span><span class="p">,</span> <span class="s1">'epub-cover.html'</span><span class="p">)</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-7"></a>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-8"></a><span class="c1">#Stichwortverzeichnis auslassen</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-9"></a><span class="n">epub_use_index</span> <span class="o">=</span> <span class="bp">False</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-10"></a>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-11"></a><span class="c1">#Bezeichnung der Ausgabedatei</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-12"></a><span class="n">epub_basename</span> <span class="o">=</span> <span class="n">output_basename</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-13"></a>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-14"></a><span class="c1">#für die Generierung der info.xhtml benötigt, da sonst None</span>
+<a name="rest_code_bd7ec0517e3d42899f7b80d8811e7077-15"></a><span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%d</span><span class="s1">. %B %Y'</span>
 </pre>
 </div>
 <div class="section" id="latex">
 <h4><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id13">LaTeX</a></h4>
 <p>Für die PDF-Ausgabe müssen eine Reihe von TeXLive-Paketen installiert sein (siehe <a class="reference external" href="http://www.sphinx-doc.org/en/stable/builders.html#sphinx.builders.latex.LaTeXBuilder">Dokumentation</a>). Als Alternativen seien an dieser Stelle das in <a class="reference external" href="https://calibre-ebook.com/">Calibre</a> integrierte Konvertierungstool <tt class="docutils literal"><span class="pre">ebook-convert</span></tt> und <a class="reference external" href="http://www.epub2pdf.com/">epub2pdf</a> genannt.</p>
-<pre class="code python"><a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-1"></a><span class="c1">#Papierformat (Standard ist US-Letter), leere Seiten vermeiden</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-2"></a><span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-3"></a>    <span class="s1">'papersize'</span><span class="p">:</span> <span class="s1">'a4paper'</span><span class="p">,</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-4"></a>    <span class="s1">'classoptions'</span><span class="p">:</span> <span class="s1">'oneside,openany'</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-5"></a><span class="p">}</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-6"></a>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-7"></a><span class="c1">#Logo auf der Titelseite</span>
-<a name="rest_code_2cd4ff32265f4cf9a86f91914aae318d-8"></a><span class="n">latex_logo</span> <span class="o">=</span> <span class="s1">'_static/logo.png'</span>
+<pre class="code python"><a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-1"></a><span class="c1">#Papierformat (Standard ist US-Letter), leere Seiten vermeiden</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-2"></a><span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-3"></a>    <span class="s1">'papersize'</span><span class="p">:</span> <span class="s1">'a4paper'</span><span class="p">,</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-4"></a>    <span class="s1">'classoptions'</span><span class="p">:</span> <span class="s1">'oneside,openany'</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-5"></a><span class="p">}</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-6"></a>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-7"></a><span class="c1">#Logo auf der Titelseite</span>
+<a name="rest_code_545e0cf66f5e4c37a30333980aba0bf5-8"></a><span class="n">latex_logo</span> <span class="o">=</span> <span class="s1">'_static/logo.png'</span>
 </pre>
 </div>
 <div class="section" id="sonstiges">
@@ -346,8 +346,8 @@
 <dt>Bezeichnung der Ausgabedatei</dt>
 <dd>Der Dateiname lässt sich für die verschiedenen Builder jeweils festlegen. Um für alle verwendeten Builder jeweils die gleiche Bezeichnung zu nutzen, verwende ich hier die eigene Variable <tt class="docutils literal">output_basename</tt>. Diese wird demzufolge nicht von Sphinx unterstützt und nur innerhalb der <tt class="docutils literal">conf.py</tt> verwendet (in den Variablen htmlhelp_basename, latex_documents, texinfo_documents, epub_basename).</dd>
 </dl>
-<pre class="code python"><a name="rest_code_57dfa3baa347410e97e7947d8930e3cc-1"></a><span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">'borland'</span>
-<a name="rest_code_57dfa3baa347410e97e7947d8930e3cc-2"></a><span class="n">output_basename</span> <span class="o">=</span> <span class="s1">'gladepytutorial'</span>
+<pre class="code python"><a name="rest_code_7eb68237fdbc455ebc5cff1839724dd2-1"></a><span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">'borland'</span>
+<a name="rest_code_7eb68237fdbc455ebc5cff1839724dd2-2"></a><span class="n">output_basename</span> <span class="o">=</span> <span class="s1">'gladepytutorial'</span>
 </pre>
 </div>
 </div>
@@ -377,20 +377,20 @@
 <h3><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id18">index.rst</a></h3>
 <p>Dies ist das Hauptdokument, das von jedem Sphinx-Builder geparst wird. Die Bezeichnung wird in der <tt class="docutils literal">conf.py</tt> in der Variable <tt class="docutils literal">master_doc</tt> festgelegt.</p>
 <p>Als reguläre reST-Datei kann sie beliebig viel Inhalt aufnehmen. Es ist allerdings zu empfehlen und im Normalfall vermutlich sowieso bereits der Fall, das Dokument in mehrere Dateien aufzuteilen. Sphinx stellt dafür die eigene <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html">toctree</a>-Directive zur Verfügung.</p>
-<pre class="code rest"><a name="rest_code_77e79e013182425c8000bd7fe4239cb7-1"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-2"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-3"></a>    <span class="nc">:numbered:</span>
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-4"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-5"></a>
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-6"></a>    teildokument1
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-7"></a>    teildokument2
-<a name="rest_code_77e79e013182425c8000bd7fe4239cb7-8"></a><span class="cp">    ...</span>
+<pre class="code rest"><a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-1"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-2"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-3"></a>    <span class="nc">:numbered:</span>
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-4"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-5"></a>
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-6"></a>    teildokument1
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-7"></a>    teildokument2
+<a name="rest_code_7779e24d55a941a7b4af22bb1d6fc63c-8"></a><span class="cp">    ...</span>
 </pre>
 <p>Dateien außerhalb von <em>toctree</em> werden per <em>include</em>-Directive hinzugefügt.</p>
 <p>Es ist auch möglich, Inhalte nur von bestimmten Buildern berücksichtigen zu lassen:</p>
-<pre class="code rest"><a name="rest_code_db4aaa479c1f43fd9b8e712a2734e708-1"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
-<a name="rest_code_db4aaa479c1f43fd9b8e712a2734e708-2"></a>
-<a name="rest_code_db4aaa479c1f43fd9b8e712a2734e708-3"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
+<pre class="code rest"><a name="rest_code_a5f72f1418484ecfa489bcec21b88dfe-1"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
+<a name="rest_code_a5f72f1418484ecfa489bcec21b88dfe-2"></a>
+<a name="rest_code_a5f72f1418484ecfa489bcec21b88dfe-3"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
 </pre>
 </div>
 </div>
@@ -402,7 +402,7 @@
 <h3><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id20">KindleGen</a></h3>
 <p>Amazon möchte zwar keine Epubs <a class="footnote-reference" href="posts/das-geheimnis-der-sphinx/#id6" id="id4">[2]</a> unterstützen, aber sie bieten mit <a class="reference external" href="https://www.amazon.com/gp/feature.html?docId=1000765211">KindleGen</a> ein Tool an, welches diese in die eigenen Formate (KF8, Mobi) überführt.</p>
 <p>Auf diese Weise lässt sich mit</p>
-<pre class="code console"><a name="rest_code_d1645f63d9304f89aee61088fdcfdbf2-1"></a><span class="gp">$</span> kindlegen input.epub
+<pre class="code console"><a name="rest_code_66b20ba92e764842b67d352782953e17-1"></a><span class="gp">$</span> kindlegen input.epub
 </pre>
 <p>eine Mobi-Datei erzeugen.</p>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
@@ -420,14 +420,14 @@
 <h3><a class="toc-backref" href="posts/das-geheimnis-der-sphinx/#id21">Problem: Encoding</a></h3>
 <p>Das aus dem Epub erstellte E-Book im Mobi-Format hat ein Darstellungsproblem mit einigen (Sonder-)Zeichen.</p>
 <p>Abhilfe schafft hier die Zeile</p>
-<pre class="code xml"><a name="rest_code_84cd6e911ab341efbaa048f0ff7a9980-1"></a><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="nt">/&gt;</span>
+<pre class="code xml"><a name="rest_code_64ccd8920fda4fc1bccdf16ab3e709af-1"></a><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="nt">/&gt;</span>
 </pre>
 <p>an Stelle von</p>
-<pre class="code xml"><a name="rest_code_53aa6b795bd841c6940f38e1c5f0d854-1"></a><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+<pre class="code xml"><a name="rest_code_fa8777500d67474a99406c1c7c785c51-1"></a><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
 </pre>
 <p>innerhalb des HTML-Heads. Sphinx bietet dafür die <em>meta</em>-Directive, die allerdings für jede Datei gesetzt werden muss:</p>
-<pre class="code rest"><a name="rest_code_ba702f7d52544cecbbe0b605d4f77b9d-1"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
-<a name="rest_code_ba702f7d52544cecbbe0b605d4f77b9d-2"></a>    <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
+<pre class="code rest"><a name="rest_code_d4748fd9bedb4145aaa51c5850b7f3da-1"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
+<a name="rest_code_d4748fd9bedb4145aaa51c5850b7f3da-2"></a>    <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
 </pre>
 </div>
 </div>
@@ -454,6 +454,9 @@
 </li>
 <li>
 <p class="first">relative Pfade in <em>image</em>-Directives anpassen</p>
+</li>
+<li>
+<p class="first">Animierte GIFs ignorieren (erzeugen Fehler im LaTeX-Durchlauf, aber nicht im Epub)</p>
 </li>
 <li>
 <p class="first">Inhaltsverzeichnisse in den Artikel überflüssig</p>
@@ -488,40 +491,40 @@
 <li>
 <strong>index.lst</strong>: Liste von Dateinamen (ohne Endung), die im Dokument enthalten sein sollen</li>
 </ol>
-<pre class="code text"><a name="rest_code_f8dffd10b7fe401ba0095ddf1d0b28e6-1"></a>übersicht
-<a name="rest_code_f8dffd10b7fe401ba0095ddf1d0b28e6-2"></a>artikel1
-<a name="rest_code_f8dffd10b7fe401ba0095ddf1d0b28e6-3"></a>artikel2
-<a name="rest_code_f8dffd10b7fe401ba0095ddf1d0b28e6-4"></a>artikel5
+<pre class="code text"><a name="rest_code_fa2caac7bfe84d3d9772e4175c27c32e-1"></a>übersicht
+<a name="rest_code_fa2caac7bfe84d3d9772e4175c27c32e-2"></a>artikel1
+<a name="rest_code_fa2caac7bfe84d3d9772e4175c27c32e-3"></a>artikel2
+<a name="rest_code_fa2caac7bfe84d3d9772e4175c27c32e-4"></a>artikel5
 </pre>
 <ol class="arabic simple" start="3">
 <li>
 <strong>index.tmpl</strong>: aus dieser und der index.lst wird die <tt class="docutils literal">index.rst</tt> generiert</li>
 </ol>
-<pre class="code rst"><a name="rest_code_79874b4a2254471d948310a74fb78ae1-1"></a><span class="cp">.. generated by nibook, posts will be inserted after ".. include-start"</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-2"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-3"></a><span class="cp">.. some text documentation master file, created by</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-4"></a><span class="cp">   sphinx-quickstart on Thu Oct 26 20:26:54 2017.</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-5"></a><span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-6"></a><span class="cp">   contain the root `toctree` directive.</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-7"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-8"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-9"></a>   <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-10"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-11"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-12"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-13"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-14"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-15"></a><span class="gh">****************************</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-16"></a><span class="gh">Glade-Tutorial mit PyGObject</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-17"></a><span class="gh">****************************</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-18"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-19"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-20"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-21"></a>    <span class="nc">:numbered:</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-22"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-23"></a>    <span class="nc">:name:</span> <span class="nf">mastertoc</span>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-24"></a>
-<a name="rest_code_79874b4a2254471d948310a74fb78ae1-25"></a><span class="cp">    .. include-start</span>
+<pre class="code rst"><a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-1"></a><span class="cp">.. generated by nibook, posts will be inserted after ".. include-start"</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-2"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-3"></a><span class="cp">.. some text documentation master file, created by</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-4"></a><span class="cp">   sphinx-quickstart on Thu Oct 26 20:26:54 2017.</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-5"></a><span class="cp">   You can adapt this file completely to your liking, but it should at least</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-6"></a><span class="cp">   contain the root `toctree` directive.</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-7"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-8"></a><span class="p">..</span> <span class="ow">meta</span><span class="p">::</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-9"></a>   <span class="nc">:http-equiv=Content-Type:</span> <span class="nf">text/html; charset=UTF-8</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-10"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-11"></a><span class="p">..</span> <span class="ow">only</span><span class="p">::</span> latex
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-12"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-13"></a><span class="p">    ..</span> <span class="ow">include</span><span class="p">::</span> info.rst
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-14"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-15"></a><span class="gh">****************************</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-16"></a><span class="gh">Glade-Tutorial mit PyGObject</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-17"></a><span class="gh">****************************</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-18"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-19"></a><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-20"></a>    <span class="nc">:maxdepth:</span> <span class="nf">1</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-21"></a>    <span class="nc">:numbered:</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-22"></a>    <span class="nc">:caption:</span> <span class="nf">Inhalt</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-23"></a>    <span class="nc">:name:</span> <span class="nf">mastertoc</span>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-24"></a>
+<a name="rest_code_8bc4694fc0994cb88fc9ee8f79381347-25"></a><span class="cp">    .. include-start</span>
 </pre>
 </div>
 <div class="section" id="fazit">

@@ -224,6 +224,8 @@ Das Resultat des ersten Durchlaufs von Sphinx mit der Übersichtsseite und drei 
 
 #. relative Pfade in *image*-Directives anpassen
 
+#. Animierte GIFs ignorieren (erzeugen Fehler im LaTeX-Durchlauf, aber nicht im Epub)
+
 #. Inhaltsverzeichnisse in den Artikel überflüssig
 
 #. "Kommentieren auf G+"-Button entfernen
