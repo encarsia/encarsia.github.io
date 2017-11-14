@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
 import os
 
 import gi
@@ -10,9 +11,6 @@ gi.require_version('GtkSource','3.0')
 from gi.repository import Gtk, GtkSource, Gio, GObject
 
 class Handler:
-    
-    def on_window_destroy(self,*args):
-        Gtk.main_quit()
     
     def on_stylechooserwidget_button_release_event(self, widget, event):
         x.buffer.set_style_scheme(widget.get_style_scheme())
@@ -41,6 +39,10 @@ class Editor:
     
     def __init__(self):
         
+        self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
+        self.app.connect("activate", self.on_app_activate)
+        
+    def on_app_activate(self, app):
         self.builder = Gtk.Builder()
         GObject.type_register(GtkSource.View)
         self.builder.add_from_file("22_editor_gtksv.glade")
@@ -60,7 +62,12 @@ class Editor:
         self.search_context = GtkSource.SearchContext.new(self.buffer, self.settings)
 
         window = self.builder.get_object("app_window")
+        window.set_application(app)
+        window.set_wmclass("Tutorial application","Tutorial application")
         window.show_all()
+
+    def run(self, argv):
+        self.app.run(argv)
 
     def load_file(self, f, lang):
         self.file = f
@@ -88,4 +95,4 @@ class Editor:
         Gtk.main()
 
 x = Editor()
-x.main()
+x.run(sys.argv)
