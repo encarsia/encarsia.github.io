@@ -38,7 +38,6 @@ class Handler:
 class Editor:
     
     def __init__(self):
-        
         self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
         self.app.connect("activate", self.on_app_activate)
         
