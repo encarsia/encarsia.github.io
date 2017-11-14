@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1510500471.141079
+_modified_time = 1510649107.1577303
 _enable_loop = True
 _template_filename = 'themes/zen_fa4/templates/story.tmpl'
 _template_uri = 'story.tmpl'
@@ -39,17 +39,17 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
-        comments = _mako_get_namespace(context, 'comments')
-        def extra_head():
-            return render_extra_head(context._locals(__M_locals))
-        arusahni = _mako_get_namespace(context, 'arusahni')
-        helper = _mako_get_namespace(context, 'helper')
-        enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
         post = _import_ns.get('post', context.get('post', UNDEFINED))
+        arusahni = _mako_get_namespace(context, 'arusahni')
+        enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
         messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
+        comments = _mako_get_namespace(context, 'comments')
         site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         def content():
             return render_content(context._locals(__M_locals))
+        def extra_head():
+            return render_extra_head(context._locals(__M_locals))
+        helper = _mako_get_namespace(context, 'helper')
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -76,9 +76,9 @@ def render_extra_head(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         parent = _import_ns.get('parent', context.get('parent', UNDEFINED))
-        post = _import_ns.get('post', context.get('post', UNDEFINED))
         def extra_head():
             return render_extra_head(context)
+        post = _import_ns.get('post', context.get('post', UNDEFINED))
         helper = _mako_get_namespace(context, 'helper')
         __M_writer = context.writer()
         __M_writer('\n    ')
@@ -111,11 +111,11 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         comments = _mako_get_namespace(context, 'comments')
-        enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
         arusahni = _mako_get_namespace(context, 'arusahni')
         post = _import_ns.get('post', context.get('post', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
+        enable_comments = _import_ns.get('enable_comments', context.get('enable_comments', UNDEFINED))
         site_has_comments = _import_ns.get('site_has_comments', context.get('site_has_comments', UNDEFINED))
         def content():
             return render_content(context)
