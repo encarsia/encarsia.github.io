@@ -6,9 +6,8 @@ import shutil
 import subprocess
 import glob
 
-GHP = '/path/to//GitHub/Page'
+GHP = '/path/to/GitHub/Page'
 DL_DIR = '/relpath/to/dlfolder'
-
 POSTS = []
 SPHDIR = os.getcwd()
 META = '''.. meta::
@@ -63,14 +62,16 @@ def sph_edit(src):
     #delete unwanted content like table of contents
     #convert custom Nikola directives thumbnail and listing to image and literalinclude
     #use original files and images with Sphinx, demands relative paths
+    #ignore GIF images
     #delete custom G+ link, this won't work if you use the raw directive in any other way
     for pos, line in enumerate(src):
         if line.startswith(del_lines):
             del src[pos]
         elif line.startswith('.. thumbnail::') or line.startswith('.. image::'):
             del src[pos]
-            new_line = '.. image:: ../{}{}\n'.format(os.path.relpath(GHP), line.split()[2])
-            src.insert(pos, new_line)
+            if not line.endswith('.gif\n'):
+                new_line = '.. image:: ../{}{}\n'.format(os.path.relpath(GHP), line.split()[2])
+                src.insert(pos, new_line)
         elif line.startswith('.. listing::'):
             del src[pos]
             filename, lang = line.split()[2], line.split()[3]
@@ -146,65 +147,38 @@ if __name__ == "__main__":
     ##############################################################
     print('Ready for Sphinx.')
 
-    while 1:
-        print()
-        cmd = input("Run Sphinx epub builder? (Y/n) ")
-        if cmd == 'n':
-            break
-        elif cmd == 'y' or cmd == 'j' or cmd == '':
-            subprocess.run(['make','clean','epub'])
-            break
-        else:
-            print("Invalid input. Try again...")
+    QUESTIONS = [('epub', 'Run Sphinx epub builder'),
+                ('latex', 'Run Sphinx latex builder'),
+                ('mobi', 'Run KindleGen'),
+                ('copy', 'Copy files to download directory'),
+                ('deploy', 'Deploy files to GitHub Page'),
+                ]
 
-    while 1:
-        print()
-        cmd = input("Run Sphinx latex builder? (Y/n) ")
-        if cmd == 'n':
-            break
-        elif cmd == 'y' or cmd == 'j' or cmd == '':
-            subprocess.run(['make','latexpdf'])
-            break
-        else:
-            print("Invalid input. Try again...")
-
-    while 1:
-        print()
-        cmd = input("Run KindleGen? (Y/n) ")
-        if cmd == 'n':
-            break
-        elif cmd == 'y' or cmd == 'j' or cmd == '':
-            os.chdir('_build/epub')
-            subprocess.run(['kindlegen',glob.glob('*.epub')[0]])
-            break
-        else:
-            print("Invalid input. Try again...")
-
-    while 1:
-        print()
-        cmd = input("Copy files to download directory? (Y/n) ")
-        if cmd == 'n':
-            break
-        elif cmd == 'y' or cmd == 'j' or cmd == '':
-            shutil.copy2(glob.glob('*.epub')[0], GHP+DL_DIR)
-            shutil.copy2(glob.glob('*.mobi')[0], GHP+DL_DIR)
-            os.chdir('../latex')
-            shutil.copy2(glob.glob('*.pdf')[0], GHP+DL_DIR)
-            break
-        else:
-            print("Invalid input. Try again...")
-
-    while 1:
-        print()
-        cmd = input("Deploy files to GitHub Page? (Y/n) ")
-        if cmd == 'n':
-            break
-        elif cmd == 'y' or cmd == 'j' or cmd == '':
-            os.chdir(GHP)
-            subprocess.run(['nikola','build'])
-            subprocess.run(['nikola','github_deploy']) 
-            break
-        else:
-            print("Invalid input. Try again...")
+    for q in QUESTIONS:
+        while 1:
+            print()
+            cmd = input('{}? (Y/n) '.format(q[1]))
+            if cmd == 'n':
+                break
+            elif cmd == 'y' or cmd == 'j' or cmd == '':
+                if q[0] == 'epub':
+                    subprocess.run(['make','clean','epub'])
+                elif q[0] == 'latex':
+                    subprocess.run(['make','latexpdf'])
+                elif q[0] == 'mobi':
+                    os.chdir('_build/epub')
+                    subprocess.run(['kindlegen',glob.glob('*.epub')[0]])
+                elif q[0] == 'copy':
+                    shutil.copy2(glob.glob('*.epub')[0], GHP+DL_DIR)
+                    shutil.copy2(glob.glob('*.mobi')[0], GHP+DL_DIR)
+                    os.chdir('../latex')
+                    shutil.copy2(glob.glob('*.pdf')[0], GHP+DL_DIR)
+                elif q[0] == 'deploy':
+                    os.chdir(GHP)
+                    subprocess.run(['nikola','build'])
+                    subprocess.run(['nikola','github_deploy']) 
+                break
+            else:
+                print("Invalid input. Try again...")
 
     print('\nThis is the end.')
