@@ -90,3 +90,9 @@ Pläne für später?
 * Lokalisation
 
 Zugegeben, darauf hat die Welt nicht gerade gewartet. Aber nun ist es irgendwie trotzdem da. Willkommen!
+
+.. raw:: html
+
+    <br>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/hB2mQLTRzWg">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+
