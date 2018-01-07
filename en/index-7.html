@@ -26,6 +26,97 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/stacksnotebooks/">Stacks and notebooks</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2017-10-16T11:05:37+02:00">2017-10-16 11:05</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/stacksnotebooks/#disqus_thread" data-disqus-identifier="cache/posts/stacks-und-notebooks.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#glade" id="id3">Glade</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#stack" id="id4">Stack</a></li>
+<li><a class="reference internal" href="posts/stacksnotebooks/#notebook" id="id5">Notebook</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#python" id="id6">Python</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#webkit2" id="id7">WebKit2</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="posts/stacksnotebooks/#listings" id="id8">Listings</a><ul>
+<li><a class="reference internal" href="posts/stacksnotebooks/#id1" id="id9">Python</a></li>
+<li><a class="reference internal" href="posts/stacksnotebooks/#id2" id="id10">Glade</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Organize contents on screen</strong></p>
+<p><em>Gtk.Stack</em> and <em>Gtk.Notebook</em> are layout containers that can hold any widgets.</p>
+<p>A notebook provides a multipage layout including a classic tab functionality. A stack also provides this basic functionality and you will able to switch between different layout pages.</p>
+<p>The main difference is the control widget of the stack is a separate widget (<em>Gtk.StackSwitcher</em>). Several stack switcher widgets can be assigned to one stack. A stack switcher can be placed into the headerbar and animated transitions between stack pages are supported.</p>
+<p>Stack subjectively fit better into the GNOME environment but notebooks provide more customization/functionality options.</p>
+<p>In the example there is a window containing a stack including a notebook on the third page showing different websites.</p>
+<a class="reference external image-reference" href="../images/21_stacknotebook.png"><img alt="/images/21_stacknotebook.thumbnail.png" src="../images/21_stacknotebook.thumbnail.png"></a>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="posts/stacksnotebooks/#id3">Glade</a></h2>
+<div class="section" id="stack">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id4">Stack</a></h3>
+<p>Stacks can be found in the sidebar's 'Container' section. Pages are easily created and edited via Glade. Sub-widgets in the example file are <em>Gtk.Image</em>, <a class="reference external" href="posts/exterminate">Vte.Terminal</a> and <em>Gtk.Notebook</em>.</p>
+<p>The stack switcher widget can be obtained from 'Controls and Display' and is placed to the headerbar. It's also possible to put it into a regular container widget like boxes. Pages can be shown in vertical or horizontal order. In <em>"General &gt; Stack"</em> a stack element must be assigned to the widget. The page name shown by the stack switcher widget can be edited via <em>"Packing &gt; Title"</em> of the sub-widget. This sub-widget has to be created in the first place, a new created stack has empty pages.</p>
+</div>
+<div class="section" id="notebook">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id5">Notebook</a></h3>
+<p>Notebook can also be found in the 'Container' section. The tab's control unit is an integrated label child widget automatically generated on page creation. <em>Gtk.ScrolledWindows</em> are used here as the pages' container widgets. These are also required for displaying (long) tables (see also List-/TreeStore articles <a class="reference external" href="posts/uberlistet">No. 1</a> und <a class="reference external" href="posts/ansichtssache">No. 2</a>).</p>
+<p>The tab bar of a notebook provides reserved space for additional widgets like fixed buttons (<em>"General &gt; Start/End Action"</em>). In the example there will be created a "Home" button in the start area.</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="posts/stacksnotebooks/#id6">Python</a></h2>
+<p>There are no signals required for switching between stack pages and notebook tabs. In the example only two signals are assigned, one for catching the "exit" command within the terminal and one for the button in the notebook tab bar.</p>
+<div class="section" id="webkit2">
+<h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
+<p>The webpages in the example are rendered by WebKit2. The essential module to use is <tt class="docutils literal">WebKit2.WebView</tt>. A new WebView object itself already is a scrollable Gtk+ widget within a <em>Gtk.Viewport</em> element. According to the <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API reference</a> it does not have to be placed in a <em>Gtk.ScrolledWindow</em> container widget. Having tested this that works for <em>Gtk.Stack</em> but not for <em>Gtk.Notebook</em>. That's why in the example there is used a ScrolledWindow as underlying container widget.</p>
+<p>The following pattern is used to create a WebView widget:</p>
+<pre class="code python"><a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-9"></a>
+<a name="rest_code_9ae753c6057c43bda0fef64c3d36bdbe-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre>
+<p class="more"><a href="posts/stacksnotebooks/">Read more…</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/non-konsole/">NoN: Konsoledierung</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -107,7 +198,7 @@
             <li class="next">
                 <a href="index-6.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2017 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
+        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
 Powered by <a href="http://getnikola.com">Nikola</a> - 
 Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br></p>
             
