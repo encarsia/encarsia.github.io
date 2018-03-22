@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1520953899.9645777
+_modified_time = 1521716927.1885138
 _enable_loop = True
 _template_filename = '/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/comments_helper.tmpl'
 _template_uri = 'comments_helper.tmpl'
@@ -65,13 +65,13 @@ def render_body(context,**pageargs):
 def render_comment_form(context,url,title,identifier):
     __M_caller = context.caller_stack._push_frame()
     try:
-        disqus = _mako_get_namespace(context, 'disqus')
-        googleplus = _mako_get_namespace(context, 'googleplus')
         facebook = _mako_get_namespace(context, 'facebook')
         isso = _mako_get_namespace(context, 'isso')
-        comment_system = context.get('comment_system', UNDEFINED)
-        muut = _mako_get_namespace(context, 'muut')
+        disqus = _mako_get_namespace(context, 'disqus')
         intensedebate = _mako_get_namespace(context, 'intensedebate')
+        muut = _mako_get_namespace(context, 'muut')
+        googleplus = _mako_get_namespace(context, 'googleplus')
+        comment_system = context.get('comment_system', UNDEFINED)
         livefyre = _mako_get_namespace(context, 'livefyre')
         __M_writer = context.writer()
         __M_writer('\n')
@@ -111,13 +111,13 @@ def render_comment_form(context,url,title,identifier):
 def render_comment_link(context,link,identifier):
     __M_caller = context.caller_stack._push_frame()
     try:
-        disqus = _mako_get_namespace(context, 'disqus')
-        googleplus = _mako_get_namespace(context, 'googleplus')
         facebook = _mako_get_namespace(context, 'facebook')
         isso = _mako_get_namespace(context, 'isso')
-        comment_system = context.get('comment_system', UNDEFINED)
-        muut = _mako_get_namespace(context, 'muut')
+        disqus = _mako_get_namespace(context, 'disqus')
         intensedebate = _mako_get_namespace(context, 'intensedebate')
+        muut = _mako_get_namespace(context, 'muut')
+        googleplus = _mako_get_namespace(context, 'googleplus')
+        comment_system = context.get('comment_system', UNDEFINED)
         livefyre = _mako_get_namespace(context, 'livefyre')
         __M_writer = context.writer()
         __M_writer('\n')
@@ -157,13 +157,13 @@ def render_comment_link(context,link,identifier):
 def render_comment_link_script(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        disqus = _mako_get_namespace(context, 'disqus')
-        googleplus = _mako_get_namespace(context, 'googleplus')
         facebook = _mako_get_namespace(context, 'facebook')
         isso = _mako_get_namespace(context, 'isso')
-        comment_system = context.get('comment_system', UNDEFINED)
-        muut = _mako_get_namespace(context, 'muut')
+        disqus = _mako_get_namespace(context, 'disqus')
         intensedebate = _mako_get_namespace(context, 'intensedebate')
+        muut = _mako_get_namespace(context, 'muut')
+        googleplus = _mako_get_namespace(context, 'googleplus')
+        comment_system = context.get('comment_system', UNDEFINED)
         livefyre = _mako_get_namespace(context, 'livefyre')
         __M_writer = context.writer()
         __M_writer('\n')
