@@ -7,11 +7,11 @@
 .. description: 
 .. type: text
 
-Kivy_ ist ein plattformunabh?ngiges GUI-Toolkit, mit dem man Python-Programme erstellen kann, die auf Linux, Windows, Mac und mobilen Plattformen (iOS, Android) laufen - die reptiloide eierlegende Wollmilchsau sozusagen.
+Kivy_ ist ein plattformunabhängiges GUI-Toolkit, mit dem man Python-Programme erstellen kann, die auf Linux, Windows, Mac und mobilen Plattformen (iOS, Android) laufen - die reptiloide eierlegende Wollmilchsau sozusagen.
 
 .. _Kivy: https://kivy.org
 
-F?r mein n?chstes kleines Vorhaben werde ich darauf zur?ckgreifen, deshalb gibt es hier das kleine Link-Starterpaket:
+Für mein nächstes kleines Vorhaben werde ich darauf zurückgreifen, deshalb gibt es hier das kleine Link-Starterpaket:
 
 Text
 ****
@@ -35,3 +35,5 @@ Empfehlenswert sind auch die folgenden Videoreihen:
 
 .. youtube:: F7UKmK9eQLY
     :width: 500
+
+
