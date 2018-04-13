@@ -18,6 +18,7 @@
             <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa-google-plus-official"></i></a></li>
             <li><a href="https://github.com/encarsia" title="Github"><i class="fa-github"></i></a></li>
             <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa-twitter"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa-mastodon"></i></a></li>
             <li><a href="categories/index.html" title="Tags"><i class="fa-tags"></i></a></li>
             <li><a href="rss.xml" title="RSS"><i class="fa-rss"></i></a></li>
             <li><a href="pages/about/index.html" title="About me"><i class="fa-user"></i></a></li>
@@ -247,16 +248,16 @@ Rechts: Anzeige des GPS-Tracks in Locus-App</p>
 <h3><a class="toc-backref" href="posts/stacksnotebooks/#id7">WebKit2</a></h3>
 <p>Die Darstellung von Webseiten wird im Beispiel von WebKit2 erledigt. Das zentrale Modul dabei ist <tt class="docutils literal">WebKit2.WebView</tt>. Ein neues WebView-Objekt selbst ist bereits ein scrollbares Gtk+-Widget in einem <em>Gtk.Viewport</em>, muss also laut <a class="reference external" href="https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html">API-Referenz</a> nicht mehr in ein <em>Gtk.ScrolledWindow</em> platziert werden. Dies funktionierte im Test zwar für <em>Gtk.Stack</em>, nicht aber für <em>Gtk.Notebook</em>, weshalb dort trotzdem als "Unterlage" ein ScrolledWindow-Widget verwendet wird.</p>
 <p>Das WebView-Widget wird nach folgendem Muster erstellt:</p>
-<pre class="code python"><a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-1"></a><span class="c1">#create new WebView widget</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-3"></a><span class="c1">#send URL to widget</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-5"></a><span class="c1">#add webview to notebook</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-7"></a><span class="c1">#add webview to stack</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-9"></a>
-<a name="rest_code_0ded02f18bdf43e7811d7d6cc4917bef-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_ac24fced36904449a49679e0edd81f8a-1"></a><span class="c1">#create new WebView widget</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-2"></a><span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-3"></a><span class="c1">#send URL to widget</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-4"></a><span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="s2">"http://google.com"</span><span class="p">)</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-5"></a><span class="c1">#add webview to notebook</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-6"></a><span class="n">notebook</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-7"></a><span class="c1">#add webview to stack</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-8"></a><span class="n">stack</span><span class="o">.</span><span class="n">add_titled</span><span class="p">(</span><span class="n">webview</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"StackSwitcher title"</span><span class="p">)</span>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-9"></a>
+<a name="rest_code_ac24fced36904449a49679e0edd81f8a-10"></a><span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/stacksnotebooks/">Weiterlesen…</a></p>
 </div>

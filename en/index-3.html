@@ -18,6 +18,7 @@
             <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa-google-plus-official"></i></a></li>
             <li><a href="https://github.com/encarsia" title="Github"><i class="fa-github"></i></a></li>
             <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa-twitter"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa-mastodon"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="fa-tags"></i></a></li>
             <li><a href="../rss.xml" title="RSS"><i class="fa-rss"></i></a></li>
             <li><a href="../pages/about/index.html" title="About me"><i class="fa-user"></i></a></li>
@@ -108,22 +109,22 @@
 <div class="system-message" id="id1">
 <p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 19); <em><a href="posts/exterminate/#id2">backlink</a></em></p>
 Inline emphasis start-string without end-string.</div>
-<pre class="code python"><a name="rest_code_96bb5804738e41eba4dea613bcfcdc7a-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_de17c8e431cd43dc8e9cbe1c649538b6-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
 </pre>
 <p>The terminal emulator is initiated by calling <tt class="docutils literal">spawn_sync</tt> expecting 7 parameters. Detailed information on the parameters are available in the <a class="reference external" href="https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync">documentation</a> but for a common start a lot of defaults and Nones will do:</p>
-<pre class="code python"><a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-3"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-5"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-7"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-8"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7c35d6a7ade64874ae76bcc367ae990f-9"></a>        <span class="p">)</span>
+<pre class="code python"><a name="rest_code_953623d802994edfb7aa322e8cc25aae-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-3"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-5"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-7"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-8"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_953623d802994edfb7aa322e8cc25aae-9"></a>        <span class="p">)</span>
 </pre>
 <p>The <tt class="docutils literal">feed_child</tt> function must be called to send a command to the console. The expected parameters are the string including a newline and the length of the string:</p>
-<pre class="code python"><a name="rest_code_6312677ebf7a4ca18bb65c7434892b01-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
-<a name="rest_code_6312677ebf7a4ca18bb65c7434892b01-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_ecfdba42cd6247b68c6d327866ef317c-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
+<a name="rest_code_ecfdba42cd6247b68c6d327866ef317c-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
 </pre>
 <p class="more"><a href="posts/exterminate/">Read more…</a></p>
 </div>
@@ -222,18 +223,18 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="translatable-strings">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id6">Translatable strings</a></h3>
 <p>Approved translatable strings are recognized by <tt class="docutils literal">xgettext</tt> by brackets with a leading underscore:</p>
-<pre class="code python"><a name="rest_code_60611005e9e24d97b71c4969ad25b18b-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">gettext</span>
-<a name="rest_code_60611005e9e24d97b71c4969ad25b18b-2"></a><span class="n">translatable_string</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">"translate me"</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_67a10af3e07940c7b142144fb14ca349-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">gettext</span>
+<a name="rest_code_67a10af3e07940c7b142144fb14ca349-2"></a><span class="n">translatable_string</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">"translate me"</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="configure-bind-textdomain">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id7">configure (bind)textdomain</a></h3>
 <p>Now name and location of the MO files have to be configured in the source code:</p>
-<pre class="code python"><a name="rest_code_9f09747a8da441dd93dc50268afb218b-1"></a><span class="n">locale</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_9f09747a8da441dd93dc50268afb218b-2"></a><span class="n">locale</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_9f09747a8da441dd93dc50268afb218b-3"></a><span class="n">gettext</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_9f09747a8da441dd93dc50268afb218b-4"></a><span class="n">gettext</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
-<a name="rest_code_9f09747a8da441dd93dc50268afb218b-5"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_translation_domain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_a855461e235a484f9f54d15f967b663e-1"></a><span class="n">locale</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_a855461e235a484f9f54d15f967b663e-2"></a><span class="n">locale</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_a855461e235a484f9f54d15f967b663e-3"></a><span class="n">gettext</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_a855461e235a484f9f54d15f967b663e-4"></a><span class="n">gettext</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
+<a name="rest_code_a855461e235a484f9f54d15f967b663e-5"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_translation_domain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
 </pre>
 <p><tt class="docutils literal">set_translation_domain</tt> has to be called before loading Glade files.</p>
 </div>
@@ -243,37 +244,37 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="pot">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id9">POT</a></h3>
 <p>POT is the abbrevation for Portable Object Template. This file contains all original translatable strings. After generating an empty POT file, <tt class="docutils literal">xgettext</tt> is executed for all source files containing translatable strings:</p>
-<pre class="code console"><a name="rest_code_c365cff2c14143978527bb9fb61dbcdd-1"></a><span class="gp">$</span> xgettext --options -o output.pot sourcefile.ext
+<pre class="code console"><a name="rest_code_7c596beb349f454b95c77b26addf26dd-1"></a><span class="gp">$</span> xgettext --options -o output.pot sourcefile.ext
 </pre>
 <p>The identified strings are added to the POT file.</p>
-<pre class="code console"><a name="rest_code_32ac21f77e754b589307f3f857a7fc61-1"></a><span class="gp">#</span>: sourcefile.ext:line number
-<a name="rest_code_32ac21f77e754b589307f3f857a7fc61-2"></a><span class="go">msgid "translatable string"</span>
-<a name="rest_code_32ac21f77e754b589307f3f857a7fc61-3"></a><span class="go">msgstr ""</span>
+<pre class="code console"><a name="rest_code_a92f7fcedb5d40ac84ce6fc0d419569f-1"></a><span class="gp">#</span>: sourcefile.ext:line number
+<a name="rest_code_a92f7fcedb5d40ac84ce6fc0d419569f-2"></a><span class="go">msgid "translatable string"</span>
+<a name="rest_code_a92f7fcedb5d40ac84ce6fc0d419569f-3"></a><span class="go">msgstr ""</span>
 </pre>
 <p>The file number reference comment can be avoided by passting the option <tt class="docutils literal"><span class="pre">--no-location</span></tt>.</p>
 <p>In this article's example it is required to run xgettext once for the Glade file and once for the Python source code; the <tt class="docutils literal"><span class="pre">-j</span></tt> (<tt class="docutils literal"><span class="pre">--join-existing</span></tt>) option adds new found strings to an existing file:</p>
-<pre class="code console"><a name="rest_code_5fa5ca70ee464f669254df70232215d4-1"></a><span class="gp">$</span> xgettext --sort-output --keyword<span class="o">=</span>translatable --language<span class="o">=</span>Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
-<a name="rest_code_5fa5ca70ee464f669254df70232215d4-2"></a><span class="gp">$</span> xgettext --language<span class="o">=</span>Python -j -o 10_localization/TUT.pot 10_lokalisation.py
+<pre class="code console"><a name="rest_code_4c06e794d3944dc38451f8d477f1a0d6-1"></a><span class="gp">$</span> xgettext --sort-output --keyword<span class="o">=</span>translatable --language<span class="o">=</span>Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
+<a name="rest_code_4c06e794d3944dc38451f8d477f1a0d6-2"></a><span class="gp">$</span> xgettext --language<span class="o">=</span>Python -j -o 10_localization/TUT.pot 10_lokalisation.py
 </pre>
 </div>
 <div class="section" id="po">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id10">PO</a></h3>
 <p>Translated strings are stored in a PO file per language. A new translation ist invoked by</p>
-<pre class="code console"><a name="rest_code_4b20d0294c6a4a31b2e6b62d133a972d-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>source.pot --locale<span class="o">=</span>xx
-<a name="rest_code_4b20d0294c6a4a31b2e6b62d133a972d-2"></a><span class="gp">#</span> <span class="nv">xx</span><span class="o">=</span>language code
+<pre class="code console"><a name="rest_code_69e366c441de425eb58a3421fc685316-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>source.pot --locale<span class="o">=</span>xx
+<a name="rest_code_69e366c441de425eb58a3421fc685316-2"></a><span class="gp">#</span> <span class="nv">xx</span><span class="o">=</span>language code
 </pre>
 <p>that generates a file after the pattern xx.po (p.e. de.po). This file can be edited in any text editor or dedicated tools such like <a class="reference external" href="https://poedit.net/">PoEdit</a>. A German localization for example is created by the command</p>
-<pre class="code console"><a name="rest_code_98c5405f07b54907b28941f5af74cdf3-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>TUT.pot --locale<span class="o">=</span>de
+<pre class="code console"><a name="rest_code_75f1ffd28d86481091ea7e1e1e1c2c09-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>TUT.pot --locale<span class="o">=</span>de
 </pre>
 <p>If the POT file is altered the PO files are updated with the new strings by executing <tt class="docutils literal">msgmerge</tt>:</p>
-<pre class="code console"><a name="rest_code_fd049412b8314ced992b9fd9a0e8e210-1"></a><span class="gp">$</span> msgmerge lang.po template.pot &gt; new_lang.po
+<pre class="code console"><a name="rest_code_779c8b917b3c4264bae5030ab12aee97-1"></a><span class="gp">$</span> msgmerge lang.po template.pot &gt; new_lang.po
 </pre>
 </div>
 <div class="section" id="mo">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id11">MO</a></h3>
 <p>MO files are (machine readable) binary files and mandatory for gettext to work. Localization files are located below the <em>bindtextdomain</em> following the file structure <tt class="docutils literal"><span class="pre">path/to/bindtextdomain)/locale/language</span> code/LC_MESSAGES/appname.po</tt>.</p>
 <p>In the example the bindtextdomain is created in the local directory, the generated <cite>de.po</cite> translation text file then transformed into the  corresponding MO file:</p>
-<pre class="code console"><a name="rest_code_506e3dc94d2046ccbe92497632e5f39b-1"></a><span class="gp">$</span> msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
+<pre class="code console"><a name="rest_code_86c072dffc8747568f685ae1d80143fb-1"></a><span class="gp">$</span> msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 </pre>
 <p class="more"><a href="posts/romani-ite-domum/">Read more…</a></p>
 </div>
@@ -394,16 +395,16 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="combobox">
 <h3><a class="toc-backref" href="posts/uberlistet/#id11">ComboBox</a></h3>
 <p>For accessing a data row you need a <em>Gtk.TreeIter</em> object which points to the position in the model (this can also be achieved by a <em>Gtk.TreePath</em> object).</p>
-<pre class="code python"><a name="rest_code_16c53482d91d408eb73069d4764bdd1b-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
-<a name="rest_code_16c53482d91d408eb73069d4764bdd1b-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
-<a name="rest_code_16c53482d91d408eb73069d4764bdd1b-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_85d48f17c86a49b083f66c816248500d-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<a name="rest_code_85d48f17c86a49b083f66c816248500d-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
+<a name="rest_code_85d48f17c86a49b083f66c816248500d-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre>
 </div>
 <div class="section" id="edit-cells">
 <h3><a class="toc-backref" href="posts/uberlistet/#id12">Edit cells</a></h3>
 <p>The <em>edited</em> signal passes the position and content of the edited cell. The new content of the <em>CellRendererText</em> has to explicitly be committed to the data store otherwise the content will return to the pre edit state. This can be accomplished by using the passed <em>TreePath</em> position.</p>
-<pre class="code python"><a name="rest_code_25849b26de5f481c8873567cd34566f1-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="rest_code_25849b26de5f481c8873567cd34566f1-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
+<pre class="code python"><a name="rest_code_6eed817d80904b2191ae6d7001e2e2bb-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
+<a name="rest_code_6eed817d80904b2191ae6d7001e2e2bb-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
 </pre>
 <p class="more"><a href="posts/uberlistet/">Read more…</a></p>
 </div>
