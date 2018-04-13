@@ -140,9 +140,9 @@ NAVIGATION_LINKS = {
         ('https://plus.google.com/105146352752269764996/posts', 'Google+', 'fa-google-plus-official'),
         ('https://github.com/encarsia', 'Github', 'fa-github'),
         ('https://twitter.com/encarsia_', 'Twitter', 'fa-twitter'),
+        ('https://octodon.social/@encarsia', 'Mastodon', 'fa-mastodon'),
         ('/categories/index.html', 'Tags', 'fa-tags'),
         ('/rss.xml', 'RSS', 'fa-rss'),
-
         ('/pages/about/index.html', 'About me', 'fa-user'),
         ('/archive.html', 'Archives', 'fa-folder-open'),
     )
@@ -152,7 +152,8 @@ NAVIGATION_LINKS = {
 #THEME = "zen"
 
 # zen theme with upgraded fonts to 4.7.0 (v3 is depreciated) and some minor changes
-THEME = "zen_fa4"
+#THEME = "zen_fa4"
+THEME = "zen_forkawesome"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
