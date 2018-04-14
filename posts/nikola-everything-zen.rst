@@ -49,6 +49,7 @@ Links
  * `zen <https://themes.getnikola.com/v7/zen/>`_
  * `LESS stylesheet framework <http://lesscss.org/>`_
  * `LESS-Plugin für Nikola <https://plugins.getnikola.com/v7/less/>`_
+ * `Theme mit Fork Awesome-Icons <link://slug/nikola-zen-forkawesome>`_
 
 Download
 ********
@@ -56,3 +57,4 @@ Download
  * `zen_fa4.zip (791 kB)`__
 
 __ /files/zen_fa4.zip
+
