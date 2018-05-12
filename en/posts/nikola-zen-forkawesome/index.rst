@@ -1,6 +1,6 @@
 .. title: Nikola: everything zen
 .. slug: nikola-zen-forkawesome
-.. date: 2018-05-11 09:57:21 UTC+02:00
+.. date: 2018-05-12 07:50:21 UTC+02:00
 .. tags: nikola
 .. category: 
 .. link: 
@@ -15,7 +15,7 @@ Ein Nachteil von `Nikola <https://getnikola.com/>`_ ist meiner Meinung nach die 
 
 Inzwischen gibt es nicht nur Version 5 von `Font Awesome <https://fontawesome.com/>`_, sondern auch einen Fork des Projektes namens `Fork Awesome <https://forkawesome.github.io>`_ mit ein paar neuen Icons.
 
-Dank eines Kommentars einer der Nikola-Devs hier habe ich mich nun durchgerungen, meine Änderungen offiziell per Pull Request einzureichen. Die *zen*-Familie ist nun auch im offiziellen Repository auf Font Awesome v4.7.0 geupdatet. Außerdem gibt es eine neue Variante, die die Fork Awesome-Icons nutzt. Eine manuelle Installation erübrigt sich also, sie kann direkt im Nikola-Projektordner erfolgen:
+Dank eines Kommentars einer der Nikola-Devs (thx Roberto) hier habe ich mich nun durchgerungen, meine Änderungen offiziell per Pull Request einzureichen. Die *zen*-Familie ist nun auch im offiziellen Repository auf Font Awesome v4.7.0 geupdatet. Außerdem gibt es eine neue Variante, die die Fork Awesome-Icons nutzt. Eine manuelle Installation erübrigt sich also, sie kann direkt im Nikola-Projektordner erfolgen:
 
 .. code:: console
 
