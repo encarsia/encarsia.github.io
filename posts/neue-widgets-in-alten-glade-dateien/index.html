@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Neue Widgets in alten Glade-Dateien | Merge and Destroy</title>
-<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">
+<link href="../../assets/css/all.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../en/rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/posts/neue-widgets-in-alten-glade-dateien/">
@@ -25,16 +27,16 @@ Die Ursache">
 </head>
 <body>
     <section class="social"><ul>
-<li><a href="../../index.html" title="Home"><i class="fa-home"></i></a></li>
-            <li><a href="../tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa-lightbulb-o"></i></a></li>
-            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa-google-plus-official"></i></a></li>
-            <li><a href="https://github.com/encarsia" title="Github"><i class="fa-github"></i></a></li>
-            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa-twitter"></i></a></li>
-            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa-mastodon"></i></a></li>
-            <li><a href="../../categories/index.html" title="Tags"><i class="fa-tags"></i></a></li>
-            <li><a href="../../rss.xml" title="RSS"><i class="fa-rss"></i></a></li>
-            <li><a href="../../pages/about/index.html" title="About me"><i class="fa-user"></i></a></li>
-            <li><a href="../../archive.html" title="Archives"><i class="fa-folder-open"></i></a></li>
+<li><a href="../../index.html" title="Home"><i class="fa fa-home"></i></a></li>
+            <li><a href="../tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa fa-lightbulb-o"></i></a></li>
+            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa fa-google-plus-official"></i></a></li>
+            <li><a href="https://github.com/encarsia" title="Github"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa fa-mastodon"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="fa fa-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+            <li><a href="../../pages/about/index.html" title="About me"><i class="fa fa-user"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="fa fa-folder-open"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
             
@@ -69,11 +71,11 @@ Die Ursache">
 <p>Per Tooltip wird dann zum Beispiel angezeigt:</p>
 <a class="reference external image-reference" href="../../images/glade_widgetsinactive_tooltip.png"><img alt="/images/glade_widgetsinactive_tooltip.thumbnail.png" src="../../images/glade_widgetsinactive_tooltip.thumbnail.png"></a>
 <p>Die Ursache liegt in der angegebenen Gtk+-Version gleich am Anfang der Glade-Datei:</p>
-<pre class="code xml"><a name="rest_code_c81641dc517b4d539b696fc3e6cf6328-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_c81641dc517b4d539b696fc3e6cf6328-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
-<a name="rest_code_c81641dc517b4d539b696fc3e6cf6328-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_c81641dc517b4d539b696fc3e6cf6328-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
-<a name="rest_code_c81641dc517b4d539b696fc3e6cf6328-5"></a>  ...
+<pre class="code xml"><a name="rest_code_9697d6a88ed8418caabe866e22f69b2c-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_9697d6a88ed8418caabe866e22f69b2c-2"></a><span class="c">&lt;!-- Generated with glade 3.20.1 --&gt;</span>
+<a name="rest_code_9697d6a88ed8418caabe866e22f69b2c-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_9697d6a88ed8418caabe866e22f69b2c-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.0"</span><span class="nt">/&gt;</span>
+<a name="rest_code_9697d6a88ed8418caabe866e22f69b2c-5"></a>  ...
 </pre>
 <p>Dieses Zeile wird auch beim neuerlichen Speichern mit einer aktuellen Glade-Version nicht verändert. Abhilfe kann hier ganz simpel geschaffen werden, indem <tt class="docutils literal">"3.0"</tt> durch eine aktuellere Version ersetzt wird (derzeit <tt class="docutils literal">"3.20"</tt>).</p>
 </div>

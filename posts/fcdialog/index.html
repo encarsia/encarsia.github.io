@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Dateiauswahldialog | Merge and Destroy</title>
-<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">
+<link href="../../assets/css/all.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../en/rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/posts/fcdialog/">
@@ -46,16 +48,16 @@ Der GtkFil">
 </head>
 <body>
     <section class="social"><ul>
-<li><a href="../../index.html" title="Home"><i class="fa-home"></i></a></li>
-            <li><a href="../tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa-lightbulb-o"></i></a></li>
-            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa-google-plus-official"></i></a></li>
-            <li><a href="https://github.com/encarsia" title="Github"><i class="fa-github"></i></a></li>
-            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa-twitter"></i></a></li>
-            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa-mastodon"></i></a></li>
-            <li><a href="../../categories/index.html" title="Tags"><i class="fa-tags"></i></a></li>
-            <li><a href="../../rss.xml" title="RSS"><i class="fa-rss"></i></a></li>
-            <li><a href="../../pages/about/index.html" title="About me"><i class="fa-user"></i></a></li>
-            <li><a href="../../archive.html" title="Archives"><i class="fa-folder-open"></i></a></li>
+<li><a href="../../index.html" title="Home"><i class="fa fa-home"></i></a></li>
+            <li><a href="../tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa fa-lightbulb-o"></i></a></li>
+            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa fa-google-plus-official"></i></a></li>
+            <li><a href="https://github.com/encarsia" title="Github"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa fa-mastodon"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="fa fa-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+            <li><a href="../../pages/about/index.html" title="About me"><i class="fa fa-user"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="fa fa-folder-open"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
             
@@ -127,7 +129,7 @@ Der GtkFil">
 <p>Standardmäßig wird die "action area" unter dem Dateibrowserbereich angelegt.</p>
 <a class="reference external image-reference" href="../../images/16_fcd_glade.png"><img alt="/images/16_fcd_glade.thumbnail.png" src="../../images/16_fcd_glade.thumbnail.png"></a>
 <p>Verwendet man den <em>FileChooserDialog</em> ohne Glade (siehe unten), werden die Buttons in der Headerbar angezeigt. Letzteres sollte aber vermutlich der Standard sein, da es eine Warnung ausgegeben wird, die die Funktionalität des Dialogs allerdings nicht beeinträchtigt:</p>
-<pre class="code text"><a name="rest_code_156f51f1ac384efb949d8b72dce62d3a-1"></a>Gtk-WARNING **: Content added to the action area of a dialog using header bars
+<pre class="code text"><a name="rest_code_6cbb22409d2949a4aff7f5d005a3bb78-1"></a>Gtk-WARNING **: Content added to the action area of a dialog using header bars
 </pre>
 <p>Diese Meldung wird nicht angezeigt, wenn man darauf verzichtet, in Glade Buttons zur intern action area hinzuzufügen. Dies betrifft auch andere Dialogarten.</p>
 <p>Legt man nun in Glade eine Headerbar mit Buttons an, ist es standardmäßig nicht möglich, diesen Buttons Response-Werte zuzuweisen.</p>
@@ -135,19 +137,19 @@ Der GtkFil">
 <div class="section" id="xml-datei">
 <h4><a class="toc-backref" href="#id6">XML-Datei</a></h4>
 <p>Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Datei in einem Texteditor und fügt dem Element <tt class="docutils literal"><span class="pre">&lt;action-widgets&gt;</span></tt> die entsprechenden Zeilen hinzu:</p>
-<pre class="code html"><a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-1"></a><span class="p">&lt;</span><span class="nt">object</span> <span class="na">class</span><span class="o">=</span><span class="s">"GtkFileChooserDialog"</span> <span class="na">id</span><span class="o">=</span><span class="s">"filechooser_dialog"</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-2"></a>  <span class="p">&lt;</span><span class="nt">property</span> <span class="na">abc</span> <span class="p">&gt;&lt;/</span><span class="nt">property</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-3"></a>  <span class="p">&lt;</span><span class="nt">property</span> <span class="na">xyz</span> <span class="p">&gt;&lt;/</span><span class="nt">property</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-4"></a>  <span class="c">&lt;!-- usw. --&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-5"></a>  <span class="p">&lt;</span><span class="nt">action-widgets</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-6"></a>    <span class="c">&lt;!-- Buttons innerhalb der action area --&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-7"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"0"</span><span class="p">&gt;</span>button1<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-8"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"1"</span><span class="p">&gt;</span>button2<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-9"></a>    <span class="c">&lt;!-- Button in Headerbar --&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-10"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"-1"</span><span class="p">&gt;</span>hb_button<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-11"></a>  <span class="p">&lt;/</span><span class="nt">action-widgets</span><span class="p">&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-12"></a>  <span class="c">&lt;!-- usw. --&gt;</span>
-<a name="rest_code_767fad7a75ea4ebd9f54526bbd5e3c0a-13"></a><span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_582fc84b18e1461c9da641960fb657d2-1"></a><span class="p">&lt;</span><span class="nt">object</span> <span class="na">class</span><span class="o">=</span><span class="s">"GtkFileChooserDialog"</span> <span class="na">id</span><span class="o">=</span><span class="s">"filechooser_dialog"</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-2"></a>  <span class="p">&lt;</span><span class="nt">property</span> <span class="na">abc</span> <span class="p">&gt;&lt;/</span><span class="nt">property</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-3"></a>  <span class="p">&lt;</span><span class="nt">property</span> <span class="na">xyz</span> <span class="p">&gt;&lt;/</span><span class="nt">property</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-4"></a>  <span class="c">&lt;!-- usw. --&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-5"></a>  <span class="p">&lt;</span><span class="nt">action-widgets</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-6"></a>    <span class="c">&lt;!-- Buttons innerhalb der action area --&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-7"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"0"</span><span class="p">&gt;</span>button1<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-8"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"1"</span><span class="p">&gt;</span>button2<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-9"></a>    <span class="c">&lt;!-- Button in Headerbar --&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-10"></a>    <span class="p">&lt;</span><span class="nt">action-widget</span> <span class="na">response</span><span class="o">=</span><span class="s">"-1"</span><span class="p">&gt;</span>hb_button<span class="p">&lt;/</span><span class="nt">action-widget</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-11"></a>  <span class="p">&lt;/</span><span class="nt">action-widgets</span><span class="p">&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-12"></a>  <span class="c">&lt;!-- usw. --&gt;</span>
+<a name="rest_code_582fc84b18e1461c9da641960fb657d2-13"></a><span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
 </pre>
 <p>Dies funktioniert zwar, ist aber ganz sicher nicht so gedacht, weil diese Änderung beim erneuten Bearbeiten der Glade-Datei wieder rückgängig gemacht wird.</p>
 </div>
@@ -155,18 +157,18 @@ Der GtkFil">
 <h4><a class="toc-backref" href="#id7">add_action_widget-Funktion</a></h4>
 <p>Mit der Funktion <tt class="docutils literal">add_action_widget</tt> können aktivierbare Widgets zur action area hinzugefügt und damit ebenfalls per <em>response</em>-Signal verarbeitet werden. Dies sind Widgets der <em>Gtk.Activatable</em>-Klasse und beinhaltet die Widgets <em>Buttons</em>, <em>MenuItem</em>, <em>RecentChooserMenu</em>, <em>Switch</em> und <em>ToolItem</em>.</p>
 <p>Ein Button wird nach dem Schema</p>
-<pre class="code python"><a name="rest_code_5f1962aa78ba466ca172de2c57461b31-1"></a><span class="n">widget</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="n">response</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_596f99addefe499eb18ab5b8c618f576-1"></a><span class="n">widget</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="n">response</span><span class="p">)</span>
 </pre>
 <p>hinzugefügt. Wichtig ist es, beim Button die Widget-Eigenschaft "can-default" zu aktivieren:</p>
-<pre class="code python"><a name="rest_code_d445180408da4abfbe2f8a829b6ca0ff-1"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_e113113caa144f1db3806f68bb5bb448-1"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
 </pre>
 <p>Im Beispiel erhält der Dialog die beiden Standardbuttons "Anwenden"/"Abbrechen":</p>
-<pre class="code python"><a name="rest_code_69b45c1a4d4847908434eb973586122b-1"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
-<a name="rest_code_69b45c1a4d4847908434eb973586122b-2"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_69b45c1a4d4847908434eb973586122b-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
-<a name="rest_code_69b45c1a4d4847908434eb973586122b-4"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
-<a name="rest_code_69b45c1a4d4847908434eb973586122b-5"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_69b45c1a4d4847908434eb973586122b-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-1"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
+<a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-2"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
+<a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-4"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
+<a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-5"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_61e0b2a2246e4de8ac37ff60941b9226-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
 </pre>
 <p>Um die Dateiauswahl auch auf Doppelklick zu ermöglichen, wird neben des <em>response</em>-Signals noch das Signal <em>file-activated</em> benötigt.</p>
 </div>
@@ -187,19 +189,19 @@ Der GtkFil">
 <div class="section" id="dialog-ohne-glade">
 <h3><a class="toc-backref" href="#id11">Dialog ohne Glade</a></h3>
 <p>Der <em>FileChooserDialog</em> lässt sich auch ziemlich einfach ohne Glade realisieren, zudem lassen sich die oben genannten Probleme mit Buttons in der Headerbar vermeiden. Der Dialog wird nach folgendem Schema erstellt:</p>
-<pre class="code python"><a name="rest_code_fe839f9335f14ec8b0ad08ec074b70ca-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"window title"</span><span class="p">,</span>
-<a name="rest_code_fe839f9335f14ec8b0ad08ec074b70ca-2"></a>                            <span class="n">parent_window</span><span class="p">,</span>
-<a name="rest_code_fe839f9335f14ec8b0ad08ec074b70ca-3"></a>                            <span class="n">file_chooser_action</span><span class="p">,</span>
-<a name="rest_code_fe839f9335f14ec8b0ad08ec074b70ca-4"></a>                            <span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="n">response1</span><span class="p">,</span>
-<a name="rest_code_fe839f9335f14ec8b0ad08ec074b70ca-5"></a>                            <span class="n">button2</span><span class="p">,</span><span class="n">response2</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_9cd6a9b3db764c45a211c8ccd3968970-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"window title"</span><span class="p">,</span>
+<a name="rest_code_9cd6a9b3db764c45a211c8ccd3968970-2"></a>                            <span class="n">parent_window</span><span class="p">,</span>
+<a name="rest_code_9cd6a9b3db764c45a211c8ccd3968970-3"></a>                            <span class="n">file_chooser_action</span><span class="p">,</span>
+<a name="rest_code_9cd6a9b3db764c45a211c8ccd3968970-4"></a>                            <span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="n">response1</span><span class="p">,</span>
+<a name="rest_code_9cd6a9b3db764c45a211c8ccd3968970-5"></a>                            <span class="n">button2</span><span class="p">,</span><span class="n">response2</span><span class="p">))</span>
 </pre>
 <p>Der Dialog wird dann direkt aufgerufen und verarbeitet:</p>
-<pre class="code python"><a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-2"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response1</span><span class="p">:</span>
-<a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-3"></a>    <span class="o">...</span>
-<a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-4"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response2</span><span class="p">:</span>
-<a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-5"></a>    <span class="o">...</span>
-<a name="rest_code_4cae4c3d8efb4927b843d8138afc869d-6"></a><span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-2"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response1</span><span class="p">:</span>
+<a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-3"></a>    <span class="o">...</span>
+<a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-4"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response2</span><span class="p">:</span>
+<a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-5"></a>    <span class="o">...</span>
+<a name="rest_code_7599b285e0c54c899d780a5d2735cc4a-6"></a><span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="id1">
@@ -208,14 +210,14 @@ Der GtkFil">
 <ol class="arabic simple">
 <li>Ohne Wahl. Der anzuwendende Filter ist voreingestellt:</li>
 </ol>
-<pre class="code python"><a name="rest_code_10da571dd7f84ad99fe0c4d257f944dc-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_a33c5c87afb04b45a5f9d6df1f491d67-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
 </pre>
 <ol class="arabic simple" start="2">
 <li>Wahl per Dropdown-Menü: Der Nutzer kann zwischen mehreren vorgegebenen Filtern wählen:</li>
 </ol>
-<pre class="code python"><a name="rest_code_59b13fef4ff742778fcfeaf2cd772786-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter1</span><span class="p">)</span>
-<a name="rest_code_59b13fef4ff742778fcfeaf2cd772786-2"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter2</span><span class="p">)</span>
-<a name="rest_code_59b13fef4ff742778fcfeaf2cd772786-3"></a><span class="o">...</span>
+<pre class="code python"><a name="rest_code_8116a210bca7491b9997bc1521481b68-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter1</span><span class="p">)</span>
+<a name="rest_code_8116a210bca7491b9997bc1521481b68-2"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter2</span><span class="p">)</span>
+<a name="rest_code_8116a210bca7491b9997bc1521481b68-3"></a><span class="o">...</span>
 </pre>
 <!-- TEASER_END -->
 </div>
@@ -225,251 +227,251 @@ Der GtkFil">
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id14">Glade</a></h3>
 <p><a class="reference external" href="../../listings/16_filechooser.glade.html">16_filechooser.glade</a>  <a class="reference external" href="../../listings/16_filechooser.glade">(Source)</a></p>
-<pre class="code xml"><a name="rest_code_27aee889bf22433a894ce9b50174afcd-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"filefilter"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-6"></a>    <span class="nt">&lt;mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-7"></a>      <span class="nt">&lt;mime-type&gt;</span>image/*<span class="nt">&lt;/mime-type&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-8"></a>    <span class="nt">&lt;/mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-9"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-10"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"jpg_filter"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-11"></a>    <span class="nt">&lt;mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-12"></a>      <span class="nt">&lt;mime-type&gt;</span>image/jpeg<span class="nt">&lt;/mime-type&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-13"></a>    <span class="nt">&lt;/mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-14"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-15"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"png_filter"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-16"></a>    <span class="nt">&lt;mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-17"></a>      <span class="nt">&lt;mime-type&gt;</span>image/png<span class="nt">&lt;/mime-type&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-18"></a>    <span class="nt">&lt;/mime-types&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-19"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-20"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"preview"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-21"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-22"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-23"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-24"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"margin_right"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-25"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-26"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-27"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-28"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-29"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-30"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-31"></a>    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-32"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-33"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-34"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-35"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-36"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"homogeneous"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-37"></a>        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-38"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"file_button"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-39"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Choose an image file...<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-40"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-41"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-42"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-43"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_file_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-44"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-45"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-47"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-48"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-49"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-50"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-51"></a>        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-52"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"dir_button"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-53"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Choose folder...<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-54"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-55"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-56"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-57"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_dir_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-58"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-59"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-60"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-61"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-62"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-63"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-64"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-65"></a>      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-66"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-67"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-68"></a>      <span class="nt">&lt;placeholder/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-69"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-70"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-71"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileChooserDialog"</span> <span class="na">id=</span><span class="s">"filechooser_dialog"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-72"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>800<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-73"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>500<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-74"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-75"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"type_hint"</span><span class="nt">&gt;</span>dialog<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-76"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"transient_for"</span><span class="nt">&gt;</span>window<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-77"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"attached_to"</span><span class="nt">&gt;</span>window<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-78"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"preview_widget"</span><span class="nt">&gt;</span>preview<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-79"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_preview_label"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-80"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"delete-event"</span> <span class="na">handler=</span><span class="s">"on_dialog_close"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-81"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"file-activated"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_file_activated"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-82"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"response"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_response"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-83"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"update-preview"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_update_preview"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-84"></a>    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"vbox"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-85"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span> <span class="na">id=</span><span class="s">"fcbox"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-86"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-87"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-88"></a>        <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"action_area"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-89"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButtonBox"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-90"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-91"></a>            <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-92"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"button2"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-93"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-cancel<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-94"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-95"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-96"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-97"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-98"></a>              <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-99"></a>              <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-100"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-101"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-102"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-103"></a>              <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-104"></a>            <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-105"></a>            <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-106"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"button1"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-107"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-apply<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-108"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-109"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-110"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-111"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-112"></a>              <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-113"></a>              <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-114"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-115"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-116"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-117"></a>              <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-118"></a>            <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-119"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-120"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-121"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-122"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-123"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-124"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-125"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-126"></a>      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-127"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-128"></a>    <span class="nt">&lt;action-widgets&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-129"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-6"</span><span class="nt">&gt;</span>button2<span class="nt">&lt;/action-widget&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-130"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-5"</span><span class="nt">&gt;</span>button1<span class="nt">&lt;/action-widget&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-131"></a>    <span class="nt">&lt;/action-widgets&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-132"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-133"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkHeaderBar"</span><span class="nt">&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-134"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-135"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-136"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span><span class="nt">&gt;</span>Choose image...<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-137"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"show_close_button"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-138"></a>      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-139"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-140"></a>    <span class="nt">&lt;action-widgets&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-141"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-6"</span><span class="nt">&gt;</span>button2<span class="nt">&lt;/action-widget&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-142"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-5"</span><span class="nt">&gt;</span>button1<span class="nt">&lt;/action-widget&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-143"></a>    <span class="nt">&lt;/action-widgets&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-144"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_27aee889bf22433a894ce9b50174afcd-145"></a><span class="nt">&lt;/interface&gt;</span>
+<pre class="code xml"><a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"filefilter"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-6"></a>    <span class="nt">&lt;mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-7"></a>      <span class="nt">&lt;mime-type&gt;</span>image/*<span class="nt">&lt;/mime-type&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-8"></a>    <span class="nt">&lt;/mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-9"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-10"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"jpg_filter"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-11"></a>    <span class="nt">&lt;mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-12"></a>      <span class="nt">&lt;mime-type&gt;</span>image/jpeg<span class="nt">&lt;/mime-type&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-13"></a>    <span class="nt">&lt;/mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-14"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-15"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileFilter"</span> <span class="na">id=</span><span class="s">"png_filter"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-16"></a>    <span class="nt">&lt;mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-17"></a>      <span class="nt">&lt;mime-type&gt;</span>image/png<span class="nt">&lt;/mime-type&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-18"></a>    <span class="nt">&lt;/mime-types&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-19"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-20"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"preview"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-21"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-22"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-23"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-24"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"margin_right"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-25"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-26"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-27"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-28"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-29"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-30"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-31"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-32"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-33"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-34"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-35"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-36"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"homogeneous"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-37"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-38"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"file_button"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-39"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Choose an image file...<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-40"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-41"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-42"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-43"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_file_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-44"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-45"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-47"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-48"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-49"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-50"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-51"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-52"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"dir_button"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-53"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Choose folder...<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-54"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-55"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-56"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-57"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_dir_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-58"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-59"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-60"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-61"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-62"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-63"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-64"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-65"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-66"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-67"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-68"></a>      <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-69"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-70"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-71"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileChooserDialog"</span> <span class="na">id=</span><span class="s">"filechooser_dialog"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-72"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>800<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-73"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>500<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-74"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-75"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"type_hint"</span><span class="nt">&gt;</span>dialog<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-76"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"transient_for"</span><span class="nt">&gt;</span>window<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-77"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"attached_to"</span><span class="nt">&gt;</span>window<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-78"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"preview_widget"</span><span class="nt">&gt;</span>preview<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-79"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_preview_label"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-80"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"delete-event"</span> <span class="na">handler=</span><span class="s">"on_dialog_close"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-81"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"file-activated"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_file_activated"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-82"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"response"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_response"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-83"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"update-preview"</span> <span class="na">handler=</span><span class="s">"on_filechooser_dialog_update_preview"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-84"></a>    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"vbox"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-85"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span> <span class="na">id=</span><span class="s">"fcbox"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-86"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-87"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-88"></a>        <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"action_area"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-89"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButtonBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-90"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-91"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-92"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"button2"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-93"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-cancel<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-94"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-95"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-96"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-97"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-98"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-99"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-100"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-101"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-102"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-103"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-104"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-105"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-106"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"button1"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-107"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-apply<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-108"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-109"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-110"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-111"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-112"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-113"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-114"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-115"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-116"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-117"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-118"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-119"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-120"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-121"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-122"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-123"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-124"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-125"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-126"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-127"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-128"></a>    <span class="nt">&lt;action-widgets&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-129"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-6"</span><span class="nt">&gt;</span>button2<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-130"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-5"</span><span class="nt">&gt;</span>button1<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-131"></a>    <span class="nt">&lt;/action-widgets&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-132"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-133"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkHeaderBar"</span><span class="nt">&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-134"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-135"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-136"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span><span class="nt">&gt;</span>Choose image...<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-137"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"show_close_button"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-138"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-139"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-140"></a>    <span class="nt">&lt;action-widgets&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-141"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-6"</span><span class="nt">&gt;</span>button2<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-142"></a>      <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-5"</span><span class="nt">&gt;</span>button1<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-143"></a>    <span class="nt">&lt;/action-widgets&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-144"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_fa207744e9bf4ed18e7385ce6654277c-145"></a><span class="nt">&lt;/interface&gt;</span>
 </pre>
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id15">Python</a></h3>
 <p><a class="reference external" href="../../listings/16_filechooser.py.html">16_filechooser.py</a>  <a class="reference external" href="../../listings/16_filechooser.py">(Source)</a></p>
-<pre class="code python"><a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-1"></a><span class="ch">#!/usr/bin/python</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-3"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-4"></a><span class="kn">import</span> <span class="nn">os</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-5"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-6"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span> <span class="s1">'3.0'</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-8"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span><span class="p">,</span> <span class="n">GdkPixbuf</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-9"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-10"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-11"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-12"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-13"></a>        <span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-14"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-15"></a>    <span class="k">def</span> <span class="nf">on_dialog_close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="o">*</span><span class="n">event</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-16"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-17"></a>        <span class="k">return</span> <span class="bp">True</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-18"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-19"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-20"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">6</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-21"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-22"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-23"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"File selection: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">())</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">on_dialog_close</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-25"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-26"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_file_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">on_filechooser_dialog_response</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-28"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-29"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_update_preview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-30"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">()):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-31"></a>            <span class="n">pixbuf</span> <span class="o">=</span> <span class="n">GdkPixbuf</span><span class="o">.</span><span class="n">Pixbuf</span><span class="o">.</span><span class="n">new_from_file_at_scale</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">(),</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-32"></a>            <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"preview"</span><span class="p">)</span><span class="o">.</span><span class="n">set_from_pixbuf</span><span class="p">(</span><span class="n">pixbuf</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-33"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-34"></a>    <span class="k">def</span> <span class="nf">on_file_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-35"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-36"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-37"></a>    <span class="k">def</span> <span class="nf">on_dir_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-38"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-39"></a>        <span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-40"></a>                                    <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-41"></a>                                    <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-42"></a>                                    <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-43"></a>                                    <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-44"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-45"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-46"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-47"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-48"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Folder selection: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dialog</span><span class="o">.</span><span class="n">get_filename</span><span class="p">())</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-49"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-50"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-51"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-52"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-53"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-54"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-55"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-56"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-57"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-58"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-59"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_shutdown</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-61"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-62"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-63"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-64"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"16_filechooser.glade"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-65"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-66"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-67"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-68"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_wmclass</span><span class="p">(</span><span class="s2">"Filechooser example"</span><span class="p">,</span><span class="s2">"Filechooser example"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-71"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-72"></a>        <span class="c1">#add filters to filechooser dialog</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-73"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"Image files"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-74"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filefilter"</span><span class="p">))</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"png_filter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"PNG files"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"png_filter"</span><span class="p">))</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-77"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"jpg_filter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"JPG files"</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-78"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"jpg_filter"</span><span class="p">))</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-79"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-80"></a>        <span class="c1">#add buttons to headerbar of Glade generated dialog</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-81"></a>        <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-82"></a>        <span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-83"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-84"></a>        <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-85"></a>        <span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-86"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-87"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-88"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-89"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-90"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-91"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-92"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-93"></a>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-94"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
-<a name="rest_code_6214dd4b76984a8d8e57adbe57555f94-95"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_72fee0726caf4809a18259b917ba43aa-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-3"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-4"></a><span class="kn">import</span> <span class="nn">os</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-5"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-6"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span> <span class="s1">'3.0'</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-8"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span><span class="p">,</span> <span class="n">GdkPixbuf</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-9"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-10"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-11"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-12"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-13"></a>        <span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-14"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-15"></a>    <span class="k">def</span> <span class="nf">on_dialog_close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="o">*</span><span class="n">event</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-16"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-17"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-18"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-19"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-20"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">6</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-21"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-22"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-23"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"File selection: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">())</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">on_dialog_close</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-25"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-26"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_file_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">on_filechooser_dialog_response</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-28"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-29"></a>    <span class="k">def</span> <span class="nf">on_filechooser_dialog_update_preview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-30"></a>        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">()):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-31"></a>            <span class="n">pixbuf</span> <span class="o">=</span> <span class="n">GdkPixbuf</span><span class="o">.</span><span class="n">Pixbuf</span><span class="o">.</span><span class="n">new_from_file_at_scale</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">get_filename</span><span class="p">(),</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-32"></a>            <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"preview"</span><span class="p">)</span><span class="o">.</span><span class="n">set_from_pixbuf</span><span class="p">(</span><span class="n">pixbuf</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-33"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-34"></a>    <span class="k">def</span> <span class="nf">on_file_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-35"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-36"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-37"></a>    <span class="k">def</span> <span class="nf">on_dir_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-38"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-39"></a>        <span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-40"></a>                                    <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-41"></a>                                    <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-42"></a>                                    <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-43"></a>                                    <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-44"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-45"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-46"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-47"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-48"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Folder selection: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dialog</span><span class="o">.</span><span class="n">get_filename</span><span class="p">())</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-49"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-50"></a>            <span class="k">print</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-51"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-52"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-53"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-54"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-55"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-56"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-57"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-58"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-59"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_shutdown</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-61"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-62"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-63"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-64"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"16_filechooser.glade"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-65"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-66"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-67"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-68"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_wmclass</span><span class="p">(</span><span class="s2">"Filechooser example"</span><span class="p">,</span><span class="s2">"Filechooser example"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-71"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-72"></a>        <span class="c1">#add filters to filechooser dialog</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-73"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"Image files"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-74"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filefilter"</span><span class="p">))</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"png_filter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"PNG files"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"png_filter"</span><span class="p">))</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-77"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"jpg_filter"</span><span class="p">)</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">"JPG files"</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-78"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"jpg_filter"</span><span class="p">))</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-79"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-80"></a>        <span class="c1">#add buttons to headerbar of Glade generated dialog</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-81"></a>        <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-82"></a>        <span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-83"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-84"></a>        <span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-85"></a>        <span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-86"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-87"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-88"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-89"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-90"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-91"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-92"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-93"></a>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-94"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
+<a name="rest_code_72fee0726caf4809a18259b917ba43aa-95"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre>
 </div>
 </div>
