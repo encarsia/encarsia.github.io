@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1523799768.1301725
+_modified_time = 1526104065.8841338
 _enable_loop = True
-_template_filename = 'themes/zen_forkawesome/templates/base.tmpl'
+_template_filename = 'themes/zen/templates/base.tmpl'
 _template_uri = 'base.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['extra_head', 'content', 'extra_js']
@@ -36,22 +36,22 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'arusahni')._populate(_import_ns, ['*'])
         _mako_get_namespace(context, 'footer')._populate(_import_ns, ['*'])
+        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
+        arusahni = _mako_get_namespace(context, 'arusahni')
+        footer = _mako_get_namespace(context, 'footer')
         def extra_head():
             return render_extra_head(context._locals(__M_locals))
-        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
-        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
-        def extra_js():
-            return render_extra_js(context._locals(__M_locals))
-        _link = _import_ns.get('_link', context.get('_link', UNDEFINED))
         abs_link = _import_ns.get('abs_link', context.get('abs_link', UNDEFINED))
+        logo_url = _import_ns.get('logo_url', context.get('logo_url', UNDEFINED))
+        set_locale = _import_ns.get('set_locale', context.get('set_locale', UNDEFINED))
+        template_hooks = _import_ns.get('template_hooks', context.get('template_hooks', UNDEFINED))
+        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
+        body_end = _import_ns.get('body_end', context.get('body_end', UNDEFINED))
+        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
         def content():
             return render_content(context._locals(__M_locals))
-        arusahni = _mako_get_namespace(context, 'arusahni')
-        logo_url = _import_ns.get('logo_url', context.get('logo_url', UNDEFINED))
-        template_hooks = _import_ns.get('template_hooks', context.get('template_hooks', UNDEFINED))
-        footer = _mako_get_namespace(context, 'footer')
-        blog_title = _import_ns.get('blog_title', context.get('blog_title', UNDEFINED))
-        lang = _import_ns.get('lang', context.get('lang', UNDEFINED))
+        def extra_js():
+            return render_extra_js(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -147,6 +147,6 @@ def render_extra_js(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "themes/zen_forkawesome/templates/base.tmpl", "uri": "base.tmpl", "source_encoding": "utf-8", "line_map": {"23": 2, "26": 3, "29": 4, "32": 0, "56": 2, "57": 3, "58": 4, "59": 5, "60": 5, "61": 6, "62": 6, "67": 9, "68": 10, "69": 10, "70": 15, "71": 16, "72": 17, "73": 17, "74": 18, "75": 18, "76": 18, "77": 18, "78": 22, "79": 22, "80": 22, "85": 27, "86": 28, "87": 28, "88": 31, "89": 31, "90": 32, "91": 32, "92": 33, "93": 33, "98": 40, "104": 7, "113": 7, "119": 27, "133": 34, "142": 34, "148": 142}}
+{"filename": "themes/zen/templates/base.tmpl", "uri": "base.tmpl", "source_encoding": "utf-8", "line_map": {"23": 2, "26": 3, "29": 4, "32": 0, "56": 2, "57": 3, "58": 4, "59": 5, "60": 5, "61": 6, "62": 6, "67": 9, "68": 10, "69": 10, "70": 15, "71": 16, "72": 17, "73": 17, "74": 18, "75": 18, "76": 18, "77": 18, "78": 22, "79": 22, "80": 22, "85": 27, "86": 28, "87": 28, "88": 31, "89": 31, "90": 32, "91": 32, "92": 33, "93": 33, "98": 40, "104": 7, "113": 7, "119": 27, "133": 34, "142": 34, "148": 142}}
 __M_END_METADATA
 """

@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1523799768.1703038
+_modified_time = 1526104065.9096146
 _enable_loop = True
-_template_filename = 'themes/zen_forkawesome/templates/arusahni_helper.tmpl'
+_template_filename = 'themes/zen-forkawesome/templates/arusahni_helper.tmpl'
 _template_uri = 'arusahni_helper.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['html_headstart', 'html_stylesheets', 'late_load_js', 'html_feedlinks', 'html_navigation_links', 'html_tags', 'html_title', 'html_translations', 'html_sourcelink']
@@ -35,26 +35,25 @@ def render_body(context,**pageargs):
 def render_html_headstart(context):
     __M_caller = context.caller_stack._push_frame()
     try:
+        favicons = context.get('favicons', UNDEFINED)
         use_open_graph = context.get('use_open_graph', UNDEFINED)
+        description = context.get('description', UNDEFINED)
+        comment_system_id = context.get('comment_system_id', UNDEFINED)
+        permalink = context.get('permalink', UNDEFINED)
+        striphtml = context.get('striphtml', UNDEFINED)
+        abs_link = context.get('abs_link', UNDEFINED)
         title = context.get('title', UNDEFINED)
+        lang = context.get('lang', UNDEFINED)
         def html_stylesheets():
             return render_html_stylesheets(context)
-        abs_link = context.get('abs_link', UNDEFINED)
-        description = context.get('description', UNDEFINED)
+        is_rtl = context.get('is_rtl', UNDEFINED)
         use_cdn = context.get('use_cdn', UNDEFINED)
-        permalink = context.get('permalink', UNDEFINED)
         extra_head_data = context.get('extra_head_data', UNDEFINED)
+        comment_system = context.get('comment_system', UNDEFINED)
+        blog_title = context.get('blog_title', UNDEFINED)
         def html_feedlinks():
             return render_html_feedlinks(context)
-        favicons = context.get('favicons', UNDEFINED)
-        mathjax_config = context.get('mathjax_config', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
-        comment_system = context.get('comment_system', UNDEFINED)
-        is_rtl = context.get('is_rtl', UNDEFINED)
-        comment_system_id = context.get('comment_system_id', UNDEFINED)
         twitter_card = context.get('twitter_card', UNDEFINED)
-        striphtml = context.get('striphtml', UNDEFINED)
-        blog_title = context.get('blog_title', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<!DOCTYPE html>\n<html\n')
         if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']) or (comment_system == 'facebook'):
@@ -103,8 +102,6 @@ def render_html_headstart(context):
             __M_writer('        <meta property="fb:app_id" content="')
             __M_writer(str(comment_system_id))
             __M_writer('">\n')
-        __M_writer('\n    ')
-        __M_writer(str(mathjax_config))
         __M_writer('\n')
         if use_cdn:
             __M_writer('        <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->\n')
@@ -121,25 +118,17 @@ def render_html_headstart(context):
 def render_html_stylesheets(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        use_cdn = context.get('use_cdn', UNDEFINED)
-        has_custom_css = context.get('has_custom_css', UNDEFINED)
-        annotations = context.get('annotations', UNDEFINED)
-        post = context.get('post', UNDEFINED)
         notes = context.get('notes', UNDEFINED)
+        post = context.get('post', UNDEFINED)
+        annotations = context.get('annotations', UNDEFINED)
+        has_custom_css = context.get('has_custom_css', UNDEFINED)
         use_bundles = context.get('use_bundles', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n')
+        __M_writer('\n    <link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">\n    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">\n')
         if use_bundles:
-            if use_cdn:
-                __M_writer('            <link href=\'//fonts.googleapis.com/css?family=Bitter:400,400italic,700\' rel=\'stylesheet\' type=\'text/css\'>\n            <link href="/assets/css/all.css" rel="stylesheet" type="text/css">\n')
-            else:
-                __M_writer('            <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">\n')
+            __M_writer('        <link href="/assets/css/all.css" rel="stylesheet" type="text/css">\n')
         else:
-            if use_cdn:
-                __M_writer("            <link href='//fonts.googleapis.com/css?family=Bitter:400,400italic,700' rel='stylesheet' type='text/css'>\n")
-            else:
-                __M_writer('            <link href="/assets/css/bitter.css" rel="stylesheet" type="text/css">\n')
-            __M_writer('        <link href="/assets/css/main.css" rel="stylesheet" type="text/css">\n        <link href="/assets/css/rst.css" rel="stylesheet" type="text/css">\n        <link href="/assets/css/code.css" rel="stylesheet" type="text/css">\n')
+            __M_writer('        <link href="/assets/css/rst.css" rel="stylesheet" type="text/css">\n        <link href="/assets/css/code.css" rel="stylesheet" type="text/css">\n        <link href="/assets/css/main.css" rel="stylesheet" type="text/css">\n        <link href="/assets/css/forkfont.css" rel="stylesheet" type="text/css">\n')
             if has_custom_css:
                 __M_writer('            <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">\n')
         if annotations and post and not post.meta('noannotations'):
@@ -158,8 +147,8 @@ def render_html_stylesheets(context):
 def render_late_load_js(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        use_cdn = context.get('use_cdn', UNDEFINED)
         social_buttons_code = context.get('social_buttons_code', UNDEFINED)
+        use_cdn = context.get('use_cdn', UNDEFINED)
         use_bundles = context.get('use_bundles', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
@@ -185,10 +174,10 @@ def render_html_feedlinks(context):
     __M_caller = context.caller_stack._push_frame()
     try:
         _link = context.get('_link', UNDEFINED)
-        translations = context.get('translations', UNDEFINED)
-        len = context.get('len', UNDEFINED)
         rss_link = context.get('rss_link', UNDEFINED)
+        translations = context.get('translations', UNDEFINED)
         generate_rss = context.get('generate_rss', UNDEFINED)
+        len = context.get('len', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if rss_link:
@@ -215,10 +204,10 @@ def render_html_feedlinks(context):
 def render_html_navigation_links(context):
     __M_caller = context.caller_stack._push_frame()
     try:
+        lang = context.get('lang', UNDEFINED)
+        rel_link = context.get('rel_link', UNDEFINED)
         navigation_links = context.get('navigation_links', UNDEFINED)
         permalink = context.get('permalink', UNDEFINED)
-        rel_link = context.get('rel_link', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         for url, text, icon in navigation_links[lang]:
@@ -269,8 +258,8 @@ def render_html_tags(context,post):
 def render_html_title(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        post = context.get('post', UNDEFINED)
         title = context.get('title', UNDEFINED)
+        post = context.get('post', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if title and not post.meta('hidetitle'):
@@ -286,8 +275,8 @@ def render_html_translations(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
         translations = context.get('translations', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
         lang = context.get('lang', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
         len = context.get('len', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
@@ -309,9 +298,9 @@ def render_html_translations(context,post):
 def render_html_sourcelink(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        messages = context.get('messages', UNDEFINED)
         post = context.get('post', UNDEFINED)
         show_sourcelink = context.get('show_sourcelink', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if show_sourcelink:
@@ -327,6 +316,6 @@ def render_html_sourcelink(context):
 
 """
 __M_BEGIN_METADATA
-{"filename": "themes/zen_forkawesome/templates/arusahni_helper.tmpl", "uri": "arusahni_helper.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 58, "22": 86, "23": 106, "24": 120, "25": 130, "26": 144, "27": 151, "28": 162, "29": 169, "35": 3, "59": 3, "60": 7, "61": 8, "62": 9, "63": 10, "64": 12, "65": 13, "66": 15, "67": 16, "68": 18, "69": 21, "70": 22, "71": 25, "72": 25, "73": 25, "74": 28, "75": 29, "76": 29, "77": 29, "78": 31, "79": 32, "80": 32, "81": 32, "82": 32, "83": 34, "84": 34, "85": 35, "86": 35, "87": 36, "88": 37, "89": 37, "90": 37, "91": 39, "92": 40, "93": 41, "94": 42, "95": 42, "96": 42, "97": 42, "98": 42, "99": 42, "100": 42, "101": 45, "102": 46, "103": 47, "104": 47, "105": 47, "106": 49, "107": 50, "108": 50, "109": 51, "110": 52, "111": 53, "112": 54, "113": 56, "114": 57, "115": 57, "121": 60, "131": 60, "132": 61, "133": 62, "134": 63, "135": 65, "136": 66, "137": 68, "138": 69, "139": 70, "140": 71, "141": 72, "142": 74, "143": 77, "144": 78, "145": 81, "146": 82, "147": 82, "148": 82, "149": 83, "150": 84, "151": 84, "152": 84, "158": 88, "165": 88, "166": 89, "167": 90, "168": 91, "169": 93, "170": 94, "171": 96, "172": 97, "173": 98, "174": 100, "175": 101, "176": 105, "177": 105, "178": 105, "184": 108, "193": 108, "194": 109, "195": 110, "196": 110, "197": 110, "198": 111, "199": 112, "200": 113, "201": 114, "202": 114, "203": 114, "204": 114, "205": 114, "206": 116, "207": 117, "208": 117, "209": 117, "215": 122, "223": 122, "224": 123, "225": 124, "226": 125, "227": 125, "228": 125, "229": 125, "230": 125, "231": 125, "232": 125, "233": 126, "234": 127, "235": 127, "236": 127, "237": 127, "238": 127, "239": 127, "240": 127, "246": 133, "252": 133, "253": 134, "254": 135, "255": 137, "256": 137, "257": 138, "258": 139, "259": 139, "260": 139, "261": 139, "262": 139, "263": 141, "269": 147, "275": 147, "276": 148, "277": 149, "278": 149, "279": 149, "285": 153, "293": 153, "294": 154, "295": 155, "296": 156, "297": 157, "298": 157, "299": 157, "300": 157, "301": 157, "302": 158, "303": 158, "309": 164, "316": 164, "317": 165, "318": 166, "319": 167, "320": 167, "321": 167, "322": 167, "328": 322}}
+{"filename": "themes/zen-forkawesome/templates/arusahni_helper.tmpl", "uri": "arusahni_helper.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 57, "22": 78, "23": 98, "24": 112, "25": 122, "26": 136, "27": 143, "28": 154, "29": 161, "35": 3, "58": 3, "59": 7, "60": 8, "61": 9, "62": 10, "63": 12, "64": 13, "65": 15, "66": 16, "67": 18, "68": 21, "69": 22, "70": 25, "71": 25, "72": 25, "73": 28, "74": 29, "75": 29, "76": 29, "77": 31, "78": 32, "79": 32, "80": 32, "81": 32, "82": 34, "83": 34, "84": 35, "85": 35, "86": 36, "87": 37, "88": 37, "89": 37, "90": 39, "91": 40, "92": 41, "93": 42, "94": 42, "95": 42, "96": 42, "97": 42, "98": 42, "99": 42, "100": 45, "101": 46, "102": 47, "103": 47, "104": 47, "105": 49, "106": 50, "107": 51, "108": 52, "109": 53, "110": 55, "111": 56, "112": 56, "118": 59, "127": 59, "128": 62, "129": 63, "130": 64, "131": 65, "132": 69, "133": 70, "134": 73, "135": 74, "136": 74, "137": 74, "138": 75, "139": 76, "140": 76, "141": 76, "147": 80, "154": 80, "155": 81, "156": 82, "157": 83, "158": 85, "159": 86, "160": 88, "161": 89, "162": 90, "163": 92, "164": 93, "165": 97, "166": 97, "167": 97, "173": 100, "182": 100, "183": 101, "184": 102, "185": 102, "186": 102, "187": 103, "188": 104, "189": 105, "190": 106, "191": 106, "192": 106, "193": 106, "194": 106, "195": 108, "196": 109, "197": 109, "198": 109, "204": 114, "212": 114, "213": 115, "214": 116, "215": 117, "216": 117, "217": 117, "218": 117, "219": 117, "220": 117, "221": 117, "222": 118, "223": 119, "224": 119, "225": 119, "226": 119, "227": 119, "228": 119, "229": 119, "235": 125, "241": 125, "242": 126, "243": 127, "244": 129, "245": 129, "246": 130, "247": 131, "248": 131, "249": 131, "250": 131, "251": 131, "252": 133, "258": 139, "264": 139, "265": 140, "266": 141, "267": 141, "268": 141, "274": 145, "282": 145, "283": 146, "284": 147, "285": 148, "286": 149, "287": 149, "288": 149, "289": 149, "290": 149, "291": 150, "292": 150, "298": 156, "305": 156, "306": 157, "307": 158, "308": 159, "309": 159, "310": 159, "311": 159, "317": 311}}
 __M_END_METADATA
 """
