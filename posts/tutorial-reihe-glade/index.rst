@@ -46,6 +46,7 @@ Themen
 - `Mediaplayer mit LibVLC <link://slug/vlc-player>`_
 - `Stack und Notebook <link://slug/stacksnotebooks>`_
 - `Texteditor mit GtkSourceView <link://slug/gtksv>`_
+- `Überarbeitete Oberfläche in Glade 3.22 <link://slug/glade-322>`_
 
 Dateien
 -------
