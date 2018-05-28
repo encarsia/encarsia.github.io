@@ -9,31 +9,31 @@
 
 **Knights of Ni - little release on the prairie**
 
-Der GTK+-Desktopclient für den statischen Webseitengenerators Nikola hat seit der letzten Erwähnung hier weitere Fortschritte machen können.
+The GTK+ desktop client for static website generator Nikola has made some progress since mentioned last time here.
 
-Da Nikola v8 im Juni zu erwarten ist und ich noch nicht weiß, was an Nacharbeiten auf mich zukommt, habe ich den aktuellen Status `als Release gespeichert <https://github.com/encarsia/non/releases/tag/v.0.4>`_.
+Nikola v8 will soon be released in June. I saved the current development status as a `release <https://github.com/encarsia/non/releases/tag/v.0.4>`_ because I cannot estimate how much effort I have to put into to make it ready for v8.
 
-Neuigkeiten
-===========
+News
+====
 
 Headerbar
-    Das Untermenü ist auf die rechte Seite gewandert, links befindet sich der GUI-/Terminal-StackSwitcher, neu ist der Button zum Öffnen des Nikola-Handbuchs.
+    The submenu moved to the right side; on the left there is the GUI/teminal StackSwitcher; new: button that opens the Nikola handbook.
 
-Erweiterte Deployment-Optionen
-    * GitLab: *"Deploy to GitHub"*-Button nutzen, Hilfe zur Konfiguration gibt es `hier <https://gitlab.com/pages/nikola>`_
-    * Andere: existiert in der `conf.py` die Variable. `DEPLOY_COMMANDS`, wird mit dem *"Deploy"*-Button das 'default'-Preset ausgeführt.
+More deployment options
+    * GitLab: use the *"Deploy to GitHub"* button, for help on configuration see `this example Nikola site using GitLab <https://gitlab.com/pages/nikola>`_.
+    * Other: if there is ``DEPLOY_COMMANDS`` variable set in your ``conf.py`` the *"Deploy"* button will execute the 'default' preset.
     
 GtkApplication
-    NoN läuft nun als echte `GtkApplication <link://slug/application>`_.
+    NoN now runs as a `GtkApplication <link://slug/application>`_.
 
-Desktop-Eintrag
-    Enteenteenteente...
+Desktop entry
+    Duckduckduckduckduck...
 
-Post/Page im Browser öffnen
-    Per Rechtsklick lässt sich aus der Übersicht der Beitrag im Browser öffnen.
-
-Diverser Kleinkram
-    Bugfixes, verbessertes Logging, Python-Code ist nun PEP8-konform (sagt pycodestyle).
+Open post/page in browser
+    Right click on an article to open it in the default webbrowser.
+    
+Bits and pieces
+    Bugfixes, improved logging, Python code is now conform to PEP8 (says pycodestyle).
 
 .. thumbnail:: /images/non3.png
 
@@ -42,11 +42,8 @@ Links
 
 * `Knights of Ni-Repository <https://github.com/encarsia/non>`_
 * `Nikola <https://getnikola.com>`_
-* Beiträge im Blog
-   * `Neues Projekt: Knights of Ni <link://slug/neues-projekt-knights-of-ni>`_
-   * `NoN: Fortschritte <link://slug/non-fortschritte>`_
-   * `NoN: Konsoledierung <link://slug/non-konsole>`_
-
-
-
+* Previous posts
+   * `New project: Knights of Ni <link://slug/neues-projekt-knights-of-ni>`_
+   * `NoN: progress <link://slug/non-fortschritte>`_
+   * `NoN: Konsoledierung <link://slug/non-konsole>`_ (in German only)
 

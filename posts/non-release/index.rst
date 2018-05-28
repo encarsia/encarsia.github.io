@@ -21,7 +21,7 @@ Headerbar
 
 Erweiterte Deployment-Optionen
     * GitLab: *"Deploy to GitHub"*-Button nutzen, Hilfe zur Konfiguration gibt es `hier <https://gitlab.com/pages/nikola>`_
-    * Andere: existiert in der `conf.py` die Variable. `DEPLOY_COMMANDS`, wird mit dem *"Deploy"*-Button das 'default'-Preset ausgeführt.
+    * Andere: existiert in der ``conf.py`` die Variable. ``DEPLOY_COMMANDS``, wird mit dem *"Deploy"*-Button das 'default'-Preset ausgeführt.
     
 GtkApplication
     NoN läuft nun als echte `GtkApplication <link://slug/application>`_.
@@ -46,7 +46,4 @@ Links
    * `Neues Projekt: Knights of Ni <link://slug/neues-projekt-knights-of-ni>`_
    * `NoN: Fortschritte <link://slug/non-fortschritte>`_
    * `NoN: Konsoledierung <link://slug/non-konsole>`_
-
-
-
 
