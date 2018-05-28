@@ -1,7 +1,7 @@
 .. title: NoN: progress
 .. slug: non-fortschritte
 .. date: 2017-01-08 22:18:52 UTC+01:00
-.. tags: nikola,python
+.. tags: nikola,python,non
 .. category: repository
 .. link: 
 .. description: 
@@ -9,7 +9,7 @@
 
 **Knights of Ni - progress**
 
-As `said before<link://slug/neues-projekt-knights-of-ni>`_ I am currently working on a GUI for `Nikola <https://getnikola.com>`_ doing some progress:
+As `said before <link://slug/neues-projekt-knights-of-ni>`_ I am currently working on a GUI for `Nikola <https://getnikola.com>`_ doing some progress:
 
 * removed titlebar, using headerbar instead
 * switch between multiple Nikola instances
