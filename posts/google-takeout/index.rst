@@ -126,5 +126,5 @@ README.md
 .. raw:: html
 
     <br>
-    <a class="discuss-on-gplus" href="">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/SkUoxkiTAK3">Kommentieren auf <i class="fa fa-google-plus"></i></a>
 
