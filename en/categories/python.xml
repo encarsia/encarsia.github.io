@@ -1,5 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy (Posts about python)</title><link>https://encarsia.github.io/</link><description></description><atom:link href="https://encarsia.github.io/en/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 24 Jun 2018 16:42:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>NoN: jetzt noch viel toller</title><link>https://encarsia.github.io/en/posts/non-jetzt-noch-viel-toller/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Knights of Ni - sag niemals nie&lt;/strong&gt;&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy (Posts about python)</title><link>https://encarsia.github.io/</link><description></description><atom:link href="https://encarsia.github.io/en/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 24 Jun 2018 19:42:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GTK+-Anwendung mit setuptools packen</title><link>https://encarsia.github.io/en/posts/setuptools-spicker/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents warning pull-right topic" id="inhalt"&gt;
+&lt;p class="topic-title first"&gt;Inhalt&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#links" id="id1"&gt;Links&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#abhangigkeiten" id="id2"&gt;Abhängigkeiten&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#nicht-python-paketdateien" id="id3"&gt;Nicht Python-Paketdateien&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#desktop-dateien" id="id4"&gt;Desktop-Dateien&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#bestehendes-kommando-anpassen" id="id5"&gt;Bestehendes Kommando anpassen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/setuptools-spicker/#neues-kommando-erstellen" id="id6"&gt;Neues Kommando erstellen&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Der einzige Zweck dieser Seite besteht darin, die Links in meiner setup.py zu entfernen.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="section" id="links"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id1"&gt;Links&lt;/a&gt;&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/kennethreitz/setup.py/blob/master/setup.py"&gt;example setup.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/25284879/install-desktop-file-with-setup-py"&gt;(stackoverflow) Install .desktop file with setup.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://seasonofcode.com/posts/how-to-add-custom-build-steps-and-commands-to-setuppy.html"&gt;How To Add Custom Build Steps and Commands To setup.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/36187264/how-to-get-installation-directory-using-setuptools-and-pkg-ressources"&gt;(stackoverflow) How to get installation directory using setuptools and pkg_ressources&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://coderwall.com/p/3q_czg/custom-subcommand-at-setup-py"&gt;Custom subcommand at setup.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://dankeder.com/posts/adding-custom-commands-to-setup-py/"&gt;Adding custom commands to setup.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://setuptools.readthedocs.io/en/latest/"&gt;setuptools documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/encarsia/non/blob/master/setup.py"&gt;setup.py of my GTK+ application with custom install and uninstall commands&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="abhangigkeiten"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id2"&gt;Abhängigkeiten&lt;/a&gt;&lt;/h2&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;REQUIRED&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"PyGObject"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-6"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-7"&gt;&lt;/a&gt;    &lt;span class="n"&gt;install_requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-8"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_4ad493ac98a94aac8e9dad9c298ec4af-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Angabe des PyPI-Paketnamens, bei GTK+-Pythonprogrammen also mindestens die entsprechenden Bindings, da sonst &lt;tt class="docutils literal"&gt;import gi&lt;/tt&gt; scheitert.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nicht-python-paketdateien"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id3"&gt;Nicht Python-Paketdateien&lt;/a&gt;&lt;/h2&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;PACKAGES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"my_package"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;PACKAGE_DIR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"my_package"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"my_package_dir"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;PACKAGE_DATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"my_package"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ui/*"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"logging.yaml"&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-7"&gt;&lt;/a&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-8"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PACKAGES&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;package_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PACKAGE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;package_data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PACKAGE_DATA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-12"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_96c8b1a1497d47e5b43a26c68b374c00-13"&gt;&lt;/a&gt;    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Das Paket "my_package" wird aus dem Verzeichnis "my_package_dir" im Verzeichnis "my_package" gepackt.&lt;/p&gt;
+&lt;p&gt;Die Dateien, die keinen Python-Code enthalten, also etwa Glade-Dateien, werden als Liste in &lt;tt class="docutils literal"&gt;package_data&lt;/tt&gt; übergeben. Im Beispiel werden alle Dateien im Unterverzeichnis "ui" sowie die Datei "logging.yaml" ins Paket integriert.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="desktop-dateien"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id4"&gt;Desktop-Dateien&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Der Speicherort von .desktop-Dateien und Icons richtet sich nach den Freedesktop-Spezifikationen. .desktop-Dateien befinden sich zum Beispiel in den Verzeichnissen&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_6c9a1987079543d68bc99abaea4a1a5c-1"&gt;&lt;/a&gt;/usr/share/applications
+&lt;a name="rest_code_6c9a1987079543d68bc99abaea4a1a5c-2"&gt;&lt;/a&gt;/usr/local/share/applications
+&lt;a name="rest_code_6c9a1987079543d68bc99abaea4a1a5c-3"&gt;&lt;/a&gt;~/.local/share/applications
+&lt;/pre&gt;&lt;p&gt;Während der Ausführung von &lt;tt class="docutils literal"&gt;install&lt;/tt&gt; wird das Präfix ermittelt, es ist also nur die Angabe des relativen Pfads in der &lt;tt class="docutils literal"&gt;data_files&lt;/tt&gt;-Option notwendig. Gleiches gilt für Icons.&lt;/p&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;rel_app_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"share/applications"&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-4"&gt;&lt;/a&gt;&lt;span class="n"&gt;rel_icon_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"share/icons/hicolor/scalable/apps"&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-6"&gt;&lt;/a&gt;&lt;span class="n"&gt;DATAFILES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-7"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;destination_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"list"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"of"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"files"&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-8"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rel_app_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"my_app.desktop"&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-9"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rel_icon_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"my_appicon.svg"&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-10"&gt;&lt;/a&gt;            &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-11"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-12"&gt;&lt;/a&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-13"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-14"&gt;&lt;/a&gt;    &lt;span class="n"&gt;data_files&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;DATAFILES&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-15"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_a8c0a5a55b6148d1a1968b3e565acf4d-16"&gt;&lt;/a&gt;    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Dieser Schritt kopiert nur die Dateien in die entsprechenden Zielverzeichnisse. Die korrekten Pfadangaben IN der .desktop-Datei werden durch eine eigene Funktion innerhalb des Install-Kommandos angepasst.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="bestehendes-kommando-anpassen"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id5"&gt;Bestehendes Kommando anpassen&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Die .desktop-Datei enthält Pfadangaben zur auszuführenden Datei sowie zum dazugehörigen Icon. Da das Zielverzeichnis der Installation nicht vorhersehbar ist, müssen diese Pfade während der Installation an die Gegebenheiten angepasst werden.&lt;/p&gt;
+&lt;p&gt;Um eigene Funktionen in bestehende Kommandos auszuführen, muss man eine eigene Instanz der entsprechenden Klasse (install, build, bdist etc.) generieren und die "run"-Funktion anpassen.&lt;/p&gt;
+&lt;p&gt;Setuptools wird dann mit der Option &lt;tt class="docutils literal"&gt;cmd_class&lt;/tt&gt; auf diese eigene Klasse übergeben.&lt;/p&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-2"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools.command.install&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;CustomInstall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-7"&gt;&lt;/a&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;my_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-8"&gt;&lt;/a&gt;        &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-10"&gt;&lt;/a&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-11"&gt;&lt;/a&gt;        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-12"&gt;&lt;/a&gt;            &lt;span class="n"&gt;do_some_shit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-13"&gt;&lt;/a&gt;        &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-14"&gt;&lt;/a&gt;            &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-15"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-16"&gt;&lt;/a&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-17"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-18"&gt;&lt;/a&gt;    &lt;span class="n"&gt;cmdclass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"install"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;CustomInstall&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-19"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_9d26e60926364b27b76a38ef593a7571-20"&gt;&lt;/a&gt;    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Eine Liste mit verfügbaren Kommandos erhält man durch&lt;/p&gt;
+&lt;pre class="code console"&gt;&lt;a name="rest_code_40de68514ce04fbb9cad066bc27b81ef-1"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py --help-commands
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="neues-kommando-erstellen"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="https://encarsia.github.io/en/posts/setuptools-spicker/#id6"&gt;Neues Kommando erstellen&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Es ist einfach möglich, eigene Kommandos mit setuptools zu erzeugen. Möchte man beispielsweise die zuvor installierten Dateien, also das Python-Paket und die Desktop-Dateien, loswerden, muss dies manuell erfolgen. Dafür bietet es sich an, ein Uninstall-Kommando zu erstellen.&lt;/p&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Command&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UnInstall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Command&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"description shown by setup.py --help-commands"&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-6"&gt;&lt;/a&gt;    &lt;span class="n"&gt;user_options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;"myoption"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"m"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"myoption description shown by setup.py cmd --help"&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-8"&gt;&lt;/a&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-9"&gt;&lt;/a&gt;        &lt;span class="c1"&gt;# method must exist&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-10"&gt;&lt;/a&gt;        &lt;span class="c1"&gt;# define all options with default value&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-11"&gt;&lt;/a&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;myoption&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-13"&gt;&lt;/a&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;finalize_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-14"&gt;&lt;/a&gt;        &lt;span class="c1"&gt;# method must exist&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-15"&gt;&lt;/a&gt;        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-16"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-17"&gt;&lt;/a&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-18"&gt;&lt;/a&gt;        &lt;span class="c1"&gt;# method must exist&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-19"&gt;&lt;/a&gt;        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"This is a custom command."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-20"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-21"&gt;&lt;/a&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-22"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-23"&gt;&lt;/a&gt;    &lt;span class="n"&gt;cmdclass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"uninstall"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UnInstall&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-24"&gt;&lt;/a&gt;    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;a name="rest_code_e0d0fbb9d5e641ac81d1df2aca67c0dd-25"&gt;&lt;/a&gt;    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://encarsia.github.io/en/posts/setuptools-spicker/</guid><pubDate>Sun, 24 Jun 2018 16:55:10 GMT</pubDate></item><item><title>NoN: jetzt noch viel toller</title><link>https://encarsia.github.io/en/posts/non-jetzt-noch-viel-toller/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Knights of Ni - sag niemals nie&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Nach den &lt;a class="reference external" href="https://encarsia.github.io/en/posts/non-release"&gt;kürzlichen Änderungen&lt;/a&gt; an der Oberfläche gibt es nun erfreuliche Fortschritte darunter zu vermelden.&lt;/p&gt;
 &lt;div class="section" id="neuigkeiten"&gt;
 &lt;h2&gt;Neuigkeiten&lt;/h2&gt;
@@ -13,13 +150,13 @@
 &lt;h2&gt;Installation via setuptools&lt;/h2&gt;
 &lt;p&gt;Bei der Installation via &lt;a class="reference external" href="https://pypi.org/project/setuptools/"&gt;setuptools&lt;/a&gt; werden sowohl das Programm inklusive der UI als auch ein Desktopeintrag installiert. Nach der Installation lässt sich das Programm in GNOME also bequem über &lt;tt class="docutils literal"&gt;[super]&lt;/tt&gt; + &lt;tt class="docutils literal"&gt;[n]&lt;/tt&gt; (... &lt;tt class="docutils literal"&gt;[o]&lt;/tt&gt; ... &lt;tt class="docutils literal"&gt;[n]&lt;/tt&gt;) + &lt;tt class="docutils literal"&gt;[enter]&lt;/tt&gt; starten.&lt;/p&gt;
 &lt;p&gt;Um dies alles auch wieder loszuwerden, gibt es ein zusätzliches &lt;cite&gt;uninstall&lt;/cite&gt;-Kommando. Beide Kommandos sind mit der Option &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--user&lt;/span&gt;&lt;/tt&gt; möglich:&lt;/p&gt;
-&lt;pre class="code console"&gt;&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-1"&gt;&lt;/a&gt;&lt;span class="gp"&gt;#&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;De-/&lt;span class="o"&gt;)&lt;/span&gt;Installation im lokalen Nutzerverzeichnis
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-2"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py install --user
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-3"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py uninstall --user
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-5"&gt;&lt;/a&gt;&lt;span class="gp"&gt;#&lt;/span&gt; systemweite &lt;span class="o"&gt;(&lt;/span&gt;De-/&lt;span class="o"&gt;)&lt;/span&gt;Installation
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-6"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo python setup.py install
-&lt;a name="rest_code_88bb6c929f32446ca21481365c43e858-7"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo python setup.py uninstall
+&lt;pre class="code console"&gt;&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-1"&gt;&lt;/a&gt;&lt;span class="gp"&gt;#&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;De-/&lt;span class="o"&gt;)&lt;/span&gt;Installation im lokalen Nutzerverzeichnis
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-2"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py install --user
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-3"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py uninstall --user
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-5"&gt;&lt;/a&gt;&lt;span class="gp"&gt;#&lt;/span&gt; systemweite &lt;span class="o"&gt;(&lt;/span&gt;De-/&lt;span class="o"&gt;)&lt;/span&gt;Installation
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-6"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo python setup.py install
+&lt;a name="rest_code_c03dcdc071a542d5b61e262af47e4d6c-7"&gt;&lt;/a&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo python setup.py uninstall
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="dateistruktur"&gt;
 &lt;h2&gt;Dateistruktur&lt;/h2&gt;
@@ -50,6 +187,7 @@
 &lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/en/posts/non-fortschritte"&gt;NoN: Fortschritte&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/en/posts/non-konsole"&gt;NoN: Konsoledierung&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/en/posts/non-release"&gt;NoN: Fortschritte und Release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/en/posts/setuptools-spicker"&gt;Der setuptools-Spicker&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
@@ -818,23 +956,4 @@ player.set_state(Gst.State.PAUSED)&lt;/blockquote&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/en/posts/vlc-player"&gt;Mediaplayer mit VLC&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://encarsia.github.io/en/posts/gst-player/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>glade</category><category>python</category><guid>https://encarsia.github.io/en/posts/gst-player/</guid><pubDate>Thu, 21 Sep 2017 13:19:40 GMT</pubDate></item><item><title>GPT: v0.4 Release</title><link>https://encarsia.github.io/en/posts/gpt-v04-release/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;JFTR: GoProTool v0.4 release&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Some minor changes/fixes for the &lt;a class="reference external" href="https://github.com/encarsia/gpt"&gt;project&lt;/a&gt;. Recent development status is available as a (pre-)release: &lt;a class="reference external" href="https://github.com/encarsia/gpt/releases/tag/v0.4"&gt;Release v0.4 "scarlatina"&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;NEW:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;import files from any directory (and not just from detected SD cards) with corresponding button added to the toolbar&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;FIXED:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;folder selection on import&lt;/li&gt;
-&lt;li&gt;progress status on video import&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"FIXED":&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;headerbar removed from the media preview version because no images on playback&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;This issue will probably be fixed by switching to LibVLC instead of GStreamer, see also &lt;a class="reference external" href="https://encarsia.github.io/en/posts/vlc-player"&gt;LibVLC tutorial article&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;a class="reference external image-reference" href="https://encarsia.github.io/images/window_player_v0.4.png"&gt;&lt;img alt="/images/window_player_v0.4.thumbnail.png" src="https://encarsia.github.io/images/window_player_v0.4.thumbnail.png"&gt;&lt;/a&gt;&lt;/div&gt;</description><category>goprotool</category><category>python</category><guid>https://encarsia.github.io/en/posts/gpt-v04-release/</guid><pubDate>Mon, 28 Aug 2017 16:03:37 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://encarsia.github.io/en/posts/gst-player/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>glade</category><category>python</category><guid>https://encarsia.github.io/en/posts/gst-player/</guid><pubDate>Thu, 21 Sep 2017 13:19:40 GMT</pubDate></item></channel></rss>
