@@ -15,7 +15,7 @@
 
 .. figure:: /images/import_gplus_post.png
 
-    Ansicht der Takeout-HTML-Datei
+    G+-Post-Ansicht von Takeout
 
 Die 4, die 20 und Google+, alles zum Mitnehmen
 ==============================================
