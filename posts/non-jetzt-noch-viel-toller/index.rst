@@ -1,4 +1,4 @@
-.. title: NoN: jetzt noch viel toller
+.. title: NoN: jetzt noch toller
 .. slug: non-jetzt-noch-viel-toller
 .. date: 2018-06-24 15:45:12 UTC+02:00
 .. tags: nikola,python,non

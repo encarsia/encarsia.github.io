@@ -149,7 +149,9 @@ Es ist einfach möglich, eigene Kommandos mit setuptools zu erzeugen. Möchte ma
     class UnInstall(Command):
     
         description = "description shown by setup.py --help-commands"
-        user_options = [("myoption", "m", "myoption description shown by setup.py cmd --help")]
+        user_options = [("myoption",
+                         "m",
+                         "myoption description shown by setup.py cmd --help")]
     
         def initialize_options(self):
             # method must exist
@@ -162,6 +164,7 @@ Es ist einfach möglich, eigene Kommandos mit setuptools zu erzeugen. Möchte ma
     
         def run(self):
             # method must exist
+            # code to be executed goes here
             print("This is a custom command.")
     
     setup(
@@ -169,8 +172,3 @@ Es ist einfach möglich, eigene Kommandos mit setuptools zu erzeugen. Möchte ma
         cmdclass={"uninstall": UnInstall}
         ...
         )
-
-
-
-
-
