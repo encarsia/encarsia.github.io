@@ -67,3 +67,4 @@ Links
    * `NoN: Fortschritte <link://slug/non-fortschritte>`_
    * `NoN: Konsoledierung <link://slug/non-konsole>`_
    * `NoN: Fortschritte und Release <link://slug/non-release>`_
+   * `Der setuptools-Spicker <link://slug/setuptools-spicker>`_
