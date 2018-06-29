@@ -29,7 +29,7 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
-            <h1 class="title"><a href="posts/setuptools-spicker/">GTK+-Anwendung mit setuptools packen</a></h1>
+            <h1 class="title"><a href="posts/setuptools-spicker/">Packing GTK+ applications with setuptools</a></h1>
             <div class="meta">
                 <div class="authordate">
                     <time class="timeago" datetime="2018-06-24T18:55:10+02:00">2018-06-24 18:55</time>
@@ -54,18 +54,18 @@
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="inhalt">
-<p class="topic-title first">Inhalt</p>
+<div class="contents warning pull-right topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="posts/setuptools-spicker/#links" id="id1">Links</a></li>
-<li><a class="reference internal" href="posts/setuptools-spicker/#abhangigkeiten" id="id2">Abhängigkeiten</a></li>
-<li><a class="reference internal" href="posts/setuptools-spicker/#nicht-python-paketdateien" id="id3">Nicht Python-Paketdateien</a></li>
-<li><a class="reference internal" href="posts/setuptools-spicker/#desktop-dateien" id="id4">Desktop-Dateien</a></li>
-<li><a class="reference internal" href="posts/setuptools-spicker/#bestehendes-kommando-anpassen" id="id5">Bestehendes Kommando anpassen</a></li>
-<li><a class="reference internal" href="posts/setuptools-spicker/#neues-kommando-erstellen" id="id6">Neues Kommando erstellen</a></li>
+<li><a class="reference internal" href="posts/setuptools-spicker/#dependencies" id="id2">Dependencies</a></li>
+<li><a class="reference internal" href="posts/setuptools-spicker/#non-code-files" id="id3">Non-code files</a></li>
+<li><a class="reference internal" href="posts/setuptools-spicker/#desktop-files" id="id4">Desktop files</a></li>
+<li><a class="reference internal" href="posts/setuptools-spicker/#customizing-existing-commands" id="id5">Customizing existing commands</a></li>
+<li><a class="reference internal" href="posts/setuptools-spicker/#creating-new-commands" id="id6">Creating new commands</a></li>
 </ul>
 </div>
-<p><strong>Der einzige Zweck dieser Seite besteht darin, die Links in meiner setup.py zu entfernen.</strong></p>
+<p><strong>The only reason this page exists is to remove the links in my setup.py file.</strong></p>
 <div class="section" id="links">
 <h2><a class="toc-backref" href="posts/setuptools-spicker/#id1">Links</a></h2>
 <ul class="simple">
@@ -79,127 +79,128 @@
 <li><a class="reference external" href="https://github.com/encarsia/non/blob/master/setup.py">setup.py of my GTK+ application with custom install and uninstall commands</a></li>
 </ul>
 </div>
-<div class="section" id="abhangigkeiten">
-<h2><a class="toc-backref" href="posts/setuptools-spicker/#id2">Abhängigkeiten</a></h2>
-<pre class="code python"><a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-2"></a>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-3"></a><span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PyGObject"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-4"></a>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-5"></a><span class="n">setup</span><span class="p">(</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-6"></a>    <span class="o">...</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-7"></a>    <span class="n">install_requires</span><span class="o">=</span><span class="n">REQUIRED</span><span class="p">,</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-8"></a>    <span class="o">...</span>
-<a name="rest_code_6dde2828f34d485f8e3b51f33a72d1b7-9"></a>    <span class="p">)</span>
+<div class="section" id="dependencies">
+<h2><a class="toc-backref" href="posts/setuptools-spicker/#id2">Dependencies</a></h2>
+<pre class="code python"><a name="rest_code_69f279b9a25a429ebe18dabf677defd3-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-2"></a>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-3"></a><span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PyGObject"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-4"></a>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-5"></a><span class="n">setup</span><span class="p">(</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-6"></a>    <span class="o">...</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-7"></a>    <span class="n">install_requires</span><span class="o">=</span><span class="n">REQUIRED</span><span class="p">,</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-8"></a>    <span class="o">...</span>
+<a name="rest_code_69f279b9a25a429ebe18dabf677defd3-9"></a>    <span class="p">)</span>
 </pre>
-<p>Angabe des PyPI-Paketnamens, bei GTK+-Pythonprogrammen also mindestens die entsprechenden Bindings, da sonst <tt class="docutils literal">import gi</tt> scheitert.</p>
+<p>Pass the PyPI package name, for GTK+ applications you will need at least the GObject Python bindings to successfully run the <tt class="docutils literal">import gi</tt> command.</p>
 </div>
-<div class="section" id="nicht-python-paketdateien">
-<h2><a class="toc-backref" href="posts/setuptools-spicker/#id3">Nicht Python-Paketdateien</a></h2>
-<pre class="code python"><a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-2"></a>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-3"></a><span class="n">PACKAGES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"my_package"</span><span class="p">]</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-4"></a><span class="n">PACKAGE_DIR</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"my_package"</span><span class="p">:</span> <span class="s2">"my_package_dir"</span><span class="p">}</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-5"></a><span class="n">PACKAGE_DATA</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"my_package"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ui/*"</span><span class="p">,</span> <span class="s2">"logging.yaml"</span><span class="p">]}</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-6"></a>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-7"></a><span class="n">setup</span><span class="p">(</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-8"></a>    <span class="o">...</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-9"></a>    <span class="n">packages</span><span class="o">=</span><span class="n">PACKAGES</span><span class="p">,</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-10"></a>    <span class="n">package_dir</span><span class="o">=</span><span class="n">PACKAGE_DIR</span><span class="p">,</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-11"></a>    <span class="n">package_data</span><span class="o">=</span><span class="n">PACKAGE_DATA</span><span class="p">,</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-12"></a>    <span class="o">...</span>
-<a name="rest_code_c27c57e3886b4381a37dabea0b26e15a-13"></a>    <span class="p">)</span>
+<div class="section" id="non-code-files">
+<h2><a class="toc-backref" href="posts/setuptools-spicker/#id3">Non-code files</a></h2>
+<pre class="code python"><a name="rest_code_4ce509efd8994a978490130f5a29aacf-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-2"></a>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-3"></a><span class="n">PACKAGES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"my_package"</span><span class="p">]</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-4"></a><span class="n">PACKAGE_DIR</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"my_package"</span><span class="p">:</span> <span class="s2">"my_package_dir"</span><span class="p">}</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-5"></a><span class="n">PACKAGE_DATA</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"my_package"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ui/*"</span><span class="p">,</span> <span class="s2">"logging.yaml"</span><span class="p">]}</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-6"></a>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-7"></a><span class="n">setup</span><span class="p">(</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-8"></a>    <span class="o">...</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-9"></a>    <span class="n">packages</span><span class="o">=</span><span class="n">PACKAGES</span><span class="p">,</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-10"></a>    <span class="n">package_dir</span><span class="o">=</span><span class="n">PACKAGE_DIR</span><span class="p">,</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-11"></a>    <span class="n">package_data</span><span class="o">=</span><span class="n">PACKAGE_DATA</span><span class="p">,</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-12"></a>    <span class="o">...</span>
+<a name="rest_code_4ce509efd8994a978490130f5a29aacf-13"></a>    <span class="p">)</span>
 </pre>
-<p>Das Paket "my_package" wird aus dem Verzeichnis "my_package_dir" im Verzeichnis "my_package" gepackt.</p>
-<p>Die Dateien, die keinen Python-Code enthalten, also etwa Glade-Dateien, werden als Liste in <tt class="docutils literal">package_data</tt> übergeben. Im Beispiel werden alle Dateien im Unterverzeichnis "ui" sowie die Datei "logging.yaml" ins Paket integriert.</p>
+<p>The package "my_package" will be built from the files in "my_package_dir" folder into the "my_package" folder.</p>
+<p>Non-code files like Glade files are passed as a list to the <tt class="docutils literal">package_data</tt> option. In the example all files of the subfolder "ui" and the file "logging.yaml" are integrated into the package.</p>
 </div>
-<div class="section" id="desktop-dateien">
-<h2><a class="toc-backref" href="posts/setuptools-spicker/#id4">Desktop-Dateien</a></h2>
-<p>Der Speicherort von .desktop-Dateien und Icons richtet sich nach den Freedesktop-Spezifikationen. .desktop-Dateien befinden sich zum Beispiel in den Verzeichnissen</p>
-<pre class="code text"><a name="rest_code_8021208efff94dec81b925a3ccf68f59-1"></a>/usr/share/applications
-<a name="rest_code_8021208efff94dec81b925a3ccf68f59-2"></a>/usr/local/share/applications
-<a name="rest_code_8021208efff94dec81b925a3ccf68f59-3"></a>~/.local/share/applications
+<div class="section" id="desktop-files">
+<h2><a class="toc-backref" href="posts/setuptools-spicker/#id4">Desktop files</a></h2>
+<p>The locations of .desktop files and icons are defined by the Freedesktop specifications. Desktop entries for example are located in</p>
+<pre class="code text"><a name="rest_code_90cdd82f75114074acc33cfcc9d90765-1"></a>/usr/share/applications
+<a name="rest_code_90cdd82f75114074acc33cfcc9d90765-2"></a>/usr/local/share/applications
+<a name="rest_code_90cdd82f75114074acc33cfcc9d90765-3"></a>~/.local/share/applications
 </pre>
-<p>Während der Ausführung von <tt class="docutils literal">install</tt> wird das Präfix ermittelt, es ist also nur die Angabe des relativen Pfads in der <tt class="docutils literal">data_files</tt>-Option notwendig. Gleiches gilt für Icons.</p>
-<pre class="code python"><a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-2"></a>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-3"></a><span class="n">rel_app_path</span> <span class="o">=</span> <span class="s2">"share/applications"</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-4"></a><span class="n">rel_icon_path</span> <span class="o">=</span> <span class="s2">"share/icons/hicolor/scalable/apps"</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-5"></a>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-6"></a><span class="n">DATAFILES</span> <span class="o">=</span> <span class="p">[</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-7"></a>            <span class="p">(</span><span class="n">destination_dir</span><span class="p">,</span> <span class="p">[</span><span class="s2">"list"</span><span class="p">,</span> <span class="s2">"of"</span><span class="p">,</span> <span class="s2">"files"</span><span class="p">]),</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-8"></a>            <span class="p">(</span><span class="n">rel_app_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">"my_app.desktop"</span><span class="p">]),</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-9"></a>            <span class="p">(</span><span class="n">rel_icon_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">"my_appicon.svg"</span><span class="p">]),</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-10"></a>            <span class="p">]</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-11"></a>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-12"></a><span class="n">setup</span><span class="p">(</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-13"></a>    <span class="o">...</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-14"></a>    <span class="n">data_files</span><span class="o">=</span><span class="n">DATAFILES</span><span class="p">,</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-15"></a>    <span class="o">...</span>
-<a name="rest_code_3cdae1d9503c4e55a8f8de0ed2a609a6-16"></a>    <span class="p">)</span>
+<p>While running <tt class="docutils literal">install</tt> the suitable prefix will be identified so only relative paths are required to be passed to the <tt class="docutils literal">data_files</tt> option.</p>
+<pre class="code python"><a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-2"></a>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-3"></a><span class="n">rel_app_path</span> <span class="o">=</span> <span class="s2">"share/applications"</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-4"></a><span class="n">rel_icon_path</span> <span class="o">=</span> <span class="s2">"share/icons/hicolor/scalable/apps"</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-5"></a>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-6"></a><span class="n">DATAFILES</span> <span class="o">=</span> <span class="p">[</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-7"></a>            <span class="p">(</span><span class="n">destination_dir</span><span class="p">,</span> <span class="p">[</span><span class="s2">"list"</span><span class="p">,</span> <span class="s2">"of"</span><span class="p">,</span> <span class="s2">"files"</span><span class="p">]),</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-8"></a>            <span class="p">(</span><span class="n">rel_app_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">"my_app.desktop"</span><span class="p">]),</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-9"></a>            <span class="p">(</span><span class="n">rel_icon_path</span><span class="p">,</span> <span class="p">[</span><span class="s2">"my_appicon.svg"</span><span class="p">]),</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-10"></a>            <span class="p">]</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-11"></a>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-12"></a><span class="n">setup</span><span class="p">(</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-13"></a>    <span class="o">...</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-14"></a>    <span class="n">data_files</span><span class="o">=</span><span class="n">DATAFILES</span><span class="p">,</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-15"></a>    <span class="o">...</span>
+<a name="rest_code_7b54d0664d14474095e3cde5f24e18c3-16"></a>    <span class="p">)</span>
 </pre>
-<p>Dieser Schritt kopiert nur die Dateien in die entsprechenden Zielverzeichnisse. Die korrekten Pfadangaben IN der .desktop-Datei werden durch eine eigene Funktion innerhalb des Install-Kommandos angepasst.</p>
+<p>This step only copies the files into the specific directories. The correct path declaration WITHIN the .desktop file has to be customized during the install command which will be accomplished by a custom function.</p>
 </div>
-<div class="section" id="bestehendes-kommando-anpassen">
-<h2><a class="toc-backref" href="posts/setuptools-spicker/#id5">Bestehendes Kommando anpassen</a></h2>
-<p>Die .desktop-Datei enthält Pfadangaben zur auszuführenden Datei sowie zum dazugehörigen Icon. Da das Zielverzeichnis der Installation nicht vorhersehbar ist, müssen diese Pfade während der Installation an die Gegebenheiten angepasst werden.</p>
-<p>Um eigene Funktionen in bestehende Kommandos auszuführen, muss man eine eigene Instanz der entsprechenden Klasse (install, build, bdist etc.) generieren und die "run"-Funktion anpassen.</p>
-<p>Setuptools wird dann mit der Option <tt class="docutils literal">cmd_class</tt> auf diese eigene Klasse übergeben.</p>
-<pre class="code python"><a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-2"></a><span class="kn">from</span> <span class="nn">setuptools.command.install</span> <span class="kn">import</span> <span class="n">install</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-3"></a>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-4"></a><span class="k">class</span> <span class="nc">CustomInstall</span><span class="p">(</span><span class="n">install</span><span class="p">):</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-5"></a>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-6"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">my_function</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">go</span><span class="p">,</span> <span class="n">here</span><span class="p">)</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-8"></a>        <span class="n">install</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-9"></a>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-10"></a>    <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-11"></a>        <span class="k">try</span><span class="p">:</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-12"></a>            <span class="n">do_some_shit</span><span class="p">()</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-13"></a>        <span class="k">except</span><span class="p">:</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-14"></a>            <span class="k">pass</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-15"></a>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-16"></a><span class="n">setup</span><span class="p">(</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-17"></a>    <span class="o">...</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-18"></a>    <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s2">"install"</span><span class="p">:</span> <span class="n">CustomInstall</span><span class="p">}</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-19"></a>    <span class="o">...</span>
-<a name="rest_code_6d99fb46e7d747678f678cbc74a5668f-20"></a>    <span class="p">)</span>
+<div class="section" id="customizing-existing-commands">
+<h2><a class="toc-backref" href="posts/setuptools-spicker/#id5">Customizing existing commands</a></h2>
+<p>The .desktop file includes information about the program to be executed as well as a corresponding icon, keywords etc.
+Because the target installation location may vary the file has to be adapted during the installation process.</p>
+<p>To run own methods in existing commands you will have to create an instance of the specific command class (install, build, bdist etc.) and customize the "run" method.</p>
+<p>In setuptools this information is passed to the <tt class="docutils literal">cmd_class</tt> option.</p>
+<pre class="code python"><a name="rest_code_5ef1eab466634f029d71346bbcd19d19-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-2"></a><span class="kn">from</span> <span class="nn">setuptools.command.install</span> <span class="kn">import</span> <span class="n">install</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-3"></a>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-4"></a><span class="k">class</span> <span class="nc">CustomInstall</span><span class="p">(</span><span class="n">install</span><span class="p">):</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-5"></a>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-6"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">my_function</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">go</span><span class="p">,</span> <span class="n">here</span><span class="p">)</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-8"></a>        <span class="n">install</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-9"></a>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-10"></a>    <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-11"></a>        <span class="k">try</span><span class="p">:</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-12"></a>            <span class="n">do_some_shit</span><span class="p">()</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-13"></a>        <span class="k">except</span><span class="p">:</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-14"></a>            <span class="k">pass</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-15"></a>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-16"></a><span class="n">setup</span><span class="p">(</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-17"></a>    <span class="o">...</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-18"></a>    <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s2">"install"</span><span class="p">:</span> <span class="n">CustomInstall</span><span class="p">}</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-19"></a>    <span class="o">...</span>
+<a name="rest_code_5ef1eab466634f029d71346bbcd19d19-20"></a>    <span class="p">)</span>
 </pre>
-<p>Eine Liste mit verfügbaren Kommandos erhält man durch</p>
-<pre class="code console"><a name="rest_code_cf6b013689934ed88e472bc65fa0e8cf-1"></a><span class="gp">$</span> python setup.py --help-commands
+<p>A list of available commands can be obtained by</p>
+<pre class="code console"><a name="rest_code_929fd972b80e4380a47e185761af5faf-1"></a><span class="gp">$</span> python setup.py --help-commands
 </pre>
 </div>
-<div class="section" id="neues-kommando-erstellen">
-<h2><a class="toc-backref" href="posts/setuptools-spicker/#id6">Neues Kommando erstellen</a></h2>
-<p>Es ist einfach möglich, eigene Kommandos mit setuptools zu erzeugen. Möchte man beispielsweise die zuvor installierten Dateien, also das Python-Paket und die Desktop-Dateien, loswerden, muss dies manuell erfolgen. Dafür bietet es sich an, ein Uninstall-Kommando zu erstellen.</p>
-<pre class="code python"><a name="rest_code_825281a52b86410899050a5f34a67aab-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Command</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-2"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-3"></a><span class="k">class</span> <span class="nc">UnInstall</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-4"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-5"></a>    <span class="n">description</span> <span class="o">=</span> <span class="s2">"description shown by setup.py --help-commands"</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-6"></a>    <span class="n">user_options</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"myoption"</span><span class="p">,</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-7"></a>                     <span class="s2">"m"</span><span class="p">,</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-8"></a>                     <span class="s2">"myoption description shown by setup.py cmd --help"</span><span class="p">)]</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-9"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-10"></a>    <span class="k">def</span> <span class="nf">initialize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-11"></a>        <span class="c1"># method must exist</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-12"></a>        <span class="c1"># define all options with default value</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">myoption</span> <span class="o">=</span> <span class="bp">None</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-14"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-15"></a>    <span class="k">def</span> <span class="nf">finalize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-16"></a>        <span class="c1"># method must exist</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-17"></a>        <span class="k">pass</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-18"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-19"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-20"></a>        <span class="c1"># method must exist</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-21"></a>        <span class="c1"># code to be executed goes here</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-22"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"This is a custom command."</span><span class="p">)</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-23"></a>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-24"></a><span class="n">setup</span><span class="p">(</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-25"></a>    <span class="o">...</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-26"></a>    <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s2">"uninstall"</span><span class="p">:</span> <span class="n">UnInstall</span><span class="p">}</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-27"></a>    <span class="o">...</span>
-<a name="rest_code_825281a52b86410899050a5f34a67aab-28"></a>    <span class="p">)</span>
+<div class="section" id="creating-new-commands">
+<h2><a class="toc-backref" href="posts/setuptools-spicker/#id6">Creating new commands</a></h2>
+<p>Setuptools enables you to simply create your own commands. It may be useful to create an 'uninstall' command to get rid of all the files dumped to the system during installation to avoid to do that manually.</p>
+<pre class="code python"><a name="rest_code_254ae388dac74939b43325922181c247-1"></a><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Command</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-2"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-3"></a><span class="k">class</span> <span class="nc">UnInstall</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-4"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-5"></a>    <span class="n">description</span> <span class="o">=</span> <span class="s2">"description shown by setup.py --help-commands"</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-6"></a>    <span class="n">user_options</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"myoption"</span><span class="p">,</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-7"></a>                     <span class="s2">"m"</span><span class="p">,</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-8"></a>                     <span class="s2">"myoption description shown by setup.py cmd --help"</span><span class="p">)]</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-9"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-10"></a>    <span class="k">def</span> <span class="nf">initialize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-11"></a>        <span class="c1"># method must exist</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-12"></a>        <span class="c1"># define all options with default value</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">myoption</span> <span class="o">=</span> <span class="bp">None</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-14"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-15"></a>    <span class="k">def</span> <span class="nf">finalize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-16"></a>        <span class="c1"># method must exist</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-17"></a>        <span class="k">pass</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-18"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-19"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-20"></a>        <span class="c1"># method must exist</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-21"></a>        <span class="c1"># code to be executed goes here</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-22"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"This is a custom command."</span><span class="p">)</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-23"></a>
+<a name="rest_code_254ae388dac74939b43325922181c247-24"></a><span class="n">setup</span><span class="p">(</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-25"></a>    <span class="o">...</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-26"></a>    <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s2">"uninstall"</span><span class="p">:</span> <span class="n">UnInstall</span><span class="p">}</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-27"></a>    <span class="o">...</span>
+<a name="rest_code_254ae388dac74939b43325922181c247-28"></a>    <span class="p">)</span>
 </pre>
 </div>
 </div>
