@@ -1,8 +1,8 @@
 .. title: Das Geheimnis der Sphinx
 .. slug: das-geheimnis-der-sphinx
 .. date: 2017-10-29 11:07:05 UTC+01:00
-.. tags: glade,python,nikola,sphinx
-.. category: tutorial,ebook
+.. tags: glade,python,nikola,sphinx,ebook
+.. category: tutorial
 .. link: 
 .. description: 
 .. type: text
