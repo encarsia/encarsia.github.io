@@ -2,7 +2,7 @@
 .. slug: beeline
 .. date: 2017-03-14 13:45:52 UTC+01:00
 .. tags: beeline
-.. category: unterwegs,hardware
+.. category: hardware
 .. link: 
 .. description: 
 .. type: text

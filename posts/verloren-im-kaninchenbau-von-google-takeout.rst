@@ -75,7 +75,7 @@ Das Ergebnis ist eine statische Webseite meines Google+-Streams inklusive Plusse
 Eyecandy
 ========
 
-Grundsätzlich funktioniert der Export themenunabhängig. `hyde <https://themes.getnikola.com/v7/hyde/>`_ liefert ein schönes Ergebnis, etwas nachgeholfen wird mit der ``custom.css``.
+Grundsätzlich funktioniert der Import themenunabhängig. `hyde <https://themes.getnikola.com/v7/hyde/>`_ liefert ein schönes Ergebnis, etwas nachgeholfen wird mit der ``custom.css``.
 
 Wünsch dir was
 ==============

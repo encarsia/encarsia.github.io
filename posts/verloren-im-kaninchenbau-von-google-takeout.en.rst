@@ -1,7 +1,7 @@
 .. title: Lost in the rabbit hole of Google Takeout
 .. slug: google-takeout
 .. date: 2018-05-31 16:10:07 UTC+02:00
-.. tags: draft,google+,takeout,nikola,python
+.. tags: google+,takeout,nikola,python
 .. category: 
 .. link: 
 .. description: 
@@ -24,28 +24,27 @@ I get the 4, 20 and Google+
 
 The approach is quite simple: choose the product in Takeout and wait until the archive(s) has/have been generated. The downloadable archive will be valid for a week but you can generate new archives at any time.
 
-Lession 1:
+Lesson 1:
     Choose *zip* as filetype if you use umlauts, there could be encoding issues in *tgz* files.
 
+I remembered that there was an import plugin for Nikola and I imagined to throw in the archive and to get a usable local site in return. At this point of the article the reader may speculate that this didn't work in the slightest way.
 
-Ich erinnerte mich dunkel daran, dass ein Import-Plugin für Nikola existierte und malte mir aus, das Archiv einfach dort abzuwerfen und eine halbwegs nutzbare lokale Seite gebaut zu bekommen. Der geneigte Leser wird bereits an dieser Stelle mutmaßen, dass dieser Ansatz nicht funktionierte.
+Unpacking presents
+==================
 
-Geschenke auspacken
-===================
+The first inspection reveals:
 
-Nach ersten Untersuchungen zeigen sich folgende Fakten:
+1. All G+ posts are located in ``Google+ stream/Posts`` as HTML files. These files appear usable.
 
-1. Alle G+-Beiträge befinden sich in ``Stream in Google+/Beiträge`` als HTML-Dateien. Diese sehen zunächst brauchbar aus.
+2. Image links just point to filenames. The path is missing so only images in the same directory are shown but
+ 
+3. Images are scattered among different directories (in ``Posts`` and ``Photos`` and their subfolders). The majority of image files are stored in ``Photos of posts`` in date corresponding subfolders.
 
-2. Enthaltene Bildverweise geben nur den Dateinamen an, der fehlende Dateipfad lädt demzufolgge nur Bilder im selben Verzeichnis, aber
-
-3. Bilder befinden sich in diversen Unterverzeichnissen, sowohl in ``Beiträge`` als auch in ``Fotos`` und deren Unterverzeichnissen. Die Mehrheit befindet sich in ``Fotos von Beiträgen``, dort jeweils in Datumsunterverzeichnisse einsortiert.
-
-4. Ein Datumsformat ist so gut wie jedes andere und so findet man dort in friedlicher Koexistenz Dinge wie:
+4. There are different date formats in peaceful co-existence:
 
 .. code-block::
 
-    Fotos von Beiträgen/
+    Photos of posts/
      ├── 02.06.14
      ├── 02.06.16
      ├── 22. Juli 2013
@@ -53,54 +52,53 @@ Nach ersten Untersuchungen zeigen sich folgende Fakten:
      ├── 2011-08-14
      └── 2012-03-13
 
-5. Fotos haben eine dazugehörige JSON-Datei, HTML-Dateien nicht.
+5. There is a corresponding JSON file for every image but not for HTML files.
 
-6. Die Inspektion der HTML-Dateien ergibt eine übersichtliche Struktur mit Klassenangabe.
+6. Strucure of HTML files:
 
 .. thumbnail:: /images/import_gplus_inspector.png
 
     Dumdidumdumdum...Inspektor Gadget
 
-Lektion 2
-    Beiträge lassen sich nur einzeln aufrufen, es gibt jede Menge Deadlinks bei Bilderposts, aber immerhin sieht man den Verteilungstatus (öffentlich, Sammlung, Community), +1, Reshares und Kommentare.
+Lesson 2
+    You can open only single posts, there are a lot of deadlinks in image posts, but share and reaction information are displayed (public/private/collection/community post, +1, reshares and comments).
 
-Auftritt: Nikola
-================
+Your entry: Nikola
+==================
 
-Mit leicht getrübten Erwartungen installiere ich das `Import-Plugin <https://plugins.getnikola.com/v7/import_gplus/>`_ für `Nikola <https://getnikola.com/>`_ und lege los. Es passt gar nichts. Angeblich stehen die Beiträge auch als JSON zur Verfügung. Das war bestimmt auch einst so, jetzt nicht mehr.
+With low expectations I install the `import plugin <https://plugins.getnikola.com/v7/import_gplus/>`_ for `Nikola <https://getnikola.com/>`_ and see what happens. Nothing. The posts once were provided as JSON files but not in recent days.
 
-Ich hangele mich an den Dateien entlang, importiere zunächst die HTML-Dateien. Das Import-Plugin erstellt grundsätzlich eine neue Nikola-Seite, so dass man hier nach Gusto wüten kann. Dann kümmere ich mich um die Deadlinks. Dann die Titel - ich bin wie im Rausch: mit jedem Build wird es besser.
+I brachiate through the files, importing HTML files first. The import plugin instantiates a new Nikola site, so I can just trial and error like hell. Then I care about deadlinks, then titles, it kepps getting better with every build.
 
-Das Ergebnis ist eine statische Webseite meines Google+-Streams inklusive Plussen und Kommentaren. Man kommt von den Beiträgen immer zum Originalbeitrag.
+The result is a static website of my Google+ stream including +1's and comments and a link to the original post.
 
-Eyecandy
+Theming
+=======
+
+In general the import is independent from any theme. I personally recommend `hyde <https://themes.getnikola.com/v7/hyde/>`_ which even can be improved by the ``custom.css`` that is included in the archive.
+
+Wishlist
 ========
 
-Grundsätzlich funktioniert der Export themenunabhängig. `hyde <https://themes.getnikola.com/v7/hyde/>`_ liefert ein schönes Ergebnis, etwas nachgeholfen wird mit der ``custom.css``.
-
-Wünsch dir was
-==============
-
-* eine lokale Suchfunktion wäre schön
-* gefilterte Anzeige je nach Verteilungsstatus
+* local search function
+* filter posts by share status
 
 .. attention::
 
-    Plant man ein öffentlich einsehbares Backup des Streams, ist zu beachten, dass der Import auch private Beiträge enthält.
+    In case you consider a publicly accessible stream backup you have to keep in mind that the imported data also includes all privately shared posts.
 
 
-Fazit
-=====
+Conclusion
+==========
 
-Als langjähriger Google+-Nutzer ist man auf Inkonsistenzen und Verschlimmbesserungen konditioniert, da kommt Takeout als Sparringspartner nur gelegen. Es ist nur eine Frage der Zeit, bis auch diese Plugin-Version den Weg jedes Google-Messengers gehen wird.
+As a long-term heavy Google+ user you are used to inconsistencies and improvementent constantly getting worse so a Takeout archive is no more than a sparring partner to train with. It is only a matter of time until my version of the import plugin will go the way of all those Google messengers before.
 
 .. figure:: /images/takeout_gplus_slow.gif
 
-    Resultat der Nikola-generierten Seite mit hyde-Thema
+    static Google+ Nikola site (hyde theme)
 
+If you want to try yourself:
 
-Wer sich zu fein ist, das jetzt selbst zu machen, hier:
-    
     * `Download Plugin (5,6 kB)`__
 
 __ ../../files/import_gplus.zip
@@ -127,5 +125,5 @@ README.md
 .. raw:: html
 
     <br>
-    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/SkUoxkiTAK3">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/SkUoxkiTAK3">Comment on <i class="fa fa-google-plus"></i></a>
 

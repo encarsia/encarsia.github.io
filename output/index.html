@@ -292,6 +292,132 @@
             </div>
         </div>
         <div class="post">
+            <h1 class="title"><a href="posts/google-takeout/">Verloren im Kaninchenbau von Google Takeout</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2018-05-31T16:10:07+02:00">2018-05-31 16:10</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/google-takeout/#disqus_thread" data-disqus-identifier="cache/posts/verloren-im-kaninchenbau-von-google-takeout.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/google%2B/" rel="tag">google+</a></li>
+           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+           <li><a class="tag p-category" href="categories/takeout/" rel="tag">takeout</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents warning pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/google-takeout/#die-4-die-20-und-google-alles-zum-mitnehmen" id="id2">Die 4, die 20 und Google+, alles zum Mitnehmen</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#geschenke-auspacken" id="id3">Geschenke auspacken</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#auftritt-nikola" id="id4">Auftritt: Nikola</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#eyecandy" id="id5">Eyecandy</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#wunsch-dir-was" id="id6">Wünsch dir was</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#fazit" id="id7">Fazit</a></li>
+<li>
+<a class="reference internal" href="posts/google-takeout/#listings" id="id8">Listings</a><ul>
+<li><a class="reference internal" href="posts/google-takeout/#plugin" id="id9">Plugin</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#readme-md" id="id10">README.md</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Mach Backups deiner Daten. Habensegesagt. Aller Daten. Habensegesagt. Und dann kam Google Takeout</strong></p>
+<div class="figure">
+<img alt="/images/import_gplus_post.png" src="images/import_gplus_post.png"><p class="caption">G+-Post-Ansicht von Takeout</p>
+</div>
+<div class="section" id="die-4-die-20-und-google-alles-zum-mitnehmen">
+<h2><a class="toc-backref" href="posts/google-takeout/#id2">Die 4, die 20 und Google+, alles zum Mitnehmen</a></h2>
+<p><a class="reference external" href="http://google.com/takeout/">Takeout</a> nennt sich Googles Archivsystem für allerlei Produkte aus dem Hause Alpha. Das Primärziel bestand darin, ein Archiv meiner Google+-Aktivitäten herunterzuladen.</p>
+<p>Dies gestaltete sich zunächst recht einfach: das Archiv (bzw. (je nach Größe) die Archive) wird erstellt. Bei Fertigstellung erhält man eine Nachricht mit Downloadlink. Das Archiv verfällt nach einer Woche, aber man kann jederzeit neue erstellen.</p>
+<dl class="docutils">
+<dt>Lektion 1</dt>
+<dd>Wähle als Dateiformat <em>zip</em>, <em>tgz</em> könnte Encoding-Probleme mit Umlauten haben (Dies ist keine Übung!).</dd>
+</dl>
+<p>Ich erinnerte mich dunkel daran, dass ein Import-Plugin für Nikola existierte und malte mir aus, das Archiv einfach dort abzuwerfen und eine halbwegs nutzbare lokale Seite gebaut zu bekommen. Der geneigte Leser wird bereits an dieser Stelle mutmaßen, dass dieser Ansatz nicht funktionierte.</p>
+</div>
+<div class="section" id="geschenke-auspacken">
+<h2><a class="toc-backref" href="posts/google-takeout/#id3">Geschenke auspacken</a></h2>
+<p>Nach ersten Untersuchungen zeigen sich folgende Fakten:</p>
+<ol class="arabic simple">
+<li>Alle G+-Beiträge befinden sich in <tt class="docutils literal">Stream in <span class="pre">Google+/Beiträge</span></tt> als HTML-Dateien. Diese sehen zunächst brauchbar aus.</li>
+<li>Enthaltene Bildverweise geben nur den Dateinamen an, der fehlende Dateipfad lädt demzufolgge nur Bilder im selben Verzeichnis, aber</li>
+<li>Bilder befinden sich in diversen Unterverzeichnissen, sowohl in <tt class="docutils literal">Beiträge</tt> als auch in <tt class="docutils literal">Fotos</tt> und deren Unterverzeichnissen. Die Mehrheit befindet sich in <tt class="docutils literal">Fotos von Beiträgen</tt>, dort jeweils in Datumsunterverzeichnisse einsortiert.</li>
+<li>Ein Datumsformat ist so gut wie jedes andere und so findet man dort in friedlicher Koexistenz Dinge wie:</li>
+</ol>
+<pre class="code text"><a name="rest_code_1bf8af31935145ca9408a5825af79ff5-1"></a>Fotos von Beiträgen/
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-2"></a> ├── 02.06.14
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-3"></a> ├── 02.06.16
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-4"></a> ├── 22. Juli 2013
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-5"></a> ├── 23.01.17
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-6"></a> ├── 2011-08-14
+<a name="rest_code_1bf8af31935145ca9408a5825af79ff5-7"></a> └── 2012-03-13
+</pre>
+<ol class="arabic simple" start="5">
+<li>Fotos haben eine dazugehörige JSON-Datei, HTML-Dateien nicht.</li>
+<li>Die Inspektion der HTML-Dateien ergibt eine übersichtliche Struktur mit Klassenangabe.</li>
+</ol>
+<div class="figure">
+<a class="reference external image-reference" href="images/import_gplus_inspector.png"><img alt="/images/import_gplus_inspector.thumbnail.png" src="images/import_gplus_inspector.thumbnail.png"></a>
+<p class="caption">Dumdidumdumdum...Inspektor Gadget</p>
+</div>
+<dl class="docutils">
+<dt>Lektion 2</dt>
+<dd>Beiträge lassen sich nur einzeln aufrufen, es gibt jede Menge Deadlinks bei Bilderposts, aber immerhin sieht man den Verteilungstatus (öffentlich, Sammlung, Community), +1, Reshares und Kommentare.</dd>
+</dl>
+</div>
+<div class="section" id="auftritt-nikola">
+<h2><a class="toc-backref" href="posts/google-takeout/#id4">Auftritt: Nikola</a></h2>
+<p>Mit leicht getrübten Erwartungen installiere ich das <a class="reference external" href="https://plugins.getnikola.com/v7/import_gplus/">Import-Plugin</a> für <a class="reference external" href="https://getnikola.com/">Nikola</a> und lege los. Es passt gar nichts. Angeblich stehen die Beiträge auch als JSON zur Verfügung. Das war bestimmt auch einst so, jetzt nicht mehr.</p>
+<p>Ich hangele mich an den Dateien entlang, importiere zunächst die HTML-Dateien. Das Import-Plugin erstellt grundsätzlich eine neue Nikola-Seite, so dass man hier nach Gusto wüten kann. Dann kümmere ich mich um die Deadlinks. Dann die Titel - ich bin wie im Rausch: mit jedem Build wird es besser.</p>
+<p>Das Ergebnis ist eine statische Webseite meines Google+-Streams inklusive Plussen und Kommentaren. Man kommt von den Beiträgen immer zum Originalbeitrag.</p>
+</div>
+<div class="section" id="eyecandy">
+<h2><a class="toc-backref" href="posts/google-takeout/#id5">Eyecandy</a></h2>
+<p>Grundsätzlich funktioniert der Import themenunabhängig. <a class="reference external" href="https://themes.getnikola.com/v7/hyde/">hyde</a> liefert ein schönes Ergebnis, etwas nachgeholfen wird mit der <tt class="docutils literal">custom.css</tt>.</p>
+</div>
+<div class="section" id="wunsch-dir-was">
+<h2><a class="toc-backref" href="posts/google-takeout/#id6">Wünsch dir was</a></h2>
+<ul class="simple">
+<li>eine lokale Suchfunktion wäre schön</li>
+<li>gefilterte Anzeige je nach Verteilungsstatus</li>
+</ul>
+<div class="admonition attention">
+<p class="first admonition-title">Achtung!</p>
+<p class="last">Plant man ein öffentlich einsehbares Backup des Streams, ist zu beachten, dass der Import auch private Beiträge enthält.</p>
+</div>
+</div>
+<div class="section" id="fazit">
+<h2><a class="toc-backref" href="posts/google-takeout/#id7">Fazit</a></h2>
+<p>Als langjähriger Google+-Nutzer ist man auf Inkonsistenzen und Verschlimmbesserungen konditioniert, da kommt Takeout als Sparringspartner nur gelegen. Es ist nur eine Frage der Zeit, bis auch diese Plugin-Version den Weg jedes Google-Messengers gehen wird.</p>
+<div class="figure">
+<img alt="/images/takeout_gplus_slow.gif" src="images/takeout_gplus_slow.gif"><p class="caption">Resultat der Nikola-generierten Seite mit hyde-Thema</p>
+</div>
+<p>Wer sich zu fein ist, das jetzt selbst zu machen, hier:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="files/import_gplus.zip">Download Plugin (5,6 kB)</a></li>
+</ul>
+</blockquote>
+<p class="more"><a href="posts/google-takeout/">Weiterlesen…</a></p>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/non-release/">NoN: Fortschritte und Release</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -418,45 +544,6 @@
 <p class="caption">Glade 3.20</p>
 </div>
 </div>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/nikola-zen-forkawesome/">Nikola: everything zen</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2018-05-12T07:50:21+02:00">2018-05-12 07:50</time>
-</div>
-                <div class="stats">
-                    
-        
-    <a href="posts/nikola-zen-forkawesome/#disqus_thread" data-disqus-identifier="cache/posts/nikola-zen-theme-mit-forkawesome.html">Comments</a>
-
-
-                </div>
-            
-        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p><em>[UPDATE] Artikel wurde aktualisiert, keine manuelle Installation mehr notwendig</em></p>
-<p><strong>Aktualisiertes zen-Thema für Nikola</strong></p>
-<p>Ein Nachteil von <a class="reference external" href="https://getnikola.com/">Nikola</a> ist meiner Meinung nach die stiefmütterliche Behandlung der <a class="reference external" href="https://themes.getnikola.com/">Themes</a>. Das von mir genutzte <em>zen</em>-Thema hatte ich bereits vor einiger Zeit auf Font Awesome 4-Icons geupdated und hier als Archiv zum Download bereitgestellt.</p>
-<p>Inzwischen gibt es nicht nur Version 5 von <a class="reference external" href="https://fontawesome.com/">Font Awesome</a>, sondern auch einen Fork des Projektes namens <a class="reference external" href="https://forkawesome.github.io">Fork Awesome</a> mit ein paar neuen Icons.</p>
-<p>Dank eines Kommentars einer der Nikola-Devs (thx Roberto) hier habe ich mich nun durchgerungen, meine Änderungen offiziell per Pull Request einzureichen. Die <em>zen</em>-Familie ist nun auch im offiziellen Repository auf Font Awesome v4.7.0 geupdatet. Außerdem gibt es eine neue Variante, die die Fork Awesome-Icons nutzt. Eine manuelle Installation erübrigt sich also, sie kann direkt im Nikola-Projektordner erfolgen:</p>
-<pre class="code console"><a name="rest_code_5a437818b13a4be8bf651182981e21ba-1"></a><span class="gp">$</span> nikola theme -i zen-forkawesome
-</pre>
-<p>Anschließend muss das Thema nur noch in der <tt class="docutils literal">conf.py</tt> aktiviert werden:</p>
-<pre class="code text"><a name="rest_code_d541848894494649a13b7fc619c9e0f4-1"></a>THEME = "zen-forkawesome"
-</pre>
-<p>Desweiteren werden die Icons nun mit "fa fa-iconname" angesprochen statt zuvor mit "icon-iconname". Dies ist auch in <tt class="docutils literal">conf.py.sample</tt> vermerkt und wird bei der Installation des Themas angezeigt.</p>
-<p>Die Änderungen werden natürlich erst nach dem nächsten <tt class="docutils literal">nikola build</tt> wirksam. Da <em>zen-forkawesome</em> auf <em>zen</em> basiert, wird dieses Thema automatisch mit installiert.</p>
 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 .. slug: beeline-followup
 .. date: 2017-10-22 20:49:48 UTC+02:00
 .. tags: beeline
-.. category: unterwegs,hardware
+.. category: hardware
 .. link: 
 .. description: 
 .. type: text

@@ -102,7 +102,7 @@ class CommandImportGplus(Command, ImportMixin):
 
         for root, dirs, files in os.walk(os.path.join(self.export_folder, gto_root)):
             for f in files:
-                if f.endswith(".jpg") or f.endswith(".jpeg") or f.endswith(".png") or f.endswith(".JPG") or f.endswith(".JPEG") or f.endswith(".PNG"):
+                if f.lower().endswith(".jpg") or f.lower().endswith(".jpeg") or f.lower().endswith(".png"):
                     if not os.path.isfile(os.path.join(self.output_folder, "images",f)):
                         shutil.copy2(os.path.join(root, f), os.path.join(self.output_folder, "images"))
                         LOGGER.info("{} copied to Nikola image folder.".format(f))
@@ -125,10 +125,6 @@ class CommandImportGplus(Command, ImportMixin):
         context['POSTS'] = '''(
             ("posts/*.html", "posts", "post.tmpl"),
             ("posts/*.rst", "posts", "post.tmpl"),
-        )'''
-        context['PAGES'] = '''(
-            ("stories/*.html", "stories", "story.tmpl"),
-            ("stories/*.rst", "stories", "story.tmpl"),
         )'''
         context['COMPILERS'] = '''{
         "rest": ('.txt', '.rst'),
@@ -260,7 +256,7 @@ class CommandImportGplus(Command, ImportMixin):
         # cut trailing dots
         if t.endswith("..."):
             t = t[:-3]
-        # cut html elements and correct quotation marks
+        # cut html elements and fix quotation marks
         for tag in [("<b>", ""),
                      ("</b>", ""),
                      ("&quot;", "\""),
