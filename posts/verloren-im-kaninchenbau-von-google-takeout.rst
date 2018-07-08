@@ -2,7 +2,7 @@
 .. slug: google-takeout
 .. date: 2018-05-31 16:10:07 UTC+02:00
 .. tags: google+,takeout,nikola,python
-.. category: 
+.. category: socialmedia
 .. link: 
 .. description: 
 .. type: text
@@ -100,7 +100,7 @@ Als langjähriger Google+-Nutzer ist man auf Inkonsistenzen und Verschlimmbesser
 
 Wer sich zu fein ist, das jetzt selbst zu machen, hier:
     
-    * `Download Plugin (5,6 kB)`__
+    * `Download Plugin (5,7 kB)`__
 
 __ ../../files/import_gplus.zip
 
@@ -110,18 +110,17 @@ __ ../../files/import_gplus.zip
 Listings
 ========
 
+
+Usage (README.md)
+*****************
+
+.. listing:: import_gplus_README.md md
+
 Plugin
 ******
 
 .. listing:: import_gplus.py python
     :number-lines:
-
-README.md
-*********
-
-.. listing:: import_gplus_README.md md
-
-
 
 .. raw:: html
 
