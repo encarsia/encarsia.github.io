@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1531056124.0216422
+_modified_time = 1536946536.5977516
 _enable_loop = True
-_template_filename = '/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/tags.tmpl'
+_template_filename = '/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/tags.tmpl'
 _template_uri = 'tags.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['content']
@@ -28,13 +28,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        items = context.get('items', UNDEFINED)
         hidden_tags = context.get('hidden_tags', UNDEFINED)
-        len = context.get('len', UNDEFINED)
         cat_items = context.get('cat_items', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
         title = context.get('title', UNDEFINED)
         range = context.get('range', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
-        items = context.get('items', UNDEFINED)
+        len = context.get('len', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
@@ -53,13 +53,13 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        items = context.get('items', UNDEFINED)
         hidden_tags = context.get('hidden_tags', UNDEFINED)
-        len = context.get('len', UNDEFINED)
         cat_items = context.get('cat_items', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
         title = context.get('title', UNDEFINED)
         range = context.get('range', UNDEFINED)
-        messages = context.get('messages', UNDEFINED)
-        items = context.get('items', UNDEFINED)
+        len = context.get('len', UNDEFINED)
         def content():
             return render_content(context)
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
@@ -108,6 +108,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/tags.tmpl", "uri": "tags.tmpl", "source_encoding": "utf-8", "line_map": {"27": 0, "42": 2, "47": 42, "53": 4, "67": 4, "68": 7, "69": 7, "70": 9, "71": 10, "72": 11, "73": 11, "74": 11, "75": 13, "76": 14, "77": 15, "78": 17, "79": 17, "80": 17, "81": 17, "82": 17, "83": 18, "84": 19, "85": 21, "86": 22, "87": 23, "88": 24, "89": 28, "90": 29, "91": 29, "92": 29, "93": 32, "94": 33, "95": 34, "96": 35, "97": 36, "98": 36, "99": 36, "100": 36, "101": 36, "102": 39, "103": 41, "109": 103}}
+{"filename": "/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/tags.tmpl", "uri": "tags.tmpl", "source_encoding": "utf-8", "line_map": {"27": 0, "42": 2, "47": 42, "53": 4, "67": 4, "68": 7, "69": 7, "70": 9, "71": 10, "72": 11, "73": 11, "74": 11, "75": 13, "76": 14, "77": 15, "78": 17, "79": 17, "80": 17, "81": 17, "82": 17, "83": 18, "84": 19, "85": 21, "86": 22, "87": 23, "88": 24, "89": 28, "90": 29, "91": 29, "92": 29, "93": 32, "94": 33, "95": 34, "96": 35, "97": 36, "98": 36, "99": 36, "100": 36, "101": 36, "102": 39, "103": 41, "109": 103}}
 __M_END_METADATA
 """

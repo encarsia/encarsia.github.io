@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1531056123.8241863
+_modified_time = 1536946536.521663
 _enable_loop = True
-_template_filename = '/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/list.tmpl'
+_template_filename = '/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/list.tmpl'
 _template_uri = 'list.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['content']
@@ -36,11 +36,11 @@ def render_body(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
         _mako_get_namespace(context, 'feeds_translations')._populate(_import_ns, ['*'])
-        title = _import_ns.get('title', context.get('title', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         items = _import_ns.get('items', context.get('items', UNDEFINED))
-        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         archive_nav = _mako_get_namespace(context, 'archive_nav')
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
+        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
         def content():
             return render_content(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -63,11 +63,11 @@ def render_content(context,**pageargs):
         _import_ns = {}
         _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
         _mako_get_namespace(context, 'feeds_translations')._populate(_import_ns, ['*'])
-        title = _import_ns.get('title', context.get('title', UNDEFINED))
-        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         items = _import_ns.get('items', context.get('items', UNDEFINED))
-        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
+        messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         archive_nav = _mako_get_namespace(context, 'archive_nav')
+        title = _import_ns.get('title', context.get('title', UNDEFINED))
+        feeds_translations = _mako_get_namespace(context, 'feeds_translations')
         def content():
             return render_content(context)
         __M_writer = context.writer()
@@ -103,6 +103,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/usr/lib/python3.6/site-packages/nikola/data/themes/base/templates/list.tmpl", "uri": "list.tmpl", "source_encoding": "utf-8", "line_map": {"23": 3, "26": 4, "32": 0, "47": 2, "48": 3, "49": 4, "54": 26, "60": 6, "74": 6, "75": 9, "76": 9, "77": 11, "78": 11, "79": 12, "80": 12, "81": 13, "82": 14, "83": 15, "84": 16, "85": 16, "86": 16, "87": 16, "88": 16, "89": 17, "90": 18, "91": 18, "92": 18, "93": 21, "94": 22, "95": 23, "96": 23, "97": 23, "98": 25, "104": 98}}
+{"filename": "/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/list.tmpl", "uri": "list.tmpl", "source_encoding": "utf-8", "line_map": {"23": 3, "26": 4, "32": 0, "47": 2, "48": 3, "49": 4, "54": 26, "60": 6, "74": 6, "75": 9, "76": 9, "77": 11, "78": 11, "79": 12, "80": 12, "81": 13, "82": 14, "83": 15, "84": 16, "85": 16, "86": 16, "87": 16, "88": 16, "89": 17, "90": 18, "91": 18, "92": 18, "93": 21, "94": 22, "95": 23, "96": 23, "97": 23, "98": 25, "104": 98}}
 __M_END_METADATA
 """
