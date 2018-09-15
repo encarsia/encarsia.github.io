@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1536946536.4400597
+_modified_time = 1536998981.9578125
 _enable_loop = True
 _template_filename = '/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/comments_helper_livefyre.tmpl'
 _template_uri = 'comments_helper_livefyre.tmpl'
@@ -31,7 +31,7 @@ def render_comment_form(context,url,title,identifier):
     try:
         comment_system_id = context.get('comment_system_id', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n<div id="livefyre-comments"></div>\n<script src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>\n<script>\n(function () {\n    var articleId = "')
+        __M_writer('\n<div id="livefyre-comments"></div>\n<script src="https://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>\n<script>\n(function () {\n    var articleId = "')
         __M_writer(str(identifier))
         __M_writer('";\n    fyre.conv.load({}, [{\n        el: \'livefyre-comments\',\n        network: "livefyre.com",\n        siteId: "')
         __M_writer(str(comment_system_id))
@@ -62,7 +62,7 @@ def render_comment_link_script(context):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_writer = context.writer()
-        __M_writer('\n<script src="http://zor.livefyre.com/wjs/v1.0/javascripts/CommentCount.js"></script>\n')
+        __M_writer('\n<script src="https://zor.livefyre.com/wjs/v1.0/javascripts/CommentCount.js"></script>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
