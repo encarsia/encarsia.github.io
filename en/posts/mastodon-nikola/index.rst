@@ -1,5 +1,5 @@
 .. title: Embed Mastodon toots with Nikola
-.. slug: embed-mastodon-toots-with-nikola
+.. slug: mastodon-nikola
 .. date: 2018-09-18 15:50:16 UTC+02:00
 .. tags: nikola,mastodon
 .. category: socialmedia
