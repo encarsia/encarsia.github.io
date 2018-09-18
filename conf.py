@@ -188,11 +188,13 @@ POSTS = (
     ("posts/*.rst", "posts", "post.tmpl"),
     ("posts/*.txt", "posts", "post.tmpl"),
     ("posts/*.html", "posts", "post.tmpl"),
+    ("posts/*.md", "posts", "post.tmpl"),
 )
 PAGES = (
     ("pages/*.rst", "pages", "story.tmpl"),
     ("pages/*.txt", "pages", "story.tmpl"),
     ("pages/*.html", "pages", "story.tmpl"),
+    ("pages/*.md", "pages", "story.tmpl"),
 )
 
 
@@ -1194,7 +1196,7 @@ FILE_METADATA_UNSLUGIFY_TITLESS = True
 # extracting unique titles at the top of your document and turning
 # them into metadata. This surprises a lot of people, and setting
 # this option to True will prevent it.
-# USE_REST_DOCINFO_METADATA = False
+# USE_REST_DOCINFO_METADATA = True
 
 # If you don’t like slugified file names ([a-z0-9] and a literal dash),
 # and would prefer to use all the characters your file system allows.
