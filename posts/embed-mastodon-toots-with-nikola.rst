@@ -49,7 +49,7 @@ The shortcode can be used as intended, pass a status and optionally width and he
     :start-line: 8
     :end-line: 10
     
-This is working for me but if the shortcode fails you should use the shortcode role to pass the text unaltered (see the `Nikola handbook <https://getnikola.com/handbook.html#using-a-shortcode>`_ for more information):
+This is working for me but if the shortcode fails you should use the shortcode role to pass the text unaltered (consult the `handbook <https://getnikola.com/handbook.html#using-a-shortcode>`_ for more information):
 
 .. listing:: raw.txt rest
     :start-line: 11
