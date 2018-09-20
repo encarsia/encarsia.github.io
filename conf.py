@@ -137,10 +137,10 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ('/index.html', 'Home', 'fa fa-home'),
         ('/posts/tutorial-reihe-glade/index.html', 'Tutorials', 'fa fa-lightbulb-o'),
+        ('https://octodon.social/@encarsia', 'Mastodon', 'fa fa-mastodon'),
+        ('https://twitter.com/encarsia_', 'Twitter', 'fa fa-twitter'),
         ('https://plus.google.com/105146352752269764996/posts', 'Google+', 'fa fa-google-plus-official'),
         ('https://github.com/encarsia', 'Github', 'fa fa-github'),
-        ('https://twitter.com/encarsia_', 'Twitter', 'fa fa-twitter'),
-        ('https://octodon.social/@encarsia', 'Mastodon', 'fa fa-mastodon'),
         ('/categories/index.html', 'Tags', 'fa fa-tags'),
         ('/rss.xml', 'RSS', 'fa fa-rss'),
         ('/pages/about/index.html', 'About me', 'fa fa-user'),
@@ -871,10 +871,6 @@ COMMENT_SYSTEM = "disqus"
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
 COMMENT_SYSTEM_ID = "bahnfreikartoffelbrei"
-
-# Enable G+ comment system
-#COMMENT_SYSTEM = "googleplus"
-
 
 # Enable annotations using annotateit.org?
 # If set to False, you can still enable them for individual posts and pages
