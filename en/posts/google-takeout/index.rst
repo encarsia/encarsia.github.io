@@ -101,7 +101,7 @@ If you want to try yourself:
 
     * `Download Plugin (5,7 kB)`__
 
-__ ../../files/import_gplus.zip
+__ ../../../files/import_gplus.zip
 
 
 .. TEASER_END

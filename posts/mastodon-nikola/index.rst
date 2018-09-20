@@ -33,9 +33,9 @@ This is part of the built-in shortcodes. It works like the directive, you only n
 Create your own shortcode
 *************************
 
-A separate shortcode can easily be realized by a `template-based shortcode <https://getnikola.com/extending.html#template-based-shortcodes>`_.
+A separate shortcode can easily be realized with a `template-based shortcode <https://getnikola.com/extending.html#template-based-shortcodes>`_.
 
-All you have to do is create a template and save it as ``your_shortcode_name.tmpl`` in the ``shortcode`` folder of your Nikola site. If you do not use any custom shortcodes yet you will probably have to create the folder.
+All you have to do is create a template and save it as ``your_shortcode_name.tmpl`` in the ``shortcodes`` folder of your Nikola site. If you do not use any custom shortcodes yet you will probably have to create the folder.
 
 Depending on the template engine used by your theme you have to provide shortcode templates for Jinja2 or Mako:
 
