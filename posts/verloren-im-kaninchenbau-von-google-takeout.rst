@@ -104,7 +104,6 @@ Wer sich zu fein ist, das jetzt selbst zu machen, hier:
 
 __ ../../files/import_gplus.zip
 
-
 .. TEASER_END
 
 Listings

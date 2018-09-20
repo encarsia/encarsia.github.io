@@ -75,9 +75,21 @@ def get_diskusage_string(folders):
         string += """{} | {} | {}\n""".format(name, s, c)
     return string
 
+def get_brokenlinks_string(output):
+    string = ""
+    for line in output.stderr.split("\n"):
+        if "WARNING: check:" in line:
+            string += " * {}\n".format(line.split("WARNING: check: ")[1])
+    if string == "":
+        return "(no broken links)"
+    else:
+        return string
+
 template = """
 # Title
 {disk_usage}
+{status}
+{broken_links}
 ## sub
 
 text
@@ -100,14 +112,16 @@ folders = [("Site", "output"),
            ]
            
 #infodict["disk_usage"] = get_diskusage_string(folders)
-#infodict["status"] = nikola_cmd("status").stdout.split("\n")[1].split(",")[0]
+#infodict["status"] = nikola_cmd("status").stdout.split("\n")[1]
 
-broken_links = nikola_cmd("check -l")
-print(broken_links)
+infodict["disk_usage"] = ""
+infodict["status"] = ""
+#infodict["broken_links"] = get_brokenlinks_string(nikola_cmd("check -l"))
 
-#txt = template.format(**infodict)
-#html = markdown.markdown(txt, extensions=["markdown.extensions.tables"])
-#print(html)
+
+txt = template.format(**infodict)
+html = markdown.markdown(txt, extensions=["markdown.extensions.tables"])
+print(html)
 #with open("info.html", "w") as f:
 #    f.write(html)
 
