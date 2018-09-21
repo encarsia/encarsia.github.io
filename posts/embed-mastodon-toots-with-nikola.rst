@@ -1,4 +1,4 @@
-.. title: Embed Mastodon toots with Nikola
+.. title: Mastodon-Tröts mit Nikola einbetten
 .. slug: mastodon-nikola
 .. date: 2018-09-18 15:50:16 UTC+02:00
 .. tags: nikola,mastodon
@@ -9,47 +9,48 @@
 
 {{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
 
-Reading the post `Mastodon Embed Shortcode for hugo <https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/>`_ I became envious and thought 'We Nikola users might want that, too'. The `Nikola handbook <https://getnikola.com/handbook.html#shortcodes>`_ plainly admits to have 'adopted' the shortcode feature from Hugo so how hard can it be?
+Beim Lesen des Artikels `Mastodon Embed Shortcode for hugo <https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/>`_ dachte ich neidisch 'Wir Nikola-Nutzer könnten sowas auch gebrauchen'. Im `Nikola-Handbuch <https://getnikola.com/handbook.html#shortcodes>`_ gibt man freimütig zu, dieses Feature sowieso von Hugo entlehnt zu haben, wie kompliziert kann es also sein?
 
-Here are three ways of embedding toots in your Nikola site using reStructuredText.
+Hier sind drei Arten, mit reStructuredText Tröts in eine Nikola-Seite einzubinden.
 
-The *raw* directive
+Die *raw*-Directive
 *******************
 
-This directive enables you to pass content to the output without being processed. See `reStructuredText Directives documentation <http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through>`_ for details.
+Diese Directive ermöglicht es, Inhalt ohne Verarbeitung an die Ausgabe weiterzureichen, siehe auch `reStructuredText Directives documentation <http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through>`_.
 
 .. listing:: raw.txt rest
     :end-line: 3
 
-The *raw* shortcode
+Der *raw*-Shortcode
 *******************
 
-This is part of the built-in shortcodes. It works like the directive, you only need to use shortcode tags.
+Dieser Shortcode ist standardmäßig verfügbar. Er funktioniert genau wie die Directive, der Inhalt muss nur zwischen Shortcode-Tags platziert werden.
 
 .. listing:: raw.txt html
     :start-line: 4
     :end-line: 7
 
-Create your own shortcode
-*************************
+Mach dir deinen eigenen Shortcode
+*********************************
 
-A separate shortcode can easily be realized with a `template-based shortcode <https://getnikola.com/extending.html#template-based-shortcodes>`_.
+Mittels `vorlagenbasierten Shortcodes <https://getnikola.com/extending.html#template-based-shortcodes>`_ kann man einfach individuelle Shortcodes erstellen.
+es>`_.
 
-All you have to do is create a template and save it as ``your_shortcode_name.tmpl`` in the ``shortcodes`` folder of your Nikola site. If you do not use any custom shortcodes yet you will probably have to create the folder.
+Dafür muss man eine Vorlage namens ``your_shortcode_name.tmpl`` erstellen und im ``shortcodes``-Ordner der Nikola-Seite speichern. Wenn noch keine eigenen Shortcodes verwendet werden, muss der Ordner höchstwahrscheinlich noch angelegt werden.
 
-Depending on the template engine used by your theme you have to provide shortcode templates for Jinja2 or Mako:
+Abhängig von der verwendeten Template-Engine, die das aktuell verwendete Theme nutzt muss der Shortcode in Jinja2 oder Mako geschrieben werden:
 
 .. gist:: 52728167ac7d2fe79caf480c291931ea
 
 .. gist:: da438431ca42781045b4d63ac1b9ea5c
 
-The shortcode can be used as intended, pass a status and optionally width and height.
+Der Shortcode kann nun wie ursprünglich genutzt werden, es muss ein Link zum Status angegeben werden, optional noch Höhe und/oder Breite des Elements.
 
 .. listing:: raw.txt html
     :start-line: 8
     :end-line: 10
-    
-This is working for me but if the shortcode fails you should use the shortcode role to pass the text unaltered (consult the `handbook <https://getnikola.com/handbook.html#using-a-shortcode>`_ for more information):
+
+Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcole-Role empfohlen (siehe `Handbuch <https://getnikola.com/handbook.html#using-a-shortcode>`_):
 
 .. listing:: raw.txt rest
     :start-line: 11
