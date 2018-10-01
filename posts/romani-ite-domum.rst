@@ -113,6 +113,29 @@ Im Beispiel wird die bindtextdomain einfach im lokalen Verzeichnis angelegt, die
 
     $ msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 
+Tipps
+*****
+
+xgettext-Optionen
+=================
+
+``--no-location``
+    Ausgabe der Zeilennummer(n) und Datei (als Kommentar) des Strings verhindern
+
+``--omit-header``
+    Überschreiben der Header-Informationen verhindern
+
+Obsolete Strings entfernen
+==========================
+
+Strings, die aus der POT entfernt werden, bleiben in den Übersetzungen erhalten. Dies lässt sich durch den Aufruf von 
+
+.. code:: bash
+
+    $ msgattrib --set-obsolete --ignore-file=PRJ.pot -o xx.po xx.po
+
+beheben.
+
 
 .. TEASER_END
 

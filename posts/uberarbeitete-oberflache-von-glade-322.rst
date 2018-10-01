@@ -28,7 +28,7 @@ Die Verlagerung der Widgetauswahl ermöglicht eine komplette Nutzung des vertika
 Tour
 ====
 
-Beim ersten Aufrug der neuen Version startet ein Assistent, der etwas aufdringlich die Neuerungen anpreist. Dieser kann jederzeit über die Einstellungen in der Headerbar unter *"Einführung in interaktive Benutzeroberflächen"* erneut aufgerufen werden.
+Beim ersten Aufruf der neuen Version startet ein Assistent, der etwas aufdringlich die Neuerungen anpreist. Dieser kann jederzeit über die Einstellungen in der Headerbar unter *"Einführung in interaktive Benutzeroberflächen"* erneut aufgerufen werden.
 
 .. figure:: /images/glade322_tour.png
 
