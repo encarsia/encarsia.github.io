@@ -3,25 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Überarbeitete Oberfläche in Glade 3.22 | Merge and Destroy</title>
+<title>Widget-Änderungen in GTK+ 2.20+ | Merge and Destroy</title>
 <link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">
 <link href="../../../assets/css/all.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../rss.xml">
-<link rel="canonical" href="https://encarsia.github.io/en/posts/glade-322/">
+<link rel="canonical" href="https://encarsia.github.io/en/posts/gtk220neu/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Anke (encarsia)">
 <meta property="og:site_name" content="Merge and Destroy">
-<meta property="og:title" content="Überarbeitete Oberfläche in Glade 3.22">
-<meta property="og:url" content="https://encarsia.github.io/en/posts/glade-322/">
-<meta property="og:description" content="Im Zuge der Veröffentlichung von GNOME 3.28 wurde auch Glade eine ordentliche Portion Zuwendung zuteil.
-
-Headerbar
-Das in GNOME 3.10 (Veröffentlichung 2013) eingeführte Headerbar-Widget ließ sich selb">
+<meta property="og:title" content="Widget-Änderungen in GTK+ 2.20+">
+<meta property="og:url" content="https://encarsia.github.io/en/posts/gtk220neu/">
+<meta property="og:description" content="Auch wenn die Entwicklung von GTK+ 4 weit fortgeschritten ist, gibt es immer noch Änderungen in der 3er Version
+Das GUI-Programm Glade wurde erst kürzlich modernisiert, in der Anwendung von Widgets si">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-05-13T23:33:16+02:00">
+<meta property="article:published_time" content="2018-09-23T13:29:06+02:00">
 <meta property="article:tag" content="glade">
-<link rel="alternate" hreflang="de" href="../../../posts/glade-322/">
+<meta property="article:tag" content="python">
+<link rel="alternate" hreflang="de" href="../../../posts/gtk220neu/">
 </head>
 <body>
     <section class="social"><ul>
@@ -40,11 +39,11 @@ Das in GNOME 3.10 (Veröffentlichung 2013) eingeführte Headerbar-Widget ließ s
             
     <div class="post">
     
-    <h1 class="p-name entry-title" itemprop="headline name">Überarbeitete Oberfläche in Glade 3.22</h1>
+    <h1 class="p-name entry-title" itemprop="headline name">Widget-Änderungen in GTK+ 2.20+</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2018-05-13T23:33:16+02:00">2018-05-13 23:33</time><a href="../../../posts/glade-322/" rel="alternate" hreflang="de">
+                <time class="timeago" datetime="2018-09-23T13:29:06+02:00">2018-09-23 13:29</time><a href="../../../posts/gtk220neu/" rel="alternate" hreflang="de">
                 Deutsch</a>
 
             
@@ -57,63 +56,68 @@ Das in GNOME 3.10 (Veröffentlichung 2013) eingeführte Headerbar-Widget ließ s
         <ul>
         Tags : 
            <li><a class="tag p-category" href="../../categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
         </ul>
 </div>
 
         </div>
         <div class="body">
             <div>
-<p><strong>Im Zuge der Veröffentlichung von GNOME 3.28 wurde auch Glade eine ordentliche Portion Zuwendung zuteil.</strong></p>
-<div class="section" id="headerbar">
-<h2>Headerbar</h2>
-<p>Das in GNOME 3.10 (Veröffentlichung 2013) eingeführte Headerbar-Widget ließ sich selbst bereits in <a class="reference external" href="https://glade.gnome.org/">Glade</a> verwenden, die Anwendung selbst nutzte sie bisher nicht. Sie vereint Titelleiste, Menü, Toolbar und die Projekt-Tableiste. Durch diese Komprimierung wird viel leerer Raum eingespart (siehe Screenshots).</p>
-</div>
-<div class="section" id="arbeitsflache">
-<h2>Arbeitsfläche</h2>
-<p>Die Dreiteilung der Oberfläche ist erhalten geblieben, es gibt aber zwei wesentliche Änderungen:</p>
+<p><strong>Auch wenn die Entwicklung von GTK+ 4 weit fortgeschritten ist, gibt es immer noch Änderungen in der 3er Version</strong></p>
+<p>Das GUI-Programm <a class="reference external" href="https://glade.gnome.org/">Glade</a> wurde erst <a class="reference external" href="../glade-322/">kürzlich modernisiert</a>, in der Anwendung von Widgets sind mir einieg Neuerungen aufgefallen. Dies fällt in der Regel durch entsprechende <em>DeprecationWarnings</em> in der Konsole auf, die Programme selbst funktionieren noch wie gewünscht.</p>
+<p>Das heißt, die Artikel der <a class="reference external" href="../tutorial-reihe-glade/">Tutorial-Reihe</a> bleiben vorerst unverändert (über eine gute Lösung muss ich noch nachdenken).</p>
+<p>Es folgt eine nicht auf Vollständigkeit ausgelegte Liste der Änderungen:</p>
+<div class="section" id="set-wm-class">
+<h2>set_wm_class</h2>
 <blockquote>
-<ol class="arabic simple">
-<li>Die Widgetauswahl erfolgt nicht mehr aus der linken Spalte, sondern sie ist oben auf der mittleren Arbeitsfläche als Buttonleiste mit Dropdown-Menü erreichbar.</li>
-<li>In der nun freien Spalte werden die Widgetstruktur des aktuellen Projekts angezeigt. Diese war zuvor in der oberen Hälfte der rechten Spalte zu finden.</li>
-</ol>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Window.set_wmclass(args)</tt></p>
+<p><strong>Neu:</strong> keine, Funktion nicht mehr verwenden</p>
 </blockquote>
-<p>Die Verlagerung der Widgetauswahl ermöglicht eine komplette Nutzung des vertikalen Platzes für die Anzeige der Struktur auf der linken sowie deren Eigenschaften auf der rechten Seite.</p>
 </div>
-<div class="section" id="tour">
-<h2>Tour</h2>
-<p>Beim ersten Aufruf der neuen Version startet ein Assistent, der etwas aufdringlich die Neuerungen anpreist. Dieser kann jederzeit über die Einstellungen in der Headerbar unter <em>"Einführung in interaktive Benutzeroberflächen"</em> erneut aufgerufen werden.</p>
-<div class="figure">
-<img alt="/images/glade322_tour.png" src="../../../images/glade322_tour.png"><p class="caption">Tour-Wizard</p>
+<div class="section" id="new-from-stock">
+<h2>new_from_stock</h2>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Button.new_from_stock(Gtk.STOCK_OK)</tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.Button.new_with_label("OK")</span></tt></p>
+</blockquote>
+<p>Labels bekommen nur noch eine Bezeichnung durch einen String, in der Dokumentation</p>
+<p>Gtk.Image.new_from_stock(Gtk.STOCK_YES, 1)</p>
+<p>gilt auch für ToggleButton</p>
 </div>
+<div class="section" id="new-with-label">
+<h2>new_with_label</h2>
+<p>Bei der Initialisierung von Labels enthaltene Widgets, z.B. <em>Gtk.MenuItem</em></p>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem("label")</span></tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem.new_with_label("label")</span></tt></p>
+</blockquote>
 </div>
-<div class="section" id="screenshots">
-<h2>Screenshots</h2>
-<div class="figure">
-<a class="reference external image-reference" href="../../../images/glade322.png"><img alt="/images/glade322.thumbnail.png" src="../../../images/glade322.thumbnail.png" style="width: 600px;"></a>
-<p class="caption">Glade 3.22</p>
+<div class="section" id="set-alignment">
+<h2>set_alignment</h2>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Misc.set_alignment(x, y)</tt>, z.B. bei Labels</p>
+<p><strong>Neu:</strong> <em>Gtk.Widget</em>-Alignment* <tt class="docutils literal">:halign</tt> und <tt class="docutils literal">:valign</tt> verwenden</p>
+</blockquote>
 </div>
-<div class="figure">
-<a class="reference external image-reference" href="../../../images/01_glade.png"><img alt="/images/01_glade.thumbnail.png" src="../../../images/01_glade.thumbnail.png" style="width: 600px;"></a>
-<p class="caption">Glade 3.20</p>
-</div>
+<div class="section" id="vte-terminal">
+<h2>Vte-Terminal</h2>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Vte.Terminal.spawn_sync(args)</tt></p>
+<p><strong>Neu:</strong> GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)</p>
+</blockquote>
 </div>
 </div>
         </div>
         
-        <ul class="pager hidden-print">
-<li class="previous">
-                <a href="../nikola-zen-forkawesome/" rel="prev" title="Nikola: everything zen">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../non-release/" rel="next" title="NoN: Fortschritte und Release">Next post</a>
-            </li>
-        </ul>
-<div id="disqus_thread"></div>
+
+            
+        
+        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="bahnfreikartoffelbrei",
-            disqus_url="https://encarsia.github.io/en/posts/glade-322/",
-        disqus_title="\u00dcberarbeitete Oberfl\u00e4che in Glade 3.22",
-        disqus_identifier="cache/posts/uberarbeitete-oberflache-von-glade-322.html",
+            disqus_url="https://encarsia.github.io/en/posts/gtk220neu/",
+        disqus_title="Widget-\u00c4nderungen in GTK+ 2.20+",
+        disqus_identifier="cache/posts/widget-anderungen-in-gtk+-220+.html",
         disqus_config = function () {
             this.language = "en";
         };

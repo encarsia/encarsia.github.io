@@ -110,6 +110,28 @@ In the example the bindtextdomain is created in the local directory, the generat
 
     $ msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 
+Tipps
+*****
+
+xgettext options
+================
+
+``--no-location``
+    Oppress writing line number(s) and file name as comment
+
+``--omit-header``
+    Avoid overwriting header information
+
+Remove obsolete strings
+=======================
+
+Strings that are removed from the template remain in the translation files. You can get rid of these by executing this command:
+
+.. code:: bash
+
+    $ msgattrib --set-obsolete --ignore-file=PRJ.pot -o xx.po xx.po
+
+
 .. TEASER_END
 
 Listings
