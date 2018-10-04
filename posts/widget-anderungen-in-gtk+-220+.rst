@@ -1,22 +1,22 @@
 .. title: Widget-Änderungen in GTK+ 2.20+
 .. slug: gtk220neu
-.. date: 2018-09-23 13:29:06 UTC+02:00
+.. date: 2018-10-04 13:29:06 UTC+02:00
 .. tags: glade,python
 .. category: tutorial
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
+.. author: Another Me
 
 **Auch wenn die Entwicklung von GTK+ 4 weit fortgeschritten ist, gibt es immer noch Änderungen in der 3er Version**
 
-Das GUI-Programm Glade_ wurde erst `kürzlich modernisiert <link://slug/glade-322>`_, in der Anwendung von Widgets sind mir einieg Neuerungen aufgefallen. Dies fällt in der Regel durch entsprechende *DeprecationWarnings* in der Konsole auf, die Programme selbst funktionieren noch wie gewünscht.
+Das GUI-Programm Glade_ wurde erst `kürzlich modernisiert <link://slug/glade-322>`_, in der Anwendung von Widgets sind mir einige Neuerungen aufgefallen. Dies fällt in der Regel durch entsprechende *DeprecationWarnings* in der Konsole auf, die Programme selbst funktionieren noch wie gewünscht.
 
 .. _Glade: https://glade.gnome.org/
 
 Das heißt, die Artikel der `Tutorial-Reihe <link://slug/tutorial-reihe-glade>`_ bleiben vorerst unverändert (über eine gute Lösung muss ich noch nachdenken).
 
-Es folgt eine nicht auf Vollständigkeit ausgelegte Liste der Änderungen:
+Es folgt eine nicht auf Vollständigkeit ausgelegte und bei Bedarf ergänzte Liste der Änderungen:
 
 set_wm_class
 ************
@@ -54,13 +54,22 @@ set_alignment
 
     **Alt:** ``Gtk.Misc.set_alignment(x, y)``, z.B. bei Labels
     
-    **Neu:** *Gtk.Widget*-Alignment* ``:halign`` und ``:valign`` verwenden
+    **Neu:** *Gtk.Widget*-Alignment ``:halign`` und ``:valign`` verwenden
 
 Vte-Terminal
 ************
 
+Befehl übergeben
+================
+
+    **Alt:** ``Vte.Terminal.feed_child(cmd, len(cmd))`` (cmd ist das zu übergebene Kommando)
+
+    **Neu:** ``Vte.Terminal.feed_child(cmd.encode())`` (seit v2.91)
+
+
+Start
+=====
+
     **Alt:** ``Vte.Terminal.spawn_sync(args)``
 
     **Neu:** GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)
-
-
