@@ -133,6 +133,23 @@ Get help
 
 The 'Help' button now contains a submenu with links to the Nikola handbook and to reStructuredText and Markdown syntax references so I...ehm you don't have to google them time and time again.
 
+Thing left do do
+================
+
+Issues
+******
+
+* icon not shown under Wayland
+* running application not marked at dock launcher (favorite), separate icon
+
+Roadmap
+*******
+
+* preferences dialog/window
+* article templates (make use of ``nikola new_post --import...``)
+* editor tab for quick editing
+* option to pull/push drafts from/to Git
+
 Download
 ========
 
