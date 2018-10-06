@@ -21,9 +21,11 @@ Es folgt eine nicht auf Vollständigkeit ausgelegte und bei Bedarf ergänzte Lis
 set_wm_class
 ************
 
+Programmname in Panel und Dock anzeigen
+
     **Alt:** ``Gtk.Window.set_wmclass(args)``
 
-    **Neu:** keine, Funktion nicht mehr verwenden
+    **Neu:** ``GLib.set_progname(name_string)``
 
 new_from_stock
 **************
