@@ -153,5 +153,5 @@ Roadmap
 Download
 ========
 
-* `0.5 release <https://github.com/encarsia/non/releases/tag/v0.5>`_
+* `v0.5 release <https://github.com/encarsia/non/releases/tag/v0.5>`_
 * `clone or download from GitHub <https://github.com/encarsia/non/>`_
