@@ -171,9 +171,9 @@ Multi-monitor setup
 
 The wallpaper issue is the same as in GNOME Shell. You may want to use HydraPaper_.
 
-Dragging a window to another monitor might not always sets this window in the foreground (cannot completely reproduce).
+Dragging a window to another monitor might not always set this window in the foreground (cannot completely reproduce).
 
-You can drag a panel on an extended screen only if it is not set "extended" (uncheck in properties).
+You can drag a panel on an extended screen only if it is not set to "extended" (uncheck in properties).
 
 Screenshots
 -----------
