@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -24,7 +24,8 @@ Die 4, die 20 und Google+, alles zum Mitnehmen
 
 Dies gestaltete sich zunächst recht einfach: das Archiv (bzw. (je nach Größe) die Archive) wird erstellt. Bei Fertigstellung erhält man eine Nachricht mit Downloadlink. Das Archiv verfällt nach einer Woche, aber man kann jederzeit neue erstellen.
 
-Lektion 1
+.. note:: Lektion 1
+
     Wähle als Dateiformat *zip*, *tgz* könnte Encoding-Probleme mit Umlauten haben (Dies ist keine Übung!).
 
 Ich erinnerte mich dunkel daran, dass ein Import-Plugin für Nikola existierte und malte mir aus, das Archiv einfach dort abzuwerfen und eine halbwegs nutzbare lokale Seite gebaut zu bekommen. Der geneigte Leser wird bereits an dieser Stelle mutmaßen, dass dieser Ansatz nicht funktionierte.
@@ -60,7 +61,8 @@ Nach ersten Untersuchungen zeigen sich folgende Fakten:
 
     Dumdidumdumdum...Inspektor Gadget
 
-Lektion 2
+.. note:: Lektion 2
+
     Beiträge lassen sich nur einzeln aufrufen, es gibt jede Menge Deadlinks bei Bilderposts, aber immerhin sieht man den Verteilungstatus (öffentlich, Sammlung, Community), +1, Reshares und Kommentare.
 
 Auftritt: Nikola
