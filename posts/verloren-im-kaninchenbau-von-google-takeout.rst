@@ -24,7 +24,7 @@ Die 4, die 20 und Google+, alles zum Mitnehmen
 
 Dies gestaltete sich zunächst recht einfach: das Archiv (bzw. (je nach Größe) die Archive) wird erstellt. Bei Fertigstellung erhält man eine Nachricht mit Downloadlink. Das Archiv verfällt nach einer Woche, aber man kann jederzeit neue erstellen.
 
-.. note:: Lektion 1
+.. admonition:: Lektion 1
 
     Wähle als Dateiformat *zip*, *tgz* könnte Encoding-Probleme mit Umlauten haben (Dies ist keine Übung!).
 
@@ -61,7 +61,7 @@ Nach ersten Untersuchungen zeigen sich folgende Fakten:
 
     Dumdidumdumdum...Inspektor Gadget
 
-.. note:: Lektion 2
+.. admonition:: Lektion 2
 
     Beiträge lassen sich nur einzeln aufrufen, es gibt jede Menge Deadlinks bei Bilderposts, aber immerhin sieht man den Verteilungstatus (öffentlich, Sammlung, Community), +1, Reshares und Kommentare.
 
