@@ -83,9 +83,13 @@ Dafür benötige ich allerdings kein weiteres soziales Netzwerk, das einst durch
 | --- |
 | *Eine Abschiedsnachricht* |
 
-Bei mir besteht nicht primär die Frage, welche alternativen Plattformen für Google+-Nutzer jetzt in Frage kommen, sondern wohin die bereits abgewanderten ehemaligen Nutzer hin sind und ob diese überhaupt wieder aktivierbar wären. Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich nicht mehr.
+Bei mir besteht nicht primär die Frage, welche alternativen Plattformen für Google+-Nutzer jetzt in Frage kommen, sondern wohin die bereits abgewanderten ehemaligen Nutzer hin sind und ob diese überhaupt wieder aktivierbar wären.
+
+Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich nicht mehr, auch nicht woanders.
 
 ## Read on, my dear
 
 * [engadget: Goodbye Google+, you beautiful, squandered opportunity](https://www.engadget.com/2018/10/12/goodbye-google-plus-you-beautiful-squandered-opportunity/)
 * [GoogleWatchBlog: Einstellung von Google+: Wieder einmal wurde eine Plattform mit großem Potenzial an die Wand gefahren](https://www.googlewatchblog.de/2018/10/einstellung-googleplus-wieder-plattform/)
+
+<p><a class="discuss-on-gplus" href="">Kommentieren auf <i class="fa fa-google-plus"></i></a></p>
