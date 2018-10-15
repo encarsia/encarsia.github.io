@@ -1,6 +1,6 @@
 <!--
 .. title: The Notwork
-.. slug: gplusnomore
+.. slug: diegplusdie
 .. date: 2018-10-14 15:30:59 UTC+02:00
 .. tags: google+
 .. category: socialmedia
@@ -9,9 +9,7 @@
 .. type: text
 -->
 
-**Die Nachricht ereilte mich per Twitter: das Ende von Google+ is besiegelt.**
-
-**Na und? - Das Netzwerk hat doch schon lange seinen Reiz verloren.**
+**Die Nachricht ereilte mich per Twitter: das Ende von Google+ ist besiegelt. Na und? - Das Netzwerk hat doch schon lange seinen Reiz verloren.**
 
 ## Richtiges Netzwerk, falsche Zeit
 
