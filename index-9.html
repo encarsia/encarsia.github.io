@@ -29,6 +29,129 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/mastodon-nikola/">Mastodon-Tröts mit Nikola einbetten</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2018-09-18T15:50:16+02:00">2018-09-18 15:50</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/mastodon-nikola/#disqus_thread" data-disqus-identifier="cache/posts/embed-mastodon-toots-with-nikola.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/mastodon/" rel="tag">mastodon</a></li>
+           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<p>
+
+    
+
+    
+
+<iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height='333"&lt;/iframe'>
+
+</iframe></p>
+<p>Beim Lesen des Artikels <a class="reference external" href="https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/">Mastodon Embed Shortcode for hugo</a> dachte ich neidisch 'Wir Nikola-Nutzer könnten sowas auch gebrauchen'. Im <a class="reference external" href="https://getnikola.com/handbook.html#shortcodes">Nikola-Handbuch</a> gibt man freimütig zu, dieses Feature sowieso von Hugo entlehnt zu haben, wie kompliziert kann es also sein?</p>
+<p>Hier sind drei Arten, mit reStructuredText Tröts in eine Nikola-Seite einzubinden.</p>
+<div class="section" id="die-raw-directive">
+<h2>Die <em>raw</em>-Directive</h2>
+<p>Diese Directive ermöglicht es, Inhalt ohne Verarbeitung an die Ausgabe weiterzureichen, siehe auch <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through">reStructuredText Directives documentation</a>.</p>
+<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
+<pre class="code rest"><a name="rest_code_fdf346c4139d4db8bf367e3766b9c6b9-1"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+<a name="rest_code_fdf346c4139d4db8bf367e3766b9c6b9-2"></a>
+<a name="rest_code_fdf346c4139d4db8bf367e3766b9c6b9-3"></a>    &lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333"&lt;/iframe&gt;
+</pre>
+</div>
+<div class="section" id="der-raw-shortcode">
+<h2>Der <em>raw</em>-Shortcode</h2>
+<p>Dieser Shortcode ist standardmäßig verfügbar. Er funktioniert genau wie die Directive, der Inhalt muss nur zwischen Shortcode-Tags platziert werden.</p>
+<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
+<pre class="code html"><a name="rest_code_ed919daca7b8408cab647688ba942c66-1"></a>{{% raw %}}
+<a name="rest_code_ed919daca7b8408cab647688ba942c66-2"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://mastodon.social/@kevingimbel/100745593232538751/embed"</span> <span class="na">class</span><span class="o">=</span><span class="s">"mastodon-embed"</span> <span class="na">style</span><span class="o">=</span><span class="s">"max-width: 100%; border: 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"600"</span> <span class="na">height</span><span class="o">=</span><span class="s">"333"</span><span class="err">&lt;/</span><span class="na">iframe</span><span class="p">&gt;</span>
+<a name="rest_code_ed919daca7b8408cab647688ba942c66-3"></a>{{% /raw %}}
+</pre>
+</div>
+<div class="section" id="mach-dir-deinen-eigenen-shortcode">
+<h2>Mach dir deinen eigenen Shortcode</h2>
+<p>Mittels <a class="reference external" href="https://getnikola.com/extending.html#template-based-shortcodes">vorlagenbasierten Shortcodes</a> kann man einfach individuelle Shortcodes erstellen.
+es&gt;`_.</p>
+<p>Dafür muss man eine Vorlage namens <tt class="docutils literal">your_shortcode_name.tmpl</tt> erstellen und im <tt class="docutils literal">shortcodes</tt>-Ordner der Nikola-Seite speichern. Wenn noch keine eigenen Shortcodes verwendet werden, muss der Ordner höchstwahrscheinlich noch angelegt werden.</p>
+<p>Abhängig von der verwendeten Template-Engine, die das aktuell verwendete Theme nutzt muss der Shortcode in Jinja2 oder Mako geschrieben werden:</p>
+<script src="https://gist.github.com/52728167ac7d2fe79caf480c291931ea.js"></script><noscript>
+<pre class="literal-block">
+{#
+Usage:
+
+    {{% mastodon status=https://instance.domain/@user/tootnr %}}
+    
+Optional parameters:
+
+    width (default: 600)
+    height (default: 333)
+    
+    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
+#}
+
+&lt;iframe src="{{ status }}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="{{ width|default("600") }}" height="{{ height|default("333") }}"&lt;/iframe&gt;
+
+</pre>
+</noscript>
+<script src="https://gist.github.com/da438431ca42781045b4d63ac1b9ea5c.js"></script><noscript>
+<pre class="literal-block">
+&lt;%doc&gt;
+Usage:
+
+    {{% mastodon status=https://instance.domain/@user/tootnr %}}
+    
+Optional parameters:
+
+    width (default: 600)
+    height (default: 333)
+    
+    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
+&lt;/%doc&gt;
+
+% if width is UNDEFINED:
+    &lt;% w = 600 %&gt;
+% else:
+    &lt;% w = width %&gt;
+% endif
+
+% if height is UNDEFINED:
+    &lt;% h = 333 %&gt;
+% else:
+    &lt;% h = height %&gt;
+% endif
+
+&lt;iframe src="${status}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width=${w} height=${h}"&lt;/iframe&gt;
+
+</pre>
+</noscript>
+<p>Der Shortcode kann nun wie ursprünglich genutzt werden, es muss ein Link zum Status angegeben werden, optional noch Höhe und/oder Breite des Elements.</p>
+<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
+<pre class="code html"><a name="rest_code_56fd112280824d128a8068a142b4e0b7-1"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
+<a name="rest_code_56fd112280824d128a8068a142b4e0b7-2"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 width=300 height=600 %}}
+</pre>
+<p>Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcole-Role empfohlen (siehe <a class="reference external" href="https://getnikola.com/handbook.html#using-a-shortcode">Handbuch</a>):</p>
+<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
+<pre class="code rest"><a name="rest_code_8e286acb92d24dc29aa5be2560dc7472-1"></a><span class="na">:sc:</span><span class="nv">`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`</span>
+</pre>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/tfbrief/">tfbrief - LaTeX-Briefvorlage</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -365,18 +488,13 @@
 <div class="contents pull-right topic" id="inhalt">
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
-<li><a class="reference internal" href="posts/google-takeout/#die-4-die-20-und-google-alles-zum-mitnehmen" id="id2">Die 4, die 20 und Google+, alles zum Mitnehmen</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#geschenke-auspacken" id="id3">Geschenke auspacken</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#auftritt-nikola" id="id4">Auftritt: Nikola</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#eyecandy" id="id5">Eyecandy</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#wunsch-dir-was" id="id6">Wünsch dir was</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#fazit" id="id7">Fazit</a></li>
-<li>
-<a class="reference internal" href="posts/google-takeout/#listings" id="id8">Listings</a><ul>
-<li><a class="reference internal" href="posts/google-takeout/#usage-readme-md" id="id9">Usage (README.md)</a></li>
-<li><a class="reference internal" href="posts/google-takeout/#plugin" id="id10">Plugin</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="posts/google-takeout/#die-4-die-20-und-google-alles-zum-mitnehmen" id="id1">Die 4, die 20 und Google+, alles zum Mitnehmen</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#geschenke-auspacken" id="id2">Geschenke auspacken</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#auftritt-nikola" id="id3">Auftritt: Nikola</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#eyecandy" id="id4">Eyecandy</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#wunsch-dir-was" id="id5">Wünsch dir was</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#fazit" id="id6">Fazit</a></li>
+<li><a class="reference internal" href="posts/google-takeout/#update" id="id7">Update</a></li>
 </ul>
 </div>
 <p><strong>Mach Backups deiner Daten. Habensegesagt. Aller Daten. Habensegesagt. Und dann kam Google Takeout</strong></p>
@@ -384,7 +502,7 @@
 <img alt="/images/import_gplus_post.png" src="images/import_gplus_post.png"><p class="caption">G+-Post-Ansicht von Takeout</p>
 </div>
 <div class="section" id="die-4-die-20-und-google-alles-zum-mitnehmen">
-<h2><a class="toc-backref" href="posts/google-takeout/#id2">Die 4, die 20 und Google+, alles zum Mitnehmen</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id1">Die 4, die 20 und Google+, alles zum Mitnehmen</a></h2>
 <p><a class="reference external" href="http://google.com/takeout/">Takeout</a> nennt sich Googles Archivsystem für allerlei Produkte aus dem Hause Alpha. Das Primärziel bestand darin, ein Archiv meiner Google+-Aktivitäten herunterzuladen.</p>
 <p>Dies gestaltete sich zunächst recht einfach: das Archiv (bzw. (je nach Größe) die Archive) wird erstellt. Bei Fertigstellung erhält man eine Nachricht mit Downloadlink. Das Archiv verfällt nach einer Woche, aber man kann jederzeit neue erstellen.</p>
 <div class="admonition admonition-lektion-1">
@@ -394,7 +512,7 @@
 <p>Ich erinnerte mich dunkel daran, dass ein Import-Plugin für Nikola existierte und malte mir aus, das Archiv einfach dort abzuwerfen und eine halbwegs nutzbare lokale Seite gebaut zu bekommen. Der geneigte Leser wird bereits an dieser Stelle mutmaßen, dass dieser Ansatz nicht funktionierte.</p>
 </div>
 <div class="section" id="geschenke-auspacken">
-<h2><a class="toc-backref" href="posts/google-takeout/#id3">Geschenke auspacken</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id2">Geschenke auspacken</a></h2>
 <p>Nach ersten Untersuchungen zeigen sich folgende Fakten:</p>
 <ol class="arabic simple">
 <li>Alle G+-Beiträge befinden sich in <tt class="docutils literal">Stream in <span class="pre">Google+/Beiträge</span></tt> als HTML-Dateien. Diese sehen zunächst brauchbar aus.</li>
@@ -402,13 +520,13 @@
 <li>Bilder befinden sich in diversen Unterverzeichnissen, sowohl in <tt class="docutils literal">Beiträge</tt> als auch in <tt class="docutils literal">Fotos</tt> und deren Unterverzeichnissen. Die Mehrheit befindet sich in <tt class="docutils literal">Fotos von Beiträgen</tt>, dort jeweils in Datumsunterverzeichnisse einsortiert.</li>
 <li>Ein Datumsformat ist so gut wie jedes andere und so findet man dort in friedlicher Koexistenz Dinge wie:</li>
 </ol>
-<pre class="code text"><a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-1"></a>Fotos von Beiträgen/
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-2"></a> ├── 02.06.14
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-3"></a> ├── 02.06.16
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-4"></a> ├── 22. Juli 2013
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-5"></a> ├── 23.01.17
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-6"></a> ├── 2011-08-14
-<a name="rest_code_27a71acfa9374bbb8462c8e78aff5d1f-7"></a> └── 2012-03-13
+<pre class="code text"><a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-1"></a>Fotos von Beiträgen/
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-2"></a> ├── 02.06.14
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-3"></a> ├── 02.06.16
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-4"></a> ├── 22. Juli 2013
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-5"></a> ├── 23.01.17
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-6"></a> ├── 2011-08-14
+<a name="rest_code_e790da0494b64dfcb6a0490025a0ed08-7"></a> └── 2012-03-13
 </pre>
 <ol class="arabic simple" start="5">
 <li>Fotos haben eine dazugehörige JSON-Datei, HTML-Dateien nicht.</li>
@@ -424,17 +542,17 @@
 </div>
 </div>
 <div class="section" id="auftritt-nikola">
-<h2><a class="toc-backref" href="posts/google-takeout/#id4">Auftritt: Nikola</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id3">Auftritt: Nikola</a></h2>
 <p>Mit leicht getrübten Erwartungen installiere ich das <a class="reference external" href="https://plugins.getnikola.com/v7/import_gplus/">Import-Plugin</a> für <a class="reference external" href="https://getnikola.com/">Nikola</a> und lege los. Es passt gar nichts. Angeblich stehen die Beiträge auch als JSON zur Verfügung. Das war bestimmt auch einst so, jetzt nicht mehr.</p>
 <p>Ich hangele mich an den Dateien entlang, importiere zunächst die HTML-Dateien. Das Import-Plugin erstellt grundsätzlich eine neue Nikola-Seite, so dass man hier nach Gusto wüten kann. Dann kümmere ich mich um die Deadlinks. Dann die Titel - ich bin wie im Rausch: mit jedem Build wird es besser.</p>
 <p>Das Ergebnis ist eine statische Webseite meines Google+-Streams inklusive Plussen und Kommentaren. Man kommt von den Beiträgen immer zum Originalbeitrag.</p>
 </div>
 <div class="section" id="eyecandy">
-<h2><a class="toc-backref" href="posts/google-takeout/#id5">Eyecandy</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id4">Eyecandy</a></h2>
 <p>Grundsätzlich funktioniert der Import themenunabhängig. <a class="reference external" href="https://themes.getnikola.com/v7/hyde/">hyde</a> liefert ein schönes Ergebnis, etwas nachgeholfen wird mit der <tt class="docutils literal">custom.css</tt>.</p>
 </div>
 <div class="section" id="wunsch-dir-was">
-<h2><a class="toc-backref" href="posts/google-takeout/#id6">Wünsch dir was</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id5">Wünsch dir was</a></h2>
 <ul class="simple">
 <li>eine lokale Suchfunktion wäre schön</li>
 <li>gefilterte Anzeige je nach Verteilungsstatus</li>
@@ -445,18 +563,18 @@
 </div>
 </div>
 <div class="section" id="fazit">
-<h2><a class="toc-backref" href="posts/google-takeout/#id7">Fazit</a></h2>
+<h2><a class="toc-backref" href="posts/google-takeout/#id6">Fazit</a></h2>
 <p>Als langjähriger Google+-Nutzer ist man auf Inkonsistenzen und Verschlimmbesserungen konditioniert, da kommt Takeout als Sparringspartner nur gelegen. Es ist nur eine Frage der Zeit, bis auch diese Plugin-Version den Weg jedes Google-Messengers gehen wird.</p>
 <div class="figure">
 <img alt="/images/takeout_gplus_slow.gif" src="images/takeout_gplus_slow.gif"><p class="caption">Resultat der Nikola-generierten Seite mit hyde-Thema</p>
 </div>
-<p>Wer sich zu fein ist, das jetzt selbst zu machen, hier:</p>
-<blockquote>
-<ul class="simple">
-<li><a class="reference external" href="files/import_gplus.zip">Download Plugin (5,7 kB)</a></li>
-</ul>
-</blockquote>
-<p class="more"><a href="posts/google-takeout/">Weiterlesen…</a></p>
+</div>
+<div class="section" id="update">
+<h2><a class="toc-backref" href="posts/google-takeout/#id7">Update</a></h2>
+<p>Inzwischen wurde die Einstellung von Google+ angekündigt und die Frage nach Backups und Aufbereitung der Daten relevant.</p>
+<p>Das Plugin kann man nun bei GitHub herunterladen: <a class="reference external" href="https://github.com/encarsia/gplus_nikola_import">encarsia/gplus_nikola_import</a>.</p>
+<p>Den dazugehörigen Artikel gibt es hier: <a class="reference external" href="posts/import-gplus-nikola/">Nikola-Import-Plugin für Google+</a>.</p>
+<br><a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/SkUoxkiTAK3">Kommentieren auf <i class="fa fa-google-plus"></i></a>
 </div>
 </div>
             </div>

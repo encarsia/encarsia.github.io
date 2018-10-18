@@ -99,29 +99,14 @@ Als langjähriger Google+-Nutzer ist man auf Inkonsistenzen und Verschlimmbesser
 
     Resultat der Nikola-generierten Seite mit hyde-Thema
 
+Update
+======
 
-Wer sich zu fein ist, das jetzt selbst zu machen, hier:
-    
-    * `Download Plugin (5,7 kB)`__
+Inzwischen wurde die Einstellung von Google+ angekündigt und die Frage nach Backups und Aufbereitung der Daten relevant.
 
-__ ../../files/import_gplus.zip
+Das Plugin kann man nun bei GitHub herunterladen: `encarsia/gplus_nikola_import <https://github.com/encarsia/gplus_nikola_import>`_.
 
-.. TEASER_END
-
-Listings
-========
-
-
-Usage (README.md)
-*****************
-
-.. listing:: import_gplus_README.md md
-
-Plugin
-******
-
-.. listing:: import_gplus.py python
-    :number-lines:
+Den dazugehörigen Artikel gibt es hier: `Nikola-Import-Plugin für Google+ <link://slug/import-gplus-nikola>`_.
 
 .. raw:: html
 
