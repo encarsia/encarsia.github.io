@@ -97,28 +97,14 @@ As a long-term heavy Google+ user you are used to inconsistencies and improvemen
 
     static Google+ Nikola site (hyde theme)
 
-If you want to try yourself:
+Update
+======
 
-    * `Download Plugin (5,7 kB)`__
+The end of Google+ has been recently announced and the issue of backing up and presentation of the data has become more relevant.
 
-__ ../../../files/import_gplus.zip
+You can download the plugin now from GitHub: `encarsia/gplus_nikola_import <https://github.com/encarsia/gplus_nikola_import>`_.
 
-
-.. TEASER_END
-
-Listings
-========
-
-Usage (README.md)
-*****************
-
-.. listing:: import_gplus_README.md md
-
-Plugin
-******
-
-.. listing:: import_gplus.py python
-    :number-lines:
+The associated article to the plugin: `Nikola-Import-Plugin für Google+ <link://slug/import-gplus-nikola>`_ (currently only in German but there is a detailed README file in the repository on how to get the plugin work).
 
 .. raw:: html
 

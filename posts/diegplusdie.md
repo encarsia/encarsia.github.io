@@ -35,6 +35,11 @@ Ideen wie Bildbearbeitungs-Events, echte Gespräche in Kommentarspalten, der Aus
 
 Es war lange Zeit die Rede davon, dass Google+ absolute Priorität im Unternehmen hat. Doch was war nach dem Launch neben der Einführung von Communities und den minimalen Markup-Möglichkeiten eigentlich die letzte positive Entwicklung an Google+? Na? Stimmt, Collections und das Umfragetool waren passende Ergänzungen. Aber sonst?
 
+
+| {{% gplus https://plus.google.com/105146352752269764996/posts/QPe94kxMGRg %}} |
+| --- |
+| *Post von vor 5 Jahren: Google hat mal wieder an Plus herumgedoktort* |
+
 Die Mängelliste ist mit der Zeit stetig gewachsen und als Sahnehäubchen gab es noch den Zwangsaccountverknüpfungs-PR-GAU obendrauf. Mal überlegen, was mir so einfällt:
 
 * umständliches Kreismanagement, das nie irgendeine Pflege erhielt
@@ -91,5 +96,6 @@ Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich n
 
 * [engadget: Goodbye Google+, you beautiful, squandered opportunity](https://www.engadget.com/2018/10/12/goodbye-google-plus-you-beautiful-squandered-opportunity/)
 * [GoogleWatchBlog: Einstellung von Google+: Wieder einmal wurde eine Plattform mit großem Potenzial an die Wand gefahren](https://www.googlewatchblog.de/2018/10/einstellung-googleplus-wieder-plattform/)
+* [Takeout-Daten nach Nikola importieren](https://encarsia.github.io/import-gplus-nikola)
 
 <p><a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/L7QmEaD7HYx">Kommentieren auf <i class="fa fa-google-plus"></i></a></p>
