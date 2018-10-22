@@ -171,9 +171,13 @@ Multi-monitor setup
 
 The wallpaper issue is the same as in GNOME Shell. You may want to use HydraPaper_.
 
-Dragging a window to another monitor might not always set this window in the foreground (cannot completely reproduce).
-
 You can drag a panel on an extended screen only if it is not set to "extended" (uncheck in properties).
+
+.. admonition:: Marco issues (probably)
+
+   * Dragging a window to another screen might not always set this window in the foreground.
+   * Dragging maximized windows (e.g. webbrowser) to other screen may overlay panels.
+   * Plugging off and on extended monitors or logging into another session (like GNOME) may disarrange monitor settings and you have to drag the screens back into their positions in the preferences.
 
 Screenshots
 -----------
@@ -213,6 +217,11 @@ Dynamic workspaces
 ------------------
 
 There is currently no way to get dynamic workspaces with the Marco window manager.
+
+Multi-monitor setups
+--------------------
+
+Here is some space for improvement. Some issues are really annoying.
 
 Does it work?
 =============
