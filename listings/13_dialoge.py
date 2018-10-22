@@ -15,11 +15,11 @@ class Handler:
         return True
 
     def on_aboutbutton_clicked(self,widget):
-        x.obj("aboutdialog").show_all()
+        x.obj("aboutdialog").run()
 
     def on_messagebutton_clicked(self,widget):
         x.obj("messdialog").format_secondary_text("")
-        x.obj("messdialog").show_all()
+        x.obj("messdialog").run()
         
     def on_dialog_response(self,widget,response):
         if response == -8:
