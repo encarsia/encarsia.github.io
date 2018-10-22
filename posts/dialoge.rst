@@ -60,6 +60,11 @@ Das Problem von per *destroy*-Signal geschlossenen Fenstern besteht darin, dass 
 Python
 ------
 
+Dialog aufrufen
+***************
+
+Da Dialoge auch *Gtk.Windows* sind, lassen sie sich mit ``show_all()`` aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit ``run()`` auf. Dies bewirkt, dass das Dialogfenster über das Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.
+
 Responses
 *********
 
