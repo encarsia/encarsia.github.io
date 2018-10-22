@@ -171,9 +171,13 @@ Multi-monitor setup
 
 The wallpaper issue is the same as in GNOME Shell. You may want to use HydraPaper_.
 
-Dragging a window to another monitor might not always set this window in the foreground (cannot completely reproduce).
-
 You can drag a panel on an extended screen only if it is not set to "extended" (uncheck in properties).
+
+.. admonition:: Marco issues (probably)
+
+   * Dragging a window to another screen might not always set this window in the foreground.
+   * Dragging maximized windows (e.g. webbrowser) to other screen may overlay panels.
+   * Plugging off and on extended monitors or logging into another session (like GNOME) may disarrange monitor settings and you have to drag the screens back into their positions in the preferences.
 
 Screenshots
 -----------
@@ -221,4 +225,4 @@ The MATE desktop is a great project. I'm glad that they managed to preserve the 
 
 It is possible to integrate functionalities known from GNOME Shell into MATE turning it into a fast hybrid GTK+ desktop.
 
-My MATE setup is a GNOME Shell copy. A good one but still. I have not decided yet if I want to live without the hot corner and I'd love to see Marco support headerbars.
+My MATE setup is a GNOME Shell copy. A good one but still. I have not decided yet if I want to live without the hot corner and I'd love to see Marco support headerbars and improved multi-monitor setups.
