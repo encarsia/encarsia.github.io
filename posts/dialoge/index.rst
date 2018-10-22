@@ -13,7 +13,7 @@
 
 **Anzeige von Dialogfenstern**
 
-Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog* (`Artikel zum FileChooserDialog <link://slug/fcdialog>`_).
+Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *AboutDialog*- und *MessageDialog* (`Artikel zum FileChooserDialog <link://slug/fcdialog>`_).
 
 .. thumbnail:: /images/13_dialoge.png
 
@@ -60,6 +60,11 @@ Das Problem von per *destroy*-Signal geschlossenen Fenstern besteht darin, dass 
 Python
 ------
 
+Dialog aufrufen
+***************
+
+Da Dialoge auch *Gtk.Windows* sind, lassen sie sich mit ``show_all()`` aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit ``run()`` auf. Dies bewirkt, dass das Dialogfenster über das Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.
+
 Responses
 *********
 
@@ -95,6 +100,7 @@ Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Date
 
     dialog.set_transient_for(mainwindow) 
 
+Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter *"Allgemein > Vorübergehend für:"* angegeben.
 
 .. TEASER_END
 
