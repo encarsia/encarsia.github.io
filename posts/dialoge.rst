@@ -13,7 +13,7 @@
 
 **Anzeige von Dialogfenstern**
 
-Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *About*- und *MessageDialog* (`Artikel zum FileChooserDialog <link://slug/fcdialog>`_).
+Dialoge sind ergänzende Fenster zur Anwendung und dienen der Interaktion mit dem Benutzer, in denen Informationen angezeigt werden oder Eingaben vom Benutzer abgefragt werden können. Die *GtkDialog*-Klasse bietet einige Unterklassen für gebräuchliche Anzeigen und Abfragen, wie die im Beispiel verwendeten *AboutDialog*- und *MessageDialog* (`Artikel zum FileChooserDialog <link://slug/fcdialog>`_).
 
 .. thumbnail:: /images/13_dialoge.png
 
