@@ -218,11 +218,6 @@ Dynamic workspaces
 
 There is currently no way to get dynamic workspaces with the Marco window manager.
 
-Multi-monitor setups
---------------------
-
-Here is some space for improvement. Some issues are really annoying.
-
 Does it work?
 =============
 
@@ -230,4 +225,4 @@ The MATE desktop is a great project. I'm glad that they managed to preserve the 
 
 It is possible to integrate functionalities known from GNOME Shell into MATE turning it into a fast hybrid GTK+ desktop.
 
-My MATE setup is a GNOME Shell copy. A good one but still. I have not decided yet if I want to live without the hot corner and I'd love to see Marco support headerbars.
+My MATE setup is a GNOME Shell copy. A good one but still. I have not decided yet if I want to live without the hot corner and I'd love to see Marco support headerbars and improved multi-monitor setups.
