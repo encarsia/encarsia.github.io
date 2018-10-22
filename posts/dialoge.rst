@@ -100,6 +100,7 @@ Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Date
 
     dialog.set_transient_for(mainwindow) 
 
+Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter *"Allgemein > Vorübergehend für:"* angegeben.
 
 .. TEASER_END
 
