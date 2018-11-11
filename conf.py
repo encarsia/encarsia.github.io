@@ -312,10 +312,6 @@ COMPILERS = {
 # Warning: this option will change its default value to False in v8!
 WRITE_TAG_CLOUD = False
 
-# Generate pages for each section. The site must have at least two sections
-# for this option to take effect. It wouldn't build for just one section.
-POSTS_SECTIONS = True
-
 # New in v8
 CATEGORY_DESTPATH_AS_DEFAULT = True
 
