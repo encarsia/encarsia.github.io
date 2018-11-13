@@ -9,9 +9,9 @@
 
 **Knights of Ni - little release on the prairie**
 
-Der GTK+-Desktopclient für den statischen Webseitengenerators Nikola hat seit der letzten Erwähnung hier weitere Fortschritte machen können.
+Der GTK+-Desktop-Client für den statischen Webseitengenerators Nikola hat seit der letzten Erwähnung hier weitere Fortschritte machen können.
 
-Da Nikola v8 im Juni zu erwarten ist und ich noch nicht weiß, was an Nacharbeiten auf mich zukommt, habe ich den aktuellen Status `als Release gespeichert <https://github.com/encarsia/non/releases/tag/v.0.4>`_.
+Da Nikola v8 im Juni zu erwarten ist und ich noch nicht weiß, was an Nacharbeiten auf mich zukommt, habe ich den aktuellen Status `als Release gespeichert <https://github.com/encarsia/non/releases/tag/v0.4>`_.
 
 Neuigkeiten
 ===========
@@ -35,7 +35,7 @@ Post/Page im Browser öffnen
 Diverser Kleinkram
     Bugfixes, verbessertes Logging, Python-Code ist nun PEP8-konform (sagt pycodestyle).
 
-.. thumbnail:: /images/non3.png
+.. thumbnail:: /images/non/non3.png
 
 Links
 =====

@@ -392,62 +392,46 @@ be available in the future</td>
 <p>By default the "action area" is generated beneath the file browser area.</p>
 <a class="reference external image-reference" href="../images/16_fcd_glade.png"><img alt="/images/16_fcd_glade.thumbnail.png" src="../images/16_fcd_glade.thumbnail.png"></a>
 <p>If the <em>FileChooserDialog</em> is used without Glade (see below) the buttons are created in the headerbar. This seems to be standard procedure because Glade generated dialogs induce the warning</p>
-<pre class="code text"><a name="rest_code_037136d1ce484f309035637c86beffad-1"></a>Gtk-WARNING **: Content added to the action area of a dialog using header bars
+<pre class="code text"><a name="rest_code_ff2944bdfac64263badfcfa297bb64d7-1"></a>Gtk-WARNING **: Content added to the action area of a dialog using header bars
 </pre>
 <p>This message is not shown if buttons are not added to the intern action area.</p>
 <p>If a headerbar with buttons is created in Glade the buttons cannot be assigned to a response value.</p>
 <p>There may be several solutions to the problem:</p>
 <div class="section" id="xml-file">
 <h4><a class="toc-backref" href="posts/fcdialog/#id6">XML file</a></h4>
-<p>After creating a headerbar with button(s) the Glade file is opened in a text editor and add line(s) to the <tt class="docutils literal"><span class="pre">&lt;action-widgets&gt;</span></tt> element:
-.. code-block:: xml</p>
-<blockquote>
-<dl class="docutils">
-<dt>&lt;object class="GtkFileChooserDialog" id="filechooser_dialog"&gt;</dt>
-<dd>
-<p class="first">&lt;property ... &gt;&lt;/property&gt;
-&lt;property ... &gt;&lt;/property&gt;
-...
-&lt;action-widgets&gt;</p>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 50)</p>
-Unexpected indentation.</div>
-<blockquote>
-&lt;!-- Buttons innerhalb der action area --&gt;
-&lt;action-widget response="0"&gt;button1&lt;/action-widget&gt;
-&lt;action-widget response="1"&gt;button2&lt;/action-widget&gt;
-&lt;!-- Button in Headerbar --&gt;
-&lt;action-widget response="-1"&gt;hb_button&lt;/action-widget&gt;</blockquote>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 55)</p>
-Block quote ends without a blank line; unexpected unindent.</div>
-<p class="last">&lt;/action-widgets&gt;
-...</p>
-</dd>
-</dl>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 57)</p>
-Definition list ends without a blank line; unexpected unindent.</div>
-<p>&lt;/object&gt;</p>
-</blockquote>
+<p>After creating a headerbar with button(s) the Glade file is opened in a text editor and add line(s) to the <tt class="docutils literal"><span class="pre">&lt;action-widgets&gt;</span></tt> element:</p>
+<pre class="code xml"><a name="rest_code_456e65f267f04a6989f4f97f241e785e-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkFileChooserDialog"</span> <span class="na">id=</span><span class="s">"filechooser_dialog"</span><span class="nt">&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-2"></a>  <span class="nt">&lt;property</span> <span class="err">...</span> <span class="nt">&gt;&lt;/property&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-3"></a>  <span class="nt">&lt;property</span> <span class="err">...</span> <span class="nt">&gt;&lt;/property&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-4"></a>  <span class="c">&lt;!-- ... --&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-5"></a>  <span class="nt">&lt;action-widgets&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-6"></a>    <span class="c">&lt;!-- Buttons innerhalb der action area --&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-7"></a>    <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"0"</span><span class="nt">&gt;</span>button1<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-8"></a>    <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"1"</span><span class="nt">&gt;</span>button2<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-9"></a>    <span class="c">&lt;!-- Button in Headerbar --&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-10"></a>    <span class="nt">&lt;action-widget</span> <span class="na">response=</span><span class="s">"-1"</span><span class="nt">&gt;</span>hb_button<span class="nt">&lt;/action-widget&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-11"></a>  <span class="nt">&lt;/action-widgets&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-12"></a>  <span class="c">&lt;!-- ... --&gt;</span>
+<a name="rest_code_456e65f267f04a6989f4f97f241e785e-13"></a><span class="nt">&lt;/object&gt;</span>
+</pre>
 <p>This works but this procedure is surely not the intended way to deal with the problem because after altering the Glade file the edit is retracted.</p>
 </div>
 <div class="section" id="add-action-widget-function">
 <h4><a class="toc-backref" href="posts/fcdialog/#id7">add_action_widget function</a></h4>
 <p>The <tt class="docutils literal">add_action_widget</tt> adds activatable widgets to the action area and hold a response value. This includes widgets of the <em>Gtk.Activatable</em> class: <em>Buttons</em>, <em>MenuItem</em>, <em>RecentChooserMenu</em>, <em>Switch</em> and <em>ToolItem</em>.</p>
 <p>The scheme for creating a button is</p>
-<pre class="code python"><a name="rest_code_388261818ed44896b3baa11cc4875891-1"></a><span class="n">widget</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="n">response</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_12638d4418db4462a446ea54d230fa1e-1"></a><span class="n">widget</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="n">response</span><span class="p">)</span>
 </pre>
 <p>The widget property "can-default" of the button must be activated:</p>
-<pre class="code python"><a name="rest_code_752c0a958990401bb39a44af3648e991-1"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_9e3ed39f783a447bbd451f348f78edc1-1"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
 </pre>
 <p>In the example the standard buttons "apply/cancel" are added to the file dialog:</p>
-<pre class="code python"><a name="rest_code_4220488d5cc24907884c52fb7a56e161-1"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
-<a name="rest_code_4220488d5cc24907884c52fb7a56e161-2"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_4220488d5cc24907884c52fb7a56e161-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
-<a name="rest_code_4220488d5cc24907884c52fb7a56e161-4"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
-<a name="rest_code_4220488d5cc24907884c52fb7a56e161-5"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
-<a name="rest_code_4220488d5cc24907884c52fb7a56e161-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_ed4b73dfbe464378abced38f18496d06-1"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">)</span>
+<a name="rest_code_ed4b73dfbe464378abced38f18496d06-2"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_ed4b73dfbe464378abced38f18496d06-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">)</span>
+<a name="rest_code_ed4b73dfbe464378abced38f18496d06-4"></a><span class="n">button</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_from_stock</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">)</span>
+<a name="rest_code_ed4b73dfbe464378abced38f18496d06-5"></a><span class="n">button</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"can-default"</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_ed4b73dfbe464378abced38f18496d06-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"filechooser_dialog"</span><span class="p">)</span><span class="o">.</span><span class="n">add_action_widget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
 </pre>
 <p>To apply file selection on doubleclick the <em>file-activated</em> is also required in addition to the <em>response</em> signal.</p>
 </div>
@@ -468,19 +452,19 @@ Definition list ends without a blank line; unexpected unindent.</div>
 <div class="section" id="dialog-without-glade">
 <h3><a class="toc-backref" href="posts/fcdialog/#id11">Dialog without Glade</a></h3>
 <p>The <em>FileChooserDialog</em> is a complex but also easy to use graphic interface item. Realizing the dialog without Glade also avoids the headerbar problem discussed above. Creating a dialog follows the scheme</p>
-<pre class="code python"><a name="rest_code_72ad1c3a29a54f488a0527d88e3ea5f7-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"window title"</span><span class="p">,</span>
-<a name="rest_code_72ad1c3a29a54f488a0527d88e3ea5f7-2"></a>                               <span class="n">parent_window</span><span class="p">,</span>
-<a name="rest_code_72ad1c3a29a54f488a0527d88e3ea5f7-3"></a>                               <span class="n">file_chooser_action</span><span class="p">,</span>
-<a name="rest_code_72ad1c3a29a54f488a0527d88e3ea5f7-4"></a>                               <span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="n">response1</span><span class="p">,</span>
-<a name="rest_code_72ad1c3a29a54f488a0527d88e3ea5f7-5"></a>                               <span class="n">button2</span><span class="p">,</span><span class="n">response2</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_d2709020aaf04c18b5fff9c4551cfa2f-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"window title"</span><span class="p">,</span>
+<a name="rest_code_d2709020aaf04c18b5fff9c4551cfa2f-2"></a>                               <span class="n">parent_window</span><span class="p">,</span>
+<a name="rest_code_d2709020aaf04c18b5fff9c4551cfa2f-3"></a>                               <span class="n">file_chooser_action</span><span class="p">,</span>
+<a name="rest_code_d2709020aaf04c18b5fff9c4551cfa2f-4"></a>                               <span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="n">response1</span><span class="p">,</span>
+<a name="rest_code_d2709020aaf04c18b5fff9c4551cfa2f-5"></a>                               <span class="n">button2</span><span class="p">,</span><span class="n">response2</span><span class="p">))</span>
 </pre>
 <p>The dialog then can be directly run and processed:</p>
-<pre class="code python"><a name="rest_code_8264cf4b855948eb806013578e31c302-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a name="rest_code_8264cf4b855948eb806013578e31c302-2"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response1</span><span class="p">:</span>
-<a name="rest_code_8264cf4b855948eb806013578e31c302-3"></a>    <span class="o">...</span>
-<a name="rest_code_8264cf4b855948eb806013578e31c302-4"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response2</span><span class="p">:</span>
-<a name="rest_code_8264cf4b855948eb806013578e31c302-5"></a>    <span class="o">...</span>
-<a name="rest_code_8264cf4b855948eb806013578e31c302-6"></a><span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-2"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response1</span><span class="p">:</span>
+<a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-3"></a>    <span class="o">...</span>
+<a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-4"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">response2</span><span class="p">:</span>
+<a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-5"></a>    <span class="o">...</span>
+<a name="rest_code_cb63b95092574866a1c897ad6e5e92ce-6"></a><span class="n">dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="id1">
@@ -489,14 +473,14 @@ Definition list ends without a blank line; unexpected unindent.</div>
 <ol class="arabic simple">
 <li>No user choice. The applied filter is preset:</li>
 </ol>
-<pre class="code python"><a name="rest_code_f8fdc9bb902747f4902d9984e1afc97b-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_19a63f1db3934445b73d00190c06106b-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
 </pre>
 <ol class="arabic simple" start="2">
 <li>Selection per dropdown menu. The user can choose between different defined filters:</li>
 </ol>
-<pre class="code python"><a name="rest_code_2d001b37b812478db17a6442224ba91b-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter1</span><span class="p">)</span>
-<a name="rest_code_2d001b37b812478db17a6442224ba91b-2"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter2</span><span class="p">)</span>
-<a name="rest_code_2d001b37b812478db17a6442224ba91b-3"></a><span class="o">...</span>
+<pre class="code python"><a name="rest_code_b2867019214c4502bec8d18aac4947b9-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter1</span><span class="p">)</span>
+<a name="rest_code_b2867019214c4502bec8d18aac4947b9-2"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">filter2</span><span class="p">)</span>
+<a name="rest_code_b2867019214c4502bec8d18aac4947b9-3"></a><span class="o">...</span>
 </pre>
 <p class="more"><a href="posts/fcdialog/">Read more…</a></p>
 </div>
@@ -563,11 +547,11 @@ Definition list ends without a blank line; unexpected unindent.</div>
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id4">Icon</a></h3>
 <p>To assign an icon to an window just select <em>"General Appearance &gt; Icon File"</em>. Problematic here is that Glade only shows image files located in the same folder as the Glade file even if an image from another folder is chosen.</p>
 <p>A simple solution is editing the Glade file in a text editor and add the relative path to the <a class="reference external" href="https://openclipart.org/detail/22535/ducky-icon">icon</a>. This edit is preserved even when changing and saving the file with Glade again:</p>
-<pre class="code xml"><a name="rest_code_9126e8b4c2e744c3892cf84c22bc6ede-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_9126e8b4c2e744c3892cf84c22bc6ede-2"></a>  ...
-<a name="rest_code_9126e8b4c2e744c3892cf84c22bc6ede-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
-<a name="rest_code_9126e8b4c2e744c3892cf84c22bc6ede-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_9126e8b4c2e744c3892cf84c22bc6ede-5"></a>  ...
+<pre class="code xml"><a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-2"></a>  ...
+<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
+<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-5"></a>  ...
 </pre>
 </div>
 <div class="section" id="headerbar">
@@ -583,49 +567,49 @@ Definition list ends without a blank line; unexpected unindent.</div>
 <div class="section" id="create-options">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id7">Create Options</a></h3>
 <p>Options are added by the <tt class="docutils literal">add_main_option_entries(entrylist)</tt> function. The entries must be <em>GLib.OptionEntry</em> formatted which requires a bunch of parameters.</p>
-<pre class="code python"><a name="rest_code_ff4865e933d84825a0a430ca4c08e991-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span><span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-7"></a>    <span class="p">])</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-8"></a>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">long_name</span><span class="p">,</span> <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-10"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-11"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-12"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-13"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-14"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-15"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-16"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-17"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
-<a name="rest_code_ff4865e933d84825a0a430ca4c08e991-18"></a>    <span class="k">return</span> <span class="n">option</span>
+<pre class="code python"><a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span><span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-7"></a>    <span class="p">])</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-8"></a>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">long_name</span><span class="p">,</span> <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-10"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-11"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-12"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-13"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-14"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-15"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-16"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-17"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
+<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-18"></a>    <span class="k">return</span> <span class="n">option</span>
 </pre>
 </div>
 <div class="section" id="connect-signal">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id8">Connect signal</a></h3>
 <p>The "handle-local-options" signal of <em>Gtk.Application</em> handles commandline options. If the signal is connected the signal is emitted before the "startup" signal.</p>
-<pre class="code python"><a name="rest_code_f5beee0eca64402e98fa3377932cd828-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_21fe7ebdc84740e782f91ca939fa6d9f-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="processing-options">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id9">Processing options</a></h3>
 <p>The <tt class="docutils literal">option</tt> will be passed as an element of the <em>GLib.VariantDict</em> class which can be searched for by calling <tt class="docutils literal"><span class="pre">contains("option")</span></tt>:</p>
-<pre class="code python"><a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-3"></a>        <span class="c1">#do something and exit normally</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-4"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-6"></a>        <span class="c1">#do something different and exit</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-7"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-9"></a>        <span class="c1">#do more and continue</span>
-<a name="rest_code_e5a5dcf246564480b585e2d662f7cdb8-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+<pre class="code python"><a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-3"></a>        <span class="c1">#do something and exit normally</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-4"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-6"></a>        <span class="c1">#do something different and exit</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-7"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-9"></a>        <span class="c1">#do more and continue</span>
+<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre>
 <p>A string can be extracted by calling <tt class="docutils literal">end()</tt> which converts <em>GLib.VariantDict</em> to a <em>GLib.Variant</em> element. That <em>GLib.Variant</em> then can be culled by calling <tt class="docutils literal">keys()</tt>:</p>
-<pre class="code python"><a name="rest_code_f7a647b9d34840c790666cd97f0835bc-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-<a name="rest_code_f7a647b9d34840c790666cd97f0835bc-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<pre class="code python"><a name="rest_code_67425bd2c5cd4746a53a7fd5cd299102-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<a name="rest_code_67425bd2c5cd4746a53a7fd5cd299102-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
 </pre>
 <p>The handler function demands a return value that corresponds to the exit status:</p>
 <blockquote>
@@ -643,12 +627,12 @@ Definition list ends without a blank line; unexpected unindent.</div>
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id10">Run application with options</a></h3>
 <p>The option <tt class="docutils literal"><span class="pre">--help</span></tt> is always available and lists all defined options of the application and their descriptions.</p>
 <p>The options of the example file now can be executed:</p>
-<pre class="code console"><a name="rest_code_1fb444ee59f44da69bf7d87bc91f513f-1"></a><span class="gp">$</span> python script.py --version
-<a name="rest_code_1fb444ee59f44da69bf7d87bc91f513f-2"></a><span class="go">Python: 3.6.0</span>
-<a name="rest_code_1fb444ee59f44da69bf7d87bc91f513f-3"></a><span class="go">GTK+:   3.22.6</span>
+<pre class="code console"><a name="rest_code_d170bcac485843d7808c0524e85180ab-1"></a><span class="gp">$</span> python script.py --version
+<a name="rest_code_d170bcac485843d7808c0524e85180ab-2"></a><span class="go">Python: 3.6.0</span>
+<a name="rest_code_d170bcac485843d7808c0524e85180ab-3"></a><span class="go">GTK+:   3.22.6</span>
 </pre>
 <p>or pass a string to the application's <em>Gtk.Label</em>:</p>
-<pre class="code console"><a name="rest_code_cc2a6fef92ed467f8973169b84d707d7-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
+<pre class="code console"><a name="rest_code_ce59a5703418440f92bccf0e486de2b2-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
 </pre>
 <p class="more"><a href="posts/application-fortsetzung/">Read more…</a></p>
 </div>
@@ -722,17 +706,17 @@ Inline strong start-string without end-string.</div>
 <div class="section" id="gmenu">
 <h3><a class="toc-backref" href="posts/application/#id8">GMenu</a></h3>
 <p>The GNOME Shell supports appmenus residing in the (top) panel. The Gmenu XML file must be formatted to be recognized as <em>GioMenu</em>:</p>
-<pre class="code xml"><a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-2"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-3"></a> <span class="nt">&lt;menu</span> <span class="na">id=</span><span class="s">"appmenu"</span><span class="nt">&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-4"></a>    <span class="nt">&lt;section&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-5"></a>      <span class="nt">&lt;item&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-6"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Menu Item<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-7"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"action"</span><span class="nt">&gt;</span>app.item<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-8"></a>      <span class="nt">&lt;/item&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-9"></a>    <span class="nt">&lt;/section&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-10"></a>  <span class="nt">&lt;/menu&gt;</span>
-<a name="rest_code_6e1c965c6d134b56906c038d2ecc551b-11"></a><span class="nt">&lt;/interface&gt;</span>
+<pre class="code xml"><a name="rest_code_0c7736648ee845a080e8323bbdebafac-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-2"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-3"></a> <span class="nt">&lt;menu</span> <span class="na">id=</span><span class="s">"appmenu"</span><span class="nt">&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-4"></a>    <span class="nt">&lt;section&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-5"></a>      <span class="nt">&lt;item&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-6"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Menu Item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-7"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"action"</span><span class="nt">&gt;</span>app.item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-8"></a>      <span class="nt">&lt;/item&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-9"></a>    <span class="nt">&lt;/section&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-10"></a>  <span class="nt">&lt;/menu&gt;</span>
+<a name="rest_code_0c7736648ee845a080e8323bbdebafac-11"></a><span class="nt">&lt;/interface&gt;</span>
 </pre>
 <p>Glade identifies this file format as an outdated Glade file and refuses to open it. Apart from that <em>GtkBuilder</em> can handle the menu and address identifiers.</p>
 </div>
@@ -743,40 +727,40 @@ Inline strong start-string without end-string.</div>
 <h3><a class="toc-backref" href="posts/application/#id10">Initialize <em>GtkApplication</em></a></h3>
 <p>The initialization process requires the parameters <em>application_id</em> and <em>flags</em>. Flags can normally set to 0 being the same as FLAGS_NONE (see <a class="reference external" href="https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags">Gio.ApplicationFlags</a>), naming conventions for application_id are <a class="reference external" href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.Application.id_is_valid.html">listed here</a>.</p>
 <p>The application can be connected to different signals being emitted on preassigned events. It is mandatory to at least define an <tt class="docutils literal">activate</tt> signal:</p>
-<pre class="code python"><a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-2"></a>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-4"></a>    <span class="c1">#self.app.connect("startup", self.on_app_startup) #optional</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-6"></a>    <span class="c1">#self.app.connect("shutdown", self.on_app_shutdown) #optional</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-7"></a>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-8"></a><span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-9"></a>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-10"></a>    <span class="c1">#setting up GtkBuilder etc.</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-11"></a>    <span class="o">...</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-12"></a>    <span class="o">...</span>
-<a name="rest_code_441f7b8624e04bc3a83df0a229c913bc-13"></a>    <span class="o">...</span>
+<pre class="code python"><a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-2"></a>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-4"></a>    <span class="c1">#self.app.connect("startup", self.on_app_startup) #optional</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-6"></a>    <span class="c1">#self.app.connect("shutdown", self.on_app_shutdown) #optional</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-7"></a>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-8"></a><span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-9"></a>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-10"></a>    <span class="c1">#setting up GtkBuilder etc.</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-11"></a>    <span class="o">...</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-12"></a>    <span class="o">...</span>
+<a name="rest_code_1eebb96bc7cb4e50999fa054d49785f4-13"></a>    <span class="o">...</span>
 </pre>
 </div>
 <div class="section" id="appmenu">
 <h3><a class="toc-backref" href="posts/application/#id11">Appmenu</a></h3>
 <p>GMenu XML files are loaded by <em>GtkBuilder</em>:</p>
-<pre class="code python"><a name="rest_code_a8949c6977394d1380c4208c8bd1afa6-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"menu.ui"</span><span class="p">)</span>
-<a name="rest_code_a8949c6977394d1380c4208c8bd1afa6-2"></a><span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_b66ca519064940ff8df46134ab5fe497-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"menu.ui"</span><span class="p">)</span>
+<a name="rest_code_b66ca519064940ff8df46134ab5fe497-2"></a><span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
 </pre>
 <p>Menu entries now have to be connected to actions which are created as <em>GioSimpleActions</em>:</p>
-<pre class="code python"><a name="rest_code_14fb077257824e65ab290dfed8621fa2-1"></a><span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-<a name="rest_code_14fb077257824e65ab290dfed8621fa2-2"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<a name="rest_code_14fb077257824e65ab290dfed8621fa2-3"></a>    <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
-<a name="rest_code_14fb077257824e65ab290dfed8621fa2-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_6fabeaf7896f4509a423ce3e602c6dd0-1"></a><span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+<a name="rest_code_6fabeaf7896f4509a423ce3e602c6dd0-2"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a name="rest_code_6fabeaf7896f4509a423ce3e602c6dd0-3"></a>    <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<a name="rest_code_6fabeaf7896f4509a423ce3e602c6dd0-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 </pre>
 <p>In the example file actions invokes dialog windows.</p>
 </div>
 <div class="section" id="start-and-quit">
 <h3><a class="toc-backref" href="posts/application/#id12">Start and quit</a></h3>
 <p><em>GtkApplication</em> takes over the handling of the GTK+ mainloop so there is no need of starting and quitting GTK+ manually and <tt class="docutils literal">run()</tt> and <tt class="docutils literal">quit()</tt> called instead:</p>
-<pre class="code text"><a name="rest_code_34a865638723401cac07379fe902773a-1"></a>Gtk.main()      -&gt;  app.run(argv)
-<a name="rest_code_34a865638723401cac07379fe902773a-2"></a>Gtk.main_quit() -&gt;  app.quit()
+<pre class="code text"><a name="rest_code_93fd4b3b63194acba8a36de48dec7dd2-1"></a>Gtk.main()      -&gt;  app.run(argv)
+<a name="rest_code_93fd4b3b63194acba8a36de48dec7dd2-2"></a>Gtk.main_quit() -&gt;  app.quit()
 </pre>
 <p>If the application is quit by the [X] button or the "Quit" appmenu entry the "shutdown" signal is emitted (see above) and the program is terminated. That means there is no need to define these signals like in previous examples using <em>GtkWindow</em>. The "shutdown" also works even if the signal is not explicitly connected to a function during the initialization process.</p>
 </div>

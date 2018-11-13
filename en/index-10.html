@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Gute Absichten">
+<meta name="viewport" content="width=device-width">
+<title>Merge and Destroy (old posts, page 10) | Merge and Destroy</title>
+<link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">
+<link href="../assets/css/all.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS (en)" href="rss.xml">
+<link rel="canonical" href="https://encarsia.github.io/en/index-10.html">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Home"><i class="fa fa-home"></i></a></li>
+            <li><a href="../posts/tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa fa-lightbulb-o"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa fa-mastodon"></i></a></li>
+            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa fa-google-plus-official"></i></a></li>
+            <li><a href="https://github.com/encarsia" title="Github"><i class="fa fa-github"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="fa fa-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+            <li><a href="../pages/about/index.html" title="About me"><i class="fa fa-user"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="fa fa-folder-open"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+            
+        <div class="post">
+            <h1 class="title"><a href="posts/gtk220neu/">Widget-Änderungen in GTK+ 2.20+</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2018-10-04T13:29:06+02:00">2018-10-04 13:29</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/gtk220neu/#disqus_thread" data-disqus-identifier="cache/posts/widget-anderungen-in-gtk+-220+.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<p><strong>Auch wenn die Entwicklung von GTK+ 4 weit fortgeschritten ist, gibt es immer noch Änderungen in der 3er Version</strong></p>
+<p>Das GUI-Programm <a class="reference external" href="https://glade.gnome.org/">Glade</a> wurde erst <a class="reference external" href="posts/glade-322/">kürzlich modernisiert</a>, in der Anwendung von Widgets sind mir einige Neuerungen aufgefallen. Dies fällt in der Regel durch entsprechende <em>DeprecationWarnings</em> in der Konsole auf, die Programme selbst funktionieren noch wie gewünscht.</p>
+<p>Das heißt, die Artikel der <a class="reference external" href="posts/tutorial-reihe-glade/">Tutorial-Reihe</a> bleiben vorerst unverändert (über eine gute Lösung muss ich noch nachdenken).</p>
+<p>Es folgt eine nicht auf Vollständigkeit ausgelegte und bei Bedarf ergänzte Liste der Änderungen:</p>
+<div class="section" id="set-wm-class">
+<h2>set_wm_class</h2>
+<p>Programmname in Panel und Dock anzeigen</p>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Window.set_wmclass(args)</tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal">GLib.set_progname(name_string)</tt></p>
+</blockquote>
+</div>
+<div class="section" id="new-from-stock">
+<h2>new_from_stock</h2>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Button.new_from_stock(Gtk.STOCK_OK)</tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.Button.new_with_label("OK")</span></tt></p>
+</blockquote>
+<p>Labels bekommen nur noch eine Bezeichnung durch einen String, in der Dokumentation</p>
+<p>Gtk.Image.new_from_stock(Gtk.STOCK_YES, 1)</p>
+<p>gilt auch für ToggleButton</p>
+</div>
+<div class="section" id="new-with-label">
+<h2>new_with_label</h2>
+<p>Bei der Initialisierung von Labels enthaltene Widgets, z.B. <em>Gtk.MenuItem</em></p>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem("label")</span></tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem.new_with_label("label")</span></tt></p>
+</blockquote>
+</div>
+<div class="section" id="set-alignment">
+<h2>set_alignment</h2>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Misc.set_alignment(x, y)</tt>, z.B. bei Labels</p>
+<p><strong>Neu:</strong> <em>Gtk.Widget</em>-Alignment <tt class="docutils literal">:halign</tt> und <tt class="docutils literal">:valign</tt> verwenden</p>
+</blockquote>
+</div>
+<div class="section" id="vte-terminal">
+<h2>Vte-Terminal</h2>
+<div class="section" id="befehl-ubergeben">
+<h3>Befehl übergeben</h3>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Vte.Terminal.feed_child(cmd, len(cmd))</tt> (cmd ist das zu übergebene Kommando)</p>
+<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Vte.Terminal.feed_child(cmd.encode())</span></tt> (seit v2.91)</p>
+</blockquote>
+</div>
+<div class="section" id="start">
+<h3>Start</h3>
+<blockquote>
+<p><strong>Alt:</strong> <tt class="docutils literal">Vte.Terminal.spawn_sync(args)</tt></p>
+<p><strong>Neu:</strong> GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)</p>
+</blockquote>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+    
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="." rel="prev">Newer posts</a>
+            </li>
+            <li class="next">
+                <a href="index-9.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
+Powered by <a href="http://getnikola.com">Nikola</a> - 
+Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br></p>
+            
+        </footer>
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

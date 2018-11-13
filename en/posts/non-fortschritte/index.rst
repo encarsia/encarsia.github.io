@@ -21,5 +21,5 @@ As `said before <link://slug/neues-projekt-knights-of-ni>`_ I am currently worki
 * if there is no title the "Title" column will show the slug or (if this does not exist neither) filename
 * some mor log messages to pretent important things happen
 
-.. thumbnail:: /images/non2.png
+.. thumbnail:: /images/non/non2.png
 

@@ -9,7 +9,7 @@
 
 **Knights of Ni - kleiner Manager für den statischen Webseitengenerator Nikola**
 
-.. thumbnail:: /images/non_window.png
+.. thumbnail:: /images/non/non_window.png
 
 Neues kleines GitHub-Übungsprojekt aus Glade und Python zusammengezimmert: `Knights of Ni <https://github.com/encarsia/non>`_. 
 

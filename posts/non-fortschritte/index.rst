@@ -25,7 +25,7 @@ Wie `bereits erwähnt <link://slug/neues-projekt-knights-of-ni>`_, bastel ich ak
 * hat der Artikel keinen Titel, wird das interne Kürzel (slug) oder, falls ebenfalls nicht vorhanden, der Dateiname angezeigt
 * gesprächiges Log, um vorzutäuschen, dass ganz viel wichtiger Kram passiert
 
-.. thumbnail:: /images/non2.png
+.. thumbnail:: /images/non/non2.png
 
 Das läuft aus meiner Sicht schon alles erstaunlich gut. Dummerweise habe ich bei der Verwendung von Glade (und auch Python, aber vor allem Glade) inzwischen ebenfalls einige Fortschritte gemacht, was mich ernsthaft zur Überlegung geführt hat, das GoProTool nochmal zu überarbeiten. Die Oberfläche würde ich belassen, aber viel Funktionalität könnte effizienter umgesetzt werden. Ich stelle das mal hinten an.
 

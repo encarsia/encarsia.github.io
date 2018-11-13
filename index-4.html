@@ -75,7 +75,7 @@
 <li>hat der Artikel keinen Titel, wird das interne Kürzel (slug) oder, falls ebenfalls nicht vorhanden, der Dateiname angezeigt</li>
 <li>gesprächiges Log, um vorzutäuschen, dass ganz viel wichtiger Kram passiert</li>
 </ul>
-<a class="reference external image-reference" href="images/non2.png"><img alt="/images/non2.thumbnail.png" src="images/non2.thumbnail.png"></a>
+<a class="reference external image-reference" href="images/non/non2.png"><img alt="/images/non/non2.thumbnail.png" src="images/non/non2.thumbnail.png"></a>
 <p>Das läuft aus meiner Sicht schon alles erstaunlich gut. Dummerweise habe ich bei der Verwendung von Glade (und auch Python, aber vor allem Glade) inzwischen ebenfalls einige Fortschritte gemacht, was mich ernsthaft zur Überlegung geführt hat, das GoProTool nochmal zu überarbeiten. Die Oberfläche würde ich belassen, aber viel Funktionalität könnte effizienter umgesetzt werden. Ich stelle das mal hinten an.</p>
 <p>Geplant ist nun ein simples Nikola-unabhängiges Vorlagensystem und anschließend ist etwas Fleißarbeit bei der Lokalisation erforderlich.</p>
 </div>
@@ -249,27 +249,27 @@
 <div class="section" id="responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id10">Responses</a></h3>
 <p>Beim Auslösen des <em>response</em>-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt, jede innerhalb einer einzelnen Funktion verarbeitet werden:</p>
-<pre class="code python"><a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
-<a name="rest_code_cca2bb1297af4d11b472377b77e5f9cf-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_c8560f4d3301426daf93bcbac3c68546-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
+<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="delete-event">
 <h3><a class="toc-backref" href="posts/dialoge/#id11">Delete-event</a></h3>
 <p>Mit der Funktion <tt class="docutils literal">hide_on_delete()</tt> ausgeblendete Dialoge oder reguläre Fenster lassen sich mit <tt class="docutils literal">show_all()</tt> wieder anzeigen:</p>
-<pre class="code python"><a name="rest_code_66ffc90dd4c247f7a8cc8d83cced6933-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-<a name="rest_code_66ffc90dd4c247f7a8cc8d83cced6933-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_66ffc90dd4c247f7a8cc8d83cced6933-3"></a>    <span class="k">return</span> <span class="bp">True</span>
+<pre class="code python"><a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+<a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-3"></a>    <span class="k">return</span> <span class="bp">True</span>
 </pre>
 </div>
 <div class="section" id="mehrere-glade-dateien">
 <h3><a class="toc-backref" href="posts/dialoge/#id12">Mehrere Glade-Dateien</a></h3>
 <p>Wie <a class="reference external" href="posts/fenster-mit-aussicht/">bereits erwähnt</a>, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden, es wird die <tt class="docutils literal">set_transient_for</tt>-Funktion von <em>GtkWindow</em> benötigt:</p>
-<pre class="code python"><a name="rest_code_5d174d583b474a09ac7e80f08cb27f21-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_transient_for</span><span class="p">(</span><span class="n">mainwindow</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_de15005514f84bb09a64129ae9794074-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_transient_for</span><span class="p">(</span><span class="n">mainwindow</span><span class="p">)</span>
 </pre>
 <p>Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter <em>"Allgemein &gt; Vorübergehend für:"</em> angegeben.</p>
 <p class="more"><a href="posts/dialoge/">Weiterlesen…</a></p>
@@ -334,11 +334,11 @@
 <div class="section" id="treestore-vs-liststore">
 <h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
 <p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
-<pre class="code python"><a name="rest_code_9e9a4009dfc943cab3d584905135bdf6-1"></a><span class="c1">#append row to liststore</span>
-<a name="rest_code_9e9a4009dfc943cab3d584905135bdf6-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_9e9a4009dfc943cab3d584905135bdf6-3"></a>
-<a name="rest_code_9e9a4009dfc943cab3d584905135bdf6-4"></a><span class="c1">#append row to treestore</span>
-<a name="rest_code_9e9a4009dfc943cab3d584905135bdf6-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-3"></a>
+<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Der Wert der Variable <em>parent</em> ist entweder</p>
 <ul class="simple">
@@ -348,8 +348,8 @@
 <strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
 </ul>
 <p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
-<pre class="code python"><a name="rest_code_7df8e7e61f4c4457bd95dbac0a927475-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_7df8e7e61f4c4457bd95dbac0a927475-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_9fd02588827d4d30b42a150b25625136-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_9fd02588827d4d30b42a150b25625136-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Man erhält den <em>TreeIter</em>-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
 </div>
@@ -377,27 +377,27 @@
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id11">TreeModelSort</a></h3>
 <p>Durch die Positionsabfrage von <tt class="docutils literal">GtkTreeSelection.get_selected()</tt> erhält man ein Tupel (model,pos), <em>pos</em> von <em>model</em> zeigt dabei auf TreeModelSort (bzw. analog auf TreeModelFilter), nicht auf TreeStore und erfordert eine Konvertierung:</p>
-<pre class="code python"><a name="rest_code_706b946612e14d3299ccb3965cb66f4d-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
-<a name="rest_code_706b946612e14d3299ccb3965cb66f4d-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-<a name="rest_code_706b946612e14d3299ccb3965cb66f4d-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id12">TreeModelFilter</a></h3>
 <p>Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von Zeilen definiert wird, im Beispiel also die Variable <em>self.color</em>:</p>
-<pre class="code python"><a name="rest_code_7e48a760772840528cabab3f21ab0434-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<a name="rest_code_7e48a760772840528cabab3f21ab0434-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-<a name="rest_code_7e48a760772840528cabab3f21ab0434-3"></a>        <span class="k">return</span> <span class="bp">True</span>
-<a name="rest_code_7e48a760772840528cabab3f21ab0434-4"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_7e48a760772840528cabab3f21ab0434-5"></a>        <span class="k">return</span> <span class="bp">False</span>
+<pre class="code python"><a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-3"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-5"></a>        <span class="k">return</span> <span class="bp">False</span>
 </pre>
 <p>Die Funktion wird zunächst nach dem Schema</p>
-<pre class="code python"><a name="rest_code_70f7cbf09b104a25a101c0d7c27397f9-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_3dbffa9c062f4073acf6c13774261b71-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
 </pre>
 <p>zugewiesen, jede Filterung wird dann per <tt class="docutils literal">refilter()</tt> ausgelöst, also wenn das Button-Signal ausgelöst wird:</p>
-<pre class="code python"><a name="rest_code_241bea27865743cc92ad06827ea77348-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_241bea27865743cc92ad06827ea77348-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
-<a name="rest_code_241bea27865743cc92ad06827ea77348-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
+<a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/ansichtssache/">Weiterlesen…</a></p>
 </div>

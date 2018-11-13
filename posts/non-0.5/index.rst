@@ -78,8 +78,8 @@ Optimized window space
 
 I rearraged some elements to save some vertical space:
 
-.. |image1| image:: /images/non_info_old.png
-.. |image2| image:: /images/non_info_new.png
+.. |image1| image:: /images/non/non_info_old.png
+.. |image2| image:: /images/non/non_info_new.png
 
 .. table::
     :align: center
@@ -108,7 +108,7 @@ The CSS used is imitates GitHub style, credit goes to `sindresorhus/github-markd
 
 The summary is generated when initially indexing the site. Choose the menu item to generate a new report.
 
-.. figure:: /images/non_summary.png
+.. figure:: /images/non/non_summary.png
 
     Summary tab
 
@@ -124,7 +124,7 @@ The default input format of Nikola is reStructuredText but it supports various o
 
 You must also configure the *POSTS* and *PAGES* dictionaries, NoN does not check for this and will not throw an error message if not set.
 
-.. figure:: /images/non_md.png
+.. figure:: /images/non/non_md.png
 
     Markdown format checkbutton
 
