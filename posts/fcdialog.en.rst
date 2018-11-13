@@ -49,12 +49,13 @@ XML file
 ========
 
 After creating a headerbar with button(s) the Glade file is opened in a text editor and add line(s) to the ``<action-widgets>`` element:
+
 .. code-block:: xml
 
   <object class="GtkFileChooserDialog" id="filechooser_dialog">
     <property ... ></property>
     <property ... ></property>
-    ...
+    <!-- ... -->
     <action-widgets>
       <!-- Buttons innerhalb der action area -->
       <action-widget response="0">button1</action-widget>
@@ -62,7 +63,7 @@ After creating a headerbar with button(s) the Glade file is opened in a text edi
       <!-- Button in Headerbar -->
       <action-widget response="-1">hb_button</action-widget>
     </action-widgets>
-    ...
+    <!-- ... -->
   </object>
 
 This works but this procedure is surely not the intended way to deal with the problem because after altering the Glade file the edit is retracted.

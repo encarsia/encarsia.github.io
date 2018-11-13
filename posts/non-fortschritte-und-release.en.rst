@@ -11,7 +11,7 @@
 
 The GTK+ desktop client for static website generator Nikola has made some progress since mentioned last time here.
 
-Nikola v8 will soon be released in June. I saved the current development status as a `release <https://github.com/encarsia/non/releases/tag/v.0.4>`_ because I cannot estimate how much effort I have to put into to make it ready for v8.
+Nikola v8 will soon be released in June. I saved the current development status as a `release <https://github.com/encarsia/non/releases/tag/v0.4>`_ because I cannot estimate how much effort I have to put into to make it ready for v8.
 
 News
 ====
