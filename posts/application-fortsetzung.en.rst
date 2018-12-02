@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -60,20 +60,34 @@ Options are added by the ``add_main_option_entries(entrylist)`` function. The en
         self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
         self.app.add_main_option_entries([
             self.create_option_entry("--version", description="Show version numbers and exit"),
-            self.create_option_entry("--setlabel", description="Set label widget",arg=GLib.OptionArg.STRING,),
+            self.create_option_entry("--setlabel", description="Set label widget", arg=GLib.OptionArg.STRING,),
             self.create_option_entry("--bollocks", description="Additional test option - exit"),
         ])
 
-    def create_option_entry(self,long_name, short_name=None, flags=0, arg=GLib.OptionArg.NONE,arg_data=None, description=None, arg_description=None):
+    def create_option_entry(self,
+                            long_name,
+                            short_name=None,
+                            flags=0,
+                            arg=GLib.OptionArg.NONE,
+                            arg_data=None,
+                            description=None,
+                            arg_description=None):
         option = GLib.OptionEntry()
         option.long_name = long_name.lstrip('-')
-        option.short_name = 0 if not short_name else short_name.lstrip('-')
+        option.short_name = 0 if not short_name else ord(short_name.lstrip('-'))
         option.flags = flags
         option.arg = arg
         option.arg_data = arg_data
         option.description = description
         option.arg_description = arg_description
         return option
+
+Short names
+***********
+
+An option can have a one character synonym ("a printable ASCII character different from ‘-‘" to be precise), the short name. Lokking at the option ``--help`` this commonly is ``-h``.
+
+The ``short_name`` variable of *OptionEntry* ist surprisingly integer. The `not very obvious <https://lazka.github.io/pgi-docs/#GLib-2.0/classes/OptionEntry.html#GLib.OptionEntry>`_ solution here is to pass the character's decimal code, p.e. 97 for "a". An error message will be thrown when trying to pass invalid numbers. Options without a short code get a value of 0.
 
 Connect signal
 **************
