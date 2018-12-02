@@ -513,7 +513,7 @@ be available in the future</td>
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="contents">
+<div class="contents pull-right topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li>
@@ -525,15 +525,16 @@ be available in the future</td>
 <li>
 <a class="reference internal" href="posts/application-fortsetzung/#commandline-options" id="id6">Commandline options</a><ul>
 <li><a class="reference internal" href="posts/application-fortsetzung/#create-options" id="id7">Create Options</a></li>
-<li><a class="reference internal" href="posts/application-fortsetzung/#connect-signal" id="id8">Connect signal</a></li>
-<li><a class="reference internal" href="posts/application-fortsetzung/#processing-options" id="id9">Processing options</a></li>
-<li><a class="reference internal" href="posts/application-fortsetzung/#run-application-with-options" id="id10">Run application with options</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#short-names" id="id8">Short names</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#connect-signal" id="id9">Connect signal</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#processing-options" id="id10">Processing options</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#run-application-with-options" id="id11">Run application with options</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="posts/application-fortsetzung/#listings" id="id11">Listings</a><ul>
-<li><a class="reference internal" href="posts/application-fortsetzung/#id2" id="id12">Glade</a></li>
-<li><a class="reference internal" href="posts/application-fortsetzung/#python" id="id13">Python</a></li>
+<a class="reference internal" href="posts/application-fortsetzung/#listings" id="id12">Listings</a><ul>
+<li><a class="reference internal" href="posts/application-fortsetzung/#id2" id="id13">Glade</a></li>
+<li><a class="reference internal" href="posts/application-fortsetzung/#python" id="id14">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -547,11 +548,11 @@ be available in the future</td>
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id4">Icon</a></h3>
 <p>To assign an icon to an window just select <em>"General Appearance &gt; Icon File"</em>. Problematic here is that Glade only shows image files located in the same folder as the Glade file even if an image from another folder is chosen.</p>
 <p>A simple solution is editing the Glade file in a text editor and add the relative path to the <a class="reference external" href="https://openclipart.org/detail/22535/ducky-icon">icon</a>. This edit is preserved even when changing and saving the file with Glade again:</p>
-<pre class="code xml"><a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-2"></a>  ...
-<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
-<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_3be06f1d7c1b4b9da5527a561c3becd6-5"></a>  ...
+<pre class="code xml"><a name="rest_code_ad54ec26e9dd41cab4527255fe47ea6a-1"></a><span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_ad54ec26e9dd41cab4527255fe47ea6a-2"></a>  ...
+<a name="rest_code_ad54ec26e9dd41cab4527255fe47ea6a-3"></a>  <span class="c">&lt;!-- &lt;property name="icon"&gt;duckyou.svg&lt;/property&gt; --&gt;</span>
+<a name="rest_code_ad54ec26e9dd41cab4527255fe47ea6a-4"></a>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"icon"</span><span class="nt">&gt;</span>../files/duckyou.svg<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_ad54ec26e9dd41cab4527255fe47ea6a-5"></a>  ...
 </pre>
 </div>
 <div class="section" id="headerbar">
@@ -567,49 +568,61 @@ be available in the future</td>
 <div class="section" id="create-options">
 <h3><a class="toc-backref" href="posts/application-fortsetzung/#id7">Create Options</a></h3>
 <p>Options are added by the <tt class="docutils literal">add_main_option_entries(entrylist)</tt> function. The entries must be <em>GLib.OptionEntry</em> formatted which requires a bunch of parameters.</p>
-<pre class="code python"><a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span><span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-7"></a>    <span class="p">])</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-8"></a>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">long_name</span><span class="p">,</span> <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-10"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-11"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-12"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-13"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-14"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-15"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-16"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-17"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
-<a name="rest_code_e66fd1e8c2bc42bf9e0e270a0ab761c9-18"></a>    <span class="k">return</span> <span class="n">option</span>
+<pre class="code python"><a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_main_option_entries</span><span class="p">([</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--version"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Show version numbers and exit"</span><span class="p">),</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--setlabel"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Set label widget"</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">STRING</span><span class="p">,),</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_option_entry</span><span class="p">(</span><span class="s2">"--bollocks"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Additional test option - exit"</span><span class="p">),</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-7"></a>    <span class="p">])</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-8"></a>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-9"></a><span class="k">def</span> <span class="nf">create_option_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-10"></a>                        <span class="n">long_name</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-11"></a>                        <span class="n">short_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-12"></a>                        <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-13"></a>                        <span class="n">arg</span><span class="o">=</span><span class="n">GLib</span><span class="o">.</span><span class="n">OptionArg</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-14"></a>                        <span class="n">arg_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-15"></a>                        <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-16"></a>                        <span class="n">arg_description</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-17"></a>    <span class="n">option</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">OptionEntry</span><span class="p">()</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-18"></a>    <span class="n">option</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="n">long_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-19"></a>    <span class="n">option</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">short_name</span> <span class="k">else</span> <span class="nb">ord</span><span class="p">(</span><span class="n">short_name</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'-'</span><span class="p">))</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-20"></a>    <span class="n">option</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">flags</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-21"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-22"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_data</span> <span class="o">=</span> <span class="n">arg_data</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-23"></a>    <span class="n">option</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-24"></a>    <span class="n">option</span><span class="o">.</span><span class="n">arg_description</span> <span class="o">=</span> <span class="n">arg_description</span>
+<a name="rest_code_ba15adad05d34c78aa440cdd75aa368a-25"></a>    <span class="k">return</span> <span class="n">option</span>
 </pre>
 </div>
+<div class="section" id="short-names">
+<h3><a class="toc-backref" href="posts/application-fortsetzung/#id8">Short names</a></h3>
+<p>An option can have a one character synonym ("a printable ASCII character different from ‘-‘" to be precise), the short name. Lokking at the option <tt class="docutils literal"><span class="pre">--help</span></tt> this commonly is <tt class="docutils literal"><span class="pre">-h</span></tt>.</p>
+<p>The <tt class="docutils literal">short_name</tt> variable of <em>OptionEntry</em> ist surprisingly integer. The <a class="reference external" href="https://lazka.github.io/pgi-docs/#GLib-2.0/classes/OptionEntry.html#GLib.OptionEntry">not very obvious</a> solution here is to pass the character's decimal code, p.e. 97 for "a". An error message will be thrown when trying to pass invalid numbers. Options without a short code get a value of 0.</p>
+</div>
 <div class="section" id="connect-signal">
-<h3><a class="toc-backref" href="posts/application-fortsetzung/#id8">Connect signal</a></h3>
+<h3><a class="toc-backref" href="posts/application-fortsetzung/#id9">Connect signal</a></h3>
 <p>The "handle-local-options" signal of <em>Gtk.Application</em> handles commandline options. If the signal is connected the signal is emitted before the "startup" signal.</p>
-<pre class="code python"><a name="rest_code_21fe7ebdc84740e782f91ca939fa6d9f-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_c31a55a30f67413c9a2de4029b4646c9-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"handle-local-options"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_local_option</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="processing-options">
-<h3><a class="toc-backref" href="posts/application-fortsetzung/#id9">Processing options</a></h3>
+<h3><a class="toc-backref" href="posts/application-fortsetzung/#id10">Processing options</a></h3>
 <p>The <tt class="docutils literal">option</tt> will be passed as an element of the <em>GLib.VariantDict</em> class which can be searched for by calling <tt class="docutils literal"><span class="pre">contains("option")</span></tt>:</p>
-<pre class="code python"><a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-3"></a>        <span class="c1">#do something and exit normally</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-4"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-6"></a>        <span class="c1">#do something different and exit</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-7"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-9"></a>        <span class="c1">#do more and continue</span>
-<a name="rest_code_76c113cba9e84afb9320d7b346b3e4c9-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+<pre class="code python"><a name="rest_code_419c92aaa86248fdb9ff984c4982b583-1"></a><span class="k">def</span> <span class="nf">on_local_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-2"></a>    <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option1"</span><span class="p">):</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-3"></a>        <span class="c1">#do something and exit normally</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-4"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-5"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option2"</span><span class="p">):</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-6"></a>        <span class="c1">#do something different and exit</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-7"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-8"></a>    <span class="k">elif</span> <span class="n">option</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"option3"</span><span class="p">):</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-9"></a>        <span class="c1">#do more and continue</span>
+<a name="rest_code_419c92aaa86248fdb9ff984c4982b583-10"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre>
 <p>A string can be extracted by calling <tt class="docutils literal">end()</tt> which converts <em>GLib.VariantDict</em> to a <em>GLib.Variant</em> element. That <em>GLib.Variant</em> then can be culled by calling <tt class="docutils literal">keys()</tt>:</p>
-<pre class="code python"><a name="rest_code_67425bd2c5cd4746a53a7fd5cd299102-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-<a name="rest_code_67425bd2c5cd4746a53a7fd5cd299102-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<pre class="code python"><a name="rest_code_90d6294a671c46129257f82f6c486b11-1"></a><span class="n">var</span> <span class="o">=</span> <span class="n">GLib</span><span class="o">.</span><span class="n">VariantDict</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<a name="rest_code_90d6294a671c46129257f82f6c486b11-2"></a><span class="n">option_string</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
 </pre>
 <p>The handler function demands a return value that corresponds to the exit status:</p>
 <blockquote>
@@ -624,15 +637,15 @@ be available in the future</td>
 </blockquote>
 </div>
 <div class="section" id="run-application-with-options">
-<h3><a class="toc-backref" href="posts/application-fortsetzung/#id10">Run application with options</a></h3>
+<h3><a class="toc-backref" href="posts/application-fortsetzung/#id11">Run application with options</a></h3>
 <p>The option <tt class="docutils literal"><span class="pre">--help</span></tt> is always available and lists all defined options of the application and their descriptions.</p>
 <p>The options of the example file now can be executed:</p>
-<pre class="code console"><a name="rest_code_d170bcac485843d7808c0524e85180ab-1"></a><span class="gp">$</span> python script.py --version
-<a name="rest_code_d170bcac485843d7808c0524e85180ab-2"></a><span class="go">Python: 3.6.0</span>
-<a name="rest_code_d170bcac485843d7808c0524e85180ab-3"></a><span class="go">GTK+:   3.22.6</span>
+<pre class="code console"><a name="rest_code_dac3892ca70646f9846f255d597e3cdc-1"></a><span class="gp">$</span> python script.py --version
+<a name="rest_code_dac3892ca70646f9846f255d597e3cdc-2"></a><span class="go">Python: 3.6.0</span>
+<a name="rest_code_dac3892ca70646f9846f255d597e3cdc-3"></a><span class="go">GTK+:   3.22.6</span>
 </pre>
 <p>or pass a string to the application's <em>Gtk.Label</em>:</p>
-<pre class="code console"><a name="rest_code_ce59a5703418440f92bccf0e486de2b2-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
+<pre class="code console"><a name="rest_code_5c03f97db7a940d1b120097c44b4962a-1"></a><span class="gp">$</span> python script.py --setlabel <span class="s2">"I can haz options!"</span>
 </pre>
 <p class="more"><a href="posts/application-fortsetzung/">Read more…</a></p>
 </div>

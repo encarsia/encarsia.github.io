@@ -303,48 +303,48 @@
 <div class="section" id="elements-and-pipelines">
 <h4><a class="toc-backref" href="posts/gst-player/#id8">Elements and pipelines</a></h4>
 <p>GStreamer manages all kinds of media data streams. Every step in the procession chain is defined as an <em>element</em> connected to <em>pipelines</em>. A common pipeline consists of "source", "filter"/"decode" and "sink" elements.</p>
-<pre class="code text"><a name="rest_code_8be95295750142fead94424362c8cc3d-1"></a>------------------------------------------------------
-<a name="rest_code_8be95295750142fead94424362c8cc3d-2"></a>|  pipeline                                          |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-3"></a>|                                                    |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-4"></a>|  -------------   ----------------   -------------- |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-5"></a>|  | source    |   | filter       |   | sink       | |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-6"></a>|  |           |-&gt;&gt;| decoder      |-&gt;&gt;|            | |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-7"></a>|  | input     |   | processing   |   | output     | |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-8"></a>|  -------------   ----------------   -------------- |
-<a name="rest_code_8be95295750142fead94424362c8cc3d-9"></a>------------------------------------------------------
+<pre class="code text"><a name="rest_code_92dd88f663f948a990d0c93408f199d9-1"></a>------------------------------------------------------
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-2"></a>|  pipeline                                          |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-3"></a>|                                                    |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-4"></a>|  -------------   ----------------   -------------- |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-5"></a>|  | source    |   | filter       |   | sink       | |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-6"></a>|  |           |-&gt;&gt;| decoder      |-&gt;&gt;|            | |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-7"></a>|  | input     |   | processing   |   | output     | |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-8"></a>|  -------------   ----------------   -------------- |
+<a name="rest_code_92dd88f663f948a990d0c93408f199d9-9"></a>------------------------------------------------------
 </pre>
 <p>This is done by the <em>Gst</em> module:</p>
-<pre class="code python"><a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-1"></a><span class="c1">#init Gst and create pipeline</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-2"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-4"></a>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-5"></a><span class="c1">#create elements</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-6"></a><span class="n">src</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"filesrc"</span><span class="p">,</span><span class="s2">"source"</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-7"></a><span class="n">decode</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"decodebin"</span><span class="p">,</span><span class="s2">"decode"</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-8"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-9"></a>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-10"></a><span class="c1">#configure elements</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-11"></a><span class="n">src</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span><span class="n">file_location</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-12"></a>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-13"></a><span class="c1">#add elements to pipeline</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-14"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-15"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-16"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-17"></a>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-18"></a><span class="c1">#link elements together</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-19"></a><span class="n">src</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
-<a name="rest_code_8c81fa6545e54fa5ada358d921aa82a2-20"></a><span class="n">decode</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-1"></a><span class="c1">#init Gst and create pipeline</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-2"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-4"></a>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-5"></a><span class="c1">#create elements</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-6"></a><span class="n">src</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"filesrc"</span><span class="p">,</span><span class="s2">"source"</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-7"></a><span class="n">decode</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"decodebin"</span><span class="p">,</span><span class="s2">"decode"</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-8"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-9"></a>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-10"></a><span class="c1">#configure elements</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-11"></a><span class="n">src</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span><span class="n">file_location</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-12"></a>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-13"></a><span class="c1">#add elements to pipeline</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-14"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-15"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-16"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-17"></a>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-18"></a><span class="c1">#link elements together</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-19"></a><span class="n">src</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">decode</span><span class="p">)</span>
+<a name="rest_code_5be1bf6f2d1147f5b580f7e63f3189b7-20"></a><span class="n">decode</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="predefined-pipelines">
 <h4><a class="toc-backref" href="posts/gst-player/#id9">Predefined pipelines</a></h4>
 <p>There are plenty of possibilities such like handling audio and video signals separated from each other by assigning a "videosink" and an "audiosink" and so on. On the other hand there are given pipelines for standard tasks like media playback.
 In this case there can be made use of the "playbin" element which also significantly reduces the code:</p>
-<pre class="code python"><a name="rest_code_2a92d7996e0b4a69934fa700c9482667-1"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-<a name="rest_code_2a92d7996e0b4a69934fa700c9482667-2"></a><span class="n">player</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"playbin"</span><span class="p">,</span><span class="s2">"player"</span><span class="p">)</span>
-<a name="rest_code_2a92d7996e0b4a69934fa700c9482667-3"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
-<a name="rest_code_2a92d7996e0b4a69934fa700c9482667-4"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"uri"</span><span class="p">,</span><span class="n">uri_of_file</span><span class="p">)</span>
-<a name="rest_code_2a92d7996e0b4a69934fa700c9482667-5"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"video-sink"</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_adb3a1f3be7d4da8b5f6b912143c6105-1"></a><span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<a name="rest_code_adb3a1f3be7d4da8b5f6b912143c6105-2"></a><span class="n">player</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"playbin"</span><span class="p">,</span><span class="s2">"player"</span><span class="p">)</span>
+<a name="rest_code_adb3a1f3be7d4da8b5f6b912143c6105-3"></a><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"xvimagesink"</span><span class="p">)</span>
+<a name="rest_code_adb3a1f3be7d4da8b5f6b912143c6105-4"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"uri"</span><span class="p">,</span><span class="n">uri_of_file</span><span class="p">)</span>
+<a name="rest_code_adb3a1f3be7d4da8b5f6b912143c6105-5"></a><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"video-sink"</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
 </pre>
 </div>
 </div>

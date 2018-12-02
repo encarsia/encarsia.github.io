@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -64,16 +64,30 @@ Verfügbare Optionen werden mit der Funktion ``add_main_option_entries(entrylist
             self.create_option_entry("--bollocks", description="Additional test option - exit"),
         ])
 
-    def create_option_entry(self,long_name, short_name=None, flags=0, arg=GLib.OptionArg.NONE,arg_data=None, description=None, arg_description=None):
+    def create_option_entry(self,
+                            long_name,
+                            short_name=None,
+                            flags=0,
+                            arg=GLib.OptionArg.NONE,
+                            arg_data=None,
+                            description=None,
+                            arg_description=None):
         option = GLib.OptionEntry()
         option.long_name = long_name.lstrip('-')
-        option.short_name = 0 if not short_name else short_name.lstrip('-')
+        option.short_name = 0 if not short_name else ord(short_name.lstrip('-'))
         option.flags = flags
         option.arg = arg
         option.arg_data = arg_data
         option.description = description
         option.arg_description = arg_description
         return option
+
+Shortnames
+**********
+
+Eine Option kann ein aus einem Buchstaben (oder besser gesagt "printable ASCII character different from ‘-‘") bestehenden Synonmym besitzen, den Shortname. Bei der Option ``--help`` ist dies gemeinhin ``-h``.
+
+Die ``short_name``-Variable von *OptionEntry* ist allerdings integer. Die in der `Dokumentation <https://lazka.github.io/pgi-docs/#GLib-2.0/classes/OptionEntry.html#GLib.OptionEntry>`_ nicht ersichtliche Lösung besteht darin, in der Variable die Dezimalkodierung des entsprechenden Zeichens zu übergeben, also etwa 97 für "a". Bei ungültigen Werten wird eine Fehlermeldung ausgegeben. Optionen ohne Shortname erhalten den Wert 0.
 
 Signal verbinden
 ****************
