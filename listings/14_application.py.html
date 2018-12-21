@@ -118,7 +118,12 @@
 <a href="#listings14_applicationpy-80">80</a>
 <a href="#listings14_applicationpy-81">81</a>
 <a href="#listings14_applicationpy-82">82</a>
-<a href="#listings14_applicationpy-83">83</a></pre></div></td>
+<a href="#listings14_applicationpy-83">83</a>
+<a href="#listings14_applicationpy-84">84</a>
+<a href="#listings14_applicationpy-85">85</a>
+<a href="#listings14_applicationpy-86">86</a>
+<a href="#listings14_applicationpy-87">87</a>
+<a href="#listings14_applicationpy-88">88</a></pre></div></td>
 <td class="code"><pre class="code literal-block"><a name="listings14_applicationpy-1"></a><span class="ch">#!/usr/bin/python</span>
 <a name="listings14_applicationpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
 <a name="listings14_applicationpy-3"></a>
@@ -158,50 +163,55 @@
 <a name="listings14_applicationpy-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
 <a name="listings14_applicationpy-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_shutdown</span><span class="p">)</span>
 <a name="listings14_applicationpy-39"></a>
-<a name="listings14_applicationpy-40"></a>    <span class="k">def</span> <span class="nf">on_app_startup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-41"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application startup signal emitted"</span><span class="p">)</span>
+<a name="listings14_applicationpy-40"></a>        <span class="n">appinfo</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">DesktopAppInfo</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"non.desktop"</span><span class="p">)</span>
+<a name="listings14_applicationpy-41"></a>        <span class="k">print</span><span class="p">(</span><span class="n">appinfo</span><span class="o">.</span><span class="n">get_startup_wm_class</span><span class="p">())</span>
 <a name="listings14_applicationpy-42"></a>
-<a name="listings14_applicationpy-43"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-44"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application activate signal emitted"</span><span class="p">)</span>
-<a name="listings14_applicationpy-45"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings14_applicationpy-46"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"13_dialoge.glade"</span><span class="p">)</span>
-<a name="listings14_applicationpy-47"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"14_giomenu.ui"</span><span class="p">)</span>
-<a name="listings14_applicationpy-48"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings14_applicationpy-49"></a>
-<a name="listings14_applicationpy-50"></a>        <span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
-<a name="listings14_applicationpy-51"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
-<a name="listings14_applicationpy-52"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<a name="listings14_applicationpy-53"></a>        
-<a name="listings14_applicationpy-54"></a>        <span class="c1">#display application name in upper panel of the GNOME Shell</span>
-<a name="listings14_applicationpy-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_wmclass</span><span class="p">(</span><span class="s2">"Application test"</span><span class="p">,</span><span class="s2">"Application test"</span><span class="p">)</span>
-<a name="listings14_applicationpy-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-57"></a>        
-<a name="listings14_applicationpy-58"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"about"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_about_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-59"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_message_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"quit"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_quit_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-61"></a>
-<a name="listings14_applicationpy-62"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-63"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application shutdown signal emitted"</span><span class="p">)</span>
-<a name="listings14_applicationpy-64"></a>
-<a name="listings14_applicationpy-65"></a>    <span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-<a name="listings14_applicationpy-66"></a>        <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<a name="listings14_applicationpy-67"></a>        <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
-<a name="listings14_applicationpy-68"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<a name="listings14_applicationpy-43"></a>    <span class="k">def</span> <span class="nf">on_app_startup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="listings14_applicationpy-44"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application startup signal emitted"</span><span class="p">)</span>
+<a name="listings14_applicationpy-45"></a>
+<a name="listings14_applicationpy-46"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="listings14_applicationpy-47"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application activate signal emitted"</span><span class="p">)</span>
+<a name="listings14_applicationpy-48"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings14_applicationpy-49"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"13_dialoge.glade"</span><span class="p">)</span>
+<a name="listings14_applicationpy-50"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"14_giomenu.ui"</span><span class="p">)</span>
+<a name="listings14_applicationpy-51"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings14_applicationpy-52"></a>
+<a name="listings14_applicationpy-53"></a>        <span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
+<a name="listings14_applicationpy-54"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
+<a name="listings14_applicationpy-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<a name="listings14_applicationpy-56"></a>        
+<a name="listings14_applicationpy-57"></a>        <span class="c1">#print(Gio.AppInfo.get_all())</span>
+<a name="listings14_applicationpy-58"></a>        
+<a name="listings14_applicationpy-59"></a>        <span class="c1">#display application name in upper panel of the GNOME Shell</span>
+<a name="listings14_applicationpy-60"></a>        <span class="c1">#self.obj("window").set_wmclass("Application test","Application test")</span>
+<a name="listings14_applicationpy-61"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings14_applicationpy-62"></a>        
+<a name="listings14_applicationpy-63"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"about"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_about_activated</span><span class="p">)</span>
+<a name="listings14_applicationpy-64"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_message_activated</span><span class="p">)</span>
+<a name="listings14_applicationpy-65"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"quit"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_quit_activated</span><span class="p">)</span>
+<a name="listings14_applicationpy-66"></a>
+<a name="listings14_applicationpy-67"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="listings14_applicationpy-68"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Gio.Application shutdown signal emitted"</span><span class="p">)</span>
 <a name="listings14_applicationpy-69"></a>
-<a name="listings14_applicationpy-70"></a>    <span class="k">def</span> <span class="nf">on_action_about_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-71"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-72"></a>
-<a name="listings14_applicationpy-73"></a>    <span class="k">def</span> <span class="nf">on_action_message_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-74"></a>        <span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a name="listings14_applicationpy-75"></a>
-<a name="listings14_applicationpy-76"></a>    <span class="k">def</span> <span class="nf">on_action_quit_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-77"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-<a name="listings14_applicationpy-78"></a>
-<a name="listings14_applicationpy-79"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
-<a name="listings14_applicationpy-80"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
-<a name="listings14_applicationpy-81"></a>
-<a name="listings14_applicationpy-82"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
-<a name="listings14_applicationpy-83"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<a name="listings14_applicationpy-70"></a>    <span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+<a name="listings14_applicationpy-71"></a>        <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a name="listings14_applicationpy-72"></a>        <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<a name="listings14_applicationpy-73"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<a name="listings14_applicationpy-74"></a>
+<a name="listings14_applicationpy-75"></a>    <span class="k">def</span> <span class="nf">on_action_about_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<a name="listings14_applicationpy-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings14_applicationpy-77"></a>
+<a name="listings14_applicationpy-78"></a>    <span class="k">def</span> <span class="nf">on_action_message_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<a name="listings14_applicationpy-79"></a>        <span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a name="listings14_applicationpy-80"></a>
+<a name="listings14_applicationpy-81"></a>    <span class="k">def</span> <span class="nf">on_action_quit_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<a name="listings14_applicationpy-82"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<a name="listings14_applicationpy-83"></a>
+<a name="listings14_applicationpy-84"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
+<a name="listings14_applicationpy-85"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+<a name="listings14_applicationpy-86"></a>
+<a name="listings14_applicationpy-87"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
+<a name="listings14_applicationpy-88"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 

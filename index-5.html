@@ -740,17 +740,17 @@ sollen zukünftig erhältlich sein</td>
 <div class="section" id="gmenu">
 <h3><a class="toc-backref" href="posts/application/#id6">GMenu</a></h3>
 <p>Die GNOME-Shell unterstützt Appmenüs, erreichbar über das obere Panel. Die XML-Datei muss so formatiert sein, dass sie als <em>GioMenu</em> erkannt wird:</p>
-<pre class="code xml"><a name="rest_code_0960598ebbc64c71b404482a2e3d6021-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-2"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-3"></a> <span class="nt">&lt;menu</span> <span class="na">id=</span><span class="s">"appmenu"</span><span class="nt">&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-4"></a>    <span class="nt">&lt;section&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-5"></a>      <span class="nt">&lt;item&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-6"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Menu Item<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-7"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"action"</span><span class="nt">&gt;</span>app.item<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-8"></a>      <span class="nt">&lt;/item&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-9"></a>    <span class="nt">&lt;/section&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-10"></a>  <span class="nt">&lt;/menu&gt;</span>
-<a name="rest_code_0960598ebbc64c71b404482a2e3d6021-11"></a><span class="nt">&lt;/interface&gt;</span>
+<pre class="code xml"><a name="rest_code_393ead2861704cbdbf7f58395ab24062-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-2"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-3"></a> <span class="nt">&lt;menu</span> <span class="na">id=</span><span class="s">"appmenu"</span><span class="nt">&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-4"></a>    <span class="nt">&lt;section&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-5"></a>      <span class="nt">&lt;item&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-6"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Menu Item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-7"></a>        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"action"</span><span class="nt">&gt;</span>app.item<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-8"></a>      <span class="nt">&lt;/item&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-9"></a>    <span class="nt">&lt;/section&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-10"></a>  <span class="nt">&lt;/menu&gt;</span>
+<a name="rest_code_393ead2861704cbdbf7f58395ab24062-11"></a><span class="nt">&lt;/interface&gt;</span>
 </pre>
 <p>Von Glade selbst würde diese XML-Datei als veraltetes Format erkannt, aber sie lässt sich trotzdem von <em>GtkBuilder</em> laden und anschließend kann man die Identifier nutzen.</p>
 </div>
@@ -761,40 +761,40 @@ sollen zukünftig erhältlich sein</td>
 <h3><a class="toc-backref" href="posts/application/#id8">Initialisierung von <em>GtkApplication</em></a></h3>
 <p>Bei der Initialisierung wird eine <em>application_id</em>- und <em>flags</em>-Angabe benötigt. Letztere können in der Regel bei 0 bzw. FLAGS_NONE belassen werden (siehe <a class="reference external" href="https://lazka.github.io/pgi-docs/Gio-2.0/flags.html#Gio.ApplicationFlags">Gio.ApplicationFlags</a>), die Konventionen für die application_id sind <a class="reference external" href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.Application.id_is_valid.html">hier dokumentiert</a>.</p>
 <p>Die Application kann nun mit verschiedenen Signalen verbunden werden, die zu bestimmten Ereignissen ausgelöst werden, aber es muss mindestens <tt class="docutils literal">activate</tt> verbunden werden:</p>
-<pre class="code python"><a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-2"></a>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-4"></a>    <span class="c1">#self.app.connect("startup", self.on_app_startup) #optional</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-6"></a>    <span class="c1">#self.app.connect("shutdown", self.on_app_shutdown) #optional</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-7"></a>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-8"></a><span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-9"></a>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-10"></a>    <span class="c1">#setting up GtkBuilder etc.</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-11"></a>    <span class="o">...</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-12"></a>    <span class="o">...</span>
-<a name="rest_code_8c2d8cfb52124c5882a9aaa8b26b3eb8-13"></a>    <span class="o">...</span>
+<pre class="code python"><a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-1"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-2"></a>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-4"></a>    <span class="c1">#self.app.connect("startup", self.on_app_startup) #optional</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-6"></a>    <span class="c1">#self.app.connect("shutdown", self.on_app_shutdown) #optional</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-7"></a>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-8"></a><span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-9"></a>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-10"></a>    <span class="c1">#setting up GtkBuilder etc.</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-11"></a>    <span class="o">...</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-12"></a>    <span class="o">...</span>
+<a name="rest_code_e7ff3a3ae33849049d80db6546c6256b-13"></a>    <span class="o">...</span>
 </pre>
 </div>
 <div class="section" id="appmenu">
 <h3><a class="toc-backref" href="posts/application/#id9">Appmenu</a></h3>
 <p>Wie oben bereits erwähnt, lässt sich die GMenu-XML von <em>GtkBuilder</em> laden, dann wird das Menü der Application zugewiesen:</p>
-<pre class="code python"><a name="rest_code_ba5b4c19af2d439684de5d572fafa0e2-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"menu.ui"</span><span class="p">)</span>
-<a name="rest_code_ba5b4c19af2d439684de5d572fafa0e2-2"></a><span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_52a002efbe174c338350f6b8e8f0ee92-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"menu.ui"</span><span class="p">)</span>
+<a name="rest_code_52a002efbe174c338350f6b8e8f0ee92-2"></a><span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
 </pre>
 <p>Die zu den Menüeinträgen verknüpften Funktionen müssen nun als Actions, genauer <em>GioSimpleActions</em>, erstellt und analog zur herkömmlichen Signalverknüpfung über <tt class="docutils literal">connect</tt> verbunden werden.</p>
-<pre class="code python"><a name="rest_code_05cfa7ba7f154efab947923434e99c1a-1"></a><span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-<a name="rest_code_05cfa7ba7f154efab947923434e99c1a-2"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<a name="rest_code_05cfa7ba7f154efab947923434e99c1a-3"></a>    <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
-<a name="rest_code_05cfa7ba7f154efab947923434e99c1a-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_736700c8d77d48a4afc957585ad4e469-1"></a><span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+<a name="rest_code_736700c8d77d48a4afc957585ad4e469-2"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a name="rest_code_736700c8d77d48a4afc957585ad4e469-3"></a>    <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<a name="rest_code_736700c8d77d48a4afc957585ad4e469-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 </pre>
 <p>Im Beispiel werden Actions zum Aufrufen der Dialoge erstellt.</p>
 </div>
 <div class="section" id="starten-und-beenden">
 <h3><a class="toc-backref" href="posts/application/#id10">Starten und Beenden</a></h3>
 <p><em>GtkApplication</em> übernimmt die Handhabung des GTK+-Mainloops, das heißt, es nicht mehr notwendig GTK+ manuell zu starten oder zu beenden. Stattdessen werden <tt class="docutils literal">run()</tt> und <tt class="docutils literal">quit()</tt> verwendet:</p>
-<pre class="code text"><a name="rest_code_a3ed83db2e854604a8e0357ae11b64cb-1"></a>Gtk.main()      -&gt;  app.run(argv)
-<a name="rest_code_a3ed83db2e854604a8e0357ae11b64cb-2"></a>Gtk.main_quit() -&gt;  app.quit()
+<pre class="code text"><a name="rest_code_cdc6a831a9214544b0bd833631e15b43-1"></a>Gtk.main()      -&gt;  app.run(argv)
+<a name="rest_code_cdc6a831a9214544b0bd833631e15b43-2"></a>Gtk.main_quit() -&gt;  app.quit()
 </pre>
 <p>Beendet man das Programm über den [X]-Button oder den "Schließen"-Eintrag des Appmenus (immer vorhanden), wird automatisch das "shutdown"-Signal ausgelöst (siehe oben). Das heißt, es müssen keine entsprechenden Signale definiert werden. "Shutdown" wird auch ausgelöst, wenn bei der Initialisierung nicht mit einer Funktion verbunden wird.</p>
 </div>
