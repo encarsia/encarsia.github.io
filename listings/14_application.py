@@ -37,6 +37,9 @@ class ExampleApp:
         self.app.connect("activate", self.on_app_activate)
         self.app.connect("shutdown", self.on_app_shutdown)
 
+        appinfo = Gio.DesktopAppInfo.new("non.desktop")
+        print(appinfo.get_startup_wm_class())
+
     def on_app_startup(self, app):
         print("Gio.Application startup signal emitted")
 
@@ -51,8 +54,10 @@ class ExampleApp:
         self.obj = builder.get_object
         self.obj("window").set_application(app)
         
+        #print(Gio.AppInfo.get_all())
+        
         #display application name in upper panel of the GNOME Shell
-        self.obj("window").set_wmclass("Application test","Application test")
+        #self.obj("window").set_wmclass("Application test","Application test")
         self.obj("window").show_all()
         
         self.add_simple_action("about", self.on_action_about_activated)
