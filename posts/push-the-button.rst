@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -16,7 +16,7 @@
 Glade
 -----
 
-Ausgehend vom `letzten Beispiel <link://slug/fenster-mit-aussicht>`_ werden nun ein paar Elemente hinzugefügt, ein Label, ein Button und ein Togglebutton. Jedes Anzeigen- oder Steuerungselement benötigt je ein Container. In diesem Beispiel werden vertikale Boxen angelegt, diese lassen sich jederzeit erweitern, es ist auch möglich, Container ineinander zu verschachteln.
+Ausgehend vom `letzten Beispiel <link://slug/fenster-mit-aussicht>`_ werden nun ein paar Elemente hinzugefügt - ein Label, ein Button und ein Togglebutton. Jedes Anzeigen- oder Steuerungselement benötigt je ein Container. In diesem Beispiel werden vertikale Boxen angelegt, diese lassen sich jederzeit erweitern, es ist auch möglich, Container beliebig ineinander zu verschachteln.
 
 Den Elementen Button und Togglebutton wird auf *clicked* bzw. *toggled* ein Signal zugewiesen. Label dient nur der Anzeige von Text, hier wird kein Signal benötigt.
 
@@ -35,10 +35,10 @@ Alle *Gtk.Builder*-Objekte können über die Funktion ``get_object`` angesproche
 
     Gtk.Builder.get_object("name").funktion(options)
 
-    #Beispiel GtkLabel
+    # Beispiel GtkLabel
     Gtk.Builder.get_object("label_name").set_text("neuer Text")
 
-Der Togglebutton soll die Labelanzeige leeren und Button inaktivieren und bei erneutem Klick wieder freigeben.
+Der Togglebutton soll die Labelanzeige leeren und den Button inaktivieren und bei erneutem Klick wieder freigeben.
 
 Der Zustand des Togglebuttons kann mit der Funktion ``get_active()`` abgerufen werden (gibt True/False zurück).
 
@@ -46,11 +46,11 @@ Abhängig vom verwendeten Widget erfordert die Signal-Funktion mindestens einen 
 
 .. code-block:: python
 
-    def on_t_button_toggled(self,widget):
+    def on_t_button_toggled(self, widget):
         if widget.get_active():
-            #do something
+            # do something
         else:
-            #do something different
+            # do something different
 
 .. TEASER_END
 

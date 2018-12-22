@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import gi
-gi.require_version('Gtk','3.0')
-from gi.repository import Gtk,Gdk
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk
+
 
 class Handler:
 
-    def on_window_destroy(self,*args):
+    def on_window_destroy(self, *args):
         Gtk.main_quit()
+
 
 class Example:
     
@@ -47,18 +49,19 @@ levelbar trough block.filled.full {
         )
 
         self.bar = self.builder.get_object("lev4")
-        self.bar.add_offset_value("alert",.9)
+        self.bar.add_offset_value("alert", .9)
 
-        print("low:  ",self.bar.get_offset_value("low"))
-        print("high: ",self.bar.get_offset_value("high"))
-        print("alert:",self.bar.get_offset_value("alert"))
-        print("full: ",self.bar.get_offset_value("full"))
+        print("low:  ", self.bar.get_offset_value("low"))
+        print("high: ", self.bar.get_offset_value("high"))
+        print("alert:", self.bar.get_offset_value("alert"))
+        print("full: ", self.bar.get_offset_value("full"))
 
         window = self.builder.get_object("window")
         window.show_all()
 
     def main(self):
         Gtk.main()
+
 
 x = Example()
 x.main()

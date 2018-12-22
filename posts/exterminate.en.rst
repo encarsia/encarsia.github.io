@@ -25,7 +25,7 @@ A button click shall open a Python prompt within the terminal window, so we need
 Python
 ------
 
-Elements used in Glade that are not part of the *Gtk* module have to be registered as a *GObject* object (this is also required when using a *GtkSourceView* widget as the functionality is provided by the *GtkSource module):
+Elements used in Glade that are not part of the *Gtk* module have to be registered as a *GObject* object (this is also required when using a *GtkSourceView* widget as the functionality is provided by the *GtkSource* module):
 
 .. code:: python
 

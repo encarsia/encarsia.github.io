@@ -3,42 +3,43 @@
 
 import os
 import time
+
 import gi
-
-gi.require_version('Gtk','3.0')
-gi.require_version('Gst','1.0')
-gi.require_version('GstVideo','1.0')
-
+gi.require_version("Gtk", "3.0")
+gi.require_version("Gst", "1.0")
+gi.require_version("GstVideo", "1.0")
 from gi.repository import Gst, Gtk, GLib, GstVideo
+
 
 class GenericException(Exception):
     pass
 
+
 class Handler:
 
-    def on_window_destroy(self,*args):
+    def on_window_destroy(self, *args):
         Gtk.main_quit()
 
-    def on_playpause_togglebutton_toggled(self,widget):
+    def on_playpause_togglebutton_toggled(self, widget):
         if app.playpause_button.get_active():
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY,Gtk.IconSize.BUTTON)
-            widget.set_property("image",img)
+            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY, Gtk.IconSize.BUTTON)
+            widget.set_property("image", img)
             app.pause()
         else:
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE,Gtk.IconSize.BUTTON)
-            widget.set_property("image",img)
+            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE, Gtk.IconSize.BUTTON)
+            widget.set_property("image", img)
             app.play()
        
-    def on_forward_clicked(self,widget):
+    def on_forward_clicked(self, widget):
         app.skip_time()
 
-    def on_backward_clicked(self,widget):
+    def on_backward_clicked(self, widget):
         app.skip_time(-1)
     
-    def on_progress_value_changed(self,widget):
+    def on_progress_value_changed(self, widget):
         app.on_slider_seek
 
-    def on_vbutton_clicked(self,widget):
+    def on_vbutton_clicked(self, widget):
         app.clear_playbin()
         app.setup_player("mediaplayer.avi")
         if app.playpause_button.get_active() is True:
@@ -46,10 +47,11 @@ class Handler:
         else:
             app.play()
         
-    def on_ibutton_clicked(self,widget):
+    def on_ibutton_clicked(self, widget):
         app.clear_playbin()
         app.setup_player("mediaplayer.jpg")
         app.pause()
+
 
 class GstPlayer:
 
@@ -72,19 +74,19 @@ class GstPlayer:
         window.show_all()
 
         #setting up videoplayer
-        self.player = Gst.ElementFactory.make("playbin","player")
+        self.player = Gst.ElementFactory.make("playbin", "player")
         self.sink = Gst.ElementFactory.make("xvimagesink")
-        self.sink.set_property("force-aspect-ratio",True)
+        self.sink.set_property("force-aspect-ratio", True)
 
     def setup_player(self,f):
         #file to play must be transmitted as uri
-        uri = "file://"+os.path.abspath(f)
-        self.player.set_property("uri",uri)
+        uri = "file://" + os.path.abspath(f)
+        self.player.set_property("uri", uri)
         
         #make playbin play in specified DrawingArea widget instead of separate, GstVideo needed
-        win_id = self.movie_window.get_property('window').get_xid()
+        win_id = self.movie_window.get_property("window").get_xid()
         self.sink.set_window_handle(win_id)
-        self.player.set_property("video-sink",self.sink)
+        self.player.set_property("video-sink", self.sink)
         
     def play(self):
         self.is_playing = True
@@ -110,7 +112,7 @@ class GstPlayer:
         else:
             success, self.duration = self.player.query_duration(Gst.Format.TIME)
             #adjust duration and position relative to absolute scale of 100
-            self.mult = 100 / ( self.duration / Gst.SECOND )
+            self.mult = 100 / (self.duration / Gst.SECOND)
             if not success:
                 raise GenericException("Couldn't fetch duration")
             #fetching the position, in nanosecs
@@ -120,13 +122,11 @@ class GstPlayer:
             
             # block seek handler so we don't seek when we set_value()
             self.slider.handler_block(self.slider_handler_id)
-            
-            self.slider.set_value( float(position) / Gst.SECOND * self.mult)
-            
+            self.slider.set_value(float(position) / Gst.SECOND * self.mult)
             self.slider.handler_unblock(self.slider_handler_id)
         return True # continue calling every x milliseconds
 
-    def on_slider_seek(self,widget):
+    def on_slider_seek(self, widget):
         seek_time = app.slider.get_value()
         self.player.seek_simple(Gst.Format.TIME,  Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, seek_time * Gst.SECOND / self.mult)
         
@@ -138,6 +138,7 @@ class GstPlayer:
 
     def main(self):
         Gtk.main()
+
 
 app = GstPlayer()
 app.main()

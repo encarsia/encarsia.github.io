@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -22,7 +22,7 @@ Für die Speicherung und Anzeige von Daten in Listen- oder Tabellenform benötig
 
 2. Widgets:
 
-    * *TreeView:* dieses Widget eignet sich zum Anzeigen, Sortieren, Bearbeiten von Daten, wird von beiden Modelltypen verwendet; es können parallel mehrere TreeView-Widgets angelegt werden, die auf die selbe Datenbasis (Modell) zurückgreifen, aber zum Beispiel verschiedene Spalten anzeigen
+    * *TreeView:* dieses Widget eignet sich zum Anzeigen, Sortieren, Bearbeiten von Daten, wird von beiden Modelltypen verwendet; es können parallel mehrere TreeView-Widgets angelegt werden, die auf dieselbe Datenbasis (Modell) zurückgreifen, aber zum Beispiel verschiedene Spalten anzeigen
     * *ComboBox:* Comboboxen dienen der Auswahl aus einer gegebenen Liste, deren Datenbasis ein List- oder TreeStore sein kann (siehe Artikel zu `Spinbutton und Combobox <link://slug/qual-der-wahl>`_)
     * *CellRenderers:* Unterwidgets, in denen die anzuzeigenden Daten, deren Layout und weitere Optionen wie Bearbeitbarkeit festgelegt werden
 

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -25,8 +25,8 @@ Voraussetzung für die Verwendung ist die Installation der Python-Bindings. Dies
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.Button*), Pause (*Gtk.Togglebutton*)
+ * **Darstellungsbereich der Mediendatei:** Widget *GtkDrawingArea*
+ * **Steuerungselemente:** Vor-/Zurückspulen (*GtkButton*), Pause (*GtkTogglebutton*)
  * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
  * **Playback manipulieren:** Buttons zum Stummschalten und Drehen des Videos
 
@@ -38,7 +38,7 @@ Player einrichten
 
 Der VLC-Player wird initiiert, sobald das dazugehörige Widget, in diesem Fall also *Gtk.DrawingArea* gezeichnet wird. Dazu wird das Signal ``realize`` genutzt, das grundsätzlich für die Klasse der Widgets verfügbar ist.
 
-.. code-block:: python
+.. code:: python
 
     vlcOptions = "--no-xlib"
     win_id = widget.get_window().get_xid()
@@ -54,12 +54,12 @@ Medium abspielen
 
 Wie auch der GStreamer-Player kann der VLC-Player viele Video-/Audio- oder Bild-Formate anzeigen bzw. abspielen.
 
-.. code-block:: python
+.. code:: python
 
     player.set_mrl(file_url)
-    #Datei abspielen
+    # Datei abspielen
     player.play()
-    #Pause/Play-Schalter
+    # Pause/Play-Schalter
     player.pause()
 
 Positionsanzeige
@@ -67,11 +67,11 @@ Positionsanzeige
 
 Die Umsetzung des Fortschrittsbalkens und die Nutzung als Schiebereglers gestaltet sich ziemlich einfach.
 
-.. code-block:: python
+.. code:: python
 
-    #Position abfragen
+    # Position abfragen
     player.get_position()
-    #Position bestimmen
+    # Position bestimmen
     player.set_position(val)
 
 Der Wertebereich liegt dabei zwischen 0 und 1. Das Problem bei diesen Funktionen ist, dass sie relativ ressourcenintensiv arbeiten und das Playback mitunter verruckelt ist.
@@ -80,7 +80,7 @@ Die Lösung im hiesigen Beispiel besteht darin, ``get_position``-Abfragen zu umg
 Möglichkeiten und Limitierungen
 -------------------------------
 
-Die Nutzung der LibVLC-Python-Bindings erweist sich als einfach und angesichts der GStreamer-Umsetzung als geradezu intuitiv. Auch das `"Headerbar-Problem" <https://plus.google.com/105146352752269764996/posts/jDcBAztBxM9>`__ besteht nicht.
+Die Nutzung der LibVLC-Python-Bindings erweist sich als einfach und angesichts der GStreamer-Umsetzung als geradezu intuitiv. Auch das `"Headerbar-Problem" <https://plus.google.com/105146352752269764996/posts/jDcBAztBxM9>`_ besteht nicht.
 
 Auf der anderen Seite greift man hier auf großes Projekt zurück, man muss VLC und die Python-Bindings installiert haben anstatt einfach das GStreamer-Modul aus dem GObject Introspection-Repository zu verwenden. Auch ist im Test der Ressourcenverbrauch von VLC gegenüber GStreamer größer.
 

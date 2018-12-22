@@ -3,49 +3,55 @@
 
 import os
 import sys
+
 import gi
-gi.require_version('Gtk', '3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, GdkPixbuf
+
 
 class Handler:
 
-    def on_window_destroy(self,window):
+    def on_window_destroy(self, window):
         window.close()
 
-    def on_dialog_close(self,widget,*event):
+    def on_dialog_close(self, widget, *event):
         widget.hide_on_delete()
         return True
 
-    def on_filechooser_dialog_response(self,widget,response):
+    def on_filechooser_dialog_response(self, widget, response):
         if response == -6:
             print("Cancel")
         elif response == -5:
-            print("File selection: %s" % widget.get_filename())
+            print("File selection: {}".format(widget.get_filename()))
         self.on_dialog_close(widget)
 
-    def on_filechooser_dialog_file_activated(self,widget):
-        self.on_filechooser_dialog_response(widget,-5)
+    def on_filechooser_dialog_file_activated(self, widget):
+        self.on_filechooser_dialog_response(widget, -5)
 
-    def on_filechooser_dialog_update_preview(self,widget):
+    def on_filechooser_dialog_update_preview(self, widget):
         if widget.get_filename() != None and os.path.isfile(widget.get_filename()):
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(widget.get_filename(),200,200,True)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(widget.get_filename(),
+                                                             200,
+                                                             200,
+                                                             True,
+                                                            )
             app.obj("preview").set_from_pixbuf(pixbuf)
 
     def on_file_button_clicked(self,widget):
         app.obj("filechooser_dialog").show_all()
 
     def on_dir_button_clicked(self,widget):
-
-        dialog = Gtk.FileChooserDialog("Choose a folder",
-                                    app.obj("window"),
-                                    Gtk.FileChooserAction.SELECT_FOLDER,
-                                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                    Gtk.STOCK_APPLY, Gtk.ResponseType.OK))
+        dialog = Gtk.FileChooserDialog(title="Choose a folder",
+                                       parent=app.obj("window"),
+                                       action=Gtk.FileChooserAction.SELECT_FOLDER,
+                                       )
         dialog.set_default_size(600, 300)
+        dialog.add_buttons("Cancel", Gtk.ResponseType.CANCEL,
+                           "OK", Gtk.ResponseType.OK)
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            print("Folder selection: %s" % dialog.get_filename())
+            print("Folder selection: {}".format(dialog.get_filename()))
         elif response == Gtk.ResponseType.CANCEL:
             print("Cancel")
 
@@ -66,7 +72,6 @@ class ExampleApp:
 
         self.obj = builder.get_object
         self.obj("window").set_application(app)
-        self.obj("window").set_wmclass("Filechooser example","Filechooser example")
         self.obj("window").show_all()
 
         #add filters to filechooser dialog
@@ -78,11 +83,11 @@ class ExampleApp:
         self.obj("filechooser_dialog").add_filter(self.obj("jpg_filter"))
 
         #add buttons to headerbar of Glade generated dialog
-        button = Gtk.Button.new_from_stock(Gtk.STOCK_CANCEL)
-        button.set_property("can-default",True)
+        button = Gtk.Button.new_with_label("Cancel")
+        button.set_property("can-default", True)
         self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.CANCEL)
-        button = Gtk.Button.new_from_stock(Gtk.STOCK_APPLY)
-        button.set_property("can-default",True)
+        button = Gtk.Button.new_with_label("OK")
+        button.set_property("can-default", True)
         self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
 
     def on_app_shutdown(self, app):
@@ -90,6 +95,7 @@ class ExampleApp:
 
     def run(self, argv):
         self.app.run(argv)
+
 
 app = ExampleApp()
 app.run(sys.argv)

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -99,11 +99,11 @@ Analog zum Laden erfolgt das Speichern mit *GtkSource.FileSaver*. Im Beispiel sp
 
 .. code-block:: python
 
-    #bestehende Datei überschreiben
+    # bestehende Datei überschreiben
     saver = GtkSource.FileSaver.new(buffer, sourcefile)
-    #Datei unter anderem Namen speichern
+    # Datei unter anderem Namen speichern
     saver = GtkSource.FileSaver.new_with_target(buffer, sourcefile, targetfile)
-    #Speichern ausführen
+    # Speichern ausführen
     saver.save_async(0, None, None, None, None, None)
 
 Text hervorheben
@@ -111,7 +111,7 @@ Text hervorheben
 
 Zunächst ist festzustellen, dass es sich bei den Funktionen suchen(/ersetzen)/markieren und Texthervorhebungen um zwei getrennt voneinander auszuführenden Mechanismen handelt, für die *GtkSource.Settings* eingerichtet werden müssen:
 
-.. code-block:: python
+.. code:: python
 
     settings = GtkSource.SearchSettings()
     search_context = GtkSource.SearchContext.new(buffer, settings)
@@ -122,7 +122,7 @@ Die naheliegende Lösung ist die Ausführung von ``settings.get_search_text`` be
 
 Die andere Möglichkeit, bei der kein Signal benötigt wird, ist die direkte Anbindung der SearchSettings-Eigenschaft "search-text" an das Sucheingabefeld:
 
-.. code-block:: python
+.. code:: python
 
     builder.get_object("search_entry").bind_property('text', settings, 'search-text')
 
@@ -133,7 +133,7 @@ Text markieren
 
 Die Markierungsfunktionen und Cursorplatzierung erbt *GtkSource.Buffer* von *Gtk.TextBuffer*, die Suche wird mit SeachContexts ``forward2`` ausgeführt.
 
-.. code-block:: python
+.. code:: python
 
     def find_text(self, start_offset=1):
         buf = self.buffer
@@ -159,7 +159,7 @@ Das Widget zeigt die verfügbaren Stile an. Es ist nicht möglich, lokale Stile 
 
 Der angewählte Style lässt sich dann einfach auf den gewünschten Buffer anwenden:
 
-.. code-block:: python
+.. code:: python
 
     def on_signal_emitted(self, widget, event):
         buffer.set_style_scheme(widget.get_style_scheme())

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -37,11 +37,11 @@ Der MessageDialog ist ein Standarddialog zum Anzeigen oder Abfragen von Informat
 Buttons und Responses
 *********************
 
-Dialoge besitzen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.
+Dialoge verfügen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.
 
 Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter *"Allgemein"* eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des *GtkDialog*.
 
-Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType>`_):
+Standardbuttons wie im MessageDialog auswählbar besitzen vorgegebene Response-Kennungen (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType>`_):
 
  * **Ok** -5
  * **Abbrechen** -6
@@ -63,16 +63,16 @@ Python
 Dialog aufrufen
 ***************
 
-Da Dialoge auch *Gtk.Windows* sind, lassen sie sich mit ``show_all()`` aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit ``run()`` auf. Dies bewirkt, dass das Dialogfenster über das Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.
+Da Dialoge auch *Gtk.Windows* sind, lassen sie sich mit ``show_all()`` aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit ``run()`` auf. Dies bewirkt, dass das Dialogfenster über dem Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.
 
 Responses
 *********
 
-Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt, jede innerhalb einer einzelnen Funktion verarbeitet werden:
+Beim Auslösen des *response*-Signals wird die Antwortkennung als Parameter übergeben, so kann, wie bereits erwähnt, jede Kennung innerhalb einer einzelnen Funktion verarbeitet werden:
 
 .. code-block:: python
 
-    def on_dialog_response(self,widget,response):
+    def on_dialog_response(self, widget, response):
         if response == 0:
             widget.hide_on_delete()
         elif response == 1:
@@ -87,18 +87,18 @@ Mit der Funktion ``hide_on_delete()`` ausgeblendete Dialoge oder reguläre Fenst
 
 .. code-block:: python
 
-    def on_dialog_delete_event(self,widget,event):
+    def on_dialog_delete_event(self, widget, event):
         widget.hide_on_delete()
         return True
 
 Mehrere Glade-Dateien
 *********************
 
-Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden, es wird die ``set_transient_for``-Funktion von *GtkWindow* benötigt:
+Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden. Hierzu wird die ``set_transient_for``-Funktion von *GtkWindow* benötigt:
 
 .. code-block:: python
 
-    dialog.set_transient_for(mainwindow) 
+    dialog.set_transient_for(mainwindow)
 
 Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter *"Allgemein > Vorübergehend für:"* angegeben.
 

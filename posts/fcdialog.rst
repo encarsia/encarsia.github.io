@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -27,7 +27,7 @@ Es ist erforderlich anzugeben, für welche Aktion der Dialog gedacht ist, was *G
 Action area und Responses
 *************************
 
-Responses sind Antwortkennungen, die beim Auslösen des Signals *response* übergeben werden. Buttons in der "action area" werden jeweils Response-Werte zugewiesen anstatt das *clicked*-Signal der Buttons zu nutzen.
+Responses sind Antwortkennungen, die beim Auslösen des Signals *response* übergeben werden. Buttons in der "action area" werden jeweils Response-Werte zugewiesen anstatt das *clicked*-Signal der Buttons zu nutzen (weitere Erklärungen dazu im Artikel zu `Dialogen <link://slug/dialoge>`_).
 
 Standardmäßig wird die "action area" unter dem Dateibrowserbereich angelegt.
 
@@ -50,7 +50,7 @@ XML-Datei
 
 Man legt die Headerbar mit Button(s) an, anschließend öffnet man die Glade-Datei in einem Texteditor und fügt dem Element ``<action-widgets>`` die entsprechenden Zeilen hinzu:
 
-.. code-block:: html
+.. code:: html
 
   <object class="GtkFileChooserDialog" id="filechooser_dialog">
     <property abc ></property>
@@ -77,23 +77,23 @@ Ein Button wird nach dem Schema
 
 .. code:: python
 
- widget.add_action_widget(button,response)
+    widget.add_action_widget(button, response)
 
 hinzugefügt. Wichtig ist es, beim Button die Widget-Eigenschaft "can-default" zu aktivieren:
 
 .. code:: python
 
- button.set_property("can-default",True)
+    button.set_property("can-default", True)
 
-Im Beispiel erhält der Dialog die beiden Standardbuttons "Anwenden"/"Abbrechen":
+Im Beispiel erhält der Dialog die beiden Standardbuttons "OK"/"Cancel":
 
-.. code-block:: python
+.. code:: python
 
-    button = Gtk.Button.new_from_stock(Gtk.STOCK_CANCEL)
-    button.set_property("can-default",True)
+    button = Gtk.Button.new_with_label("Cancel")
+    button.set_property("can-default", True)
     self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.CANCEL)
-    button = Gtk.Button.new_from_stock(Gtk.STOCK_APPLY)
-    button.set_property("can-default",True)
+    button = Gtk.Button.new_with_label("OK")
+    button.set_property("can-default", True)
     self.obj("filechooser_dialog").add_action_widget(button, Gtk.ResponseType.OK)
 
 Um die Dateiauswahl auch auf Doppelklick zu ermöglichen, wird neben des *response*-Signals noch das Signal *file-activated* benötigt.
@@ -101,7 +101,7 @@ Um die Dateiauswahl auch auf Doppelklick zu ermöglichen, wird neben des *respon
 Vorschau-Widget
 ***************
 
-Der Dialog besitzt die Option ein Vorschau-Widget einzubinden. Dafür aktiviert man in den Dialog-Eigenschaften *"Vorschau-Widget aktiv"* und wählt unter *"Vorschau-Widget"* ein freies Widget (z.B. ein *GtkImage*). Möglicherweise muss man dieses Widget zunächst in ein leeres Container-Widget erstellen und dort in einen freien Bereich ziehen.
+Der Dialog besitzt die Option, ein Vorschau-Widget einzubinden. Dafür aktiviert man in den Dialog-Eigenschaften *"Vorschau-Widget aktiv"* und wählt unter *"Vorschau-Widget"* ein freies Widget (z.B. ein *GtkImage*). Möglicherweise muss man dieses Widget zunächst in ein leeres Container-Widget erstellen und dort in einen freien Bereich ziehen.
 
 Wenn eine Aktualisierung der Vorschau angefordert wird, wird das Signal *update-preview* ausgelöst.
 
@@ -120,24 +120,24 @@ Dialog ohne Glade
 
 Der *FileChooserDialog* lässt sich auch ziemlich einfach ohne Glade realisieren, zudem lassen sich die oben genannten Probleme mit Buttons in der Headerbar vermeiden. Der Dialog wird nach folgendem Schema erstellt:
 
-.. code-block:: python
+.. code:: python
 
-    dialog = Gtk.FileChooserDialog("window title",
-                                parent_window,
-                                file_chooser_action,
-                                (button1,response1,
-                                button2,response2))
+    dialog = Gtk.FileChooserDialog(title="window title",
+                                   parent=parent_window,
+                                   action=file_chooser_action)
+    dialog.add_buttons(button1, response1,
+                       button2, response2)
 
 Der Dialog wird dann direkt aufgerufen und verarbeitet:
 
-.. code-block:: python
+.. code:: python
 
- response = dialog.run()
- if response == response1:
-     ...
- elif response == response2:
-     ...
- dialog.destroy()
+    response = dialog.run()
+    if response == response1:
+        ...
+    elif response == response2:
+        ...
+    dialog.destroy()
 
 
 FileFilter
@@ -149,15 +149,15 @@ Es gibt zwei Möglichkeiten, einen *Filefilter* anzuwenden:
 
 .. code:: python
 
- dialog.set_filter(filter)
+    dialog.set_filter(filter)
 
 2. Wahl per Dropdown-Menü: Der Nutzer kann zwischen mehreren vorgegebenen Filtern wählen:
 
 .. code:: python
 
- dialog.add_filter(filter1)
- dialog.add_filter(filter2)
- ...
+    dialog.add_filter(filter1)
+    dialog.add_filter(filter2)
+    ...
 
 .. TEASER_END
 

@@ -47,12 +47,13 @@ ComboBox
     Creating the widget you are prompted to choose as "TreeView Model". In the edit mode accessible via *"Edit > Hierarchy"* there is created a CellRendererText. In the first field ("Text") the column to load the items of the dropdown menu from is set. To process the selection you will need the *changed* signal.
 
 TreeView #1
-    The first TreeView widget is placed within a *Gtk.ScrolledWindow* container. Like in a ComboBox there are created CellRenderer representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
+    The first TreeView widget is placed within a *Gtk.ScrolledWindow* container. Like in a ComboBox there are created CellRenderers representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
     Columns do not have to be sorted according to the columns they show.
 
 TreeView #2
-    The second TreeView widget is created within a *Gtk.ViewPort*. This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the *Gtk.ScrolledWindow*.
-    The sort indicator is deactivated and the middle column ("Description") is made editible with the signal *edited" allocated.
+    The second TreeView widget is created within a *Gtk.ViewPort*.
+    This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the *Gtk.ScrolledWindow*.
+    The sort indicator is deactivated and the middle column ("Description") is made editible with the signal "edited" allocated.
 
 Button
     The button's function is appending a row to the ListStore, so the *clicked* signal is required.

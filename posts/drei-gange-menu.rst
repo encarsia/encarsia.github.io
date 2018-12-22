@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -28,7 +28,7 @@ Sehr simpel erfolgt das Anlegen von Shortcuts im "Edit"-Fenster unter *"Hierarch
 Toolbar
 *******
 
-Toolbars können verschiedene Widgets wie Buttons, Togglebuttons, Radiobuttons oder (Unter-)Menüs enthalten. Die Erstellung und Bearbeitung erfolgt analog zum Menü über "Edit...".
+Toolbars können verschiedene Widgets wie Buttons, Togglebuttons, Radiobuttons oder (Unter-)Menüs enthalten. Die Erstellung und Bearbeitung erfolgt analog zum Menü über *"Edit..."*.
 
 Statusbar
 *********
@@ -42,7 +42,7 @@ Um Nachrichten an die Statusbar zu senden, bedient man sich einfach der Funktion
 
 .. code-block:: python
 
-    widget.push(content_id,message)
+    widget.push(content_id, message)
 
 Wenn man Meldungen ausschließlich "obendrauf" einblendet, kann man als content_id eine beliebige Zahl angeben, zum Beispiel ``0``.
 

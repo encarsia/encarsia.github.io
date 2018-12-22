@@ -16,7 +16,7 @@ Mit Glade erstellte Projektdateien sind GtkBuilder_-XML-Dateien, die Verbindung 
 
 Da es in den letzten Jahren Versionssprünge sowohl bei Python als auch GTK+ gegeben hat (jeweils von 2.x auf 3.x), gibt es viele Dokumentationen und Tutorials, die nicht 1:1 anwendbar sind, d.h. die Funktionen sind meist gleich, nur die Syntax unterscheidet sich minimal (siehe Links).
 
-An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.5.2 und Glade 3.20.0.
+An dieser Stelle versuche ich aktuell zu bleiben, derzeit mit Python 3.7.1 und Glade 3.22.1.
 
 .. _gpt: https://github.com/encarsia/gpt
 .. _GtkBuilder: https://developer.gnome.org/gtk3/stable/GtkBuilder.html
@@ -47,6 +47,8 @@ Themen
 - `Stack und Notebook <link://slug/stacksnotebooks>`_
 - `Texteditor mit GtkSourceView <link://slug/gtksv>`_
 - `Überarbeitete Oberfläche in Glade 3.22 <link://slug/glade-322>`_
+- `Widget-Änderungen in GTK+ 2.20+ <link://slug/gtk220neu>`_
+- `GTK+-Anwendung mit setuptools packen <link://slug/setuptools-spicker>`_
 
 Dateien
 -------
@@ -73,5 +75,6 @@ Links
 Todo
 ----
 
-- WebKit2
+- GStreamer-Player mit gtksink
+- Desktop-Dateien
 - Interaktion mit anderen Anwendungen mit und ohne Threading

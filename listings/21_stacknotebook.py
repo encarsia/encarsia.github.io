@@ -5,24 +5,25 @@ import sys
 import urllib.request
 
 import gi
-gi.require_version('Gtk','3.0')
-gi.require_version('Vte', '2.91')
-gi.require_version('WebKit2', '4.0')
-
+gi.require_version("Gtk", "3.0")
+gi.require_version("Vte", "2.91")
+gi.require_version("WebKit2", "4.0")
 from gi.repository import Gtk, Gio, Vte, GObject, GLib, WebKit2
+
 
 class Handler:
     
     def on_term_child_exited(self, widget, event):
-        #reset and setup terminal on exit command
+        # reset and setup terminal on exit command
         widget.reset(True, True)
         app.stack_console()
 
     def on_home_button_clicked(self, widget):
-        #reload given URL in current tab
+        # reload given URL in current tab
         page = app.obj("notebook").get_current_page()
         app.nbtabs[page][2].load_uri(app.nbtabs[page][1])
-        
+
+
 class ExampleApp:
 
     def __init__(self):
@@ -37,10 +38,9 @@ class ExampleApp:
         builder.connect_signals(Handler())
         self.obj = builder.get_object
         self.obj("window").set_application(app)
-        self.obj("window").set_wmclass("Tutorial application","Tutorial application")
         self.obj("window").show_all()
         
-        #get window content
+        # get window content
         self.stack_image()
         self.stack_console()
         self.stack_notebook()
@@ -49,26 +49,24 @@ class ExampleApp:
         self.app.run(argv)
 
     def stack_image(self):
-        #download and show NASA Astonomy Picture of the Day
+        # download and show NASA Astonomy Picture of the Day
         URL = "https://apod.nasa.gov"
         source = urllib.request.urlopen(URL).read().decode("utf-8")
         img_start = source.find("<IMG SRC=")
         img_end = source.find("alt=")
         img = source[img_start+10:img_end-2]
-        IMGURL = "https://apod.nasa.gov/apod/"+img
+        IMGURL = "https://apod.nasa.gov/apod/" + img
         urllib.request.urlretrieve(IMGURL, "apod.jpg")
         self.obj("image").set_from_file("apod.jpg")
 
     def stack_console(self):
-        #setup terminal
+        # setup terminal
         self.obj("term").spawn_sync(
             Vte.PtyFlags.DEFAULT,
             None,
             ["/bin/bash"],
             None,
             GLib.SpawnFlags.DEFAULT,
-            None,
-            None,
             )
 
     def stack_notebook(self):
@@ -85,6 +83,7 @@ class ExampleApp:
             webview.load_uri(tab[1])
             self.obj(tab[0]).add(webview)
             webview.show()
+
 
 app = ExampleApp()
 app.run(sys.argv)

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -27,7 +27,7 @@ Glade
 
 .. thumbnail:: /images/07_css.png
 
-Mit Glade werden nur die Fenster/Widgets angelegt, in diesem Beispiel vier Levelbars mit Werten, die CSS-Layout-Anweisungen erfolgen dann im Code.
+Mit Glade werden nur die Fenster/Widgets angelegt, in diesem Beispiel vier Levelbars mit Werten Die CSS-Layout-Anweisungen erfolgen dann im Code.
 
 
 Python
@@ -64,7 +64,7 @@ Im Beispiel wird der unteren Levelbar ein zusätzlicher Offsetmarker zwischen ``
 
 .. code-block:: python
 
-        self.bar.add_offset_value("alert",.9)
+        self.bar.add_offset_value("alert", .9)
 
 .. TEASER_END
 

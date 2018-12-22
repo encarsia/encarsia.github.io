@@ -5,10 +5,10 @@ import sys
 import os
 
 import gi
-gi.require_version('Gtk','3.0')
-gi.require_version('GtkSource','3.0')
-
+gi.require_version("Gtk", "3.0")
+gi.require_version("GtkSource", "3.0")
 from gi.repository import Gtk, GtkSource, Gio, GObject
+
 
 class Handler:
     
@@ -47,22 +47,21 @@ class Editor:
         self.builder.add_from_file("22_editor_gtksv.glade")
         self.builder.connect_signals(Handler())
 
-        #setup SourceView        
+        # setup SourceView        
         self.view = self.builder.get_object("sv")
         self.buffer = self.view.get_buffer()
         self.sourcefile = GtkSource.File()
         self.lang_manager = GtkSource.LanguageManager()
 
-        #setup settings for SourceView
+        # setup settings for SourceView
         self.settings = GtkSource.SearchSettings()
-        self.builder.get_object("search_entry").bind_property('text', self.settings, 'search-text')
+        self.builder.get_object("search_entry").bind_property("text", self.settings, "search-text")
         self.settings.set_search_text("initial highlight")
         self.settings.set_wrap_around(True)
         self.search_context = GtkSource.SearchContext.new(self.buffer, self.settings)
 
         window = self.builder.get_object("app_window")
         window.set_application(app)
-        window.set_wmclass("Tutorial application","Tutorial application")
         window.show_all()
 
     def run(self, argv):
@@ -72,7 +71,7 @@ class Editor:
         self.file = f
         self.sourcefile.set_location(Gio.File.new_for_path(f))
         self.buffer.set_language(self.lang_manager.get_language(lang))
-        loader = GtkSource.FileLoader.new(self.buffer,self.sourcefile)
+        loader = GtkSource.FileLoader.new(self.buffer, self.sourcefile)
         loader.load_async(0, None, None, None, None, None)
 
     def find_text(self, start_offset=1):
@@ -92,6 +91,7 @@ class Editor:
 
     def main(self):
         Gtk.main()
+
 
 x = Editor()
 x.run(sys.argv)

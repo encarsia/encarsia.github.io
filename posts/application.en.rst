@@ -23,7 +23,7 @@ XML files
 Glade
 *****
 
-Glade is used as usual, main windows should be **GtkApplicationWindows*. As example the file from the `dialogue article <link://slug/dialoge>`_ is reused.
+Glade is used as usual, main windows should be *Gtk.ApplicationWindows*. As example the file from the `dialogue article <link://slug/dialoge>`_ is reused.
 
 GMenu
 *****

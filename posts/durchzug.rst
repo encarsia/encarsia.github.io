@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -38,11 +38,13 @@ Die entscheidenden Funktionen in der Handhabung von Fenstern sind
 
 .. code-block:: python
 
-    #Fenster anzeigen
+    # Fenster anzeigen
     Gtk.Builder.get_object("name").show_all()
-    #Fenster ausblenden, kann mit show_all() reaktiviert werden
+
+    # Fenster ausblenden, kann mit show_all() reaktiviert werden
     Gtk.Builder.get_object("name").hide_on_delete()
-    #Fenster schließen, Gtk wird dabei beendet
+
+    # Fenster schließen, Gtk wird dabei beendet
     Gtk.main_quit()
 
 Die Buttons zum Öffnen des Info-Dialogs und zum Beenden des Programms führen die jeweils identische Funktion aus; es werden demzufolge nur 5 Funktionen in der Handler-Klasse benötigt.
