@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
 import os
-import vlc
 import subprocess
+import sys
 import time
+import vlc
 
 import gi
-gi.require_version('Gtk','3.0')
-
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GLib
+
 
 class Handler:
 
@@ -64,12 +64,12 @@ class Handler:
 
     def on_playpause_togglebutton_toggled(self, widget):
         if widget.get_active():
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY,Gtk.IconSize.BUTTON)
-            widget.set_property("image",img)
+            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY, Gtk.IconSize.BUTTON)
+            widget.set_property("image", img)
             self.is_playing = False
         else:
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE,Gtk.IconSize.BUTTON)
-            widget.set_property("image",img)
+            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE, Gtk.IconSize.BUTTON)
+            widget.set_property("image", img)
             self.is_playing = True
         self.player.pause()
         GLib.timeout_add(1000, self.update_slider)
@@ -88,7 +88,7 @@ class Handler:
         GLib.timeout_add(1000, self.update_slider)
         
     def on_ibutton_clicked(self, widget):
-        image = "file://"+os.path.abspath("mediaplayer.jpg")
+        image = "file://" + os.path.abspath("mediaplayer.jpg")
         self.player.set_mrl(image)
         self.is_playing = False
         self.player.play()
@@ -118,6 +118,7 @@ class Handler:
                 self.is_playing = False
         return True # continue calling every x milliseconds
 
+
 class VlcPlayer:
 
     def __init__(self):
@@ -125,30 +126,31 @@ class VlcPlayer:
         self.app.connect("activate", self.on_app_activate)
 
     def on_app_activate(self, app):
-        #setting up builder
+        # setting up builder
         builder = Gtk.Builder()
-        builder.add_from_file("20_vlc_player_headerbar.glade")
+        builder.add_from_file("20_vlc_player.glade")
         builder.connect_signals(Handler())
         self.obj = builder.get_object
-        #slider position is float between 0..100
+        # slider position is float between 0..100
         self.slider = self.obj("progress")
         window = self.obj("window")
         window.set_application(app)
         window.show_all()
         
     def get_duration(self,video):
-        command = ['ffprobe',
-                        '-v', "error",
-                        '-show_entries', "format=duration",
-                        '-of', 'default=noprint_wrappers=1:nokey=1',
-                        video
-                        ]
+        command = ["ffprobe",
+                   "-v", "error",
+                   "-show_entries", "format=duration",
+                   "-of", "default=noprint_wrappers=1:nokey=1",
+                   video,
+                   ]
         ffprobe_cmd = subprocess.run(command, stdout=subprocess.PIPE)
-        #stdout of subprocess is byte variable, convert into float then into integer
+        # stdout of subprocess is byte variable, convert into float then into integer
         return int(float(ffprobe_cmd.stdout.decode()))
         
     def run(self, argv):
         self.app.run(argv)
+
 
 go = VlcPlayer()
 go.run(None)

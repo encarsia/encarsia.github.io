@@ -88,60 +88,68 @@
 <a href="#listings09_liststorepy-50">50</a>
 <a href="#listings09_liststorepy-51">51</a>
 <a href="#listings09_liststorepy-52">52</a>
-<a href="#listings09_liststorepy-53">53</a></pre></div></td>
+<a href="#listings09_liststorepy-53">53</a>
+<a href="#listings09_liststorepy-54">54</a>
+<a href="#listings09_liststorepy-55">55</a>
+<a href="#listings09_liststorepy-56">56</a>
+<a href="#listings09_liststorepy-57">57</a></pre></div></td>
 <td class="code"><pre class="code literal-block"><a name="listings09_liststorepy-1"></a><span class="ch">#!/usr/bin/python</span>
 <a name="listings09_liststorepy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
 <a name="listings09_liststorepy-3"></a>
 <a name="listings09_liststorepy-4"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings09_liststorepy-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="listings09_liststorepy-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
 <a name="listings09_liststorepy-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
 <a name="listings09_liststorepy-7"></a>
-<a name="listings09_liststorepy-8"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings09_liststorepy-9"></a>
-<a name="listings09_liststorepy-10"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings09_liststorepy-11"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
-<a name="listings09_liststorepy-12"></a>
-<a name="listings09_liststorepy-13"></a>    <span class="k">def</span> <span class="nf">on_cbox_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings09_liststorepy-14"></a>        <span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
-<a name="listings09_liststorepy-15"></a>        <span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
-<a name="listings09_liststorepy-16"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<a name="listings09_liststorepy-17"></a>    
-<a name="listings09_liststorepy-18"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="listings09_liststorepy-19"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
-<a name="listings09_liststorepy-20"></a>    
-<a name="listings09_liststorepy-21"></a>    <span class="k">def</span> <span class="nf">on_add_row_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings09_liststorepy-22"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">more_rows</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
-<a name="listings09_liststorepy-23"></a>        <span class="c1">#set button inactive when all rows are appended</span>
-<a name="listings09_liststorepy-24"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-<a name="listings09_liststorepy-25"></a>            <span class="n">x</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<a name="listings09_liststorepy-26"></a>
-<a name="listings09_liststorepy-27"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings09_liststorepy-28"></a>    
-<a name="listings09_liststorepy-29"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings09_liststorepy-30"></a>        
-<a name="listings09_liststorepy-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings09_liststorepy-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"09_liststore.glade"</span><span class="p">)</span>
-<a name="listings09_liststorepy-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings09_liststorepy-34"></a>
-<a name="listings09_liststorepy-35"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="listings09_liststorepy-36"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings09_liststorepy-37"></a>
-<a name="listings09_liststorepy-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"add_row_button"</span><span class="p">)</span>
-<a name="listings09_liststorepy-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"liststore"</span><span class="p">)</span>
-<a name="listings09_liststorepy-40"></a>        
-<a name="listings09_liststorepy-41"></a>        <span class="c1">#print all values</span>
-<a name="listings09_liststorepy-42"></a>        <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[:])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="p">]</span>
-<a name="listings09_liststorepy-43"></a>
-<a name="listings09_liststorepy-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">more_rows</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"four"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">5739</span><span class="p">),</span>
-<a name="listings09_liststorepy-45"></a>                            <span class="p">(</span><span class="s2">"five"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span>
-<a name="listings09_liststorepy-46"></a>                            <span class="p">(</span><span class="s2">"six"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-<a name="listings09_liststorepy-47"></a>                            <span class="p">(</span><span class="s2">"seven"</span><span class="p">,</span><span class="s2">"lucky number"</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span>
-<a name="listings09_liststorepy-48"></a>
-<a name="listings09_liststorepy-49"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings09_liststorepy-50"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings09_liststorepy-8"></a>
+<a name="listings09_liststorepy-9"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="listings09_liststorepy-10"></a>
+<a name="listings09_liststorepy-11"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="listings09_liststorepy-12"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="listings09_liststorepy-13"></a>
+<a name="listings09_liststorepy-14"></a>    <span class="k">def</span> <span class="nf">on_cbox_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="listings09_liststorepy-15"></a>        <span class="nb">iter</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<a name="listings09_liststorepy-16"></a>        <span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
+<a name="listings09_liststorepy-17"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a name="listings09_liststorepy-18"></a>    
+<a name="listings09_liststorepy-19"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edit</span><span class="p">):</span>
+<a name="listings09_liststorepy-20"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
+<a name="listings09_liststorepy-21"></a>    
+<a name="listings09_liststorepy-22"></a>    <span class="k">def</span> <span class="nf">on_add_row_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="listings09_liststorepy-23"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">more_rows</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">]))</span>
+<a name="listings09_liststorepy-24"></a>        <span class="c1">#set button inactive when all rows are appended</span>
+<a name="listings09_liststorepy-25"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+<a name="listings09_liststorepy-26"></a>            <span class="n">x</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<a name="listings09_liststorepy-27"></a>
+<a name="listings09_liststorepy-28"></a>
+<a name="listings09_liststorepy-29"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="listings09_liststorepy-30"></a>    
+<a name="listings09_liststorepy-31"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings09_liststorepy-32"></a>        
+<a name="listings09_liststorepy-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings09_liststorepy-34"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"09_liststore.glade"</span><span class="p">)</span>
+<a name="listings09_liststorepy-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings09_liststorepy-36"></a>
+<a name="listings09_liststorepy-37"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="listings09_liststorepy-38"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="listings09_liststorepy-39"></a>
+<a name="listings09_liststorepy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"add_row_button"</span><span class="p">)</span>
+<a name="listings09_liststorepy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"liststore"</span><span class="p">)</span>
+<a name="listings09_liststorepy-42"></a>        
+<a name="listings09_liststorepy-43"></a>        <span class="c1">#print all values</span>
+<a name="listings09_liststorepy-44"></a>        <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[:])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="p">]</span>
+<a name="listings09_liststorepy-45"></a>
+<a name="listings09_liststorepy-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">more_rows</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"four"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">5739</span><span class="p">),</span>
+<a name="listings09_liststorepy-47"></a>                          <span class="p">(</span><span class="s2">"five"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<a name="listings09_liststorepy-48"></a>                          <span class="p">(</span><span class="s2">"six"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<a name="listings09_liststorepy-49"></a>                          <span class="p">(</span><span class="s2">"seven"</span><span class="p">,</span> <span class="s2">"lucky number"</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<a name="listings09_liststorepy-50"></a>                          <span class="p">]</span>
 <a name="listings09_liststorepy-51"></a>
-<a name="listings09_liststorepy-52"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings09_liststorepy-53"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings09_liststorepy-52"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings09_liststorepy-53"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings09_liststorepy-54"></a>
+<a name="listings09_liststorepy-55"></a>
+<a name="listings09_liststorepy-56"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="listings09_liststorepy-57"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 

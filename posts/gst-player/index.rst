@@ -20,8 +20,8 @@
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.Button*), Pause (*Gtk.Togglebutton*)
+ * **Darstellungsbereich der Mediendatei:** Widget *GtkDrawingArea*
+ * **Steuerungselemente:** Vor-/Zurückspulen (*GtkButton*), Pause (*GtkTogglebutton*)
  * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
 
 Python
@@ -49,21 +49,21 @@ GStreamer handhabt alle möglichen Arten von Medienflüssen. Jeder Schritt in di
 
 Nach diesem Prinzip wird dies mittels *Gst*-Modul umgesetzt:
 
-.. code-block:: python
+.. code:: python
 
-    #init Gst and create pipeline
+    # init Gst and create pipeline
     Gst.init()
     pipeline = Gst.Pipeline()
 
-    #create elements
-    src = Gst.ElementFactory.make("filesrc","source")
-    decode = Gst.ElementFactory.make("decodebin","decode")
+    # create elements
+    src = Gst.ElementFactory.make("filesrc", "source")
+    decode = Gst.ElementFactory.make("decodebin", "decode")
     sink = Gst.ElementFactory.make("xvimagesink")
 
-    #configure elements       
-    src.set_property("location",file_location)
+    # configure elements       
+    src.set_property("location", file_location)
         
-    #add elements to pipeline
+    # add elements to pipeline
     pipeline.add(src)
     pipeline.add(decode)
     pipeline.add(sink)
@@ -78,12 +78,12 @@ Fertige Pipelines
 Es besteht auch beispielsweise die Möglichkeit, Audio- und Videosignale voneinander getrennt werden, indem jeweils ein "videosink" und ein "audiosink" erstellt usw. Auf der anderen Seite gibt es vorgefertigte Pipelines für Standardaufgaben wie etwa das Abspielen von Medien.
 Ein solches Element ist "playbin", das den Code signifikant vereinfacht:
 
-.. code-block:: python
+.. code:: python
 
     Gst.init(None)
-    player = Gst.ElementFactory.make("playbin","player")
+    player = Gst.ElementFactory.make("playbin", "player")
     sink = Gst.ElementFactory.make("xvimagesink")
-    player.set_property("uri",uri_of_file)
+    player.set_property("uri", uri_of_file)
     player.set_property("video-sink", sink)
 
 Und los!
@@ -91,7 +91,7 @@ Und los!
 
 Eine Pipeline oder ein "playbin"-Element können nun über *Gst.STATE* gesteuert werden:
 
-.. code-block:: python
+.. code:: python
 
     player.set_state(Gst.State.PLAYING)
     player.set_state(Gst.State.PAUSED)
@@ -99,7 +99,7 @@ Eine Pipeline oder ein "playbin"-Element können nun über *Gst.STATE* gesteuert
 Fortschrittsanzeige
 *******************
 
-Die Fortschrittsanzeige ist an dieser Stelle keine *Gtk.ProgressBar* sondern eine horizontale *Gtk.Scale*. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal *value-changed* benötigt. Streng genommen ist das Signal *change-value* an dieser Stelle die sauberere Lösung, die `im nachfolgenden Beitrag <link://slug/vlc-player>`__ zur Umsetzung des Mediaplayers mit LibVLC verwendet wird.
+Die Fortschrittsanzeige ist an dieser Stelle keine *Gtk.ProgressBar* sondern eine horizontale *GtkScale*. Mit diesem Widget lässt sich nicht nur eine Position anzeigen, sondern auch per Maus setzen. Für letzteres wird das Signal *value-changed* benötigt. Streng genommen ist das Signal *change-value* an dieser Stelle die sauberere Lösung, die `im nachfolgenden Beitrag <link://slug/vlc-player>`_ zur Umsetzung des Mediaplayers mit LibVLC verwendet wird.
 
 Möglichkeiten und Limitierungen
 -------------------------------
@@ -111,8 +111,7 @@ Es gibt eine Reihe von Tutorials. Die Umsetzung wird durch zwei Umstände erschw
 1. Die primäre Sprache von und mit GStreamer ist C. Mit Python steht man eher auf experimentellem Boden.
 2. Durch die Versionssprünge sowohl bei GStreamer (von 0.10 auf 1.x) als auch Python (2.x auf 3.x) funktionieren viele ältere Anleitungen nicht mehr ohne weiteres.
 
-Es gibt weiterhin Effekte, die sich mir nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Gtk-Fenster eine Headerbar enthält. Es sollte mit der Verwendung von "gtksink" lösbar sein, aber dies wiederum verweigert das Abspielen in einem zugewiesenen Widget.
-Die Komplexität und Mächtigkeit von GStreamer ist massiv verwirrend.
+Es gibt weiterhin Effekte, die sich nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Fenster eine Headerbar enthält. Dies ist mit der Verwendung von "gtksink" lösbar.
 
 Links
 -----

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -23,11 +23,11 @@ Progressbar
 
 Fortschrittsbalken zeigen für gewöhnlich den Status eines länger dauernden Prozesses an. Es gibt dabei zwei Modi:
 
-1. verhältnismäßige Anzeige, der Fortschritt wird mit einem Wert zwischen 0 und 1 ausgedrückt 
-    
+1. verhältnismäßige Anzeige, der Fortschritt wird mit einem Wert zwischen 0 und 1 ausgedrückt
+
 2. Aktivitätsmodus, ein beweglicher Block läuft nach zugewiesener Schrittweite hin und her
 
-Zusätzlich hat das Widget eine optionale Textanzeige. Wird der Inhalt nicht spezifiziert, wird der Fortschritt in Prozent angezeigt.
+Zusätzlich besitzt das Widget eine optionale Textanzeige. Wird der Inhalt nicht spezifiziert, wird der Fortschritt in Prozent angezeigt.
 
 Levelbar
 ********
@@ -37,7 +37,6 @@ Levelbars werden normalerweise als Füllstandsanzeiger genutzt. Der Füllstand w
 1. Zwei Anzeigenmodi:
 
     1. *continuous*: ein einzelner Block repräsentiert den gegebenen Wert
-        
     2. *discrete*: Levelbar wird in eine festgelegte Anzahl von Blöcken geteilt, ein Block steht für einen Wertebereich
 
 2. Festlegen von Minimal-/Maximalwert möglich, Standardwert ist 0 bzw. 1; beim Anzeigenmodus *discrete* entspricht der Maximalwert der Anzahl der Blöcke
@@ -55,7 +54,7 @@ Im Beispiel repräsentiert der erste Balken den Wert, der zweite befindet sich i
 .. code-block:: python
 
     widget.pulse()
-    widget.set_text("%d %%" % perc_value)
+    widget.set_text("{} %".format(perc_value))
 
 
 Levelbar
@@ -65,7 +64,7 @@ Was ``set_fraction`` für Progressbar, ist ``set_value`` für Levelbar. Im *cont
 
 .. code-block:: python
 
-    widget.set_value(fraction*blocks)
+    widget.set_value(fraction * blocks)
 
 
 Auf die Funktion ``add_offset_value`` und Farbänderung des Balkens beim Überschreiten definierter Werte wird im `CSS-Artikel <link://slug/css>`_ eingegangen.

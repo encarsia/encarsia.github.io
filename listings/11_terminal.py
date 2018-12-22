@@ -2,20 +2,22 @@
 # -*- coding: utf-8 -*-
 
 import os
-import gi
-gi.require_version('Gtk','3.0')
-gi.require_version('Vte', '2.91')
 
-from gi.repository import Gtk,Vte,GObject,GLib
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version("Vte", "2.91")
+from gi.repository import Gtk, Vte, GObject, GLib
+
 
 class Handler:
 
-    def on_window_destroy(self,*args):
+    def on_window_destroy(self, *args):
         Gtk.main_quit()
 
-    def on_button_clicked(self,widget):
+    def on_button_clicked(self, widget):
         command = "python\n"
-        x.terminal.feed_child(command,len(command))
+        x.terminal.feed_child(command.encode())
+
 
 class Example:
     
@@ -34,8 +36,6 @@ class Example:
             ["/bin/bash"],
             None,
             GLib.SpawnFlags.DEFAULT,
-            None,
-            None,
             )
 
         window = self.builder.get_object("window")
@@ -43,6 +43,7 @@ class Example:
 
     def main(self):
         Gtk.main()
+
 
 x = Example()
 x.main()

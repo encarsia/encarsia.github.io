@@ -23,27 +23,24 @@ set_wm_class
 
 Programmname in Panel und Dock anzeigen
 
-    **Alt:** ``Gtk.Window.set_wmclass(args)``
+    **Alt:** ``Gtk.Window.set_wmclass(wmclass_name, wmclass_class)``
 
-    **Neu:** ``GLib.set_progname(name_string)``
+    **Neu:** ``GLib.set_prgname(wmclass_name)`` (in .desktop-Datei ``StartupWMClass=wmclass_name`` erforderlich)
 
-new_from_stock
-**************
+widget.new_from_stock
+*********************
 
     **Alt:** ``Gtk.Button.new_from_stock(Gtk.STOCK_OK)``
 
     **Neu:** ``Gtk.Button.new_with_label("OK")``
 
-Labels bekommen nur noch eine Bezeichnung durch einen String, in der Dokumentation
+Labels bekommen nur noch eine Bezeichnung durch einen String.
 
-Gtk.Image.new_from_stock(Gtk.STOCK_YES, 1)
-
-gilt auch für ToggleButton
+Gilt auch für *ToggleButton* und *Image* (hier: image.new_from_icon_name() verwenden)
 
 
-
-new_with_label
-**************
+menuitem.new_with_label
+***********************
 
 Bei der Initialisierung von Labels enthaltene Widgets, z.B. *Gtk.MenuItem*
 
@@ -75,3 +72,29 @@ Start
     **Alt:** ``Vte.Terminal.spawn_sync(args)``
 
     **Neu:** GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)
+
+FileChooserDialog
+*****************
+
+    **Alt:**
+
+.. code:: python
+
+    dialog = Gtk.FileChooserDialog("Choose a folder",
+                                    app.obj("window"),
+                                    Gtk.FileChooserAction.SELECT_FOLDER,
+                                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                    Gtk.STOCK_APPLY, Gtk.ResponseType.OK))
+
+'
+
+    **Neu:** Argumente werden namentlich übergeben, Buttons separat hinzugefügt:
+
+.. code:: python
+
+        dialog = Gtk.FileChooserDialog(title="Choose a folder",
+                                       parent=app.obj("window"),
+                                       action=Gtk.FileChooserAction.SELECT_FOLDER,
+                                       )
+        dialog.add_buttons("Cancel", Gtk.ResponseType.CANCEL,
+                           "OK", Gtk.ResponseType.OK)

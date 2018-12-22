@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -56,13 +56,13 @@ Das WebView-Widget wird nach folgendem Muster erstellt:
 
 .. code:: python
 
-    #create new WebView widget
+    # create new WebView widget
     webview = WebKit2.WebView()
-    #send URL to widget
+    # send URL to widget
     webview.load_uri("http://google.com")
-    #add webview to notebook
+    # add webview to notebook
     notebook.add(webview)
-    #add webview to stack
+    # add webview to stack
     stack.add_titled(webview, name, "StackSwitcher title")
 
     webview.show()

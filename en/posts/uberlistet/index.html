@@ -87,22 +87,22 @@ There are a bunch o">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li>
-<a class="reference internal" href="#glade" id="id6">Glade</a><ul>
-<li><a class="reference internal" href="#liststore" id="id7">ListStore</a></li>
-<li><a class="reference internal" href="#widgets" id="id8">Widgets</a></li>
+<a class="reference internal" href="#glade" id="id4">Glade</a><ul>
+<li><a class="reference internal" href="#liststore" id="id5">ListStore</a></li>
+<li><a class="reference internal" href="#widgets" id="id6">Widgets</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="#python" id="id9">Python</a><ul>
-<li><a class="reference internal" href="#treestore" id="id10">TreeStore</a></li>
-<li><a class="reference internal" href="#combobox" id="id11">ComboBox</a></li>
-<li><a class="reference internal" href="#edit-cells" id="id12">Edit cells</a></li>
+<a class="reference internal" href="#python" id="id7">Python</a><ul>
+<li><a class="reference internal" href="#treestore" id="id8">TreeStore</a></li>
+<li><a class="reference internal" href="#combobox" id="id9">ComboBox</a></li>
+<li><a class="reference internal" href="#edit-cells" id="id10">Edit cells</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="#listings" id="id13">Listings</a><ul>
-<li><a class="reference internal" href="#id4" id="id14">Glade</a></li>
-<li><a class="reference internal" href="#id5" id="id15">Python</a></li>
+<a class="reference internal" href="#listings" id="id11">Listings</a><ul>
+<li><a class="reference internal" href="#id2" id="id12">Glade</a></li>
+<li><a class="reference internal" href="#id3" id="id13">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -133,337 +133,337 @@ There are a bunch o">
 </ol>
 <a class="reference external image-reference" href="../../../images/09_treestore2.png"><img alt="/images/09_treestore2.thumbnail.png" src="../../../images/09_treestore2.thumbnail.png"></a>
 <div class="section" id="glade">
-<h2><a class="toc-backref" href="#id6">Glade</a></h2>
+<h2><a class="toc-backref" href="#id4">Glade</a></h2>
 <div class="section" id="liststore">
-<h3><a class="toc-backref" href="#id7">ListStore</a></h3>
+<h3><a class="toc-backref" href="#id5">ListStore</a></h3>
 <p>In the example there is one ListStore created via <em>"Miscellaneous &gt; List Store"</em> which will be later used by three Widgets.</p>
 <p>First there are some rows created. ListStore data sets can be inserted in Glade but this in practise is only convenient for typing in few data sets.</p>
 <p>Content changes in the ListStore are simultaneously updated in the Widgets using the ListStore. For individual sorting of the same List/TreeStore it is needed to create <em>Gtk.TreeModelSort</em> elements (this element is used in the example of the <a class="reference external" href="../ansichtssache/">TreeStore article</a>).</p>
 <a class="reference external image-reference" href="../../../images/09_treestore1.png"><img alt="/images/09_treestore1.thumbnail.png" src="../../../images/09_treestore1.thumbnail.png"></a>
 </div>
 <div class="section" id="widgets">
-<h3><a class="toc-backref" href="#id8">Widgets</a></h3>
+<h3><a class="toc-backref" href="#id6">Widgets</a></h3>
 <dl class="docutils">
 <dt>ComboBox</dt>
 <dd>Creating the widget you are prompted to choose as "TreeView Model". In the edit mode accessible via <em>"Edit &gt; Hierarchy"</em> there is created a CellRendererText. In the first field ("Text") the column to load the items of the dropdown menu from is set. To process the selection you will need the <em>changed</em> signal.</dd>
 <dt>TreeView #1</dt>
-<dd>The first TreeView widget is placed within a <em>Gtk.ScrolledWindow</em> container. Like in a ComboBox there are created CellRenderer representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
+<dd>The first TreeView widget is placed within a <em>Gtk.ScrolledWindow</em> container. Like in a ComboBox there are created CellRenderers representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
 Columns do not have to be sorted according to the columns they show.</dd>
 <dt>TreeView #2</dt>
-<dd>
-<p class="first">The second TreeView widget is created within a <em>Gtk.ViewPort</em>. This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the <em>Gtk.ScrolledWindow</em>.
-The sort indicator is deactivated and the middle column ("Description") is made editible with the signal <a href="#id2"><span class="problematic" id="id3">*</span></a>edited" allocated.</p>
-<div class="last system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 45); <em><a href="#id3">backlink</a></em></p>
-Inline emphasis start-string without end-string.</div>
-</dd>
+<dd>The second TreeView widget is created within a <em>Gtk.ViewPort</em>.
+This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the <em>Gtk.ScrolledWindow</em>.
+The sort indicator is deactivated and the middle column ("Description") is made editible with the signal "edited" allocated.</dd>
 <dt>Button</dt>
 <dd>The button's function is appending a row to the ListStore, so the <em>clicked</em> signal is required.</dd>
 </dl>
 </div>
 </div>
 <div class="section" id="python">
-<h2><a class="toc-backref" href="#id9">Python</a></h2>
+<h2><a class="toc-backref" href="#id7">Python</a></h2>
 <div class="section" id="treestore">
-<h3><a class="toc-backref" href="#id10">TreeStore</a></h3>
+<h3><a class="toc-backref" href="#id8">TreeStore</a></h3>
 <p>The ListStore's row can be iterated over via <tt class="docutils literal">for row in store</tt>. New rows are added by <tt class="docutils literal">append</tt>, other options are <tt class="docutils literal">insert</tt> or <tt class="docutils literal">remove</tt> to add or delete rows at specific positions.</p>
 </div>
 <div class="section" id="combobox">
-<h3><a class="toc-backref" href="#id11">ComboBox</a></h3>
+<h3><a class="toc-backref" href="#id9">ComboBox</a></h3>
 <p>For accessing a data row you need a <em>Gtk.TreeIter</em> object which points to the position in the model (this can also be achieved by a <em>Gtk.TreePath</em> object).</p>
-<pre class="code python"><a name="rest_code_47a22f1a718541a68e59d095339c969e-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
-<a name="rest_code_47a22f1a718541a68e59d095339c969e-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
-<a name="rest_code_47a22f1a718541a68e59d095339c969e-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
+<a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre>
 </div>
 <div class="section" id="edit-cells">
-<h3><a class="toc-backref" href="#id12">Edit cells</a></h3>
+<h3><a class="toc-backref" href="#id10">Edit cells</a></h3>
 <p>The <em>edited</em> signal passes the position and content of the edited cell. The new content of the <em>CellRendererText</em> has to explicitly be committed to the data store otherwise the content will return to the pre edit state. This can be accomplished by using the passed <em>TreePath</em> position.</p>
-<pre class="code python"><a name="rest_code_a280891b90c048e489e0d5bf9fe1e2a8-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="rest_code_a280891b90c048e489e0d5bf9fe1e2a8-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
+<pre class="code python"><a name="rest_code_182152d1010f44bbb3a7296c9e70e8cb-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
+<a name="rest_code_182152d1010f44bbb3a7296c9e70e8cb-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
 </pre>
 <!-- TEASER_END -->
 </div>
 </div>
 <div class="section" id="listings">
-<h2><a class="toc-backref" href="#id13">Listings</a></h2>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id14">Glade</a></h3>
+<h2><a class="toc-backref" href="#id11">Listings</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id12">Glade</a></h3>
 <p><a class="reference external" href="../../../listings/09_liststore.glade.html">09_liststore.glade</a>  <a class="reference external" href="../../../listings/09_liststore.glade">(Source)</a></p>
-<pre class="code xml"><a name="rest_code_a2ba45d0ee8a413fb36c843625677136-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkListStore"</span> <span class="na">id=</span><span class="s">"liststore"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-6"></a>    <span class="nt">&lt;columns&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-7"></a>      <span class="c">&lt;!-- column-name name --&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-8"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gchararray"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-9"></a>      <span class="c">&lt;!-- column-name descr --&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-10"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gchararray"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-11"></a>      <span class="c">&lt;!-- column-name num --&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-12"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gint"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-13"></a>    <span class="nt">&lt;/columns&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-14"></a>    <span class="nt">&lt;data&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-15"></a>      <span class="nt">&lt;row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-16"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>one<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-17"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>textextext<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-18"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>12345<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-19"></a>      <span class="nt">&lt;/row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-20"></a>      <span class="nt">&lt;row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-21"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>two<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-22"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>bla blubb<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-23"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>479<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-24"></a>      <span class="nt">&lt;/row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-25"></a>      <span class="nt">&lt;row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-26"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>three<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-27"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>nö<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-28"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/col&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-29"></a>      <span class="nt">&lt;/row&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-30"></a>    <span class="nt">&lt;/data&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-31"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-32"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-33"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-34"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-35"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-36"></a>    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-37"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-38"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-39"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-40"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-41"></a>        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-42"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkComboBox"</span> <span class="na">id=</span><span class="s">"cbox"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-43"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-44"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-45"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"entry_text_column"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-47"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"changed"</span> <span class="na">handler=</span><span class="s">"on_cbox_changed"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-48"></a>            <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-49"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-50"></a>              <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-51"></a>                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-52"></a>              <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-53"></a>            <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-54"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-55"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-56"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-57"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-58"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-59"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-60"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-61"></a>        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-62"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-63"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>150<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-64"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>250<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-65"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-66"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-67"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-68"></a>            <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-69"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkScrolledWindow"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-70"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-71"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-72"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"shadow_type"</span><span class="nt">&gt;</span>in<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-73"></a>                <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-74"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeView"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-75"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-76"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-77"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-78"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"headers_clickable"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-79"></a>                    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"selection"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-80"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeSelection"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-81"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-82"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-83"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-84"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-85"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-86"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-87"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-88"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-89"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-90"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-91"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-92"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-93"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-94"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-95"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-96"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-97"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-98"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-99"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-100"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-101"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-102"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-103"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-104"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-105"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-106"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-107"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-108"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-109"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-110"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Number<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-111"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-112"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-113"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-114"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-115"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-116"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-117"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-118"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-119"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-120"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-121"></a>                  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-122"></a>                <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-123"></a>              <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-124"></a>              <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-125"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-126"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-127"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-128"></a>              <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-129"></a>            <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-130"></a>            <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-131"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkViewport"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-132"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-133"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-134"></a>                <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-135"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeView"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-136"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-137"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-138"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-139"></a>                    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"selection"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-140"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeSelection"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-141"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-142"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-143"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-144"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-145"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-146"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-147"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-148"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-149"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-150"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-151"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-152"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-153"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-154"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-155"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-156"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-157"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span> <span class="na">id=</span><span class="s">"cellrenderer_descr"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-158"></a>                            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"editable"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-159"></a>                            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"edited"</span> <span class="na">handler=</span><span class="s">"on_cellrenderer_descr_edited"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-160"></a>                          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-161"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-162"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-163"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-164"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-165"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-166"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-167"></a>                    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-168"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-169"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Number<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-170"></a>                        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-171"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-172"></a>                          <span class="nt">&lt;attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-173"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/attribute&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-174"></a>                          <span class="nt">&lt;/attributes&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-175"></a>                        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-176"></a>                      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-177"></a>                    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-178"></a>                  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-179"></a>                <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-180"></a>              <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-181"></a>              <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-182"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-183"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-184"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-185"></a>              <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-186"></a>            <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-187"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-188"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-189"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-190"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-191"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-192"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-193"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-194"></a>        <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-195"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"add_row_button"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-196"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-add<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-197"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-198"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-199"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-200"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-201"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"always_show_image"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-202"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_add_row_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-203"></a>          <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-204"></a>          <span class="nt">&lt;packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-205"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-206"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-207"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-208"></a>          <span class="nt">&lt;/packing&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-209"></a>        <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-210"></a>      <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-211"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-212"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-213"></a>      <span class="nt">&lt;placeholder/&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-214"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-215"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_a2ba45d0ee8a413fb36c843625677136-216"></a><span class="nt">&lt;/interface&gt;</span>
+<pre class="code xml"><a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkListStore"</span> <span class="na">id=</span><span class="s">"liststore"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-6"></a>    <span class="nt">&lt;columns&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-7"></a>      <span class="c">&lt;!-- column-name name --&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-8"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gchararray"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-9"></a>      <span class="c">&lt;!-- column-name descr --&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-10"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gchararray"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-11"></a>      <span class="c">&lt;!-- column-name num --&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-12"></a>      <span class="nt">&lt;column</span> <span class="na">type=</span><span class="s">"gint"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-13"></a>    <span class="nt">&lt;/columns&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-14"></a>    <span class="nt">&lt;data&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-15"></a>      <span class="nt">&lt;row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-16"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>one<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-17"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>textextext<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-18"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>12345<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-19"></a>      <span class="nt">&lt;/row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-20"></a>      <span class="nt">&lt;row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-21"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>two<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-22"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>bla blubb<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-23"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>479<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-24"></a>      <span class="nt">&lt;/row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-25"></a>      <span class="nt">&lt;row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-26"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"0"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>three<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-27"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>nö<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-28"></a>        <span class="nt">&lt;col</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/col&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-29"></a>      <span class="nt">&lt;/row&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-30"></a>    <span class="nt">&lt;/data&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-31"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-32"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-33"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-34"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-35"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-36"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-37"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-38"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-39"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-40"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-41"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-42"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkComboBox"</span> <span class="na">id=</span><span class="s">"cbox"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-43"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-44"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-45"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"entry_text_column"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-47"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"changed"</span> <span class="na">handler=</span><span class="s">"on_cbox_changed"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-48"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-49"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-50"></a>              <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-51"></a>                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-52"></a>              <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-53"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-54"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-55"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-56"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-57"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-58"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-59"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-60"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-61"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-62"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-63"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>150<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-64"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>250<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-65"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-66"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-67"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-68"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-69"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkScrolledWindow"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-70"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-71"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-72"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"shadow_type"</span><span class="nt">&gt;</span>in<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-73"></a>                <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-74"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeView"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-75"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-76"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-77"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-78"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"headers_clickable"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-79"></a>                    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"selection"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-80"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeSelection"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-81"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-82"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-83"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-84"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-85"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-86"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-87"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-88"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-89"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-90"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-91"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-92"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-93"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-94"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-95"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-96"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-97"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-98"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-99"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-100"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-101"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-102"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-103"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-104"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-105"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-106"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-107"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-108"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-109"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-110"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Number<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-111"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_indicator"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-112"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sort_column_id"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-113"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-114"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-115"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-116"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-117"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-118"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-119"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-120"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-121"></a>                  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-122"></a>                <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-123"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-124"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-125"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-126"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-127"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-128"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-129"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-130"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-131"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkViewport"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-132"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-133"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-134"></a>                <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-135"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeView"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-136"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-137"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-138"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"model"</span><span class="nt">&gt;</span>liststore<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-139"></a>                    <span class="nt">&lt;child</span> <span class="na">internal-child=</span><span class="s">"selection"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-140"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeSelection"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-141"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-142"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-143"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-144"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-145"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-146"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-147"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-148"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-149"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-150"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-151"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-152"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-153"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-154"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-155"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-156"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-157"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span> <span class="na">id=</span><span class="s">"cellrenderer_descr"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-158"></a>                            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"editable"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-159"></a>                            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"edited"</span> <span class="na">handler=</span><span class="s">"on_cellrenderer_descr_edited"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-160"></a>                          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-161"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-162"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-163"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-164"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-165"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-166"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-167"></a>                    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-168"></a>                      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkTreeViewColumn"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-169"></a>                        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Number<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-170"></a>                        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-171"></a>                          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkCellRendererText"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-172"></a>                          <span class="nt">&lt;attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-173"></a>                            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/attribute&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-174"></a>                          <span class="nt">&lt;/attributes&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-175"></a>                        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-176"></a>                      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-177"></a>                    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-178"></a>                  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-179"></a>                <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-180"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-181"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-182"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-183"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-184"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-185"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-186"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-187"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-188"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-189"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-190"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-191"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-192"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-193"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-194"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-195"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"add_row_button"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-196"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span><span class="nt">&gt;</span>gtk-add<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-197"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-198"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-199"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-200"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"use_stock"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-201"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"always_show_image"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-202"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_add_row_button_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-203"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-204"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-205"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-206"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-207"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-208"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-209"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-210"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-211"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-212"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-213"></a>      <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-214"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-215"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_87302bc9c8494f4794328d58fee6cc9f-216"></a><span class="nt">&lt;/interface&gt;</span>
 </pre>
 </div>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id15">Python</a></h3>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id13">Python</a></h3>
 <p><a class="reference external" href="../../../listings/09_liststore.py.html">09_liststore.py</a>  <a class="reference external" href="../../../listings/09_liststore.py">(Source)</a></p>
-<pre class="code python"><a name="rest_code_acaa5760aa904147b178f3132fa9e628-1"></a><span class="ch">#!/usr/bin/python</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-3"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-4"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-7"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-8"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-9"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-10"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-11"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-12"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-13"></a>    <span class="k">def</span> <span class="nf">on_cbox_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-14"></a>        <span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-15"></a>        <span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-16"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-17"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-18"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-19"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-20"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-21"></a>    <span class="k">def</span> <span class="nf">on_add_row_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-22"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">more_rows</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">]))</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-23"></a>        <span class="c1">#set button inactive when all rows are appended</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-24"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-25"></a>            <span class="n">x</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-26"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-27"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-28"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-29"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-30"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"09_liststore.glade"</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-34"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-35"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-36"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-37"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"add_row_button"</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"liststore"</span><span class="p">)</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-40"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-41"></a>        <span class="c1">#print all values</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-42"></a>        <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[:])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="p">]</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-43"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">more_rows</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"four"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">5739</span><span class="p">),</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-45"></a>                            <span class="p">(</span><span class="s2">"five"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-46"></a>                            <span class="p">(</span><span class="s2">"six"</span><span class="p">,</span><span class="s2">""</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-47"></a>                            <span class="p">(</span><span class="s2">"seven"</span><span class="p">,</span><span class="s2">"lucky number"</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-48"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-49"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-50"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-51"></a>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-52"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="rest_code_acaa5760aa904147b178f3132fa9e628-53"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-3"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-4"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-7"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-8"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-9"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-10"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-11"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-12"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-13"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-14"></a>    <span class="k">def</span> <span class="nf">on_cbox_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-15"></a>        <span class="nb">iter</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-16"></a>        <span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-17"></a>        <span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-18"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-19"></a>    <span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edit</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-20"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-21"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-22"></a>    <span class="k">def</span> <span class="nf">on_add_row_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-23"></a>        <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">more_rows</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">]))</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-24"></a>        <span class="c1">#set button inactive when all rows are appended</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-25"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-26"></a>            <span class="n">x</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">set_sensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-27"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-28"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-29"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-30"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-31"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-32"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-34"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"09_liststore.glade"</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-36"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-37"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-38"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-39"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"add_row_button"</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"liststore"</span><span class="p">)</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-42"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-43"></a>        <span class="c1">#print all values</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-44"></a>        <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[:])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="p">]</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-45"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">more_rows</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"four"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">5739</span><span class="p">),</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-47"></a>                          <span class="p">(</span><span class="s2">"five"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-48"></a>                          <span class="p">(</span><span class="s2">"six"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-49"></a>                          <span class="p">(</span><span class="s2">"seven"</span><span class="p">,</span> <span class="s2">"lucky number"</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-50"></a>                          <span class="p">]</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-51"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-52"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-53"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-54"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-55"></a>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-56"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="rest_code_e72a5b00966040e8a2ec28dd2458caec-57"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre>
 </div>
 </div>

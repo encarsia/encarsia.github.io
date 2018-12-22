@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -40,9 +40,9 @@ Nun muss man Python noch zeigen, unter welchem Namen und Pfad die MO-Dateien (si
 
 .. code:: python
 
-        locale.bindtextdomain(appname,locales_dir)
+        locale.bindtextdomain(appname, locales_dir)
         locale.textdomain(locales_dir)
-        gettext.bindtextdomain(appname,locales_dir)
+        gettext.bindtextdomain(appname, locales_dir)
         gettext.textdomain(appname)
         builder.set_translation_domain(appname)
 
@@ -125,10 +125,13 @@ xgettext-Optionen
 ``--omit-header``
     Überschreiben der Header-Informationen verhindern
 
+``--sort-output``
+    Alphabetische Sortierung der Strings
+
 Obsolete Strings entfernen
 ==========================
 
-Strings, die aus der POT entfernt werden, bleiben in den Übersetzungen erhalten. Dies lässt sich durch den Aufruf von 
+Strings, die aus der POT entfernt werden, bleiben in den Übersetzungen erhalten. Dies lässt sich durch den Aufruf von
 
 .. code:: bash
 

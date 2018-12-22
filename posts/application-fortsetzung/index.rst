@@ -23,11 +23,11 @@ Glade
 Icon
 ****
 
-Einem Fenster lässt sich direkt in Glade unter *"Allgemein > Darstellung > Symboldatei"* ein Icon auswählen. Das Problem dabei ist, dass Glade Bilddateien nur anzeigt, wenn sie sich im selben Verzeichnis wie die Gladedatei selbst befinden, auch wenn man ein anderes Verzeichnis auswählt.
+Einem Fenster lässt sich direkt in Glade unter *"Allgemein > Darstellung > Symboldatei"* ein Icon auswählen. Das Problem dabei ist, dass Glade Bilddateien nur anzeigt, wenn sie sich im selben Verzeichnis wie die Glade-Datei selbst befinden, auch wenn man ein anderes Verzeichnis auswählt.
 
-Am einfachsten behebt man dies, indem man die Gladedatei in einem Texteditor bearbeitet und den (relativen) Pfad zum `Icon <https://openclipart.org/detail/22535/ducky-icon>`_ angibt. Diese Einstellung bleibt auch erhalten, wenn die Datei später mit Glade bearbeitet und gespeichert wird:
+Am einfachsten behebt man dies, indem man die Gladedatei in einem Texteditor bearbeitet und den (relativen) Pfad zum `Icon <https://openclipart.org/detail/22535/ducky-icon>`_ angibt. Diese Einstellung bleibt auch erhalten, wenn die Datei später wieder mit Glade bearbeitet und gespeichert wird:
 
-.. code-block:: xml
+.. code:: xml
 
   <object class="GtkApplicationWindow" id="window">
     ...
@@ -54,13 +54,13 @@ Optionen anlegen
 
 Verfügbare Optionen werden mit der Funktion ``add_main_option_entries(entrylist)`` hinzugefügt. Diese Einträge haben das Format *GLib.OptionEntry*, welches allerlei Parameter besitzt.
 
-.. code-block:: python
+.. code:: python
 
     def __init__(self):
         self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
         self.app.add_main_option_entries([
             self.create_option_entry("--version", description="Show version numbers and exit"),
-            self.create_option_entry("--setlabel", description="Set label widget",arg=GLib.OptionArg.STRING,),
+            self.create_option_entry("--setlabel", description="Set label widget", arg=GLib.OptionArg.STRING,),
             self.create_option_entry("--bollocks", description="Additional test option - exit"),
         ])
 
@@ -73,8 +73,8 @@ Verfügbare Optionen werden mit der Funktion ``add_main_option_entries(entrylist
                             description=None,
                             arg_description=None):
         option = GLib.OptionEntry()
-        option.long_name = long_name.lstrip('-')
-        option.short_name = 0 if not short_name else ord(short_name.lstrip('-'))
+        option.long_name = long_name.lstrip("-")
+        option.short_name = 0 if not short_name else ord(short_name.lstrip("-"))
         option.flags = flags
         option.arg = arg
         option.arg_data = arg_data
@@ -103,7 +103,7 @@ Optionen verarbeiten
 
 Die an die Handler-Funktion übergebene ``option`` ist ein Element der Klasse *GLib.VariantDict*. Mit ``contains("option")`` lässt sich nach der übergebenen Option suchen.
 
-.. code-block:: python
+.. code:: python
 
     def on_local_option(self, app, option):
         if option.contains("option1"):

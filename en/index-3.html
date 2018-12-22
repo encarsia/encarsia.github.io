@@ -89,12 +89,12 @@
 <div class="contents warning pull-right topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="posts/exterminate/#glade" id="id5">Glade</a></li>
-<li><a class="reference internal" href="posts/exterminate/#python" id="id6">Python</a></li>
+<li><a class="reference internal" href="posts/exterminate/#glade" id="id3">Glade</a></li>
+<li><a class="reference internal" href="posts/exterminate/#python" id="id4">Python</a></li>
 <li>
-<a class="reference internal" href="posts/exterminate/#listings" id="id7">Listings</a><ul>
-<li><a class="reference internal" href="posts/exterminate/#id3" id="id8">Glade</a></li>
-<li><a class="reference internal" href="posts/exterminate/#id4" id="id9">Python</a></li>
+<a class="reference internal" href="posts/exterminate/#listings" id="id5">Listings</a><ul>
+<li><a class="reference internal" href="posts/exterminate/#id1" id="id6">Glade</a></li>
+<li><a class="reference internal" href="posts/exterminate/#id2" id="id7">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -102,32 +102,29 @@
 <p><strong>The VTE terminal widget</strong></p>
 <a class="reference external image-reference" href="../images/11_terminal.png"><img alt="/images/11_terminal.thumbnail.png" src="../images/11_terminal.thumbnail.png"></a>
 <div class="section" id="glade">
-<h2><a class="toc-backref" href="posts/exterminate/#id5">Glade</a></h2>
+<h2><a class="toc-backref" href="posts/exterminate/#id3">Glade</a></h2>
 <p>The widget can be found in the lower part of the widget side bar and provides a complete terminal emulator. To close the window on the <tt class="docutils literal">exit</tt> command the <em>child-exited</em> signal has to be assigned.</p>
 <p>A button click shall open a Python prompt within the terminal window, so we need the familiar <em>clicked</em> signal.</p>
 </div>
 <div class="section" id="python">
-<h2><a class="toc-backref" href="posts/exterminate/#id6">Python</a></h2>
-<p>Elements used in Glade that are not part of the <em>Gtk</em> module have to be registered as a <em>GObject</em> object (this is also required when using a <em>GtkSourceView</em> widget as the functionality is provided by the <a href="posts/exterminate/#id1"><span class="problematic" id="id2">*</span></a>GtkSource module):</p>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 19); <em><a href="posts/exterminate/#id2">backlink</a></em></p>
-Inline emphasis start-string without end-string.</div>
-<pre class="code python"><a name="rest_code_da4944e1788e4e1eb791c3c6def864ee-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+<h2><a class="toc-backref" href="posts/exterminate/#id4">Python</a></h2>
+<p>Elements used in Glade that are not part of the <em>Gtk</em> module have to be registered as a <em>GObject</em> object (this is also required when using a <em>GtkSourceView</em> widget as the functionality is provided by the <em>GtkSource</em> module):</p>
+<pre class="code python"><a name="rest_code_cc805cac6d0844dfa2143f0a76e32003-1"></a><span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
 </pre>
 <p>The terminal emulator is initiated by calling <tt class="docutils literal">spawn_sync</tt> expecting 7 parameters. Detailed information on the parameters are available in the <a class="reference external" href="https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync">documentation</a> but for a common start a lot of defaults and Nones will do:</p>
-<pre class="code python"><a name="rest_code_7a51903377ff47588ea4cafd5c88a119-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-3"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-5"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-7"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-8"></a>        <span class="bp">None</span><span class="p">,</span>
-<a name="rest_code_7a51903377ff47588ea4cafd5c88a119-9"></a>        <span class="p">)</span>
+<pre class="code python"><a name="rest_code_dec732953ad54f869c85e903eeb009a1-1"></a><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-2"></a>        <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-3"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-4"></a>        <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-5"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-6"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-7"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-8"></a>        <span class="bp">None</span><span class="p">,</span>
+<a name="rest_code_dec732953ad54f869c85e903eeb009a1-9"></a>        <span class="p">)</span>
 </pre>
 <p>The <tt class="docutils literal">feed_child</tt> function must be called to send a command to the console. The expected parameters are the string including a newline and the length of the string:</p>
-<pre class="code python"><a name="rest_code_ed5b43f4b8cd44308884db9156de249e-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
-<a name="rest_code_ed5b43f4b8cd44308884db9156de249e-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_fe8c573d83b44cac87f2b08f6f8e90dd-1"></a><span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
+<a name="rest_code_fe8c573d83b44cac87f2b08f6f8e90dd-2"></a><span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
 </pre>
 <p class="more"><a href="posts/exterminate/">Read more…</a></p>
 </div>
@@ -232,18 +229,18 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="translatable-strings">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id6">Translatable strings</a></h3>
 <p>Approved translatable strings are recognized by <tt class="docutils literal">xgettext</tt> by brackets with a leading underscore:</p>
-<pre class="code python"><a name="rest_code_c743bb0203a949f4815c673c72ea617e-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">gettext</span>
-<a name="rest_code_c743bb0203a949f4815c673c72ea617e-2"></a><span class="n">translatable_string</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">"translate me"</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_62fb89e92ab147eb92dccf371ea28fd1-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">gettext</span><span class="o">.</span><span class="n">gettext</span>
+<a name="rest_code_62fb89e92ab147eb92dccf371ea28fd1-2"></a><span class="n">translatable_string</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">"translate me"</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="configure-bind-textdomain">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id7">configure (bind)textdomain</a></h3>
 <p>Now name and location of the MO files have to be configured in the source code:</p>
-<pre class="code python"><a name="rest_code_657734e190ab40b3a30fd853d3fda114-1"></a><span class="n">locale</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_657734e190ab40b3a30fd853d3fda114-2"></a><span class="n">locale</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_657734e190ab40b3a30fd853d3fda114-3"></a><span class="n">gettext</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
-<a name="rest_code_657734e190ab40b3a30fd853d3fda114-4"></a><span class="n">gettext</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
-<a name="rest_code_657734e190ab40b3a30fd853d3fda114-5"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_translation_domain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_4a8a2a21071f444b86311f6e5b91f3ed-1"></a><span class="n">locale</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_4a8a2a21071f444b86311f6e5b91f3ed-2"></a><span class="n">locale</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_4a8a2a21071f444b86311f6e5b91f3ed-3"></a><span class="n">gettext</span><span class="o">.</span><span class="n">bindtextdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">,</span><span class="n">locales_dir</span><span class="p">)</span>
+<a name="rest_code_4a8a2a21071f444b86311f6e5b91f3ed-4"></a><span class="n">gettext</span><span class="o">.</span><span class="n">textdomain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
+<a name="rest_code_4a8a2a21071f444b86311f6e5b91f3ed-5"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_translation_domain</span><span class="p">(</span><span class="n">appname</span><span class="p">)</span>
 </pre>
 <p><tt class="docutils literal">set_translation_domain</tt> has to be called before loading Glade files.</p>
 </div>
@@ -253,37 +250,37 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="pot">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id9">POT</a></h3>
 <p>POT is the abbrevation for Portable Object Template. This file contains all original translatable strings. After generating an empty POT file, <tt class="docutils literal">xgettext</tt> is executed for all source files containing translatable strings:</p>
-<pre class="code console"><a name="rest_code_a7430445d3424ae6ad67dfeb58f0e8c9-1"></a><span class="gp">$</span> xgettext --options -o output.pot sourcefile.ext
+<pre class="code console"><a name="rest_code_4b7b15322e924d72aa3a8cd934afa25c-1"></a><span class="gp">$</span> xgettext --options -o output.pot sourcefile.ext
 </pre>
 <p>The identified strings are added to the POT file.</p>
-<pre class="code console"><a name="rest_code_cfdfc8034ada4030a5fbb2be0234a84e-1"></a><span class="gp">#</span>: sourcefile.ext:line number
-<a name="rest_code_cfdfc8034ada4030a5fbb2be0234a84e-2"></a><span class="go">msgid "translatable string"</span>
-<a name="rest_code_cfdfc8034ada4030a5fbb2be0234a84e-3"></a><span class="go">msgstr ""</span>
+<pre class="code console"><a name="rest_code_86810c439912455da764cc912f417590-1"></a><span class="gp">#</span>: sourcefile.ext:line number
+<a name="rest_code_86810c439912455da764cc912f417590-2"></a><span class="go">msgid "translatable string"</span>
+<a name="rest_code_86810c439912455da764cc912f417590-3"></a><span class="go">msgstr ""</span>
 </pre>
 <p>The file number reference comment can be avoided by passting the option <tt class="docutils literal"><span class="pre">--no-location</span></tt>.</p>
 <p>In this article's example it is required to run xgettext once for the Glade file and once for the Python source code; the <tt class="docutils literal"><span class="pre">-j</span></tt> (<tt class="docutils literal"><span class="pre">--join-existing</span></tt>) option adds new found strings to an existing file:</p>
-<pre class="code console"><a name="rest_code_3eee9aff816d469a8c15b3961ac14f22-1"></a><span class="gp">$</span> xgettext --sort-output --keyword<span class="o">=</span>translatable --language<span class="o">=</span>Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
-<a name="rest_code_3eee9aff816d469a8c15b3961ac14f22-2"></a><span class="gp">$</span> xgettext --language<span class="o">=</span>Python -j -o 10_localization/TUT.pot 10_lokalisation.py
+<pre class="code console"><a name="rest_code_1138cdb4b4a2418eae5fcdd444096875-1"></a><span class="gp">$</span> xgettext --sort-output --keyword<span class="o">=</span>translatable --language<span class="o">=</span>Glade -j -o 10_localization/TUT.pot 10_lokalisation.glade
+<a name="rest_code_1138cdb4b4a2418eae5fcdd444096875-2"></a><span class="gp">$</span> xgettext --language<span class="o">=</span>Python -j -o 10_localization/TUT.pot 10_lokalisation.py
 </pre>
 </div>
 <div class="section" id="po">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id10">PO</a></h3>
 <p>Translated strings are stored in a PO file per language. A new translation ist invoked by</p>
-<pre class="code console"><a name="rest_code_69464f326b1f4b919d548f4accc40fc3-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>source.pot --locale<span class="o">=</span>xx
-<a name="rest_code_69464f326b1f4b919d548f4accc40fc3-2"></a><span class="gp">#</span> <span class="nv">xx</span><span class="o">=</span>language code
+<pre class="code console"><a name="rest_code_a718ea9559fa48d280c75a78da03d21e-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>source.pot --locale<span class="o">=</span>xx
+<a name="rest_code_a718ea9559fa48d280c75a78da03d21e-2"></a><span class="gp">#</span> <span class="nv">xx</span><span class="o">=</span>language code
 </pre>
 <p>that generates a file after the pattern xx.po (p.e. de.po). This file can be edited in any text editor or dedicated tools such like <a class="reference external" href="https://poedit.net/">PoEdit</a>. A German localization for example is created by the command</p>
-<pre class="code console"><a name="rest_code_c6e5004785db41c7a976bd3ce2e3c595-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>TUT.pot --locale<span class="o">=</span>de
+<pre class="code console"><a name="rest_code_c1f35f45caf047908415b24c042df754-1"></a><span class="gp">$</span> msginit --input<span class="o">=</span>TUT.pot --locale<span class="o">=</span>de
 </pre>
 <p>If the POT file is altered the PO files are updated with the new strings by executing <tt class="docutils literal">msgmerge</tt>:</p>
-<pre class="code console"><a name="rest_code_60e175f8eb0845d38ca38a3a7dfa5941-1"></a><span class="gp">$</span> msgmerge lang.po template.pot &gt; new_lang.po
+<pre class="code console"><a name="rest_code_406a6fb5d4d848d6b0943c98fcde6f30-1"></a><span class="gp">$</span> msgmerge lang.po template.pot &gt; new_lang.po
 </pre>
 </div>
 <div class="section" id="mo">
 <h3><a class="toc-backref" href="posts/romani-ite-domum/#id11">MO</a></h3>
 <p>MO files are (machine readable) binary files and mandatory for gettext to work. Localization files are located below the <em>bindtextdomain</em> following the file structure <tt class="docutils literal"><span class="pre">path/to/bindtextdomain)/locale/language</span> code/LC_MESSAGES/appname.po</tt>.</p>
 <p>In the example the bindtextdomain is created in the local directory, the generated <cite>de.po</cite> translation text file then transformed into the  corresponding MO file:</p>
-<pre class="code console"><a name="rest_code_6cedc52908ad42c8ac7ad6cf4172641d-1"></a><span class="gp">$</span> msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
+<pre class="code console"><a name="rest_code_f8091e3695be413cbbca3e1c99b227c1-1"></a><span class="gp">$</span> msgfmt --output locale/de/LC_MESSAGES/TUT.mo de.po
 </pre>
 </div>
 <div class="section" id="tipps">
@@ -300,7 +297,7 @@ Inline emphasis start-string without end-string.</div>
 <div class="section" id="remove-obsolete-strings">
 <h4><a class="toc-backref" href="posts/romani-ite-domum/#id14">Remove obsolete strings</a></h4>
 <p>Strings that are removed from the template remain in the translation files. You can get rid of these by executing this command:</p>
-<pre class="code bash"><a name="rest_code_557e4a937b8e4f6aa84bec71d6cf19ba-1"></a>$ msgattrib --set-obsolete --ignore-file<span class="o">=</span>PRJ.pot -o xx.po xx.po
+<pre class="code bash"><a name="rest_code_3c002dee002a4afd8eafd69d502063c1-1"></a>$ msgattrib --set-obsolete --ignore-file<span class="o">=</span>PRJ.pot -o xx.po xx.po
 </pre>
 <p class="more"><a href="posts/romani-ite-domum/">Read more…</a></p>
 </div>
@@ -338,22 +335,22 @@ Inline emphasis start-string without end-string.</div>
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li>
-<a class="reference internal" href="posts/uberlistet/#glade" id="id6">Glade</a><ul>
-<li><a class="reference internal" href="posts/uberlistet/#liststore" id="id7">ListStore</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#widgets" id="id8">Widgets</a></li>
+<a class="reference internal" href="posts/uberlistet/#glade" id="id4">Glade</a><ul>
+<li><a class="reference internal" href="posts/uberlistet/#liststore" id="id5">ListStore</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#widgets" id="id6">Widgets</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="posts/uberlistet/#python" id="id9">Python</a><ul>
-<li><a class="reference internal" href="posts/uberlistet/#treestore" id="id10">TreeStore</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#combobox" id="id11">ComboBox</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#edit-cells" id="id12">Edit cells</a></li>
+<a class="reference internal" href="posts/uberlistet/#python" id="id7">Python</a><ul>
+<li><a class="reference internal" href="posts/uberlistet/#treestore" id="id8">TreeStore</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#combobox" id="id9">ComboBox</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#edit-cells" id="id10">Edit cells</a></li>
 </ul>
 </li>
 <li>
-<a class="reference internal" href="posts/uberlistet/#listings" id="id13">Listings</a><ul>
-<li><a class="reference internal" href="posts/uberlistet/#id4" id="id14">Glade</a></li>
-<li><a class="reference internal" href="posts/uberlistet/#id5" id="id15">Python</a></li>
+<a class="reference internal" href="posts/uberlistet/#listings" id="id11">Listings</a><ul>
+<li><a class="reference internal" href="posts/uberlistet/#id2" id="id12">Glade</a></li>
+<li><a class="reference internal" href="posts/uberlistet/#id3" id="id13">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -384,54 +381,50 @@ Inline emphasis start-string without end-string.</div>
 </ol>
 <a class="reference external image-reference" href="../images/09_treestore2.png"><img alt="/images/09_treestore2.thumbnail.png" src="../images/09_treestore2.thumbnail.png"></a>
 <div class="section" id="glade">
-<h2><a class="toc-backref" href="posts/uberlistet/#id6">Glade</a></h2>
+<h2><a class="toc-backref" href="posts/uberlistet/#id4">Glade</a></h2>
 <div class="section" id="liststore">
-<h3><a class="toc-backref" href="posts/uberlistet/#id7">ListStore</a></h3>
+<h3><a class="toc-backref" href="posts/uberlistet/#id5">ListStore</a></h3>
 <p>In the example there is one ListStore created via <em>"Miscellaneous &gt; List Store"</em> which will be later used by three Widgets.</p>
 <p>First there are some rows created. ListStore data sets can be inserted in Glade but this in practise is only convenient for typing in few data sets.</p>
 <p>Content changes in the ListStore are simultaneously updated in the Widgets using the ListStore. For individual sorting of the same List/TreeStore it is needed to create <em>Gtk.TreeModelSort</em> elements (this element is used in the example of the <a class="reference external" href="posts/ansichtssache/">TreeStore article</a>).</p>
 <a class="reference external image-reference" href="../images/09_treestore1.png"><img alt="/images/09_treestore1.thumbnail.png" src="../images/09_treestore1.thumbnail.png"></a>
 </div>
 <div class="section" id="widgets">
-<h3><a class="toc-backref" href="posts/uberlistet/#id8">Widgets</a></h3>
+<h3><a class="toc-backref" href="posts/uberlistet/#id6">Widgets</a></h3>
 <dl class="docutils">
 <dt>ComboBox</dt>
 <dd>Creating the widget you are prompted to choose as "TreeView Model". In the edit mode accessible via <em>"Edit &gt; Hierarchy"</em> there is created a CellRendererText. In the first field ("Text") the column to load the items of the dropdown menu from is set. To process the selection you will need the <em>changed</em> signal.</dd>
 <dt>TreeView #1</dt>
-<dd>The first TreeView widget is placed within a <em>Gtk.ScrolledWindow</em> container. Like in a ComboBox there are created CellRenderer representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
+<dd>The first TreeView widget is placed within a <em>Gtk.ScrolledWindow</em> container. Like in a ComboBox there are created CellRenderers representing a column to show in the TreeView table. If the sort indicator is activated columns can be sorted on a column table click.
 Columns do not have to be sorted according to the columns they show.</dd>
 <dt>TreeView #2</dt>
-<dd>
-<p class="first">The second TreeView widget is created within a <em>Gtk.ViewPort</em>. This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the <em>Gtk.ScrolledWindow</em>.
-The sort indicator is deactivated and the middle column ("Description") is made editible with the signal <a href="posts/uberlistet/#id2"><span class="problematic" id="id3">*</span></a>edited" allocated.</p>
-<div class="last system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 45); <em><a href="posts/uberlistet/#id3">backlink</a></em></p>
-Inline emphasis start-string without end-string.</div>
-</dd>
+<dd>The second TreeView widget is created within a <em>Gtk.ViewPort</em>.
+This container widget does not provide scroll bars but the automatically adapts the necessary size to display the whole content. So for larger tables you will need the <em>Gtk.ScrolledWindow</em>.
+The sort indicator is deactivated and the middle column ("Description") is made editible with the signal "edited" allocated.</dd>
 <dt>Button</dt>
 <dd>The button's function is appending a row to the ListStore, so the <em>clicked</em> signal is required.</dd>
 </dl>
 </div>
 </div>
 <div class="section" id="python">
-<h2><a class="toc-backref" href="posts/uberlistet/#id9">Python</a></h2>
+<h2><a class="toc-backref" href="posts/uberlistet/#id7">Python</a></h2>
 <div class="section" id="treestore">
-<h3><a class="toc-backref" href="posts/uberlistet/#id10">TreeStore</a></h3>
+<h3><a class="toc-backref" href="posts/uberlistet/#id8">TreeStore</a></h3>
 <p>The ListStore's row can be iterated over via <tt class="docutils literal">for row in store</tt>. New rows are added by <tt class="docutils literal">append</tt>, other options are <tt class="docutils literal">insert</tt> or <tt class="docutils literal">remove</tt> to add or delete rows at specific positions.</p>
 </div>
 <div class="section" id="combobox">
-<h3><a class="toc-backref" href="posts/uberlistet/#id11">ComboBox</a></h3>
+<h3><a class="toc-backref" href="posts/uberlistet/#id9">ComboBox</a></h3>
 <p>For accessing a data row you need a <em>Gtk.TreeIter</em> object which points to the position in the model (this can also be achieved by a <em>Gtk.TreePath</em> object).</p>
-<pre class="code python"><a name="rest_code_47a22f1a718541a68e59d095339c969e-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
-<a name="rest_code_47a22f1a718541a68e59d095339c969e-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
-<a name="rest_code_47a22f1a718541a68e59d095339c969e-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-1"></a><span class="nb">iter</span><span class="p">,</span><span class="n">model</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_active_iter</span><span class="p">(),</span><span class="n">widget</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-2"></a><span class="n">row</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">]</span>
+<a name="rest_code_fe84bf74d29e46ddbfc5ed0e16db8bf7-3"></a><span class="k">print</span><span class="p">(</span><span class="s2">"Selection:"</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre>
 </div>
 <div class="section" id="edit-cells">
-<h3><a class="toc-backref" href="posts/uberlistet/#id12">Edit cells</a></h3>
+<h3><a class="toc-backref" href="posts/uberlistet/#id10">Edit cells</a></h3>
 <p>The <em>edited</em> signal passes the position and content of the edited cell. The new content of the <em>CellRendererText</em> has to explicitly be committed to the data store otherwise the content will return to the pre edit state. This can be accomplished by using the passed <em>TreePath</em> position.</p>
-<pre class="code python"><a name="rest_code_a280891b90c048e489e0d5bf9fe1e2a8-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
-<a name="rest_code_a280891b90c048e489e0d5bf9fe1e2a8-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
+<pre class="code python"><a name="rest_code_182152d1010f44bbb3a7296c9e70e8cb-1"></a><span class="k">def</span> <span class="nf">on_cellrenderer_descr_edited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edit</span><span class="p">):</span>
+<a name="rest_code_182152d1010f44bbb3a7296c9e70e8cb-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edit</span>
 </pre>
 <p class="more"><a href="posts/uberlistet/">Read more…</a></p>
 </div>

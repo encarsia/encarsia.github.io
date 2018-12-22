@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import random
+
 import gi
-gi.require_version('Gtk','3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+
 
 class Handler:
 
-    def on_window_destroy(self,*args):
+    def on_window_destroy(self, *args):
         Gtk.main_quit()
 
     def on_button_clicked(self,widget):
@@ -21,6 +23,7 @@ class Handler:
             x.builder.get_object("button").set_sensitive(False)
         else:
             x.builder.get_object("button").set_sensitive(True)
+
 
 class Example:
     
@@ -43,6 +46,7 @@ class Example:
 
     def main(self):
         Gtk.main()
+
 
 x = Example()
 x.main()

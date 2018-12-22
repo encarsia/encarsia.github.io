@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -28,7 +28,7 @@ Um eine Konfiguration für eine Anwendung zu erstellen, muss diese in einer Sche
 
 Ein Beispiel für eine Schema-Datei mit einer festzulegenden Eigenschaft (key) wäre etwa:
 
-.. code-block:: xml
+.. code:: xml
     
     <schemalist>
       <schema id="org.gtk.Test" path="/org/gtk/Test/">
@@ -48,11 +48,11 @@ Die Dateibenennung folgt der Vorgabe "``schema.id.gschema.xml``". Das Standardin
 
 Die erforderliche Kompilierung erfolgt mit
 
-.. code:: bash
+.. code:: console
 
-    glib-compile-schemas /path/to/schema/files/
-    #default directory
-    glib-compile-schemas /usr/share/glib-2.0/schemas/
+    $ glib-compile-schemas /path/to/schema/files/
+    $ # default directory
+    $ glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 Die kompilierte und nun von GSettings verwendete Datei ist ``gschemas.compiled``.
 
@@ -78,7 +78,7 @@ Eine bestehende Konfiguration zu laden, geschieht einfach per
 .. code:: python
 
     setting = Gio.Settings.new("full.schema.path")
-    #load desktop background configuration
+    # load desktop background configuration
     setting = Gio.Settings.new("org.gnome.desktop.background")
 
 Lokales Schema laden
@@ -90,7 +90,7 @@ Bei einem lokal gespeicherten Schema muss der Ort der ``schemas.compiled`` angeg
 
     schema_source = Gio.SettingsSchemaSource.new_from_directory(os.getcwd(), 
                 Gio.SettingsSchemaSource.get_default(), False)
-    schema = Gio.SettingsSchemaSource.lookup(schema_source,"org.example.wallpaper-changer",False)
+    schema = Gio.SettingsSchemaSource.lookup(schema_source, "org.example.wallpaper-changer", False)
     setting = Gio.Settings.new_full(schema, None, None)
 
 Widget verknüpfen
@@ -121,9 +121,9 @@ Die Inhalte dieser Werte lassen sich einfach in simple Datentypen konvertieren, 
 
 .. code:: python
 
-    #return string
+    # return string
     setting.get_value(key).get_string()
-    #return anything (list, string, bool etc.)
+    # return anything (list, string, bool etc.)
     setting.get_value(key).unpack()
     
 Umgekehrt lassen sich reguläre Datentypen nach folgendem Muster als *GLib.Variant*-Typ ausdrücken und an GSettings übergeben:
@@ -138,7 +138,7 @@ Im Beispiel wird auf diese Art die Favoritenliste aktualisiert:
 
 .. code:: python
 
-    app_setting.set_value("favourites", GLib.Variant('as',fav_list))
+    app_setting.set_value("favourites", GLib.Variant("as", fav_list))
 
 
 

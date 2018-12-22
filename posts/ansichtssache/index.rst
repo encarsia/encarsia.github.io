@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -26,10 +26,10 @@ Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Eleme
 .. code-block:: python
 
     #append row to liststore
-    store.append([value1,value2,value3])
+    store.append([value1, value2, value3])
     
     #append row to treestore
-    store.append(parent,[value1,value2,value3])
+    store.append(parent, [value1, value2, value3])
 
 Der Wert der Variable *parent* ist entweder
 
@@ -40,8 +40,8 @@ Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werd
 
 .. code-block:: python
 
-    row1 = store.append(None,[value1,value2,value3])
-    row2 = store.append(row1,[value1,value2,value3])
+    row1 = store.append(None, [value1, value2, value3])
+    row2 = store.append(row1, [value1, value2, value3])
 
 Man erhält den *TreeIter*-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
 
@@ -82,9 +82,9 @@ Durch die Positionsabfrage von ``GtkTreeSelection.get_selected()`` erhält man e
 
 .. code-block:: python
 
-    model,pos = selection.get_selected()
+    model, pos = selection.get_selected()
     converted_iter = treesort.convert_iter_to_child_iter(pos)
-    store.set_value(converted_iter,column,value)
+    store.set_value(converted_iter, column, value)
 
 
 TreeModelFilter
@@ -94,7 +94,7 @@ Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von 
 
 .. code-block:: python
 
-    def color_filter_func(self,model,iter,data):
+    def color_filter_func(self, model, iter, data):
         if model[iter][2] == self.color:
             return True
         else:
@@ -110,7 +110,7 @@ zugewiesen, jede Filterung wird dann per ``refilter()`` ausgelöst, also wenn da
 
 .. code-block:: python
 
-    def on_button_clicked(self,widget):
+    def on_button_clicked(self, widget):
         x.color = widget.get_label()
         x.obj("treefilter").refilter()
 

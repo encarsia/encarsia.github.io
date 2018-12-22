@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -49,7 +49,7 @@ Radiobutton
 
 Radiobuttons dienen der Auswahl _eines_ Listenpunktes aus einer gegebenen Liste. Das Element selbst funktioniert ebenfalls wie ein Togglebutton (das Signal *toggled* zuweisen).
 
-Zusätzlich werden die zusammengehörigen Listenpunkte zu einer Gruppe zugeordet. Dies bewerkstelligt man einfach, indem man alle Radiobuttons unter "Allgemein > Knopfattribute > Gruppe" an einem "führenden Radiobutton" ausrichtet.
+Zusätzlich werden die zusammengehörigen Listenpunkte einer Gruppe zugeordet. Dies bewerkstelligt man einfach, indem man alle Radiobuttons unter *"Allgemein > Knopfattribute > Gruppe"* an einem "führenden Radiobutton" ausrichtet.
 
 
 Python
@@ -61,7 +61,7 @@ Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False
 
 .. code-block:: python
 
-    def on_switch_state_set(self,widget,state):
+    def on_switch_state_set(self, widget, state):
         if state is True:
             print("switch is on")
         else:

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -31,7 +31,7 @@ Elemente außerhalb des *Gtk*-Moduls, die mit Glade verwendet werden, müssen al
 
     GObject.type_register(Vte.Terminal)
 
-Das Terminal wird mit der Funktion ``spawn_sync`` initiiert, die ganze 7 Parameter erwartet. Die `Dokumentation <https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync>`_ liefert Details, für eine einfache Bash kommt man mit viel Defaults und Nones aus:
+Das Terminal wird mit der Funktion ``spawn_sync`` initiiert, die diverse Parameter erwartet. Die `Dokumentation <https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html#Vte.Terminal.spawn_sync>`_ liefert Details, für eine einfache Bash kommt man mit viel Defaults und Nones aus:
 
 .. code-block:: python
 
@@ -41,16 +41,14 @@ Das Terminal wird mit der Funktion ``spawn_sync`` initiiert, die ganze 7 Paramet
             ["/bin/bash"],
             None,
             GLib.SpawnFlags.DEFAULT,
-            None,
-            None,
             )
 
-Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion ``feed_child``. Als Parameter müssen übergeben werden zum einen der String (inklusive *newline*, um einen Befehl auszuführen) und die Länge des Strings:
+Um eine Eingabe an die Konsole zu schicken, bedarf es der Funktion ``feed_child``. Als Parameter muss der auszuführende Befehl als UTF-8-kodierter String inklusive *newline*, also dem "Enter" übergeben werden:
 
 .. code:: python
 
        command = "python\n"
-       x.terminal.feed_child(command,len(command))
+       x.terminal.feed_child(command.encode())
 
 Die Ausgabe ins Terminal kann mit der Funktion ``get_text()`` abgefangen werden. Die Funktion gibt ein Tupel zurück, dessen erstes Element der Ausgabestring ist. Dieser enthält allerdings den gesamten Terminalinhalt, also auch viele Leerzeilen, die sich mit herkömmlichen String-Operationen beseitigen lassen.
 

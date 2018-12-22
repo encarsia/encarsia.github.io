@@ -71,22 +71,21 @@ Das GUI-Programm Glade wurde erst kürzlich modernisiert, in der Anwendung von W
 <h2>set_wm_class</h2>
 <p>Programmname in Panel und Dock anzeigen</p>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Window.set_wmclass(args)</tt></p>
-<p><strong>Neu:</strong> <tt class="docutils literal">GLib.set_progname(name_string)</tt></p>
+<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Window.set_wmclass(wmclass_name, wmclass_class)</tt></p>
+<p><strong>Neu:</strong> <tt class="docutils literal">GLib.set_prgname(wmclass_name)</tt> (in .desktop-Datei <tt class="docutils literal">StartupWMClass=wmclass_name</tt> erforderlich)</p>
 </blockquote>
 </div>
-<div class="section" id="new-from-stock">
-<h2>new_from_stock</h2>
+<div class="section" id="widget-new-from-stock">
+<h2>widget.new_from_stock</h2>
 <blockquote>
 <p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Button.new_from_stock(Gtk.STOCK_OK)</tt></p>
 <p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.Button.new_with_label("OK")</span></tt></p>
 </blockquote>
-<p>Labels bekommen nur noch eine Bezeichnung durch einen String, in der Dokumentation</p>
-<p>Gtk.Image.new_from_stock(Gtk.STOCK_YES, 1)</p>
-<p>gilt auch für ToggleButton</p>
+<p>Labels bekommen nur noch eine Bezeichnung durch einen String.</p>
+<p>Gilt auch für <em>ToggleButton</em> und <em>Image</em> (hier: image.new_from_icon_name() verwenden)</p>
 </div>
-<div class="section" id="new-with-label">
-<h2>new_with_label</h2>
+<div class="section" id="menuitem-new-with-label">
+<h2>menuitem.new_with_label</h2>
 <p>Bei der Initialisierung von Labels enthaltene Widgets, z.B. <em>Gtk.MenuItem</em></p>
 <blockquote>
 <p><strong>Alt:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem("label")</span></tt></p>
@@ -116,6 +115,28 @@ Das GUI-Programm Glade wurde erst kürzlich modernisiert, in der Anwendung von W
 <p><strong>Neu:</strong> GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)</p>
 </blockquote>
 </div>
+</div>
+<div class="section" id="filechooserdialog">
+<h2>FileChooserDialog</h2>
+<blockquote>
+<strong>Alt:</strong>
+</blockquote>
+<pre class="code python"><a name="rest_code_5815aaa9e9d646b58a98e64cdb10fe9e-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_5815aaa9e9d646b58a98e64cdb10fe9e-2"></a>                                <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_5815aaa9e9d646b58a98e64cdb10fe9e-3"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_5815aaa9e9d646b58a98e64cdb10fe9e-4"></a>                                <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_5815aaa9e9d646b58a98e64cdb10fe9e-5"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
+</pre>
+<p>'</p>
+<blockquote>
+<strong>Neu:</strong> Argumente werden namentlich übergeben, Buttons separat hinzugefügt:</blockquote>
+<pre class="code python"><a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-2"></a>                               <span class="n">parent</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-3"></a>                               <span class="n">action</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-4"></a>                               <span class="p">)</span>
+<a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_3cbdc7cbfa3e42708a6968b4af7009e0-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+</pre>
 </div>
 </div>
         </div>

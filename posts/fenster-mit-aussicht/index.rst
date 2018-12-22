@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 
@@ -22,10 +22,14 @@ Nun erstellt man ein Fenster und gibt ihm eine Kennung. Mit dieser Kennung wird 
 
 .. thumbnail:: /images/01_glade.png
 
+.. note::
+
+    Die Glade-Oberfläche wurde mit der Version 3.22 modernisiert. Details dazu gibt es im Artikel `Überarbeitete Oberfläche in Glade 3.22 <link://slug/glade-322>`_.
+
 Um die Ausführung von Funktionen durch ein Widget zu initiieren, müssen sie mit Signalen gekoppelt werden. Signale können je nach Objektart verschieden ausgelöst werden, durch Anklicken, Markieren, Editieren, Schalten etc.
 
 Um in diesem Beispiel das Programmfenster mit dem Schließen-Button zu schließen, wird das Signal *destroy* benötigt. Beim Funktionsnamen hilft die Vorschlagsfunktion nach dem Schema ``on_kennung_signal``.
-Ich empfehle, diesen Vorschlägen im allgemeinen zu folgen, sie erleichtern die Tipparbeit.
+Ich empfehle, diesen Vorschlägen im Allgemeinen zu folgen, sie erleichtern die Tipparbeit und hält die Codestruktur konsistent.
 
 .. thumbnail:: /images/01_destroysignal.png
 
@@ -39,7 +43,7 @@ First things first. Die *GtkBuilder*-Funktionen stehen im *Gtk*-Modul aus den Py
 .. code-block:: python
 
     import gi
-    gi.require_version('Gtk','3.0')
+    gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
 
 Nach dem Aufruf von ``Gtk.Builder()`` wird die Glade-Datei geladen.
@@ -66,7 +70,7 @@ Das oben konstruierte Beispiel entspricht dem Basisbeispiel im `Python GTK+ 3 Tu
 .. code-block:: python
 
     import gi
-    gi.require_version('Gtk', '3.0')
+    gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
 
     win = Gtk.Window()
@@ -74,7 +78,7 @@ Das oben konstruierte Beispiel entspricht dem Basisbeispiel im `Python GTK+ 3 Tu
     win.show_all()
     Gtk.main()
 
-Man sollte sich von der Kürze dieses Beispiels nicht täuschen lassen. Die eigentlichen Elemente, Boxen, Widget, Buttons, Leisten etc. fehlen hier komplett.
+Man sollte sich von der Kürze dieses Beispiels nicht täuschen lassen. Die eigentlichen Elemente, Boxen, Widgets, Buttons, Leisten etc. fehlen hier komplett.
 
 .. TEASER_END
 

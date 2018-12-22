@@ -83,45 +83,46 @@
 <a href="#listings11_terminalpy-45">45</a>
 <a href="#listings11_terminalpy-46">46</a>
 <a href="#listings11_terminalpy-47">47</a>
-<a href="#listings11_terminalpy-48">48</a></pre></div></td>
+<a href="#listings11_terminalpy-48">48</a>
+<a href="#listings11_terminalpy-49">49</a></pre></div></td>
 <td class="code"><pre class="code literal-block"><a name="listings11_terminalpy-1"></a><span class="ch">#!/usr/bin/python</span>
 <a name="listings11_terminalpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
 <a name="listings11_terminalpy-3"></a>
 <a name="listings11_terminalpy-4"></a><span class="kn">import</span> <span class="nn">os</span>
-<a name="listings11_terminalpy-5"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings11_terminalpy-6"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="listings11_terminalpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Vte'</span><span class="p">,</span> <span class="s1">'2.91'</span><span class="p">)</span>
-<a name="listings11_terminalpy-8"></a>
-<a name="listings11_terminalpy-9"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span><span class="n">Vte</span><span class="p">,</span><span class="n">GObject</span><span class="p">,</span><span class="n">GLib</span>
+<a name="listings11_terminalpy-5"></a>
+<a name="listings11_terminalpy-6"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="listings11_terminalpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+<a name="listings11_terminalpy-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Vte"</span><span class="p">,</span> <span class="s2">"2.91"</span><span class="p">)</span>
+<a name="listings11_terminalpy-9"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Vte</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GLib</span>
 <a name="listings11_terminalpy-10"></a>
-<a name="listings11_terminalpy-11"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings11_terminalpy-12"></a>
-<a name="listings11_terminalpy-13"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings11_terminalpy-14"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
-<a name="listings11_terminalpy-15"></a>
-<a name="listings11_terminalpy-16"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings11_terminalpy-17"></a>        <span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
-<a name="listings11_terminalpy-18"></a>        <span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
-<a name="listings11_terminalpy-19"></a>
-<a name="listings11_terminalpy-20"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings11_terminalpy-21"></a>    
-<a name="listings11_terminalpy-22"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings11_terminalpy-23"></a>        
-<a name="listings11_terminalpy-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings11_terminalpy-25"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
-<a name="listings11_terminalpy-26"></a>        
-<a name="listings11_terminalpy-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"11_terminal.glade"</span><span class="p">)</span>
-<a name="listings11_terminalpy-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings11_terminalpy-29"></a>        
-<a name="listings11_terminalpy-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"term"</span><span class="p">)</span>
-<a name="listings11_terminalpy-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
-<a name="listings11_terminalpy-32"></a>            <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="listings11_terminalpy-33"></a>            <span class="bp">None</span><span class="p">,</span>
-<a name="listings11_terminalpy-34"></a>            <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
+<a name="listings11_terminalpy-11"></a>
+<a name="listings11_terminalpy-12"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="listings11_terminalpy-13"></a>
+<a name="listings11_terminalpy-14"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="listings11_terminalpy-15"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="listings11_terminalpy-16"></a>
+<a name="listings11_terminalpy-17"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="listings11_terminalpy-18"></a>        <span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
+<a name="listings11_terminalpy-19"></a>        <span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<a name="listings11_terminalpy-20"></a>
+<a name="listings11_terminalpy-21"></a>
+<a name="listings11_terminalpy-22"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="listings11_terminalpy-23"></a>    
+<a name="listings11_terminalpy-24"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings11_terminalpy-25"></a>        
+<a name="listings11_terminalpy-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings11_terminalpy-27"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+<a name="listings11_terminalpy-28"></a>        
+<a name="listings11_terminalpy-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"11_terminal.glade"</span><span class="p">)</span>
+<a name="listings11_terminalpy-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings11_terminalpy-31"></a>        
+<a name="listings11_terminalpy-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"term"</span><span class="p">)</span>
+<a name="listings11_terminalpy-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
+<a name="listings11_terminalpy-34"></a>            <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
 <a name="listings11_terminalpy-35"></a>            <span class="bp">None</span><span class="p">,</span>
-<a name="listings11_terminalpy-36"></a>            <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+<a name="listings11_terminalpy-36"></a>            <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
 <a name="listings11_terminalpy-37"></a>            <span class="bp">None</span><span class="p">,</span>
-<a name="listings11_terminalpy-38"></a>            <span class="bp">None</span><span class="p">,</span>
+<a name="listings11_terminalpy-38"></a>            <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
 <a name="listings11_terminalpy-39"></a>            <span class="p">)</span>
 <a name="listings11_terminalpy-40"></a>
 <a name="listings11_terminalpy-41"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
@@ -130,8 +131,9 @@
 <a name="listings11_terminalpy-44"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a name="listings11_terminalpy-45"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 <a name="listings11_terminalpy-46"></a>
-<a name="listings11_terminalpy-47"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings11_terminalpy-48"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="listings11_terminalpy-47"></a>
+<a name="listings11_terminalpy-48"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="listings11_terminalpy-49"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 

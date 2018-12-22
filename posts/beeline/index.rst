@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 

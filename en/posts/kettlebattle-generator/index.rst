@@ -10,7 +10,7 @@
 
 **Der Kettlebattle-Generator - eine kleine Flask-App für die großen Muskelpartien**
 
-.. class:: warning pull-right
+.. class:: pull-right
 
 .. contents::
 

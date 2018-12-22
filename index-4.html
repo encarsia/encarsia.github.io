@@ -170,7 +170,7 @@
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="inhalt">
+<div class="contents pull-right topic" id="inhalt">
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
 <li>
@@ -214,9 +214,9 @@
 </div>
 <div class="section" id="buttons-und-responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id6">Buttons und Responses</a></h3>
-<p>Dialoge besitzen bereits intern über eine <em>GtkButtonBox</em>, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.</p>
+<p>Dialoge verfügen bereits intern über eine <em>GtkButtonBox</em>, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.</p>
 <p>Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf <em>clicked</em> angelegt werden, sondern man legt in den Button-Eigenschaften unter <em>"Allgemein"</em> eine Antwortkennung (Response) fest (int) und belegt das Signal <em>response</em> des <em>GtkDialog</em>.</p>
-<p>Standardbuttons wie im MessageDialog auswählbar besitzen eine vorgegebene Response (siehe <a class="reference external" href="https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType">Python GI API Reference</a>):</p>
+<p>Standardbuttons wie im MessageDialog auswählbar besitzen vorgegebene Response-Kennungen (siehe <a class="reference external" href="https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.ResponseType">Python GI API Reference</a>):</p>
 <blockquote>
 <ul class="simple">
 <li>
@@ -244,32 +244,32 @@
 <h2><a class="toc-backref" href="posts/dialoge/#id8">Python</a></h2>
 <div class="section" id="dialog-aufrufen">
 <h3><a class="toc-backref" href="posts/dialoge/#id9">Dialog aufrufen</a></h3>
-<p>Da Dialoge auch <em>Gtk.Windows</em> sind, lassen sie sich mit <tt class="docutils literal">show_all()</tt> aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit <tt class="docutils literal">run()</tt> auf. Dies bewirkt, dass das Dialogfenster über das Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.</p>
+<p>Da Dialoge auch <em>Gtk.Windows</em> sind, lassen sie sich mit <tt class="docutils literal">show_all()</tt> aufrufen. Die Funktion von Dialogen besteht allerdings in der Regel darin, Nutzereingaben zu erfassen oder Informationen zu vermitteln. Deshalb ruft man die Fenster am besten mit <tt class="docutils literal">run()</tt> auf. Dies bewirkt, dass das Dialogfenster über dem Elternfenster fixiert wird und jenes nicht aktiv ist, bis ein Response-Signal ausgeführt wird.</p>
 </div>
 <div class="section" id="responses">
 <h3><a class="toc-backref" href="posts/dialoge/#id10">Responses</a></h3>
-<p>Beim Auslösen des <em>response</em>-Signals wird die Antwortkennung als Parameter übergeben, so kann wie bereits erwähnt, jede innerhalb einer einzelnen Funktion verarbeitet werden:</p>
-<pre class="code python"><a name="rest_code_c8560f4d3301426daf93bcbac3c68546-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
-<a name="rest_code_c8560f4d3301426daf93bcbac3c68546-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
+<p>Beim Auslösen des <em>response</em>-Signals wird die Antwortkennung als Parameter übergeben, so kann, wie bereits erwähnt, jede Kennung innerhalb einer einzelnen Funktion verarbeitet werden:</p>
+<pre class="code python"><a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-1"></a><span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-2"></a>    <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-3"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-4"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-5"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="p">()</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-6"></a>    <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span><span class="p">):</span>
+<a name="rest_code_5c8d1193a9b849efbe1a13a91047b86a-7"></a>        <span class="n">do</span><span class="o">.</span><span class="n">something</span><span class="o">.</span><span class="n">different</span><span class="p">()</span>
 </pre>
 </div>
 <div class="section" id="delete-event">
 <h3><a class="toc-backref" href="posts/dialoge/#id11">Delete-event</a></h3>
 <p>Mit der Funktion <tt class="docutils literal">hide_on_delete()</tt> ausgeblendete Dialoge oder reguläre Fenster lassen sich mit <tt class="docutils literal">show_all()</tt> wieder anzeigen:</p>
-<pre class="code python"><a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-<a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="rest_code_cd3f156e22e44617bfd2ff926fa62588-3"></a>    <span class="k">return</span> <span class="bp">True</span>
+<pre class="code python"><a name="rest_code_cacfc2fd74a547e2be5fee3ab866287c-1"></a><span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a name="rest_code_cacfc2fd74a547e2be5fee3ab866287c-2"></a>    <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+<a name="rest_code_cacfc2fd74a547e2be5fee3ab866287c-3"></a>    <span class="k">return</span> <span class="bp">True</span>
 </pre>
 </div>
 <div class="section" id="mehrere-glade-dateien">
 <h3><a class="toc-backref" href="posts/dialoge/#id12">Mehrere Glade-Dateien</a></h3>
-<p>Wie <a class="reference external" href="posts/fenster-mit-aussicht/">bereits erwähnt</a>, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden, es wird die <tt class="docutils literal">set_transient_for</tt>-Funktion von <em>GtkWindow</em> benötigt:</p>
-<pre class="code python"><a name="rest_code_de15005514f84bb09a64129ae9794074-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_transient_for</span><span class="p">(</span><span class="n">mainwindow</span><span class="p">)</span>
+<p>Wie <a class="reference external" href="posts/fenster-mit-aussicht/">bereits erwähnt</a>, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden. Hierzu wird die <tt class="docutils literal">set_transient_for</tt>-Funktion von <em>GtkWindow</em> benötigt:</p>
+<pre class="code python"><a name="rest_code_520b1443264841e88a84e62c0e2b3db0-1"></a><span class="n">dialog</span><span class="o">.</span><span class="n">set_transient_for</span><span class="p">(</span><span class="n">mainwindow</span><span class="p">)</span>
 </pre>
 <p>Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter <em>"Allgemein &gt; Vorübergehend für:"</em> angegeben.</p>
 <p class="more"><a href="posts/dialoge/">Weiterlesen…</a></p>
@@ -303,7 +303,7 @@
             </div>
             <div class="body">
                 <div>
-<div class="contents warning pull-right topic" id="inhalt">
+<div class="contents pull-right topic" id="inhalt">
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
 <li><a class="reference internal" href="posts/ansichtssache/#treestore-vs-liststore" id="id5">TreeStore vs. ListStore</a></li>
@@ -334,11 +334,11 @@
 <div class="section" id="treestore-vs-liststore">
 <h2><a class="toc-backref" href="posts/ansichtssache/#id5">TreeStore vs. ListStore</a></h2>
 <p>Im Gegensatz zum ListStore können Zeilen eines TreeStores ihrerseits Kind-Elemente besitzen, die <tt class="docutils literal">append</tt>-Funktion benötigt demzufolge ein weiteren Parameter, der einen Bezug zu einer anderen Datenzeile anzeigt:</p>
-<pre class="code python"><a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-1"></a><span class="c1">#append row to liststore</span>
-<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-3"></a>
-<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-4"></a><span class="c1">#append row to treestore</span>
-<a name="rest_code_7d57a5686acb4816a33f7af91e659d3d-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_cdfc13594af14422b4e3ea25aed67547-1"></a><span class="c1">#append row to liststore</span>
+<a name="rest_code_cdfc13594af14422b4e3ea25aed67547-2"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_cdfc13594af14422b4e3ea25aed67547-3"></a>
+<a name="rest_code_cdfc13594af14422b4e3ea25aed67547-4"></a><span class="c1">#append row to treestore</span>
+<a name="rest_code_cdfc13594af14422b4e3ea25aed67547-5"></a><span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Der Wert der Variable <em>parent</em> ist entweder</p>
 <ul class="simple">
@@ -348,8 +348,8 @@
 <strong>TreeIter</strong>, der zur übergeordneten Zeile zeigt</li>
 </ul>
 <p>Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werden nach folgendem Schema angelegt:</p>
-<pre class="code python"><a name="rest_code_9fd02588827d4d30b42a150b25625136-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
-<a name="rest_code_9fd02588827d4d30b42a150b25625136-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,[</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">])</span>
+<pre class="code python"><a name="rest_code_bd86e2c60ccd4c25967157c008db07e5-1"></a><span class="n">row1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">])</span>
+<a name="rest_code_bd86e2c60ccd4c25967157c008db07e5-2"></a><span class="n">row2</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row1</span><span class="p">,</span> <span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">])</span>
 </pre>
 <p>Man erhält den <em>TreeIter</em>-Wert einer Zeile am einfachsten über die <tt class="docutils literal">get_selection</tt>-Funktion des <em>GtkTreeSelection</em>-Widgets von TreeView (wird automatisch angelegt).</p>
 </div>
@@ -377,27 +377,27 @@
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id11">TreeModelSort</a></h3>
 <p>Durch die Positionsabfrage von <tt class="docutils literal">GtkTreeSelection.get_selected()</tt> erhält man ein Tupel (model,pos), <em>pos</em> von <em>model</em> zeigt dabei auf TreeModelSort (bzw. analog auf TreeModelFilter), nicht auf TreeStore und erfordert eine Konvertierung:</p>
-<pre class="code python"><a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-1"></a><span class="n">model</span><span class="p">,</span><span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
-<a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-<a name="rest_code_fc14d994e7e1471d9e3e0247cff09b5c-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_46e4fe7f6375437398724305e2bf381d-1"></a><span class="n">model</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+<a name="rest_code_46e4fe7f6375437398724305e2bf381d-2"></a><span class="n">converted_iter</span> <span class="o">=</span> <span class="n">treesort</span><span class="o">.</span><span class="n">convert_iter_to_child_iter</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<a name="rest_code_46e4fe7f6375437398724305e2bf381d-3"></a><span class="n">store</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">converted_iter</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="posts/ansichtssache/#id12">TreeModelFilter</a></h3>
 <p>Zunächst muss eine Filterfunktion erstellt werden, in der die Sichtbarkeit von Zeilen definiert wird, im Beispiel also die Variable <em>self.color</em>:</p>
-<pre class="code python"><a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="nb">iter</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-3"></a>        <span class="k">return</span> <span class="bp">True</span>
-<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-4"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_43d6424f8bc048d9a4026d83092f7a77-5"></a>        <span class="k">return</span> <span class="bp">False</span>
+<pre class="code python"><a name="rest_code_ba539dc01b144d0688acb2091da6ed21-1"></a><span class="k">def</span> <span class="nf">color_filter_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="nb">iter</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<a name="rest_code_ba539dc01b144d0688acb2091da6ed21-2"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="nb">iter</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+<a name="rest_code_ba539dc01b144d0688acb2091da6ed21-3"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_ba539dc01b144d0688acb2091da6ed21-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_ba539dc01b144d0688acb2091da6ed21-5"></a>        <span class="k">return</span> <span class="bp">False</span>
 </pre>
 <p>Die Funktion wird zunächst nach dem Schema</p>
-<pre class="code python"><a name="rest_code_3dbffa9c062f4073acf6c13774261b71-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_865f841f3e23426489c11c8844c3dd27-1"></a><span class="n">treefilter</span><span class="o">.</span><span class="n">set_visible_func</span><span class="p">(</span><span class="n">filter_func</span><span class="p">)</span>
 </pre>
 <p>zugewiesen, jede Filterung wird dann per <tt class="docutils literal">refilter()</tt> ausgelöst, also wenn das Button-Signal ausgelöst wird:</p>
-<pre class="code python"><a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
-<a name="rest_code_d6f49eca3e344795a9d5e199235f2a2c-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_dcadf8338fae4ddb9758932e6da681bf-1"></a><span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_dcadf8338fae4ddb9758932e6da681bf-2"></a>    <span class="n">x</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span>
+<a name="rest_code_dcadf8338fae4ddb9758932e6da681bf-3"></a>    <span class="n">x</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"treefilter"</span><span class="p">)</span><span class="o">.</span><span class="n">refilter</span><span class="p">()</span>
 </pre>
 <p class="more"><a href="posts/ansichtssache/">Weiterlesen…</a></p>
 </div>

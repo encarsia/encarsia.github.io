@@ -124,8 +124,7 @@
 <a href="#listings21_stacknotebookpy-86">86</a>
 <a href="#listings21_stacknotebookpy-87">87</a>
 <a href="#listings21_stacknotebookpy-88">88</a>
-<a href="#listings21_stacknotebookpy-89">89</a>
-<a href="#listings21_stacknotebookpy-90">90</a></pre></div></td>
+<a href="#listings21_stacknotebookpy-89">89</a></pre></div></td>
 <td class="code"><pre class="code literal-block"><a name="listings21_stacknotebookpy-1"></a><span class="ch">#!/usr/bin/python</span>
 <a name="listings21_stacknotebookpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
 <a name="listings21_stacknotebookpy-3"></a>
@@ -133,42 +132,42 @@
 <a name="listings21_stacknotebookpy-5"></a><span class="kn">import</span> <span class="nn">urllib.request</span>
 <a name="listings21_stacknotebookpy-6"></a>
 <a name="listings21_stacknotebookpy-7"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings21_stacknotebookpy-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-9"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Vte'</span><span class="p">,</span> <span class="s1">'2.91'</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-10"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'WebKit2'</span><span class="p">,</span> <span class="s1">'4.0'</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-11"></a>
-<a name="listings21_stacknotebookpy-12"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span><span class="p">,</span> <span class="n">Vte</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GLib</span><span class="p">,</span> <span class="n">WebKit2</span>
+<a name="listings21_stacknotebookpy-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-9"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Vte"</span><span class="p">,</span> <span class="s2">"2.91"</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-10"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"WebKit2"</span><span class="p">,</span> <span class="s2">"4.0"</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-11"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span><span class="p">,</span> <span class="n">Vte</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GLib</span><span class="p">,</span> <span class="n">WebKit2</span>
+<a name="listings21_stacknotebookpy-12"></a>
 <a name="listings21_stacknotebookpy-13"></a>
 <a name="listings21_stacknotebookpy-14"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
 <a name="listings21_stacknotebookpy-15"></a>    
 <a name="listings21_stacknotebookpy-16"></a>    <span class="k">def</span> <span class="nf">on_term_child_exited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-17"></a>        <span class="c1">#reset and setup terminal on exit command</span>
+<a name="listings21_stacknotebookpy-17"></a>        <span class="c1"># reset and setup terminal on exit command</span>
 <a name="listings21_stacknotebookpy-18"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-19"></a>        <span class="n">app</span><span class="o">.</span><span class="n">stack_console</span><span class="p">()</span>
 <a name="listings21_stacknotebookpy-20"></a>
 <a name="listings21_stacknotebookpy-21"></a>    <span class="k">def</span> <span class="nf">on_home_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-22"></a>        <span class="c1">#reload given URL in current tab</span>
+<a name="listings21_stacknotebookpy-22"></a>        <span class="c1"># reload given URL in current tab</span>
 <a name="listings21_stacknotebookpy-23"></a>        <span class="n">page</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"notebook"</span><span class="p">)</span><span class="o">.</span><span class="n">get_current_page</span><span class="p">()</span>
 <a name="listings21_stacknotebookpy-24"></a>        <span class="n">app</span><span class="o">.</span><span class="n">nbtabs</span><span class="p">[</span><span class="n">page</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">nbtabs</span><span class="p">[</span><span class="n">page</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-<a name="listings21_stacknotebookpy-25"></a>        
-<a name="listings21_stacknotebookpy-26"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
-<a name="listings21_stacknotebookpy-27"></a>
-<a name="listings21_stacknotebookpy-28"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-29"></a>        
-<a name="listings21_stacknotebookpy-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<a name="listings21_stacknotebookpy-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-32"></a>
-<a name="listings21_stacknotebookpy-33"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-34"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-35"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings21_stacknotebookpy-36"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"21_stacknotebook.glade"</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-37"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings21_stacknotebookpy-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
-<a name="listings21_stacknotebookpy-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_wmclass</span><span class="p">(</span><span class="s2">"Tutorial application"</span><span class="p">,</span><span class="s2">"Tutorial application"</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-25"></a>
+<a name="listings21_stacknotebookpy-26"></a>
+<a name="listings21_stacknotebookpy-27"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
+<a name="listings21_stacknotebookpy-28"></a>
+<a name="listings21_stacknotebookpy-29"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings21_stacknotebookpy-30"></a>        
+<a name="listings21_stacknotebookpy-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span> <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a name="listings21_stacknotebookpy-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-33"></a>
+<a name="listings21_stacknotebookpy-34"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+<a name="listings21_stacknotebookpy-35"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-36"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="listings21_stacknotebookpy-37"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"21_stacknotebook.glade"</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-38"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="listings21_stacknotebookpy-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
+<a name="listings21_stacknotebookpy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
 <a name="listings21_stacknotebookpy-42"></a>        
-<a name="listings21_stacknotebookpy-43"></a>        <span class="c1">#get window content</span>
+<a name="listings21_stacknotebookpy-43"></a>        <span class="c1"># get window content</span>
 <a name="listings21_stacknotebookpy-44"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stack_image</span><span class="p">()</span>
 <a name="listings21_stacknotebookpy-45"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stack_console</span><span class="p">()</span>
 <a name="listings21_stacknotebookpy-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stack_notebook</span><span class="p">()</span>
@@ -177,45 +176,44 @@
 <a name="listings21_stacknotebookpy-49"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-50"></a>
 <a name="listings21_stacknotebookpy-51"></a>    <span class="k">def</span> <span class="nf">stack_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-52"></a>        <span class="c1">#download and show NASA Astonomy Picture of the Day</span>
+<a name="listings21_stacknotebookpy-52"></a>        <span class="c1"># download and show NASA Astonomy Picture of the Day</span>
 <a name="listings21_stacknotebookpy-53"></a>        <span class="n">URL</span> <span class="o">=</span> <span class="s2">"https://apod.nasa.gov"</span>
 <a name="listings21_stacknotebookpy-54"></a>        <span class="n">source</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-55"></a>        <span class="n">img_start</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"&lt;IMG SRC="</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-56"></a>        <span class="n">img_end</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"alt="</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-57"></a>        <span class="n">img</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="n">img_start</span><span class="o">+</span><span class="mi">10</span><span class="p">:</span><span class="n">img_end</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-<a name="listings21_stacknotebookpy-58"></a>        <span class="n">IMGURL</span> <span class="o">=</span> <span class="s2">"https://apod.nasa.gov/apod/"</span><span class="o">+</span><span class="n">img</span>
+<a name="listings21_stacknotebookpy-58"></a>        <span class="n">IMGURL</span> <span class="o">=</span> <span class="s2">"https://apod.nasa.gov/apod/"</span> <span class="o">+</span> <span class="n">img</span>
 <a name="listings21_stacknotebookpy-59"></a>        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">IMGURL</span><span class="p">,</span> <span class="s2">"apod.jpg"</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"image"</span><span class="p">)</span><span class="o">.</span><span class="n">set_from_file</span><span class="p">(</span><span class="s2">"apod.jpg"</span><span class="p">)</span>
 <a name="listings21_stacknotebookpy-61"></a>
 <a name="listings21_stacknotebookpy-62"></a>    <span class="k">def</span> <span class="nf">stack_console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-63"></a>        <span class="c1">#setup terminal</span>
+<a name="listings21_stacknotebookpy-63"></a>        <span class="c1"># setup terminal</span>
 <a name="listings21_stacknotebookpy-64"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"term"</span><span class="p">)</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
 <a name="listings21_stacknotebookpy-65"></a>            <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
 <a name="listings21_stacknotebookpy-66"></a>            <span class="bp">None</span><span class="p">,</span>
 <a name="listings21_stacknotebookpy-67"></a>            <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
 <a name="listings21_stacknotebookpy-68"></a>            <span class="bp">None</span><span class="p">,</span>
 <a name="listings21_stacknotebookpy-69"></a>            <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="listings21_stacknotebookpy-70"></a>            <span class="bp">None</span><span class="p">,</span>
-<a name="listings21_stacknotebookpy-71"></a>            <span class="bp">None</span><span class="p">,</span>
-<a name="listings21_stacknotebookpy-72"></a>            <span class="p">)</span>
-<a name="listings21_stacknotebookpy-73"></a>
-<a name="listings21_stacknotebookpy-74"></a>    <span class="k">def</span> <span class="nf">stack_notebook</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings21_stacknotebookpy-75"></a>        
-<a name="listings21_stacknotebookpy-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nbtabs</span> <span class="o">=</span> <span class="p">[</span>
-<a name="listings21_stacknotebookpy-77"></a>                    <span class="p">[</span><span class="s2">"gi_doc"</span><span class="p">,</span> <span class="s2">"https://lazka.github.io/pgi-docs/"</span><span class="p">],</span>
-<a name="listings21_stacknotebookpy-78"></a>                    <span class="p">[</span><span class="s2">"gtk_tut"</span><span class="p">,</span> <span class="s2">"http://python-gtk-3-tutorial.readthedocs.io/en/latest/index.html"</span><span class="p">],</span>
-<a name="listings21_stacknotebookpy-79"></a>                    <span class="p">[</span><span class="s2">"glade_tut"</span><span class="p">,</span> <span class="s2">"https://encarsia.github.io/posts/tutorial-reihe-glade/"</span><span class="p">]</span>
-<a name="listings21_stacknotebookpy-80"></a>                    <span class="p">]</span>
-<a name="listings21_stacknotebookpy-81"></a>        
-<a name="listings21_stacknotebookpy-82"></a>        <span class="k">for</span> <span class="n">tab</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbtabs</span><span class="p">:</span>
-<a name="listings21_stacknotebookpy-83"></a>            <span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
-<a name="listings21_stacknotebookpy-84"></a>            <span class="n">tab</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-85"></a>            <span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<a name="listings21_stacknotebookpy-86"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
-<a name="listings21_stacknotebookpy-87"></a>            <span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a name="listings21_stacknotebookpy-88"></a>
-<a name="listings21_stacknotebookpy-89"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
-<a name="listings21_stacknotebookpy-90"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-70"></a>            <span class="p">)</span>
+<a name="listings21_stacknotebookpy-71"></a>
+<a name="listings21_stacknotebookpy-72"></a>    <span class="k">def</span> <span class="nf">stack_notebook</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="listings21_stacknotebookpy-73"></a>        
+<a name="listings21_stacknotebookpy-74"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nbtabs</span> <span class="o">=</span> <span class="p">[</span>
+<a name="listings21_stacknotebookpy-75"></a>                    <span class="p">[</span><span class="s2">"gi_doc"</span><span class="p">,</span> <span class="s2">"https://lazka.github.io/pgi-docs/"</span><span class="p">],</span>
+<a name="listings21_stacknotebookpy-76"></a>                    <span class="p">[</span><span class="s2">"gtk_tut"</span><span class="p">,</span> <span class="s2">"http://python-gtk-3-tutorial.readthedocs.io/en/latest/index.html"</span><span class="p">],</span>
+<a name="listings21_stacknotebookpy-77"></a>                    <span class="p">[</span><span class="s2">"glade_tut"</span><span class="p">,</span> <span class="s2">"https://encarsia.github.io/posts/tutorial-reihe-glade/"</span><span class="p">]</span>
+<a name="listings21_stacknotebookpy-78"></a>                    <span class="p">]</span>
+<a name="listings21_stacknotebookpy-79"></a>        
+<a name="listings21_stacknotebookpy-80"></a>        <span class="k">for</span> <span class="n">tab</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbtabs</span><span class="p">:</span>
+<a name="listings21_stacknotebookpy-81"></a>            <span class="n">webview</span> <span class="o">=</span> <span class="n">WebKit2</span><span class="o">.</span><span class="n">WebView</span><span class="p">()</span>
+<a name="listings21_stacknotebookpy-82"></a>            <span class="n">tab</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-83"></a>            <span class="n">webview</span><span class="o">.</span><span class="n">load_uri</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a name="listings21_stacknotebookpy-84"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<a name="listings21_stacknotebookpy-85"></a>            <span class="n">webview</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a name="listings21_stacknotebookpy-86"></a>
+<a name="listings21_stacknotebookpy-87"></a>
+<a name="listings21_stacknotebookpy-88"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
+<a name="listings21_stacknotebookpy-89"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <footer id="footer"><p>Contents © 2018 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
