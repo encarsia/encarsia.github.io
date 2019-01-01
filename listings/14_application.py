@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
+
 import gi
-gi.require_version('Gtk','3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio
+
 
 class Handler:
 
@@ -31,15 +33,14 @@ class Handler:
 class ExampleApp:
 
     def __init__(self):
-        
-        self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
+
+        self.app = Gtk.Application.new("org.application.test",
+                                        Gio.ApplicationFlags(0),
+                                       )
         self.app.connect("startup", self.on_app_startup)
         self.app.connect("activate", self.on_app_activate)
         self.app.connect("shutdown", self.on_app_shutdown)
-
-        appinfo = Gio.DesktopAppInfo.new("non.desktop")
-        print(appinfo.get_startup_wm_class())
-
+        
     def on_app_startup(self, app):
         print("Gio.Application startup signal emitted")
 
@@ -54,10 +55,8 @@ class ExampleApp:
         self.obj = builder.get_object
         self.obj("window").set_application(app)
         
-        #print(Gio.AppInfo.get_all())
-        
-        #display application name in upper panel of the GNOME Shell
-        #self.obj("window").set_wmclass("Application test","Application test")
+        # display application name in upper panel of the GNOME Shell (deprecated)
+        # self.obj("window").set_wmclass("Application test","Application test")
         self.obj("window").show_all()
         
         self.add_simple_action("about", self.on_action_about_activated)
@@ -83,6 +82,7 @@ class ExampleApp:
 
     def run(self, argv):
         self.app.run(argv)
+
 
 app = ExampleApp()
 app.run(sys.argv)

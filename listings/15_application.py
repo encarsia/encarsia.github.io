@@ -14,7 +14,8 @@ class ExampleApp:
     def __init__(self):
         
         setproctitle.setproctitle("Application test")
-        GLib.set_prgname("Application test") 
+        GLib.set_prgname("testapp") 
+        
         self.app = Gtk.Application.new("org.application.test", Gio.ApplicationFlags(0))
         
         self.app.add_main_option_entries([
@@ -76,10 +77,6 @@ class ExampleApp:
         self.obj = builder.get_object
         self.obj("window").set_application(app)
         self.obj("label").set_text(self.option_string)
-
-        # display application name in upper panel of the GNOME Shell
-        # function is deprecated but still works as fallback
-        self.obj("window").set_wmclass("Application test", "Application test")
         self.obj("window").show_all()
 
     def run(self, argv):
