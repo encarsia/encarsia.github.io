@@ -115,6 +115,7 @@ Links
 
  * Hier im Blog:
         * `Desktopintegration: Icon, Headerbar und Kommandozeilenoptionen <link://slug/application-fortsetzung>`_
+        * `Desktopintegration: Desktop-Datei <link://slug/desktop-dateien>`_
         * `GTK+-Anwendung mit setuptools packen <link://slug/setuptools-spicker>`_
  * `GNOME Developer: GtkApplication <https://developer.gnome.org/gtk3/stable/GtkApplication.html>`_
  * `How to use GTK+ 3 in Python to manage your whole application <http://www.bachsau.com/2015/07/13/how-to-use-gtk-3-in-python-to-manage-your-whole-application/>`_

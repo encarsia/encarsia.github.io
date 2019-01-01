@@ -68,13 +68,13 @@ Die Dateien, die keinen Python-Code enthalten, also etwa Glade-Dateien, werden a
 Desktop-Dateien
 ===============
 
-Der Speicherort von .desktop-Dateien und Icons richtet sich nach den Freedesktop-Spezifikationen. .desktop-Dateien befinden sich zum Beispiel in den Verzeichnissen
+Der Speicherort von .desktop-Dateien und Icons richtet sich nach den Freedesktop-Spezifikationen. Desktop-Dateien befinden sich normalerweise in den Verzeichnissen
 
 .. code::
 
-    /usr/share/applications
-    /usr/local/share/applications
     ~/.local/share/applications
+    /usr/local/share/applications
+    /usr/share/applications
 
 Während der Ausführung von ``install`` wird das Präfix ermittelt, es ist also nur die Angabe des relativen Pfads in der ``data_files``-Option notwendig. Gleiches gilt für Icons.
 
@@ -98,6 +98,10 @@ Während der Ausführung von ``install`` wird das Präfix ermittelt, es ist also
         )
 
 Dieser Schritt kopiert nur die Dateien in die entsprechenden Zielverzeichnisse. Die korrekten Pfadangaben IN der .desktop-Datei werden durch eine eigene Funktion innerhalb des Install-Kommandos angepasst.
+
+.. note::
+
+    Zur Formatierung von Desktop-Dateien gibt es einen separaten Artikel: `Desktop-Dateien <link://slug/desktop-dateien>`_
 
 Bestehendes Kommando anpassen
 =============================

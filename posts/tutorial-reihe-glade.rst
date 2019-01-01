@@ -49,12 +49,13 @@ Themen
 - `Überarbeitete Oberfläche in Glade 3.22 <link://slug/glade-322>`_
 - `Widget-Änderungen in GTK+ 2.20+ <link://slug/gtk220neu>`_
 - `GTK+-Anwendung mit setuptools packen <link://slug/setuptools-spicker>`_
+- `Desktop-Dateien <link://slug/desktop-dateien>`_
 
 Dateien
 -------
 
 - Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
-- `E-Book <https://encarsia.github.io/pages/downloads>`_
+- `E-Book <https://encarsia.github.io/pages/downloads>`_ (Aktualisierung in Planung)
 
 Nicht exklusiv
 --------------
@@ -76,5 +77,4 @@ Todo
 ----
 
 - GStreamer-Player mit gtksink
-- Desktop-Dateien
 - Interaktion mit anderen Anwendungen mit und ohne Threading
