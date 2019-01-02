@@ -56,7 +56,7 @@ Dateien
 -------
 
 - Verzeichnis der Beispieldateien: `encarsia.github.io/listings <https://encarsia.github.io/listings/>`_
-- `E-Book <https://encarsia.github.io/pages/downloads>`_ (Aktualisierung in Planung)
+- `E-Book <https://encarsia.github.io/pages/downloads>`_
 
 Nicht exklusiv
 --------------

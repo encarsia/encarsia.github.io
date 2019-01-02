@@ -219,7 +219,7 @@ Das Resultat des ersten Durchlaufs von Sphinx mit der Übersichtsseite und drei 
 
 #. Nikola-eigene Directives verursachen Fehler. Konvertierung von
 
-    * *thumbnail* -> image
+    * *thumbnail* -> figure
     * *listings* -> literalinclude
 
 #. relative Pfade in *image*-Directives anpassen
@@ -304,4 +304,4 @@ Wieder was gelernt.
 .. raw:: html
 
     <br>
-    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/YaZGKrpF6Dj">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/YaZGKrpF6Dj">Kommentare bei <i class="fa fa-google-plus"></i></a>
