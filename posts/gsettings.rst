@@ -160,12 +160,13 @@ Schema
 
 .. listing:: org.example.wallpaper-changer.gschema.xml xml
 
+Python
+******
+
+.. listing:: 17_gsettings.py python
+
 Glade
 *****
 
 .. listing:: 17_gsettings.glade xml
 
-Python
-******
-
-.. listing:: 17_gsettings.py python

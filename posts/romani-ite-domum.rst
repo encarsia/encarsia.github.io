@@ -83,7 +83,7 @@ Mit der Option ``-j`` (``--join-existing``) wird eine bestehende Datei um zusät
 PO
 **
 
-Die übersetzten Strings werden in jeweils einer PO-Datei gespeichert. Eine neue Übersetzung legt man mit 
+Die übersetzten Strings werden in jeweils einer PO-Datei gespeichert. Eine neue Übersetzung legt man mit
 
 .. code:: console
 
@@ -145,15 +145,15 @@ beheben.
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 10_lokalisation.glade xml
-
 Python
 ******
 
 .. listing:: 10_lokalisation.py python
+
+Glade
+*****
+
+.. listing:: 10_lokalisation.glade xml
 
 POT
 ***

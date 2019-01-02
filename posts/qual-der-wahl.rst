@@ -32,13 +32,13 @@ Combobox
 
 Es gibt in GTK+ zwei verschiedene Combobox-Widgets:
 
-GtkComboboxText
+Gtk.ComboboxText
     Die Auswahlliste des Dropdown-Menüs sind Strings und werden direkt im Widget erstellt.
 
-GtkCombobox
+Gtk.Combobox
     Die Daten für die Auswahlliste stammen aus einem Listen- oder Baumspeicher (ListStore oder TreeStore). In diesen können Datensätze mit verschiedenen Informationen gespeichert werden (siehe auch Artikel `"Überlistet" <link://slug/uberlistet>`_).
 
-Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss *"Allgemein > Hat Eintrag"* aktiviert sein. Dies legt das interne Widget *GtkEntry* an. Wichtig ist, dass dieses unter *"Gemeinsam > Widget Flags"* fokussierbar gemacht wird.
+Beide Widgets können zusätzlich ein optionales Eingabefeld besitzen. In diesem Fall muss *"Allgemein > Hat Eintrag"* aktiviert sein. Dies legt das interne Widget *Gtk.Entry* an. Wichtig ist, dass dieses unter *"Gemeinsam > Widget Flags"* fokussierbar gemacht wird.
 
 Im Beispiel gibt es zwei ComboboxText-Widgets. Das erste besitzt kein Eingabefeld, es ist also ausschließlich eine Auswahl unter den gegebenen Listenpunkten möglich, die Auswahlliste ist direkt in Glade eingegeben. Die zweite Combobox besitzt ein Eingabefeld, zu demonstrativen Zwecken werden die Listenpunkte direkt im Programm erstellt. Bei beiden wird das Signal *changed* abgefangen.
 
@@ -67,13 +67,12 @@ Der aktuell angewählte Eintrag wird mit der Funktion ``widget.set_active_text()
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 08_combospin.glade xml
-
 Python
 ******
 
 .. listing:: 08_combospin.py python
 
+Glade
+*****
+
+.. listing:: 08_combospin.glade xml

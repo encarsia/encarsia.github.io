@@ -51,11 +51,11 @@ Wenn man Meldungen ausschließlich "obendrauf" einblendet, kann man als content_
 Listings
 --------
 
-Glade
-*****
-.. listing:: 05_menutoolbar.glade xml
-
 Python
 ******
 
 .. listing:: 05_menutoolbar.py python
+
+Glade
+*****
+.. listing:: 05_menutoolbar.glade xml

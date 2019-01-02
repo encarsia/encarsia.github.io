@@ -43,6 +43,7 @@ Themen
 - `Dateiauswahldialog <link://slug/fcdialog>`_
 - `GSettings-Konfigurationssystem <link://slug/gsettings>`_
 - `Mediaplayer mit GStreamer <link://slug/gst-player>`_
+- `Mediaplayer mit GStreamer (Edition gtksink) <link://slug/gtksink-player>`_
 - `Mediaplayer mit LibVLC <link://slug/vlc-player>`_
 - `Stack und Notebook <link://slug/stacksnotebooks>`_
 - `Texteditor mit GtkSourceView <link://slug/gtksv>`_
@@ -72,9 +73,3 @@ Links
 - `Creating a GUI using PyGTK and Glade <http://www.learningpython.com/2006/05/07/creating-a-gui-using-pygtk-and-glade/>`_ - Grundlagentutorial für PyGTK (Python 2.x)
 - `Programmieren mit Python und Glade <https://www.florian-diesch.de/doc/python-und-glade/online/index.html>`_ - umfangreiches Tutorial auf Deutsch
 - `Python GObject Introspection API Reference <https://lazka.github.io/pgi-docs/>`_ - vollständige Dokumentation des GI-Moduls (bookmark this!)
-
-Todo
-----
-
-- GStreamer-Player mit gtksink
-- Interaktion mit anderen Anwendungen mit und ohne Threading

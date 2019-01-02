@@ -72,12 +72,12 @@ Beim Switch wird dem Signal *state_set* ein Parameter übergeben, der True/False
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 04_clickableelements.glade xml
-
 Python
 ******
 
 .. listing:: 04_clickableelements.py python
+
+Glade
+*****
+
+.. listing:: 04_clickableelements.glade xml

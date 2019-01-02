@@ -13,14 +13,14 @@
 
 **FileChooserDialog**
 
-Der *GtkFileChooserDialog* ist eine Subclass von *GtkDialog* (siehe `Artikel zu Dialogen <link://slug/dialoge>`_) und ermöglicht das Auswählen und Speichern von Dateien oder Ordnern.
+Der *Gtk.FileChooserDialog* ist eine Subclass von *Gtk.Dialog* (siehe `Artikel zu Dialogen <link://slug/dialoge>`_) und ermöglicht das Auswählen und Speichern von Dateien oder Ordnern.
 
 .. thumbnail:: /images/16_fcd.png
 
 Glade
 -----
 
-Den Dialog findet man in der Widget-Seitenleiste oben unter *"Oberste Ebene"*. Neben dem Dateibrowser besitzt er eine erweiterbare interne *GtkBox* für weitere Widgets sowie eine *GtkButtonBox* als interne "action area" für Buttons.
+Den Dialog findet man in der Widget-Seitenleiste oben unter *"Oberste Ebene"*. Neben dem Dateibrowser besitzt er eine erweiterbare interne *Gtk.Box* für weitere Widgets sowie eine *Gtk.ButtonBox* als interne "action area" für Buttons.
 
 Es ist erforderlich anzugeben, für welche Aktion der Dialog gedacht ist, was *Gtk.FileChooserAction* entspricht (siehe `Python GI API Reference <https://lazka.github.io/pgi-docs/#Gtk-3.0/enums.html#Gtk.FileChooserAction>`_): Datei öffnen oder speichern, Ordner auswählen oder anlegen.
 
@@ -164,13 +164,12 @@ Es gibt zwei Möglichkeiten, einen *Filefilter* anzuwenden:
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 16_filechooser.glade xml
-
 Python
 ******
 
 .. listing:: 16_filechooser.py python
 
+Glade
+*****
+
+.. listing:: 16_filechooser.glade xml

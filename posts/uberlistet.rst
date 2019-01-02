@@ -74,9 +74,9 @@ Normalerweise benötigt man für den Zugang zu einer Datenzeile einen *TreeIter*
 
 .. code-block:: python
 
-    iter,model = widget.get_active_iter(),widget.get_model()
+    iter, model = widget.get_active_iter(), widget.get_model()
     row = model[iter]
-    print("Selection:",row[0])
+    print("Selection:", row[0])
 
 Zellen bearbeiten
 *****************
@@ -85,18 +85,18 @@ Das *edited*-Signal übergibt als Parameter die bearbeitete Zeile und den neuen 
 
 .. code-block:: python
 
-    def on_cellrenderer_descr_edited(self,widget,pos,edit):
+    def on_cellrenderer_descr_edited(self, widget, pos, edit):
         x.store[int(pos)][1] = edit
 
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 09_liststore.glade xml
-
 Python
 ******
 
 .. listing:: 09_liststore.py python
+
+Glade
+*****
+
+.. listing:: 09_liststore.glade xml

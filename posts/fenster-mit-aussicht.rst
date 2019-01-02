@@ -85,12 +85,12 @@ Man sollte sich von der Kürze dieses Beispiels nicht täuschen lassen. Die eige
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 01_minimal.glade xml
-
 Python
 ******
 
 .. listing:: 01_minimal.py python
+
+Glade
+*****
+
+.. listing:: 01_minimal.glade xml

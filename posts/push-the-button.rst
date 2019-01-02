@@ -57,14 +57,12 @@ Abhängig vom verwendeten Widget erfordert die Signal-Funktion mindestens einen 
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 02_labelbutton.glade xml
-
 Python
 ******
 
 .. listing:: 02_labelbutton.py python
 
+Glade
+*****
 
+.. listing:: 02_labelbutton.glade xml

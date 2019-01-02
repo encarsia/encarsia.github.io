@@ -13,7 +13,7 @@
 
 **Text-Widget mit GtkSourceView**
 
-Gtk+ bietet mit *Gtk.TextView* ein Widget zum Anzeigen und Bearbeiten von Text/-dateien an. Wie beim `TreeView-Widget <link://slug/uberlistet>`_ werden die Daten (model) und die Anzeige (view) getrennt voneinander gehandhabt. Das datentragende Modell zu *TextView* ist *TextBuffer*.
+GTK+ bietet mit *Gtk.TextView* ein Widget zum Anzeigen und Bearbeiten von Text/-dateien an. Wie beim `TreeView-Widget <link://slug/uberlistet>`_ werden die Daten (model) und die Anzeige (view) getrennt voneinander gehandhabt. Das datentragende Modell zu *TextView* ist *TextBuffer*.
 
 GtkSourceView_ ist eine Erweiterung und Unterklasse von TextView, die Syntaxhighlighting, Farbschemata, Laden/Speichern, Vervollständigung und andere Funktionen unterstützt.
 
@@ -195,5 +195,5 @@ Glade
 .. raw:: html
 
     <br>
-    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/g7qQT8wi5bJ">Kommentieren auf <i class="fa fa-google-plus"></i></a>
+    <a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/g7qQT8wi5bJ">Kommentare bei <i class="fa fa-google-plus"></i></a>
 

@@ -61,12 +61,12 @@ Die Ausgabe ins Terminal kann mit der Funktion ``get_text()`` abgefangen werden.
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 11_terminal.glade xml
-
 Python
 ******
 
 .. listing:: 11_terminal.py python
+
+Glade
+*****
+
+.. listing:: 11_terminal.glade xml
