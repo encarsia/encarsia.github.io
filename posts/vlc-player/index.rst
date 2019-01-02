@@ -25,8 +25,8 @@ Voraussetzung für die Verwendung ist die Installation der Python-Bindings. Dies
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *GtkDrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*GtkButton*), Pause (*GtkTogglebutton*)
+ * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
+ * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.Button*), Pause (*Gtk.Togglebutton*)
  * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
  * **Playback manipulieren:** Buttons zum Stummschalten und Drehen des Videos
 
@@ -87,25 +87,26 @@ Auf der anderen Seite greift man hier auf großes Projekt zurück, man muss VLC 
 Links
 -----
 
- * `LibVLC Python bindings documentation <https://www.olivieraubert.net/vlc/python-ctypes/doc/>`__
- * `How to Build a Python Media Player using LibVLC and GTK+ <https://www.codementor.io/princerapa/python-media-player-vlc-gtk-favehuy2b>`__
- * `How to get video duration in seconds? <https://superuser.com/questions/650291/how-to-get-video-duration-in-seconds>`__
- * `Mediaplayer mit GStreamer <link://slug/gst-player>`__
+ * `LibVLC Python bindings documentation <https://www.olivieraubert.net/vlc/python-ctypes/doc/>`_
+ * `How to Build a Python Media Player using LibVLC and GTK+ <https://www.codementor.io/princerapa/python-media-player-vlc-gtk-favehuy2b>`_
+ * `How to get video duration in seconds? <https://superuser.com/questions/650291/how-to-get-video-duration-in-seconds>`_
+ * `Mediaplayer mit GStreamer <link://slug/gst-player>`_
+ * `Mediaplayer mit GStreamer (gtksink-Edition) <link://slug/gtksink-player>`_
 
 .. TEASER_END
 
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 20_vlc_player.glade xml
-
 Python
 ******
 
 .. listing:: 20_vlc_simpleplayer.py python
+
+Glade
+*****
+
+.. listing:: 20_vlc_player.glade xml
 
 Beispieldateien
 ***************

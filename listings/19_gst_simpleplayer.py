@@ -22,11 +22,13 @@ class Handler:
 
     def on_playpause_togglebutton_toggled(self, widget):
         if app.playpause_button.get_active():
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY, Gtk.IconSize.BUTTON)
+            img = Gtk.Image.new_from_icon_name(Gtk.STOCK_MEDIA_PLAY,
+                                               Gtk.IconSize.BUTTON)
             widget.set_property("image", img)
             app.pause()
         else:
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE, Gtk.IconSize.BUTTON)
+            img = Gtk.Image.new_from_icon_name(Gtk.STOCK_MEDIA_PAUSE,
+                                               Gtk.IconSize.BUTTON)
             widget.set_property("image", img)
             app.play()
        
@@ -57,10 +59,10 @@ class GstPlayer:
 
     def __init__(self):
         
-        #init GStreamer
+        # init GStreamer
         Gst.init(None)
         
-        #setting up builder
+        # setting up builder
         builder = Gtk.Builder()
         builder.add_from_file("19_gst_player.glade")
         builder.connect_signals(Handler())
@@ -73,17 +75,18 @@ class GstPlayer:
         window = builder.get_object("window")
         window.show_all()
 
-        #setting up videoplayer
+        # setting up videoplayer
         self.player = Gst.ElementFactory.make("playbin", "player")
         self.sink = Gst.ElementFactory.make("xvimagesink")
         self.sink.set_property("force-aspect-ratio", True)
 
     def setup_player(self,f):
-        #file to play must be transmitted as uri
+        # file to play must be transmitted as uri
         uri = "file://" + os.path.abspath(f)
         self.player.set_property("uri", uri)
         
-        #make playbin play in specified DrawingArea widget instead of separate, GstVideo needed
+        # make playbin play in specified DrawingArea widget instead of
+        # separate, GstVideo needed
         win_id = self.movie_window.get_property("window").get_xid()
         self.sink.set_window_handle(win_id)
         self.player.set_property("video-sink", self.sink)
@@ -102,8 +105,8 @@ class GstPlayer:
         status,position = self.player.query_position(Gst.Format.TIME)
         return position
 
-    #skip 20 seconds on forward/backward button
     def skip_time(self,direction=1):
+        #skip 20 seconds on forward/backward button
         app.player.seek_simple(Gst.Format.TIME,  Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, self.current_position() + float(20) * Gst.SECOND * direction )
 
     def update_slider(self):
@@ -111,11 +114,11 @@ class GstPlayer:
             return False # cancel timeout
         else:
             success, self.duration = self.player.query_duration(Gst.Format.TIME)
-            #adjust duration and position relative to absolute scale of 100
+            # adjust duration and position relative to absolute scale of 100
             self.mult = 100 / (self.duration / Gst.SECOND)
             if not success:
                 raise GenericException("Couldn't fetch duration")
-            #fetching the position, in nanosecs
+            # fetching the position, in nanosecs
             success, position = self.player.query_position(Gst.Format.TIME)
             if not success:
                 raise GenericException("Couldn't fetch current position to update slider")

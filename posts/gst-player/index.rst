@@ -20,8 +20,8 @@
 Glade
 -----
 
- * **Darstellungsbereich der Mediendatei:** Widget *GtkDrawingArea*
- * **Steuerungselemente:** Vor-/Zurückspulen (*GtkButton*), Pause (*GtkTogglebutton*)
+ * **Darstellungsbereich der Mediendatei:** Widget *Gtk.DrawingArea*
+ * **Steuerungselemente:** Vor-/Zurückspulen (*Gtk.utton*), Pause (*Gtk.Togglebutton*)
  * **Medienauswahl:** Buttons, um Video- oder Bilddatei anzuzeigen
 
 Python
@@ -111,32 +111,34 @@ Es gibt eine Reihe von Tutorials. Die Umsetzung wird durch zwei Umstände erschw
 1. Die primäre Sprache von und mit GStreamer ist C. Mit Python steht man eher auf experimentellem Boden.
 2. Durch die Versionssprünge sowohl bei GStreamer (von 0.10 auf 1.x) als auch Python (2.x auf 3.x) funktionieren viele ältere Anleitungen nicht mehr ohne weiteres.
 
-Es gibt weiterhin Effekte, die sich nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Fenster eine Headerbar enthält. Dies ist mit der Verwendung von "gtksink" lösbar.
+Es gibt weiterhin Effekte, die sich nicht erschließen. Das in diesem Artikel aufgeführte Beispiel funktioniert nicht, wenn das Fenster eine Headerbar enthält. Des Weiteren ist die Videodarstellung unter Wayland fehlerhaft (Audio läuft). Beide Probleme sind mit der Verwendung von "gtksink" lösbar.
 
 Links
 -----
 
- * `Tutorial on using GStreamer Python Bindings in org-mode <http://brettviren.github.io/pygst-tutorial-org/>`__
- * `gstreamer-python-player/seek.py example <https://github.com/hadware/gstreamer-python-player/blob/master/seek.py>`__
- * `GStreamer List of Elements and Plugins <https://gstreamer.freedesktop.org/documentation/plugins.html>`__
+ * `Tutorial on using GStreamer Python Bindings in org-mode <http://brettviren.github.io/pygst-tutorial-org/>`_
+ * `gstreamer-python-player/seek.py example <https://github.com/hadware/gstreamer-python-player/blob/master/seek.py>`_
+ * `GStreamer List of Elements and Plugins <https://gstreamer.freedesktop.org/documentation/plugins.html>`_
  * `GStreamer documentation <https://gstreamer.freedesktop.org/documentation/index.html>`__
- * `Using GStreamer 1.0 with Python <https://adnanalamkhan.wordpress.com/2015/03/01/using-gstreamer-1-0-with-python/>`__
- * `Mediaplayer mit VLC <link://slug/vlc-player>`__
+ * `Using GStreamer 1.0 with Python <https://adnanalamkhan.wordpress.com/2015/03/01/using-gstreamer-1-0-with-python/>`_
+ * `Mediaplayer mit VLC <link://slug/vlc-player>`_
+ * `Mediaplayer mit GStreamer (gtksink-Edition) <link://slug/gtksink-player>`_
 
 .. TEASER_END
 
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 19_gst_player.glade xml
-
 Python
 ******
 
 .. listing:: 19_gst_simpleplayer.py python
+
+
+Glade
+*****
+
+.. listing:: 19_gst_player.glade xml
 
 Beispieldateien
 ***************

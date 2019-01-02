@@ -64,18 +64,20 @@ class Handler:
 
     def on_playpause_togglebutton_toggled(self, widget):
         if widget.get_active():
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PLAY, Gtk.IconSize.BUTTON)
+            img = Gtk.Image.new_from_icon_name(Gtk.STOCK_MEDIA_PLAY,
+                                               Gtk.IconSize.BUTTON)
             widget.set_property("image", img)
             self.is_playing = False
         else:
-            img = Gtk.Image.new_from_stock(Gtk.STOCK_MEDIA_PAUSE, Gtk.IconSize.BUTTON)
+            img = Gtk.Image.new_from_icon_name(Gtk.STOCK_MEDIA_PAUSE,
+                                               Gtk.IconSize.BUTTON)
             widget.set_property("image", img)
             self.is_playing = True
         self.player.pause()
         GLib.timeout_add(1000, self.update_slider)
     
     def on_vbutton_clicked(self, widget):
-        self.video = "file://"+os.path.abspath("mediaplayer.avi")
+        self.video = "file://" + os.path.abspath("mediaplayer.avi")
         self.duration = go.get_duration(self.video)
         self.player.set_mrl(self.video)
         self.is_playing = True

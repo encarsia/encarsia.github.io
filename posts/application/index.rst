@@ -11,9 +11,9 @@
 
 .. contents::
 
-**Programm als GtkApplication laufen lassen**
+**Programm als Gtk.Application laufen lassen**
 
-*GtkApplication* handhabt verschiedene wichtige Aspekte einer GTK+-Anwendung, wie etwa der GTK+-Initialisierung, dem Sessionmanagement und der Desktopintegration.
+*Gtk.Application* handhabt verschiedene wichtige Aspekte einer GTK+-Anwendung, wie etwa der GTK+-Initialisierung, dem Sessionmanagement und der Desktopintegration.
 
 .. thumbnail:: /images/14_application.png
 
@@ -24,7 +24,7 @@ XML-Dateien
 Glade
 *****
 
-In Glade verändert sich im Prinzip nichts. Als Hauptfenster sollten *GtkApplicationWindows* zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem `Artikel zu Dialogen <link://slug/dialoge>`_ wieder verwendet.
+In Glade verändert sich im Prinzip nichts. Als Hauptfenster sollten *Gtk.ApplicationWindows* zum Einsatz kommen. Als Beispiel wird hier das Gladefile aus dem `Artikel zu Dialogen <link://slug/dialoge>`_ wieder verwendet.
 
 GMenu
 *****
@@ -126,6 +126,11 @@ Links
 Listings
 --------
 
+Python
+******
+
+.. listing:: 14_application.py python
+
 Glade
 *****
 
@@ -135,8 +140,3 @@ GMenu
 *****
 
 .. listing:: 14_giomenu.ui xml
-
-Python
-******
-
-.. listing:: 14_application.py python

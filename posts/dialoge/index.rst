@@ -37,7 +37,7 @@ Der MessageDialog ist ein Standarddialog zum Anzeigen oder Abfragen von Informat
 Buttons und Responses
 *********************
 
-Dialoge verfügen bereits intern über eine *GtkButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.
+Dialoge verfügen bereits intern über eine *Gtk.ButtonBox*, die mit beliebigen Buttons befüllt werden kann. Dieser Bereich ist als "intern action_area" gekennzeichnet.
 
 Im Gegensatz zu Buttons in normalen Fenstern müssen in Dialogen keine Signale auf *clicked* angelegt werden, sondern man legt in den Button-Eigenschaften unter *"Allgemein"* eine Antwortkennung (Response) fest (int) und belegt das Signal *response* des *GtkDialog*.
 
@@ -94,7 +94,7 @@ Mit der Funktion ``hide_on_delete()`` ausgeblendete Dialoge oder reguläre Fenst
 Mehrere Glade-Dateien
 *********************
 
-Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden. Hierzu wird die ``set_transient_for``-Funktion von *GtkWindow* benötigt:
+Wie `bereits erwähnt <link://slug/fenster-mit-aussicht>`_, können mehrere Dateien für Fenster und Dialoge innerhalb eines Projektes verwendet werden. Allerdings ist es nicht möglich, diese dateiübergreifend aneinanderzubinden. Hierzu wird die ``set_transient_for``-Funktion von *Gtk.Window* benötigt:
 
 .. code-block:: python
 
@@ -107,12 +107,12 @@ Die Zugehörigkeit zum Elternwidget wird in Glade in den Eigenschaften unter *"A
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 13_dialoge.glade xml
-
 Python
 ******
 
 .. listing:: 13_dialoge.py python
+
+Glade
+*****
+
+.. listing:: 13_dialoge.glade xml

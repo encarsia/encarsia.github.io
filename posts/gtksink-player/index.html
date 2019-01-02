@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Mediaplayer mit GStreamer (Edition gtksink) | Merge and Destroy</title>
+<link href="//fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.0.11/css/fork-awesome.min.css" integrity="sha256-MGU/JUq/40CFrfxjXb5pZjpoZmxiP2KuICN5ElLFNd8=" crossorigin="anonymous">
+<link href="../../assets/css/all.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../en/rss.xml">
+<link rel="canonical" href="https://encarsia.github.io/posts/gtksink-player/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Anke (encarsia)">
+<meta property="og:site_name" content="Merge and Destroy">
+<meta property="og:title" content="Mediaplayer mit GStreamer (Edition gtksink)">
+<meta property="og:url" content="https://encarsia.github.io/posts/gtksink-player/">
+<meta property="og:description" content="Inhalt
+
+Installation
+Glade
+Python
+Videosink einrichten
+Widget einrichten
+
+
+Listings
+Python
+Glade
+Beispieldateien
+
+
+
+
+Mediaplayer mit GStreamer
+Im einführenden Artikel zu Mediaplayer mit GStreamer werd">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-01-01T19:54:13+01:00">
+<meta property="article:tag" content="glade">
+<meta property="article:tag" content="python">
+<link rel="alternate" hreflang="en" href="../../en/posts/gtksink-player/">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Home"><i class="fa fa-home"></i></a></li>
+            <li><a href="../tutorial-reihe-glade/index.html" title="Tutorials"><i class="fa fa-lightbulb-o"></i></a></li>
+            <li><a href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa fa-mastodon"></i></a></li>
+            <li><a href="https://twitter.com/encarsia_" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/105146352752269764996/posts" title="Google+"><i class="fa fa-google-plus-official"></i></a></li>
+            <li><a href="https://github.com/encarsia" title="Github"><i class="fa fa-github"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="fa fa-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+            <li><a href="../../pages/about/index.html" title="About me"><i class="fa fa-user"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="fa fa-folder-open"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+            
+    <div class="post">
+    
+    <h1 class="p-name entry-title" itemprop="headline name">Mediaplayer mit GStreamer (Edition gtksink)</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2019-01-01T19:54:13+01:00">2019-01-01 19:54</time>
+            
+
+            
+          |  
+        <a href="index.rst" id="sourcelink">Source</a>
+
+            </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../../categories/glade/" rel="tag">glade</a></li>
+           <li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+        </div>
+        <div class="body">
+            <div>
+<div class="contents pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="id5">Installation</a></li>
+<li><a class="reference internal" href="#glade" id="id6">Glade</a></li>
+<li>
+<a class="reference internal" href="#python" id="id7">Python</a><ul>
+<li><a class="reference internal" href="#videosink-einrichten" id="id8">Videosink einrichten</a></li>
+<li><a class="reference internal" href="#widget-einrichten" id="id9">Widget einrichten</a></li>
+</ul>
+</li>
+<li>
+<a class="reference internal" href="#listings" id="id10">Listings</a><ul>
+<li><a class="reference internal" href="#id1" id="id11">Python</a></li>
+<li><a class="reference internal" href="#id2" id="id12">Glade</a></li>
+<li><a class="reference internal" href="#beispieldateien" id="id13">Beispieldateien</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Mediaplayer mit GStreamer</strong></p>
+<p>Im einführenden Artikel zu <a class="reference external" href="../gst-player/">Mediaplayer mit GStreamer</a> werden Probleme beschrieben, die auf die Verwendung von "xvimagesink" als Videosink zurückzuführen sind.</p>
+<p>In diesem Artikel wird als Alternative der Videosink <a class="reference external" href="https://thiblahute.github.io/GStreamer-doc/gtk-1.0/gtksink.html">"gtksink"</a> verwendet und nur auf die Unterschiede zu <a class="reference external" href="https://thiblahute.github.io/GStreamer-doc/xvimagesink-1.0/index.html">"xvimagesink"</a> eingegangen, da die weitere Vorgehensweise identisch ist.</p>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#id5">Installation</a></h2>
+<p><em>Gtksink</em> war ursprünglich Teil der "bad" plugins, befindet sich aber seit der GStreamer-Version 1.14 in den "good" plugins, die im Normalfall bei der Installation von GStreamer mitinstalliert werden.</p>
+<p>Eine Ausnahme bildet Ubuntu, wo das Plugin separat im Paket <tt class="docutils literal"><span class="pre">gstreamer1.0-gtk3</span></tt> (universe) zur Verfügung steht.</p>
+</div>
+<div class="section" id="glade">
+<h2><a class="toc-backref" href="#id6">Glade</a></h2>
+<p>Der Darstellungsbereich der Mediendatei wird durch das <em>gtksink</em>-eigene Widget bereitgestellt. Da dies nicht in Glade verfügbar ist, wird ein leeres Containerwidget (<em>Gtk.Box</em>) benötigt, in das das Widget platziert werden kann.</p>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="#id7">Python</a></h2>
+<div class="section" id="videosink-einrichten">
+<h3><a class="toc-backref" href="#id8">Videosink einrichten</a></h3>
+<pre class="code python"><a name="rest_code_46be91086a6a459ebce878e969a35642-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"gtksink"</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="widget-einrichten">
+<h3><a class="toc-backref" href="#id9">Widget einrichten</a></h3>
+<pre class="code python"><a name="rest_code_ab1b4d21d4b645f6a796c9a5109d31c1-1"></a><span class="n">video_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sink</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"widget"</span><span class="p">)</span>
+<a name="rest_code_ab1b4d21d4b645f6a796c9a5109d31c1-2"></a><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"video_box"</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">video_widget</span><span class="p">)</span>
+</pre>
+<!-- TEASER_END -->
+</div>
+</div>
+<div class="section" id="listings">
+<h2><a class="toc-backref" href="#id10">Listings</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id11">Python</a></h3>
+<p><a class="reference external" href="../../listings/23_gtksink_simpleplayer.py.html">23_gtksink_simpleplayer.py</a>  <a class="reference external" href="../../listings/23_gtksink_simpleplayer.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_1d74b57116c94df28a19b8b921785278-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-3"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-4"></a><span class="kn">import</span> <span class="nn">os</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-5"></a><span class="kn">import</span> <span class="nn">time</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-6"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-7"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-9"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gst"</span><span class="p">,</span> <span class="s2">"1.0"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-10"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gst</span><span class="p">,</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">GLib</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-11"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-12"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-13"></a><span class="k">class</span> <span class="nc">GenericException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-14"></a>    <span class="k">pass</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-15"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-16"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-17"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-18"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-19"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-20"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-21"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-22"></a>    <span class="k">def</span> <span class="nf">on_playpause_togglebutton_toggled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-23"></a>        <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">playpause_button</span><span class="o">.</span><span class="n">get_active</span><span class="p">():</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-24"></a>            <span class="n">img</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new_from_icon_name</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_MEDIA_PLAY</span><span class="p">,</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-25"></a>                                               <span class="n">Gtk</span><span class="o">.</span><span class="n">IconSize</span><span class="o">.</span><span class="n">BUTTON</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-26"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"image"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-27"></a>            <span class="n">app</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-28"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-29"></a>            <span class="n">img</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new_from_icon_name</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_MEDIA_PAUSE</span><span class="p">,</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-30"></a>                                               <span class="n">Gtk</span><span class="o">.</span><span class="n">IconSize</span><span class="o">.</span><span class="n">BUTTON</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-31"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"image"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-32"></a>            <span class="n">app</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-33"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-34"></a>    <span class="k">def</span> <span class="nf">on_forward_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-35"></a>        <span class="n">app</span><span class="o">.</span><span class="n">skip_time</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-36"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-37"></a>    <span class="k">def</span> <span class="nf">on_backward_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-38"></a>        <span class="n">app</span><span class="o">.</span><span class="n">skip_time</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-39"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-40"></a>    <span class="k">def</span> <span class="nf">on_progress_value_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-41"></a>        <span class="n">app</span><span class="o">.</span><span class="n">on_slider_seek</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-42"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-43"></a>    <span class="k">def</span> <span class="nf">on_vbutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-44"></a>        <span class="n">app</span><span class="o">.</span><span class="n">clear_playbin</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-45"></a>        <span class="n">app</span><span class="o">.</span><span class="n">setup_player</span><span class="p">(</span><span class="s2">"mediaplayer.avi"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-46"></a>        <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">playpause_button</span><span class="o">.</span><span class="n">get_active</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-47"></a>            <span class="n">app</span><span class="o">.</span><span class="n">playpause_button</span><span class="o">.</span><span class="n">set_active</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-48"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-49"></a>            <span class="n">app</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-50"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-51"></a>    <span class="k">def</span> <span class="nf">on_ibutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-52"></a>        <span class="n">app</span><span class="o">.</span><span class="n">clear_playbin</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-53"></a>        <span class="n">app</span><span class="o">.</span><span class="n">setup_player</span><span class="p">(</span><span class="s2">"mediaplayer.jpg"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-54"></a>        <span class="n">app</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-55"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-56"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-57"></a><span class="k">class</span> <span class="nc">GstPlayer</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-58"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-59"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-60"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-61"></a>        <span class="c1"># init GStreamer</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-62"></a>        <span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-63"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-64"></a>        <span class="c1"># setting up builder</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-65"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-66"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"23_gtksink_player.glade"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-67"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-68"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-69"></a>        <span class="c1">#self.movie_window = builder.get_object("play_here")</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">playpause_button</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"playpause_togglebutton"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-71"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">slider</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"progress"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-72"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">slider_handler_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slider</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"value-changed"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_slider_seek</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-73"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-74"></a>        <span class="c1"># setting up videoplayer</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"playbin"</span><span class="p">,</span> <span class="s2">"player"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sink</span> <span class="o">=</span> <span class="n">Gst</span><span class="o">.</span><span class="n">ElementFactory</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"gtksink"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-77"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-78"></a>        <span class="c1"># setting up media widget</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-79"></a>        <span class="n">video_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sink</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"widget"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-80"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"video_box"</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">video_widget</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-81"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-82"></a>        <span class="n">window</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-83"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-84"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-85"></a>    <span class="k">def</span> <span class="nf">setup_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-86"></a>        <span class="c1"># file to play must be transmitted as uri</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-87"></a>        <span class="n">uri</span> <span class="o">=</span> <span class="s2">"file://"</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-88"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"uri"</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-89"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s2">"video-sink"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sink</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-90"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-91"></a>    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-92"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_playing</span> <span class="o">=</span> <span class="bp">True</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-93"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">PLAYING</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-94"></a>        <span class="c1"># starting up a timer to check on the current playback value</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-95"></a>        <span class="n">GLib</span><span class="o">.</span><span class="n">timeout_add</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_slider</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-96"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-97"></a>    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-98"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_playing</span> <span class="o">=</span> <span class="bp">False</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-99"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">PAUSED</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-100"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-101"></a>    <span class="k">def</span> <span class="nf">current_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-102"></a>        <span class="n">status</span><span class="p">,</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">query_position</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Format</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-103"></a>        <span class="k">return</span> <span class="n">position</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-104"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-105"></a>    <span class="k">def</span> <span class="nf">skip_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-106"></a>        <span class="c1"># skip 20 seconds on forward/backward button</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-107"></a>        <span class="n">app</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">seek_simple</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Format</span><span class="o">.</span><span class="n">TIME</span><span class="p">,</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-108"></a>                               <span class="n">Gst</span><span class="o">.</span><span class="n">SeekFlags</span><span class="o">.</span><span class="n">FLUSH</span> <span class="o">|</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SeekFlags</span><span class="o">.</span><span class="n">KEY_UNIT</span><span class="p">,</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-109"></a>                               <span class="bp">self</span><span class="o">.</span><span class="n">current_position</span><span class="p">()</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SECOND</span> <span class="o">*</span> <span class="n">direction</span><span class="p">,</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-110"></a>                               <span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-111"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-112"></a>    <span class="k">def</span> <span class="nf">update_slider</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-113"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_playing</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-114"></a>            <span class="k">return</span> <span class="bp">False</span> <span class="c1"># cancel timeout</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-115"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-116"></a>            <span class="n">success</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">query_duration</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Format</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-117"></a>            <span class="c1"># adjust duration and position relative to absolute scale of 100</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-118"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">mult</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">/</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-119"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-120"></a>                <span class="k">raise</span> <span class="n">GenericException</span><span class="p">(</span><span class="s2">"Couldn't fetch duration"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-121"></a>            <span class="c1"># fetching the position, in nanosecs</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-122"></a>            <span class="n">success</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">query_position</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Format</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-123"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-124"></a>                <span class="k">raise</span> <span class="n">GenericException</span><span class="p">(</span><span class="s2">"Couldn't fetch current position to update slider"</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-125"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-126"></a>            <span class="c1"># block seek handler so we don't seek when we set_value()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-127"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">slider</span><span class="o">.</span><span class="n">handler_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slider_handler_id</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-128"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">slider</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="o">/</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SECOND</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mult</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-129"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">slider</span><span class="o">.</span><span class="n">handler_unblock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slider_handler_id</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-130"></a>        <span class="k">return</span> <span class="bp">True</span> <span class="c1"># continue calling every x milliseconds</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-131"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-132"></a>    <span class="k">def</span> <span class="nf">on_slider_seek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-133"></a>        <span class="n">seek_time</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">slider</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-134"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">seek_simple</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Format</span><span class="o">.</span><span class="n">TIME</span><span class="p">,</span>  <span class="n">Gst</span><span class="o">.</span><span class="n">SeekFlags</span><span class="o">.</span><span class="n">FLUSH</span> <span class="o">|</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SeekFlags</span><span class="o">.</span><span class="n">KEY_UNIT</span><span class="p">,</span> <span class="n">seek_time</span> <span class="o">*</span> <span class="n">Gst</span><span class="o">.</span><span class="n">SECOND</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mult</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-135"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-136"></a>    <span class="k">def</span> <span class="nf">clear_playbin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-137"></a>        <span class="k">try</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-138"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">NULL</span><span class="p">)</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-139"></a>        <span class="k">except</span><span class="p">:</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-140"></a>            <span class="k">pass</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-141"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-142"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-143"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-144"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-145"></a>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-146"></a><span class="n">app</span> <span class="o">=</span> <span class="n">GstPlayer</span><span class="p">()</span>
+<a name="rest_code_1d74b57116c94df28a19b8b921785278-147"></a><span class="n">app</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id12">Glade</a></h3>
+<p><a class="reference external" href="../../listings/23_gtksink_player.glade.html">23_gtksink_player.glade</a>  <a class="reference external" href="../../listings/23_gtksink_player.glade">(Source)</a></p>
+<pre class="code xml"><a name="rest_code_c80f4c51448f4480904a55b5373d61ed-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-2"></a><span class="c">&lt;!-- Generated with glade 3.22.1 --&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.16"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkAdjustment"</span> <span class="na">id=</span><span class="s">"adjustment"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-6"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"upper"</span><span class="nt">&gt;</span>100<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-7"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"step_increment"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-8"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"page_increment"</span><span class="nt">&gt;</span>10<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-9"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-10"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"image1"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-11"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-12"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-13"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"stock"</span><span class="nt">&gt;</span>gtk-media-rewind<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-14"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-15"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"image2"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-16"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-17"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-18"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"stock"</span><span class="nt">&gt;</span>gtk-media-forward<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-19"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-20"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkImage"</span> <span class="na">id=</span><span class="s">"image3"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-21"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-22"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-23"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"stock"</span><span class="nt">&gt;</span>gtk-media-pause<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-24"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-25"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-26"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-27"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-28"></a>    <span class="nt">&lt;child</span> <span class="na">type=</span><span class="s">"titlebar"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-29"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkHeaderBar"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-30"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-31"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-32"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"show_close_button"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-33"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-34"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"vbutton"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-35"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Play video<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-36"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-37"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-38"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-39"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_vbutton_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-40"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-41"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-42"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-43"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"ibutton"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-44"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"label"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Show image<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-45"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-46"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-47"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-48"></a>            <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_ibutton_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-49"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-50"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-51"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-52"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-53"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-54"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-55"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-56"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-57"></a>      <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-58"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-59"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-60"></a>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-61"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-62"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span> <span class="na">id=</span><span class="s">"video_box"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-63"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"height_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-64"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-65"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-66"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"orientation"</span><span class="nt">&gt;</span>vertical<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-67"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-68"></a>              <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-69"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-70"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-71"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-72"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-73"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-74"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-75"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-76"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-77"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-78"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkSeparator"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-79"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-80"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-81"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-82"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-83"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-84"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-85"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-86"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-87"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-88"></a>        <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-89"></a>          <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-90"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-91"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-92"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-93"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButtonBox"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-94"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-95"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-96"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"layout_style"</span><span class="nt">&gt;</span>start<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-97"></a>                <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-98"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"backward"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-99"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-100"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-101"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-102"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"image"</span><span class="nt">&gt;</span>image1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-103"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"always_show_image"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-104"></a>                    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_backward_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-105"></a>                  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-106"></a>                  <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-107"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-108"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-109"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-110"></a>                  <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-111"></a>                <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-112"></a>                <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-113"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkButton"</span> <span class="na">id=</span><span class="s">"forward"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-114"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-115"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-116"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-117"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"image"</span><span class="nt">&gt;</span>image2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-118"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"always_show_image"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-119"></a>                    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"clicked"</span> <span class="na">handler=</span><span class="s">"on_forward_clicked"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-120"></a>                  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-121"></a>                  <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-122"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-123"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-124"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-125"></a>                  <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-126"></a>                <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-127"></a>                <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-128"></a>                  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkToggleButton"</span> <span class="na">id=</span><span class="s">"playpause_togglebutton"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-129"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-130"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-131"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"receives_default"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-132"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"image"</span><span class="nt">&gt;</span>image3<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-133"></a>                    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"toggled"</span> <span class="na">handler=</span><span class="s">"on_playpause_togglebutton_toggled"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-134"></a>                  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-135"></a>                  <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-136"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-137"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-138"></a>                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-139"></a>                  <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-140"></a>                <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-141"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-142"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-143"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-144"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-145"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-146"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-147"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-148"></a>            <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-149"></a>              <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkScale"</span> <span class="na">id=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-150"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"width_request"</span><span class="nt">&gt;</span>300<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-151"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-152"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-153"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"halign"</span><span class="nt">&gt;</span>center<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-154"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"margin_left"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-155"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"margin_right"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-156"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"adjustment"</span><span class="nt">&gt;</span>adjustment<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-157"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill_level"</span><span class="nt">&gt;</span>100<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-158"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"round_digits"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-159"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"draw_value"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-160"></a>              <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-161"></a>              <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-162"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-163"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-164"></a>                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-165"></a>              <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-166"></a>            <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-167"></a>          <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-168"></a>          <span class="nt">&lt;packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-169"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"expand"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-170"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fill"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-171"></a>            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"position"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-172"></a>          <span class="nt">&lt;/packing&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-173"></a>        <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-174"></a>      <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-175"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-176"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_c80f4c51448f4480904a55b5373d61ed-177"></a><span class="nt">&lt;/interface&gt;</span>
+</pre>
+</div>
+<div class="section" id="beispieldateien">
+<h3><a class="toc-backref" href="#id13">Beispieldateien</a></h3>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="../../files/mediaplayer.avi">Video (13,7 MB)</a></li>
+<li><a class="reference external" href="../../files/mediaplayer.jpg">Image (553 kB)</a></li>
+</ul>
+</blockquote>
+</div>
+</div>
+</div>
+        </div>
+        
+        <ul class="pager hidden-print">
+<li class="previous">
+                <a href="../desktop-dateien/" rel="prev" title="GNOME-Anwendungsstarter">Vorheriger Eintrag</a>
+            </li>
+        </ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="bahnfreikartoffelbrei",
+            disqus_url="https://encarsia.github.io/posts/gtksink-player/",
+        disqus_title="Mediaplayer mit GStreamer (Edition gtksink)",
+        disqus_identifier="cache/posts/gtksink-player.html",
+        disqus_config = function () {
+            this.language = "de";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        
+    
+
+
+    </div>
+
+        
+       <script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2019 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a> - 
+Powered by <a href="http://getnikola.com">Nikola</a> - 
+Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br></p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

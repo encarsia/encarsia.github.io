@@ -74,12 +74,12 @@ Auf die Funktion ``add_offset_value`` und Farbänderung des Balkens beim Übersc
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 06_progresslevel.glade xml
-
 Python
 ******
 
 .. listing:: 06_progresslevel.py python
+
+Glade
+*****
+
+.. listing:: 06_progresslevel.glade xml

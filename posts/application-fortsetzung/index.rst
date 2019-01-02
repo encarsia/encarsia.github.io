@@ -13,7 +13,7 @@
 
 **Desktopintegration: Icon, Headerbar, Kommandozeilenoptionen**
 
-(Fortsetzung zum Artikel `GtkApplication <link://slug/application>`_)
+(Fortsetzung zum Artikel `Gtk.Application <link://slug/application>`_)
 
 .. thumbnail:: /images/15_application.png
 
@@ -47,7 +47,7 @@ Die Headerbar ist optional. Möchte man sie nutzen, muss in den Fenstereinstellu
 Kommandozeilenoptionen
 ----------------------
 
-*GtkApplication* stellt die erforderlichen Mittel für anwendungseigene Kommandozeilenoptionen zur Verfügung (`Handling command line options in GApplication <https://wiki.gnome.org/HowDoI/GtkApplication/CommandLine>`_).
+*Gtk.Application* stellt die erforderlichen Mittel für anwendungseigene Kommandozeilenoptionen zur Verfügung (`Handling command line options in GApplication <https://wiki.gnome.org/HowDoI/GtkApplication/CommandLine>`_).
 
 Optionen anlegen
 ****************
@@ -92,7 +92,7 @@ Die ``short_name``-Variable von *OptionEntry* ist allerdings integer. Die in der
 Signal verbinden
 ****************
 
-Der *GtkApplication*-eigene "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst
+Der *Gtk.Application*-eigene "handle-local-options"-Handler verarbeitet die Optionen. Sobald Optionen angelegt sind, wird dieses Signal noch vor dem "startup"-Signal ausgelöst
 
 .. code:: python
 
@@ -151,12 +151,12 @@ oder mit ``--setlabel`` einen String an *Gtk.Label* übergeben:
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 15_application.glade xml
-
 Python
 ******
 
 .. listing:: 15_application.py python
+
+Glade
+*****
+
+.. listing:: 15_application.glade xml

@@ -43,7 +43,7 @@ Der TreeIter wird beim Erstellen einer Zeile erzeugt, untergeordnete Zeilen werd
     row1 = store.append(None, [value1, value2, value3])
     row2 = store.append(row1, [value1, value2, value3])
 
-Man erhält den *TreeIter*-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *GtkTreeSelection*-Widgets von TreeView (wird automatisch angelegt).
+Man erhält den *TreeIter*-Wert einer Zeile am einfachsten über die ``get_selection``-Funktion des *Gtk.TreeSelection*-Widgets von TreeView (wird automatisch angelegt).
 
 Glade
 -----
@@ -122,10 +122,9 @@ Listings
 Glade
 *****
 
-.. listing:: 12_treestore.glade xml
+.. listing:: 12_treestore.py python
 
 Python
 ******
 
-.. listing:: 12_treestore.py python
-
+.. listing:: 12_treestore.glade xml

@@ -71,12 +71,12 @@ Im Beispiel wird der unteren Levelbar ein zusätzlicher Offsetmarker zwischen ``
 Listings
 --------
 
-Glade
-*****
-
-.. listing:: 07_css.glade xml
-
 Python
 ******
 
 .. listing:: 07_css.py python
+
+Glade
+*****
+
+.. listing:: 07_css.glade xml
