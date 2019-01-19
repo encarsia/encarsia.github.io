@@ -137,14 +137,15 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/index.html", "Home", "fa fa-home"),
         ("/posts/tutorial-reihe-glade", "Tutorials", "fa fa-lightbulb-o"),
+        ("/projects/index.html", "Projects", "fa fa-wrench"),
         ("https://octodon.social/@encarsia", "Mastodon", "fa fa-mastodon"),
         ("https://twitter.com/encarsia_", "Twitter", "fa fa-twitter"),
         ("https://plus.google.com/105146352752269764996/posts", "Google+", "fa fa-google-plus-official"),
         ("https://github.com/encarsia", "Github", "fa fa-github"),
         ("/categories/index.html", "Tags", "fa fa-tags"),
-        ("/rss.xml", "RSS", "fa fa-rss"),
-        ("/pages/about/index.html", "About me", "fa fa-user"),
+        # ("/pages/about/index.html", "About me", "fa fa-user"),
         ("/archive.html", "Archives", "fa fa-folder-open"),
+        ("/rss.xml", "RSS", "fa fa-feed"),
     )
 }
 
@@ -195,8 +196,10 @@ PAGES = (
     ("pages/*.txt", "pages", "story.tmpl"),
     ("pages/*.html", "pages", "story.tmpl"),
     ("pages/*.md", "pages", "story.tmpl"),
+    ("projects/*.rst", "projects", "project.tmpl"),
 )
 
+PROJECT_PATH = "projects"
 
 # Below this point, everything is optional
 
