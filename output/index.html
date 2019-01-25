@@ -29,6 +29,104 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/nikola-projectpages/">Use Nikola's Project Pages plugin without Bootstrap theme</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2019-01-24T09:35:17+01:00">2019-01-24 09:35</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/nikola-projectpages/#disqus_thread" data-disqus-identifier="cache/posts/nikola-projectpages.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<p><strong>Nikola is a great static site generator with lots of available plugins to extend its functionality.</strong></p>
+<p>One of these plugins is the <a class="reference external" href="https://plugins.getnikola.com/v8/projectpages/">Project Pages plugin</a>. The principle of it is that you create source files with (meta) information in a determined 'projects' folder and Nikola generates an index site and one page per project. You can see what it looks like on the <a class="reference external" href="https://chriswarrick.com/projects">developer's website</a> or <a class="reference external" href="projects/index.html">here at my site</a>.</p>
+<p>The plugins' templates are based on using a Boostrap theme. If you are using other themes you will run into two problems:</p>
+<blockquote>
+<ul class="simple">
+<li>table and other formatting</li>
+<li>carousel of the featured projects</li>
+</ul>
+</blockquote>
+<div class="section" id="css">
+<h2>CSS</h2>
+<p>Adding/Altering style parameter of a theme is easy: go to <tt class="docutils literal">/themes/CURRENT_THEME/asstes/css/</tt> and edit the <tt class="docutils literal">custom.css</tt>. If you want to use a separate file put it in this very folder and add the filename to <tt class="docutils literal">/themes/CURRENT_THEME/bundles</tt>.</p>
+<p>First I had to find the missing CSS assignments in the Bootstrap theme's CSS file. You can download the resulting file so you don't have to do this again.</p>
+</div>
+<div class="section" id="carousel">
+<h2>Carousel</h2>
+<p>The <a class="reference external" href="https://www.w3schools.com/bootstrap/bootstrap_carousel.asp">Bootstrap carousel</a> is a plugin to create nifty and automatic slideshows.</p>
+<p>The plugin generates a carousel on the index page for every project that is tagged as</p>
+<pre class="code text"><a name="rest_code_e6e8faadc4424ec38522bac6d5869ed6-1"></a>.. status: featured
+</pre>
+<p>I decided that a pure CSS slider may not be animated but still an acceptable JS-free solution. To realize this you have to edit the <tt class="docutils literal">project.tmpl</tt> which is located in <tt class="docutils literal">plugins/projectpages/templates/TEMPLATE_ENGINE/</tt>.</p>
+<p>If you go with <a class="reference external" href="https://codepen.io/paulnoble/pen/ZYOzLG">this simple slider</a> you will need just a few lines above the "All projects" section:</p>
+<pre class="code html"><a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-1"></a>% if featured:
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"carousel"</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-3"></a>  % for p in featured:
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-4"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"faux-ui-facia"</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-5"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"slide"</span> <span class="na">annot</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-6"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"${p.meta('previewimage')}"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-8"></a>  % endfor
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-9"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-10"></a>% endif
+</pre>
+<p>Next step is adding the slider's CSS assignments to your custom CSS (see above).</p>
+<p>On the project's summary page I considered it better to put the description into the detail's box so I also altered the <tt class="docutils literal">project.tmpl</tt>.</p>
+</div>
+<div class="section" id="files">
+<h2>Files</h2>
+<ul>
+<li>
+<p class="first">CSS file to add to your theme</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="files/projectpages/projectpages.css">projectfiles.css</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>
+<p class="first">Mako templates</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="files/projectpages/mako/projects.tmpl">projects.tmpl</a></li>
+<li><a class="reference external" href="files/projectpages/mako/project.tmpl">project.tmpl</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>
+<p class="first">Jinja templates</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="files/projectpages/jinja/projects.tmpl">projects.tmpl</a></li>
+<li><a class="reference external" href="files/projectpages/jinja/project.tmpl">project.tmpl</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/gtksink-player/">Mediaplayer mit GStreamer (Edition gtksink)</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -1340,129 +1438,6 @@ So before tweaking the MATE desktop let's take a look at the customizations done
 <a name="rest_code_b614649367b041948ae962099c560fe4-4"></a>                               <span class="p">)</span>
 <a name="rest_code_b614649367b041948ae962099c560fe4-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
 <a name="rest_code_b614649367b041948ae962099c560fe4-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
-</pre>
-</div>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/mastodon-nikola/">Mastodon-Tröts mit Nikola einbetten</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2018-09-18T15:50:16+02:00">2018-09-18 15:50</time>
-</div>
-                <div class="stats">
-                    
-        
-    <a href="posts/mastodon-nikola/#disqus_thread" data-disqus-identifier="cache/posts/embed-mastodon-toots-with-nikola.html">Comments</a>
-
-
-                </div>
-            
-        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/mastodon/" rel="tag">mastodon</a></li>
-           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p>
-
-    
-
-    
-
-<iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height='333"&lt;/iframe'>
-
-</iframe></p>
-<p>Beim Lesen des Artikels <a class="reference external" href="https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/">Mastodon Embed Shortcode for hugo</a> dachte ich neidisch 'Wir Nikola-Nutzer könnten sowas auch gebrauchen'. Im <a class="reference external" href="https://getnikola.com/handbook.html#shortcodes">Nikola-Handbuch</a> gibt man freimütig zu, dieses Feature sowieso von Hugo entlehnt zu haben, wie kompliziert kann es also sein?</p>
-<p>Hier sind drei Arten, mit reStructuredText Tröts in eine Nikola-Seite einzubinden.</p>
-<div class="section" id="die-raw-directive">
-<h2>Die <em>raw</em>-Directive</h2>
-<p>Diese Directive ermöglicht es, Inhalt ohne Verarbeitung an die Ausgabe weiterzureichen, siehe auch <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through">reStructuredText Directives documentation</a>.</p>
-<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
-<pre class="code rest"><a name="rest_code_46c338defca04980abfc638c5c6f0992-1"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
-<a name="rest_code_46c338defca04980abfc638c5c6f0992-2"></a>
-<a name="rest_code_46c338defca04980abfc638c5c6f0992-3"></a>    &lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333"&lt;/iframe&gt;
-</pre>
-</div>
-<div class="section" id="der-raw-shortcode">
-<h2>Der <em>raw</em>-Shortcode</h2>
-<p>Dieser Shortcode ist standardmäßig verfügbar. Er funktioniert genau wie die Directive, der Inhalt muss nur zwischen Shortcode-Tags platziert werden.</p>
-<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
-<pre class="code html"><a name="rest_code_b2b1694ce225491687a469d7a9ce2f2f-1"></a>{{% raw %}}
-<a name="rest_code_b2b1694ce225491687a469d7a9ce2f2f-2"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://mastodon.social/@kevingimbel/100745593232538751/embed"</span> <span class="na">class</span><span class="o">=</span><span class="s">"mastodon-embed"</span> <span class="na">style</span><span class="o">=</span><span class="s">"max-width: 100%; border: 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"600"</span> <span class="na">height</span><span class="o">=</span><span class="s">"333"</span><span class="err">&lt;/</span><span class="na">iframe</span><span class="p">&gt;</span>
-<a name="rest_code_b2b1694ce225491687a469d7a9ce2f2f-3"></a>{{% /raw %}}
-</pre>
-</div>
-<div class="section" id="mach-dir-deinen-eigenen-shortcode">
-<h2>Mach dir deinen eigenen Shortcode</h2>
-<p>Mittels <a class="reference external" href="https://getnikola.com/extending.html#template-based-shortcodes">vorlagenbasierten Shortcodes</a> kann man einfach individuelle Shortcodes erstellen.
-es&gt;`_.</p>
-<p>Dafür muss man eine Vorlage namens <tt class="docutils literal">your_shortcode_name.tmpl</tt> erstellen und im <tt class="docutils literal">shortcodes</tt>-Ordner der Nikola-Seite speichern. Wenn noch keine eigenen Shortcodes verwendet werden, muss der Ordner höchstwahrscheinlich noch angelegt werden.</p>
-<p>Abhängig von der verwendeten Template-Engine, die das aktuell verwendete Theme nutzt muss der Shortcode in Jinja2 oder Mako geschrieben werden:</p>
-<script src="https://gist.github.com/52728167ac7d2fe79caf480c291931ea.js"></script><noscript>
-<pre class="literal-block">
-{#
-Usage:
-
-    {{% mastodon status=https://instance.domain/@user/tootnr %}}
-    
-Optional parameters:
-
-    width (default: 600)
-    height (default: 333)
-    
-    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
-#}
-
-&lt;iframe src="{{ status }}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="{{ width|default("600") }}" height="{{ height|default("333") }}"&lt;/iframe&gt;
-
-</pre>
-</noscript>
-<script src="https://gist.github.com/da438431ca42781045b4d63ac1b9ea5c.js"></script><noscript>
-<pre class="literal-block">
-&lt;%doc&gt;
-Usage:
-
-    {{% mastodon status=https://instance.domain/@user/tootnr %}}
-    
-Optional parameters:
-
-    width (default: 600)
-    height (default: 333)
-    
-    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
-&lt;/%doc&gt;
-
-% if width is UNDEFINED:
-    &lt;% w = 600 %&gt;
-% else:
-    &lt;% w = width %&gt;
-% endif
-
-% if height is UNDEFINED:
-    &lt;% h = 333 %&gt;
-% else:
-    &lt;% h = height %&gt;
-% endif
-
-&lt;iframe src="${status}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width=${w} height=${h}"&lt;/iframe&gt;
-
-</pre>
-</noscript>
-<p>Der Shortcode kann nun wie ursprünglich genutzt werden, es muss ein Link zum Status angegeben werden, optional noch Höhe und/oder Breite des Elements.</p>
-<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
-<pre class="code html"><a name="rest_code_51bee4369ba0483a866d46ebd7933fec-1"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
-<a name="rest_code_51bee4369ba0483a866d46ebd7933fec-2"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 width=300 height=600 %}}
-</pre>
-<p>Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcole-Role empfohlen (siehe <a class="reference external" href="https://getnikola.com/handbook.html#using-a-shortcode">Handbuch</a>):</p>
-<p><a class="reference external" href="listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="listings/raw.txt">(Source)</a></p>
-<pre class="code rest"><a name="rest_code_d7e1da9717f148b8904e7bd68d9546a8-1"></a><span class="na">:sc:</span><span class="nv">`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`</span>
 </pre>
 </div>
 </div>

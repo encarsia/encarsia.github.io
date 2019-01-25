@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1547938288.3440082
+_modified_time = 1548422449.09026
 _enable_loop = True
 _template_filename = '/usr/lib/python3.7/site-packages/nikola/data/themes/base/templates/post_helper.tmpl'
 _template_uri = 'post_helper.tmpl'
@@ -44,8 +44,8 @@ def render_meta_translations(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
         len = context.get('len', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
         sorted = context.get('sorted', UNDEFINED)
+        lang = context.get('lang', UNDEFINED)
         translations = context.get('translations', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
@@ -117,10 +117,10 @@ def render_html_pager(context,post):
 def render_open_graph_metadata(context,post):
     __M_caller = context.caller_stack._push_frame()
     try:
-        permalink = context.get('permalink', UNDEFINED)
-        lang = context.get('lang', UNDEFINED)
         abs_link = context.get('abs_link', UNDEFINED)
         blog_title = context.get('blog_title', UNDEFINED)
+        lang = context.get('lang', UNDEFINED)
+        permalink = context.get('permalink', UNDEFINED)
         url_replacer = context.get('url_replacer', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<meta property="og:site_name" content="')

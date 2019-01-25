@@ -1,0 +1,26 @@
+## -*- coding: utf-8 -*-
+<%inherit file="base.tmpl"/>
+<%namespace name="project" file="project_helper.tmpl"/>
+<%block name="content">
+    <header class="page-header">
+        <h1>${title}</h1>
+    </header>
+
+% if featured:
+<div class="carousel">
+  % for p in featured:
+  <input type="checkbox" class="faux-ui-facia">
+  <div class="slide" annot="${p.title()}">
+    <img src="${p.meta('previewimage')}" alt="${p.title()}">
+  </div>
+  % endfor
+</div>
+% endif
+
+<h2>All projects</h2>
+    <ul class="project-list">
+    % for p in projects:
+        <li class="project project-sort-${p.meta('sort')}"><a href="${p.permalink()}">${p.title()}</a> ${project.devstatus(p.meta('devstatus'))}</a></li>
+    % endfor
+    </ul>
+</%block>
