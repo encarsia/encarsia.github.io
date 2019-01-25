@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy</title><link>https://encarsia.github.io/</link><description>Gute Absichten</description><atom:link href="https://encarsia.github.io/en/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Wed, 02 Jan 2019 13:39:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Mediaplayer mit GStreamer (Edition gtksink)</title><link>https://encarsia.github.io/en/posts/gtksink-player/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents pull-right topic" id="inhalt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy</title><link>https://encarsia.github.io/</link><description>Gute Absichten</description><atom:link href="https://encarsia.github.io/en/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 25 Jan 2019 13:20:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Use Nikola's Project Pages plugin without Bootstrap theme</title><link>https://encarsia.github.io/en/posts/nikola-projectpages/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Nikola is a great static site generator with lots of available plugins to extend its functionality.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;One of these plugins is the &lt;a class="reference external" href="https://plugins.getnikola.com/v8/projectpages/"&gt;Project Pages plugin&lt;/a&gt;. The principle of it is that you create source files with (meta) information in a determined 'projects' folder and Nikola generates an index site and one page per project. You can see what it looks like on the &lt;a class="reference external" href="https://chriswarrick.com/projects"&gt;developer's website&lt;/a&gt; or &lt;a class="reference external" href="https://encarsia.github.io/en/projects/index.html"&gt;here at my site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The plugins' templates are based on using a Boostrap theme. If you are using other themes you will run into two problems:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;table and other formatting&lt;/li&gt;
+&lt;li&gt;carousel of the featured projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="css"&gt;
+&lt;h2&gt;CSS&lt;/h2&gt;
+&lt;p&gt;Adding/Altering style parameter of a theme is easy: go to &lt;tt class="docutils literal"&gt;/themes/CURRENT_THEME/asstes/css/&lt;/tt&gt; and edit the &lt;tt class="docutils literal"&gt;custom.css&lt;/tt&gt;. If you want to use a separate file put it in this very folder and add the filename to &lt;tt class="docutils literal"&gt;/themes/CURRENT_THEME/bundles&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;First I had to find the missing CSS assignments in the Bootstrap theme's CSS file. You can download the resulting file so you don't have to do this again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="carousel"&gt;
+&lt;h2&gt;Carousel&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://www.w3schools.com/bootstrap/bootstrap_carousel.asp"&gt;Bootstrap carousel&lt;/a&gt; is a plugin to create nifty and automatic slideshows.&lt;/p&gt;
+&lt;p&gt;The plugin generates a carousel on the index page for every project that is tagged as&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e6e8faadc4424ec38522bac6d5869ed6-1"&gt;&lt;/a&gt;.. status: featured
+&lt;/pre&gt;&lt;p&gt;I decided that a pure CSS slider may not be animated but still an acceptable JS-free solution. To realize this you have to edit the &lt;tt class="docutils literal"&gt;project.tmpl&lt;/tt&gt; which is located in &lt;tt class="docutils literal"&gt;plugins/projectpages/templates/TEMPLATE_ENGINE/&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If you go with &lt;a class="reference external" href="https://codepen.io/paulnoble/pen/ZYOzLG"&gt;this simple slider&lt;/a&gt; you will need just a few lines above the "All projects" section:&lt;/p&gt;
+&lt;pre class="code html"&gt;&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-1"&gt;&lt;/a&gt;% if featured:
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"carousel"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-3"&gt;&lt;/a&gt;  % for p in featured:
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-4"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"checkbox"&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"faux-ui-facia"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-5"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"slide"&lt;/span&gt; &lt;span class="na"&gt;annot&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.title()}"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.meta('previewimage')}"&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.title()}"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-8"&gt;&lt;/a&gt;  % endfor
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-10"&gt;&lt;/a&gt;% endif
+&lt;/pre&gt;&lt;p&gt;Next step is adding the slider's CSS assignments to your custom CSS (see above).&lt;/p&gt;
+&lt;p&gt;On the project's summary page I considered it better to put the description into the detail's box so I also altered the &lt;tt class="docutils literal"&gt;project.tmpl&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="files"&gt;
+&lt;h2&gt;Files&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;CSS file to add to your theme&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/projectpages.css"&gt;projectfiles.css&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Mako templates&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/mako/projects.tmpl"&gt;projects.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/mako/project.tmpl"&gt;project.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Jinja templates&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/jinja/projects.tmpl"&gt;projects.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/jinja/project.tmpl"&gt;project.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>https://encarsia.github.io/en/posts/nikola-projectpages/</guid><pubDate>Thu, 24 Jan 2019 08:35:17 GMT</pubDate></item><item><title>Mediaplayer mit GStreamer (Edition gtksink)</title><link>https://encarsia.github.io/en/posts/gtksink-player/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents pull-right topic" id="inhalt"&gt;
 &lt;p class="topic-title first"&gt;Inhalt&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/gtksink-player/#installation" id="id5"&gt;Installation&lt;/a&gt;&lt;/li&gt;
@@ -1015,89 +1080,4 @@ So before tweaking the MATE desktop let's take a look at the customizations done
 &lt;a name="rest_code_b614649367b041948ae962099c560fe4-4"&gt;&lt;/a&gt;                               &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;a name="rest_code_b614649367b041948ae962099c560fe4-5"&gt;&lt;/a&gt;&lt;span class="n"&gt;dialog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_buttons&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Cancel"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Gtk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ResponseType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CANCEL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;a name="rest_code_b614649367b041948ae962099c560fe4-6"&gt;&lt;/a&gt;                   &lt;span class="s2"&gt;"OK"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Gtk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ResponseType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://encarsia.github.io/en/posts/gtk220neu/</guid><pubDate>Thu, 04 Oct 2018 11:29:06 GMT</pubDate></item><item><title>Embed Mastodon toots with Nikola</title><link>https://encarsia.github.io/en/posts/mastodon-nikola/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;
-
-    
-
-    
-
-&lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height='333"&amp;lt;/iframe'&gt;
-
-&lt;/iframe&gt;&lt;/p&gt;
-&lt;p&gt;Reading the post &lt;a class="reference external" href="https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/"&gt;Mastodon Embed Shortcode for hugo&lt;/a&gt; I became envious and thought 'We Nikola users might want that, too'. The &lt;a class="reference external" href="https://getnikola.com/handbook.html#shortcodes"&gt;Nikola handbook&lt;/a&gt; plainly admits to have 'adopted' the shortcode feature from Hugo so how hard can it be?&lt;/p&gt;
-&lt;p&gt;Here are three ways of embedding toots in your Nikola site using reStructuredText.&lt;/p&gt;
-&lt;div class="section" id="the-raw-directive"&gt;
-&lt;h2&gt;The &lt;em&gt;raw&lt;/em&gt; directive&lt;/h2&gt;
-&lt;p&gt;This directive enables you to pass content to the output without being processed. See &lt;a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through"&gt;reStructuredText Directives documentation&lt;/a&gt; for details.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt.html"&gt;raw.txt&lt;/a&gt;  &lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code rest"&gt;&lt;a name="rest_code_54066a9544bd407b8739ff289b4b6984-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;raw&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; html
-&lt;a name="rest_code_54066a9544bd407b8739ff289b4b6984-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_54066a9544bd407b8739ff289b4b6984-3"&gt;&lt;/a&gt;    &amp;lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333"&amp;lt;/iframe&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="the-raw-shortcode"&gt;
-&lt;h2&gt;The &lt;em&gt;raw&lt;/em&gt; shortcode&lt;/h2&gt;
-&lt;p&gt;This is part of the built-in shortcodes. It works like the directive, you only need to use shortcode tags.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt.html"&gt;raw.txt&lt;/a&gt;  &lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code html"&gt;&lt;a name="rest_code_37db1d3e9bb44be3b1cb4492c0f2ee4a-1"&gt;&lt;/a&gt;{{% raw %}}
-&lt;a name="rest_code_37db1d3e9bb44be3b1cb4492c0f2ee4a-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"https://mastodon.social/@kevingimbel/100745593232538751/embed"&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"mastodon-embed"&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"max-width: 100%; border: 0"&lt;/span&gt; &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"600"&lt;/span&gt; &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"333"&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="na"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_37db1d3e9bb44be3b1cb4492c0f2ee4a-3"&gt;&lt;/a&gt;{{% /raw %}}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="create-your-own-shortcode"&gt;
-&lt;h2&gt;Create your own shortcode&lt;/h2&gt;
-&lt;p&gt;A separate shortcode can easily be realized with a &lt;a class="reference external" href="https://getnikola.com/extending.html#template-based-shortcodes"&gt;template-based shortcode&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;All you have to do is create a template and save it as &lt;tt class="docutils literal"&gt;your_shortcode_name.tmpl&lt;/tt&gt; in the &lt;tt class="docutils literal"&gt;shortcodes&lt;/tt&gt; folder of your Nikola site. If you do not use any custom shortcodes yet you will probably have to create the folder.&lt;/p&gt;
-&lt;p&gt;Depending on the template engine used by your theme you have to provide shortcode templates for Jinja2 or Mako:&lt;/p&gt;
-&lt;script src="https://gist.github.com/52728167ac7d2fe79caf480c291931ea.js"&gt;&lt;/script&gt;&lt;noscript&gt;&lt;pre class="literal-block"&gt;
-{#
-Usage:
-
-    {{% mastodon status=https://instance.domain/@user/tootnr %}}
-    
-Optional parameters:
-
-    width (default: 600)
-    height (default: 333)
-    
-    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
-#}
-
-&amp;lt;iframe src="{{ status }}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="{{ width|default("600") }}" height="{{ height|default("333") }}"&amp;lt;/iframe&amp;gt;
-
-&lt;/pre&gt;
-&lt;/noscript&gt;&lt;script src="https://gist.github.com/da438431ca42781045b4d63ac1b9ea5c.js"&gt;&lt;/script&gt;&lt;noscript&gt;&lt;pre class="literal-block"&gt;
-&amp;lt;%doc&amp;gt;
-Usage:
-
-    {{% mastodon status=https://instance.domain/@user/tootnr %}}
-    
-Optional parameters:
-
-    width (default: 600)
-    height (default: 333)
-    
-    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x333
-&amp;lt;/%doc&amp;gt;
-
-% if width is UNDEFINED:
-    &amp;lt;% w = 600 %&amp;gt;
-% else:
-    &amp;lt;% w = width %&amp;gt;
-% endif
-
-% if height is UNDEFINED:
-    &amp;lt;% h = 333 %&amp;gt;
-% else:
-    &amp;lt;% h = height %&amp;gt;
-% endif
-
-&amp;lt;iframe src="${status}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width=${w} height=${h}"&amp;lt;/iframe&amp;gt;
-
-&lt;/pre&gt;
-&lt;/noscript&gt;&lt;p&gt;The shortcode can be used as intended, pass a status and optionally width and height.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt.html"&gt;raw.txt&lt;/a&gt;  &lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code html"&gt;&lt;a name="rest_code_542681abeca44355a6d7bc0a41094eb3-1"&gt;&lt;/a&gt;{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
-&lt;a name="rest_code_542681abeca44355a6d7bc0a41094eb3-2"&gt;&lt;/a&gt;{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 width=300 height=600 %}}
-&lt;/pre&gt;&lt;p&gt;This is working for me but if the shortcode fails you should use the shortcode role to pass the text unaltered (consult the &lt;a class="reference external" href="https://getnikola.com/handbook.html#using-a-shortcode"&gt;handbook&lt;/a&gt; for more information):&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt.html"&gt;raw.txt&lt;/a&gt;  &lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code rest"&gt;&lt;a name="rest_code_5db4d10f4bf047099c51449c75c73f54-1"&gt;&lt;/a&gt;&lt;span class="na"&gt;:sc:&lt;/span&gt;&lt;span class="nv"&gt;`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><category>mastodon</category><category>nikola</category><guid>https://encarsia.github.io/en/posts/mastodon-nikola/</guid><pubDate>Tue, 18 Sep 2018 13:50:16 GMT</pubDate></item></channel></rss>
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://encarsia.github.io/en/posts/gtk220neu/</guid><pubDate>Thu, 04 Oct 2018 11:29:06 GMT</pubDate></item></channel></rss>

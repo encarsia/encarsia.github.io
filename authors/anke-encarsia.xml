@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy (Einträge von Anke (encarsia))</title><link>https://encarsia.github.io/</link><description></description><atom:link href="https://encarsia.github.io/authors/anke-encarsia.xml" rel="self" type="application/rss+xml"></atom:link><language>de</language><lastBuildDate>Wed, 02 Jan 2019 13:39:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Mediaplayer mit GStreamer (Edition gtksink)</title><link>https://encarsia.github.io/posts/gtksink-player/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents pull-right topic" id="inhalt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy (Einträge von Anke (encarsia))</title><link>https://encarsia.github.io/</link><description></description><atom:link href="https://encarsia.github.io/authors/anke-encarsia.xml" rel="self" type="application/rss+xml"></atom:link><language>de</language><lastBuildDate>Fri, 25 Jan 2019 13:20:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Use Nikola's Project Pages plugin without Bootstrap theme</title><link>https://encarsia.github.io/posts/nikola-projectpages/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Nikola is a great static site generator with lots of available plugins to extend its functionality.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;One of these plugins is the &lt;a class="reference external" href="https://plugins.getnikola.com/v8/projectpages/"&gt;Project Pages plugin&lt;/a&gt;. The principle of it is that you create source files with (meta) information in a determined 'projects' folder and Nikola generates an index site and one page per project. You can see what it looks like on the &lt;a class="reference external" href="https://chriswarrick.com/projects"&gt;developer's website&lt;/a&gt; or &lt;a class="reference external" href="https://encarsia.github.io/projects/index.html"&gt;here at my site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The plugins' templates are based on using a Boostrap theme. If you are using other themes you will run into two problems:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;table and other formatting&lt;/li&gt;
+&lt;li&gt;carousel of the featured projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="css"&gt;
+&lt;h2&gt;CSS&lt;/h2&gt;
+&lt;p&gt;Adding/Altering style parameter of a theme is easy: go to &lt;tt class="docutils literal"&gt;/themes/CURRENT_THEME/asstes/css/&lt;/tt&gt; and edit the &lt;tt class="docutils literal"&gt;custom.css&lt;/tt&gt;. If you want to use a separate file put it in this very folder and add the filename to &lt;tt class="docutils literal"&gt;/themes/CURRENT_THEME/bundles&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;First I had to find the missing CSS assignments in the Bootstrap theme's CSS file. You can download the resulting file so you don't have to do this again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="carousel"&gt;
+&lt;h2&gt;Carousel&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://www.w3schools.com/bootstrap/bootstrap_carousel.asp"&gt;Bootstrap carousel&lt;/a&gt; is a plugin to create nifty and automatic slideshows.&lt;/p&gt;
+&lt;p&gt;The plugin generates a carousel on the index page for every project that is tagged as&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e6e8faadc4424ec38522bac6d5869ed6-1"&gt;&lt;/a&gt;.. status: featured
+&lt;/pre&gt;&lt;p&gt;I decided that a pure CSS slider may not be animated but still an acceptable JS-free solution. To realize this you have to edit the &lt;tt class="docutils literal"&gt;project.tmpl&lt;/tt&gt; which is located in &lt;tt class="docutils literal"&gt;plugins/projectpages/templates/TEMPLATE_ENGINE/&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If you go with &lt;a class="reference external" href="https://codepen.io/paulnoble/pen/ZYOzLG"&gt;this simple slider&lt;/a&gt; you will need just a few lines above the "All projects" section:&lt;/p&gt;
+&lt;pre class="code html"&gt;&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-1"&gt;&lt;/a&gt;% if featured:
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"carousel"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-3"&gt;&lt;/a&gt;  % for p in featured:
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-4"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"checkbox"&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"faux-ui-facia"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-5"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"slide"&lt;/span&gt; &lt;span class="na"&gt;annot&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.title()}"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.meta('previewimage')}"&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"${p.title()}"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-8"&gt;&lt;/a&gt;  % endfor
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_82a00cfd98524ea39cc31d2e9eb80840-10"&gt;&lt;/a&gt;% endif
+&lt;/pre&gt;&lt;p&gt;Next step is adding the slider's CSS assignments to your custom CSS (see above).&lt;/p&gt;
+&lt;p&gt;On the project's summary page I considered it better to put the description into the detail's box so I also altered the &lt;tt class="docutils literal"&gt;project.tmpl&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="files"&gt;
+&lt;h2&gt;Files&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;CSS file to add to your theme&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/projectpages.css"&gt;projectfiles.css&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Mako templates&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/mako/projects.tmpl"&gt;projects.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/mako/project.tmpl"&gt;project.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Jinja templates&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/jinja/projects.tmpl"&gt;projects.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://encarsia.github.io/files/projectpages/jinja/project.tmpl"&gt;project.tmpl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>nikola</category><guid>https://encarsia.github.io/posts/nikola-projectpages/</guid><pubDate>Thu, 24 Jan 2019 08:35:17 GMT</pubDate></item><item><title>Mediaplayer mit GStreamer (Edition gtksink)</title><link>https://encarsia.github.io/posts/gtksink-player/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents pull-right topic" id="inhalt"&gt;
 &lt;p class="topic-title first"&gt;Inhalt&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/posts/gtksink-player/#installation" id="id5"&gt;Installation&lt;/a&gt;&lt;/li&gt;
@@ -1030,19 +1095,4 @@ Optional parameters:
 &lt;/pre&gt;&lt;p&gt;Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcole-Role empfohlen (siehe &lt;a class="reference external" href="https://getnikola.com/handbook.html#using-a-shortcode"&gt;Handbuch&lt;/a&gt;):&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt.html"&gt;raw.txt&lt;/a&gt;  &lt;a class="reference external" href="https://encarsia.github.io/listings/raw.txt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
 &lt;pre class="code rest"&gt;&lt;a name="rest_code_d7e1da9717f148b8904e7bd68d9546a8-1"&gt;&lt;/a&gt;&lt;span class="na"&gt;:sc:&lt;/span&gt;&lt;span class="nv"&gt;`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><category>mastodon</category><category>nikola</category><guid>https://encarsia.github.io/posts/mastodon-nikola/</guid><pubDate>Tue, 18 Sep 2018 13:50:16 GMT</pubDate></item><item><title>tfbrief - LaTeX-Briefvorlage</title><link>https://encarsia.github.io/posts/tfbrief/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;Manche raunen, Briefe mit LaTeX zu verfassen, wäre mit Kanonen auf Spatzen zu feuern. Die kennen die Dokumentenklasse tfbrief nicht.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;tfbrief&lt;/em&gt; fiel mir einst vor Jahren zu und begeistert ob seiner Einfachheit nutzte ich es eifrig und  verbreitete es fleißig unter Interessierten. Die Originalquelle ist inzwischen versiegt, doch ich konnte eine einsame Kopie auf GitHub ausfindig machen. Dabei stellte ich fest, dass die Dokumentenklasse quasi unverändert und weitgehend unter Ausschluss der Öffentlichkeit existierte.&lt;/p&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;Meine Änderungen:&lt;/dt&gt;
-&lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;obsoleten Code entfernen (fixltx2e package, tocityshort-Attribut)&lt;/li&gt;
-&lt;li&gt;die Option &lt;cite&gt;german&lt;/cite&gt; lädt &lt;cite&gt;ngerman&lt;/cite&gt;, wenn babel geladen wird&lt;/li&gt;
-&lt;li&gt;Typos (v.a. der Kommafehler in Abschlussformel (im Deutschen nicht vorhanden))&lt;/li&gt;
-&lt;li&gt;Betreffzeile serifenlos&lt;/li&gt;
-&lt;li&gt;eine weitere Beispieldatei&lt;/li&gt;
-&lt;li&gt;PDF-Outputs der Beispiele&lt;/li&gt;
-&lt;li&gt;ausführliche Dokumentation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;Link zum Repository: &lt;a class="reference external" href="https://github.com/andre-lehnert/latex-letter"&gt;GitHub: andre-lehnert/latex-letter&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>latex</category><category>letter</category><category>tfbrief</category><guid>https://encarsia.github.io/posts/tfbrief/</guid><pubDate>Fri, 14 Sep 2018 14:12:31 GMT</pubDate></item></channel></rss>
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><category>mastodon</category><category>nikola</category><guid>https://encarsia.github.io/posts/mastodon-nikola/</guid><pubDate>Tue, 18 Sep 2018 13:50:16 GMT</pubDate></item></channel></rss>
