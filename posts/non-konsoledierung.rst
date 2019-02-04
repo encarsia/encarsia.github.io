@@ -1,7 +1,7 @@
 .. title: NoN: Konsoledierung
 .. slug: non-konsole
 .. date: 2017-10-05 22:45:19 UTC+02:00
-.. tags: nikola,python
+.. tags: nikola,python,non
 .. category: repository
 .. link: 
 .. description: 
@@ -41,7 +41,7 @@ Dies hat mehrere Eigenschaften und Vorteile:
  * Beim Ausführen über die Buttons wechselt der Focus auf das Terminal und nach Beenden des Tasks wieder zurück zur Oberfläche. Mit super Überblende (aktivierte Animationen erforderlich)!
  * Optisch aufgeräumter, da kein separates Fenster mehr benötigt wird.
 
-.. image:: /images/non_term.gif
+.. image:: /images/non/non_term.gif
 
 
 Chronik

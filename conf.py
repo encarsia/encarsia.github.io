@@ -196,10 +196,10 @@ PAGES = (
     ("pages/*.txt", "pages", "story.tmpl"),
     ("pages/*.html", "pages", "story.tmpl"),
     ("pages/*.md", "pages", "story.tmpl"),
-    ("pages/projects/*.rst", "projects", "project.tmpl"),
+    ("projects/*.rst", "projects", "project.tmpl"),
 )
 
-PROJECT_PATH = "pages/projects"
+PROJECT_PATH = "projects"
 
 # Below this point, everything is optional
 
