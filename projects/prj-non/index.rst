@@ -6,7 +6,7 @@
 .. link: https://github.com/encarsia/non
 .. description: A GTK+ manager for Nikola powered websites
 .. previewimage: ../images/projects/non_win.png
-.. logo: ../../images/projects/non_icon.png
+.. logo: ../../images/projects/duckyou.png
 .. devstatus: 4
 .. download: https://github.com/encarsia/non/releases/latest
 .. github: https://github.com/encarsia/non

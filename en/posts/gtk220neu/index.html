@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../rss.xml">
 <link rel="canonical" href="https://encarsia.github.io/en/posts/gtk220neu/">
-<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Another Me">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Anke (encarsia)">
 <meta property="og:site_name" content="Merge and Destroy">
 <meta property="og:title" content="Widget-Änderungen in GTK+ 2.20+">
 <meta property="og:url" content="https://encarsia.github.io/en/posts/gtk220neu/">
@@ -121,21 +121,21 @@ Das GUI-Programm Glade wurde erst kürzlich modernisiert, in der Anwendung von W
 <blockquote>
 <strong>Alt:</strong>
 </blockquote>
-<pre class="code python"><a name="rest_code_56e6925d8b194086b9f56a6ed81325b4-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
-<a name="rest_code_56e6925d8b194086b9f56a6ed81325b4-2"></a>                                <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
-<a name="rest_code_56e6925d8b194086b9f56a6ed81325b4-3"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
-<a name="rest_code_56e6925d8b194086b9f56a6ed81325b4-4"></a>                                <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
-<a name="rest_code_56e6925d8b194086b9f56a6ed81325b4-5"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-2"></a>                                <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-3"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-4"></a>                                <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-5"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
 </pre>
 <p>'</p>
 <blockquote>
 <strong>Neu:</strong> Argumente werden namentlich übergeben, Buttons separat hinzugefügt:</blockquote>
-<pre class="code python"><a name="rest_code_b614649367b041948ae962099c560fe4-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
-<a name="rest_code_b614649367b041948ae962099c560fe4-2"></a>                               <span class="n">parent</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
-<a name="rest_code_b614649367b041948ae962099c560fe4-3"></a>                               <span class="n">action</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
-<a name="rest_code_b614649367b041948ae962099c560fe4-4"></a>                               <span class="p">)</span>
-<a name="rest_code_b614649367b041948ae962099c560fe4-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
-<a name="rest_code_b614649367b041948ae962099c560fe4-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_a72e347d07f045ad85a40794b08ab48c-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-2"></a>                               <span class="n">parent</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-3"></a>                               <span class="n">action</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-4"></a>                               <span class="p">)</span>
+<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
 </pre>
 </div>
 </div>

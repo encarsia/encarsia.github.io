@@ -96,6 +96,6 @@ Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich n
 
 * [engadget: Goodbye Google+, you beautiful, squandered opportunity](https://www.engadget.com/2018/10/12/goodbye-google-plus-you-beautiful-squandered-opportunity/)
 * [GoogleWatchBlog: Einstellung von Google+: Wieder einmal wurde eine Plattform mit großem Potenzial an die Wand gefahren](https://www.googlewatchblog.de/2018/10/einstellung-googleplus-wieder-plattform/)
-* [Takeout-Daten nach Nikola importieren](https://encarsia.github.io/import-gplus-nikola)
+* [Takeout-Daten nach Nikola importieren](https://encarsia.github.io/posts/import-gplus-nikola)
 
 <p><a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/L7QmEaD7HYx">Kommentieren auf <i class="fa fa-google-plus"></i></a></p>

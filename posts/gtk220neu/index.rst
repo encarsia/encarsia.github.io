@@ -6,7 +6,6 @@
 .. link: 
 .. description: 
 .. type: text
-.. author: Another Me
 
 **Auch wenn die Entwicklung von GTK+ 4 weit fortgeschritten ist, gibt es immer noch Änderungen in der 3er Version**
 
