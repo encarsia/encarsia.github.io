@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Das Boot
 .. slug: norge02
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-13 21:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 2. Wochenend' und Sonnenschein
@@ -37,8 +36,8 @@ Und so ist es auch: die Kaffees aus den Automaten der Restaurants werden über d
 
 Nach einer Bestellung eines alkoholfreien Biers ist erneute Verwirrung angesagt, denn dieses ist wieder nicht in der Getränkeflat enthalten. Eine Nachfrage an der Rezeption ist geklärt, dass nur Getränke aus dem offenen Ausschank enthalten sind. Das heißt:
 
- -> X wird in Flaschen serviert: nicht von der Getränkeflat gedeckelt
- -> X wird in einen alkoholfreien Cocktail geschüttet: von der Getränkeflat gedeckelt
+    ->  X wird in Flaschen serviert: nicht von der Getränkeflat gedeckelt
+    ->  X wird in einen alkoholfreien Cocktail geschüttet: von der Getränkeflat gedeckelt
 
 Klingt komisch, ist aber so.
 
