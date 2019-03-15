@@ -56,50 +56,51 @@
 <div class="contents topic" id="inhalt">
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
-<li><a class="reference internal" href="posts/md-extensions-nikola/#basic-configuration" id="id1">Basic configuration</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#basic-configuration" id="id2">Basic configuration</a></li>
 <li>
-<a class="reference internal" href="posts/md-extensions-nikola/#markdown-extensions" id="id2">Markdown extensions</a><ul>
+<a class="reference internal" href="posts/md-extensions-nikola/#markdown-extensions" id="id3">Markdown extensions</a><ul>
 <li>
-<a class="reference internal" href="posts/md-extensions-nikola/#enable" id="id3">Enable</a><ul>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#examples" id="id4">Examples</a></li>
+<a class="reference internal" href="posts/md-extensions-nikola/#enable" id="id4">Enable</a><ul>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#examples" id="id5">Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#configure" id="id5">Configure</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#configure" id="id6">Configure</a></li>
 <li>
-<a class="reference internal" href="posts/md-extensions-nikola/#use" id="id6">Use</a><ul>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#table-of-contents" id="id7">Table of contents</a></li>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#definition-lists" id="id8">Definition lists</a></li>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#admonitions" id="id9">Admonitions</a></li>
-<li><a class="reference internal" href="posts/md-extensions-nikola/#include" id="id10">Include</a></li>
+<a class="reference internal" href="posts/md-extensions-nikola/#use" id="id7">Use</a><ul>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#table-of-contents" id="id8">Table of contents</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#definition-lists" id="id9">Definition lists</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#admonitions" id="id10">Admonitions</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#include" id="id11">Include</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#links" id="id12">Links</a></li>
 </ul>
 </div>
 <p><strong>The default markup language of input files in Nikola is restructuredText. You can, of course, configure Nikola to also process Markdown formatted files but by default there are missing some features like admonitions or table of contents which can be enabled by extensions.</strong></p>
 <div class="section" id="basic-configuration">
-<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id1">Basic configuration</a></h2>
+<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id2">Basic configuration</a></h2>
 <p>First things first: you have to edit the variables <tt class="docutils literal">COMPILERS</tt>, <tt class="docutils literal">POSTS</tt> and <tt class="docutils literal">PAGES</tt> of the <em>conf.py</em> and uncomment or add a line in order to make Nikola recognize and render Markdown files:</p>
-<pre class="code python"><a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-1"></a><span class="n">COMPILERS</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-2"></a>    <span class="s2">"rest"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.rst'</span><span class="p">,</span> <span class="s1">'.txt'</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-3"></a>    <span class="s2">"markdown"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.md'</span><span class="p">,</span> <span class="s1">'.mdown'</span><span class="p">,</span> <span class="s1">'.markdown'</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-4"></a>    <span class="o">...</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-5"></a>    <span class="p">}</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-6"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-7"></a>    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-8"></a>    <span class="o">...</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-9"></a>    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-10"></a><span class="p">)</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-11"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-12"></a>    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-13"></a>    <span class="o">...</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-14"></a>    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-15"></a><span class="p">)</span>
+<pre class="code python"><a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-1"></a><span class="n">COMPILERS</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-2"></a>    <span class="s2">"rest"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.rst'</span><span class="p">,</span> <span class="s1">'.txt'</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-3"></a>    <span class="s2">"markdown"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.md'</span><span class="p">,</span> <span class="s1">'.mdown'</span><span class="p">,</span> <span class="s1">'.markdown'</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-4"></a>    <span class="o">...</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-5"></a>    <span class="p">}</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-6"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-7"></a>    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-8"></a>    <span class="o">...</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-9"></a>    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-10"></a><span class="p">)</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-11"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-12"></a>    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-13"></a>    <span class="o">...</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-14"></a>    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_d1411fa7824f4422930f0e3da1bcef73-15"></a><span class="p">)</span>
 </pre>
 </div>
 <div class="section" id="markdown-extensions">
-<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id2">Markdown extensions</a></h2>
+<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id3">Markdown extensions</a></h2>
 <p>There are two types of Markdown extensions:</p>
 <ol class="arabic simple">
 <li>
@@ -108,105 +109,116 @@
 <a class="reference external" href="https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions">Third party extensions</a> which have to be installed separately on your system.</li>
 </ol>
 <div class="section" id="enable">
-<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id3">Enable</a></h3>
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id4">Enable</a></h3>
 <p>An extension is enabled by adding it to the <tt class="docutils literal">MARKDOWN_EXTENSIONS</tt> variable.</p>
 <p>If you want to enable officially supported extensions you add the extensions' <em>entry point</em> as list item. If the extension is part of the <em>extra</em> folder you can use <tt class="docutils literal">extra</tt> as list item or the name of the extension, p.e. you enable definition lists with either <tt class="docutils literal">def_list</tt> or <tt class="docutils literal">extra</tt>.</p>
 <p>The list item for a third party extension is the exact dot notation (see the extension's documentation).</p>
 <div class="section" id="examples">
-<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id4">Examples</a></h4>
-<pre class="code python"><a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-1"></a><span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="c1"># all extensions of extra available</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-2"></a>                       <span class="s2">"extra"</span><span class="p">,</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-3"></a>                       <span class="c1"># other officially supported extensions</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-4"></a>                       <span class="s2">"admonition"</span><span class="p">,</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-5"></a>                       <span class="s2">"toc"</span><span class="p">,</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-6"></a>                       <span class="c1"># third party extension</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-7"></a>                       <span class="s2">"markdown_include.include"</span><span class="p">,</span>
-<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-8"></a>                      <span class="p">]</span>
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id5">Examples</a></h4>
+<pre class="code python"><a name="rest_code_8a74e16a77874387b67aea53649bc4f0-1"></a><span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="c1"># all extensions of extra available</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-2"></a>                       <span class="s2">"extra"</span><span class="p">,</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-3"></a>                       <span class="c1"># other officially supported extensions</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-4"></a>                       <span class="s2">"admonition"</span><span class="p">,</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-5"></a>                       <span class="s2">"toc"</span><span class="p">,</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-6"></a>                       <span class="c1"># third party extension</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-7"></a>                       <span class="s2">"markdown_include.include"</span><span class="p">,</span>
+<a name="rest_code_8a74e16a77874387b67aea53649bc4f0-8"></a>                      <span class="p">]</span>
 </pre>
 </div>
 </div>
 <div class="section" id="configure">
-<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id5">Configure</a></h3>
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id6">Configure</a></h3>
 <p>Some extensions offer configuration options. These are defined in the <tt class="docutils literal">MARKDOWN_EXTENSIONS_CONFIGS</tt> variable. The dictionary's structure is</p>
-<pre class="code python"><a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-1"></a><span class="n">MARKDOWN_EXTENSIONS_CONFIGS</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-2"></a>    <span class="n">DEFAULT_LANG</span><span class="p">:</span> <span class="p">{</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-3"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-4"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-5"></a>            <span class="p">},</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-6"></a>        <span class="s2">"ext2"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-7"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-8"></a>            <span class="p">},</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-9"></a>        <span class="o">...</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-10"></a>    <span class="p">},</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-11"></a>    <span class="s2">"other_configured_lang"</span><span class="p">:</span> <span class="p">{</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-12"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-13"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value3</span><span class="s2">",</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-14"></a>            <span class="p">},</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-15"></a>        <span class="o">...</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-16"></a>    <span class="p">},</span>
-<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-17"></a><span class="p">}</span>
+<pre class="code python"><a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-1"></a><span class="n">MARKDOWN_EXTENSIONS_CONFIGS</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-2"></a>    <span class="n">DEFAULT_LANG</span><span class="p">:</span> <span class="p">{</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-3"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-4"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-5"></a>            <span class="p">},</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-6"></a>        <span class="s2">"ext2"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-7"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-8"></a>            <span class="p">},</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-9"></a>        <span class="o">...</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-10"></a>    <span class="p">},</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-11"></a>    <span class="s2">"other_configured_lang"</span><span class="p">:</span> <span class="p">{</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-12"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-13"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value3</span><span class="s2">",</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-14"></a>            <span class="p">},</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-15"></a>        <span class="o">...</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-16"></a>    <span class="p">},</span>
+<a name="rest_code_1a1ff6f8533345a6bc3c0afb0e246966-17"></a><span class="p">}</span>
 </pre>
 </div>
 <div class="section" id="use">
-<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id6">Use</a></h3>
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id7">Use</a></h3>
 <p>Consult the extension's documentation for details. Useful extensions:</p>
 <div class="section" id="table-of-contents">
-<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id7">Table of contents</a></h4>
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id8">Table of contents</a></h4>
 <dl class="docutils">
 <dt>Enabled by:</dt>
 <dd>"toc"</dd>
 <dt>Usage:</dt>
-<dd><div class="first last"><pre class="code text"><a name="rest_code_68422432dde4442d863700e9156f8935-1"></a>[TOC]
+<dd><div class="first last"><pre class="code text"><a name="rest_code_b36a7e73de174f99b397fb14377c7993-1"></a>[TOC]
 </pre></div></dd>
 </dl>
 </div>
 <div class="section" id="definition-lists">
-<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id8">Definition lists</a></h4>
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id9">Definition lists</a></h4>
 <dl class="docutils">
 <dt>Enabled by:</dt>
 <dd>"extra"</dd>
 <dt>Usage:</dt>
-<dd><div class="first last"><pre class="code text"><a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-1"></a>item1
-<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-2"></a>:   text
-<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-3"></a>item2
-<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-4"></a>:   text
+<dd><div class="first last"><pre class="code text"><a name="rest_code_bc46fbc700384ef3833921e8e5e04310-1"></a>item1
+<a name="rest_code_bc46fbc700384ef3833921e8e5e04310-2"></a>:   text
+<a name="rest_code_bc46fbc700384ef3833921e8e5e04310-3"></a>item2
+<a name="rest_code_bc46fbc700384ef3833921e8e5e04310-4"></a>:   text
 </pre></div></dd>
 </dl>
 </div>
 <div class="section" id="admonitions">
-<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id9">Admonitions</a></h4>
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id10">Admonitions</a></h4>
 <dl class="docutils">
 <dt>Enabled by:</dt>
 <dd>"admonition"</dd>
 <dt>Usage:</dt>
 <dd>
 <p class="first">Common types in reST are the attention, caution, danger, error, hint, important, note, tip, and warning directives but any type can be defined (css editing may be required).</p>
-<div class="last"><pre class="code text"><a name="rest_code_e7925820f0d7452083848843add9a526-1"></a>!!! danger
-<a name="rest_code_e7925820f0d7452083848843add9a526-2"></a>    no trespassing
-<a name="rest_code_e7925820f0d7452083848843add9a526-3"></a>
-<a name="rest_code_e7925820f0d7452083848843add9a526-4"></a>!!! important "custom title"
-<a name="rest_code_e7925820f0d7452083848843add9a526-5"></a>    you better read this
+<div class="last"><pre class="code text"><a name="rest_code_863fa1ea53e34a96bd0eb6d4970f24bd-1"></a>!!! danger
+<a name="rest_code_863fa1ea53e34a96bd0eb6d4970f24bd-2"></a>    no trespassing
+<a name="rest_code_863fa1ea53e34a96bd0eb6d4970f24bd-3"></a>
+<a name="rest_code_863fa1ea53e34a96bd0eb6d4970f24bd-4"></a>!!! important "custom title"
+<a name="rest_code_863fa1ea53e34a96bd0eb6d4970f24bd-5"></a>    you better read this
 </pre></div>
 </dd>
 </dl>
 </div>
 <div class="section" id="include">
-<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id10">Include</a></h4>
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id11">Include</a></h4>
 <dl class="docutils">
 <dt>Enabled by:</dt>
 <dd>"markdown_include.include"</dd>
 <dt>Usage:</dt>
 <dd>
-<div class="first"><pre class="code text"><a name="rest_code_15765994c78449fba8a94a1349a04090-1"></a>{!posts/this-is-another-markdown-file.md!}
+<div class="first"><pre class="code text"><a name="rest_code_535eadad8ab14550bfbe508b916fcaa6-1"></a>{!posts/this-is-another-markdown-file.md!}
 </pre></div>
 <p class="last">The input file will not be rendered if it has not been changed even if an included file was edited.</p>
 </dd>
 </dl>
+</div>
+</div>
+</div>
+<div class="section" id="links">
+<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id12">Links</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://getnikola.com/">Nikola</a></li>
+<li><a class="reference external" href="https://www.markdownguide.org/getting-started">What is Markdown?</a></li>
+<li><a class="reference external" href="https://python-markdown.github.io/extensions/">Markdown extensions</a></li>
+<li><a class="reference external" href="https://github.com/cmacmackin/markdown-include">Third party extension: Markdown-Include</a></li>
+<li><a class="reference external" href="http://docutils.sourceforge.net/rst.html">What is restructuredText?</a></li>
+<li><a class="reference external" href="categories/nikola/">More posts about Nikola on this site</a></li>
+</ul>
 <div class="admonition admonition-fun-fact">
 <p class="first admonition-title">Fun fact</p>
 <p class="last">This posts has been written in restructuredText.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
