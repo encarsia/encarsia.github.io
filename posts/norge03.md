@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Haugesund
 .. slug: norge03
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-15 18:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 3. God morgen, Haugesund!
@@ -54,9 +53,9 @@ Wie oft ich vor meinem Urlaub den Rat, nicht den Küblböck zu machen, gehört h
 
 Von einem fahrenden Schiff aus auf dem Ozean ins Meer zu springen, ist eine sehr, sehr sichere Form des Selbstmords. Selbst wenn dies unter Zeugen geschieht, ist es nahezu unmöglich, einen Verunglückten im Auge zu behalten, falls dieser überhaupt noch bei Bewusstsein ist und wieder auftaucht, bis Rettungsmaßnahmen eingeleitet werden. Jeder, der schon einmal ein "Mann/Boje über Bord"-Manöver gemacht hat, dürfte dies nachvollziehen können.
 
-*Geht man ohne Zeugen über Bord, fällt das zunächst gar nicht auf.*
+**Geht man ohne Zeugen über Bord, fällt das zunächst gar nicht auf.**
 
-| ![](../../images/norge2019/45.jpg) |
+| ![](../../images/norge2019/45.png) |
 | --- |
 | *Das rote Telefon* |
 
