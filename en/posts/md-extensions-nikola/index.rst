@@ -152,6 +152,16 @@ Usage:
 
     The input file will not be rendered if it has not been changed even if an included file was edited.
 
+Links
+*****
+
+* `Nikola <https://getnikola.com/>`_
+* `What is Markdown? <https://www.markdownguide.org/getting-started>`_
+* `Markdown extensions <https://python-markdown.github.io/extensions/>`_
+* `Third party extension: Markdown-Include <https://github.com/cmacmackin/markdown-include>`_
+* `What is restructuredText? <http://docutils.sourceforge.net/rst.html>`_
+* `More posts about Nikola on this site <link://tag/nikola>`_
+
 .. admonition:: Fun fact
 
     This posts has been written in restructuredText.
