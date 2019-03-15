@@ -29,6 +29,190 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/md-extensions-nikola/">Use Markdown extensions in Nikola</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2019-03-15T20:00:43+01:00">2019-03-15 20:00</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/md-extensions-nikola/#disqus_thread" data-disqus-identifier="cache/posts/md-extensions-nikola.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/markdown/" rel="tag">markdown</a></li>
+           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/md-extensions-nikola/#basic-configuration" id="id1">Basic configuration</a></li>
+<li>
+<a class="reference internal" href="posts/md-extensions-nikola/#markdown-extensions" id="id2">Markdown extensions</a><ul>
+<li>
+<a class="reference internal" href="posts/md-extensions-nikola/#enable" id="id3">Enable</a><ul>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#examples" id="id4">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#configure" id="id5">Configure</a></li>
+<li>
+<a class="reference internal" href="posts/md-extensions-nikola/#use" id="id6">Use</a><ul>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#table-of-contents" id="id7">Table of contents</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#definition-lists" id="id8">Definition lists</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#admonitions" id="id9">Admonitions</a></li>
+<li><a class="reference internal" href="posts/md-extensions-nikola/#include" id="id10">Include</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>The default markup language of input files in Nikola is restructuredText. You can, of course, configure Nikola to also process Markdown formatted files but by default there are missing some features like admonitions or table of contents which can be enabled by extensions.</strong></p>
+<div class="section" id="basic-configuration">
+<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id1">Basic configuration</a></h2>
+<p>First things first: you have to edit the variables <tt class="docutils literal">COMPILERS</tt>, <tt class="docutils literal">POSTS</tt> and <tt class="docutils literal">PAGES</tt> of the <em>conf.py</em> and uncomment or add a line in order to make Nikola recognize and render Markdown files:</p>
+<pre class="code python"><a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-1"></a><span class="n">COMPILERS</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-2"></a>    <span class="s2">"rest"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.rst'</span><span class="p">,</span> <span class="s1">'.txt'</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-3"></a>    <span class="s2">"markdown"</span><span class="p">:</span> <span class="p">(</span><span class="s1">'.md'</span><span class="p">,</span> <span class="s1">'.mdown'</span><span class="p">,</span> <span class="s1">'.markdown'</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-4"></a>    <span class="o">...</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-5"></a>    <span class="p">}</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-6"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-7"></a>    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-8"></a>    <span class="o">...</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-9"></a>    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-10"></a><span class="p">)</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-11"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-12"></a>    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-13"></a>    <span class="o">...</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-14"></a>    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_61563f572b2d4e83ab06fe2b79139d92-15"></a><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="markdown-extensions">
+<h2><a class="toc-backref" href="posts/md-extensions-nikola/#id2">Markdown extensions</a></h2>
+<p>There are two types of Markdown extensions:</p>
+<ol class="arabic simple">
+<li>
+<a class="reference external" href="https://python-markdown.github.io/extensions/#officially-supported-extensions">Officially supported extensions</a> that are shipped with the <em>python-markdown</em> package.</li>
+<li>
+<a class="reference external" href="https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions">Third party extensions</a> which have to be installed separately on your system.</li>
+</ol>
+<div class="section" id="enable">
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id3">Enable</a></h3>
+<p>An extension is enabled by adding it to the <tt class="docutils literal">MARKDOWN_EXTENSIONS</tt> variable.</p>
+<p>If you want to enable officially supported extensions you add the extensions' <em>entry point</em> as list item. If the extension is part of the <em>extra</em> folder you can use <tt class="docutils literal">extra</tt> as list item or the name of the extension, p.e. you enable definition lists with either <tt class="docutils literal">def_list</tt> or <tt class="docutils literal">extra</tt>.</p>
+<p>The list item for a third party extension is the exact dot notation (see the extension's documentation).</p>
+<div class="section" id="examples">
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id4">Examples</a></h4>
+<pre class="code python"><a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-1"></a><span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="c1"># all extensions of extra available</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-2"></a>                       <span class="s2">"extra"</span><span class="p">,</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-3"></a>                       <span class="c1"># other officially supported extensions</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-4"></a>                       <span class="s2">"admonition"</span><span class="p">,</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-5"></a>                       <span class="s2">"toc"</span><span class="p">,</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-6"></a>                       <span class="c1"># third party extension</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-7"></a>                       <span class="s2">"markdown_include.include"</span><span class="p">,</span>
+<a name="rest_code_04f7e88e3dad46bda13ecdf184b3f210-8"></a>                      <span class="p">]</span>
+</pre>
+</div>
+</div>
+<div class="section" id="configure">
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id5">Configure</a></h3>
+<p>Some extensions offer configuration options. These are defined in the <tt class="docutils literal">MARKDOWN_EXTENSIONS_CONFIGS</tt> variable. The dictionary's structure is</p>
+<pre class="code python"><a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-1"></a><span class="n">MARKDOWN_EXTENSIONS_CONFIGS</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-2"></a>    <span class="n">DEFAULT_LANG</span><span class="p">:</span> <span class="p">{</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-3"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-4"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-5"></a>            <span class="p">},</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-6"></a>        <span class="s2">"ext2"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-7"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value2</span><span class="s2">",</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-8"></a>            <span class="p">},</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-9"></a>        <span class="o">...</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-10"></a>    <span class="p">},</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-11"></a>    <span class="s2">"other_configured_lang"</span><span class="p">:</span> <span class="p">{</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-12"></a>        <span class="s2">"ext1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"option1"</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-13"></a>                 <span class="s2">"option2"</span><span class="p">:</span> <span class="n">value3</span><span class="s2">",</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-14"></a>            <span class="p">},</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-15"></a>        <span class="o">...</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-16"></a>    <span class="p">},</span>
+<a name="rest_code_f8218fd7ee5c4d8da9f22b196f5eb447-17"></a><span class="p">}</span>
+</pre>
+</div>
+<div class="section" id="use">
+<h3><a class="toc-backref" href="posts/md-extensions-nikola/#id6">Use</a></h3>
+<p>Consult the extension's documentation for details. Useful extensions:</p>
+<div class="section" id="table-of-contents">
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id7">Table of contents</a></h4>
+<dl class="docutils">
+<dt>Enabled by:</dt>
+<dd>"toc"</dd>
+<dt>Usage:</dt>
+<dd><div class="first last"><pre class="code text"><a name="rest_code_68422432dde4442d863700e9156f8935-1"></a>[TOC]
+</pre></div></dd>
+</dl>
+</div>
+<div class="section" id="definition-lists">
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id8">Definition lists</a></h4>
+<dl class="docutils">
+<dt>Enabled by:</dt>
+<dd>"extra"</dd>
+<dt>Usage:</dt>
+<dd><div class="first last"><pre class="code text"><a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-1"></a>item1
+<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-2"></a>:   text
+<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-3"></a>item2
+<a name="rest_code_1fa2848658f94c688695fbe8ba63e8e4-4"></a>:   text
+</pre></div></dd>
+</dl>
+</div>
+<div class="section" id="admonitions">
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id9">Admonitions</a></h4>
+<dl class="docutils">
+<dt>Enabled by:</dt>
+<dd>"admonition"</dd>
+<dt>Usage:</dt>
+<dd>
+<p class="first">Common types in reST are the attention, caution, danger, error, hint, important, note, tip, and warning directives but any type can be defined (css editing may be required).</p>
+<div class="last"><pre class="code text"><a name="rest_code_e7925820f0d7452083848843add9a526-1"></a>!!! danger
+<a name="rest_code_e7925820f0d7452083848843add9a526-2"></a>    no trespassing
+<a name="rest_code_e7925820f0d7452083848843add9a526-3"></a>
+<a name="rest_code_e7925820f0d7452083848843add9a526-4"></a>!!! important "custom title"
+<a name="rest_code_e7925820f0d7452083848843add9a526-5"></a>    you better read this
+</pre></div>
+</dd>
+</dl>
+</div>
+<div class="section" id="include">
+<h4><a class="toc-backref" href="posts/md-extensions-nikola/#id10">Include</a></h4>
+<dl class="docutils">
+<dt>Enabled by:</dt>
+<dd>"markdown_include.include"</dd>
+<dt>Usage:</dt>
+<dd>
+<div class="first"><pre class="code text"><a name="rest_code_15765994c78449fba8a94a1349a04090-1"></a>{!posts/this-is-another-markdown-file.md!}
+</pre></div>
+<p class="last">The input file will not be rendered if it has not been changed even if an included file was edited.</p>
+</dd>
+</dl>
+<div class="admonition admonition-fun-fact">
+<p class="first admonition-title">Fun fact</p>
+<p class="last">This posts has been written in restructuredText.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/norge03/">Love Boat - The Real Story. Haugesund</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -1139,126 +1323,6 @@ I found it at <a class="reference external" href="https://thenounproject.com/">T
 </ul>
 </blockquote>
 </div>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/diegplusdie/">The Notwork</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2018-10-14T15:30:59+02:00">2018-10-14 15:30</time>
-</div>
-                <div class="stats">
-                    
-        
-    <a href="posts/diegplusdie/#disqus_thread" data-disqus-identifier="cache/posts/diegplusdie.html">Comments</a>
-
-
-                </div>
-            
-        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/google%2B/" rel="tag">google+</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<p><strong>Die Nachricht ereilte mich per Twitter: das Ende von Google+ ist besiegelt. Na und? - Das Netzwerk hat doch schon lange seinen Reiz verloren.</strong></p>
-<h3>Richtiges Netzwerk, falsche Zeit</h3>
-<p>Als Google im Jahr 2011 sein eigenes soziales Netzwerk launchte, sollte es der Facebook-Killer werden, ohne wie Facebook auszusehen oder zu funktionieren. Dies wirkt zunächst einseitig fokussiert, muss man jedoch bedenken, dass Facebook das mit großem Abstand führende soziale Netzwerk zu dieser Zeit war.</p>
-<p>Im deutschsprachigen Raum findet man unter den <a href="https://www.muenchnermedien.de/die-20-beliebtesten-sozialen-netzwerke-deutschlands-2011">Top 20 der sozialen Netzwerke</a> neben dem Primus noch die VZ-Netzwerke, Jappy, WerKenntWen und Stayfriends - Netzwerke, die inzwischen heute ein Nischendasein fristen, falls sie noch existieren.</p>
-<p>Angesichts der Konkurrenz konnte die Prognose doch gar nicht so schlecht sein? - Wenn da der blaue Riese nicht gewesen wäre. Google erwischte den vielleicht schlechtesten Zeitpunkt zum Launch. Facebook hatte weitgehende Marktbeherrschung und -sättigung (beim Nutzer) errungen. Die Mehrheit war einfach nicht gewillt, aktiv ein weiteres Netzwerk zu nutzen, weil sie schlicht keinen Grund darin sah. Die anhaltende massive Kritik und der Verdruss kamen später.</p>
-<h3>Die Spielwiese</h3>
-<p>Wie viele andere habe auch ich schnell Gefallen an Google+ gefunden. Das Kreis-Konzept ermöglichte es, den aktiven wie passiven Gebrauch gruppenbezogen zu filtern. Es gab einen uneingeschränkten Gesamtstream und mit der Ripples-Funktion konnte man den Weg von Beiträgen verfolgen.</p>
-<p>Alle drei Elemente hat Google im Laufe der Zeit abgeschafft oder dies zumindest versucht (Kreise wurden nach Protest doch beibehalten, sie waren aber in der mobilen App später standardmäßig nicht aktiviert, allerdings wurde die Kreise teilen-Funktion abgeschafft).</p>
-<p>Ideen wie Bildbearbeitungs-Events, echte Gespräche in Kommentarspalten, der Austausch mit vielen unbekannten Leuten und glorreicher Quatsch aller Niveaustufen zeichneten Google+ aus.</p>
-<table>
-<thead><tr>
-<th><img alt="" src="images/hackhischurch.jpg"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>GIMPen, bis der Arzt kommt. Mein Beitrag zum <a href="https://plus.google.com/events/cps909u1f2odcspo2b9davpq6ng">Hack My Church - Photomanipulation Contest</a></em></td>
-</tr></tbody>
-</table>
-<h3>Falsch abgebogen</h3>
-<p>Es war lange Zeit die Rede davon, dass Google+ absolute Priorität im Unternehmen hat. Doch was war nach dem Launch neben der Einführung von Communities und den minimalen Markup-Möglichkeiten eigentlich die letzte positive Entwicklung an Google+? Na? Stimmt, Collections und das Umfragetool waren passende Ergänzungen. Aber sonst?</p>
-<table>
-<thead><tr>
-<th>
-
-<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script><div class="g-post" data-href="https://plus.google.com/105146352752269764996/posts/QPe94kxMGRg"></div>
-
-</th>
-</tr></thead>
-<tbody><tr>
-<td><em>Post von vor 5 Jahren: Google hat mal wieder an Plus herumgedoktort</em></td>
-</tr></tbody>
-</table>
-<p>Die Mängelliste ist mit der Zeit stetig gewachsen und als Sahnehäubchen gab es noch den Zwangsaccountverknüpfungs-PR-GAU obendrauf. Mal überlegen, was mir so einfällt:</p>
-<ul>
-<li>umständliches Kreismanagement, das nie irgendeine Pflege erhielt</li>
-<li>Fotos:<ul>
-<li>Einschränkung der Bearbeitungsfunktion</li>
-<li>Alben und Stories (letztere später nicht mehr), Kommentare sprengen einzelne Fotos als Beiträge ab</li>
-</ul>
-</li>
-<li>das YouTube/Google+-Kommentarsystem und generell halbseidene Integration</li>
-<li>Versuch einer Reallnamendurchsetzung</li>
-<li>"+1"-Empfehlungen</li>
-<li>Abschaffung von Ripples</li>
-<li>Abschaffung der Geburtstagsnotiz</li>
-<li>Unvollständiger "Alles"-Stream</li>
-<li>Ausklappen der Kommentare in "Facebook-Verhalten", also Anzeige der letzten, nicht aller, Kommentare</li>
-<li>Buttons sind mal eckig, dann rund und was links ist, wandert nach rechts</li>
-<li>Speicherhunger der (Android-)App</li>
-<li>defizitäre Benachrichtigungsfunktion</li>
-<li>Abschaffung von Community-Managern oder irgendwelchen Ansprechpartnern</li>
-<li>die <a href="https://plus.google.com/105146352752269764996/posts/ghoot8ryt5C">merkwürdige Beitragsauswahl</a> des "Angesagten"/"What's hot"-Streams</li>
-<li>kaputte Streams, plötzlich auftauchende uralte Beiträge</li>
-<li>Spaces</li>
-<li>der Mord an Mr. Jingles</li>
-</ul>
-<p>Jedes Mal, wenn ein Update für Google+ angekündigt wurde, ging die allgemeine Stimmung in den Keller, man verabschiedete sich im Voraus und selbst die überzeugtesten Atheisten beteten <em>"bitte lass es nicht so schlimm sein"</em>.</p>
-<p>Diagnose: Stockholm-Syndrom.</p>
-<h3>Klimawandel</h3>
-<p>Der Schuldige an der Misere ist gefunden. Google hat es versemmelt. Aber das ist nicht die ganze Wahrheit. Kommen wir zum Elefanten im Raum: der nachlassenden Qualität und thematischen Varianz der Inhalte gefolgt von der Abwanderung der Nutzer gefolgt von nachlassender Interaktion. Teufelskreis.</p>
-<p>Was Google+ einmal auszeichnete, war die gute thematische Durchmischung. Es gab einige größere Nachrichtenportale, die eine Präsenz pflegten und in deren Beiträgen man sich austauschen konnte (einfach so, mit fremden Leuten), es gab die Fotografen mit Hashtagterror, Kitschbilder, Musik, Katzen, Fahrräder, Autos, Blümchen, viel schrägen Humor und noch mehr Technik.</p>
-<p>Dann fielen zuerst die Nachrichtenseiten aus. Im Allgemeinen gingen diese dazu über, sofern sie es nicht schon von vornherein taten, Google+ als Linkablage mit geschlossenen Kommentaren zu nutzen (manchmal wurde man aufgerufen, etwas zu liken).</p>
-<p>Andere, wie etwa der Deutschlandfunk, stellten ihre Aktivität ganz ein und konzentrierten sich auf andere Verbreitungskanäle wie etwa das für eine Hörfunkanstalt sehr viel näher liegende Instagram.</p>
-<p>
-
-<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script></p>
-<div class="g-post" data-href="https://plus.google.com/101621968582875339372/posts/AmfsyzAsAy4"></div>
-
-
-<p>Inhaltlich kippte es von sachlichen, längeren Beiträgen hin zu leicht verdaulicher Screenshot-Kost vorwiegend zu Twitter, etwas Facebook, Klickstrecken, zu komplizierten Sachverhalten wurde allmählich nur noch ein Ja oder Nein geduldet, eine kurzlebige Empörungswelle folgte der nächsten und darüber wurde nie das regelmäßige Virtue Signalling vergessen.</p>
-<p>
-
-<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script></p>
-<div class="g-post" data-href="https://plus.google.com/105146352752269764996/posts/44Xjx2woXuL"></div>
-
-
-<p>Dafür benötige ich allerdings kein weiteres soziales Netzwerk, das einst durch sein etwas gehobenes Niveau auffiel, denn dann verwende ich nämlich das Original.</p>
-<table>
-<thead><tr>
-<th><img alt="" src="images/gplusexodus.png"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>Eine Abschiedsnachricht</em></td>
-</tr></tbody>
-</table>
-<p>Bei mir besteht nicht primär die Frage, welche alternativen Plattformen für Google+-Nutzer jetzt in Frage kommen, sondern wohin die bereits abgewanderten ehemaligen Nutzer hin sind und ob diese überhaupt wieder aktivierbar wären.</p>
-<p>Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich nicht mehr, auch nicht woanders.</p>
-<h3>Read on, my dear</h3>
-<ul>
-<li><a href="https://www.engadget.com/2018/10/12/goodbye-google-plus-you-beautiful-squandered-opportunity/">engadget: Goodbye Google+, you beautiful, squandered opportunity</a></li>
-<li><a href="https://www.googlewatchblog.de/2018/10/einstellung-googleplus-wieder-plattform/">GoogleWatchBlog: Einstellung von Google+: Wieder einmal wurde eine Plattform mit großem Potenzial an die Wand gefahren</a></li>
-<li><a href="https://encarsia.github.io/posts/import-gplus-nikola">Takeout-Daten nach Nikola importieren</a></li>
-</ul>
-<p><a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/L7QmEaD7HYx">Kommentieren auf <i class="fa fa-google-plus"></i></a></p>
 </div>
             </div>
         </div>
