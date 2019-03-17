@@ -140,11 +140,11 @@ NAVIGATION_LINKS = {
         ("/projects/index.html", "Projects", "fa fa-wrench"),
         ("https://octodon.social/@encarsia", "Mastodon", "fa fa-mastodon"),
         ("https://twitter.com/encarsia_", "Twitter", "fa fa-twitter"),
-        ("https://plus.google.com/105146352752269764996/posts", "Google+", "fa fa-google-plus-official"),
+        ("/pages/gplus_the_end", "Google+", "fa fa-google-plus-official"),
         ("https://github.com/encarsia", "Github", "fa fa-github"),
         ("/categories/index.html", "Tags", "fa fa-tags"),
         # ("/pages/about/index.html", "About me", "fa fa-user"),
-        ("/archive.html", "Archives", "fa fa-folder-open"),
+        ("/archive.html", "Archive", "fa fa-folder-open"),
         ("/rss.xml", "RSS", "fa fa-feed"),
     )
 }
@@ -358,20 +358,26 @@ CATEGORY_DESTPATH_AS_DEFAULT = True
 # Set descriptions for tag pages to make them more interesting. The
 # default is no description. The value is used in the meta description
 # and displayed underneath the tag list or index page’s title.
-# TAG_DESCRIPTIONS = {
-#    DEFAULT_LANG: {
+TAG_DESCRIPTIONS = {
+    DEFAULT_LANG: {
+        "non": "Knights of Ni is a graphical organization tool for Nikola powered websites.",
+        "glade": "Rapid User Interface Designer for GTK+",
+        "nikola": "Static website generator",
+        "gpt": "The GoProTool is a graphical organization tool for actioncam footage.",
 #        "blogging": "Meta-blog posts about blogging about blogging.",
 #        "open source": "My contributions to my many, varied, ever-changing, and eternal libre software projects."
-#    },
-# }
+    },
+}
 
 # Set special titles for tag pages. The default is "Posts about TAG".
-# TAG_TITLES = {
-#    DEFAULT_LANG: {
+TAG_TITLES = {
+    DEFAULT_LANG: {
+        "non": "Posts about Knights of Ni",
+        "gpt": "Posts about The GoPro Tool",
 #        "blogging": "Meta-posts about blogging",
 #        "open source": "Posts about open source software"
-#    },
-# }
+    },
+}
 
 # If you do not want to display a tag publicly, you can mark it as hidden.
 # The tag will not be displayed on the tag list page, the tag cloud and posts.
@@ -383,6 +389,27 @@ HIDDEN_TAGS = ["mathjax"]
 # page is still generated, linked from posts, and included in the sitemap.
 # However, more obscure tags can be hidden from the tag index page.
 # TAGLIST_MINIMUM_POSTS = 1
+
+# A list of dictionaries specifying tags which translate to each other.
+# Format: a list of dicts {language: translation, language2: translation2, …}
+# For example:
+#   [
+#     {'en': 'private', 'de': 'Privat'},
+#     {'en': 'work', 'fr': 'travail', 'de': 'Arbeit'},
+#   ]
+TAG_TRANSLATIONS = [
+    {"de": "norwegen", "en": "norway"},
+    {"de": "kreuzfahrt", "en": "cruise"},
+]
+
+CATEGORY_TRANSLATIONS = [
+    {"de": "unterwegs", "en": "outandabout"},
+]
+
+# If set to True, a tag in a language will be treated as a translation
+# of the literally same tag in all other languages. Enable this if you
+# do not translate tags, for example.
+# TAG_TRANSLATIONS_ADD_DEFAULTS = True
 
 # Final locations are:
 # output / TRANSLATION[lang] / CATEGORY_PATH / index.html (list of categories)
@@ -409,12 +436,16 @@ CATEGORY_OUTPUT_FLAT_HIERARCHY = False
 # Set descriptions for category pages to make them more interesting. The
 # default is no description. The value is used in the meta description
 # and displayed underneath the category list or index page’s title.
-# CATEGORY_DESCRIPTIONS = {
-#    DEFAULT_LANG: {
+CATEGORY_DESCRIPTIONS = {
+    DEFAULT_LANG: {
+        "tutorial": "Articles of my PyGObject/Glade tutorial series",
+        "repository": "Updates and release notes on my projects",
+        "unterwegs": "Things that happen when I leave the apartment",
+        "socialmedia": "The strugge is real",
 #        "blogging": "Meta-blog posts about blogging about blogging.",
 #        "open source": "My contributions to my many, varied, ever-changing, and eternal libre software projects."
-#    },
-# }
+    },
+}
 
 # Set special titles for category pages. The default is "Posts about CATEGORY".
 # CATEGORY_TITLES = {

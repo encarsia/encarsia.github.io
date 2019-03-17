@@ -1,7 +1,7 @@
 .. title: GPT: v0.4 Release
 .. slug: gpt-v04-release
 .. date: 2017-08-28 18:03:37 UTC+02:00
-.. tags: goprotool,python
+.. tags: gpt,python
 .. category: repository
 .. link: 
 .. description: 

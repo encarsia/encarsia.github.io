@@ -1,13 +1,11 @@
 .. title: GPT: v0.5 release
 .. slug: gptv05
 .. date: 2018-12-14 15:18:15 UTC+01:00
-.. tags: gopro,actioncam,gpt,python,gtk
+.. tags: gpt,python
 .. category: repository
 .. link: 
 .. description: 
 .. type: text
-
-.. class:: pull-right
 
 .. contents::
 
