@@ -7,8 +7,6 @@
 .. description: 
 .. type: text
 
-.. class:: pull-right
-
 .. contents::
 
 .. note::
@@ -266,6 +264,8 @@ Links
 * Hier: `The Notwork - lasst G+ sterben <link://slug/diegplusdie>`_
 * Import-Plugin für Nikola_: `gplus_nikola_import <https://github.com/encarsia/gplus_nikola_import/>`_
 * Alternative mit G+-Import: `net2o <https://git.net2o.de/bernd/net2o>`_ - reinvent the internet, `Bernd Paysan auf G+ <https://plus.google.com/+BerndPaysan>`_
+* `GoogleWatchBlog: Sicherung aller Beiträge & Kommentare hat begonnen <https://www.googlewatchblog.de/2019/03/das-internet-archive-googleplus/>`_
+* `Live-Demo meiner eigenen öffentlichen Beiträge <http://encarsia.bplaced.net/gplus_archive/>`_
 
 
 .. _Nikola: https://getnikola.com/
