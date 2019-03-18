@@ -21,3 +21,8 @@ Blog posts in German
 * `Verloren im Kaninchenbau von Google Takeout <link://slug/google-takeout>`_
 * `The Notwork <link://slug/diegplusdie>`_
 * `Nikola-Import-Plugin für Google+ <link://slug/import-gplus-nikola>`_
+
+Live demo
+=========
+
+* `My personal static archive of public posts <http://encarsia.bplaced.net/gplus_archive/>`_

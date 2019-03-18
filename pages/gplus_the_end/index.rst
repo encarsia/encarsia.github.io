@@ -10,7 +10,7 @@
 Das Ende
 ********
 
-An dieser Stelle führte einst ein Verweis auf mein Google+-Profil. Aus naheliegenden Gründen ist dies nun hinfällig.
+An dieser Stelle führte einst ein Verweis auf `mein Google+-Profil <https://plus.google.com/105146352752269764996>`_. Aus naheliegenden Gründen ist dies nun hinfällig.
 
 Ein Archiv meiner öffentlichen Beiträge (auch in öffentliche Communities) liegt hier:
 
