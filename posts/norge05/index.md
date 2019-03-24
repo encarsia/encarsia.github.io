@@ -1,7 +1,7 @@
 <!--
 .. title: Love Boat - The Real Story. Bodø
 .. slug: norge05
-.. date: 2019-03-24 18:32:32 UTC+01:00
+.. date: 2019-03-24 14:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 

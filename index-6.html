@@ -30,6 +30,140 @@
         </ul></section><section class="page-content"><div class="content" rel="main">
             
         <div class="post">
+            <h1 class="title"><a href="posts/desktop-dateien/">GNOME-Anwendungsstarter</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2019-01-01T13:21:19+01:00">2019-01-01 13:21</time>
+</div>
+                <div class="stats">
+                    
+        
+    <a href="posts/desktop-dateien/#disqus_thread" data-disqus-identifier="cache/posts/desktop-dateien.html">Comments</a>
+
+
+                </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/desktop/" rel="tag">desktop</a></li>
+           <li><a class="tag p-category" href="categories/gnome/" rel="tag">gnome</a></li>
+           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="contents pull-right topic" id="inhalt">
+<p class="topic-title first">Inhalt</p>
+<ul class="simple">
+<li><a class="reference internal" href="posts/desktop-dateien/#weiterlesen" id="id1">Weiterlesen</a></li>
+<li><a class="reference internal" href="posts/desktop-dateien/#speicherort" id="id2">Speicherort</a></li>
+<li><a class="reference internal" href="posts/desktop-dateien/#minimalkonfiguration" id="id3">Minimalkonfiguration</a></li>
+<li>
+<a class="reference internal" href="posts/desktop-dateien/#wm-class" id="id4">WM_CLASS</a><ul>
+<li><a class="reference internal" href="posts/desktop-dateien/#desktop" id="id5">.desktop</a></li>
+<li><a class="reference internal" href="posts/desktop-dateien/#gtk-python-anwendung" id="id6">Gtk+-Python-Anwendung</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="posts/desktop-dateien/#nutzliche-attribute" id="id7">Nützliche Attribute</a></li>
+<li><a class="reference internal" href="posts/desktop-dateien/#zusatzliche-programmaktionen" id="id8">Zusätzliche Programmaktionen</a></li>
+</ul>
+</div>
+<p><strong>Anwendungsstarter in GNOME</strong></p>
+<p>Anwendungsstarter in GNOME und anderen Desktopumgebungen werden mit Desktopeinträgen in Form von Textdateien mit der Endung "desktop" realisiert.</p>
+<div class="section" id="weiterlesen">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id1">Weiterlesen</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">Desktop Entry Specifications</a></li>
+<li><a class="reference external" href="https://wiki.ubuntuusers.de/.desktop-Dateien/">.desktop-Dateien (ubuntuusers-de-Wiki)</a></li>
+<li><a class="reference external" href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop files: putting your application in the desktop menus</a></li>
+<li><a class="reference external" href="https://docs.racket-lang.org/basedir/index.html">XDG Basedir Library</a></li>
+</ul>
+</div>
+<div class="section" id="speicherort">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id2">Speicherort</a></h2>
+<p>Der Speicherort von .desktop-Dateien richtet sich nach den Freedesktop-Spezifikationen. Desktop-Dateien befinden sich in <tt class="docutils literal">$XDG_DATA_DIRS/appications</tt>, also normalerweise in den Verzeichnissen</p>
+<pre class="code text"><a name="rest_code_feea9ef22a71444b96a40987f59454d5-1"></a>~/.local/share/applications
+<a name="rest_code_feea9ef22a71444b96a40987f59454d5-2"></a>/usr/local/share/applications
+<a name="rest_code_feea9ef22a71444b96a40987f59454d5-3"></a>/usr/share/applications
+</pre>
+<p>und werden in dieser Reihenfolge durchsucht. Alle Dateien in diesen Verzeichnissen werden in der GNOME-Shell-Übersicht bzw. der Suche berücksichtigt.</p>
+</div>
+<div class="section" id="minimalkonfiguration">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id3">Minimalkonfiguration</a></h2>
+<p>Ein funktionierender Desktopeintrag muss mindestens die drei folgenden Attribute enthalten:</p>
+<pre class="code YAML"><a name="rest_code_63d06ac5fcb74aaca7f3f3c5d720e6f1-1"></a><span class="p p-Indicator">[</span><span class="nv">Desktop Entry</span><span class="p p-Indicator">]</span>
+<a name="rest_code_63d06ac5fcb74aaca7f3f3c5d720e6f1-2"></a><span class="l l-Scalar l-Scalar-Plain">Name=Application name</span>
+<a name="rest_code_63d06ac5fcb74aaca7f3f3c5d720e6f1-3"></a><span class="l l-Scalar l-Scalar-Plain">Exec=python path/to/script.py</span>
+<a name="rest_code_63d06ac5fcb74aaca7f3f3c5d720e6f1-4"></a><span class="l l-Scalar l-Scalar-Plain">Type=Application</span>
+</pre>
+</div>
+<div class="section" id="wm-class">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id4">WM_CLASS</a></h2>
+<p>Die WM_CLASS-Eigenschaft wird von X-Windowmanager-Systemen zur Zuordnung zwischen Anwendung und Windowmanager verwendet.</p>
+<p>Fehlt diese Zuordnung, wird der Programmname nicht in der Topbar dargestellt, in der Seitenleiste wird das Programm nicht als Instanz angesehen, wenn es als Favorit markiert ist sondern separat und die Anwendung kann nicht von der Übersicht aus als Favorit gespeichert werden.</p>
+<div class="section" id="desktop">
+<h3><a class="toc-backref" href="posts/desktop-dateien/#id5">.desktop</a></h3>
+<p>In der Desktopdatei muss das Attribut <tt class="docutils literal">StartupWMClass</tt> definiert werden.</p>
+<p>Um die WM_CLASS-Bezeichnung eines Fensters herauszufinden, kann man in einem Terminal</p>
+<pre class="code console"><a name="rest_code_9b606b71cdfe45d5ab589dc05e2e1708-1"></a><span class="gp">$</span> xprop <span class="p">|</span> grep WM_CLASS
+</pre>
+<p>aufrufen und das gewünschte Fenster anklicken.</p>
+</div>
+<div class="section" id="gtk-python-anwendung">
+<h3><a class="toc-backref" href="posts/desktop-dateien/#id6">Gtk+-Python-Anwendung</a></h3>
+<p>Setzt man den Programmnamen mit der Funktion <tt class="docutils literal"><span class="pre">GLib.set_prgname("appname")</span></tt>, so entspricht dies dem Attribut WM_CLASS. In der Desktopdatei muss demzufolge <tt class="docutils literal">StartupWMClass=appname</tt> definiert sein.</p>
+<p>Die bisher für diese Aufgabe verwendete Funktion <tt class="docutils literal">set_wmclass(wmclass_name, wmclass_class)</tt> von <em>Gtk.Window</em> ist seit Version 3.22 veraltet. Sie funktioniert zwar noch, sollte aber nicht mehr verwendet werden.</p>
+</div>
+</div>
+<div class="section" id="nutzliche-attribute">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id7">Nützliche Attribute</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal">Path</tt></dt>
+<dd>
+<p class="first">Arbeitsverzeichnis des Programms. So kann zum Beispiel die <tt class="docutils literal">Exec</tt>-Zeile verkürzt bzw. übersichtlicher gestaltet werden:</p>
+<div class="last"><pre class="code text"><a name="rest_code_09458e0f303947fa8f82622cfe92c3be-1"></a># ohne Path
+<a name="rest_code_09458e0f303947fa8f82622cfe92c3be-2"></a>Exec=python /long/path/to/your/application/folder/run.py
+<a name="rest_code_09458e0f303947fa8f82622cfe92c3be-3"></a>
+<a name="rest_code_09458e0f303947fa8f82622cfe92c3be-4"></a># mit Path
+<a name="rest_code_09458e0f303947fa8f82622cfe92c3be-5"></a>Path=/long/path/to/your/application/folder
+<a name="rest_code_09458e0f303947fa8f82622cfe92c3be-6"></a>Exec=python run.py
+</pre></div>
+</dd>
+<dt><tt class="docutils literal">Icon</tt></dt>
+<dd>Mit Icons verhält es sich ähnlich zu Desktop-Dateien, sie werden zunächst in``$XDG_DATA_DIRS/icons`` vermutet, können aber auch als absoluter Pfad angegeben werden.</dd>
+<dt><tt class="docutils literal">Keywords</tt></dt>
+<dd>Da es mit der GNOME-Shell kein klassisches Anwendungsstartermenü mehr gibt, ist es hilfreich, wenn ein Programm unter verschiedenen Stichworten und nicht nur unter <tt class="docutils literal">Name</tt> selbst in der Startersuche gefunden werden kann. Die Stichwörter werden als semikolonseparierte Strings angegeben.</dd>
+<dt><tt class="docutils literal">Categories</tt></dt>
+<dd>Hier kann man Kategorien für die Einsortierung in Menüs angeben.</dd>
+</dl>
+</div>
+<div class="section" id="zusatzliche-programmaktionen">
+<h2><a class="toc-backref" href="posts/desktop-dateien/#id8">Zusätzliche Programmaktionen</a></h2>
+<p>Desktopeinträge können sogenannte Aktionen enthalten, die zusätzliche Wege enthalten, Anwendungen zu starten. Diese werden als Untermenüs in Form von "Quicklists" oder "Jumplists" dargestellt.</p>
+<p>Im Desktopeintrag wird das Attribut <tt class="docutils literal">Actions</tt> angelegt, diese Actions werden innerhalb der Datei darunter in "Desktop Action"-Abschnitten definiert:</p>
+<pre class="code YAML"><a name="rest_code_a83180a332044ca8acfb8b73d187b283-1"></a><span class="p p-Indicator">[</span><span class="nv">Desktop Entry</span><span class="p p-Indicator">]</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-2"></a><span class="nn">...</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-3"></a><span class="l l-Scalar l-Scalar-Plain">Actions=option1;option2;</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-4"></a>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-5"></a><span class="l l-Scalar l-Scalar-Plain">[Desktop Action option1]</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-6"></a><span class="l l-Scalar l-Scalar-Plain">Name=Start with Option 1</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-7"></a><span class="l l-Scalar l-Scalar-Plain">Exec=python run.py --option1</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-8"></a>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-9"></a><span class="l l-Scalar l-Scalar-Plain">[Desktop Action option2]</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-10"></a><span class="l l-Scalar l-Scalar-Plain">Name=Start with Option 2</span>
+<a name="rest_code_a83180a332044ca8acfb8b73d187b283-11"></a><span class="l l-Scalar l-Scalar-Plain">Exec=python run.py --option2</span>
+</pre>
+<div class="figure">
+<img alt="/images/desktop_action.png" src="images/desktop_action.png"><p class="caption">Zusätzliche Anwendungsstarter von <a class="reference external" href="https://github.com/encarsia/gpt">GPT</a></p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/gptv05/">GPT: v0.5 release</a></h1>
             <div class="meta">
                 <div class="authordate">
