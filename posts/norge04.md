@@ -1,7 +1,7 @@
 <!--
 .. title: Love Boat - The Real Story. Seetag
 .. slug: norge04
-.. date: 2019-03-24 17:32:32 UTC+01:00
+.. date: 2019-03-24 12:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 

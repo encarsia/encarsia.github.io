@@ -1,20 +1,19 @@
 <!--
 .. title: Love Boat - The Real Story. Honningsvåg
 .. slug: norge06
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-24 16:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 6. Das Ende der Welt
 
-Der vergangene lange Tag und die aufregende Nacht bringen mich dazu, bis 7 Uhr auszuschlafen. Wir werden noch bis zum Abend auf See unterwegs sein und dann im Hafen von Honningsvåg übernachten.
+Der vergangene lange Tag bringen mich dazu, bis 7 Uhr auszuschlafen. Wir werden noch bis zum Abend auf See unterwegs sein und dann im Hafen von Honningsvåg übernachten.
 
-Alle sind nach den Erlebnissen bester Stimmung, unser Reisegruppenjüngster klatscht zum Frühstück das Personal ab und verabredet sich für später im Kids Club.
+Alle sind nach den Erlebnissen bester Stimmung. In unserer Reisegruppe ist aktuell niemand seekrank und auch unser Jüngster scheint sich nach Anlaufschwierigkeiten etwas eingelebt zu haben, er klatscht zum Frühstück das Personal ab und verabredet sich für später im Kids Club.
 
 | ![](../../images/norge2019/14.png) |
 | --- |
@@ -42,7 +41,7 @@ Dann grüne Schleier. Polarlichter. Als wir aufs Schiff zurückkehren, geht das 
 
 Es liegen zwei perfekte Polarlichtkreuzfahrttage hinter uns. Alles, was nun noch folgt, ist nur noch Deko auf dem Sahnehäubchen.
 
-Es geht auf zum Landausflug zum Nordkap, das wir bereits gestern von der Wasserseite zu sehen bekamen. Dort oben war es kalt und windig und die Sicht war klar und so war der Ort auch ohne Mitternachtssonne den Besuch wert.
+Es geht auf zum Landausflug zum Nordkap, das wir bereits gestern von der Wasserseite zu sehen bekamen. Dort oben war es kalt und windig und die Sicht war klar und so war der Ort auch ohne Mitternachtssonne definitiv den Besuch wert.
 
 | ![](../../images/norge2019/18.png) |
 | --- |
@@ -52,5 +51,5 @@ Gegen Abend wird der Seegang wieder rauher und so lasse ich den Tag gemütlich i
 
 | ![](../../images/norge2019/19.png) |
 | --- |
-| *Es ist alles so furchbar...* |
+| *Es ist alles so furchtbar...* |
 
