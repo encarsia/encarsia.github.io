@@ -1,18 +1,17 @@
 <!--
 .. title: Love Boat - The Real Story. Bodø
 .. slug: norge05
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-24 18:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 5. Land in Sicht
 
-Mit einer fühmorgendlichen Sportrunde lasse ich den Tag beginnen. Als das Schiff sich dann langsam unserem zweiten Hafen Bodø nähert, bietet sich um uns herum ein atemberaubend schönes Panorama. Dieser Tag verspricht großartig zu werden.
+Mit einer frühmorgendlichen Sportrunde lasse ich den Tag beginnen. Als das Schiff sich dann langsam unserem zweiten Hafen Bodø nähert, bietet sich um uns herum ein atemberaubend schönes Panorama. Dieser Tag verspricht großartig zu werden.
 
 | ![](../../images/norge2019/09.png) |
 | --- |
@@ -22,11 +21,13 @@ Nach der letzten unruhigen Nacht sind die Passagiere heiß darauf, das Schiff zu
 
 Die angepriesene Hässlichkeit der Stadt ist ihrer nahezu vollständigen Zerstörung bei einem deutschen Luftangriff im Jahr 1940 geschuldet. Viele Gebäude wurden durch eher untraditionelle Gebäude ersetzt und so erinnert die zentrale Fußgängerzone an die deutscher Städte.
 
-Auch in einem Reisebericht, den ich nach der Rückkehr las, war man geradezu empört, in dieser unansehnlichen Stadt Halt gemacht zu haben. Das hat mich im Nachhinein nochmal zusätzlich verärgert: will man auf so einer Reise nun Land und Leute sehen oder was? Norwegen ist wie der Rest der Welt kein Märchenland und besteht aus mehr als schöner Landschaft und überteuerten Schlittenhundfahrten für Touristen. Wenn man ein wenig die Augen aufmacht, kann man auch in Bodø Entdeckungen machen wie die [lokalen Streetart-Kunstwerke](https://visitbodo.com/home/streetart).
+Auch in einem Reisebericht, den ich nach der Rückkehr las, war man geradezu empört, in dieser unansehnlichen Stadt Halt gemacht zu haben. Das hat mich im Nachhinein nochmal zusätzlich verärgert: will man auf so einer Reise nun Land und Leute sehen oder was? Norwegen ist wie der Rest der Welt kein Märchenland und besteht aus mehr als schöner Landschaft und überteuerten Schlittenhundfahrten für Touristen.
+
+Wenn man ein wenig die Augen aufmacht, kann man auch in Bodø Entdeckungen machen, etwa die [lokalen Streetart-Kunstwerke](https://visitbodo.com/home/streetart).
 
 | ![](../../images/norge2019/13.png) |
 | --- |
-| *Streetart: "Malstrøm" by David de la Mano* |
+| *Streetart: "Malstrøm" von David de la Mano* |
 
 Während unseres Erkundungsrundgangs erspähe ich einen Supermarkt - es ist Zeit, mein Norwegisch auf die Probe zu stellen und norwegische Spazialitäten zu erwerben: Brunost (brauner Käse) und Lefsegodt (weiches Gebäck mit einer Art Frischkäsecreme).
 
@@ -48,7 +49,7 @@ Leinen los, wir fahren weiter nach Norden!
 
 ## Die Nacht der Nächte
 
-Der Abend beginnt ruhig. Dies sollte sich allerdings innerhalb kürzester Zeit ändern. Seit der difizilen Wetterlage am zweiten Seetag sind wir Bordportal-süchtig - Geschwindigkeit, Kurs, Wind, wir sind informiert. K. traut ihren Augen kaum: auf dem Bild der Bugcam sieht man grüne Schleier am Himmel. M. wird nach oben geschickt, um die Lage zu evaluieren. In Ungläubigkeit und Aufgeregtheit ziehe ich mich warm an.
+Der Abend beginnt ruhig. Dies sollte sich allerdings innerhalb kürzester Zeit ändern. Seit der diffizilen Wetterlage am zweiten Seetag sind wir Bordportal-süchtig - Geschwindigkeit, Kurs, Wind, wir sind informiert. K. traut ihren Augen kaum: auf dem Bild der Bugcam sieht man grüne Schleier am Himmel. M. wird nach oben geschickt, um die Lage zu evaluieren. In Ungläubigkeit und Aufgeregtheit ziehe ich mich warm an.
 
 Wir betreten Deck 11, dort haben sich bereits einige Leute mit ihrem teuren Fotoequipment in Position begeben. Der Himmel ist bewölkt, einen Tag vor Vollmond strahlt der Mond die Meeresoberfläche und Landmassen der Lofoten an. Das allein erzeugt eine atemberaubende, mystische Atmosphäre. 
 
@@ -59,5 +60,6 @@ Wir verharren weiter in der Winternacht erstarrt im Starren in den Nachthimmel. 
 Deck 11 erwacht zum Leben. Die Sichtung der Polarlichter wird in den Bauch von Stahl-Moby Dick weitergetragen. Die Kälte treibt die Leute immer wieder zum Aufwärmen hinein und der Grund dieser Reise wieder hinaus.
 
 Der Himmel gibt grünes Licht. Frost und Freude, die treuen Begleiter der Polarlichter, bleiben uns bis etwa 2 Uhr erhalten.
+
 Was für ein großartiger Tag.
 
