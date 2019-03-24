@@ -140,8 +140,8 @@ NAVIGATION_LINKS = {
         ("/projects/index.html", "Projects", "fa fa-wrench"),
         ("https://octodon.social/@encarsia", "Mastodon", "fa fa-mastodon"),
         ("https://twitter.com/encarsia_", "Twitter", "fa fa-twitter"),
-        ("/pages/gplus_the_end", "Google+", "fa fa-google-plus-official"),
         ("https://github.com/encarsia", "Github", "fa fa-github"),
+        ("/pages/gplus_the_end", "Google+", "fa fa-google-plus-official"),
         ("/categories/index.html", "Tags", "fa fa-tags"),
         # ("/pages/about/index.html", "About me", "fa fa-user"),
         ("/archive.html", "Archive", "fa fa-folder-open"),
@@ -720,6 +720,7 @@ GITHUB_COMMIT_SOURCE = True
 
 IMAGE_FOLDERS = {"images": "images"}
 IMAGE_THUMBNAIL_SIZE = 500
+MAX_IMAGE_SIZE = 2000
 
 # #############################################################################
 # HTML fragments and diverse things that are used by the templates
@@ -863,10 +864,13 @@ LICENSE = ""
 # (translatable)
 #CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
 
-CONTENT_FOOTER = """Contents &copy; {date} <a href="mailto:{email}">{author}</a> - 
+CONTENT_FOOTER = """
+<hr>
+Contents &copy; {date} <a href="mailto:{email}">{author}</a> - 
 Powered by <a href="http://getnikola.com">Nikola</a> - 
 Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br>
-{license}"""
+{license}
+"""
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
 # for translatability, as dicts are not formattable.  Nikola will
