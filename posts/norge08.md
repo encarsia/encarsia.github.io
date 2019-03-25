@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Trondheim
 .. slug: norge08
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-25 15:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 11. Vakker byen
@@ -49,7 +48,5 @@ Nach der Rückkehr zum Schiff machen wir Pläne für den nächsten Tag und verab
 
 | ![](../../images/norge2019/44.png) |
 | --- |
-| (AIDA heute) |
+| ![](../../images/norge2019/47.png) |
 | *Tagesplaner im Bordportal und tägliche Info in Papierform* |
-
-
