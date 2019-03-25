@@ -2,64 +2,67 @@
 .. title: Love Boat - The Real Story. Bodø
 .. slug: norge05
 .. date: 2019-03-24 14:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
-.. category: unterwegs
+.. tags: norway,cruise
+.. category: outandabout
 .. link: 
 .. description: 
 .. type: text
 -->
 
-# Tag 5. Land in Sicht
+# Tag 5. Land in sight
 
-Mit einer frühmorgendlichen Sportrunde lasse ich den Tag beginnen. Als das Schiff sich dann langsam unserem zweiten Hafen Bodø nähert, bietet sich um uns herum ein atemberaubend schönes Panorama. Dieser Tag verspricht großartig zu werden.
+The day starts with an early workout. When the ship is close to the second harbour Bodø we are presented with a breathtaking panorama view.
+This day promises to become great.
 
-| ![](../../images/norge2019/09.png) |
+| ![](../../../images/norge2019/09.png) |
 | --- |
-| *Postkartenmotiv* |
+| *Postcard motif* |
 
-Nach der letzten unruhigen Nacht sind die Passagiere heiß darauf, das Schiff zu verlassen. Die Ausflugsbusse stehen bereit und trotz der Information, dass Bodø eine hässliche Stadt sei, macht sich unsere Reisegruppe zum üblichen Fußmarsch auf.
+After the last, turbulent night the passengers cannot wait to leave the boat. Excursion busses are standing right in front of the ship and our little tourist party prepares for the usual walk into the town.
 
-Die angepriesene Hässlichkeit der Stadt ist ihrer nahezu vollständigen Zerstörung bei einem deutschen Luftangriff im Jahr 1940 geschuldet. Viele Gebäude wurden durch eher untraditionelle Gebäude ersetzt und so erinnert die zentrale Fußgängerzone an die deutscher Städte.
+We were "warned" in advance by other passengers that Bodø is such an ugly town. The cause of that condition is their almost complete destruction in an air strike by the German Luftwaffe in 1940. Many houses have been replaced by more untraditional buildings and therefore the central pedrestrian area looks similar to their German counterparts. 
 
-Auch in einem Reisebericht, den ich nach der Rückkehr las, war man geradezu empört, in dieser unansehnlichen Stadt Halt gemacht zu haben. Das hat mich im Nachhinein nochmal zusätzlich verärgert: will man auf so einer Reise nun Land und Leute sehen oder was? Norwegen ist wie der Rest der Welt kein Märchenland und besteht aus mehr als schöner Landschaft und überteuerten Schlittenhundfahrten für Touristen.
+In a travel report I read afterwards the author was downright outraged to have been forced to stop at this unsightly place. This really has made me angry: so do you want to experience the country or not? Norway like the rest of the world is no fairyland and has more to offer than beautiful landscapes and overpriced sledge dog trips for tourists.
 
-Wenn man ein wenig die Augen aufmacht, kann man auch in Bodø Entdeckungen machen, etwa die [lokalen Streetart-Kunstwerke](https://visitbodo.com/home/streetart).
+If you open your eyes a little you can discover interesting sites even in Bodø like the [local pieces of streetart](https://visitbodo.com/home/streetart).
 
-| ![](../../images/norge2019/13.png) |
+| ![](../../../images/norge2019/13.png) |
 | --- |
-| *Streetart: "Malstrøm" von David de la Mano* |
+| *Streetart: "Malstrøm" by David de la Mano* |
 
-Während unseres Erkundungsrundgangs erspähe ich einen Supermarkt - es ist Zeit, mein Norwegisch auf die Probe zu stellen und norwegische Spazialitäten zu erwerben: Brunost (brauner Käse) und Lefsegodt (weiches Gebäck mit einer Art Frischkäsecreme).
+On our exploratory walk I spot a supermarket - it's time to prove my Norwegian language skills and buy some local specialities: brunost (brown cheese) and lefsegodt (soft pastry with a kind of cream cheese).
 
-| ![](../../images/norge2019/10.png) |
+| ![](../../../images/norge2019/10.png) |
 | --- |
-| *Geht ne Deutsche in Norwegen in einen Kiosk. Hitler. ROTFL. (leider etwas unscharf)* |
+| *A German walks by a Norwegian kiosk. Hitler. ROFL. (slightly out of focus)* |
 
-Am Nachmittag gehe ich noch einmal allein durch die Stadt, genieße die Unbekanntheit der Umgebung, gehe neugierig durch die Straßen und bin pünktlich zum Abendessen zurück an Bord.
+In the afternoon I go for a walk again, enjoy the unbeknown surroundings just to be back on board in time for dinner.
 
-| ![](../../images/norge2019/12.png) |
+| ![](../../../images/norge2019/12.png) |
 | --- |
-| *Oh wie schön ist Bodø* |
+| *Pretty corners in Bodø* |
 
-Leinen los, wir fahren weiter nach Norden!
+Cast off, we are sailing north!
 
-!!! important "Ankes anekdotischer Tipp"
-    Ab dem dritten Tag vermisste ich das Radfahren. In Kombination mit der Neigung, die Umgebung selbständig zu erkunden, durchfuhr mich ein Gedanke: *Ein Faltrad hätte man mitnehmen sollen.*
-    Je Passagier kann man zwei große Gepäckstücke aufgeben. Wenn man wie ich mit einem auskommt, sollte es theoretisch kein Problem sein, ein ordentlich verpacktes Faltrad (± 12 kg) mitzunehmen. Dies vergrößert den eigenen Radius an Land ungemein.
+!!! important "Anke's anecdotic tip"
+    I love walking around but from the third day on I missed riding my bike. It somehow crossed my mind: *You should have taken a folding bike with you.*
+    Each passenger can check in with two large pieces of luggage. If you get along with one like me it should not be problematic to take an adequately packaged folding bike (± 12 kg) on the trip. That would significantly increase the range of motion on land.
 
-## Die Nacht der Nächte
+## The night of nights
 
-Der Abend beginnt ruhig. Dies sollte sich allerdings innerhalb kürzester Zeit ändern. Seit der diffizilen Wetterlage am zweiten Seetag sind wir Bordportal-süchtig - Geschwindigkeit, Kurs, Wind, wir sind informiert. K. traut ihren Augen kaum: auf dem Bild der Bugcam sieht man grüne Schleier am Himmel. M. wird nach oben geschickt, um die Lage zu evaluieren. In Ungläubigkeit und Aufgeregtheit ziehe ich mich warm an.
+The evening starts quiet. This will change within a short period of time.
+Since experiencing the difficult weather conditions on the second day we have become addicted to the ship's own local web page - the bord portal - where you get information about speed, course, weather conditions and everything that happens on the ship. We are well-informed.
 
-Wir betreten Deck 11, dort haben sich bereits einige Leute mit ihrem teuren Fotoequipment in Position begeben. Der Himmel ist bewölkt, einen Tag vor Vollmond strahlt der Mond die Meeresoberfläche und Landmassen der Lofoten an. Das allein erzeugt eine atemberaubende, mystische Atmosphäre. 
+K. is stunned: she spotted green haze on the picture of the bow cam. M. is sent upstairs to evaluate the situation. I'm still doubtful but about to wrap up warm. We enter deck 11 which is already slightly crowded with some people and their expensive photo equipments. The sky is cloudy and the almost full moon is illuminating the ocean's surface and land masses of the Lofoten islands. This alone creates a breathtaking, mystical atmosphere.
 
-Es wird getuschelt, man schielt sich auf die Displays. Jemand zeigt auf sein Kameradisplay und sagt "Da ist es." Wir starren in den Himmel und sehen: nichts. Wir starren weiter und beginnen, einen Unterschied zwischen den vom Mond hell angeleuchteten Wolken und diffusen Schleiern zu sehen. Ja, die Schleier sind grünlich und sie bewegen sich leicht. Das soll es also sein?
+People whisper and watch on each other's camera displays and suddenly somebody says "There it is." We stare into the sky and see: nothing.
 
-Wir verharren weiter in der Winternacht erstarrt im Starren in den Nachthimmel. Die Wolken lichten sich tatsächlich. Die Wettervorhersage sagt für die nächsten Tage Wolken und Niederschläge an, das Islandtief zieht uns immer noch hinterher, und so fällt irgendwo der Satz "Heute ist die Nacht der Nächte."
+We keep staring and start seeing the difference between clouds illuminated by the moon and diffuse haze. Yes, the hazes are greenish and slightly moving. So this should be it?
 
-Deck 11 erwacht zum Leben. Die Sichtung der Polarlichter wird in den Bauch von Stahl-Moby Dick weitergetragen. Die Kälte treibt die Leute immer wieder zum Aufwärmen hinein und der Grund dieser Reise wieder hinaus.
+We remain outside in this winter night staring into the night sky. The clouds slowly dissolve. The weather forecast predicts lots of clouds and rain for the next days and somebody says "Tonight's the night of nights."
 
-Der Himmel gibt grünes Licht. Frost und Freude, die treuen Begleiter der Polarlichter, bleiben uns bis etwa 2 Uhr erhalten.
+Deck 11 has awoken. The news of polar lights sightings are transmitted into steel Moby Dick. There is lively movement of people going in and out.
 
-Was für ein großartiger Tag.
+Tonight the sky is giving us the green light. Freezing and excitement - the loyal companions of the northern lights - stay with us until 2 o'clock in the morning. 
 
+What a great day.

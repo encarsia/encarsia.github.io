@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Bodø
 .. slug: norge05
 .. date: 2019-03-24 14:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
+.. tags: norwegen,kreuzfahrt
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -29,7 +29,7 @@ Wenn man ein wenig die Augen aufmacht, kann man auch in Bodø Entdeckungen mache
 | --- |
 | *Streetart: "Malstrøm" von David de la Mano* |
 
-Während unseres Erkundungsrundgangs erspähe ich einen Supermarkt - es ist Zeit, mein Norwegisch auf die Probe zu stellen und norwegische Spazialitäten zu erwerben: Brunost (brauner Käse) und Lefsegodt (weiches Gebäck mit einer Art Frischkäsecreme).
+Während unseres Erkundungsrundgangs erspähe ich einen Supermarkt - es ist Zeit, mein Norwegisch auf die Probe zu stellen und norwegische Spezialitäten zu erwerben: Brunost (brauner Käse) und Lefsegodt (weiches Gebäck mit einer Art Frischkäsecreme).
 
 | ![](../../images/norge2019/10.png) |
 | --- |
@@ -39,7 +39,7 @@ Am Nachmittag gehe ich noch einmal allein durch die Stadt, genieße die Unbekann
 
 | ![](../../images/norge2019/12.png) |
 | --- |
-| *Oh wie schön ist Bodø* |
+| *Oh, wie schön ist Bodø* |
 
 Leinen los, wir fahren weiter nach Norden!
 
@@ -49,11 +49,15 @@ Leinen los, wir fahren weiter nach Norden!
 
 ## Die Nacht der Nächte
 
-Der Abend beginnt ruhig. Dies sollte sich allerdings innerhalb kürzester Zeit ändern. Seit der diffizilen Wetterlage am zweiten Seetag sind wir Bordportal-süchtig - Geschwindigkeit, Kurs, Wind, wir sind informiert. K. traut ihren Augen kaum: auf dem Bild der Bugcam sieht man grüne Schleier am Himmel. M. wird nach oben geschickt, um die Lage zu evaluieren. In Ungläubigkeit und Aufgeregtheit ziehe ich mich warm an.
+Der Abend beginnt ruhig. Dies sollte sich allerdings innerhalb kürzester Zeit ändern. Seit der diffizilen Wetterlage am zweiten Seetag sind wir Bordportal-süchtig - Geschwindigkeit, Kurs, Wind, wir sind informiert.
+
+K. traut ihren Augen kaum: auf dem Bild der Bugcam sieht man grüne Schleier am Himmel. M. wird nach oben geschickt, um die Lage zu evaluieren. In Ungläubigkeit und Aufgeregtheit ziehe ich mich warm an.
 
 Wir betreten Deck 11, dort haben sich bereits einige Leute mit ihrem teuren Fotoequipment in Position begeben. Der Himmel ist bewölkt, einen Tag vor Vollmond strahlt der Mond die Meeresoberfläche und Landmassen der Lofoten an. Das allein erzeugt eine atemberaubende, mystische Atmosphäre. 
 
-Es wird getuschelt, man schielt sich auf die Displays. Jemand zeigt auf sein Kameradisplay und sagt "Da ist es." Wir starren in den Himmel und sehen: nichts. Wir starren weiter und beginnen, einen Unterschied zwischen den vom Mond hell angeleuchteten Wolken und diffusen Schleiern zu sehen. Ja, die Schleier sind grünlich und sie bewegen sich leicht. Das soll es also sein?
+Es wird getuschelt, man schielt sich auf die Displays. Jemand zeigt auf sein Kameradisplay und sagt "Da ist es." Wir starren in den Himmel und sehen: nichts.
+
+Wir starren weiter und beginnen, einen Unterschied zwischen den vom Mond hell angeleuchteten Wolken und diffusen Schleiern zu sehen. Ja, die Schleier sind grünlich und sie bewegen sich leicht. Das soll es also sein?
 
 Wir verharren weiter in der Winternacht erstarrt im Starren in den Nachthimmel. Die Wolken lichten sich tatsächlich. Die Wettervorhersage sagt für die nächsten Tage Wolken und Niederschläge an, das Islandtief zieht uns immer noch hinterher, und so fällt irgendwo der Satz "Heute ist die Nacht der Nächte."
 
