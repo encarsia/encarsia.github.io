@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Tromsø
 .. slug: norge07
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-25 13:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 8. Tromsø rain, Tromsø rain
@@ -30,7 +29,7 @@ Ein Teil unserer Reisegruppe geht später noch ins Konzert in die Eismeerkathedr
 | --- |
 | ![](../../images/norge2019/21.png) |
 | ![](../../images/norge2019/20.png) |
-| *Alles ganz schön hier und andere Reedereien haben auch schöne Schiffe.* |
+| *Alles ganz schön hier und andere Reedereien haben auch schöne Schiffe (Ja, das ist **die** "Viking Sky").* |
 
 # Tag 9. Sortland calling
 
@@ -45,7 +44,9 @@ Der Wecker klingelt in aller Früh', denn mein Landausflug zum Trollfjord geht u
 
 Wegen des Seegangs und des Windes können wir nicht in Sortland anlegen und erfahren im Laufe des Vormittags, dass wir einen vorgezogenen Seetag einlegen und direkt nach Trondheim durchfahren. Das Schiff rollt sich gemächlich durch den Atlantik und fordert zahlreiche Opfer, die in ihren Kabinen ausharren, bis es besser wird. Freie Platzwahl in den Bars.
 
-In mir verbreitet sich eine leicht sentimentale Stimmung. Mehr als die Hälfte der Reise liegt hinter uns, wir fahren südwärts, es liegen nur noch zwei Stopps vor uns, bevor es in einer weiteren Tagesreise zurück nach Hamburg geht. Mein Gehirn kann den Gedanken noch nicht ganz verarbeiten, dass in wenigen Tagen, nachdem man für zwei Wochen auf diesem Schiff mit hunderten von Menschen zusammengepfercht war und jeden Tag dieselben Leute gegrüßt und mit einigen einen kurzen Schwatz auf dem Flur gehalten hat (Hello Katrina!) die Wahrscheinlichkeit gegen Null geht, irgendjemanden von ihnen jemals wieder zu sehen. Die Gäste fahren nach Hause und machen da weiter, wo sie vor Hamburg aufgehört haben und die Crew sieht für zwei Wochen die nächsten Gesichter und macht da weiter, wo sie vor Hamburg aufgehört hat, nämlich sich ohne Unterlass den Arsch abzurackern (Kudos to all of you).
+In mir verbreitet sich eine leicht sentimentale Stimmung. Mehr als die Hälfte der Reise liegt hinter uns, wir fahren südwärts, es liegen nur noch zwei Stopps vor uns, bevor es in einer weiteren Tagesreise zurück nach Hamburg geht.
+
+Mein Gehirn kann den Gedanken noch nicht ganz verarbeiten, dass in wenigen Tagen, nachdem man für zwei Wochen auf diesem Schiff mit hunderten von Menschen zusammengepfercht war und jeden Tag dieselben Leute gegrüßt und mit einigen einen kurzen Schwatz auf dem Flur gehalten hat (Hello Katrina!) die Wahrscheinlichkeit gegen Null geht, irgendjemanden von ihnen jemals wieder zu sehen. Die Gäste fahren nach Hause und machen da weiter, wo sie vor Hamburg aufgehört haben und die Crew sieht für zwei Wochen die nächsten Gesichter und macht da weiter, wo sie vor Hamburg aufgehört hat, nämlich sich ohne Unterlass den Arsch abzurackern (Kudos to all of you).
 
 In diesem Zusammenhang erscheint es bizarr, Verkumpelungsversuche bei Gästen zu sehen. Wie funktioniert das? Machen die so häufig Kreuzfahrten, dass die immer wieder den gleichen Crew-Leuten über den Weg laufen? Ich kenne solche freundschaftlichen Annäherungsversuche aus meiner eigenen Tätigkeit im Kundenservice. Es liegt in der Natur der Sache, mit einigen Menschen näher auf einer Sympathieebene zu sein als mit anderen. Und bei diesen ist man auch zu einem gewissen Grad bereit, auf einer persönlicheren Ebene zu kommunizieren, ohne dabei die Grenze der Professionalität zu überschreiten.
 
