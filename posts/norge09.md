@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Bye Trondheim
 .. slug: norge09
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-26 13:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 12. Trondheim
@@ -30,7 +29,7 @@ Ein Typ fährt mit dem Rad vor den Supermarkt, steigt ab, lehnt das Rad an und g
 
 | ![](../../images/norge2019/25.png) |
 | --- |
-| *WTF.* |
+| *WTF* |
 
 ## Alle an Bord
 

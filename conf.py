@@ -145,7 +145,7 @@ NAVIGATION_LINKS = {
         ("/categories/index.html", "Tags", "fa fa-tags"),
         # ("/pages/about/index.html", "About me", "fa fa-user"),
         ("/archive.html", "Archive", "fa fa-folder-open"),
-        ("/rss.xml", "RSS", "fa fa-feed"),
+        ("/rss.xml", "RSS", "fa fa-rss"),
     )
 }
 
