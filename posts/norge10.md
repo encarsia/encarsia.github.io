@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Bergen
 .. slug: norge10
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-26 15:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 13. Die Stadt des Regens
@@ -45,14 +44,14 @@ Bergen IST die regenreichste Stadt Europas und wer das von Halle an der Saale be
 
 ### Links
 
-    * [Mitteldeutsche Zeitung: Hartnäckiges Gerücht Halle ist angeblich die regenreichste Stadt Deutschlands](https://www.mz-web.de/halle-saale/hartnaeckiges-geruecht-halle-ist-angeblich-die-regenreichste-stadt-deutschlands-6937660)
-    * [statista: Europäische Städte mit den meisten Regentagen im Jahr 2004](https://de.statista.com/statistik/daten/studie/1893/umfrage/staedte-mit-den-meisten-regentagen-in-europa/)
-    * [statista: Die regenreichsten Städte Deutschlands](https://de.statista.com/infografik/9586/wo-es-in-deutschland-am-meisten-regnet/)
-    * [[w] wie wissen: Regenmythen](https://www.daserste.de/information/wissen-kultur/w-wie-wissen/sendung/regenmythen-100.html)
-    * [Wikipedia: Bergen (siehe Klimatabelle)](https://de.wikipedia.org/wiki/Bergen_(Norwegen))
-    * [[Wikipedia: Halle (Saale) (](https://de.wikipedia.org/wiki/Halle_(Saale))
-    * [TOP 10 der regenreichsten Städte der Welt](https://alltop10.org/de/top-10-samyih-dozhdlivyih-gorodov-mira/)
-    * [holiday-weather.com: Glasgow avarages](https://www.holiday-weather.com/glasgow/averages/)
+* [Mitteldeutsche Zeitung: Hartnäckiges Gerücht Halle ist angeblich die regenreichste Stadt Deutschlands](https://www.mz-web.de/halle-saale/hartnaeckiges-geruecht-halle-ist-angeblich-die-regenreichste-stadt-deutschlands-6937660)
+* [statista: Europäische Städte mit den meisten Regentagen im Jahr 2004](https://de.statista.com/statistik/daten/studie/1893/umfrage/staedte-mit-den-meisten-regentagen-in-europa/)
+* [statista: Die regenreichsten Städte Deutschlands](https://de.statista.com/infografik/9586/wo-es-in-deutschland-am-meisten-regnet/)
+* [[w] wie wissen: Regenmythen](https://www.daserste.de/information/wissen-kultur/w-wie-wissen/sendung/regenmythen-100.html)
+* [Wikipedia: Bergen (siehe Klimatabelle)](https://de.wikipedia.org/wiki/Bergen_(Norwegen))
+* [[Wikipedia: Halle (Saale) (](https://de.wikipedia.org/wiki/Halle_(Saale))
+* [TOP 10 der regenreichsten Städte der Welt](https://alltop10.org/de/top-10-samyih-dozhdlivyih-gorodov-mira/)
+* [holiday-weather.com: Glasgow avarages](https://www.holiday-weather.com/glasgow/averages/)
 
 | ![](../../images/norge2019/33.png) |
 | --- |
