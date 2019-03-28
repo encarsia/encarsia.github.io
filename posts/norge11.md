@@ -1,13 +1,12 @@
 <!--
 .. title: Love Boat - The Real Story. Seetag
 .. slug: norge11
-.. date: 2019-03-10 20:32:32 UTC+01:00
+.. date: 2019-03-28 12:32:32 UTC+01:00
 .. tags: norwegen,norway,kreuzfahrt,cruise
 .. category: unterwegs
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 # Tag 14. Heimkehr
