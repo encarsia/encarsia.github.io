@@ -56,7 +56,7 @@ Links
 
  * `v0.5 release <link://slug/non-0.5>`_
  * `v0.4 release <link://slug/non-release>`_
- * `Konsoledierung <link://slug/non-konsole>`_
+ * `Konsoledierung (article in German) <link://slug/non-konsole>`_
  * `Fortschritte <link://slug/non-fortschritte>`_
  * `Neues Projekt: Knights of Ni <link://slug/neues-projekt-knights-of-ni>`_
 
