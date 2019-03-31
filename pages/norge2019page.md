@@ -7,7 +7,6 @@
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
 -->
 
 [TOC]
@@ -24,16 +23,22 @@ Die Reise heißt "Winter im hohen Norden" und seit 2017 beim Kreuzfahrtveranstal
 ## Hinweise
 
 1.  Aus meinen Notizen ist ein unerwartet langer Bericht geworden (>5000 Wörter), den ich in mehrere Artikel unterteilt habe:
-   
-    *   Teil 1
-    *   Teil 2
-    *   ...
+
+    *  [Hamburg](link://slug/norge01)
+    *  [Das Boot](link://slug/norge02)
+    *  [Haugesund](link://slug/norge03)
+    *  [Seetag](link://slug/norge04)
+    *  [Bodø](link://slug/norge05)
+    *  [Honningsvåg](link://slug/norge06)
+    *  [Tromsø](link://slug/norge07)
+    *  [Trondheim](link://slug/norge08)
+    *  [Bye Trondheim](link://slug/norge09)
+    *  [Bergen](link://slug/norge10)
+    *  [Seetag](link://slug/norge11)
         
-    Dies ist der gesamte Bericht.
-
-2.  Ursprünglich hatte ich einige Stichpunkte auch für das AIDA-Feedback-Formular selbst festgehalten. Die habe ich beibehalten. Falls hier also AIDA-Mitarbeiter mitlesen sollten, die Wege der Daten sind schließlich unergründlich, in einer blauen Box.
-
-3.  Persönliche Tipps oder Randnotizen erscheinen in einer orangefarbenen Box.
+    Dies ist der gesamte Bericht. Kommentare sind unter den Einzelartikeln möglich. Viel Spaß beim Lesen.
+2. Ursprünglich hatte ich einige Stichpunkte auch für das AIDA-Feedback-Formular selbst festgehalten. Die habe ich beibehalten. Falls hier also AIDA-Mitarbeiter mitlesen sollten, die Wege der Daten sind schließlich unergründlich, in einer blauen Box.
+3. Persönliche Tipps oder Randnotizen erscheinen in einer orangefarbenen Box.
    
 !!! tip "AIDA-Feedback"
     ... diese blauen Boxen sind für euch.
