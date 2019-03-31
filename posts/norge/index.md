@@ -20,7 +20,7 @@ Die Reise heißt "Winter im hohen Norden" und seit 2017 beim Kreuzfahrtveranstal
 
 ## Hinweise
 
-1. Aus meinen Notizen ist ein unerwartet langer Bericht geworden (>5000 Wörter), den ich in mehrere Artikel unterteilt habe. Eine einseitige Darstellung ist in Arbeit.
+1. Aus meinen Notizen ist ein unerwartet langer Bericht geworden (>5000 Wörter), den ich in mehrere Artikel unterteilt habe. Eine einseitige Darstellung findet man [hier](link://slug/norge2019page).
 2. Ursprünglich hatte ich einige Stichpunkte auch für das AIDA-Feedback-Formular selbst festgehalten. Die habe ich beibehalten. Falls hier also AIDA-Mitarbeiter mitlesen sollten, die Wege der Daten sind schließlich unergründlich, in einer blauen Box.
 3. Persönliche Tipps oder Randnotizen erscheinen in einer orangefarbenen Box.
    
