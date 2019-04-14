@@ -51,6 +51,10 @@ Das bringt mich zu einer weiteren Frage:
 
 Wie oft ich vor meinem Urlaub den Rat, nicht den Küblböck zu machen, gehört habe, habe ich nicht gezählt. Zur Info: Daniel Küblböck war eine Casting-Show-/Reality TV-Persönlichkeit, die im letzten Jahr eine letzte traurige Medienfußnote wurde, als sie von einem Kreuzfahrtschiff ins Meer sprang.
 
+In einem Video eines Reisejournalisten wird erwähnt, dass jährlich bis zu 19 Personen weltweit von Kreuzfahrtschiffen verschwinden.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cs5UKha9ALc?start=324" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Von einem fahrenden Schiff aus auf dem Ozean ins Meer zu springen, ist eine sehr, sehr sichere Form des Selbstmords. Selbst wenn dies unter Zeugen geschieht, ist es nahezu unmöglich, einen Verunglückten im Auge zu behalten, falls dieser überhaupt noch bei Bewusstsein ist und wieder auftaucht, bis Rettungsmaßnahmen eingeleitet werden. Jeder, der schon einmal ein "Mann/Boje über Bord"-Manöver gemacht hat, dürfte dies nachvollziehen können.
 
 **Geht man ohne Zeugen über Bord, fällt das zunächst gar nicht auf.**
@@ -81,11 +85,12 @@ Bei einem Ehepaar dürfte es bei der nächsten Mahlzeit, wohl spätestens bei an
 *   [Spiegel Online: Wilfried Erdmann: Erster deutscher Weltumsegler 1967/68][2]
 *   [Wikipedia: Blauwasserrouten][3]
 *   [GEO: Darum wirken Naturgeräusche so entspannend][4]
-*   [stern: Warum uns das Meer glücklich macht"][5]
+*   [stern: Warum uns das Meer glücklich macht][5]
+*   [YouTube: 9 Things Cruise Lines Don't Want You To Know. And Won't Tell You][6]
 
 [1]: https://open.spotify.com/album/4TDknrXMC3VqgvBigC72LX "Spotify-Playlist: 5 Stunden Meeresrauschen"
 [2]: http://www.spiegel.de/einestages/wilfried-erdmann-erster-deutscher-weltumsegler-1967-68-a-1205954.html "Spiegel Online: Wilfried Erdmann: Erster deutscher Weltumsegler 1967/68"
 [3]: https://de.wikipedia.org/wiki/Blauwasserrouten "Wikipedia: Blauwasserrouten"
 [4]: https://www.geo.de/magazine/geo-magazin/16810-rtkl-hirnforschung-darum-wirken-naturgeraeusche-so-entspannend "GEO: Darum wirken Naturgeräusche so entspannend"
 [5]: https://www.stern.de/reise/service/psychologie-warum-uns-das-meer-gluecklich-macht-3273222.html "stern: Warum uns das Meer glücklich macht"
-
+[6]: https://youtu.be/cs5UKha9ALc
