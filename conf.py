@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
 import time
 
 # !! This is the configuration of Nikola. !! #
@@ -313,7 +312,7 @@ COMPILERS = {
 
 # Writes tag cloud data in form of tag_cloud_data.json.
 # Warning: this option will change its default value to False in v8!
-WRITE_TAG_CLOUD = False
+# WRITE_TAG_CLOUD = False
 
 # New in v8
 CATEGORY_DESTPATH_AS_DEFAULT = True
@@ -1213,6 +1212,12 @@ FILE_METADATA_UNSLUGIFY_TITLESS = True
 
 # Plugins you don't want to use. Be careful :-)
 # DISABLED_PLUGINS = ["render_galleries"]
+
+# Special settings to disable only parts of the indexes plugin.
+# Use with care.
+# DISABLE_INDEXES = True
+# DISABLE_MAIN_ATOM_FEED = False
+# DISABLE_MAIN_RSS_FEED = False
 
 # Add the absolute paths to directories containing plugins to use them.
 # For example, the `plugins` directory of your clone of the Nikola plugins
