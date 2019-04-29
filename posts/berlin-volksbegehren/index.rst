@@ -119,6 +119,8 @@ Das sind 22 Milliarden Euro, ohne eine einzige zusätzliche Wohnung geschaffen o
 
 Mit 22 Milliarden Euro könnte man im kommunalen und sozialen Wohnungsbau richtig was reißen.
 
+Inzwischen liegt eine offizielle Kostenschätzung seitens des Senats vor. Diese kommt zu einer Annahme von 20 bis 40 Milliarden Euro, kreditfinanziert über 45 Jahre, für die in Frage kommenden über 200.000 Wohnungen. Die Initiative des Volksbegehrens rechnet hingegen mit nur 7,3 bis 13,7 Milliarden Euro. [18]_ [19]_
+
 Schlusswort
 ===========
 
@@ -142,8 +144,8 @@ Berlin hat die halbe Stadt verkauft und kauft sie dann wieder zurück, weil es d
 
 Und das wird gefeiert?
 
-Links
-=====
+Quellen
+=======
 
 .. [1] `Das Grundgesetz der Bundesrepublik Deutschland <https://www.gesetze-im-internet.de/gg/BJNR000010949.html>`_
 
@@ -179,3 +181,7 @@ Links
 .. [16] `Baugesetzbuch § 87 <https://dejure.org/gesetze/BauGB/87.html>`_
 
 .. [17] `(PDF) Wie läuft eine Enteigung ab? <https://www.meidert-kollegen.de/wp-content/uploads/Wie-laeuft-eine-Enteigung-ab.pdf>`_
+
+.. [18] `Der Tagesspiegel: Teure Volksbegehren in Berlin - Geld spielt keine Rolle <https://www.tagesspiegel.de/berlin/teure-volksbegehren-in-berlin-geld-spielt-keine-rolle/24266078.html>`_
+
+.. [19] `Der Tagesspiegel: Enteignungen: Aktivisten rechnen mit Kosten von 7,3 Milliarden Euro <https://www.tagesspiegel.de/berlin/volksbegehren-deutsche-wohnen-enteignen-enteignungen-aktivisten-rechnen-mit-kosten-von-7-3-milliarden-euro/24041456.html>`_
