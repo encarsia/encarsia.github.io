@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Kreuzfahrt in den hohen Norden
 .. slug: norge2019page
 .. date: 2019-03-10 21:47:06 UTC+01:00
-.. tags: norwegen,kreuzfahrt
+.. tags: norwegen,kreuzfahrt,aida
 .. category: unterwegs
 .. link: 
 .. description: 

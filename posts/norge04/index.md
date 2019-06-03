@@ -40,6 +40,7 @@ Man spaziert morgens oben an Deck und der Typ, der die Poolbar öffnet, bringt d
 
 Und die bleiben so verdammt freundlich dabei! Ich hoffe, die bekommen alle am Monatsende einen angemessenen Batzen Kohle überwiesen, denn ansonsten kann ich so eine Reise nie wieder machen...
 
-| [![](../../images/norge2019/46.jpg)](../../images/norge2019/46.jpg) |
+| ![](../../images/norge2019/46.jpg) |
 | --- |
 | *Das tägliche Personalkarusell in der sternförmigen AIDA Bar* |
+
