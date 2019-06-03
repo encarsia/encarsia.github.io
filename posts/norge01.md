@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Hamburg
 .. slug: norge01
 .. date: 2019-03-10 20:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise,hamburg
+.. tags: norwegen,kreuzfahrt,hamburg
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -14,7 +14,7 @@
 
 ## Habemus Gepäck
 
-Wir sind vier Erwachsene und ein Dreijähriger auf zweiwöchiger Winterreise. Zur Überraschung der meisten Beteiligten wird das gesamte Gepäck innerhalb einer Minute geräuschlos im Kofferraum verstaut. Gutgelaunt oder zumindest in entspannter Nichtlaune fahren wir Richtung Hamburg. Ein paar Stunden später erreichen wir den Parkplatz des Shuttleservice, geben unser Gepck auf, checken ein und schon stehen wir auf dem Kahn.
+Wir sind vier Erwachsene und ein Dreijähriger auf zweiwöchiger Winterreise. Zur Überraschung der meisten Beteiligten wird das gesamte Gepäck innerhalb einer Minute geräuschlos im Kofferraum verstaut. Gutgelaunt oder zumindest in entspannter Nichtlaune fahren wir Richtung Hamburg. Ein paar Stunden später erreichen wir den Parkplatz des Shuttleservice, geben unser Gepäck auf, checken ein und schon stehen wir auf dem Kahn.
 
 Das Schiff gleicht einem Ameisenhaufen, im Inneren wimmeln Passagiere auf der Suche nach Kabinen und Orientierung und Crew, die die ankommenden Koffermassen verteilt und anderen Arbeiten nachgeht. Nach einem ersten Vortasten in fremden Gefilden, unsere kleine Reisegruppe ist AIDA-unerfahren, beschließen wir, vor dem Ablegen einen Kaffee zu trinken.
 
@@ -28,7 +28,7 @@ Wir hatten die Flatrate für alkoholfreie Getränke gebucht und zusätzlich zur 
 
 Nach Lieferung der Getränke erhielten wir zu unserer Verblüffung, denn wir hatten ja die Flatrate, einen zu unterzeichnenden Beleg. Der damit konfrontierte Servicemitarbeiter war zunächst wenig hilfreich, da seine Englischkenntnisse ungefähr dem meiner Mitreisenden entsprach. Na das konnte ja noch lustig werden...
 
-Ich konnte dem leicht überforderten und vielleicht auch ein wenig eingeschüchterten sehr jungen Mitarbeiter doch noch die relevante Information entlocken. Die Getränke werden je nach Buchungsart entweder dem Bordkonto angerechnet oder auf eine vorhandene Flatrate gebucht - in jedem Fall werden die Artikel im System unter dem Normalpreis erfasst. Die Bestellung muss dann mit Kabinennummer und Unterschrift quittiert werden. Die Bons werden gesammelt, eingelesen und stehen dann auch zur Einsicht bereit.
+Ich konnte dem leicht überforderten und vielleicht auch ein wenig eingeschüchterten sehr jungen Mitarbeiter doch noch die relevante Information entlocken. Die Getränke werden je nach Buchungsart entweder dem Bordkonto angerechnet oder auf eine vorhandene Flatrate gebucht - in jedem Fall werden die Artikel im System unter dem Normalpreis erfasst. Die Bestellung muss dann mit Kabinennummer und Unterschrift quittiert werden. Die Bons werden gesammelt, eingelesen und stehen dann auch zur Einsicht bereit (auch um Missbrauch und Fehlbuchungen zu erkennen/aufzuspüren).
 Sagt einem nur keiner.
 
 !!! tip "AIDA-Feedback"

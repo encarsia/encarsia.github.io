@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Das Boot
 .. slug: norge02
 .. date: 2019-03-13 21:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
+.. tags: norwegen,kreuzfahrt
 .. category: unterwegs
 .. link: 
 .. description: 

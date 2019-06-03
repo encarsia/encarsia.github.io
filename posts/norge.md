@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story
 .. slug: norge
 .. date: 2019-03-13 20:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise,aida
+.. tags: norwegen,kreuzfahrt,aida
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -11,7 +11,7 @@
 
 # Prolog
 
-Der von langer geplante Familienurlaub zu den Polarlichtern naht. Es war ziemlich schnell klar, dass es eine Kreuzfahrt werden soll. Erwähnt man in Gesprächen diese Reise, ist die zwingend darauf folgende Einwortfrage "Hurtigrouten?". Die Einwortantwort darauf ist "Nein", die längere Ausführung ist "Nein, wir haben uns für AIDA entschieden, primär wegen der einfachen An- und Abreise innerhalb Deutschlands. Ja, ich glaube schon, dass sich der Ballermann-Charme auf dieser Route in Grenzen halten wird."
+Der von langer geplante Familienurlaub zu den Polarlichtern naht. Es war ziemlich schnell klar, dass es eine Kreuzfahrt werden soll. Erwähnt man in Gesprächen diese Reise, ist die zwingend darauf folgende Einwortfrage "Hurtigrouten?". Die Einwortantwort darauf ist "Nein.", die längere Ausführung ist "Nein, wir haben uns für AIDA entschieden, primär wegen der einfachen An- und Abreise innerhalb Deutschlands. Ja, ich glaube schon, dass sich der Ballermann-Charme auf dieser Route in Grenzen halten wird."
 
 Die Reise heißt "Winter im hohen Norden" und seit 2017 beim Kreuzfahrtveranstalter im Programm. Zwei Reiseberichte aus dieser ersten Saison findet man hier:
 
