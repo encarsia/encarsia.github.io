@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Cruise to the high North
 .. slug: norge2019page
 .. date: 2019-03-10 21:47:06 UTC+01:00
-.. tags: norway,cruise
+.. tags: norway,cruise,aida
 .. category: outandabout
 .. link: 
 .. description: 
