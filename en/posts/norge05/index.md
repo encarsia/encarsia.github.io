@@ -9,7 +9,7 @@
 .. type: text
 -->
 
-# Tag 5. Land in sight
+# Day 5. Land in sight
 
 The day starts with an early workout. When the ship is close to the second harbour Bodø we are presented with a breathtaking panorama view.
 This day promises to become great.

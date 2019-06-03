@@ -2,33 +2,33 @@
 .. title: Love Boat - The Real Story
 .. slug: norge
 .. date: 2019-03-13 20:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise,aida
-.. category: unterwegs
+.. tags: norway,cruise,aida
+.. category: outandabout
 .. link: 
 .. description: 
 .. type: text
 -->
 
-# Prolog
+# Prologue
 
-Der von langer geplante Familienurlaub zu den Polarlichtern naht. Es war ziemlich schnell klar, dass es eine Kreuzfahrt werden soll. Erwähnt man in Gesprächen diese Reise, ist die zwingend darauf folgende Einwortfrage "Hurtigrouten?". Die Einwortantwort darauf ist "Nein", die längere Ausführung ist "Nein, wir haben uns für AIDA entschieden, primär wegen der einfachen An- und Abreise innerhalb Deutschlands. Ja, ich glaube schon, dass sich der Ballermann-Charme auf dieser Route in Grenzen halten wird."
+The long planned family vacation to the Northern Lighs is close. It was distinct from the beginning that it will be a cruise. Everyone who would get to know of these plans would then immediately ask the one word question "Hurtigrouten?". The one word answer to it is "No.", the more elaborate is "No, we decided to go with AIDA primarily because of the easy arrival within Germany. Yes, I do believe that we will be spared the loud holiday club and party atmosphere like on Mallorca on this route."
 
-Die Reise heißt "Winter im hohen Norden" und seit 2017 beim Kreuzfahrtveranstalter im Programm. Zwei Reiseberichte aus dieser ersten Saison findet man hier:
+The journey is called "Winter in the high North" and part of the travel operator's catalogue since 2017. You can read two travel reports in German here:
 
 * [Winter im hohen Norden mit AIDAcara](https://www.thomasrenker.de/cruise/winter-im-hohen-norden-mit-aidacara-2017/)
 * [Reisebericht: Nordlichter und Winter im hohen Norden mit AIDAcara](https://www.kreuzfahrtpiraten.de/reisebericht-winter-im-hohen-norden-mit-aidacara/)
 
-## Hinweise
+## Hints
 
-1. Aus meinen Notizen ist ein unerwartet langer Bericht geworden (>5000 Wörter), den ich in mehrere Artikel unterteilt habe. Eine einseitige Darstellung findet man [hier](link://slug/norge2019page).
-2. Ursprünglich hatte ich einige Stichpunkte auch für das AIDA-Feedback-Formular selbst festgehalten. Die habe ich beibehalten. Falls hier also AIDA-Mitarbeiter mitlesen sollten, die Wege der Daten sind schließlich unergründlich, in einer blauen Box.
-3. Persönliche Tipps oder Randnotizen erscheinen in einer orangefarbenen Box.
-   
-!!! tip "AIDA-Feedback"
-    ... diese blauen Boxen sind für euch.
+1. My notes have been unexpectedly evolved into a lengthy report (>5000 words) separated in several articles. You find a one page version [here](link://slug/norge2019page).
+2. Initially some bullet points were written down to remember when filling out the AIDA feedback form but I left these here. I put these in a blue box.
+3. Personal tips and side notes are put in an orange box.
 
-!!! important "Ankes Tipps"
-    ... sehen so aus.
+!!! tip "AIDA feedback"
+    ... is in this blue box.
 
-{!posts/norge01.md!}
+!!! important "Anke's tips"
+    ... look like this.
+
+{!posts/norge01.en.md!}
 

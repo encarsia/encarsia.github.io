@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Haugesund
 .. slug: norge03
 .. date: 2019-03-15 18:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
+.. tags: norwegen,kreuzfahrt
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -43,7 +43,7 @@ Das ist interessant, weil das Meer für den Menschen eigentlich ein lebensfeindl
 
 Im Sommer bin ich einmal beim Segeln auf der Havel mit einem Freund in ein schnell durchziehendes, aber starkes Unwetter mit Windstärke 7 bis 9 geraten, das an Land schwere Schäden anrichtete. Wir konnten uns in einer Bucht positionieren, um mit minimaler Besegelung, eigentlich hätten wir noch eine weitere Reffstufe gebrauchen können, noch manövrierfähig zu sein und den Sturm über uns hinwegziehen zu lassen. Das hat auch gut funktioniert, war aber auch ziemlich abenteuerlich und hat uns ordentlich durchgeschüttelt und bis auf die Knochen nassgemacht. 
 
-Angesichts dieser Erfahrung schaue ich mir nun die Wellen an und versuche, das Gedankenspiel, das wir an Schönwettertagen auf dem Wasser gelegentlich durchsprechen, weiter zu denken. Also: wäre einem alles egal und würde das Boot Richtung New York nehmen, wie weit würde man mit der Nussschale kommen? Mit guter Vorbereitung und Equipment und etwas Glück mit dem Wetter kann man schon vorsichtig optimistisch werden, aber wenn es einen bei Windstärke 10 und 12 Meter hohen Wellen ausknockt oder von Deck haut, werden deine Überreste niemals irgendwo gefunden.
+Angesichts dieser Erfahrung schaue ich mir nun die Wellen an und versuche, das Gedankenspiel, das wir an Schönwettertagen auf dem Wasser gelegentlich durchsprechen, weiter zu denken. Also: wäre einem alles egal und würde das Boot Richtung New York nehmen, wie weit würde man mit der Nussschale (Friendship 24) kommen? Mit guter Vorbereitung und Equipment und etwas Glück mit dem Wetter kann man schon vorsichtig optimistisch werden, aber wenn es einen bei Windstärke 10 und 12 Meter hohen Wellen ausknockt oder von Deck haut, werden deine Überreste niemals irgendwo gefunden.
 
 Das bringt mich zu einer weiteren Frage:
 
@@ -65,19 +65,24 @@ Von einem fahrenden Schiff aus auf dem Ozean ins Meer zu springen, ist eine sehr
 
 ### Crew
 
-Am schnellsten fällt vermutlich der Verlust eines Crewmitglieds auf. Die Leute, die täglich die Außendecks in Schuss halten, arbeiten meiner Beobachtung nach tendentiell in Zweierteams. Diese Prämisse angenommen fällt ein fehlendes Teammitglied je nach Aufgabenverteilung innerhalb einer Arbeitsschicht auf. Da die Jungs und Mädels hier aber keinen 9 to 5-Job absitzen, kann das auch schon mal ein halber Tag sein. Spätestens zum Arbeitsbeginn am nächsten Tag dürfte es auffallen. Zeitfenster: 0,5 - 24 Stunden? Oder gibt es Meldeintervalle für Außendeckcrew?
+Am schnellsten fällt vermutlich der Verlust eines Crewmitglieds auf. Die Leute, die täglich die Außendecks in Schuss halten, arbeiten meiner Beobachtung nach tendentiell in Zweierteams. Diese Prämisse angenommen fällt ein fehlendes Teammitglied je nach Aufgabenverteilung innerhalb einer Arbeitsschicht auf. Da die Jungs und Mädels hier aber keinen 9 to 5-Job absitzen, kann das auch schon mal ein halber Tag sein. Spätestens zum Arbeitsbeginn am nächsten Tag dürfte es auffallen.
+
+Zeitfenster: 0,5 - 24 Stunden? Oder gibt es Meldeintervalle für Außendeckcrew?
 
 ### Passagier
 
 Hier muss man wohl zwischen Alleinreisenden und Nichtalleinreisenden unterscheiden.
 
 Da man sich an Bord frei bewegen kann, niemand abgehaltene oder ausgefallene Mahlzeiten überprüft und auch nicht gezwungen werden kann, in Häfen an Land zu gehen, wird man spätestens beim Auschecken am Ende der Reise vermisst werden. Aber es gibt ja auch noch das Housekeeping. Melden die, wenn eine Kabine eine Weile ganz offensichtlich nicht benutzt wurde? Prinzipiell ist es ja möglich, dass die Person in einer anderen Kabine nächtigt oder gar aufgrund von Beschwerden möglicherweise nur noch auf einem Barhocker sitzend...wer weiß das schon?
+Preisfrage: Schlägt jemand vom Housekeeping Alarm und wenn ja, wann? Ab dem ersten, zweiten, dritten Tag...? 
 
-Preisfrage: Schlägt jemand vom Housekeeping Alarm und wenn ja, wann? Ab dem ersten, zweiten, dritten Tag...? Zeitfenster: ein bis mehrere Tage.
+Zeitfenster: ein bis mehrere Tage.
 
 Für Nichtalleinreisende gilt vermutlich der Grad der sozialen Bindung als ausschlaggebend. Auf einem Kreuzfahrtschiff gibt es viele Rückzugsecken. Je größer das Schiff, desto höher ist die Wahrscheinlichkeit, sich nicht über den Weg zu laufen. Selbst auf der kleinen AIDAaura ist man neben bekannten Gesichtern auch bis zum Ende immer wieder neuen Mitreisenden begegnet, bei denen man hätte schwören können, diese in den vergangenen zwei Wochen noch nie gesehen zu haben.
 
-Bei einem Ehepaar dürfte es bei der nächsten Mahlzeit, wohl spätestens bei angehender Nachtruhe, suspekt werden, wenn der andere abwesend ist. Bei einer losen Reisegruppe, die aus finanziellen Gründen gemeinsame Kabinen bezieht, mag eine Fremdübernachtung allein eventuell noch seltsam, aber unverdächtig erscheinen. Danach dürfte aber auch hier Unruhe aufkommen. Zeitfenster: 1 bis 24 Stunden...?
+Bei einem Ehepaar dürfte es bei der nächsten Mahlzeit, wohl spätestens bei angehender Nachtruhe, suspekt werden, wenn der andere abwesend ist. Bei einer losen Reisegruppe, die aus finanziellen Gründen gemeinsame Kabinen bezieht, mag eine Fremdübernachtung allein eventuell noch seltsam, aber unverdächtig erscheinen. Danach dürfte aber auch hier Unruhe aufkommen.
+
+Zeitfenster: 1 bis 24 Stunden...?
 
 ## Links
 

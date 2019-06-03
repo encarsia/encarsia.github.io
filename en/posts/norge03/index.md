@@ -2,90 +2,97 @@
 .. title: Love Boat - The Real Story. Haugesund
 .. slug: norge03
 .. date: 2019-03-15 18:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
-.. category: unterwegs
+.. tags: norway,cruise
+.. category: outandabout
 .. link: 
 .. description: 
 .. type: text
 -->
 
-# Tag 3. God morgen, Haugesund!
+# Day 3. God morgen, Haugesund!
 
-Wir legen pünktlich in Haugesund, unserem ersten und zugleich südlichsten Zwischenstopp, an und machen uns nach dem Frühstück zu unserem Landgang auf.
+We are on time landing in Haugesund which is our first and most southern stop. After having breakfaast we prepare for our shore excursion.
 
-| ![](../../images/norge2019/05.png) |
+| ![](../../../images/norge2019/05.png) |
 | --- |
 | *Haugesund havn* |
 
-Wir schlendern durch die übersichtliche Innenstadt und nach dem üblichen Halt in der Touristeninformation, wir sind langjährig angelernte Individualtouristen, laufen wir zum kombinierten Monument Haraldshaugen (mit dem Obelisken Haraldstøtten) und Krosshaugen (mit dem Steinkreuz) in Erinnerung an die Herrschaft Königs Harald Hårfagre (Harald Schönhaar) und die Christianisierung des Landes.
+Soon we are strolling through the small inner city and stopping by at the tourist information because we are experienced individual tourists and know our duties.
+Haugesund's main attraction is within walking range so we visit the combined monument Haraldshaugen (with the Haraldstøtten obelisk) und Krosshaugen (that with the stone cross) in memory to the rule of king Harald Hårfagre (Harald Fairhair) and the country's christianity.
 
-| ![](../../images/norge2019/04.png) |
+| ![](../../../images/norge2019/04.png) |
 | --- |
 | *Harald Hårfagre* |
 
-Meine Mitreisenden entschließen sich zu einer Erholungspause nach dem Fußmarsch und ich versuche mich noch einmal an der Schlacht am Kuchenbuffet. Ich ziehe triumphierend mit Kuchen und Tee von dannen.
+My travel mates decide to take a rest after the walk and I decide to fight at the pie buffet again. I am triumphant and celebrate my victory with cake and tea.
 
-| ![](../../images/norge2019/06.png) |
+| ![](../../../images/norge2019/06.png) |
 | --- |
-| *Dieser Teller wurde ohne Gewaltanwendung befüllt.* |
+| *No human or other creature was harmed filling this plate.* |
 
-Am frühen Abend legen wir ab. Zum Abschied erfolgt das übliche Schallsignal '3x lang', gefolgt von Enyas "Orinoco Flow" und einem anderen musikalischen Begleitstück, das mir nicht bekannt ist. Uns steht sogleich der zweite Seetag bevor.
+We depart in the early evening and face another complete day at the ocean. Later on the winds intensify, at Beaufort force 7 both of our male travel party members call in seasick.
 
-Abends frischt der Wind auf, im Nachhinein betrachtet läppische 7 Windstärken sorgen für die ersten Ausfälle bei den beiden männlichen Mitgliedern unserer Reisegruppe.
+## The noise of the sea
 
-## Das Rauschen des Meeres
+Travelling by ship is done on purpose. Being on the way moving is part of the destination. It is proven that maritime surroundings do have positive health effects on humans. One can even buy recordings of maritime and water noises or just listen to these on YouTube.
 
-Eine Schiffsreise unternimmt man vorsätzlich. Das Unterwegssein ist Teil der Destination. Die Umgebung Meer hat nachweislich positive entspannungsfördernde Effekte auf den Menschen, man kann Meeresrauschen auf Tonträgern erwerben oder aber einfach YouTube nutzen.
-
-Das ist interessant, weil das Meer für den Menschen eigentlich ein lebensfeindliches Ökosystem voller Gefahren und damit eine natürliche Grenze darstellt. Wir empfinden das Rauschen des Wassers als faszinierend und verweilen im Starren auf die Bewegungen und Verwirbelungen der Wellen, die uns in Todesangst versetzen sollten, denn ohne den Schutz des Stahlkolosses um uns herum wären wir alle innerhalb von Minuten tot.
+That is interesting because for humans the ocean is a hostile ecosystem full of dangers and therefore a natural frontier. To us the sound of the rushing sea is fascinating and we are able to watch the movements of the water and the waves for eternity. Instead of calming us down it should make us freak out because without the safety area of the steely colossus we would be dead within minutes.
 
 ## Friendship
 
-Im Sommer bin ich einmal beim Segeln auf der Havel mit einem Freund in ein schnell durchziehendes, aber starkes Unwetter mit Windstärke 7 bis 9 geraten, das an Land schwere Schäden anrichtete. Wir konnten uns in einer Bucht positionieren, um mit minimaler Besegelung, eigentlich hätten wir noch eine weitere Reffstufe gebrauchen können, noch manövrierfähig zu sein und den Sturm über uns hinwegziehen zu lassen. Das hat auch gut funktioniert, war aber auch ziemlich abenteuerlich und hat uns ordentlich durchgeschüttelt und bis auf die Knochen nassgemacht. 
+Last summer during a sailing trip on the river Havel I got into a heavy and fast moving thunderstorm with winds between 7 to 9 bft causing huge damages on land.
+We were able to take our position in a bay to let the storm pass over us maneuvring with as little sail as possible. That worked pretty well, still that was a tough and shaky situation involving massive amounts of water from various directions.
 
-Angesichts dieser Erfahrung schaue ich mir nun die Wellen an und versuche, das Gedankenspiel, das wir an Schönwettertagen auf dem Wasser gelegentlich durchsprechen, weiter zu denken. Also: wäre einem alles egal und würde das Boot Richtung New York nehmen, wie weit würde man mit der Nussschale kommen? Mit guter Vorbereitung und Equipment und etwas Glück mit dem Wetter kann man schon vorsichtig optimistisch werden, aber wenn es einen bei Windstärke 10 und 12 Meter hohen Wellen ausknockt oder von Deck haut, werden deine Überreste niemals irgendwo gefunden.
+Reminded of this event I watch the waves and try to think through the thought experiment we sometimes talk about at sunny days: if we piloted the boat in direction New York, how far would we get in that nutshell (Friendship 24 sailing boat)? When well prepared and equipped and a bit lucky regarding the weather one can get mildly optimistic but if you are knocked out or thrown overboard at 10 bft and 12 meter high waves your remains will not ever be found.
 
-Das bringt mich zu einer weiteren Frage:
+That brings me to another question:
 
-## Wann fällt auf, dass einer fehlt?
+## When do people realize somebody is missing?
 
-Wie oft ich vor meinem Urlaub den Rat, nicht den Küblböck zu machen, gehört habe, habe ich nicht gezählt. Zur Info: Daniel Küblböck war eine Casting-Show-/Reality TV-Persönlichkeit, die im letzten Jahr eine letzte traurige Medienfußnote wurde, als sie von einem Kreuzfahrtschiff ins Meer sprang.
+I did not count how often I was advised not to pull a Küblböck in advance of the journey. In case you do not know (which is probably the case): Daniel Küblböck was a casting show/reality TV personality who had become a last sad media footnote by jumping off a cruiseship into the ocean in some previous year.
 
-In einem Video eines Reisejournalisten wird erwähnt, dass jährlich bis zu 19 Personen weltweit von Kreuzfahrtschiffen verschwinden.
+In this video by a travel journalist it is stated that up to 19 persons vanish from cruiseships every year.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cs5UKha9ALc?start=324" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Von einem fahrenden Schiff aus auf dem Ozean ins Meer zu springen, ist eine sehr, sehr sichere Form des Selbstmords. Selbst wenn dies unter Zeugen geschieht, ist es nahezu unmöglich, einen Verunglückten im Auge zu behalten, falls dieser überhaupt noch bei Bewusstsein ist und wieder auftaucht, bis Rettungsmaßnahmen eingeleitet werden. Jeder, der schon einmal ein "Mann/Boje über Bord"-Manöver gemacht hat, dürfte dies nachvollziehen können.
+Jumping off a sailing ship into the ocean is a very, very safe method of committing suicide. Even if there are witnesses it is almost impossible to keep track of the lost person in the water if the person is conscious and gets back to the water surface at all until rescue measures are initiated.
+Any person who ever has performed a "man/buoy over board" maneuvre will comprehend this.
 
-**Geht man ohne Zeugen über Bord, fällt das zunächst gar nicht auf.**
+**If one goes overboard without witnesses, it will not be noticed at first.**
 
-| ![](../../images/norge2019/45.png) |
+| ![](../../../images/norge2019/45.png) |
 | --- |
-| *Das rote Telefon* |
+| *The Red Telephone* |
 
 ### Crew
 
-Am schnellsten fällt vermutlich der Verlust eines Crewmitglieds auf. Die Leute, die täglich die Außendecks in Schuss halten, arbeiten meiner Beobachtung nach tendentiell in Zweierteams. Diese Prämisse angenommen fällt ein fehlendes Teammitglied je nach Aufgabenverteilung innerhalb einer Arbeitsschicht auf. Da die Jungs und Mädels hier aber keinen 9 to 5-Job absitzen, kann das auch schon mal ein halber Tag sein. Spätestens zum Arbeitsbeginn am nächsten Tag dürfte es auffallen. Zeitfenster: 0,5 - 24 Stunden? Oder gibt es Meldeintervalle für Außendeckcrew?
+Missing crew is probably noticed quite rapidly. From my observation the staff maintaining the outer decks seem to always work in teams of two or more. Taking this premise into account a missing crew member should be recognized within working shift but considering these guys do not do a 9 to 5 job here this may also be half a day. By the beginning of the next day's working shift it will be noticed.
 
-### Passagier
+Time frame: 0.5 to 24 hours? Are there a mandatory report intervals for outer deck staff?
 
-Hier muss man wohl zwischen Alleinreisenden und Nichtalleinreisenden unterscheiden.
+### Passenger
 
-Da man sich an Bord frei bewegen kann, niemand abgehaltene oder ausgefallene Mahlzeiten überprüft und auch nicht gezwungen werden kann, in Häfen an Land zu gehen, wird man spätestens beim Auschecken am Ende der Reise vermisst werden. Aber es gibt ja auch noch das Housekeeping. Melden die, wenn eine Kabine eine Weile ganz offensichtlich nicht benutzt wurde? Prinzipiell ist es ja möglich, dass die Person in einer anderen Kabine nächtigt oder gar aufgrund von Beschwerden möglicherweise nur noch auf einem Barhocker sitzend...wer weiß das schon?
+In this case it is reasonable to differ between single and non-single travellers.
 
-Preisfrage: Schlägt jemand vom Housekeeping Alarm und wenn ja, wann? Ab dem ersten, zweiten, dritten Tag...? Zeitfenster: ein bis mehrere Tage.
+One can move freely onboard and is not forced to leave the ship at ports. It may be likely that a missing single traveller is noticed on check out. But there is the housekeeping factor. Do they report if a cabin is not getting used for a while? It is possible in theory that that person stays overnight in other cabin(s) or mastered slepping on barstools...who knows?
 
-Für Nichtalleinreisende gilt vermutlich der Grad der sozialen Bindung als ausschlaggebend. Auf einem Kreuzfahrtschiff gibt es viele Rückzugsecken. Je größer das Schiff, desto höher ist die Wahrscheinlichkeit, sich nicht über den Weg zu laufen. Selbst auf der kleinen AIDAaura ist man neben bekannten Gesichtern auch bis zum Ende immer wieder neuen Mitreisenden begegnet, bei denen man hätte schwören können, diese in den vergangenen zwei Wochen noch nie gesehen zu haben.
+So does the housekeeping report on this and if so, when? From day one, two, three...?
 
-Bei einem Ehepaar dürfte es bei der nächsten Mahlzeit, wohl spätestens bei angehender Nachtruhe, suspekt werden, wenn der andere abwesend ist. Bei einer losen Reisegruppe, die aus finanziellen Gründen gemeinsame Kabinen bezieht, mag eine Fremdübernachtung allein eventuell noch seltsam, aber unverdächtig erscheinen. Danach dürfte aber auch hier Unruhe aufkommen. Zeitfenster: 1 bis 24 Stunden...?
+Time frame: one to several days?
 
-## Links
+For people not travelling alone the degree of social binding is probably crucial. There are many corners for retreat on a cruiseship. The larger the ship the higher the probability not to run into each other. Even on the small AIDAaura I met new people until the end of the trip that I was convinced not having seen during the last two weeks before.
 
-*   [Spotify-Playlist: 5 Stunden Meeresrauschen][1]
-*   [Spiegel Online: Wilfried Erdmann: Erster deutscher Weltumsegler 1967/68][2]
-*   [Wikipedia: Blauwasserrouten][3]
-*   [GEO: Darum wirken Naturgeräusche so entspannend][4]
-*   [stern: Warum uns das Meer glücklich macht][5]
+A part of a married couple might get suspicious at the next meal or at least when going to bed if the other is absent. But there are also people in groups sharing cabins. A sleepover in another cabin might appear inappropriate to some but not impossible. But afterwards the person will have to return to the cabin sooner or later so the time frame is extended to maybe a day.
+
+Time frame: minutes to 24 hours?
+
+## References
+
+*   [Spotify playlist: 5 hours of sea noise][1]
+*   [Spiegel Online: Wilfried Erdmann: Erster deutscher Weltumsegler 1967/68 (German)][2]
+*   [Wikipedia: Blauwasserrouten (German)][3]
+*   [GEO: Darum wirken Naturgeräusche so entspannend (German)][4]
+*   [stern: Warum uns das Meer glücklich macht (German)][5]
 *   [YouTube: 9 Things Cruise Lines Don't Want You To Know. And Won't Tell You][6]
 
 [1]: https://open.spotify.com/album/4TDknrXMC3VqgvBigC72LX "Spotify-Playlist: 5 Stunden Meeresrauschen"
