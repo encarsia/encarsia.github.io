@@ -138,24 +138,42 @@ NAVIGATION_LINKS = {
         ("/posts/tutorial-reihe-glade", "Tutorials", "fa fa-lightbulb-o"),
         ("/projects/index.html", "Projects", "fa fa-wrench"),
         ("https://octodon.social/@encarsia", "Mastodon", "fa fa-mastodon"),
+        ("https://pixelfed.social/encarsia", "Pixelfed", "fa fa-pixelfed"),
         ("https://twitter.com/encarsia_", "Twitter", "fa fa-twitter"),
-        ("https://github.com/encarsia", "Github", "fa fa-github"),
+        ("https://github.com/encarsia", "GitHub", "fa fa-github"),
         ("/pages/gplus_the_end", "Google+", "fa fa-google-plus-official"),
         ("/categories/index.html", "Tags", "fa fa-tags"),
         # ("/pages/about/index.html", "About me", "fa fa-user"),
         ("/archive.html", "Archive", "fa fa-folder-open"),
-        ("/rss.xml", "RSS", "fa fa-rss"),
+        ("/rss.xml", "RSS", "fa fa-feed"),
     )
 }
 
 # Name of the theme to use.
 #THEME = "zen"
-THEME = "zen-forkawesome"
-#THEME = "zen-jinja"
+#THEME = "zen-forkawesome"
+THEME = "hybrid"
+
+GLOBAL_CONTEXT = {
+    "hyde_subtheme": "theme-custom",
+#    "hyde_subtheme": "theme-base-08", # red
+#    "hyde_subtheme": "theme-base-09", # orange
+#    "hyde_subtheme": "theme-base-0a", # yellow
+#    "hyde_subtheme": "theme-base-0b", # green
+#    "hyde_subtheme": "theme-base-0c", # cyan
+#    "hyde_subtheme": "theme-base-0d", # blue
+#    "hyde_subtheme": "theme-base-0e", # magenta
+#    "hyde_subtheme": "theme-base-0f", # brown
+#    show title and description
+    "sidebar_title": False,
+#    show navigation links as "icon" or "text"
+#    leave commented for both
+#    "navigation": "icon",
+}
 
 # Primary color of your theme. This will be used to customize your theme
 # Must be a HEX value.
-THEME_COLOR = "#5670d4"
+# THEME_COLOR = "#5670d4"
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 #
@@ -865,10 +883,10 @@ LICENSE = ""
 
 CONTENT_FOOTER = """
 <hr>
-Contents &copy; {date} <a href="mailto:{email}">{author}</a> - 
+Contents &copy; {date} <a href="mailto:{email}">{author}</a>
+<br> 
 Powered by <a href="http://getnikola.com">Nikola</a> - 
-Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br>
-{license}
+Hybrid theme
 """
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
@@ -1265,7 +1283,9 @@ FILE_METADATA_UNSLUGIFY_TITLESS = True
 
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
-GLOBAL_CONTEXT = {}
+
+# variable is used by the hyde theme see above
+# GLOBAL_CONTEXT = {}
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
