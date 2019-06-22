@@ -11,7 +11,6 @@
 </head>
 <body class="{{ hyde_subtheme }}">
     <a href="#content" class="sr-only sr-only-focusable">{{ messages("Skip to main content") }}</a>
-
     <div class="hsidebar">
         <div class="container sidebar-sticky">
             {% if sidebar_title %}
@@ -28,19 +27,18 @@
             {{ footer.html_footer() }}
         </div>
     </div>
-
     <div class="content container" id="content">
        {% block content %}{% endblock %}
     </div>
     {{ body_end }}
     {{ template_hooks['body_end']() }}
     {{ base.late_load_js() }}
-    {% block extra_js %}
-        <script type="text/javascript">
-            $(function(){
-                $('.timeago').timeago();
-            });
-        </script>
-    {% endblock %}
+    <!-- fancy dates -->
+    <script>
+      moment.locale("{{ momentjs_locales[lang] }}");
+      fancydates({{ date_fanciness }}, {{ js_date_format }});
+    </script>
+    <!-- end fancy dates -->
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

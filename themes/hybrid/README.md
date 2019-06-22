@@ -1,7 +1,7 @@
 The Hybrid theme is based on the Hyde theme which is a port of the [Hyde theme by mdo](http://hyde.getpoole.com/) combined with features from the Zen theme family:
 
 * ForkAwesome font icons are supported
-* Timeago jQuery plugin is used
+* fancydates JS plugin is used
 * navigation links can be text only or icon only or combined
 * turn blog title and description in navigation bar on/off
 * Hyde color schemes are supported

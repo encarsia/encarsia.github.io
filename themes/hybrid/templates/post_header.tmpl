@@ -10,14 +10,12 @@
 
 {% macro html_translations(post) %}
     {% if post.translated_to|length > 1 %}
-        <div class="metadata posttranslations translations">
-            <h3 class="posttranslations-intro">{{ messages("Also available in:") }}</h3>
-            {% for langname in translations|sort %}
-                {% if langname != lang and post.is_translation_available(langname) %}
-                <p><a href="{{ post.permalink(langname) }}" rel="alternate" hreflang="{{ langname }}">{{ messages("LANGUAGE", langname) }}</a></p>
-                {% endif %}
-            {% endfor %}
-        </div>
+        &emsp; | &emsp; <i class="fa fa-language"> {{ messages("Also available in:") }}
+        {% for langname in translations|sort %}
+          {% if langname != lang and post.is_translation_available(langname) %}
+            <a href="{{ post.permalink(langname) }}" rel="alternate" hreflang="{{ langname }}">{{ messages("LANGUAGE", langname) }}</a>&emsp;
+          {% endif %}
+        {% endfor %}
     {% endif %}
 {% endmacro %}
 
@@ -29,16 +27,14 @@
 
 {% macro html_post_header() %}
     {{ html_title() }}
-    <span class="post-date">
-      <time class="timeago" datetime="{{ post.date.isoformat() }}">{{ post.formatted_date(date_format) }}</time>
-    </span>
-    {% if post.meta('link') %}
-            <p class="linkline"><a href="{{ post.meta('link') }}">{{ messages("Original site") }}</a></p>
-    {% endif %}
+    <p class="dateline">
+      <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="{{ post.formatted_date('webiso') }}" itemprop="datePublished" title="{{ post.formatted_date(date_format)|e }}">{{ post.formatted_date(date_format)|e }}</time>
+      {% if post.meta('link') %}
+         &emsp; | &emsp; <i class="fa fa-external-link><a href="{{ post.meta('link') }}">{{ messages("Original site") }}</a>
+      {% endif %}
+      {{ html_translations(post) }}</p>
     {% if post.description() %}
         <meta name="description" itemprop="description" content="{{ post.description()|e }}">
     {% endif %}
-
-    {{ html_translations(post) }}
     </header>
 {% endmacro %}
