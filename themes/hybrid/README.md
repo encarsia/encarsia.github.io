@@ -20,7 +20,7 @@ Specify preferences via GLOBAL_CONTEXT variable in the config:
 
 * use predefined color scheme by replacing 08 with one of 09, 0a, 0b, 0c, 0d, 0e, 0f
 * custom color scheme: edit subtheme name to "theme-custom" and define your colors in ``hybrid.css`` (*background-color* and *color* attribute)
-* see ``conf.py.sample`` for all available options
+* see ``conf.py.sample`` for details
 
 ## Title in sidebar
 
