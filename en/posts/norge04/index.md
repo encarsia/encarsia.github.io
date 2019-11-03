@@ -2,45 +2,45 @@
 .. title: Love Boat - The Real Story. Seetag
 .. slug: norge04
 .. date: 2019-03-24 12:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
-.. category: unterwegs
+.. tags: norway,cruise
+.. category: outandabout
 .. link: 
 .. description: 
 .. type: text
 -->
 
-# Tag 4. Ahoi!
+# Tag 4. Ahoy!
 
-Am Morgen treibt es mich raus und ich drehe vor dem Frühstück eine Runde an Deck. In der Anytime Bar gibt es Kaffee für Frühaufsteher. Ich grüße die herumstehenden Raucher im Vorbeigehen. Nach dem Frühstück okkupiere ich mit Buch und in Decken gehüllt eine Sofaecke draußen auf Deck 11. Es ist windig, wolkig, etwas schön, aber auch ein wenig kalt.
+The morning pulls me outside and I go for a pre-breakfast walk on deck. There is already coffee for the early birds at the Anytime Bar. I'm greeting the loafing smokers while passing them. Armoured with book and covered in blankets I occupy a beach sofa on deck 11 after breakfast. It is windy, cloudy, somehow nice but still quite cold.
 
-| ![](../../images/norge2019/08.png) |
+| ![](../../../images/norge2019/08.png) |
 | --- |
-| *Die Gelbdecken demonstrieren für mehr Entspannung und besseres Wetter.* |
+| *The 'Yellow Blankets' are demonstrating for more relaxing and better weather* |
 
-Das Wetter wird zunehmend schlechter und so verziehe ich mich am frühen Nachmittag und suche im Inneren nach einem ruhigen Plätzchen.  Dies erweist sich als gar nicht so einfach, aber die AIDA Bar kristallisiert sich aus verschiedenen Gründen als ein Hauptaufenthaltsraum heraus. Ich bin so inaktiv, dass ich das Mittagessen ausfallen lasse. Es setzt leichte Gereiztheit bei mir ein. Am Nachmittag steht wieder Edutainment auf dem Plan und der Ausflug zum Nordkap wird gebucht.
+The weather is getting worse and so I'm looking for a quiet place inside in the early afternoon. This proposition turns out to be not as easy but the AIDA bar is slowly becoming a regular residence. I am so inactive that I skip lunch. Also I'm getting a bit petulant. In the afternoon there is finally some edutainment to attend and I book the excursion to the Nordkapp.
 
-Ein Tourist tut, was ein Tourist tun muss.
+A tourist does what a tourist has to do.
 
-## Mehr Wetter
+## More weather
 
-Unser Schiff wird flankiert von zwei Tiefdruckgebieten. Das Hochdruckgebiet über heimatlichen Gefilden führt zu einem regen Luftmassenaustausch zwischen den dreien, als Bonus winkt das Tiefdruckgebiet über Island uns mit schäumenden Wellen über den Atlantik zu.
+Our ship is accompanied by two low-pressure areas. A high-pressure area over central Europe causes spring-like temperatures in the German homeland but also a huge airmass exchange between these three meteorological phenoma. As a bonus the low-pressure area over Iceland is greeting us with foaming waves over the Atlantic ocean.
 
-Kurz: Wir haben Sturm und Wellengang. Viel. Sehr viel.
+Short: We are caught in a storm with some respectable swell. A lot of it. 
 
-Was wir auch haben: viel Platz beim Abendessen und an der Bar. Man tänzelt so durch das inzwischen vertraute, wankende Schiff. Das Abendunterhaltungsprogramm wurde wegen des Wetters auf den nächsten Tag verlegt, Deck 6 und 11 sind aus Sicherheitsgründen gesperrt.
+What's also there a lot of: much space at the dinner restaurants and the bars. One prancels through the familiar, staggering ship. The evening entertainment programme was delayed to the next day and the decks 6 and 11 are completely closed for safety reasons.
 
-Wer nicht seekrank ist, verbringt seine Zeit mit Spiel, Spaß und Spannung in den Bars und träumt vom morgigen Landgang in Bodø.
+Anybody who isn't seasick spends the time playing games and chilling in the bars while dreaming of tomorrow's shore leave Bodø.
 
 ## Orga
 
-Eine nicht so höfliche Möglichkeit, die Zeit auf einem wankenden Schiff zu verbringen, ist es, dem Personal beim Arbeiten zuzusehen.
+A not so very polite opportunity to spend your time on a staggering ship is to watch the staff work.
 
-Nach ein paar Tagen fällt auf: die arbeiten immer (12+ Stunden) und auch stets an den selben Positionen.
-Man spaziert morgens oben an Deck und der Typ, der die Poolbar öffnet, bringt dir 3 Stunden später einen Kaffee und abends ein Bier. Ich wette, der "Nice Indian Guy" legt danach noch eine Schicht im Crew-Nachtclub ein. Ist der Typ vielleicht ein Vampir...? Das gleiche in den Restaurants: die Typen, den du morgens begrüßt, begrüßt man am Abend wieder.
+After a few days you notice some patterns: they always work (12+ hours) and mostly at the same positions.
+Going for a walk or run in the morning you recognize the guy open the pool bar. The same guy makes you a coffee three hours later and a beer in the evening. I bet this real nice Indian guy does a shift at the crew night club afterwords. Maybe this guy is a vampire...? Same for the restaurant staff. The guys you are greeting at breakfast, you are greeting at dinner again.
 
-Und die bleiben so verdammt freundlich dabei! Ich hoffe, die bekommen alle am Monatsende einen angemessenen Batzen Kohle überwiesen, denn ansonsten kann ich so eine Reise nie wieder machen...
+And all of them are so damn kind all of the time. I really hope they are getting paid appropriately, otherwise I could not go on a journey like this again...
 
-| ![](../../images/norge2019/46.jpg) |
+| ![](../../../images/norge2019/46.jpg) |
 | --- |
-| *Das tägliche Personalkarusell in der sternförmigen AIDA Bar* |
+| *Daily staff carousel of the star-shaped AIDA Bar* |
 

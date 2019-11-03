@@ -17,7 +17,7 @@ Am Morgen treibt es mich raus und ich drehe vor dem Frühstück eine Runde an De
 | --- |
 | *Die Gelbdecken demonstrieren für mehr Entspannung und besseres Wetter.* |
 
-Das Wetter wird zunehmend schlechter und so verziehe ich mich am frühen Nachmittag und suche im Inneren nach einem ruhigen Plätzchen.  Dies erweist sich als gar nicht so einfach, aber die AIDA Bar kristallisiert sich aus verschiedenen Gründen als ein Hauptaufenthaltsraum heraus. Ich bin so inaktiv, dass ich das Mittagessen ausfallen lasse. Es setzt leichte Gereiztheit bei mir ein. Am Nachmittag steht wieder Edutainment auf dem Plan und der Ausflug zum Nordkap wird gebucht.
+Das Wetter wird zunehmend schlechter und so verziehe ich mich am frühen Nachmittag und suche im Inneren nach einem ruhigen Plätzchen. Dies erweist sich als gar nicht so einfach, aber die AIDA Bar kristallisiert sich aus verschiedenen Gründen als ein Hauptaufenthaltsraum heraus. Ich bin so inaktiv, dass ich das Mittagessen ausfallen lasse. Es setzt leichte Gereiztheit bei mir ein. Am Nachmittag steht wieder Edutainment auf dem Plan und der Ausflug zum Nordkap wird gebucht.
 
 Ein Tourist tut, was ein Tourist tun muss.
 
