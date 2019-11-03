@@ -2,54 +2,53 @@
 .. title: Love Boat - The Real Story. Honningsvåg
 .. slug: norge06
 .. date: 2019-03-24 16:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
-.. category: unterwegs
+.. tags: norway,cruise
+.. category: outandabout
 .. link: 
 .. description: 
 .. type: text
 -->
 
-# Tag 6. Das Ende der Welt
+# Day 6. The end of the world
 
-Der vergangene lange Tag bringen mich dazu, bis 7 Uhr auszuschlafen. Wir werden noch bis zum Abend auf See unterwegs sein und dann im Hafen von Honningsvåg übernachten.
+The past days make me sleep until 7 o'clock. We will be at sea until the evening and stay overnight at the port of Honningsvåg. 
 
-Alle sind nach den Erlebnissen bester Stimmung. In unserer Reisegruppe ist aktuell niemand seekrank und auch unser Jüngster scheint sich nach Anlaufschwierigkeiten etwas eingelebt zu haben, er klatscht zum Frühstück das Personal ab und verabredet sich für später im Kids Club.
+After the stunning previous experiences everybody is in high spirits. There are currently no seasickness casualies in our small tourist group. Even our youngest member seems to have adapted to life on the boat, he is high-fiving staff at breakfast and makes an appointment to the Kids Club later.
 
-| ![](../../images/norge2019/14.png) |
+| ![](../../../images/norge2019/14.png) |
 | --- |
-| *Nordkapumfahrung in mystischem Licht* |
+| *Circumnavigating the North Cape in mystic lights* |
 
-Am Nachmittag passieren wir das Nordkap bei Sonnenuntergang. Die Sicht ist klar und man kann von weitem die Nordkaphalle und den Globus sehen. Ich stehe fast eine Stunde auf Deck 6 und genieße die Aussicht.
+In the afternoon we pass the North Cape during sundown. There is clear sight and one can see the North Cape hall and the globe from afar. Stunned in fascination I'm standing on deck 6 for almost an hour and enjoy the sight. 
 
-Später wird es windig und es schneit. Die nächtlichen Nordkaplandausflüge werden abgesagt, weil die Straße aufgrund des Schneegestöbers nicht freigegeben ist. Ob der Ausflug morgen klappt, ist noch unsicher.
+Later it gets windy and starts snowing. The nightly excursions to the North Cape are canceled, the road is not opened because of the weather conditions. It is still uncertain if the excursions will happen tomorrow.
 
-K. und ich schlendern durch das leere Honningsvåg. Wir schauen uns genauer das Schiff an und sehen: hinter unseren Kabinen befindet sich der Crew-Nachtclub, das erklärt einiges...
+K. and me roam through the empty, sleepy Honningsvåg. We take a closer look at the ship and discover: the crew night club is located right behind our cabins. Well, that explains a lot...
 
-| ![](../../images/norge2019/15.png) |
+| ![](../../../images/norge2019/15.png) |
 | --- |
-| *Honningsvåg im Schnee. Ein Schiff.* |
+| *Honningsvåg covered in snow. A ship.* |
 
-Dann grüne Schleier. Polarlichter. Als wir aufs Schiff zurückkehren, geht das Spektakel richtig los. Grüne, auch ein wenig rote Nordlichter tanzen stundenlang für uns am Himmel.
+Then green haze. Polar lights. As we return to the ship the show is just starting. Green, even a few red northern lights are dancing in the sky for hours.
 
-| ![](../../images/norge2019/16.png) |
+| ![](../../../images/norge2019/16.png) |
 | --- |
-| ![](../../images/norge2019/17.png) |
-| *Not all heros wear capes. [Bamse, the canine war hero.](https://de.wikipedia.org/wiki/Bamse_(Schiffshund))* |
+| ![](../../../images/norge2019/17.png) |
+| *Not all heros wear capes. [Bamse, the canine war hero.](https://en.wikipedia.org/wiki/Bamse_(St._Bernard)* |
 
+# Day 7. North Cape
 
-# Tag 7. Nordkapp
+Two perfect polar lights cruise days are behind us. Anything upcoming is just decoration on the cake.
 
-Es liegen zwei perfekte Polarlichtkreuzfahrttage hinter uns. Alles, was nun noch folgt, ist nur noch Deko auf dem Sahnehäubchen.
+We get ready for the land excursion to the North Cape which we had already seen from the ocean side just yesterday. It was cold and windy up there but the sight was clear and the place definitely worth the visit even without midnight sun.
 
-Es geht auf zum Landausflug zum Nordkap, das wir bereits gestern von der Wasserseite zu sehen bekamen. Dort oben war es kalt und windig und die Sicht war klar und so war der Ort auch ohne Mitternachtssonne definitiv den Besuch wert.
-
-| ![](../../images/norge2019/18.png) |
+| ![](../../../images/norge2019/18.png) |
 | --- |
-| *Hilsener fra Nordkapp! Touristenlevel over 9000!* |
+| *Hilsener fra Nordkapp! Tourist level over 9000!* |
 
-Gegen Abend wird der Seegang wieder rauher und so lasse ich den Tag gemütlich in der AIDA Bar ausklingen.
+In the evening the swell is getting stronger again and so I enjoyed the rest of the evening at the AIDA Bar.
 
-| ![](../../images/norge2019/19.png) |
+| ![](../../../images/norge2019/19.png) |
 | --- |
-| *Es ist alles so furchtbar...* |
+| *It's all so terrible...* |
 

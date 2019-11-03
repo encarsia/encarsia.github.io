@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Honningsvåg
 .. slug: norge06
 .. date: 2019-03-24 16:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
+.. tags: norwegen,kreuzfahrt
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -37,7 +37,7 @@ Dann grüne Schleier. Polarlichter. Als wir aufs Schiff zurückkehren, geht das 
 | *Not all heros wear capes. [Bamse, the canine war hero.](https://de.wikipedia.org/wiki/Bamse_(Schiffshund))* |
 
 
-# Tag 7. Nordkapp
+# Tag 7. Nordkap
 
 Es liegen zwei perfekte Polarlichtkreuzfahrttage hinter uns. Alles, was nun noch folgt, ist nur noch Deko auf dem Sahnehäubchen.
 
