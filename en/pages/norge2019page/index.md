@@ -48,7 +48,7 @@ The journey is called "Winter in the high North" and part of the travel operator
     ... look like this.
 
 !!! error "Translation incomplete."
-    Translation into English is still in progress, articles to go: [Tromsø](link://slug/norge07), [Trondheim](link://slug/norge08), [Bye Trondheim](link://slug/norge09), [Bergen](link://slug/norge10), [Day at the sea](link://slug/norge11)
+    Translation into English is still in progress, articles to go: [Trondheim](link://slug/norge08), [Bye Trondheim](link://slug/norge09), [Bergen](link://slug/norge10), [Day at the sea](link://slug/norge11)
 
 {!posts/norge01.en.md!}
 {!posts/norge02.en.md!}

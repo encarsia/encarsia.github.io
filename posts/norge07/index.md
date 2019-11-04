@@ -2,7 +2,7 @@
 .. title: Love Boat - The Real Story. Tromsø
 .. slug: norge07
 .. date: 2019-03-25 13:32:32 UTC+01:00
-.. tags: norwegen,norway,kreuzfahrt,cruise
+.. tags: norwegen,kreuzfahrt
 .. category: unterwegs
 .. link: 
 .. description: 
@@ -48,7 +48,7 @@ In mir verbreitet sich eine leicht sentimentale Stimmung. Mehr als die Hälfte d
 
 Mein Gehirn kann den Gedanken noch nicht ganz verarbeiten, dass in wenigen Tagen, nachdem man für zwei Wochen auf diesem Schiff mit hunderten von Menschen zusammengepfercht war und jeden Tag dieselben Leute gegrüßt und mit einigen einen kurzen Schwatz auf dem Flur gehalten hat (Hello Katrina!) die Wahrscheinlichkeit gegen Null geht, irgendjemanden von ihnen jemals wieder zu sehen. Die Gäste fahren nach Hause und machen da weiter, wo sie vor Hamburg aufgehört haben und die Crew sieht für zwei Wochen die nächsten Gesichter und macht da weiter, wo sie vor Hamburg aufgehört hat, nämlich sich ohne Unterlass den Arsch abzurackern (Kudos to all of you).
 
-In diesem Zusammenhang erscheint es bizarr, Verkumpelungsversuche bei Gästen zu sehen. Wie funktioniert das? Machen die so häufig Kreuzfahrten, dass die immer wieder den gleichen Crew-Leuten über den Weg laufen? Ich kenne solche freundschaftlichen Annäherungsversuche aus meiner eigenen Tätigkeit im Kundenservice. Es liegt in der Natur der Sache, mit einigen Menschen näher auf einer Sympathieebene zu sein als mit anderen. Und bei diesen ist man auch zu einem gewissen Grad bereit, auf einer persönlicheren Ebene zu kommunizieren, ohne dabei die Grenze der Professionalität zu überschreiten.
+In diesem Zusammenhang erscheint es bizarr, Verkumpelungsversuche bei Gästen mit Crewmitgliedern zu sehen. Wie funktioniert das? Machen die so häufig Kreuzfahrten, dass die immer wieder den gleichen Crew-Leuten über den Weg laufen? Ich kenne solche freundschaftlichen Annäherungsversuche aus meiner eigenen Tätigkeit im Kundenservice. Es liegt in der Natur der Sache, mit einigen Menschen näher auf einer Sympathieebene zu sein als mit anderen. Und bei diesen ist man auch zu einem gewissen Grad bereit, auf einer persönlicheren Ebene zu kommunizieren, ohne dabei die Grenze der Professionalität zu überschreiten.
 
 Auf einem Kreuzfahrtschiff ist die Situation völlig zugespitzt. Als Gast mache ich vielleicht die Reise meines Lebens, bei der jeder Tag aufregend ist. Für die anderen Gäste bist du der nervende Nachbar mit dem komischen Dialekt oder der nette Zufallsgesprächspartner beim morgendlichen Rundgang an Deck. Für die Crew bist du diejenige, die für zwei Wochen ihre Klamotten auf dem Sofa in der Kabine verteilt, in den nächtlichen Morgenstunden durch das Schiff schlendert und an der Bar Ipanema ohne Zucker und noch mehr Espresso trinkt. Bis die nächsten kommen.
 
