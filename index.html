@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://encarsia.github.io/">
 <link rel="icon" href="files/favicon.ico" sizes="48x48">
 <link rel="next" href="index-6.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/berlin-volksbegehren/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/embed-pixelfed/" type="text/html">
 </head>
 <body class="theme-custom">
     <a href="#content" class="sr-only sr-only-focusable">Springe zum Hauptinhalt</a>
@@ -52,12 +52,139 @@ Hybrid theme
     <div class="content container" id="content">
     
 <div class="post">
-    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/berlin-volksbegehren/" class="u-url">Die Deutsche Wohnen ist scheiße - und nun?</a></h1>
+    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/embed-pixelfed/" class="u-url">Embed Pixelfed posts (with Nikola)</a></h1>
+        <div class="metadata">
+            <p class="dateline">
+              <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-11-29T21:59:17+01:00" title="2019-11-29 21:59">2019-11-29 21:59</time>
+            
+                |   <i class="fa fa-comment"></i>             <a href="posts/embed-pixelfed/#disqus_thread" data-disqus-identifier="cache/posts/embed-pixelfed-posts-with-nikola.html">Kommentare</a>
+
+
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<div class="section" id="pixelwhat">
+<h2>Pixelwhat?</h2>
+<p><a class="reference external" href="https://pixelfed.org">Pixelfed</a> is the photo sharing platform of the fediverse. The FOSS version of Instagram so to speak.</p>
+<p>Recently I stumbled over the option to embed posts. You can generate the code via the post's centext menu. I discovered that embedding posts work even if this context menu is not available.</p>
+<img alt="/images/pixelfed-embed.png" src="images/pixelfed-embed.png">
+</div>
+<div class="section" id="shortcode-for-nikola">
+<h2>Shortcode for Nikola</h2>
+<p>The approach for creating and using a custom shortcode for Pixelfed corresponds basically to embedding Mastodon toots which I have already written a pretty <a class="reference external" href="posts/mastodon-nikola/">informative blog post</a> about.</p>
+<div class="section" id="how-to-use">
+<h3>How to use</h3>
+<p>Save the <code class="docutils literal">pixelfed.tmpl</code> file in the <code class="docutils literal">shortcode</code> folder of your Nikola site.</p>
+<script src="https://gist.github.com/f7ec256b32003d179326d6ebdec2a6ab.js"></script><noscript>
+<pre class="literal-block">{#
+Template engine: Jinja2
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/user/postnr % width=500}} will show a 500 px wide frame instead of the default 400 px
+#}
+
+&lt;iframe src="{{ status }}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width={{ width|default("400") }} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<script src="https://gist.github.com/6c63d9433b05878b7c751036a903f8d0.js"></script><noscript>
+<pre class="literal-block">&lt;%doc&gt;
+Template engine: Mako
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/p/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/p/user/postnr % width=500}} will show a frame of 500 px width instead of the default 400
+&lt;/%doc&gt;
+
+% if width is UNDEFINED:
+    &lt;% w = 400 %&gt;
+% else:
+    &lt;% w = width %&gt;
+% endif
+
+&lt;iframe src="${status}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width=${w} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<p>You can use the shortcode with reStructuredText and Markdown markup.</p>
+</div>
+<div class="section" id="what-s-hot-what-s-not">
+<h3>What's hot &amp; what's not</h3>
+<p>As stated before Pixelfed is in an early stage of development and not everything works flawlessly.</p>
+<table>
+<colgroup>
+<col style="width: 52%">
+<col style="width: 48%">
+</colgroup>
+<thead><tr>
+<th class="head"><p><strong>Embedding...</strong></p></th>
+<th class="head"><p><strong>Status</strong></p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p>single photo post</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>album post</p></td>
+<td><p><a class="reference external" href="https://github.com/pixelfed/pixelfed/issues/776">does not work</a></p></td>
+</tr>
+<tr>
+<td><p>animated GIF</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>video</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>collection</p></td>
+<td><p>does not work</p></td>
+</tr>
+</tbody>
+</table>
+<p>I post pictures of small things.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/104187465195196416/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Alm posts pictures of cats.</p>
+<p>
+<iframe src="https://pixelfed.de/p/alm10965/106018103883862016/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>esureL posts pictures of painted distribution boxes (and food).</p>
+<p>
+<iframe src="https://pixelfed.social/p/esureL/106030673873211392/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Keep moving.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/3294/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>
+<iframe src="https://pixelfed.social/p/atomjack/103513270102659072/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to an <a class="reference external" href="https://pixelfed.social/p/JOX/95141123726643200">album post</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/p/JOX/95141123726643200/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to a <a class="reference external" href="https://pixelfed.social/c/106059557062709248">collection</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/c/106059557062709248/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/berlin-volksbegehren/" class="u-url">Die Deutsche Wohnen ist scheiße - und nun?</a></h1>
         <div class="metadata">
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-04-21T17:47:51+02:00" title="2019-04-21 17:47">2019-04-21 17:47</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/berlin-volksbegehren/#disqus_thread" data-disqus-identifier="cache/posts/berlin-volksbegehren.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/berlin-volksbegehren/#disqus_thread" data-disqus-identifier="cache/posts/berlin-volksbegehren.html">Kommentare</a>
 
 
             </p>
@@ -373,7 +500,7 @@ Das wird schwer.</p>
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-29T14:40:10+01:00" title="2019-03-29 14:40">2019-03-29 14:40</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/non-0.7/#disqus_thread" data-disqus-identifier="cache/posts/non-07.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/non-0.7/#disqus_thread" data-disqus-identifier="cache/posts/non-07.html">Kommentare</a>
 
 
             </p>
@@ -445,7 +572,7 @@ Das wird schwer.</p>
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-28T12:32:32+01:00" title="2019-03-28 12:32">2019-03-28 12:32</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge11/#disqus_thread" data-disqus-identifier="cache/posts/norge11.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge11/#disqus_thread" data-disqus-identifier="cache/posts/norge11.html">Kommentare</a>
 
 
             </p>
@@ -497,7 +624,7 @@ Ich laufe die letzten paar Meter bis zur Haustür, sehe ein paar Gestalten in Ho
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-26T15:32:32+01:00" title="2019-03-26 15:32">2019-03-26 15:32</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge10/#disqus_thread" data-disqus-identifier="cache/posts/norge10.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge10/#disqus_thread" data-disqus-identifier="cache/posts/norge10.html">Kommentare</a>
 
 
             </p>
@@ -602,7 +729,7 @@ Dass Halle die regenreichste Stadt Deutschlands oder gar Europas sein soll, erwe
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-26T13:32:32+01:00" title="2019-03-26 13:32">2019-03-26 13:32</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge09/#disqus_thread" data-disqus-identifier="cache/posts/norge09.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge09/#disqus_thread" data-disqus-identifier="cache/posts/norge09.html">Kommentare</a>
 
 
             </p>
@@ -659,7 +786,7 @@ Dass Halle die regenreichste Stadt Deutschlands oder gar Europas sein soll, erwe
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-25T15:32:32+01:00" title="2019-03-25 15:32">2019-03-25 15:32</time>
             
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge08/#disqus_thread" data-disqus-identifier="cache/posts/norge08.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge08/#disqus_thread" data-disqus-identifier="cache/posts/norge08.html">Kommentare</a>
 
 
             </p>
@@ -731,7 +858,7 @@ Wie ein Knasti auf Hofgang.</p>
         <i class="fa fa-language"></i> Auch verfügbar in: 
             <a href="en/posts/norge07/" rel="alternate" hreflang="en">English</a> 
 
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge07/#disqus_thread" data-disqus-identifier="cache/posts/norge07.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge07/#disqus_thread" data-disqus-identifier="cache/posts/norge07.html">Kommentare</a>
 
 
             </p>
@@ -789,7 +916,7 @@ Es regnet.</p>
         <i class="fa fa-language"></i> Auch verfügbar in: 
             <a href="en/posts/norge06/" rel="alternate" hreflang="en">English</a> 
 
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge06/#disqus_thread" data-disqus-identifier="cache/posts/norge06.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge06/#disqus_thread" data-disqus-identifier="cache/posts/norge06.html">Kommentare</a>
 
 
             </p>
@@ -862,7 +989,7 @@ Es regnet.</p>
         <i class="fa fa-language"></i> Auch verfügbar in: 
             <a href="en/posts/norge05/" rel="alternate" hreflang="en">English</a> 
 
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge05/#disqus_thread" data-disqus-identifier="cache/posts/norge05.html">Comments</a>
+                |   <i class="fa fa-comment"></i>             <a href="posts/norge05/#disqus_thread" data-disqus-identifier="cache/posts/norge05.html">Kommentare</a>
 
 
             </p>
@@ -927,60 +1054,13 @@ Je Passagier kann man zwei große Gepäckstücke aufgeben. Wenn man wie ich mit 
 <p>Was für ein großartiger Tag.</p>
 </div>
     </div>
-    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/norge04/" class="u-url">Love Boat - The Real Story. Seetag</a></h1>
-        <div class="metadata">
-            <p class="dateline">
-              <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-24T12:32:32+01:00" title="2019-03-24 12:32">2019-03-24 12:32</time>
-                        |  
-        <i class="fa fa-language"></i> Auch verfügbar in: 
-            <a href="en/posts/norge04/" rel="alternate" hreflang="en">English</a> 
-
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge04/#disqus_thread" data-disqus-identifier="cache/posts/norge04.html">Comments</a>
-
-
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<h2 id="tag-4-ahoi">Tag 4. Ahoi!</h2>
-<p>Am Morgen treibt es mich raus und ich drehe vor dem Frühstück eine Runde an Deck. In der Anytime Bar gibt es Kaffee für Frühaufsteher. Ich grüße die herumstehenden Raucher im Vorbeigehen. Nach dem Frühstück okkupiere ich mit Buch und in Decken gehüllt eine Sofaecke draußen auf Deck 11. Es ist windig, wolkig, etwas schön, aber auch ein wenig kalt.</p>
-<table>
-<thead><tr>
-<th><img alt="" src="images/norge2019/08.png"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>Die Gelbdecken demonstrieren für mehr Entspannung und besseres Wetter.</em></td>
-</tr></tbody>
-</table>
-<p>Das Wetter wird zunehmend schlechter und so verziehe ich mich am frühen Nachmittag und suche im Inneren nach einem ruhigen Plätzchen. Dies erweist sich als gar nicht so einfach, aber die AIDA Bar kristallisiert sich aus verschiedenen Gründen als ein Hauptaufenthaltsraum heraus. Ich bin so inaktiv, dass ich das Mittagessen ausfallen lasse. Es setzt leichte Gereiztheit bei mir ein. Am Nachmittag steht wieder Edutainment auf dem Plan und der Ausflug zum Nordkap wird gebucht.</p>
-<p>Ein Tourist tut, was ein Tourist tun muss.</p>
-<h3>Mehr Wetter</h3>
-<p>Unser Schiff wird flankiert von zwei Tiefdruckgebieten. Das Hochdruckgebiet über heimatlichen Gefilden führt zu einem regen Luftmassenaustausch zwischen den dreien, als Bonus winkt das Tiefdruckgebiet über Island uns mit schäumenden Wellen über den Atlantik zu.</p>
-<p>Kurz: Wir haben Sturm und Wellengang. Viel. Sehr viel.</p>
-<p>Was wir auch haben: viel Platz beim Abendessen und an der Bar. Man tänzelt so durch das inzwischen vertraute, wankende Schiff. Das Abendunterhaltungsprogramm wurde wegen des Wetters auf den nächsten Tag verlegt, Deck 6 und 11 sind aus Sicherheitsgründen gesperrt.</p>
-<p>Wer nicht seekrank ist, verbringt seine Zeit mit Spiel, Spaß und Spannung in den Bars und träumt vom morgigen Landgang in Bodø.</p>
-<h3>Orga</h3>
-<p>Eine nicht so höfliche Möglichkeit, die Zeit auf einem wankenden Schiff zu verbringen, ist es, dem Personal beim Arbeiten zuzusehen.</p>
-<p>Nach ein paar Tagen fällt auf: die arbeiten immer (12+ Stunden) und auch stets an den selben Positionen.
-Man spaziert morgens oben an Deck und der Typ, der die Poolbar öffnet, bringt dir 3 Stunden später einen Kaffee und abends ein Bier. Ich wette, der "Nice Indian Guy" legt danach noch eine Schicht im Crew-Nachtclub ein. Ist der Typ vielleicht ein Vampir...? Das gleiche in den Restaurants: die Typen, den du morgens begrüßt, begrüßt man am Abend wieder.</p>
-<p>Und die bleiben so verdammt freundlich dabei! Ich hoffe, die bekommen alle am Monatsende einen angemessenen Batzen Kohle überwiesen, denn ansonsten kann ich so eine Reise nie wieder machen...</p>
-<table>
-<thead><tr>
-<th><img alt="" src="images/norge2019/46.jpg"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>Das tägliche Personalkarusell in der sternförmigen AIDA Bar</em></td>
-</tr></tbody>
-</table>
-</div>
-    </div>
     </article>
 </div>
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
                 <a href="index-6.html" rel="next">Ältere Einträge</a>
             </li>
-        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
         </script>
 </div>

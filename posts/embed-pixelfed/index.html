@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html prefix="
+" lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge and Destroy · Embed Pixelfed posts (with Nikola) </title>
+<link href="../../assets/css/all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700%7CAbril+Fatface">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS (de)" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS (en)" href="../../en/rss.xml">
+<link rel="canonical" href="https://encarsia.github.io/posts/embed-pixelfed/">
+<link rel="icon" href="../../files/favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Anke (encarsia)">
+<link rel="prev" href="../berlin-volksbegehren/" title="Die Deutsche Wohnen ist scheiße - und nun?" type="text/html">
+<link rel="alternate" hreflang="en" href="../../en/posts/embed-pixelfed/">
+</head>
+<body class="theme-custom">
+    <a href="#content" class="sr-only sr-only-focusable">Springe zum Hauptinhalt</a>
+    <div class="hsidebar">
+        <div class="container sidebar-sticky">
+            
+                <nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="../../index.html" title="Home"><i class="fa fa-home"></i>Home</a>
+            <a class="sidebar-nav-item" href="../tutorial-reihe-glade" title="Tutorials"><i class="fa fa-lightbulb-o"></i>Tutorials</a>
+            <a class="sidebar-nav-item" href="../../projects/index.html" title="Projects"><i class="fa fa-wrench"></i>Projects</a>
+            <a class="sidebar-nav-item" href="https://octodon.social/@encarsia" title="Mastodon"><i class="fa fa-mastodon"></i>Mastodon</a>
+            <a class="sidebar-nav-item" href="https://pixelfed.social/encarsia" title="Pixelfed"><i class="fa fa-pixelfed"></i>Pixelfed</a>
+            <a class="sidebar-nav-item" href="https://twitter.com/encarsia_" title="Twitter"><i class="fa fa-twitter"></i>Twitter</a>
+            <a class="sidebar-nav-item" href="https://github.com/encarsia" title="GitHub"><i class="fa fa-github"></i>GitHub</a>
+            <a class="sidebar-nav-item" href="../../pages/gplus_the_end" title="Google+"><i class="fa fa-google-plus-official"></i>Google+</a>
+            <a class="sidebar-nav-item" href="../../categories/index.html" title="Tags"><i class="fa fa-tags"></i>Tags</a>
+            <a class="sidebar-nav-item" href="../../archive.html" title="Archive"><i class="fa fa-folder-open"></i>Archive</a>
+            <a class="sidebar-nav-item" href="../../rss.xml" title="RSS"><i class="fa fa-feed"></i>RSS</a>
+    
+    
+    </nav><footer id="footer"><span class="copyright">
+              
+<hr>
+Contents © 2019 <a href="mailto:An.Ke@bahnfreikartoffelbrei.de">Anke (encarsia)</a>
+<br> 
+Powered by <a href="http://getnikola.com">Nikola</a> - 
+Hybrid theme
+
+            </span>
+            
+            
+        </footer>
+</div>
+    </div>
+    <div class="content container" id="content">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><h1 class="post-title p-name"><a href="." class="u-url">Embed Pixelfed posts (with Nikola)</a></h1>
+
+    <p class="dateline">
+      <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-11-29T21:59:17+01:00" itemprop="datePublished" title="2019-11-29 21:59">2019-11-29 21:59</time>   |   <i class="fa fa-user"></i> 
+         Anke (encarsia)
+      
+      
+    </p>
+    
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="section" id="pixelwhat">
+<h2>Pixelwhat?</h2>
+<p><a class="reference external" href="https://pixelfed.org">Pixelfed</a> is the photo sharing platform of the fediverse. The FOSS version of Instagram so to speak.</p>
+<p>Recently I stumbled over the option to embed posts. You can generate the code via the post's centext menu. I discovered that embedding posts work even if this context menu is not available.</p>
+<img alt="/images/pixelfed-embed.png" src="../../images/pixelfed-embed.png">
+</div>
+<div class="section" id="shortcode-for-nikola">
+<h2>Shortcode for Nikola</h2>
+<p>The approach for creating and using a custom shortcode for Pixelfed corresponds basically to embedding Mastodon toots which I have already written a pretty <a class="reference external" href="../mastodon-nikola/">informative blog post</a> about.</p>
+<div class="section" id="how-to-use">
+<h3>How to use</h3>
+<p>Save the <code class="docutils literal">pixelfed.tmpl</code> file in the <code class="docutils literal">shortcode</code> folder of your Nikola site.</p>
+<script src="https://gist.github.com/f7ec256b32003d179326d6ebdec2a6ab.js"></script><noscript>
+<pre class="literal-block">{#
+Template engine: Jinja2
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/user/postnr % width=500}} will show a 500 px wide frame instead of the default 400 px
+#}
+
+&lt;iframe src="{{ status }}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width={{ width|default("400") }} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<script src="https://gist.github.com/6c63d9433b05878b7c751036a903f8d0.js"></script><noscript>
+<pre class="literal-block">&lt;%doc&gt;
+Template engine: Mako
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/p/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/p/user/postnr % width=500}} will show a frame of 500 px width instead of the default 400
+&lt;/%doc&gt;
+
+% if width is UNDEFINED:
+    &lt;% w = 400 %&gt;
+% else:
+    &lt;% w = width %&gt;
+% endif
+
+&lt;iframe src="${status}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width=${w} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<p>You can use the shortcode with reStructuredText and Markdown markup.</p>
+</div>
+<div class="section" id="what-s-hot-what-s-not">
+<h3>What's hot &amp; what's not</h3>
+<p>As stated before Pixelfed is in an early stage of development and not everything works flawlessly.</p>
+<table>
+<colgroup>
+<col style="width: 52%">
+<col style="width: 48%">
+</colgroup>
+<thead><tr>
+<th class="head"><p><strong>Embedding...</strong></p></th>
+<th class="head"><p><strong>Status</strong></p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p>single photo post</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>album post</p></td>
+<td><p><a class="reference external" href="https://github.com/pixelfed/pixelfed/issues/776">does not work</a></p></td>
+</tr>
+<tr>
+<td><p>animated GIF</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>video</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>collection</p></td>
+<td><p>does not work</p></td>
+</tr>
+</tbody>
+</table>
+<p>I post pictures of small things.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/104187465195196416/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Alm posts pictures of cats.</p>
+<p>
+<iframe src="https://pixelfed.de/p/alm10965/106018103883862016/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>esureL posts pictures of painted distribution boxes (and food).</p>
+<p>
+<iframe src="https://pixelfed.social/p/esureL/106030673873211392/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Keep moving.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/3294/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>
+<iframe src="https://pixelfed.social/p/atomjack/103513270102659072/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to an <a class="reference external" href="https://pixelfed.social/p/JOX/95141123726643200">album post</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/p/JOX/95141123726643200/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to a <a class="reference external" href="https://pixelfed.social/c/106059557062709248">collection</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/c/106059557062709248/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><p itemprop="keywords" class="tags">
+            <span class="tag"><a class="p-category" href="../../categories/fediverse/" rel="tag">fediverse</a></span>
+            <span class="tag"><a class="p-category" href="../../categories/nikola/" rel="tag">nikola</a></span>
+            <span class="tag"><a class="p-category" href="../../categories/pixelfed/" rel="tag">pixelfed</a></span>
+      </p>
+
+            <div class="pager hidden-print pagination">
+
+            <span class="previous pagination-item older">
+                <a href="../berlin-volksbegehren/" rel="prev" title="Die Deutsche Wohnen ist scheiße - und nun?">
+                Vorheriger Eintrag
+                </a>
+            </span>
+
+
+            <span class="next pagination-item newer">
+Nächster Eintrag
+            </span>
+
+        </div>
+
+    </nav></aside><section class="comments hidden-print"><h2>Kommentare</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="bahnfreikartoffelbrei",
+            disqus_url="https://encarsia.github.io/posts/embed-pixelfed/",
+        disqus_title="Embed Pixelfed posts (with Nikola)",
+        disqus_identifier="cache/posts/embed-pixelfed-posts-with-nikola.html",
+        disqus_config = function () {
+            this.language = "de";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+    
+    
+                <script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><!-- fancy dates --><script>
+      moment.locale("de");
+      fancydates(2, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

@@ -52,7 +52,134 @@ Hybrid theme
     <div class="content container" id="content">
     
 <div class="post">
-    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/berlin-volksbegehren/" class="u-url">Die Deutsche Wohnen ist scheiße - und nun?</a></h1>
+    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/embed-pixelfed/" class="u-url">Embed Pixelfed posts (with Nikola)</a></h1>
+        <div class="metadata">
+            <p class="dateline">
+              <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-11-29T21:59:17+01:00" title="2019-11-29 21:59">2019-11-29 21:59</time>
+            
+                |   <i class="fa fa-comment"></i>             <a href="posts/embed-pixelfed/#disqus_thread" data-disqus-identifier="cache/posts/embed-pixelfed-posts-with-nikola.html">Comments</a>
+
+
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<div class="section" id="pixelwhat">
+<h2>Pixelwhat?</h2>
+<p><a class="reference external" href="https://pixelfed.org">Pixelfed</a> is the photo sharing platform of the fediverse. The FOSS version of Instagram so to speak.</p>
+<p>Recently I stumbled over the option to embed posts. You can generate the code via the post's centext menu. I discovered that embedding posts work even if this context menu is not available.</p>
+<img alt="/images/pixelfed-embed.png" src="../images/pixelfed-embed.png">
+</div>
+<div class="section" id="shortcode-for-nikola">
+<h2>Shortcode for Nikola</h2>
+<p>The approach for creating and using a custom shortcode for Pixelfed corresponds basically to embedding Mastodon toots which I have already written a pretty <a class="reference external" href="posts/mastodon-nikola/">informative blog post</a> about.</p>
+<div class="section" id="how-to-use">
+<h3>How to use</h3>
+<p>Save the <code class="docutils literal">pixelfed.tmpl</code> file in the <code class="docutils literal">shortcode</code> folder of your Nikola site.</p>
+<script src="https://gist.github.com/f7ec256b32003d179326d6ebdec2a6ab.js"></script><noscript>
+<pre class="literal-block">{#
+Template engine: Jinja2
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/user/postnr % width=500}} will show a 500 px wide frame instead of the default 400 px
+#}
+
+&lt;iframe src="{{ status }}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width={{ width|default("400") }} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<script src="https://gist.github.com/6c63d9433b05878b7c751036a903f8d0.js"></script><noscript>
+<pre class="literal-block">&lt;%doc&gt;
+Template engine: Mako
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/p/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/p/user/postnr % width=500}} will show a frame of 500 px width instead of the default 400
+&lt;/%doc&gt;
+
+% if width is UNDEFINED:
+    &lt;% w = 400 %&gt;
+% else:
+    &lt;% w = width %&gt;
+% endif
+
+&lt;iframe src="${status}/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width=${w} allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+</pre>
+</noscript>
+<p>You can use the shortcode with reStructuredText and Markdown markup.</p>
+</div>
+<div class="section" id="what-s-hot-what-s-not">
+<h3>What's hot &amp; what's not</h3>
+<p>As stated before Pixelfed is in an early stage of development and not everything works flawlessly.</p>
+<table>
+<colgroup>
+<col style="width: 52%">
+<col style="width: 48%">
+</colgroup>
+<thead><tr>
+<th class="head"><p><strong>Embedding...</strong></p></th>
+<th class="head"><p><strong>Status</strong></p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p>single photo post</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>album post</p></td>
+<td><p><a class="reference external" href="https://github.com/pixelfed/pixelfed/issues/776">does not work</a></p></td>
+</tr>
+<tr>
+<td><p>animated GIF</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>video</p></td>
+<td><p>works</p></td>
+</tr>
+<tr>
+<td><p>collection</p></td>
+<td><p>does not work</p></td>
+</tr>
+</tbody>
+</table>
+<p>I post pictures of small things.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/104187465195196416/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Alm posts pictures of cats.</p>
+<p>
+<iframe src="https://pixelfed.de/p/alm10965/106018103883862016/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>esureL posts pictures of painted distribution boxes (and food).</p>
+<p>
+<iframe src="https://pixelfed.social/p/esureL/106030673873211392/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>Keep moving.</p>
+<p>
+<iframe src="https://pixelfed.social/p/encarsia/3294/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>
+<iframe src="https://pixelfed.social/p/atomjack/103513270102659072/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to an <a class="reference external" href="https://pixelfed.social/p/JOX/95141123726643200">album post</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/p/JOX/95141123726643200/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+<p>This points to a <a class="reference external" href="https://pixelfed.social/c/106059557062709248">collection</a>.</p>
+<p>
+<iframe src="https://pixelfed.social/c/106059557062709248/embed?caption=true&amp;likes=false&amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script></p>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/berlin-volksbegehren/" class="u-url">Die Deutsche Wohnen ist scheiße - und nun?</a></h1>
         <div class="metadata">
             <p class="dateline">
               <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-04-21T17:47:51+02:00" title="2019-04-21 17:47">2019-04-21 17:47</time>
@@ -928,60 +1055,13 @@ Since experiencing the difficult weather conditions on the second day we have be
 <p>What a great day.</p>
 </div>
     </div>
-    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/norge04/" class="u-url">Love Boat - The Real Story. Seetag</a></h1>
-        <div class="metadata">
-            <p class="dateline">
-              <i class="fa fa-clock-o"></i> <time class="published dt-published" datetime="2019-03-24T12:32:32+01:00" title="2019-03-24 12:32">2019-03-24 12:32</time>
-                        |  
-        <i class="fa fa-language"></i> Also available in: 
-            <a href="../posts/norge04/" rel="alternate" hreflang="de">Deutsch</a> 
-
-                |   <i class="fa fa-comment"></i>             <a href="posts/norge04/#disqus_thread" data-disqus-identifier="cache/posts/norge04.html">Comments</a>
-
-
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<h2 id="tag-4-ahoy">Tag 4. Ahoy!</h2>
-<p>The morning pulls me outside and I go for a pre-breakfast walk on deck. There is already coffee for the early birds at the Anytime Bar. I'm greeting the loafing smokers while passing them. Armoured with book and covered in blankets I occupy a beach sofa on deck 11 after breakfast. It is windy, cloudy, somehow nice but still quite cold.</p>
-<table>
-<thead><tr>
-<th><img alt="" src="../images/norge2019/08.png"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>The 'Yellow Blankets' are demonstrating for more relaxing and better weather</em></td>
-</tr></tbody>
-</table>
-<p>The weather is getting worse and so I'm looking for a quiet place inside in the early afternoon. This proposition turns out to be not as easy but the AIDA bar is slowly becoming a regular residence. I am so inactive that I skip lunch. Also I'm getting a bit petulant. In the afternoon there is finally some edutainment to attend and I book the excursion to the Nordkapp.</p>
-<p>A tourist does what a tourist has to do.</p>
-<h3>More weather</h3>
-<p>Our ship is accompanied by two low-pressure areas. A high-pressure area over central Europe causes spring-like temperatures in the German homeland but also a huge airmass exchange between these three meteorological phenoma. As a bonus the low-pressure area over Iceland is greeting us with foaming waves over the Atlantic ocean.</p>
-<p>Short: We are caught in a storm with some respectable swell. A lot of it. </p>
-<p>What's also there a lot of: much space at the dinner restaurants and the bars. One prancels through the familiar, staggering ship. The evening entertainment programme was delayed to the next day and the decks 6 and 11 are completely closed for safety reasons.</p>
-<p>Anybody who isn't seasick spends the time playing games and chilling in the bars while dreaming of tomorrow's shore leave Bodø.</p>
-<h3>Orga</h3>
-<p>A not so very polite opportunity to spend your time on a staggering ship is to watch the staff work.</p>
-<p>After a few days you notice some patterns: they always work (12+ hours) and mostly at the same positions.
-Going for a walk or run in the morning you recognize the guy open the pool bar. The same guy makes you a coffee three hours later and a beer in the evening. I bet this real nice Indian guy does a shift at the crew night club afterwords. Maybe this guy is a vampire...? Same for the restaurant staff. The guys you are greeting at breakfast, you are greeting at dinner again.</p>
-<p>And all of them are so damn kind all of the time. I really hope they are getting paid appropriately, otherwise I could not go on a journey like this again...</p>
-<table>
-<thead><tr>
-<th><img alt="" src="../images/norge2019/46.jpg"></th>
-</tr></thead>
-<tbody><tr>
-<td><em>Daily staff carousel of the star-shaped AIDA Bar</em></td>
-</tr></tbody>
-</table>
-</div>
-    </div>
     </article>
 </div>
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
                 <a href="index-6.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        </ul></nav><script>var disqus_shortname="bahnfreikartoffelbrei";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
         </script>
 </div>

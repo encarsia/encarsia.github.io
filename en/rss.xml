@@ -1,5 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy</title><link>https://encarsia.github.io/</link><description>Gute Absichten</description><atom:link href="https://encarsia.github.io/en/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Mon, 04 Nov 2019 11:53:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Die Deutsche Wohnen ist scheiße - und nun?</title><link>https://encarsia.github.io/en/posts/berlin-volksbegehren/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents topic" id="inhalt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Merge and Destroy</title><link>https://encarsia.github.io/</link><description>Gute Absichten</description><atom:link href="https://encarsia.github.io/en/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 29 Nov 2019 22:41:52 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Embed Pixelfed posts (with Nikola)</title><link>https://encarsia.github.io/en/posts/embed-pixelfed/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="section" id="pixelwhat"&gt;
+&lt;h2&gt;Pixelwhat?&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://pixelfed.org"&gt;Pixelfed&lt;/a&gt; is the photo sharing platform of the fediverse. The FOSS version of Instagram so to speak.&lt;/p&gt;
+&lt;p&gt;Recently I stumbled over the option to embed posts. You can generate the code via the post's centext menu. I discovered that embedding posts work even if this context menu is not available.&lt;/p&gt;
+&lt;img alt="/images/pixelfed-embed.png" src="https://encarsia.github.io/images/pixelfed-embed.png"&gt;
+&lt;/div&gt;
+&lt;div class="section" id="shortcode-for-nikola"&gt;
+&lt;h2&gt;Shortcode for Nikola&lt;/h2&gt;
+&lt;p&gt;The approach for creating and using a custom shortcode for Pixelfed corresponds basically to embedding Mastodon toots which I have already written a pretty &lt;a class="reference external" href="https://encarsia.github.io/en/posts/mastodon-nikola/"&gt;informative blog post&lt;/a&gt; about.&lt;/p&gt;
+&lt;div class="section" id="how-to-use"&gt;
+&lt;h3&gt;How to use&lt;/h3&gt;
+&lt;p&gt;Save the &lt;code class="docutils literal"&gt;pixelfed.tmpl&lt;/code&gt; file in the &lt;code class="docutils literal"&gt;shortcode&lt;/code&gt; folder of your Nikola site.&lt;/p&gt;
+&lt;script src="https://gist.github.com/f7ec256b32003d179326d6ebdec2a6ab.js"&gt;&lt;/script&gt;&lt;noscript&gt;&lt;pre class="literal-block"&gt;{#
+Template engine: Jinja2
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/user/postnr % width=500}} will show a 500 px wide frame instead of the default 400 px
+#}
+
+&amp;lt;iframe src="{{ status }}/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width={{ width|default("400") }} allowfullscreen="allowfullscreen"&amp;gt;&amp;lt;/iframe&amp;gt;&amp;lt;script async defer src="https://pixelfed.social/embed.js"&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/pre&gt;
+&lt;/noscript&gt;&lt;script src="https://gist.github.com/6c63d9433b05878b7c751036a903f8d0.js"&gt;&lt;/script&gt;&lt;noscript&gt;&lt;pre class="literal-block"&gt;&amp;lt;%doc&amp;gt;
+Template engine: Mako
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/p/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/p/user/postnr % width=500}} will show a frame of 500 px width instead of the default 400
+&amp;lt;/%doc&amp;gt;
+
+% if width is UNDEFINED:
+    &amp;lt;% w = 400 %&amp;gt;
+% else:
+    &amp;lt;% w = width %&amp;gt;
+% endif
+
+&amp;lt;iframe src="${status}/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width=${w} allowfullscreen="allowfullscreen"&amp;gt;&amp;lt;/iframe&amp;gt;&amp;lt;script async defer src="https://pixelfed.social/embed.js"&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/pre&gt;
+&lt;/noscript&gt;&lt;p&gt;You can use the shortcode with reStructuredText and Markdown markup.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-s-hot-what-s-not"&gt;
+&lt;h3&gt;What's hot &amp;amp; what's not&lt;/h3&gt;
+&lt;p&gt;As stated before Pixelfed is in an early stage of development and not everything works flawlessly.&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 52%"&gt;
+&lt;col style="width: 48%"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;Embedding...&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;single photo post&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;works&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;album post&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/pixelfed/pixelfed/issues/776"&gt;does not work&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;animated GIF&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;works&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;video&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;works&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;collection&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;does not work&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I post pictures of small things.&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/p/encarsia/104187465195196416/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;Alm posts pictures of cats.&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.de/p/alm10965/106018103883862016/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;esureL posts pictures of painted distribution boxes (and food).&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/p/esureL/106030673873211392/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;Keep moving.&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/p/encarsia/3294/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/p/atomjack/103513270102659072/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;This points to an &lt;a class="reference external" href="https://pixelfed.social/p/JOX/95141123726643200"&gt;album post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/p/JOX/95141123726643200/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;This points to a &lt;a class="reference external" href="https://pixelfed.social/c/106059557062709248"&gt;collection&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+&lt;iframe src="https://pixelfed.social/c/106059557062709248/embed?caption=true&amp;amp;likes=false&amp;amp;layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;script async defer src="https://pixelfed.social/embed.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>https://encarsia.github.io/en/posts/embed-pixelfed/</guid><pubDate>Fri, 29 Nov 2019 20:59:17 GMT</pubDate></item><item><title>Die Deutsche Wohnen ist scheiße - und nun?</title><link>https://encarsia.github.io/en/posts/berlin-volksbegehren/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;div class="contents topic" id="inhalt"&gt;
 &lt;p class="topic-title first"&gt;Inhalt&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="https://encarsia.github.io/en/posts/berlin-volksbegehren/#auf-linie-gebracht" id="id40"&gt;Auf Linie gebracht&lt;/a&gt;&lt;/li&gt;
@@ -745,41 +856,4 @@ Since experiencing the difficult weather conditions on the second day we have be
 &lt;p&gt;We remain outside in this winter night staring into the night sky. The clouds slowly dissolve. The weather forecast predicts lots of clouds and rain for the next days and somebody says "Tonight's the night of nights."&lt;/p&gt;
 &lt;p&gt;Deck 11 has awoken. The news of polar lights sightings are transmitted into steel Moby Dick. There is lively movement of people going in and out.&lt;/p&gt;
 &lt;p&gt;Tonight the sky is giving us the green light. Freezing and excitement - the loyal companions of the northern lights - stay with us until 2 o'clock in the morning. &lt;/p&gt;
-&lt;p&gt;What a great day.&lt;/p&gt;&lt;/div&gt;</description><category>cruise</category><category>norway</category><guid>https://encarsia.github.io/en/posts/norge05/</guid><pubDate>Sun, 24 Mar 2019 13:32:32 GMT</pubDate></item><item><title>Love Boat - The Real Story. Seetag</title><link>https://encarsia.github.io/en/posts/norge04/</link><dc:creator>Anke (encarsia)</dc:creator><description>&lt;div&gt;&lt;h2 id="tag-4-ahoy"&gt;Tag 4. Ahoy!&lt;/h2&gt;
-&lt;p&gt;The morning pulls me outside and I go for a pre-breakfast walk on deck. There is already coffee for the early birds at the Anytime Bar. I'm greeting the loafing smokers while passing them. Armoured with book and covered in blankets I occupy a beach sofa on deck 11 after breakfast. It is windy, cloudy, somehow nice but still quite cold.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img alt="" src="https://encarsia.github.io/images/norge2019/08.png"&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;The 'Yellow Blankets' are demonstrating for more relaxing and better weather&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The weather is getting worse and so I'm looking for a quiet place inside in the early afternoon. This proposition turns out to be not as easy but the AIDA bar is slowly becoming a regular residence. I am so inactive that I skip lunch. Also I'm getting a bit petulant. In the afternoon there is finally some edutainment to attend and I book the excursion to the Nordkapp.&lt;/p&gt;
-&lt;p&gt;A tourist does what a tourist has to do.&lt;/p&gt;
-&lt;h3&gt;More weather&lt;/h3&gt;
-&lt;p&gt;Our ship is accompanied by two low-pressure areas. A high-pressure area over central Europe causes spring-like temperatures in the German homeland but also a huge airmass exchange between these three meteorological phenoma. As a bonus the low-pressure area over Iceland is greeting us with foaming waves over the Atlantic ocean.&lt;/p&gt;
-&lt;p&gt;Short: We are caught in a storm with some respectable swell. A lot of it. &lt;/p&gt;
-&lt;p&gt;What's also there a lot of: much space at the dinner restaurants and the bars. One prancels through the familiar, staggering ship. The evening entertainment programme was delayed to the next day and the decks 6 and 11 are completely closed for safety reasons.&lt;/p&gt;
-&lt;p&gt;Anybody who isn't seasick spends the time playing games and chilling in the bars while dreaming of tomorrow's shore leave Bodø.&lt;/p&gt;
-&lt;h3&gt;Orga&lt;/h3&gt;
-&lt;p&gt;A not so very polite opportunity to spend your time on a staggering ship is to watch the staff work.&lt;/p&gt;
-&lt;p&gt;After a few days you notice some patterns: they always work (12+ hours) and mostly at the same positions.
-Going for a walk or run in the morning you recognize the guy open the pool bar. The same guy makes you a coffee three hours later and a beer in the evening. I bet this real nice Indian guy does a shift at the crew night club afterwords. Maybe this guy is a vampire...? Same for the restaurant staff. The guys you are greeting at breakfast, you are greeting at dinner again.&lt;/p&gt;
-&lt;p&gt;And all of them are so damn kind all of the time. I really hope they are getting paid appropriately, otherwise I could not go on a journey like this again...&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img alt="" src="https://encarsia.github.io/images/norge2019/46.jpg"&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Daily staff carousel of the star-shaped AIDA Bar&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;</description><category>cruise</category><category>norway</category><guid>https://encarsia.github.io/en/posts/norge04/</guid><pubDate>Sun, 24 Mar 2019 11:32:32 GMT</pubDate></item></channel></rss>
+&lt;p&gt;What a great day.&lt;/p&gt;&lt;/div&gt;</description><category>cruise</category><category>norway</category><guid>https://encarsia.github.io/en/posts/norge05/</guid><pubDate>Sun, 24 Mar 2019 13:32:32 GMT</pubDate></item></channel></rss>

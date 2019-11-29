@@ -1,7 +1,7 @@
 .. title: Mastodon-Tröts mit Nikola einbetten
 .. slug: mastodon-nikola
 .. date: 2018-09-18 15:50:16 UTC+02:00
-.. tags: nikola,mastodon
+.. tags: nikola,mastodon,fediverse
 .. category: socialmedia
 .. link: 
 .. description: 
@@ -34,11 +34,10 @@ Mach dir deinen eigenen Shortcode
 *********************************
 
 Mittels `vorlagenbasierten Shortcodes <https://getnikola.com/extending.html#template-based-shortcodes>`_ kann man einfach individuelle Shortcodes erstellen.
-es>`_.
 
 Dafür muss man eine Vorlage namens ``your_shortcode_name.tmpl`` erstellen und im ``shortcodes``-Ordner der Nikola-Seite speichern. Wenn noch keine eigenen Shortcodes verwendet werden, muss der Ordner höchstwahrscheinlich noch angelegt werden.
 
-Abhängig von der verwendeten Template-Engine, die das aktuell verwendete Theme nutzt muss der Shortcode in Jinja2 oder Mako geschrieben werden:
+Abhängig von der verwendeten Template-Engine, die das aktuell verwendete Theme nutzt, muss der Shortcode in Jinja2 oder Mako geschrieben werden:
 
 .. gist:: 52728167ac7d2fe79caf480c291931ea
 
@@ -50,8 +49,10 @@ Der Shortcode kann nun wie ursprünglich genutzt werden, es muss ein Link zum St
     :start-line: 8
     :end-line: 10
 
-Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcole-Role empfohlen (siehe `Handbuch <https://getnikola.com/handbook.html#using-a-shortcode>`_):
+Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcode-Role empfohlen (siehe `Handbuch <https://getnikola.com/handbook.html#using-a-shortcode>`_):
 
 .. listing:: raw.txt rest
     :start-line: 11
     :end-line: 12
+
+Man kann auch `Pixelfed-Posts einbinden <link://slug/embed-pixelfed>`_.
