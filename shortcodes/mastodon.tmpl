@@ -1,4 +1,4 @@
-<%doc>
+{#
 Usage:
 
     {{% mastodon status=https://instance.domain/@user/tootnr %}}
@@ -8,20 +8,8 @@ Optional parameters:
     width (default: 600)
     height (default: 333)
     
-    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 333x600 frame instead of the default 600x300
-</%doc>
+    Example: {{% mastodon status=https://instance.domain/@user/tootnr % width=300 height=600}} will show a 300x600 frame instead of the default 600x300
+#}
 
-% if width is UNDEFINED:
-    <% w = 600 %>
-% else:
-    <% w = width %>
-% endif
-
-% if height is UNDEFINED:
-    <% h = 333 %>
-% else:
-    <% h = height %>
-% endif
-
-<iframe src="${status}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width=${w} height=${h}"</iframe>
+<iframe src="{{ status }}/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="{{ width|default("600") }}" height="{{ height|default("333") }}"</iframe>
 

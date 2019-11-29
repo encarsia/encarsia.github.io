@@ -1,0 +1,16 @@
+{#
+Template engine: Jinja2
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/user/postnr % width=500}} will show a 500 px wide frame instead of the default 400 px
+#}
+
+<iframe src="{{ status }}/embed?caption=true&likes=false&layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width={{ width|default("400") }} allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script>
+

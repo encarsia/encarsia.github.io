@@ -1,0 +1,22 @@
+<%doc>
+Template engine: Mako
+
+Usage:
+
+    {{% pixelfed status=https://instance.domain/p/user/postnr %}}
+    
+Optional parameters:
+
+    width (default: 400)
+    
+    Example: {{% pixelfed status=https://instance.domain/p/user/postnr % width=500}} will show a frame of 500 px width instead of the default 400
+</%doc>
+
+% if width is UNDEFINED:
+    <% w = 400 %>
+% else:
+    <% w = width %>
+% endif
+
+<iframe src="${status}/embed?caption=true&likes=false&layout=full" class="pixelfed__embed" style="max-width: 100%; border: 0" width=${w} allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script>
+

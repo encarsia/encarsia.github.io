@@ -1,7 +1,7 @@
 .. title: Embed Mastodon toots with Nikola
 .. slug: mastodon-nikola
 .. date: 2018-09-18 15:50:16 UTC+02:00
-.. tags: nikola,mastodon
+.. tags: nikola,mastodon,fediverse
 .. category: socialmedia
 .. link: 
 .. description: 
@@ -54,3 +54,5 @@ This is working for me but if the shortcode fails you should use the shortcode r
 .. listing:: raw.txt rest
     :start-line: 11
     :end-line: 12
+
+You can also `embed Pixelfed posts <link://slug/embed-pixelfed>`_.
