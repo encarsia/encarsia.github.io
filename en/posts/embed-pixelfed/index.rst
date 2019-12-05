@@ -46,13 +46,19 @@ As stated before Pixelfed is in an early stage of development and not everything
 **Embedding...**   **Status**
 ================= ==========
 single photo post works
-album post        `does not work`_
+album post        `does not work yet`_
 animated GIF      works
 video             works
-collection        does not work
+profile           works
+collection        does not work yet
+hashtag           does not work yet
 ================= ==========
 
-.. _does not work: https://github.com/pixelfed/pixelfed/issues/776
+.. _does not work yet: https://github.com/pixelfed/pixelfed/issues/776
+
+This is `my profile <https://pixelfed.social/encarsia.>`_.
+
+{{% pixelfed status=https://pixelfed.social/encarsia %}}
 
 I post pictures of small things.
 
@@ -62,7 +68,7 @@ Alm posts pictures of cats.
 
 {{% pixelfed status=https://pixelfed.de/p/alm10965/106018103883862016 %}}
 
-esureL posts pictures of painted distribution boxes (and food).
+Sven (esureL) posts pictures of painted distribution boxes (and food).
 
 {{% pixelfed status=https://pixelfed.social/p/esureL/106030673873211392 %}}
 
@@ -72,6 +78,14 @@ Keep moving.
 
 {{% pixelfed status=https://pixelfed.social/p/atomjack/103513270102659072 %}}
 
+Soon to come
+************
+
+The main developer has stated that everything that is not working will do so in the near future.
+
+{{% mastodon status=https://mastodon.social/@dansup/103254151110880662 %}}
+
+
 This points to an `album post <https://pixelfed.social/p/JOX/95141123726643200>`_.
 
 {{% pixelfed status=https://pixelfed.social/p/JOX/95141123726643200 %}}
@@ -79,3 +93,9 @@ This points to an `album post <https://pixelfed.social/p/JOX/95141123726643200>`
 This points to a `collection <https://pixelfed.social/c/106059557062709248>`_.
 
 {{% pixelfed status=https://pixelfed.social/c/106059557062709248 %}}
+
+
+
+This points to a `hashtag <https://pixelfed.social/discover/tags/balcony>`_.
+
+{{% pixelfed status=https://pixelfed.social/discover/tags/balcony %}}
