@@ -887,6 +887,7 @@ Contents &copy; {date} <a href="mailto:{email}">{author}</a>
 <br> 
 Powered by <a href="http://getnikola.com">Nikola</a> - 
 Hybrid theme
+<a rel="me" href="https://octodon.social/@encarsia"></a>
 """
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
