@@ -1,4 +1,4 @@
-.. title: Tweaking your TUXEDO laptop keyboard
+.. title: TUXEDO laptop keyboard
 .. slug: tuxedo-keyboard-tweaks
 .. date: 2020-05-05 20:11:41 UTC+02:00
 .. tags: tuxedo,keyboard,backlight
