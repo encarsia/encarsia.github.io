@@ -1,13 +1,13 @@
 .. title: Websites that answer a single specific question
 .. slug: one-page-one-answer
-.. date: 2020-03-19 23:12:54 UTC+01:00
+.. date: 2020-05-18 23:12:54 UTC+01:00
 .. tags: nonsense
 .. category: link
 .. link: 
 .. description: 
 .. type: text
 
-*Hints are welcome. Comment everywhere.*
+*Hints are welcome. Comment here or over at Mastodon. Post might be updated.*
 
 BER - Berlin Brandenburg Airport
     The first question touches a sore spot - Germany's most famous airport (BER). The construction project has been full of scandals involving mismanagement, patronage, bad planning, massive budget overrun and, of course, delay:
@@ -28,3 +28,11 @@ Traffic
 
     `"Is the 17th of June Street closed?" <https://istdiestrassedes17tenjunigesperrt.de>`_ (German)
 
+
+Tech
+    `"Should I use threads?" <https://shouldiusethreads.com/>`_
+
+
+----
+
+{{% mastodon status=https://octodon.social/@encarsia/103852119500659286 %}}
