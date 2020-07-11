@@ -56,186 +56,449 @@ Hybrid theme
 </ul></nav><h1>14_application.py
             <small><a href="14_application.py">(Source)</a></small>
         </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listings14_applicationpy-1"> 1</a>
-<a href="#listings14_applicationpy-2"> 2</a>
-<a href="#listings14_applicationpy-3"> 3</a>
-<a href="#listings14_applicationpy-4"> 4</a>
-<a href="#listings14_applicationpy-5"> 5</a>
-<a href="#listings14_applicationpy-6"> 6</a>
-<a href="#listings14_applicationpy-7"> 7</a>
-<a href="#listings14_applicationpy-8"> 8</a>
-<a href="#listings14_applicationpy-9"> 9</a>
-<a href="#listings14_applicationpy-10">10</a>
-<a href="#listings14_applicationpy-11">11</a>
-<a href="#listings14_applicationpy-12">12</a>
-<a href="#listings14_applicationpy-13">13</a>
-<a href="#listings14_applicationpy-14">14</a>
-<a href="#listings14_applicationpy-15">15</a>
-<a href="#listings14_applicationpy-16">16</a>
-<a href="#listings14_applicationpy-17">17</a>
-<a href="#listings14_applicationpy-18">18</a>
-<a href="#listings14_applicationpy-19">19</a>
-<a href="#listings14_applicationpy-20">20</a>
-<a href="#listings14_applicationpy-21">21</a>
-<a href="#listings14_applicationpy-22">22</a>
-<a href="#listings14_applicationpy-23">23</a>
-<a href="#listings14_applicationpy-24">24</a>
-<a href="#listings14_applicationpy-25">25</a>
-<a href="#listings14_applicationpy-26">26</a>
-<a href="#listings14_applicationpy-27">27</a>
-<a href="#listings14_applicationpy-28">28</a>
-<a href="#listings14_applicationpy-29">29</a>
-<a href="#listings14_applicationpy-30">30</a>
-<a href="#listings14_applicationpy-31">31</a>
-<a href="#listings14_applicationpy-32">32</a>
-<a href="#listings14_applicationpy-33">33</a>
-<a href="#listings14_applicationpy-34">34</a>
-<a href="#listings14_applicationpy-35">35</a>
-<a href="#listings14_applicationpy-36">36</a>
-<a href="#listings14_applicationpy-37">37</a>
-<a href="#listings14_applicationpy-38">38</a>
-<a href="#listings14_applicationpy-39">39</a>
-<a href="#listings14_applicationpy-40">40</a>
-<a href="#listings14_applicationpy-41">41</a>
-<a href="#listings14_applicationpy-42">42</a>
-<a href="#listings14_applicationpy-43">43</a>
-<a href="#listings14_applicationpy-44">44</a>
-<a href="#listings14_applicationpy-45">45</a>
-<a href="#listings14_applicationpy-46">46</a>
-<a href="#listings14_applicationpy-47">47</a>
-<a href="#listings14_applicationpy-48">48</a>
-<a href="#listings14_applicationpy-49">49</a>
-<a href="#listings14_applicationpy-50">50</a>
-<a href="#listings14_applicationpy-51">51</a>
-<a href="#listings14_applicationpy-52">52</a>
-<a href="#listings14_applicationpy-53">53</a>
-<a href="#listings14_applicationpy-54">54</a>
-<a href="#listings14_applicationpy-55">55</a>
-<a href="#listings14_applicationpy-56">56</a>
-<a href="#listings14_applicationpy-57">57</a>
-<a href="#listings14_applicationpy-58">58</a>
-<a href="#listings14_applicationpy-59">59</a>
-<a href="#listings14_applicationpy-60">60</a>
-<a href="#listings14_applicationpy-61">61</a>
-<a href="#listings14_applicationpy-62">62</a>
-<a href="#listings14_applicationpy-63">63</a>
-<a href="#listings14_applicationpy-64">64</a>
-<a href="#listings14_applicationpy-65">65</a>
-<a href="#listings14_applicationpy-66">66</a>
-<a href="#listings14_applicationpy-67">67</a>
-<a href="#listings14_applicationpy-68">68</a>
-<a href="#listings14_applicationpy-69">69</a>
-<a href="#listings14_applicationpy-70">70</a>
-<a href="#listings14_applicationpy-71">71</a>
-<a href="#listings14_applicationpy-72">72</a>
-<a href="#listings14_applicationpy-73">73</a>
-<a href="#listings14_applicationpy-74">74</a>
-<a href="#listings14_applicationpy-75">75</a>
-<a href="#listings14_applicationpy-76">76</a>
-<a href="#listings14_applicationpy-77">77</a>
-<a href="#listings14_applicationpy-78">78</a>
-<a href="#listings14_applicationpy-79">79</a>
-<a href="#listings14_applicationpy-80">80</a>
-<a href="#listings14_applicationpy-81">81</a>
-<a href="#listings14_applicationpy-82">82</a>
-<a href="#listings14_applicationpy-83">83</a>
-<a href="#listings14_applicationpy-84">84</a>
-<a href="#listings14_applicationpy-85">85</a>
-<a href="#listings14_applicationpy-86">86</a>
-<a href="#listings14_applicationpy-87">87</a>
-<a href="#listings14_applicationpy-88">88</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listings14_applicationpy-1"></a><span class="ch">#!/usr/bin/python</span>
-<a name="listings14_applicationpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a name="listings14_applicationpy-3"></a>
-<a name="listings14_applicationpy-4"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="listings14_applicationpy-5"></a>
-<a name="listings14_applicationpy-6"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings14_applicationpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
-<a name="listings14_applicationpy-8"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span>
-<a name="listings14_applicationpy-9"></a>
-<a name="listings14_applicationpy-10"></a>
-<a name="listings14_applicationpy-11"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings14_applicationpy-12"></a>
-<a name="listings14_applicationpy-13"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
-<a name="listings14_applicationpy-14"></a>        <span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<a name="listings14_applicationpy-15"></a>
-<a name="listings14_applicationpy-16"></a>    <span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
-<a name="listings14_applicationpy-17"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="listings14_applicationpy-18"></a>        <span class="k">return</span> <span class="kc">True</span>
-<a name="listings14_applicationpy-19"></a>
-<a name="listings14_applicationpy-20"></a>    <span class="k">def</span> <span class="nf">on_aboutbutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings14_applicationpy-21"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-22"></a>
-<a name="listings14_applicationpy-23"></a>    <span class="k">def</span> <span class="nf">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
-<a name="listings14_applicationpy-24"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"messdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">format_secondary_text</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
-<a name="listings14_applicationpy-25"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"messdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-26"></a>        
-<a name="listings14_applicationpy-27"></a>    <span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
-<a name="listings14_applicationpy-28"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">8</span><span class="p">:</span>
-<a name="listings14_applicationpy-29"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
-<a name="listings14_applicationpy-30"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9</span><span class="p">:</span>
-<a name="listings14_applicationpy-31"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">format_secondary_text</span><span class="p">(</span><span class="s2">"Doch!"</span><span class="p">)</span>
-<a name="listings14_applicationpy-32"></a>
-<a name="listings14_applicationpy-33"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
-<a name="listings14_applicationpy-34"></a>
-<a name="listings14_applicationpy-35"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings14_applicationpy-36"></a>
-<a name="listings14_applicationpy-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span>
-<a name="listings14_applicationpy-38"></a>                                        <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-<a name="listings14_applicationpy-39"></a>                                       <span class="p">)</span>
-<a name="listings14_applicationpy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_startup</span><span class="p">)</span>
-<a name="listings14_applicationpy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
-<a name="listings14_applicationpy-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_shutdown</span><span class="p">)</span>
-<a name="listings14_applicationpy-43"></a>        
-<a name="listings14_applicationpy-44"></a>    <span class="k">def</span> <span class="nf">on_app_startup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-45"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application startup signal emitted"</span><span class="p">)</span>
-<a name="listings14_applicationpy-46"></a>
-<a name="listings14_applicationpy-47"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-48"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application activate signal emitted"</span><span class="p">)</span>
-<a name="listings14_applicationpy-49"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings14_applicationpy-50"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"13_dialoge.glade"</span><span class="p">)</span>
-<a name="listings14_applicationpy-51"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"14_giomenu.ui"</span><span class="p">)</span>
-<a name="listings14_applicationpy-52"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings14_applicationpy-53"></a>
-<a name="listings14_applicationpy-54"></a>        <span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
-<a name="listings14_applicationpy-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
-<a name="listings14_applicationpy-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<a name="listings14_applicationpy-57"></a>        
-<a name="listings14_applicationpy-58"></a>        <span class="c1"># display application name in upper panel of the GNOME Shell (deprecated)</span>
-<a name="listings14_applicationpy-59"></a>        <span class="c1"># self.obj("window").set_wmclass("Application test","Application test")</span>
-<a name="listings14_applicationpy-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-61"></a>        
-<a name="listings14_applicationpy-62"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"about"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_about_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-63"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_message_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-64"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"quit"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_quit_activated</span><span class="p">)</span>
-<a name="listings14_applicationpy-65"></a>
-<a name="listings14_applicationpy-66"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
-<a name="listings14_applicationpy-67"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application shutdown signal emitted"</span><span class="p">)</span>
-<a name="listings14_applicationpy-68"></a>
-<a name="listings14_applicationpy-69"></a>    <span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-<a name="listings14_applicationpy-70"></a>        <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<a name="listings14_applicationpy-71"></a>        <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
-<a name="listings14_applicationpy-72"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-<a name="listings14_applicationpy-73"></a>
-<a name="listings14_applicationpy-74"></a>    <span class="k">def</span> <span class="nf">on_action_about_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings14_applicationpy-76"></a>
-<a name="listings14_applicationpy-77"></a>    <span class="k">def</span> <span class="nf">on_action_message_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-78"></a>        <span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a name="listings14_applicationpy-79"></a>
-<a name="listings14_applicationpy-80"></a>    <span class="k">def</span> <span class="nf">on_action_quit_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a name="listings14_applicationpy-81"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-<a name="listings14_applicationpy-82"></a>
-<a name="listings14_applicationpy-83"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
-<a name="listings14_applicationpy-84"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
-<a name="listings14_applicationpy-85"></a>
-<a name="listings14_applicationpy-86"></a>
-<a name="listings14_applicationpy-87"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
-<a name="listings14_applicationpy-88"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</pre></td>
-</tr></table>
-</div>
+    <div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-1"></a><span class="ch">#!/usr/bin/python</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-3"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-4"></a><span class="kn">import</span> <span class="nn">sys</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-6"></a><span class="kn">import</span> <span class="nn">gi</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-8"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Gio</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-9"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-10"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-11"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-12"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-13"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-14"></a>        <span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-15"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-16"></a>    <span class="k">def</span> <span class="nf">on_dialog_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-17"></a>        <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-18"></a>        <span class="k">return</span> <span class="kc">True</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-19"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-20"></a>    <span class="k">def</span> <span class="nf">on_aboutbutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-21"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-22"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-23"></a>    <span class="k">def</span> <span class="nf">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-24"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"messdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">format_secondary_text</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-25"></a>        <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"messdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-26"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-27"></a>    <span class="k">def</span> <span class="nf">on_dialog_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">widget</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-28"></a>        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">8</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-29"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">hide_on_delete</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-30"></a>        <span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-31"></a>            <span class="n">widget</span><span class="o">.</span><span class="n">format_secondary_text</span><span class="p">(</span><span class="s2">"Doch!"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-32"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-33"></a><span class="k">class</span> <span class="nc">ExampleApp</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-34"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-35"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-36"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"org.application.test"</span><span class="p">,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-38"></a>                                        <span class="n">Gio</span><span class="o">.</span><span class="n">ApplicationFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-39"></a>                                       <span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"startup"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_startup</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_activate</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shutdown"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_app_shutdown</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-43"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-44"></a>    <span class="k">def</span> <span class="nf">on_app_startup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-45"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application startup signal emitted"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-46"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-47"></a>    <span class="k">def</span> <span class="nf">on_app_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-48"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application activate signal emitted"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-49"></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-50"><code data-line-number="50"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-50"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"13_dialoge.glade"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-51"><code data-line-number="51"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-51"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"14_giomenu.ui"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-52"><code data-line-number="52"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-52"></a>        <span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-53"><code data-line-number="53"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-53"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-54"><code data-line-number="54"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-54"></a>        <span class="n">app</span><span class="o">.</span><span class="n">set_app_menu</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"appmenu"</span><span class="p">))</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-55"><code data-line-number="55"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_object</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-56"><code data-line-number="56"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">set_application</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-57"><code data-line-number="57"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-57"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-58"><code data-line-number="58"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-58"></a>        <span class="c1"># display application name in upper panel of the GNOME Shell (deprecated)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-59"><code data-line-number="59"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-59"></a>        <span class="c1"># self.obj("window").set_wmclass("Application test","Application test")</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-60"><code data-line-number="60"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-60"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-61"><code data-line-number="61"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-61"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-62"><code data-line-number="62"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-62"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"about"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_about_activated</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-63"><code data-line-number="63"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-63"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_message_activated</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-64"><code data-line-number="64"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-64"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add_simple_action</span><span class="p">(</span><span class="s2">"quit"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_action_quit_activated</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-65"><code data-line-number="65"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-65"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-66"><code data-line-number="66"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-66"></a>    <span class="k">def</span> <span class="nf">on_app_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-67"><code data-line-number="67"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-67"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Gio.Application shutdown signal emitted"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-68"><code data-line-number="68"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-68"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-69"><code data-line-number="69"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-69"></a>    <span class="k">def</span> <span class="nf">add_simple_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-70"><code data-line-number="70"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-70"></a>        <span class="n">action</span> <span class="o">=</span> <span class="n">Gio</span><span class="o">.</span><span class="n">SimpleAction</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-71"><code data-line-number="71"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-71"></a>        <span class="n">action</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-72"><code data-line-number="72"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-72"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-73"><code data-line-number="73"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-73"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-74"><code data-line-number="74"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-74"></a>    <span class="k">def</span> <span class="nf">on_action_about_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-75"><code data-line-number="75"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"aboutdialog"</span><span class="p">)</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-76"><code data-line-number="76"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-76"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-77"><code data-line-number="77"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-77"></a>    <span class="k">def</span> <span class="nf">on_action_message_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-78"><code data-line-number="78"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-78"></a>        <span class="n">Handler</span><span class="p">()</span><span class="o">.</span><span class="n">on_messagebutton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-79"><code data-line-number="79"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-79"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-80"><code data-line-number="80"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-80"></a>    <span class="k">def</span> <span class="nf">on_action_quit_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-81"><code data-line-number="81"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-81"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-82"><code data-line-number="82"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-82"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-83"><code data-line-number="83"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-83"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-84"><code data-line-number="84"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-84"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-85"><code data-line-number="85"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-85"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-86"><code data-line-number="86"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-86"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-87"><code data-line-number="87"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-87"></a><span class="n">app</span> <span class="o">=</span> <span class="n">ExampleApp</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings14_applicationpy-88"><code data-line-number="88"></code></a></td>
+<td class="code"><code><a name="listings14_applicationpy-88"></a><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</code></td>
+</tr>
+</table></div>
+    </div>
     
     
                 <script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- fancy dates --><script>

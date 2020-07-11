@@ -56,108 +56,254 @@ Hybrid theme
 </ul></nav><h1>11_terminal.py
             <small><a href="11_terminal.py">(Source)</a></small>
         </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listings11_terminalpy-1"> 1</a>
-<a href="#listings11_terminalpy-2"> 2</a>
-<a href="#listings11_terminalpy-3"> 3</a>
-<a href="#listings11_terminalpy-4"> 4</a>
-<a href="#listings11_terminalpy-5"> 5</a>
-<a href="#listings11_terminalpy-6"> 6</a>
-<a href="#listings11_terminalpy-7"> 7</a>
-<a href="#listings11_terminalpy-8"> 8</a>
-<a href="#listings11_terminalpy-9"> 9</a>
-<a href="#listings11_terminalpy-10">10</a>
-<a href="#listings11_terminalpy-11">11</a>
-<a href="#listings11_terminalpy-12">12</a>
-<a href="#listings11_terminalpy-13">13</a>
-<a href="#listings11_terminalpy-14">14</a>
-<a href="#listings11_terminalpy-15">15</a>
-<a href="#listings11_terminalpy-16">16</a>
-<a href="#listings11_terminalpy-17">17</a>
-<a href="#listings11_terminalpy-18">18</a>
-<a href="#listings11_terminalpy-19">19</a>
-<a href="#listings11_terminalpy-20">20</a>
-<a href="#listings11_terminalpy-21">21</a>
-<a href="#listings11_terminalpy-22">22</a>
-<a href="#listings11_terminalpy-23">23</a>
-<a href="#listings11_terminalpy-24">24</a>
-<a href="#listings11_terminalpy-25">25</a>
-<a href="#listings11_terminalpy-26">26</a>
-<a href="#listings11_terminalpy-27">27</a>
-<a href="#listings11_terminalpy-28">28</a>
-<a href="#listings11_terminalpy-29">29</a>
-<a href="#listings11_terminalpy-30">30</a>
-<a href="#listings11_terminalpy-31">31</a>
-<a href="#listings11_terminalpy-32">32</a>
-<a href="#listings11_terminalpy-33">33</a>
-<a href="#listings11_terminalpy-34">34</a>
-<a href="#listings11_terminalpy-35">35</a>
-<a href="#listings11_terminalpy-36">36</a>
-<a href="#listings11_terminalpy-37">37</a>
-<a href="#listings11_terminalpy-38">38</a>
-<a href="#listings11_terminalpy-39">39</a>
-<a href="#listings11_terminalpy-40">40</a>
-<a href="#listings11_terminalpy-41">41</a>
-<a href="#listings11_terminalpy-42">42</a>
-<a href="#listings11_terminalpy-43">43</a>
-<a href="#listings11_terminalpy-44">44</a>
-<a href="#listings11_terminalpy-45">45</a>
-<a href="#listings11_terminalpy-46">46</a>
-<a href="#listings11_terminalpy-47">47</a>
-<a href="#listings11_terminalpy-48">48</a>
-<a href="#listings11_terminalpy-49">49</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listings11_terminalpy-1"></a><span class="ch">#!/usr/bin/python</span>
-<a name="listings11_terminalpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a name="listings11_terminalpy-3"></a>
-<a name="listings11_terminalpy-4"></a><span class="kn">import</span> <span class="nn">os</span>
-<a name="listings11_terminalpy-5"></a>
-<a name="listings11_terminalpy-6"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="listings11_terminalpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
-<a name="listings11_terminalpy-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Vte"</span><span class="p">,</span> <span class="s2">"2.91"</span><span class="p">)</span>
-<a name="listings11_terminalpy-9"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Vte</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GLib</span>
-<a name="listings11_terminalpy-10"></a>
-<a name="listings11_terminalpy-11"></a>
-<a name="listings11_terminalpy-12"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="listings11_terminalpy-13"></a>
-<a name="listings11_terminalpy-14"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="listings11_terminalpy-15"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
-<a name="listings11_terminalpy-16"></a>
-<a name="listings11_terminalpy-17"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<a name="listings11_terminalpy-18"></a>        <span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
-<a name="listings11_terminalpy-19"></a>        <span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-<a name="listings11_terminalpy-20"></a>
-<a name="listings11_terminalpy-21"></a>
-<a name="listings11_terminalpy-22"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="listings11_terminalpy-23"></a>    
-<a name="listings11_terminalpy-24"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings11_terminalpy-25"></a>        
-<a name="listings11_terminalpy-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="listings11_terminalpy-27"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
-<a name="listings11_terminalpy-28"></a>        
-<a name="listings11_terminalpy-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"11_terminal.glade"</span><span class="p">)</span>
-<a name="listings11_terminalpy-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="listings11_terminalpy-31"></a>        
-<a name="listings11_terminalpy-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"term"</span><span class="p">)</span>
-<a name="listings11_terminalpy-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
-<a name="listings11_terminalpy-34"></a>            <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="listings11_terminalpy-35"></a>            <span class="kc">None</span><span class="p">,</span>
-<a name="listings11_terminalpy-36"></a>            <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
-<a name="listings11_terminalpy-37"></a>            <span class="kc">None</span><span class="p">,</span>
-<a name="listings11_terminalpy-38"></a>            <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
-<a name="listings11_terminalpy-39"></a>            <span class="p">)</span>
-<a name="listings11_terminalpy-40"></a>
-<a name="listings11_terminalpy-41"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="listings11_terminalpy-42"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="listings11_terminalpy-43"></a>
-<a name="listings11_terminalpy-44"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="listings11_terminalpy-45"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<a name="listings11_terminalpy-46"></a>
-<a name="listings11_terminalpy-47"></a>
-<a name="listings11_terminalpy-48"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="listings11_terminalpy-49"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</pre></td>
-</tr></table>
-</div>
+    <div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-1"></a><span class="ch">#!/usr/bin/python</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-3"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-4"></a><span class="kn">import</span> <span class="nn">os</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-6"></a><span class="kn">import</span> <span class="nn">gi</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-7"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-8"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Vte"</span><span class="p">,</span> <span class="s2">"2.91"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-9"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span><span class="p">,</span> <span class="n">Vte</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GLib</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-10"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-11"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-12"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-13"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-14"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-15"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-16"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-17"></a>    <span class="k">def</span> <span class="nf">on_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-18"></a>        <span class="n">command</span> <span class="o">=</span> <span class="s2">"python</span><span class="se">\n</span><span class="s2">"</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-19"></a>        <span class="n">x</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">feed_child</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-20"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-21"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-22"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-23"></a>    
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-24"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-25"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-27"></a>        <span class="n">GObject</span><span class="o">.</span><span class="n">type_register</span><span class="p">(</span><span class="n">Vte</span><span class="o">.</span><span class="n">Terminal</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-28"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"11_terminal.glade"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-31"></a>        
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"term"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="o">.</span><span class="n">spawn_sync</span><span class="p">(</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-34"></a>            <span class="n">Vte</span><span class="o">.</span><span class="n">PtyFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-35"></a>            <span class="kc">None</span><span class="p">,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-36"></a>            <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">],</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-37"></a>            <span class="kc">None</span><span class="p">,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-38"></a>            <span class="n">GLib</span><span class="o">.</span><span class="n">SpawnFlags</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-39"></a>            <span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-40"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-41"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-42"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-43"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-44"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-45"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-46"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-47"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-48"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listings11_terminalpy-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a name="listings11_terminalpy-49"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></td>
+</tr>
+</table></div>
+    </div>
     
     
                 <script src="../assets/js/all-nocdn.js" type="text/javascript"></script><!-- fancy dates --><script>

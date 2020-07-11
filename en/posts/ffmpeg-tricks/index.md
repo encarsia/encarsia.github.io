@@ -13,10 +13,11 @@
 
 ## Timelapse
 
-[How To Create A Time Lapse Video Using FFMPEG](http://pr0gr4mm3r.com/linux/how-to-create-a-time-lapse-video-using-ffmpeg/)
-
+* [How To Create A Time Lapse Video Using FFMPEG](http://pr0gr4mm3r.com/linux/how-to-create-a-time-lapse-video-using-ffmpeg/)
+* [Convert sequence of JPEG images to MP4 video](https://gist.github.com/alexellis/bbf2bc2a6789480fcd0031f99800df9c)
+* [Timelapse from GoPro images with FFmpeg](https://markushedlund.com/dev/gopro-ffmpeg-timelapse/)
 
 ## Various commands
 
-[Useful FFmpeg Commands for Working with Audio and Video Files](https://www.labnol.org/internet/useful-ffmpeg-commands/28490/)
+* [Useful FFmpeg Commands for Working with Audio and Video Files](https://www.labnol.org/internet/useful-ffmpeg-commands/28490/)
 

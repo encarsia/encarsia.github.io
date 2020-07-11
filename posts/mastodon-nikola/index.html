@@ -67,27 +67,32 @@ Hybrid theme
 
     <div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>
+<p></p>
+<div class="mastodon-embed">
+
+<h5>Comment on Mastodon</h5>
 <iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333">
-</iframe></p>
+</iframe>
+</div>
+
 <p>Beim Lesen des Artikels <a class="reference external" href="https://www.kevingimbel.com/mastodon-embed-shortcode-for-hugo/">Mastodon Embed Shortcode for hugo</a> dachte ich neidisch 'Wir Nikola-Nutzer könnten sowas auch gebrauchen'. Im <a class="reference external" href="https://getnikola.com/handbook.html#shortcodes">Nikola-Handbuch</a> gibt man freimütig zu, dieses Feature sowieso von Hugo entlehnt zu haben, wie kompliziert kann es also sein?</p>
 <p>Hier sind drei Arten, mit reStructuredText Tröts in eine Nikola-Seite einzubinden.</p>
 <div class="section" id="die-raw-directive">
 <h2>Die <em>raw</em>-Directive</h2>
 <p>Diese Directive ermöglicht es, Inhalt ohne Verarbeitung an die Ausgabe weiterzureichen, siehe auch <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#raw-data-pass-through">reStructuredText Directives documentation</a>.</p>
 <p><a class="reference external" href="../../listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="../../listings/raw.txt">(Source)</a></p>
-<pre class="code rest"><a name="rest_code_4ae0e5ca8d1d4e3891aeb71876563c7c-1"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
-<a name="rest_code_4ae0e5ca8d1d4e3891aeb71876563c7c-2"></a>
-<a name="rest_code_4ae0e5ca8d1d4e3891aeb71876563c7c-3"></a>    &lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333"&lt;/iframe&gt;
+<pre class="code rest"><a name="rest_code_2a1511f9c40a43859034a9869179a4e9-1"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+<a name="rest_code_2a1511f9c40a43859034a9869179a4e9-2"></a>
+<a name="rest_code_2a1511f9c40a43859034a9869179a4e9-3"></a>    &lt;iframe src="https://mastodon.social/@kevingimbel/100745593232538751/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="600" height="333"&lt;/iframe&gt;
 </pre>
 </div>
 <div class="section" id="der-raw-shortcode">
 <h2>Der <em>raw</em>-Shortcode</h2>
 <p>Dieser Shortcode ist standardmäßig verfügbar. Er funktioniert genau wie die Directive, der Inhalt muss nur zwischen Shortcode-Tags platziert werden.</p>
 <p><a class="reference external" href="../../listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="../../listings/raw.txt">(Source)</a></p>
-<pre class="code html"><a name="rest_code_b39f2d3b1c6546c4a5d43641df9d5ecb-1"></a>{{% raw %}}
-<a name="rest_code_b39f2d3b1c6546c4a5d43641df9d5ecb-2"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://mastodon.social/@kevingimbel/100745593232538751/embed"</span> <span class="na">class</span><span class="o">=</span><span class="s">"mastodon-embed"</span> <span class="na">style</span><span class="o">=</span><span class="s">"max-width: 100%; border: 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"600"</span> <span class="na">height</span><span class="o">=</span><span class="s">"333"</span><span class="err">&lt;/</span><span class="na">iframe</span><span class="p">&gt;</span>
-<a name="rest_code_b39f2d3b1c6546c4a5d43641df9d5ecb-3"></a>{{% /raw %}}
+<pre class="code html"><a name="rest_code_35e27f7531c64f96959d496ae4df90bf-1"></a>{{% raw %}}
+<a name="rest_code_35e27f7531c64f96959d496ae4df90bf-2"></a><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://mastodon.social/@kevingimbel/100745593232538751/embed"</span> <span class="na">class</span><span class="o">=</span><span class="s">"mastodon-embed"</span> <span class="na">style</span><span class="o">=</span><span class="s">"max-width: 100%; border: 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"600"</span> <span class="na">height</span><span class="o">=</span><span class="s">"333"</span><span class="err">&lt;/</span><span class="na">iframe</span><span class="p">&gt;</span>
+<a name="rest_code_35e27f7531c64f96959d496ae4df90bf-3"></a>{{% /raw %}}
 </pre>
 </div>
 <div class="section" id="mach-dir-deinen-eigenen-shortcode">
@@ -147,12 +152,12 @@ Optional parameters:
 </noscript>
 <p>Der Shortcode kann nun wie ursprünglich genutzt werden, es muss ein Link zum Status angegeben werden, optional noch Höhe und/oder Breite des Elements.</p>
 <p><a class="reference external" href="../../listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="../../listings/raw.txt">(Source)</a></p>
-<pre class="code html"><a name="rest_code_7b0b62d34a76470c856ab9b8d7e7a27f-1"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
-<a name="rest_code_7b0b62d34a76470c856ab9b8d7e7a27f-2"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 width=300 height=600 %}}
+<pre class="code html"><a name="rest_code_545e3586bb024b219ab4ad1476e63e3e-1"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}
+<a name="rest_code_545e3586bb024b219ab4ad1476e63e3e-2"></a>{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 width=300 height=600 %}}
 </pre>
 <p>Diese Lösungen funktionieren für mich. Falls nicht, wird die Nutzung der Shortcode-Role empfohlen (siehe <a class="reference external" href="https://getnikola.com/handbook.html#using-a-shortcode">Handbuch</a>):</p>
 <p><a class="reference external" href="../../listings/raw.txt.html">raw.txt</a>  <a class="reference external" href="../../listings/raw.txt">(Source)</a></p>
-<pre class="code rest"><a name="rest_code_6bc63938c1eb4401a6205f28d20d73c6-1"></a><span class="na">:sc:</span><span class="nv">`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`</span>
+<pre class="code rest"><a name="rest_code_a7414764f60840ca8b300eae9e6119b8-1"></a><span class="na">:sc:</span><span class="nv">`{{% mastodon status=https://mastodon.social/@kevingimbel/100745593232538751 %}}`</span>
 </pre>
 <p>Man kann auch <a class="reference external" href="../embed-pixelfed/">Pixelfed-Posts einbinden</a>.</p>
 </div>
