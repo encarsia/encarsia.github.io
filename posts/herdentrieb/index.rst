@@ -1,7 +1,7 @@
 .. title: Herdentrieb
 .. slug: herdentrieb
 .. date: 2017-04-16 12:45:25 UTC+02:00
-.. tags: mastodon
+.. tags: mastodon,fediverse
 .. category: socialmedia
 .. link: 
 .. description: 
@@ -13,7 +13,6 @@
 
     Dieser Beitrag wird bedarfs- und kapazitätsabhängig aktualisiert. Da sich Mastodon in massiver, aktiver Entwicklung befindet, können Teile des Inhaltes veraltet sein.
 
-.. class:: warning pull-right
 
 .. contents::
 
@@ -61,11 +60,6 @@ Bisher ist es nicht möglich, die lokale Timeline einer Instanz ohne Registrieru
 Wenn man also nicht genau eine Instanz favorisiert, weil sie thematisch passt oder man dort schon Nutzer kennt, sucht man sich am besten eine größere, allgemeine Instanz aus, bei der eine größere Chance besteht, die erste Euphoriewelle zu überleben.
 
 
-.. admonition:: **Wichtiger Hinweis**
-
-    Accounts können zur Zeit nicht gelöscht werden. Auch können Accounts nicht in andere Instanzen migriert werden.
-    Es ist zwar möglich, eine Liste der Accounts, denen man selbst folgt, zu exportieren und in neue Accounts zu importieren, dies funktioniert aber nicht für Follower.
-
 * `Liste mit Instanzen <https://instances.mastodon.xyz/list>`_
 * `Mashable: There's an instance for everyone in the rapidly expanding Mastodon fediverse <http://mashable.com/2017/04/15/mastodon-has-instance-for-everyone/>`_
 * `Motherboard: From Witches to Dolphins, These Are the Communities That Make Mastodon Great <https://motherboard.vice.com/en_us/article/from-witches-to-dolphins-these-are-the-communities-that-make-mastodon-great>`_
@@ -106,6 +100,3 @@ Find mich auf Mastodon
 
 * `encarsia@octodon.social <https://octodon.social/@encarsia>`_
 
-.. admonition:: **Google+**
-
-    Diskussion und Kommentare? `Folgen Sie mir unauffällig <https://plus.google.com/105146352752269764996/posts/PJFYx2MT2W1>`_.
