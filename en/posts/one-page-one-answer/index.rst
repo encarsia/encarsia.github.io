@@ -1,18 +1,18 @@
 .. title: Websites that answer a single specific question
 .. slug: one-page-one-answer
-.. date: 2020-05-18 23:12:54 UTC+01:00
+.. date: 2021-03-25 12:56:54 UTC+01:00
 .. tags: nonsense
 .. category: link
 .. link: 
 .. description: 
 .. type: text
 
-*Hints are welcome. Comment here or over at Mastodon. Post might be updated.*
+*Hints are welcome. Comment here or over at Mastodon. In case of updates post gets republished.*
 
 BER - Berlin Brandenburg Airport
     The first question touches a sore spot - Germany's most famous airport (BER). The construction project has been full of scandals involving mismanagement, patronage, bad planning, massive budget overrun and, of course, delay:
 
-    `"Is the BER already open?" <http://www.istberschonoffen.de>`_ 
+    `"Is the BER already open?" <http://www.istberschonoffen.de>`_  - though the answer is incorrect now
 
     or
 
@@ -32,6 +32,10 @@ Traffic
 Tech
     `"Should I use threads?" <https://shouldiusethreads.com/>`_
 
+Transportation
+    The container ship `Ever Given <https://en.wikipedia.org/wiki/Ever_Given>`_ grounded in the Suez Canal completely blocking any traffic:
+
+    `"Is that ship still stuck?" <https://istheshipstillstuck.com/>`_
 
 ----
 

@@ -36,7 +36,7 @@ Ideen wie Bildbearbeitungs-Events, echte Gespräche in Kommentarspalten, der Aus
 Es war lange Zeit die Rede davon, dass Google+ absolute Priorität im Unternehmen hat. Doch was war nach dem Launch neben der Einführung von Communities und den minimalen Markup-Möglichkeiten eigentlich die letzte positive Entwicklung an Google+? Na? Stimmt, Collections und das Umfragetool waren passende Ergänzungen. Aber sonst?
 
 
-| {{% gplus https://plus.google.com/105146352752269764996/posts/QPe94kxMGRg %}} |
+| (Beitrag nicht mehr verfügbar) |
 | --- |
 | *Post von vor 5 Jahren: Google hat mal wieder an Plus herumgedoktort* |
 
@@ -76,11 +76,7 @@ Dann fielen zuerst die Nachrichtenseiten aus. Im Allgemeinen gingen diese dazu �
 
 Andere, wie etwa der Deutschlandfunk, stellten ihre Aktivität ganz ein und konzentrierten sich auf andere Verbreitungskanäle wie etwa das für eine Hörfunkanstalt sehr viel näher liegende Instagram.
 
-{{% gplus https://plus.google.com/101621968582875339372/posts/AmfsyzAsAy4 %}}
-
 Inhaltlich kippte es von sachlichen, längeren Beiträgen hin zu leicht verdaulicher Screenshot-Kost vorwiegend zu Twitter, etwas Facebook, Klickstrecken, zu komplizierten Sachverhalten wurde allmählich nur noch ein Ja oder Nein geduldet, eine kurzlebige Empörungswelle folgte der nächsten und darüber wurde nie das regelmäßige Virtue Signalling vergessen.
-
-{{% gplus https://plus.google.com/105146352752269764996/posts/44Xjx2woXuL %}}
 
 Dafür benötige ich allerdings kein weiteres soziales Netzwerk, das einst durch sein etwas gehobenes Niveau auffiel, denn dann verwende ich nämlich das Original.
 
@@ -97,5 +93,3 @@ Denn das Google+, das zum jetzigen Zeitpunkt übrig geblieben ist, möchte ich n
 * [engadget: Goodbye Google+, you beautiful, squandered opportunity](https://www.engadget.com/2018/10/12/goodbye-google-plus-you-beautiful-squandered-opportunity/)
 * [GoogleWatchBlog: Einstellung von Google+: Wieder einmal wurde eine Plattform mit großem Potenzial an die Wand gefahren](https://www.googlewatchblog.de/2018/10/einstellung-googleplus-wieder-plattform/)
 * [Takeout-Daten nach Nikola importieren](https://encarsia.github.io/posts/import-gplus-nikola)
-
-<p><a class="discuss-on-gplus" href="https://plus.google.com/105146352752269764996/posts/L7QmEaD7HYx">Kommentieren auf <i class="fa fa-google-plus"></i></a></p>

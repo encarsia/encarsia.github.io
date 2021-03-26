@@ -29,7 +29,9 @@ Am Abend machen wir endlich in Trondheim fest und werden bis zum frühen Nachmit
 
 ## Wo sind wir hier eigentlich?
 
-Wir gehen Richtung Innenstadt, vorbei am illuminierten Nidarosdomen, über Brücken und hin und her. Seltsam erscheint uns die Vertrautheit der Stadt. Während bisher die Ort- und Landschaften sehr andersartig waren, erinnert Trondheim im Stil straßenzugweise mehreren von uns unabhängig voneinander an die Stadt Potsdam. Es ist so seltsam, dass wir an manchen Stellen stehen bleiben und völlig verblüfft sind. Davon abgesehen, dass Trondheim und Potsdam keine direkte Verbindung miteinander haben, gibt es doch einige Parallelen, die dieses Trugbild und die Konvergenz bei der städtischen Entwicklung fördern:
+Wir gehen Richtung Innenstadt, vorbei am illuminierten Nidarosdomen, über Brücken und hin und her. Seltsam erscheint uns die Vertrautheit der Stadt. Während bisher die Ort- und Landschaften sehr andersartig waren, erinnert Trondheim im Stil straßenzugweise mehreren von uns unabhängig voneinander an die Stadt Potsdam. Es ist so seltsam, dass wir an manchen Stellen stehen bleiben und völlig verblüfft sind.
+
+Davon abgesehen, dass Trondheim und Potsdam keine direkte Verbindung miteinander haben, gibt es doch einige Parallelen, die dieses Trugbild und die Konvergenz bei der städtischen Entwicklung fördern:
     * beide Städte sind quasi gleich alt
     * sie sind vergleichbar groß in der Einwohnerzahl
     * sie sind von viel Wasser umgeben

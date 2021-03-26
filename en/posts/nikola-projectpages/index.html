@@ -69,67 +69,67 @@ Hybrid theme
 <p>The plugins' templates are based on using a Boostrap theme. If you are using other themes you will run into two problems:</p>
 <blockquote>
 <ul class="simple">
-<li>table and other formatting</li>
-<li>carousel of the featured projects</li>
+<li><p>table and other formatting</p></li>
+<li><p>carousel of the featured projects</p></li>
 </ul>
 </blockquote>
 <div class="section" id="css">
 <h2>CSS</h2>
-<p>Adding/Altering style parameter of a theme is easy: go to <tt class="docutils literal">/themes/CURRENT_THEME/asstes/css/</tt> and edit the <tt class="docutils literal">custom.css</tt>. If you want to use a separate file put it in this very folder and add the filename to <tt class="docutils literal">/themes/CURRENT_THEME/bundles</tt>.</p>
+<p>Adding/Altering style parameter of a theme is easy: go to <code class="docutils literal">/themes/CURRENT_THEME/asstes/css/</code> and edit the <code class="docutils literal">custom.css</code>. If you want to use a separate file put it in this very folder and add the filename to <code class="docutils literal">/themes/CURRENT_THEME/bundles</code>.</p>
 <p>First I had to find the missing CSS assignments in the Bootstrap theme's CSS file. You can download the resulting file so you don't have to do this again.</p>
 </div>
 <div class="section" id="carousel">
 <h2>Carousel</h2>
 <p>The <a class="reference external" href="https://www.w3schools.com/bootstrap/bootstrap_carousel.asp">Bootstrap carousel</a> is a plugin to create nifty and automatic slideshows.</p>
 <p>The plugin generates a carousel on the index page for every project that is tagged as</p>
-<pre class="code text"><a name="rest_code_6a7919bb73ae4df783c2a3db48f6b9eb-1"></a>.. status: featured
+<pre class="code text"><a name="rest_code_ae149d2449334c0da30fb1e22b53cc62-1"></a>.. status: featured
 </pre>
-<p>I decided that a pure CSS slider may not be animated but still an acceptable JS-free solution. To realize this you have to edit the <tt class="docutils literal">project.tmpl</tt> which is located in <tt class="docutils literal">plugins/projectpages/templates/TEMPLATE_ENGINE/</tt>.</p>
+<p>I decided that a pure CSS slider may not be animated but still an acceptable JS-free solution. To realize this you have to edit the <code class="docutils literal">project.tmpl</code> which is located in <code class="docutils literal">plugins/projectpages/templates/TEMPLATE_ENGINE/</code>.</p>
 <p>If you go with <a class="reference external" href="https://codepen.io/paulnoble/pen/ZYOzLG">this simple slider</a> you will need just a few lines above the "All projects" section:</p>
-<pre class="code html"><a name="rest_code_4bd942959b0146ae93c8923965abd85e-1"></a>% if featured:
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"carousel"</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-3"></a>  % for p in featured:
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-4"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"faux-ui-facia"</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-5"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"slide"</span> <span class="na">annot</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-6"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"${p.meta('previewimage')}"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-8"></a>  % endfor
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-9"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a name="rest_code_4bd942959b0146ae93c8923965abd85e-10"></a>% endif
+<pre class="code html"><a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-1"></a>% if featured:
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"carousel"</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-3"></a>  % for p in featured:
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-4"></a>  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"faux-ui-facia"</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-5"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"slide"</span> <span class="na">annot</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-6"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"${p.meta('previewimage')}"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"${p.title()}"</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-7"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-8"></a>  % endfor
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-9"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_05e13ecdb1164973a2ff2d8ff7ca32ef-10"></a>% endif
 </pre>
 <p>Next step is adding the slider's CSS assignments to your custom CSS (see above).</p>
-<p>On the project's summary page I considered it better to put the description into the detail's box so I also altered the <tt class="docutils literal">project.tmpl</tt>.</p>
+<p>On the project's summary page I considered it better to put the description into the detail's box so I also altered the <code class="docutils literal">project.tmpl</code>.</p>
 </div>
 <div class="section" id="files">
 <h2>Files</h2>
 <ul>
 <li>
-<p class="first">CSS file to add to your theme</p>
+<p>CSS file to add to your theme</p>
 <blockquote>
 <ul class="simple">
-<li><a class="reference external" href="../../../files/projectpages/projectpages.css">projectfiles.css</a></li>
+<li><p><a class="reference external" href="../../../files/projectpages/projectpages.css">projectfiles.css</a></p></li>
 </ul>
 </blockquote>
 </li>
 </ul>
 <ul>
 <li>
-<p class="first">Mako templates</p>
+<p>Mako templates</p>
 <blockquote>
 <ul class="simple">
-<li><a class="reference external" href="../../../files/projectpages/mako/projects.tmpl">projects.tmpl</a></li>
-<li><a class="reference external" href="../../../files/projectpages/mako/project.tmpl">project.tmpl</a></li>
+<li><p><a class="reference external" href="../../../files/projectpages/mako/projects.tmpl">projects.tmpl</a></p></li>
+<li><p><a class="reference external" href="../../../files/projectpages/mako/project.tmpl">project.tmpl</a></p></li>
 </ul>
 </blockquote>
 </li>
 </ul>
 <ul>
 <li>
-<p class="first">Jinja templates</p>
+<p>Jinja templates</p>
 <blockquote>
 <ul class="simple">
-<li><a class="reference external" href="../../../files/projectpages/jinja/projects.tmpl">projects.tmpl</a></li>
-<li><a class="reference external" href="../../../files/projectpages/jinja/project.tmpl">project.tmpl</a></li>
+<li><p><a class="reference external" href="../../../files/projectpages/jinja/projects.tmpl">projects.tmpl</a></p></li>
+<li><p><a class="reference external" href="../../../files/projectpages/jinja/project.tmpl">project.tmpl</a></p></li>
 </ul>
 </blockquote>
 </li>

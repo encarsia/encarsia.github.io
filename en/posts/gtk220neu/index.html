@@ -72,15 +72,15 @@ Hybrid theme
 <h2>set_wm_class</h2>
 <p>Programmname in Panel und Dock anzeigen</p>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Window.set_wmclass(wmclass_name, wmclass_class)</tt></p>
-<p><strong>Neu:</strong> <tt class="docutils literal">GLib.set_prgname(wmclass_name)</tt> (in .desktop-Datei <tt class="docutils literal">StartupWMClass=wmclass_name</tt> erforderlich)</p>
+<p><strong>Alt:</strong> <code class="docutils literal">Gtk.Window.set_wmclass(wmclass_name, wmclass_class)</code></p>
+<p><strong>Neu:</strong> <code class="docutils literal">GLib.set_prgname(wmclass_name)</code> (in .desktop-Datei <code class="docutils literal">StartupWMClass=wmclass_name</code> erforderlich)</p>
 </blockquote>
 </div>
 <div class="section" id="widget-new-from-stock">
 <h2>widget.new_from_stock</h2>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Button.new_from_stock(Gtk.STOCK_OK)</tt></p>
-<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.Button.new_with_label("OK")</span></tt></p>
+<p><strong>Alt:</strong> <code class="docutils literal">Gtk.Button.new_from_stock(Gtk.STOCK_OK)</code></p>
+<p><strong>Neu:</strong> <code class="docutils literal"><span class="pre">Gtk.Button.new_with_label("OK")</span></code></p>
 </blockquote>
 <p>Labels bekommen nur noch eine Bezeichnung durch einen String.</p>
 <p>Gilt auch für <em>ToggleButton</em> und <em>Image</em> (hier: image.new_from_icon_name() verwenden)</p>
@@ -89,15 +89,15 @@ Hybrid theme
 <h2>menuitem.new_with_label</h2>
 <p>Bei der Initialisierung von Labels enthaltene Widgets, z.B. <em>Gtk.MenuItem</em></p>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem("label")</span></tt></p>
-<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Gtk.MenuItem.new_with_label("label")</span></tt></p>
+<p><strong>Alt:</strong> <code class="docutils literal"><span class="pre">Gtk.MenuItem("label")</span></code></p>
+<p><strong>Neu:</strong> <code class="docutils literal"><span class="pre">Gtk.MenuItem.new_with_label("label")</span></code></p>
 </blockquote>
 </div>
 <div class="section" id="set-alignment">
 <h2>set_alignment</h2>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Gtk.Misc.set_alignment(x, y)</tt>, z.B. bei Labels</p>
-<p><strong>Neu:</strong> <em>Gtk.Widget</em>-Alignment <tt class="docutils literal">:halign</tt> und <tt class="docutils literal">:valign</tt> verwenden</p>
+<p><strong>Alt:</strong> <code class="docutils literal">Gtk.Misc.set_alignment(x, y)</code>, z.B. bei Labels</p>
+<p><strong>Neu:</strong> <em>Gtk.Widget</em>-Alignment <code class="docutils literal">:halign</code> und <code class="docutils literal">:valign</code> verwenden</p>
 </blockquote>
 </div>
 <div class="section" id="vte-terminal">
@@ -105,14 +105,14 @@ Hybrid theme
 <div class="section" id="befehl-ubergeben">
 <h3>Befehl übergeben</h3>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Vte.Terminal.feed_child(cmd, len(cmd))</tt> (cmd ist das zu übergebene Kommando)</p>
-<p><strong>Neu:</strong> <tt class="docutils literal"><span class="pre">Vte.Terminal.feed_child(cmd.encode())</span></tt> (seit v2.91)</p>
+<p><strong>Alt:</strong> <code class="docutils literal">Vte.Terminal.feed_child(cmd, len(cmd))</code> (cmd ist das zu übergebene Kommando)</p>
+<p><strong>Neu:</strong> <code class="docutils literal"><span class="pre">Vte.Terminal.feed_child(cmd.encode())</span></code> (seit v2.91)</p>
 </blockquote>
 </div>
 <div class="section" id="start">
 <h3>Start</h3>
 <blockquote>
-<p><strong>Alt:</strong> <tt class="docutils literal">Vte.Terminal.spawn_sync(args)</tt></p>
+<p><strong>Alt:</strong> <code class="docutils literal">Vte.Terminal.spawn_sync(args)</code></p>
 <p><strong>Neu:</strong> GLib.spawn_async oder Vte.Pty.spawn_async (Details unbekannt)</p>
 </blockquote>
 </div>
@@ -120,23 +120,24 @@ Hybrid theme
 <div class="section" id="filechooserdialog">
 <h2>FileChooserDialog</h2>
 <blockquote>
-<strong>Alt:</strong>
+<p><strong>Alt:</strong></p>
 </blockquote>
-<pre class="code python"><a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
-<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-2"></a>                                <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
-<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-3"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
-<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-4"></a>                                <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
-<a name="rest_code_106b56e6d77d4578b929747c6fb9cbe3-5"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_72b70c177d8549958f6990f08a24a28d-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_72b70c177d8549958f6990f08a24a28d-2"></a>                                <span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_72b70c177d8549958f6990f08a24a28d-3"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_72b70c177d8549958f6990f08a24a28d-4"></a>                                <span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_CANCEL</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_72b70c177d8549958f6990f08a24a28d-5"></a>                                <span class="n">Gtk</span><span class="o">.</span><span class="n">STOCK_APPLY</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">))</span>
 </pre>
 <p>'</p>
 <blockquote>
-<strong>Neu:</strong> Argumente werden namentlich übergeben, Buttons separat hinzugefügt:</blockquote>
-<pre class="code python"><a name="rest_code_a72e347d07f045ad85a40794b08ab48c-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
-<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-2"></a>                               <span class="n">parent</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
-<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-3"></a>                               <span class="n">action</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
-<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-4"></a>                               <span class="p">)</span>
-<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
-<a name="rest_code_a72e347d07f045ad85a40794b08ab48c-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+<p><strong>Neu:</strong> Argumente werden namentlich übergeben, Buttons separat hinzugefügt:</p>
+</blockquote>
+<pre class="code python"><a name="rest_code_fb3c09b98e574a588a05b47460715c5c-1"></a><span class="n">dialog</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserDialog</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Choose a folder"</span><span class="p">,</span>
+<a name="rest_code_fb3c09b98e574a588a05b47460715c5c-2"></a>                               <span class="n">parent</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="s2">"window"</span><span class="p">),</span>
+<a name="rest_code_fb3c09b98e574a588a05b47460715c5c-3"></a>                               <span class="n">action</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">FileChooserAction</span><span class="o">.</span><span class="n">SELECT_FOLDER</span><span class="p">,</span>
+<a name="rest_code_fb3c09b98e574a588a05b47460715c5c-4"></a>                               <span class="p">)</span>
+<a name="rest_code_fb3c09b98e574a588a05b47460715c5c-5"></a><span class="n">dialog</span><span class="o">.</span><span class="n">add_buttons</span><span class="p">(</span><span class="s2">"Cancel"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">CANCEL</span><span class="p">,</span>
+<a name="rest_code_fb3c09b98e574a588a05b47460715c5c-6"></a>                   <span class="s2">"OK"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
 </pre>
 </div>
 </div>

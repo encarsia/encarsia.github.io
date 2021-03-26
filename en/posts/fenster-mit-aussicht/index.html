@@ -68,15 +68,16 @@ Hybrid theme
     <div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <div class="contents warning pull-right topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#glade" id="id3">Glade</a></li>
-<li><a class="reference internal" href="#python" id="id4">Python</a></li>
-<li><a class="reference internal" href="#ohne-glade" id="id5">Ohne Glade</a></li>
+<li><p><a class="reference internal" href="#glade" id="id3">Glade</a></p></li>
+<li><p><a class="reference internal" href="#python" id="id4">Python</a></p></li>
+<li><p><a class="reference internal" href="#ohne-glade" id="id5">Ohne Glade</a></p></li>
 <li>
-<a class="reference internal" href="#listings" id="id6">Listings</a><ul>
-<li><a class="reference internal" href="#id1" id="id7">Glade</a></li>
-<li><a class="reference internal" href="#id2" id="id8">Python</a></li>
+<p><a class="reference internal" href="#listings" id="id6">Listings</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id7">Glade</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id8">Python</a></p></li>
 </ul>
 </li>
 </ul>
@@ -88,37 +89,37 @@ Hybrid theme
 <p>Now a window is created and an ID assigned to be able to address the element in the source code.</p>
 <a class="reference external image-reference" href="../../../images/01_glade.png"><img alt="/images/01_glade.thumbnail.png" src="../../../images/01_glade.thumbnail.png"></a>
 <p>To call functions from widgets they have to be connected to signals. Depending on the kind of graphical object signals can be emitted by clicking, marking, editing, switching etc.</p>
-<p>If the example window should be able to be closed on clicking the [X] button the signal <em>destroy</em> is required. The entry field to specify the function provides a convenient suggestion function to reduce key input following the pattern <tt class="docutils literal">on_id_signal</tt>.</p>
+<p>If the example window should be able to be closed on clicking the [X] button the signal <em>destroy</em> is required. The entry field to specify the function provides a convenient suggestion function to reduce key input following the pattern <code class="docutils literal">on_id_signal</code>.</p>
 <a class="reference external image-reference" href="../../../images/01_destroysignal.png"><img alt="/images/01_destroysignal.thumbnail.png" src="../../../images/01_destroysignal.thumbnail.png"></a>
 <p>Glade does not generate GTK+ source code but a XML formatted file accessible to <em>GtkBuilder</em> (see listing below).</p>
 </div>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="#id4">Python</a></h2>
 <p>First things first. <em>GtkBuilder</em> is provided by the <em>Gtk</em> module from the Python GObject Introspection bindings:</p>
-<pre class="code python"><a name="rest_code_63ef8deb27024d41ac260bd64cb67820-1"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="rest_code_63ef8deb27024d41ac260bd64cb67820-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
-<a name="rest_code_63ef8deb27024d41ac260bd64cb67820-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<pre class="code python"><a name="rest_code_c5f0d5955a5348459ae523b51d38333c-1"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_c5f0d5955a5348459ae523b51d38333c-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span><span class="s1">'3.0'</span><span class="p">)</span>
+<a name="rest_code_c5f0d5955a5348459ae523b51d38333c-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
 </pre>
-<p>After initing <tt class="docutils literal">Gtk.Builder()</tt> the Glade file(s) are added.</p>
-<pre class="code python"><a name="rest_code_429242a842b24ab5a52a90a4bea40850-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="n">gladefile</span><span class="p">)</span>
+<p>After initing <code class="docutils literal">Gtk.Builder()</code> the Glade file(s) are added.</p>
+<pre class="code python"><a name="rest_code_86fd250dd9594f11834d5b34dc6b896a-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="n">gladefile</span><span class="p">)</span>
 </pre>
-<p>It may be convenient to work with multiple files in one project. In this case you have to bear in mind that if there are elements with the same identifier name only the element of the last loaded file can be addressed by <tt class="docutils literal">get_object(id)</tt>.</p>
+<p>It may be convenient to work with multiple files in one project. In this case you have to bear in mind that if there are elements with the same identifier name only the element of the last loaded file can be addressed by <code class="docutils literal">get_object(id)</code>.</p>
 <p>Second step is connecting the signals. It comes in handy to store these functions in an own class:</p>
-<pre class="code python"><a name="rest_code_7c6aa28d4329490d8a7801fffcdd3417-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<pre class="code python"><a name="rest_code_29c47b61adac492cb68997ea3f406121-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
 </pre>
 <p>So this basic example script opens an empty window hat can be closed on clicking the close button.</p>
 </div>
 <div class="section" id="ohne-glade">
 <h2><a class="toc-backref" href="#id5">Ohne Glade</a></h2>
 <p>This example corresponds to the basic example of the <a class="reference external" href="http://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html">Python GTK+ 3 tutorial</a>:</p>
-<pre class="code python"><a name="rest_code_aab9cf48967c4211bb8e255152413aea-1"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span> <span class="s1">'3.0'</span><span class="p">)</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-4"></a>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-5"></a><span class="n">win</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-6"></a><span class="n">win</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"delete-event"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-7"></a><span class="n">win</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="rest_code_aab9cf48967c4211bb8e255152413aea-8"></a><span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_57f298e427de4972a9e498c4c3e10185-1"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-2"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">'Gtk'</span><span class="p">,</span> <span class="s1">'3.0'</span><span class="p">)</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-3"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-4"></a>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-5"></a><span class="n">win</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-6"></a><span class="n">win</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"delete-event"</span><span class="p">,</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-7"></a><span class="n">win</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_57f298e427de4972a9e498c4c3e10185-8"></a><span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre>
 <p>The definded window does not contain any elements like boxes, buttons, bars, menus and other widgets.</p>
 <!-- TEASER_END -->
@@ -128,58 +129,58 @@ Hybrid theme
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id7">Glade</a></h3>
 <p><a class="reference external" href="../../../listings/01_minimal.glade.html">01_minimal.glade</a>  <a class="reference external" href="../../../listings/01_minimal.glade">(Source)</a></p>
-<pre class="code xml"><a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-3"></a><span class="nt">&lt;interface&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-6"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-7"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Titel<span class="nt">&lt;/property&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-8"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-9"></a>    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-10"></a>      <span class="nt">&lt;placeholder/&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-11"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-12"></a>    <span class="nt">&lt;child&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-13"></a>      <span class="nt">&lt;placeholder/&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-14"></a>    <span class="nt">&lt;/child&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-15"></a>  <span class="nt">&lt;/object&gt;</span>
-<a name="rest_code_bf1715e9f6ba42b19d82204682e14f1a-16"></a><span class="nt">&lt;/interface&gt;</span>
+<pre class="code xml"><a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-2"></a><span class="c">&lt;!-- Generated with glade 3.20.0 --&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-3"></a><span class="nt">&lt;interface&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-4"></a>  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.20"</span><span class="nt">/&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-5"></a>  <span class="nt">&lt;object</span> <span class="na">class=</span><span class="s">"GtkApplicationWindow"</span> <span class="na">id=</span><span class="s">"window"</span><span class="nt">&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-6"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-7"></a>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Titel<span class="nt">&lt;/property&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-8"></a>    <span class="nt">&lt;signal</span> <span class="na">name=</span><span class="s">"destroy"</span> <span class="na">handler=</span><span class="s">"on_window_destroy"</span> <span class="na">swapped=</span><span class="s">"no"</span><span class="nt">/&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-9"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-10"></a>      <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-11"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-12"></a>    <span class="nt">&lt;child&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-13"></a>      <span class="nt">&lt;placeholder/&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-14"></a>    <span class="nt">&lt;/child&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-15"></a>  <span class="nt">&lt;/object&gt;</span>
+<a name="rest_code_cd02b80dd114416bbf3c326e24a560c8-16"></a><span class="nt">&lt;/interface&gt;</span>
 </pre>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id8">Python</a></h3>
 <p><a class="reference external" href="../../../listings/01_minimal.py.html">01_minimal.py</a>  <a class="reference external" href="../../../listings/01_minimal.py">(Source)</a></p>
-<pre class="code python"><a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-1"></a><span class="ch">#!/usr/bin/python</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-3"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-4"></a><span class="kn">import</span> <span class="nn">gi</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-7"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-8"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-9"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-10"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-11"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-12"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-13"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-14"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-15"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-16"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-17"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-18"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"01_minimal.glade"</span><span class="p">)</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-22"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-23"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-24"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-25"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-26"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-27"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-28"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-29"></a>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-30"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
-<a name="rest_code_5d9bed00a2c74644bfcc142d035849fb-31"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-1"></a><span class="ch">#!/usr/bin/python</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-3"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-4"></a><span class="kn">import</span> <span class="nn">gi</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-5"></a><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">"Gtk"</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">)</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-6"></a><span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gtk</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-7"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-8"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-9"></a><span class="k">class</span> <span class="nc">Handler</span><span class="p">:</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-10"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-11"></a>    <span class="k">def</span> <span class="nf">on_window_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-12"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">()</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-13"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-14"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-15"></a><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-16"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-17"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-18"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">add_from_file</span><span class="p">(</span><span class="s2">"01_minimal.glade"</span><span class="p">)</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">connect_signals</span><span class="p">(</span><span class="n">Handler</span><span class="p">())</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-22"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-23"></a>        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s2">"window"</span><span class="p">)</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-24"></a>        <span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-25"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-26"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-27"></a>        <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-28"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-29"></a>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-30"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+<a name="rest_code_48dd81ee67714422be57d16cfc33ce3d-31"></a><span class="n">x</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre>
 </div>
 </div>
